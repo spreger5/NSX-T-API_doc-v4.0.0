@@ -1,0 +1,773 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_inventory.html' style='text-decoration: none'> Inventory</a> >
+        
+        
+            <a href='policy_inventory_groups.html' style='text-decoration: none'> Groups</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Groups for a domain</h4><br>
+                      <span class="help_detail">List Groups for a domain. Groups can be filtered using member_types query parameter,
+<br>
+which returns the groups that contains the specified member types. Multiple member types
+<br>
+can be provided as comma separated values. The API also return groups having member
+<br>
+type that are subset of provided member_types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGroupForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups</a>
+                            <br>
+                            
+                            <a href="method_ListGroupForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group</h4><br>
+                      <span class="help_detail">Delete Group</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroup.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read group</h4><br>
+                      <span class="help_detail">Read group</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGroupForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadGroupForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group</h4><br>
+                      <span class="help_detail">If a group with the group-id is not already present, create a new group.
+<br>
+If it already exists, patch the group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a group</h4><br>
+                      <span class="help_detail">If a group with the group-id is not already present, create a new group.
+<br>
+If it already exists, update the group.
+<br>
+Avoid creating groups with multiple MACAddressExpression and IPAddressExpression.
+<br>
+In future releases, group will be restricted to contain a single
+<br>
+MACAddressExpression and IPAddressExpression along with other expressions.
+<br>
+To group IPAddresses or MACAddresses, use nested groups instead of multiple
+<br>
+IPAddressExpressions/MACAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateGroupForDomain.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group External ID Expression</h4><br>
+                      <span class="help_detail">Delete Group External ID Expression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupExternalIDExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group external ID expression</h4><br>
+                      <span class="help_detail">If a group ExternalIDexpression with the expression-id is not already present, create a new ExternalIDexpresison.
+<br>
+If it already exists, replace the existing ExternalIDexpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupExternalIDExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove external id based members from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified members having external ID for a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupExternalIDMembers.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group IPAddressExpression</h4><br>
+                      <span class="help_detail">Delete Group IPAddressExpression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupIPAddressExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group IP Address expression</h4><br>
+                      <span class="help_detail">If a group IPAddressExpression with the expression-id is not already present, create a new IPAddressExpression.
+<br>
+If it already exists, replace the existing IPAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupIPAddressExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove IP Addresses from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified IP Addresses from a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupIPAddresses.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group MACAddressExpression</h4><br>
+                      <span class="help_detail">Delete Group MACAddressExpression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupMACAddressExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group MAC Address expression</h4><br>
+                      <span class="help_detail">If a group MACAddressExpression with the expression-id is not already present, create a new MACAddressExpression.
+<br>
+If it already exists, replace the existing MACAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupMACAddressExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove MAC Addresses from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified MAC Addresses from a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupMACAddresses.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get member types for a given Group</h4><br>
+                      <span class="help_detail">It retrieves member types for a given group. In case of nested groups, it calculates
+<br>
+member types of child groups as well. Considers member type for members added
+<br>
+via static members and dynamic membership criteria.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMemberTypesForGroup.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/member-types</a>
+                            <br>
+                            
+                            <a href="method_GetMemberTypesForGroup.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/member-types</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get consolidated effective IPAddress translated from this group across site</h4><br>
+                      <span class="help_detail">Returns consolidated effective ip address members of the specified NSGroup.
+<br>
+Applicable in case of federated environment. The response contains site-wise list of
+<br>
+consolidated effective IP address members. In the response, for the local-site, the
+<br>
+list will contain static and dynamicaly translated IPs. For the remote sites,
+<br>
+the list will contain only the dynamically translated IPs. The static IPs will not be
+<br>
+seen in the response of this API. Hence, user can refer to the local-site Ip response
+<br>
+in the API results or the group definition to see the static IP membership of the Group.
+<br>
+This API is applicable only for Global Groups containing (directly or via nesting)
+<br>
+either VirtualMachine, VIF, Segment, SegmentPort or IPSet member type.
+<br>
+Use the cursor value in the response to fetch the next page.
+<br>
+If there is no cursor value for a response, it implies the last page in the results
+<br>
+for the query.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetConsolidatedEffectiveIPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/consolidated-effective-ip-addresses</a>
+                            <br>
+                            
+                            <a href="method_GetConsolidatedEffectiveIPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/consolidated-effective-ip-addresses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Discovered Port Groups that belong to this Group</h4><br>
+                      <span class="help_detail">Get Discovered Port Groups that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupDVPGMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvpg</a>
+                            <br>
+                            
+                            <a href="method_GetGroupDVPGMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvpg</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get discovered ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get discovered ports that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupDiscoveredPortMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupDiscoveredPortMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IP addresses that belong to this Group</h4><br>
+                      <span class="help_detail">Get IP addresses that belong to this Group.
+<br>
+This API is applicable for Groups containing either VirtualMachine, VIF,
+<br>
+Segment ,Segment Port or IP Address member type.For Groups containing other
+<br>
+member types,an empty list is returned
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupIPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/ip-addresses</a>
+                            <br>
+                            
+                            <a href="method_GetGroupIPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/ip-addresses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get logical ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get logical ports that belong to this Group
+<br>
+This API is applicable for Groups containing either VirtualMachine, VIF,
+<br>
+Segment or Segment Port member type.For Groups containing other
+<br>
+member types,an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupLPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-ports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupLPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get logical switches that belong to this Group</h4><br>
+                      <span class="help_detail">Get logical switches that belong to this Group.
+<br>
+This API is applicable for Groups containing Segment member type.
+<br>
+For Groups containing other member types, an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupLSMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-switches</a>
+                            <br>
+                            
+                            <a href="method_GetGroupLSMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-switches</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get pods that belong to this Group</h4><br>
+                      <span class="help_detail">Get pods that belong to this Group. This API is applicable for Groups
+<br>
+containing either Pod, Cluster, Namespace, Service member type. For
+<br>
+Groups containing other member types an empty list is returned
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupPodMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/pods</a>
+                            <br>
+                            
+                            <a href="method_GetGroupPodMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/pods</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get segment ports that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupSegmentPortMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segment-ports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupSegmentPortMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segment-ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segments that belong to this Group</h4><br>
+                      <span class="help_detail">Get segments that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupSegmentMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segments</a>
+                            <br>
+                            
+                            <a href="method_GetGroupSegmentMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Virtual Network Interface instances that belong to this Group</h4><br>
+                      <span class="help_detail">Get Virtual Network Interface instances that belong to this Group.
+<br>
+This API is applicable for Groups containing VirtualNetworkInterface and VirtualMachine member types.
+<br>
+For Groups containing other member types,an empty list is returned.target_id in response
+<br>
+is external_id of VirtualNetworkInterface or VirtualMachine.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVIFMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/vifs</a>
+                            <br>
+                            
+                            <a href="method_GetGroupVIFMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/vifs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Virtual machines that belong to this Group</h4><br>
+                      <span class="help_detail">Get Virtual machines that belong to this Group.
+<br>
+This API is applicable for Groups containing VirtualMachine,member type.
+<br>
+For Groups containing other member types,an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVMMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/virtual-machines</a>
+                            <br>
+                            
+                            <a href="method_GetGroupVMMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group Path Expression</h4><br>
+                      <span class="help_detail">Delete Group Path Expression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupPathExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group path expression</h4><br>
+                      <span class="help_detail">If a group path_expression with the expression-id is not already present, create a new pathexpresison.
+<br>
+If it already exists, replace the existing pathexpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupPathExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove path based members from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified members having path for a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupPathMembers.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get effective VMs for the Group</h4><br>
+                      <span class="help_detail">Get the effective VM membership for the Group. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVMStatistics.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/statistics/virtual-machines</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tags used to define conditions inside a Group</h4><br>
+                      <span class="help_detail">Get tags used to define conditions inside a Group. Also
+<br>
+includes tags inside nested groups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupTags.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/tags</a>
+                            <br>
+                            
+                            <a href="method_GetGroupTags.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given object is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given object is a member.
+<br>
+In Federation environment, if the given object is a global entity
+<br>
+(eg: global segment) and if the entity is not stretched to the site
+<br>
+specified in the enforcement_point_path parameter,then the following is returned:-
+<br>
+1)If the entity is a member of any global group and that group is stretched
+<br>
+  to the enforcement_point_path site,then the API returns an empty list.
+<br>
+2)If the entity is not a member of any global group,this API returns
+<br>
+  an 'invalid path' error message.
+<br>
+3)If both the entity and its corresponding groups are stretched to the
+<br>
+  enforcement_point_path site , then the API returns the groups list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForObject.html">GET /policy/api/v1/infra/group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForObject.html">GET /policy/api/v1/global-infra/group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given IP address is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given IP address is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForIPAddress.html">GET /policy/api/v1/infra/ip-address-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForIPAddress.html">GET /policy/api/v1/global-infra/ip-address-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given pod is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given pod is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForContainerApplicationInstance.html">GET /policy/api/v1/global-infra/pod-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForContainerApplicationInstance.html">GET /policy/api/v1/infra/pod-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given VM is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given VM is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForVM.html">GET /policy/api/v1/global-infra/virtual-machine-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForVM.html">GET /policy/api/v1/infra/virtual-machine-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given VIF is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given VIF is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForVIF.html">GET /policy/api/v1/global-infra/virtual-network-interface-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForVIF.html">GET /policy/api/v1/infra/virtual-network-interface-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

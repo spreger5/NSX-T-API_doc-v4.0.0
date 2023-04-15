@@ -1,0 +1,179 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VsphereDeploymentConfig.html">VsphereDeploymentConfig</a> (<a href="types_VsphereDeploymentConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "The Vsphere deployment configuration determines where to deploy the edge node. It contains settings that are applied during install time. Use EdgeNodeSettings to specify host name, SSH, NTP and DNS settings for both deployment and consequent update. These settings are editable for manually deployed edge nodes as well. EdgeNodeSettings reports current values configured on the edge node.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DeploymentConfig.html">DeploymentConfig</A>
+  }, 
+  "id": "VsphereDeploymentConfig", 
+  "module_id": "FabricNode", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "VsphereDeploymentConfig"
+  }, 
+  "properties": {
+    "advanced_configuration": {
+      "deprecated": true, 
+      "description": "This field is deprecated. EdgeNodeSettings field 'advanced_configuration' must be used instead. Array of additional specific properties for advanced or cloud-specific deployments in key-value format.", 
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Advanced configuration", 
+      "type": "array"
+    }, 
+    "compute_folder_id": {
+      "description": "The edge node vm will be deployed on the specified compute folder created in a datacenter, if compute folder is specified. Note - User must ensure that compute folder is accessible by specified cluster/host.", 
+      "required": false, 
+      "title": "Compute folder identifier in the specified vcenter server.", 
+      "type": "string"
+    }, 
+    "compute_id": {
+      "description": "The edge node vm will be deployed on the specified cluster or resourcepool. Note - all the hosts must have nsx fabric prepared in the specified cluster.", 
+      "required": true, 
+      "title": "Cluster identifier or resourcepool identifier for specified vcenter server.", 
+      "type": "string"
+    }, 
+    "data_network_ids": {
+      "description": "List of distributed portgroups, VLAN logical switch identifiers or segment paths to which the datapath serving vnics of edge node vm will be connected. If a VM network interface is not configured, it is disconnected and represented as an empty string.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 4, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "List of portgroups, logical switch identifiers or segment paths for datapath connectivity.", 
+      "type": "array"
+    }, 
+    "default_gateway_addresses": {
+      "description": "The default gateway for edge node must be specified if all the nodes it communicates with are not in the same subnet. Note: Only single IPv4 default gateway address is supported and it must belong to management network.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Default gateway for the node.", 
+      "type": "array"
+    }, 
+    "host_id": {
+      "description": "The edge node vm will be deployed on the specified Host within the cluster if host_id is specified. Note - User must ensure that storage and specified networks are accessible by this host.", 
+      "required": false, 
+      "title": "Host identifier in the specified vcenter server.", 
+      "type": "string"
+    }, 
+    "management_network_id": {
+      "description": "Distributed portgroup identifier to which the management vnic of edge node vm will be connected. This portgroup must have connectivity with MP and CCP. A VLAN logical switch identifier may also be specified. If VM network interface is not connected, it is represented as an empty string.", 
+      "required": true, 
+      "title": "Portgroup, logical switch identifier or segment path for management network connectivity.", 
+      "type": "string"
+    }, 
+    "management_port_subnets": {
+      "description": "IP Address and subnet configuration for the management port. Note: only one IPv4 address is supported for the management port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSubnet.html">IPSubnet</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Port subnets for management port. Only one IPv4 Address is supported.", 
+      "type": "array"
+    }, 
+    "placement_type": {
+      "enum": [
+        "VsphereDeploymentConfig"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "reservation_info": {
+      "$ref": "<A HREF="schemas_ReservationInfo.html">ReservationInfo</A>, 
+      "description": "Resource reservation for memory and CPU resources.", 
+      "required": false, 
+      "title": "Resource reservation settings."
+    }, 
+    "resource_allocation": {
+      "$ref": "<A HREF="schemas_ResourceAssignment.html">ResourceAssignment</A>, 
+      "description": "Allocation for memory and CPU resources.", 
+      "required": false, 
+      "title": "Current resource allocation."
+    }, 
+    "storage_id": {
+      "description": "The edge node vm will be deployed on the specified datastore. User must ensure that storage is accessible by the specified cluster/host.", 
+      "required": true, 
+      "title": "Storage/datastore identifier in the specified vcenter server.", 
+      "type": "string"
+    }, 
+    "vc_id": {
+      "description": "The vc specific identifiers will be resolved on this VC. So all other identifiers specified here must belong to this vcenter server.", 
+      "required": true, 
+      "title": "Vsphere compute identifier for identifying the vcenter server.", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

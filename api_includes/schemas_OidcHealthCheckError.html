@@ -1,0 +1,89 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OidcHealthCheckError.html">OidcHealthCheckError</a> (<a href="types_OidcHealthCheckError.html">type</a>)
+</h3>
+<pre>{
+  "description": "Details about an error encountered while checking OIDC End Point health status.", 
+  "id": "OidcHealthCheckError", 
+  "module_id": "CertificateManager", 
+  "properties": {
+    "error_detail": {
+      "description": "Additional details about the cause of the error, if any could be determined.", 
+      "title": "Additional error details", 
+      "type": "string"
+    }, 
+    "error_type": {
+      "description": "A problem discovered when checking the health of the OIDC End Point.   DISCOVERY_URI_FETCH_FAIL: The OIDC discovery endpoint could not be                             retrieved.   TOKEN_RETRIEVE_FAIL: NSX was unable to retrieve a token                        from the OIDC End Point. Authentication                        to NSX using OIDC will not be possible.   SCIM_SEARCH_FAIL: NSX was unable to perform a user/group search                     of the SCIM (System for Cross-domain Identity                     Management) endpoint. User and group  searches                     will not function correctly.   GENERAL_ERROR: Some general error occurred while verifying the                  OIDC endpoint.", 
+      "enum": [
+        "JWKS_URI_FETCH_FAIL", 
+        "TOKEN_RETRIEVE_FAIL", 
+        "SCIM_SEARCH_FAIL"
+      ], 
+      "title": "The type of error encountered", 
+      "type": "string"
+    }
+  }, 
+  "title": "Error detail about OIDC health issue", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

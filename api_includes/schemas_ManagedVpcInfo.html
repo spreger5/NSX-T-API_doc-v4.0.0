@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ManagedVpcInfo.html">ManagedVpcInfo</a> (<a href="types_ManagedVpcInfo.html">type</a>)
+</h3>
+<pre>{
+  "description": "Stores the account ID and VPC ID of the corresponding managed VPC. A managed VPC is a AWS compute VPC, which is NSX managed by a transit VPC.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_VirtualPrivateCloudInfo.html">VirtualPrivateCloudInfo</A>
+  }, 
+  "id": "ManagedVpcInfo", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "associated_account_ids": {
+      "description": "Cloud account ID related to the virtual private cloud.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Array of Cloud Account IDs", 
+      "type": "array"
+    }, 
+    "virtual_private_cloud_id": {
+      "description": "Virtual private cloud ID of the corresponding cloud.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Virtual Private Cloud ID", 
+      "type": "string"
+    }, 
+    "virtual_private_cloud_name": {
+      "description": "Virtual private cloud name of the corresponding cloud.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Virtual Private Cloud name", 
+      "type": "string"
+    }
+  }, 
+  "title": "AWS Managed VPC Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

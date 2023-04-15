@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ResetIdsStatsRequestParameters.html">ResetIdsStatsRequestParameters</a> (<a href="types_ResetIdsStatsRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Request parameters that represents an enforcement point path and category. A request on statistics can be parameterized with this  enforcement point path and will be evaluated as follows: - no enforcement point path specified: the request is evaluated on all enforcement points. - {enforcement_point_path}: the request is evaluated only on the given enforcement point.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_StatisticsRequestParameters.html">StatisticsRequestParameters</A>
+  }, 
+  "id": "ResetIdsStatsRequestParameters", 
+  "module_id": "PolicyIDSStats", 
+  "properties": {
+    "category": {
+      "default": "IDPSDFW", 
+      "description": "Aggregation statistic category to perform reset operation. If not provided it will be considered as IDPSDFW.", 
+      "enum": [
+        "IDPSDFW", 
+        "IDPSEDGE"
+      ], 
+      "required": false, 
+      "title": "Aggregation statistic category", 
+      "type": "string"
+    }, 
+    "container_cluster_path": {
+      "description": "Path to the container cluster entity where the request will be executed.", 
+      "required": false, 
+      "title": "String Path of the Container Cluster entity", 
+      "type": "string"
+    }, 
+    "enforcement_point_path": {
+      "description": "enforcement point path, forward slashes must be escaped using %2F.", 
+      "required": false, 
+      "title": "String Path of the enforcement point", 
+      "type": "string"
+    }
+  }, 
+  "title": "Reset Statistics Request Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,133 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbServiceUsage.html">LbServiceUsage</a> (<a href="types_LbServiceUsage.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Describes the capacity and current usage of virtual servers, pools, pool members for the given load balancer service.", 
+  "id": "LbServiceUsage", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "current_pool_count": {
+      "description": "The current number of pools which have been configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The current number of pools", 
+      "type": "integer"
+    }, 
+    "current_pool_member_count": {
+      "description": "The current number of pool members which have been configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The current number of pool members", 
+      "type": "integer"
+    }, 
+    "current_virtual_server_count": {
+      "description": "The current number of virtual servers which have been configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The current number of virtual servers", 
+      "type": "integer"
+    }, 
+    "pool_capacity": {
+      "description": "Pool capacity means maximum number of pools which could be configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The capacity of pools", 
+      "type": "integer"
+    }, 
+    "pool_member_capacity": {
+      "description": "Pool member capacity means maximum number of pool members which could be configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The capacity of pool members", 
+      "type": "integer"
+    }, 
+    "service_id": {
+      "readonly": true, 
+      "title": "UUID of load balancer service", 
+      "type": "string"
+    }, 
+    "service_size": {
+      "$ref": "<A HREF="schemas_LbServiceSize.html">LbServiceSize</A>, 
+      "readonly": true, 
+      "title": "The size of load balancer service"
+    }, 
+    "severity": {
+      "$ref": "<A HREF="schemas_LbUsageSeverity.html">LbUsageSeverity</A>, 
+      "description": "The severity calculation is based on the largest usage percentage from virtual servers, pools, pool members and rules for one load balancer service.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "usage_percentage": {
+      "description": "The usage percentage is the largest usage percentage from virtual servers, pools and pool members for the load balancer service. If the property relax_scale_validation is set as true for LbService, it is possible that the value is larger than 100.0. For example, if SMALL LBS is deployed on MEDIUM edge node and configured with MEDIUM LBS virtual server scale number, LBS usage percentage is shown larger than 100.0.", 
+      "readonly": true, 
+      "title": "Usage percentage", 
+      "type": "number"
+    }, 
+    "virtual_server_capacity": {
+      "description": "Virtual server capacity means maximum number of virtual servers which could be configured in the given load balancer service.", 
+      "readonly": true, 
+      "title": "The capacity of virtual servers", 
+      "type": "integer"
+    }
+  }, 
+  "title": "The usage information of the load balancer service", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,150 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyInterfaceOspfConfig.html">PolicyInterfaceOspfConfig</a> (<a href="types_PolicyInterfaceOspfConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "OSPF Interface configuration.", 
+  "id": "PolicyInterfaceOspfConfig", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "bfd_path": {
+      "description": "This filed is valid only if enable_bfd is set to TRUE. If enable_bfd flag is set to TRUE, this profile will be applied to all OSPF peers in this interface. If this field is empty, bfd_path will refer to Tier-0 global BFD profile.", 
+      "required": false, 
+      "title": "Policy path of BFD profile", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Tier0Interface"
+          ], 
+          "relationshipType": "PROVIDER_INTERFACE_OSPF_BFD_RELATIONSHIP", 
+          "rightType": [
+            "BfdProfile"
+          ]
+        }
+      ]
+    }, 
+    "dead_interval": {
+      "default": 40, 
+      "description": "Specifies the number of seconds that router must wait before it declares a OSPF neighbor router down because it has not received OSPF hello packet. OSPF dead interval should be minimum 3 times greater than the hello interval", 
+      "maximum": 65535, 
+      "minimum": 3, 
+      "required": false, 
+      "title": "OSPF dead interval in seconds", 
+      "type": "int"
+    }, 
+    "enable_bfd": {
+      "description": "Enable/Disable OSPF to register for BFD event. Use FALSE to disable BFD.", 
+      "required": false, 
+      "title": "enable BFD for OSPF", 
+      "type": "boolean"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "enable/disable OSPF on the interface. If enabled flag not specified, defailt is enable OSPF.", 
+      "title": "enable/disable OSPF", 
+      "type": "boolean"
+    }, 
+    "hello_interval": {
+      "default": 10, 
+      "description": "Specifies the interval between the hello packets that OSPF sends on this interface. OSPF hello interval should be less than the dead interval", 
+      "maximum": 21845, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "OSPF hello interval in seconds", 
+      "type": "int"
+    }, 
+    "network_type": {
+      "default": "BROADCAST", 
+      "description": "Configure OSPF networkt type, default is BROADCAST network type", 
+      "enum": [
+        "BROADCAST", 
+        "P2P"
+      ], 
+      "required": false, 
+      "title": "Configure OSPF networkt type", 
+      "type": "string"
+    }, 
+    "ospf_area": {
+      "description": "Attache Tier0 Interface to specified OSPF Area. all peers.", 
+      "required": true, 
+      "title": "Attach Tier0 Interface to specified OSPF Area", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Tier0Interface"
+          ], 
+          "relationshipType": "PROVIDER_INTERFACE_OSPF_AREA_RELATIONSHIP", 
+          "rightType": [
+            "OspfAreaConfig"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "OSPF Interface configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

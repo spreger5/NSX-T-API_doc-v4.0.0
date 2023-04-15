@@ -1,0 +1,104 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_StaticRouteNextHop.html">StaticRouteNextHop</a> (<a href="types_StaticRouteNextHop.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "StaticRouteNextHop", 
+  "module_id": "Routing", 
+  "properties": {
+    "administrative_distance": {
+      "default": 1, 
+      "maximum": 255, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Administrative Distance for the next hop IP", 
+      "type": "integer"
+    }, 
+    "bfd_enabled": {
+      "default": false, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status of bfd for this next hop where bfd_enabled = true indicate bfd is enabled for this next hop and bfd_enabled = false indicate bfd peer is disabled or not configured for this next hop.", 
+      "type": "boolean"
+    }, 
+    "blackhole_action": {
+      "$ref": "<A HREF="schemas_BlackholeAction.html">BlackholeAction</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Action to be taken on matching packets for NULL routes."
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": false, 
+      "title": "Next Hop IP"
+    }, 
+    "logical_router_port_id": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "required": false, 
+      "title": "Reference of logical router port to be used for next hop"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

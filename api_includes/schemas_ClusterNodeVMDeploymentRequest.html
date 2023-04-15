@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ClusterNodeVMDeploymentRequest.html">ClusterNodeVMDeploymentRequest</a> (<a href="types_ClusterNodeVMDeploymentRequest.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Contains the deployment information for a cluster node VM soon to be deployed or already deployed by the Manager", 
+  "id": "ClusterNodeVMDeploymentRequest", 
+  "module_id": "ClusterNodeVMDeployment", 
+  "properties": {
+    "deployment_config": {
+      "$ref": "<A HREF="schemas_ClusterNodeVMDeploymentConfig.html">ClusterNodeVMDeploymentConfig</A>, 
+      "description": "Info needed to configure a cluster node VM at deployment for a specific platform. May require different parameters depending on the method used to deploy the VM.", 
+      "required": true, 
+      "title": "Deployment config for cluster node VM"
+    }, 
+    "form_factor": {
+      "$ref": "<A HREF="schemas_ClusterNodeVMFormFactor.html">ClusterNodeVMFormFactor</A>, 
+      "default": "MEDIUM", 
+      "description": "Specifies the desired \"size\" of the VM", 
+      "required": false, 
+      "title": "Form factor for cluster node VMs"
+    }, 
+    "roles": {
+      "description": "List of cluster node role (or roles) which the VM should take on. They specify what type (or types) of cluster node which the new VM should act as. Currently both CONTROLLER and MANAGER must be provided, since this permutation is the only one supported now.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ClusterNodeRole.html">ClusterNodeRole</A>
+      }, 
+      "required": true, 
+      "title": "Cluster node roles of the VM", 
+      "type": "array"
+    }, 
+    "user_settings": {
+      "$ref": "<A HREF="schemas_NodeUserSettings.html">NodeUserSettings</A>, 
+      "description": "Username and password settings for the cluster node VM. Passwords must be at least 12 characters in length and contain at least one lowercase, one uppercase, one numerical, and one special character. Note: These settings will be honored only during VM deployment. Post-deployment, CLI must be used for changing the user settings and changes to these parameters will not have any effect.", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "User settings for the VM"
+    }, 
+    "vm_id": {
+      "description": "ID of the VM maintained internally and used to recognize it. Note: This is automatically generated and cannot be modified.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ID of VM used to recognize it", 
+      "type": "string"
+    }
+  }, 
+  "title": "Info for an auto-deployment request", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,173 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPSecVPNPolicyRule.html">IPSecVPNPolicyRule</a> (<a href="types_IPSecVPNPolicyRule.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "For policy-based IPsec VPNs, a security policy specifies as its action the VPN tunnel to be used for transit traffic that meets the policy's match criteria.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_EmbeddedResource.html">EmbeddedResource</A>
+  }, 
+  "id": "IPSecVPNPolicyRule", 
+  "module_id": "IPSecVPN", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_owner": {
+      "$ref": "<A HREF="schemas_OwnerResourceLink.html">OwnerResourceLink</A>, 
+      "readonly": true, 
+      "title": "Owner of this resource"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "action": {
+      "default": "PROTECT", 
+      "description": "PROTECT - Protect rules are defined per policy based IPSec VPN session. BYPASS - Bypass rules are defined per IPSec VPN service and affects all policy based IPSec VPN sessions. Bypass rules are prioritized over protect rules.", 
+      "enum": [
+        "PROTECT", 
+        "BYPASS"
+      ], 
+      "readonly": true, 
+      "title": "Action to be applied", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "destinations": {
+      "description": "List of peer subnets.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSecVPNPolicySubnet.html">IPSecVPNPolicySubnet</A>
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Destination list", 
+      "type": "array"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "A flag to enable/disable the policy rule.", 
+      "title": "Enabled flag", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "description": "Unique policy id.", 
+      "title": "Unique policy id", 
+      "type": "string"
+    }, 
+    "logged": {
+      "default": false, 
+      "description": "A flag to enable/disable the logging for the policy rule.", 
+      "title": "Logging flag", 
+      "type": "boolean"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "sources": {
+      "description": "List of local subnets.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSecVPNPolicySubnet.html">IPSecVPNPolicySubnet</A>
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Source list", 
+      "type": "array"
+    }
+  }, 
+  "title": "IPSec VPN policy rules", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

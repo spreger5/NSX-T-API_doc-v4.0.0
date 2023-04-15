@@ -1,0 +1,104 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBUDPFastPathProfile.html">ALBUDPFastPathProfile</a> (<a href="types_ALBUDPFastPathProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer UDPFastPathProfile object", 
+  "id": "ALBUDPFastPathProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "dsr_profile": {
+      "$ref": "<A HREF="schemas_ALBDsrProfile.html">ALBDsrProfile</A>, 
+      "description": "DSR profile information. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Dsr profile"
+    }, 
+    "per_pkt_loadbalance": {
+      "default": false, 
+      "description": "When enabled, every UDP packet is considered a new transaction and may be load balanced to a different server. When disabled, packets from the same client source IP and port are sent to the same server. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Per pkt loadbalance", 
+      "type": "boolean"
+    }, 
+    "session_idle_timeout": {
+      "default": 10, 
+      "description": "The amount of time (in sec) for which a flow needs to be idle before it is deleted. Allowed values are 2-3600. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 10.", 
+      "maximum": 3600, 
+      "minimum": 2, 
+      "required": false, 
+      "title": "Session idle timeout", 
+      "type": "integer"
+    }, 
+    "snat": {
+      "default": true, 
+      "description": "When disabled, Source NAT will not be performed for all client UDP packets. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Snat", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "UDPFastPathProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,289 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_advanced_load_balancer.html' style='text-decoration: none'> NSX Advanced Load Balancer</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_advanced_load_balancer_controller.html' style='text-decoration: none'> Controller</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns information for Advanced Load Balancer controller cluster</h4><br>
+                      <span class="help_detail">Returns information about Advanced Load Balancer controller cluster status
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListALBControllerClusterInfo.html">GET /policy/api/v1/alb/controller-nodes/cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Re-trigger clustering for Advanced Load Balancer Nodes.</h4><br>
+                      <span class="help_detail">Re-trigger clustering for Advanced Load Balancer Nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RetriggerClustering.html">PUT /policy/api/v1/alb/controller-nodes/cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns info for of the cluster configuration for the Advanced Load Balancer controller cluster</h4><br>
+                      <span class="help_detail">Returns cluster configuration for the Advanced Load Balancer controller cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadALBControllerNodeClusterConfig.html">GET /policy/api/v1/alb/controller-nodes/clusterconfig</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set the cluster configuration for the Advanced Load Balancer controller VM. The VIP can be set once. Attempting to change the VIP once set will return an error.</h4><br>
+                      <span class="help_detail">Set the cluster configuration for Advanced Load Balancer controller cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddALBControllerNodeClusterConfig.html">POST /policy/api/v1/alb/controller-nodes/clusterconfig</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns info for all cluster node VM auto-deployment attempts</h4><br>
+                      <span class="help_detail">Returns request information for every attempted deployment of a cluster
+<br>
+node VM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListALBControllerNodeVMDeploymentRequests.html">GET /policy/api/v1/alb/controller-nodes/deployments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deploy and register a Advanced Load Balancer controller node VM</h4><br>
+                      <span class="help_detail">Deploys a Advanced Load Balancer controller node VM as specified by the deployment config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddALBControllerNodeVM.html">POST /policy/api/v1/alb/controller-nodes/deployments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns info for a Advanced Load Balancer controller deployment attempt</h4><br>
+                      <span class="help_detail">Returns deployment request information for a specific attempted
+<br>
+deployment of a cluster node VM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadALBControllerNodeVMDeploymentRequest.html">GET /policy/api/v1/alb/controller-nodes/deployments/&lt;node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Attempt to delete an auto-deployed Advanced Load Balancer controller node</h4><br>
+                      <span class="help_detail">Attempts to unregister and undeploy a specified auto-deployed cluster
+<br>
+node VM. If it is a member of a cluster, then the VM will be automatically
+<br>
+detached from the cluster before being unregistered and undeployed.
+<br>
+Alternatively, if the original deployment attempt failed or the VM is
+<br>
+not found, cleans up the deployment information associated with the
+<br>
+deployment attempt.
+<br>
+Note: If a VM has been successfully auto-deployed, then the associated
+<br>
+deployment information will not be deleted unless and until the VM is
+<br>
+successfully deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteAutoDeployedALBControllerNodeVM.html">POST /policy/api/v1/alb/controller-nodes/deployments/&lt;node-id&gt;?action=delete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Advanced Load Balancer controller cluster node VM. Only updating password, ntp and dns servers are supported. If controller is in a cluster then all nodes in the cluster are updated with the provided values</h4><br>
+                      <span class="help_detail">Update Advanced Load Balancer Controller node VM details
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateALBControllerNodeVMDeploymentRequest.html">PUT /policy/api/v1/alb/controller-nodes/deployments/&lt;node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the status of the VM creation/deletion</h4><br>
+                      <span class="help_detail">Returns the current deployment or undeployment status for a VM along with
+<br>
+any other relevant current information, such as error messages.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadALBControllerNodeVMDeploymentStatus.html">GET /policy/api/v1/alb/controller-nodes/deployments/&lt;node-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List available Advanced Load Balancer controller form factors</h4><br>
+                      <span class="help_detail">Returns information about all form factors available for Advanced Load Balancer controller nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListALBControllerFormFactors.html">GET /policy/api/v1/alb/controller-nodes/form-factors</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

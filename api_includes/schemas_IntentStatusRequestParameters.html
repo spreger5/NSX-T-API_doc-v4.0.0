@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IntentStatusRequestParameters.html">IntentStatusRequestParameters</a> (<a href="types_IntentStatusRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Request parameters that represents a binding between an intent path and whether the enforcement point specific status shall be retrieved from the enforcement point or not. A request can be parameterized with this pair and will be evaluated as follows: - &amp;lt;intent_path&amp;gt;: the request is evaluated on all enforcement points for the given intent with no enforced statuses' details returned. - &amp;lt;intent_path, include_enforced_status=true&amp;gt;: the request is evaluated on all enforcement points for the given intent with enforced statuses' details returned.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_IntentRuntimeRequestParameters.html">IntentRuntimeRequestParameters</A>
+  }, 
+  "id": "IntentStatusRequestParameters", 
+  "module_id": "PolicyRealizationStatus", 
+  "properties": {
+    "include_enforced_status": {
+      "default": false, 
+      "description": "Flag conveying whether to include detailed view of the enforcement point specific status or not.", 
+      "title": "Include Enforced Status Flag", 
+      "type": "boolean"
+    }, 
+    "intent_path": {
+      "description": "Policy Path referencing an intent object.", 
+      "required": true, 
+      "title": "Policy Path of the intent object", 
+      "type": "string"
+    }, 
+    "site_path": {
+      "description": "Policy Path referencing a site. This is applicable only on a GlobalManager. If no site_path is specified, then based on the span of the intent the response will be fetched from the respective sites", 
+      "required": false, 
+      "title": "Policy Path of the site from where the realization status needs to be fetched", 
+      "type": "string"
+    }
+  }, 
+  "title": "Request Parameters for Intent Status Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

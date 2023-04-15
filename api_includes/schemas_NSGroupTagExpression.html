@@ -1,0 +1,134 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NSGroupTagExpression.html">NSGroupTagExpression</a> (<a href="types_NSGroupTagExpression.html">type</a>)
+</h3>
+<pre>{
+  "description": "Includes both scope and tag attribute of Tag. The scope and tag expressions are logically 'AND' with each other. eg- tag.scope = \"S1\" AND tag.tag = 'T1'", 
+  "extends": {
+    "$ref": "<A HREF="schemas_NSGroupExpression.html">NSGroupExpression</A>
+  }, 
+  "id": "NSGroupTagExpression", 
+  "module_id": "NSGroup", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "NSGroupTagExpression"
+  }, 
+  "properties": {
+    "resource_type": {
+      "enum": [
+        "NSGroupSimpleExpression", 
+        "NSGroupComplexExpression", 
+        "NSGroupTagExpression"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "maxLength": 128, 
+      "required": false, 
+      "title": "The tag.scope attribute of the object", 
+      "type": "string"
+    }, 
+    "scope_op": {
+      "default": "EQUALS", 
+      "enum": [
+        "EQUALS"
+      ], 
+      "required": false, 
+      "title": "Operator of the scope expression eg- tag.scope = \"S1\".", 
+      "type": "string"
+    }, 
+    "tag": {
+      "maxLength": 256, 
+      "required": false, 
+      "title": "The tag.tag attribute of the object", 
+      "type": "string"
+    }, 
+    "tag_op": {
+      "default": "EQUALS", 
+      "description": "Target_type VirtualMachine supports all specified operators for tag expression while LogicalSwitch and LogicalPort supports only EQUALS operator. All operators perform a case insensitive match.", 
+      "enum": [
+        "EQUALS", 
+        "CONTAINS", 
+        "STARTSWITH", 
+        "ENDSWITH"
+      ], 
+      "required": false, 
+      "title": "Operator of the tag expression eg- tag.tag = \"Production\"", 
+      "type": "string"
+    }, 
+    "target_type": {
+      "enum": [
+        "LogicalSwitch", 
+        "LogicalPort", 
+        "VirtualMachine", 
+        "IPSet"
+      ], 
+      "required": true, 
+      "title": "Type of the resource on which this expression is evaluated", 
+      "type": "string"
+    }
+  }, 
+  "title": "TAG expressions to represent NSGroup membership", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

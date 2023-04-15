@@ -1,0 +1,113 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBTCPApplicationProfile.html">ALBTCPApplicationProfile</a> (<a href="types_ALBTCPApplicationProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer TCPApplicationProfile object", 
+  "id": "ALBTCPApplicationProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "pki_profile_path": {
+      "description": "Select the PKI profile to be associated with the Virtual Service. This profile defines the Certificate Authority and Revocation List. It is a reference to an object of type PKIProfile. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Pki profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_PKIPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBPKIProfile"
+          ]
+        }
+      ]
+    }, 
+    "proxy_protocol_enabled": {
+      "default": false, 
+      "description": "Enable/Disable the usage of proxy protocol to convey client connection information to the back-end servers. Valid only for L4 application profiles and TCP proxy. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Proxy protocol enabled", 
+      "type": "boolean"
+    }, 
+    "proxy_protocol_version": {
+      "$ref": "<A HREF="schemas_ALBProxyProtocolVersion.html">ALBProxyProtocolVersion</A>, 
+      "default": "PROXY_PROTOCOL_VERSION_1", 
+      "description": "Version of proxy protocol to be used to convey client connection information to the back-end servers. Enum options - PROXY_PROTOCOL_VERSION_1, PROXY_PROTOCOL_VERSION_2. Allowed in Basic(Allowed values- PROXY_PROTOCOL_VERSION_1) edition, Essentials(Allowed values- PROXY_PROTOCOL_VERSION_1) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as PROXY_PROTOCOL_VERSION_1.", 
+      "required": false, 
+      "title": "Proxy protocol version"
+    }, 
+    "ssl_client_certificate_mode": {
+      "$ref": "<A HREF="schemas_ALBSSLClientCertificateMode.html">ALBSSLClientCertificateMode</A>, 
+      "default": "SSL_CLIENT_CERTIFICATE_NONE", 
+      "description": "Specifies whether the client side verification is set to none, request or require. Enum options - SSL_CLIENT_CERTIFICATE_NONE, SSL_CLIENT_CERTIFICATE_REQUEST, SSL_CLIENT_CERTIFICATE_REQUIRE. Allowed in Basic(Allowed values- SSL_CLIENT_CERTIFICATE_NONE) edition, Essentials(Allowed values- SSL_CLIENT_CERTIFICATE_NONE) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as SSL_CLIENT_CERTIFICATE_NONE.", 
+      "required": false, 
+      "title": "Ssl client certificate mode"
+    }
+  }, 
+  "title": "TCPApplicationProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

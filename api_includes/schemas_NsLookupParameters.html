@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NsLookupParameters.html">NsLookupParameters</a> (<a href="types_NsLookupParameters.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The parameters for DNS nslookup.", 
+  "id": "NsLookupParameters", 
+  "module_id": "DnsForwarder", 
+  "properties": {
+    "address": {
+      "description": "IP address or FQDN for this lookup", 
+      "required": false, 
+      "title": "IP address or FQDN for nslookup", 
+      "type": "string"
+    }, 
+    "server_ip": {
+      "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>, 
+      "description": "If absent, the underlying DNS forwarder will be used as the target server. And the answer could be cached by the forwarder if it was not cached yet. If provided, the query will go directly to the given server. You will need to ensure this address represents a workable and reachale DNS server. The answer will not be cached by the forwarder unless this server_ip is exactly the same listener ip of the forwarder.", 
+      "required": false, 
+      "title": "Target server used for this lookup"
+    }, 
+    "source_ip": {
+      "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>, 
+      "description": "Source ip used for this lookup. If absent, the listener ip of the underlying DNS forwarder will be used as the source ip. If provided, you will need to ensure this source ip is valid and can be routed back to the transport node via data plane", 
+      "required": false, 
+      "title": "Source ip used for this lookup"
+    }
+  }, 
+  "title": "The parameters of nslookup", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

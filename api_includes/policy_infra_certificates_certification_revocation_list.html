@@ -1,0 +1,295 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_infra.html' style='text-decoration: none'> Infra</a> >
+        
+        
+            <a href='policy_infra_certificates.html' style='text-decoration: none'> Certificates</a> >
+        
+        
+            <a href='policy_infra_certificates_certification_revocation_list.html' style='text-decoration: none'> Certification Revocation List</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Return All Added CRLs</h4><br>
+                      <span class="help_detail">Returns information about all CRLs. For additional information, include the
+<br>
+?details=true modifier at the end of the request URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTlsCrls.html">GET /policy/api/v1/infra/crls</a>
+                            <br>
+                            
+                            <a href="method_ListTlsCrls.html">GET /policy/api/v1/global-infra/crls</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a CRL</h4><br>
+                      <span class="help_detail">Deletes an existing CRL.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTlsCrl.html">DELETE /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Show CRL Data for the Given CRL id.</h4><br>
+                      <span class="help_detail">Returns information about the specified CRL. For additional information,
+<br>
+include the ?details=true modifier at the end of the request URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsCrl.html">GET /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetTlsCrl.html">GET /policy/api/v1/global-infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a Certificate Revocation List</h4><br>
+                      <span class="help_detail">Create or patch a Certificate Revocation List for the given id. The CRL is used to
+<br>
+verify the client certificate status against the revocation lists published by the CA.
+<br>
+For this reason, the administrator needs to add the CRL in certificate repository as well.
+<br>
+The CRL must contain PEM data for a single CRL.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTlsCrl.html">PATCH /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new Certificate Revocation List</h4><br>
+                      <span class="help_detail">Adds a new certificate revocation list (CRLs). The CRL is used to verify the client
+<br>
+certificate status against the revocation lists published by the CA. For this reason,
+<br>
+the administrator needs to add the CRL in certificate repository as well.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+An X.509 CRL can contain a single CRL or multiple CRLs depending on the PEM data.
+<br>
+- Single CRL: a single CRL is created with the given id.
+<br>
+- Composite CRL: multiple CRLs are generated. Each of the CRL is created with an id
+<br>
+generated based on the given id. First CRL is created with crl-id, second with crl-id-1,
+<br>
+third with crl-id-2, etc.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTlsCrl.html">POST /policy/api/v1/infra/crls/&lt;crl-id&gt;?action=import</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload a new or updated Certificate Revocation List</h4><br>
+                      <span class="help_detail">Adds or replaces a certificate revocation list (CRLs). The CRL is used to verify the client
+<br>
+certificate status against the revocation lists published by the CA. For this reason,
+<br>
+the administrator needs to add the CRL in certificate repository as well.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the upload content.
+<br>
+An X.509 CRL can contain a single CRL or multiple CRLs depending on the PEM data.
+<br>
+- Single CRL: a single CRL is created with the given id.
+<br>
+- Composite CRL: multiple CRLs are generated. Each of the CRL is created with an id
+<br>
+generated based on the given id. First CRL is created with crl-id, second with crl-id-1,
+<br>
+third with crl-id-2, etc.
+<br>
+Differently from action=import, this method allows multi-part upload of the CRL(s).
+<br>
+The TlsCrl resource returned in the body of the response will have an empty pem_encoded
+<br>
+field, as it may be large. Use a GET request to retrieve the PEM-encoded CRL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadTlsCrl.html">POST /policy/api/v1/infra/crls/&lt;crl-id&gt;?action=upload</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a Certificate Revocation List</h4><br>
+                      <span class="help_detail">Create or replace a Certificate Revocation List for the given id. The CRL is used to
+<br>
+verify the client certificate status against the revocation lists published by the CA.
+<br>
+For this reason, the administrator needs to add the CRL in certificate repository as well.
+<br>
+The CRL must contain PEM data for a single CRL. Revision is required.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTlsCrl.html">PUT /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

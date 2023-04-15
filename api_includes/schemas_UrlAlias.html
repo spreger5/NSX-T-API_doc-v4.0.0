@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UrlAlias.html">UrlAlias</a> (<a href="types_UrlAlias.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Short name or alias of a url. It is used to represent the url.", 
+  "id": "UrlAlias", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "alias": {
+      "description": "Short name or alias of url, if any. If not specified, the url can be referenced by its index in the array of urls of the datasource instance as $&lt;index&gt; (for example, $0).", 
+      "maxLength": 255, 
+      "title": "Url Alias Name", 
+      "type": "string"
+    }, 
+    "keystore_info": {
+      "$ref": "<A HREF="schemas_KeyStoreInfo.html">KeyStoreInfo</A>, 
+      "description": "Key Store information for the URLAlias.Use this property if key store information is different for each url alias.", 
+      "title": "Key Store Info for the URLAlias"
+    }, 
+    "query": {
+      "description": "Search query to be applied, if any. If query string is not provided, it will be ignored.", 
+      "maxLength": 1024, 
+      "title": "Search query of the search api, if any", 
+      "type": "string"
+    }, 
+    "request_body": {
+      "description": "A raw request body in the form json format for a given url. This request body will be submitted along with request while giving a post api call.", 
+      "titile": "A request body object for the given url", 
+      "type": "object"
+    }, 
+    "request_headers": {
+      "description": "A raw request header in the form json format for a given url. This request header will be submitted along with request while giving a api call.", 
+      "titile": "A request header object for the given url", 
+      "type": "object"
+    }, 
+    "request_method": {
+      "default": "Get", 
+      "description": "Type of the http method (Get, Post) to be used while invoking the given url through dashboard datasource framework.", 
+      "enum": [
+        "Get", 
+        "Post"
+      ], 
+      "title": "Type of http method", 
+      "type": "string"
+    }, 
+    "url": {
+      "description": "Url to fetch data from.", 
+      "maxLength": 1024, 
+      "required": true, 
+      "title": "Url", 
+      "type": "string"
+    }
+  }, 
+  "title": "Url Alias", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

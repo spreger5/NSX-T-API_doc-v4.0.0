@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_L2VPNSessionStatus.html">L2VPNSessionStatus</a> (<a href="types_L2VPNSessionStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "L2VPN session status.", 
+  "id": "L2VPNSessionStatus", 
+  "module_id": "L2VPNStatistics", 
+  "properties": {
+    "display_name": {
+      "description": "L2VPN display name.", 
+      "readonly": true, 
+      "title": "Display name", 
+      "type": "string"
+    }, 
+    "session_id": {
+      "description": "L2VPN session identifier.", 
+      "readonly": true, 
+      "title": "Session identifier", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "L2 VPN session status, specifies UP/DOWN.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "readonly": true, 
+      "title": "L2 VPN session status", 
+      "type": "string"
+    }, 
+    "transport_tunnels": {
+      "description": "Transport tunnels status.", 
+      "items": {
+        "$ref": "<A HREF="schemas_L2VPNTransportTunnelStatus.html">L2VPNTransportTunnelStatus</A>
+      }, 
+      "readonly": true, 
+      "title": "Transport tunnels status", 
+      "type": "array"
+    }
+  }, 
+  "title": "L2VPN Session Status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

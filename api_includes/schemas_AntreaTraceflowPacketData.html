@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AntreaTraceflowPacketData.html">AntreaTraceflowPacketData</a> (<a href="types_AntreaTraceflowPacketData.html">type</a>)
+</h3>
+<pre>{
+  "description": "Packet data stuffs for Antrea traceflow.", 
+  "id": "AntreaTraceflowPacketData", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "frameSize": {
+      "description": "This property is used to set packet data size.", 
+      "title": "Packet frame size", 
+      "type": "integer"
+    }, 
+    "ipHeader": {
+      "$ref": "<A HREF="schemas_AntreaTraceflowIpHeader.html">AntreaTraceflowIpHeader</A>, 
+      "description": "This property is used to set ipv4 header data.", 
+      "title": "Ipv4 header configuration"
+    }, 
+    "ipv6Header": {
+      "$ref": "<A HREF="schemas_AntreaTraceflowIpv6Header.html">AntreaTraceflowIpv6Header</A>, 
+      "description": "This property is used to set ipv6 header data.", 
+      "title": "Ipv6 header configuration"
+    }, 
+    "payload": {
+      "description": "This property is used to set payload data.", 
+      "title": "Packet payload", 
+      "type": "string"
+    }, 
+    "resourceType": {
+      "description": "This property is used to set resource type.", 
+      "enum": [
+        "FIELDS_PACKET_DATA", 
+        "BINARY_PACKET_DATA"
+      ], 
+      "title": "Packet resource type", 
+      "type": "string"
+    }, 
+    "transportHeader": {
+      "$ref": "<A HREF="schemas_AntreaTraceflowTransportHeader.html">AntreaTraceflowTransportHeader</A>, 
+      "description": "This property is used to set transport header data.", 
+      "title": "Transport header configuration"
+    }, 
+    "transportType": {
+      "description": "This property is used to set transport type.", 
+      "enum": [
+        "UNICAST", 
+        "MULTICAST", 
+        "BROADCAST", 
+        "UNKNOWN"
+      ], 
+      "title": "Transport type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Packet data for Antrea traceflow", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

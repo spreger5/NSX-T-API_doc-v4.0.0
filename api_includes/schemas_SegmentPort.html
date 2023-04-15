@@ -1,0 +1,300 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SegmentPort.html">SegmentPort</a> (<a href="types_SegmentPort.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Policy port will create LogicalPort on LogicalSwitch corresponding to the Segment. Address bindings cannot be removed after realization.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "SegmentPort", 
+  "module_id": "PolicyConnectivity", 
+  "policy_hierarchical_children": [
+    "ChildPortDiscoveryProfileBindingMap", 
+    "ChildPortMonitoringProfileBindingMap", 
+    "ChildPortQoSProfileBindingMap", 
+    "ChildPortSecurityProfileBindingMap"
+  ], 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "address_bindings": {
+      "description": "Static address binding used for the port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PortAddressBindingEntry.html">PortAddressBindingEntry</A>
+      }, 
+      "maxItems": 512, 
+      "required": false, 
+      "title": "Address bindings for the port", 
+      "type": "array"
+    }, 
+    "admin_state": {
+      "default": "UP", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "required": false, 
+      "title": "Represents desired state of the segment port", 
+      "type": "string"
+    }, 
+    "attachment": {
+      "$ref": "<A HREF="schemas_PortAttachment.html">PortAttachment</A>, 
+      "description": "Only VIF attachment is supported", 
+      "required": false, 
+      "title": "VIF attachment"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "extra_configs": {
+      "description": "This property could be used for vendor specific configuration in key value string pairs. Segment port setting will override segment setting if the same key was set on both segment and segment port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SegmentExtraConfig.html">SegmentExtraConfig</A>
+      }, 
+      "required": false, 
+      "title": "Extra configs on segment port", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ignored_address_bindings": {
+      "description": "IP Discovery module uses various mechanisms to discover address bindings being used on each segment port. If a user would like to ignore any specific discovered address bindings or prevent the discovery of a particular set of discovered bindings, then those address bindings can be provided here. Currently IP range in CIDR format is not supported.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PortAddressBindingEntry.html">PortAddressBindingEntry</A>
+      }, 
+      "maxItems": 16, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Address bindings to be ignored by IP Discovery module", 
+      "type": "array"
+    }, 
+    "init_state": {
+      "description": "Set initial state when a new logical port is created. 'UNBLOCKED_VLAN' means new port will be unblocked on traffic in creation, also VLAN will be set with corresponding logical switch setting. This port setting can only be configured at port creation, and cannot be modified. 'RESTORE_VIF' fetches and restores VIF attachment from ESX host.", 
+      "enum": [
+        "UNBLOCKED_VLAN", 
+        "RESTORE_VIF"
+      ], 
+      "required": false, 
+      "title": "Initial state of this logical ports", 
+      "type": "string"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "origin_id": {
+      "description": "ID populated by NSX when NSX on DVPG is used to indicate the source Distributed Virtual Port and the corresponding Distributed Virtual Switch. This ID is populated only for ports attached to discovered segments.", 
+      "readonly": true, 
+      "title": "ID of the distributed virtual port and the distributed virtual switch in the source vCenter", 
+      "type": "string"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "source_site_id": {
+      "description": "This field will refer to the source site on which the segment port is discovered. This field is populated by GM, when it receives corresponding notification from LM.", 
+      "readonly": true, 
+      "title": "source site(LM) id.", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "Policy port object for segment", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,190 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TunnelProperties.html">TunnelProperties</a> (<a href="types_TunnelProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "TunnelProperties", 
+  "module_id": "Tunnel", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "bfd": {
+      "$ref": "<A HREF="schemas_BFDProperties.html">BFDProperties</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Detailed information about BFD configured on interface"
+    }, 
+    "egress_interface": {
+      "description": "Corresponds to the interface where local_ip_address is routed.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Name of local transport interface carrying tunnel traffic", 
+      "type": "string"
+    }, 
+    "encap": {
+      "enum": [
+        "STT", 
+        "VXLAN", 
+        "GENEVE", 
+        "NONE", 
+        "UNKNOWN_ENCAP"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Tunnel encap", 
+      "type": "string"
+    }, 
+    "last_updated_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Time at which the Tunnel status has been fetched last time."
+    }, 
+    "latency_type": {
+      "description": "Latency type.", 
+      "enum": [
+        "UNKNOWN_LATENCY", 
+        "VALID", 
+        "NOT_READY", 
+        "TIMEOUT"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Latency type", 
+      "type": "string"
+    }, 
+    "latency_value": {
+      "description": "The latency value is set only when latency_type is VALID.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Latency value", 
+      "type": "integer"
+    }, 
+    "local_ip": {
+      "format": "ip", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Local IP address of tunnel", 
+      "type": "string"
+    }, 
+    "name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Name of tunnel", 
+      "type": "string"
+    }, 
+    "remote_ip": {
+      "format": "ip", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Remote IP address of tunnel", 
+      "type": "string"
+    }, 
+    "remote_node_display_name": {
+      "description": "Represents the display name of the remote transport node at the other end of the tunnel.", 
+      "readonly": true, 
+      "title": "Display name of the remote transport node", 
+      "type": "string"
+    }, 
+    "remote_node_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "UUID of the remote transport node", 
+      "type": "string"
+    }, 
+    "status": {
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status of tunnel", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

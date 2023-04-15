@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PoolMemberSetting.html">PoolMemberSetting</a> (<a href="types_PoolMemberSetting.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "The setting is used to add, update or remove pool members from pool. For static pool members, admin_state, display_name and weight can be updated. For dynamic pool members, only admin_state can be updated.", 
+  "id": "PoolMemberSetting", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "admin_state": {
+      "$ref": "<A HREF="schemas_PoolMemberAdminStateType.html">PoolMemberAdminStateType</A>, 
+      "default": "ENABLED", 
+      "required": false, 
+      "title": "Member admin state"
+    }, 
+    "display_name": {
+      "description": "Only applicable to static pool members. If supplied for a pool defined by a grouping object, update API would fail.", 
+      "required": false, 
+      "title": "Pool member display name", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": true, 
+      "title": "Pool member IP address"
+    }, 
+    "port": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "required": false, 
+      "title": "Pool member port number"
+    }, 
+    "weight": {
+      "description": "Only applicable to static pool members. If supplied for a pool defined by a grouping object, update API would fail.", 
+      "maximum": 255, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Pool member weight", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Pool member setting", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

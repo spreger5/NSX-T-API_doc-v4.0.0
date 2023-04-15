@@ -1,0 +1,87 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MPPolicyPromotionState.html">MPPolicyPromotionState</a> (<a href="types_MPPolicyPromotionState.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Provides information if system is currently going under mp policy promotion.", 
+  "id": "MPPolicyPromotionState", 
+  "module_id": "PolicyMigration", 
+  "properties": {
+    "mp_policy_promotion": {
+      "description": "Used to get the mp policy promotion state. If system is under mp to policy promotion, it will be PROMOTION_IN_PROGRESS else PROMOTION_NOT_IN_PROGRESS.State is CANCELLING_PROMOTION, if ongoing promotion is cancelled.", 
+      "enum": [
+        "PROMOTION_IN_PROGRESS", 
+        "CANCELLING_PROMOTION", 
+        "PROMOTION_NOT_IN_PROGRESS", 
+        "CANCEL_FAILED"
+      ], 
+      "required": true, 
+      "title": "MP Policy promotion state value.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Fetches MP Policy promotion state.\n", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

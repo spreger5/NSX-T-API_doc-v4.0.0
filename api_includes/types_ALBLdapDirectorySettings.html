@@ -1,0 +1,439 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      ALBLdapDirectorySettings (<a href="schemas_ALBLdapDirectorySettings.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">LdapDirectorySettings</span>
+    <p>
+    <span class="help_detail">Advanced load balancer LdapDirectorySettings object</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>admin_bind_dn</td>
+            
+            <td>Admin bind dn<br><br>LDAP Admin User DN.
+<br>
+Administrator credentials are required to search for users
+<br>
+under user search DN or groups under group search DN.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>group_filter</td>
+            
+            <td>Group filter<br><br>Group filter is used to identify groups during search.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as (objectClass=(STAR)).
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Default: "(objectClass=*)"</td>
+          </tr>
+          <tr>
+            <td>group_member_attribute</td>
+            
+            <td>Group member attribute<br><br>LDAP group attribute that identifies each of the group
+<br>
+members.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as member.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Default: "member"</td>
+          </tr>
+          <tr>
+            <td>group_member_is_full_dn</td>
+            
+            <td>Group member is full dn<br><br>Group member entries contain full DNs instead of just user
+<br>
+id attribute values.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>group_search_dn</td>
+            
+            <td>Group search dn<br><br>LDAP group search DN is the root of search for a given
+<br>
+group in the LDAP directory.
+<br>
+Only matching groups present in this LDAP directory
+<br>
+sub-tree will be checked for user membership.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>group_search_scope</td>
+            
+            <td>Group search scope<br><br>LDAP group search scope defines how deep to search for the
+<br>
+group starting from the group search DN.
+<br>
+Enum options - AUTH_LDAP_SCOPE_BASE, AUTH_LDAP_SCOPE_ONE,
+<br>
+AUTH_LDAP_SCOPE_SUBTREE.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as AUTH_LDAP_SCOPE_SUBTREE.
+<br>
+</td>
+            
+            <td><a href="types_ALBAuthLdapSearchScope.html">ALBAuthLdapSearchScope</a></td>
+            
+            <td>Default: "AUTH_LDAP_SCOPE_SUBTREE"</td>
+          </tr>
+          <tr>
+            <td>ignore_referrals</td>
+            
+            <td>Ignore referrals<br><br>During user or group search, ignore searching referrals.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>password</td>
+            
+            <td>Password<br><br>LDAP Admin User Password.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>user_attributes</td>
+            
+            <td>User attributes<br><br>LDAP user attributes to fetch on a successful user bind.</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>user_id_attribute</td>
+            
+            <td>User id attribute<br><br>LDAP user id attribute is the login attribute that uniquely
+<br>
+identifies a single user record.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>user_search_dn</td>
+            
+            <td>User search dn<br><br>LDAP user search DN is the root of search for a given user
+<br>
+in the LDAP directory.
+<br>
+Only user records present in this LDAP directory sub-tree
+<br>
+will be validated.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>user_search_scope</td>
+            
+            <td>User search scope<br><br>LDAP user search scope defines how deep to search for the
+<br>
+user starting from user search DN.
+<br>
+Enum options - AUTH_LDAP_SCOPE_BASE, AUTH_LDAP_SCOPE_ONE,
+<br>
+AUTH_LDAP_SCOPE_SUBTREE.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as AUTH_LDAP_SCOPE_ONE.
+<br>
+</td>
+            
+            <td><a href="types_ALBAuthLdapSearchScope.html">ALBAuthLdapSearchScope</a></td>
+            
+            <td>Default: "AUTH_LDAP_SCOPE_ONE"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

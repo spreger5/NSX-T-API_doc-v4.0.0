@@ -1,0 +1,134 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DnsFailedQuery.html">DnsFailedQuery</a> (<a href="types_DnsFailedQuery.html">type</a>)
+</h3>
+<pre>{
+  "description": "The summary of the failed DNS query. The query result represents a full query chain from client VM to dns forwarder, and upstream server if no forwarder cache was hit.", 
+  "id": "DnsFailedQuery", 
+  "module_id": "DnsForwarder", 
+  "properties": {
+    "address": {
+      "description": "The address be queried, can be a FQDN or an ip address.", 
+      "required": false, 
+      "title": "The adddress be queried", 
+      "type": "string"
+    }, 
+    "client_ip": {
+      "description": "The client host ip address from which the query was issued.", 
+      "required": false, 
+      "title": "The client host ip address from which the query was issued", 
+      "type": "string"
+    }, 
+    "error_message": {
+      "description": "The detailed error message of the failed query, if any.", 
+      "required": false, 
+      "title": "The error message of the failed query", 
+      "type": "string"
+    }, 
+    "error_type": {
+      "description": "The type of the query failure, e.g. NXDOMAIN, etc.", 
+      "required": false, 
+      "title": "The type of the failure", 
+      "type": "string"
+    }, 
+    "forwarder_ip": {
+      "description": "The DNS forwarder ip address to which the query was first received.", 
+      "required": false, 
+      "title": "The DNS forwarder ip address to which the query was first received", 
+      "type": "string"
+    }, 
+    "record_type": {
+      "description": "The record type be queried, e.g. A, CNAME, SOA, etc.", 
+      "required": false, 
+      "title": "The record type be queried", 
+      "type": "string"
+    }, 
+    "source_ip": {
+      "description": "The source ip address that is used to forward a query to an upstream server.", 
+      "required": false, 
+      "title": "The source ip address for forwarding query", 
+      "type": "string"
+    }, 
+    "time_spent": {
+      "description": "The time the query took before it got a failed answer, in ms.", 
+      "required": false, 
+      "title": "Time spent in the query, if applicable", 
+      "type": "integer"
+    }, 
+    "timestamp": {
+      "description": "Timestamp of the request, in YYYY-MM-DD HH:MM:SS.zzz format.", 
+      "required": true, 
+      "title": "Timestamp of the request", 
+      "type": "string"
+    }, 
+    "upstream_server_ip": {
+      "description": "The upstream server ip address to which the query was forwarded. If the query could not be serviced from the DNS forwarder cache, this property will contain the IP address of the DNS server that serviced the request. If the request was serviced from the cache, this property will be absent.", 
+      "required": false, 
+      "title": "The ip address to which the query was forwarded", 
+      "type": "string"
+    }
+  }, 
+  "title": "The failed DNS query", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

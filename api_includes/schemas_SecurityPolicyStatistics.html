@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SecurityPolicyStatistics.html">SecurityPolicyStatistics</a> (<a href="types_SecurityPolicyStatistics.html">type</a>)
+</h3>
+<pre>{
+  "description": "Aggregate statistics of all the rules in a security policy.", 
+  "id": "SecurityPolicyStatistics", 
+  "module_id": "Policy", 
+  "properties": {
+    "internal_section_id": {
+      "description": "Realized id of the section on NSX MP. Policy Manager can create more than one section per SecurityPolicy, in which case this identifier helps to distinguish between the multiple sections created.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX internal section id", 
+      "type": "string"
+    }, 
+    "lr_path": {
+      "description": "Path of the LR on which the section is applied in case of Gateway Firewall.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical Router (Tier-0/Tier1) path", 
+      "type": "string"
+    }, 
+    "result_count": {
+      "description": "Total count for rule statistics", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Rule stats count", 
+      "type": "integer"
+    }, 
+    "results": {
+      "description": "List of rule statistics.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RuleStatistics.html">RuleStatistics</A>
+      }, 
+      "maxItems": 1000, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Statistics for all rules", 
+      "type": "array"
+    }
+  }, 
+  "title": "Security policy statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

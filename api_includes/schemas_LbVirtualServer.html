@@ -1,0 +1,307 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbVirtualServer.html">LbVirtualServer</a> (<a href="types_LbVirtualServer.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "LbVirtualServer", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "access_list_control": {
+      "$ref": "<A HREF="schemas_LbAccessListControl.html">LbAccessListControl</A>, 
+      "description": "Specifies the access list control to define how to filter the connections from clients.", 
+      "required": false, 
+      "title": "IP access list control to filter the connections"
+    }, 
+    "access_log_enabled": {
+      "default": false, 
+      "details": "If access log is enabled, all HTTP requests sent to L7 virtual server\nare logged to the access log file. Both successful returns information\nresponses(1xx), successful responses(2xx), redirection messages(3xx) and\nunsuccessful requests, backend server returns 4xx or 5xx, are logged to\naccess log, if enabled. All L4 virtual server connections are also\nlogged to the access log if enabled. The non-significant events such as\nsuccessful requests are not logged if log_significant_event_only is set\nto true.\n", 
+      "required": false, 
+      "title": "Whether access log is enabled", 
+      "type": "boolean"
+    }, 
+    "application_profile_id": {
+      "description": "The application profile defines the application protocol characteristics. It is used to influence how load balancing is performed. Currently, LbFastTCPProfile, LbFastUDPProfile and LbHttpProfile, etc are supported.", 
+      "required": true, 
+      "title": "application profile identifier", 
+      "type": "string"
+    }, 
+    "client_ssl_profile_binding": {
+      "$ref": "<A HREF="schemas_ClientSslProfileBinding.html">ClientSslProfileBinding</A>, 
+      "deprecated": true, 
+      "description": "The setting is used when load balancer acts as an SSL server and terminating the client SSL connection The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "Virtual server side SSL binding setting"
+    }, 
+    "default_pool_member_port": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "deprecated": true, 
+      "description": "This is a deprecated property, please use 'default_pool_member_ports' instead. If default_pool_member_port is configured and default_pool_member_ports are not specified, both default_pool_member_port and default_pool_member_ports in response payload would return the same port value. If both are specified, default_pool_member_ports setting would take effect with higher priority.", 
+      "required": false, 
+      "title": "Default pool member port when member port is not defined."
+    }, 
+    "default_pool_member_ports": {
+      "description": "If default_pool_member_ports are configured, both default_pool_member_port and default_pool_member_ports in the response payload would include port settings, notice that the value of default_pool_member_port is the first element of default_pool_member_ports.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>
+      }, 
+      "maxItems": 14, 
+      "required": false, 
+      "title": "Default pool member ports when member port is not defined.", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enabled": {
+      "default": true, 
+      "required": false, 
+      "title": "whether the virtual server is enabled", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": true, 
+      "title": "virtual server IP address"
+    }, 
+    "ip_protocol": {
+      "$ref": "<A HREF="schemas_VirtualServerIpProtocol.html">VirtualServerIpProtocol</A>, 
+      "default": "TCP", 
+      "description": "Assigned Internet Protocol in IP header, TCP, UDP are supported.", 
+      "required": false, 
+      "title": "virtual server IP protocol"
+    }, 
+    "log_significant_event_only": {
+      "default": false, 
+      "description": "The property log_significant_event_only can take effect only when access_log_enabled is true. If log_significant_event_only is true, significant events are logged in access log. For L4 virtual server, significant event means unsuccessful(error or dropped) TCP/UDP connections. For L7 virtual server, significant event means unsuccessful connections or HTTP/HTTPS requests which have error response code(e.g. 4xx, 5xx).", 
+      "required": false, 
+      "title": "Log only significant event in access log", 
+      "type": "boolean"
+    }, 
+    "max_concurrent_connections": {
+      "deprecated": true, 
+      "description": "To ensure one virtual server does not over consume resources, affecting other applications hosted on the same LBS, connections to a virtual server can be capped. If it is not specified, it means that connections are unlimited. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "maximum concurrent connection number", 
+      "type": "integer"
+    }, 
+    "max_new_connection_rate": {
+      "deprecated": true, 
+      "description": "To ensure one virtual server does not over consume resources, connections to a member can be rate limited. If it is not specified, it means that connection rate is unlimited. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "maximum new connection rate in second", 
+      "type": "integer"
+    }, 
+    "persistence_profile_id": {
+      "description": "Persistence profile is used to allow related client connections to be sent to the same backend server.", 
+      "required": false, 
+      "title": "persistence profile identifier", 
+      "type": "string"
+    }, 
+    "pool_id": {
+      "description": "The server pool(LbPool) contains backend servers. Server pool consists of one or more servers, also referred to as pool members, that are similarly configured and are running the same application.", 
+      "required": false, 
+      "title": "default server pool identifier", 
+      "type": "string"
+    }, 
+    "port": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "deprecated": true, 
+      "description": "This is a deprecated property, please use 'ports' instead. Port setting could be single port for both L7 mode and L4 mode. For L4 mode, a single port range is also supported. The port setting could be a single port or port range such as \"80\", \"1234-1236\". If port is configured and ports are not specified, both port and ports in response payload would return the same port value. If both port and ports are configured, ports setting would take effect with higher priority.", 
+      "required": false, 
+      "title": "Virtual server port number or port range"
+    }, 
+    "ports": {
+      "description": "Port setting could be a single port for both L7 mode and L4 mode. For L4 mode, multiple ports or port ranges are also supported such as \"80\", \"443\", \"1234-1236\". If ports is configured, both port and ports in the response payload would include port settings, notice that the port field value is the first element of ports.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>
+      }, 
+      "maxItems": 14, 
+      "required": false, 
+      "title": "Virtual server ports or port ranges", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "rule_ids": {
+      "deprecated": true, 
+      "description": "Load balancer rules allow customization of load balancing behavior using match/action rules. Currently, load balancer rules are supported for only layer 7 virtual servers with LbHttpProfile. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 4000, 
+      "required": false, 
+      "title": "List of load balancer rule identifiers", 
+      "type": "array"
+    }, 
+    "server_ssl_profile_binding": {
+      "$ref": "<A HREF="schemas_ServerSslProfileBinding.html">ServerSslProfileBinding</A>, 
+      "deprecated": true, 
+      "description": "The setting is used when load balancer acts as an SSL client and establishing a connection to the backend server. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "Pool side SSL binding setting"
+    }, 
+    "sorry_pool_id": {
+      "deprecated": true, 
+      "description": "When load balancer can not select a backend server to serve the request in default pool or pool in rules, the request would be served by sorry server pool. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "Identifier of sorry server pool", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "search_dsl_name": [
+    "lb virtual server (manager)"
+  ], 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

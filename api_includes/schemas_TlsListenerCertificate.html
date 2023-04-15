@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TlsListenerCertificate.html">TlsListenerCertificate</a> (<a href="types_TlsListenerCertificate.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Returns the certificate and thumbprint of a remote TLS listener, if the listener is running and accepting requests. If the certificate cannot be retrieved, the result property describes the problem.", 
+  "id": "TlsListenerCertificate", 
+  "module_id": "PolicySiteGM", 
+  "properties": {
+    "certificate": {
+      "$ref": "<A HREF="schemas_X509Certificate.html">X509Certificate</A>, 
+      "description": "The certificate of the TLS listener.", 
+      "readonly": true, 
+      "title": "The certificate of the TLS listener"
+    }, 
+    "result": {
+      "description": "Result of get certificate operation.", 
+      "enum": [
+        "SUCCESS", 
+        "CONNECTION_TIMEOUT", 
+        "NO_ROUTE_TO_HOST", 
+        "CONNECTION_REFUSED"
+      ], 
+      "title": "Result of get certificate operation", 
+      "type": "string"
+    }, 
+    "thumbprint": {
+      "description": "The SHA-256 thumbprint of the TLS listener.", 
+      "readonly": true, 
+      "title": "The SHA-256 thumbprint of the TLS listener", 
+      "type": "string"
+    }
+  }, 
+  "title": "Remote TLS Listener Certificate", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

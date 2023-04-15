@@ -1,0 +1,210 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbEdgeNodeUsage.html">LbEdgeNodeUsage</a> (<a href="types_LbEdgeNodeUsage.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The capacity contains basic information and load balancer entity usages and capacity for the given edge node.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbNodeUsage.html">LbNodeUsage</A>
+  }, 
+  "id": "LbEdgeNodeUsage", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbEdgeNodeUsage"
+  }, 
+  "properties": {
+    "current_credit_number": {
+      "description": "The current credit number reflects the current usage on the node. For example, configuring a medium load balancer on a node consumes 10 credits. If there are 2 medium instances configured on a node, the current credit number is 2 * 10 = 20.", 
+      "readonly": true, 
+      "title": "Current credit number", 
+      "type": "integer"
+    }, 
+    "current_large_load_balancer_services": {
+      "description": "The number of large load balancer services configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of large load balancer services", 
+      "type": "integer"
+    }, 
+    "current_medium_load_balancer_services": {
+      "description": "The number of medium load balancer services configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of medium load balancer services", 
+      "type": "integer"
+    }, 
+    "current_pool_members": {
+      "description": "The number of pool members configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of pool members", 
+      "type": "integer"
+    }, 
+    "current_pools": {
+      "description": "The number of pools configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of pools", 
+      "type": "integer"
+    }, 
+    "current_small_load_balancer_services": {
+      "description": "The number of small load balancer services configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of small load balancer services", 
+      "type": "integer"
+    }, 
+    "current_virtual_servers": {
+      "description": "The number of virtual servers configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of virtual servers", 
+      "type": "integer"
+    }, 
+    "current_xlarge_load_balancer_services": {
+      "description": "The number of xlarge load balancer services configured on the node.", 
+      "readonly": true, 
+      "title": "The current number of xlarge load balancer services", 
+      "type": "integer"
+    }, 
+    "edge_cluster_id": {
+      "description": "The ID of edge cluster which contains the edge node.", 
+      "readonly": true, 
+      "title": "The ID of edge cluster", 
+      "type": "string"
+    }, 
+    "form_factor": {
+      "description": "The form factor of the given edge node.", 
+      "enum": [
+        "SMALL_VIRTUAL_MACHINE", 
+        "MEDIUM_VIRTUAL_MACHINE", 
+        "LARGE_VIRTUAL_MACHINE", 
+        "XLARGE_VIRTUAL_MACHINE", 
+        "PHYSICAL_MACHINE"
+      ], 
+      "readonly": true, 
+      "title": "The form factor of the given edge node", 
+      "type": "string"
+    }, 
+    "node_id": {
+      "description": "The property identifies the node UUID for load balancer node usage.", 
+      "required": true, 
+      "title": "The UUID of the node for load balancer node usage", 
+      "type": "string"
+    }, 
+    "remaining_credit_number": {
+      "description": "The remaining credit number is the remaining credits that can be used for load balancer service configuration. For example, an edge node with form factor LARGE_VIRTUAL_MACHINE has 40 credits, and a medium load balancer instance costs 10 credits. If there are currently 3 medium instances configured, the remaining credit number is 40 - (3 * 10) = 10.", 
+      "readonly": true, 
+      "title": "Remaining credit number", 
+      "type": "integer"
+    }, 
+    "remaining_large_load_balancer_services": {
+      "description": "The remaining number of large load balancer services which could be configured on the given edge node.", 
+      "readonly": true, 
+      "title": "The remaining number of large load balancer services", 
+      "type": "integer"
+    }, 
+    "remaining_medium_load_balancer_services": {
+      "description": "The remaining number of medium load balancer services which could be configured on the given edge node.", 
+      "readonly": true, 
+      "title": "The remaining number of medium load balancer services", 
+      "type": "integer"
+    }, 
+    "remaining_pool_members": {
+      "description": "The remaining number of pool members which could be configured on the given edge node.", 
+      "readonly": true, 
+      "title": "The remaining number of pool members", 
+      "type": "integer"
+    }, 
+    "remaining_small_load_balancer_services": {
+      "description": "The remaining number of small load balancer services which could be configured on the given edge node.", 
+      "readonly": true, 
+      "title": "The remaining number of small load balancer services", 
+      "type": "integer"
+    }, 
+    "remaining_xlarge_load_balancer_services": {
+      "description": "The remaining number of xlarge load balancer services which could be configured on the given edge node.", 
+      "readonly": true, 
+      "title": "The remaining number of xlarge load balancer services", 
+      "type": "integer"
+    }, 
+    "severity": {
+      "$ref": "<A HREF="schemas_LbUsageSeverity.html">LbUsageSeverity</A>, 
+      "description": "The severity calculation is based on current credit usage percentage of load balancer for one node.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbNodeUsageType.html">LbNodeUsageType</A>, 
+      "description": "The property identifies the load balancer node usage type.", 
+      "required": true, 
+      "title": "Type of load balancer node usage"
+    }, 
+    "usage_percentage": {
+      "description": "The usage percentage of the edge node for load balancer. The value is the larger value between load balancer credit usage percentage and pool member usage percentage for the edge node.", 
+      "readonly": true, 
+      "title": "Usage percentage", 
+      "type": "number"
+    }
+  }, 
+  "title": "The load balancer usage for an edge node", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

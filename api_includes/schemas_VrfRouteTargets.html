@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VrfRouteTargets.html">VrfRouteTargets</a> (<a href="types_VrfRouteTargets.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Vrf Route Targets for import/export.", 
+  "id": "VrfRouteTargets", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "address_family": {
+      "default": "L2VPN_EVPN", 
+      "description": "Address family.", 
+      "enum": [
+        "L2VPN_EVPN"
+      ], 
+      "required": false, 
+      "title": "Address family", 
+      "type": "string"
+    }, 
+    "export_route_targets": {
+      "description": "Export route targets with format in ASN:&lt;number&gt;.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Export route targets", 
+      "type": "array"
+    }, 
+    "import_route_targets": {
+      "description": "Import route targets with format in ASN:&lt;number&gt;.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Import route targets", 
+      "type": "array"
+    }
+  }, 
+  "title": "Vrf Route Targets", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

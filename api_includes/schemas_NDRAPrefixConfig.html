@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NDRAPrefixConfig.html">NDRAPrefixConfig</a> (<a href="types_NDRAPrefixConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Overrides the router advertisement attributes for the IPv6 prefixes.", 
+  "id": "NDRAPrefixConfig", 
+  "module_id": "LogicalRouterPorts", 
+  "properties": {
+    "network_prefix": {
+      "$ref": "<A HREF="schemas_IPv6CIDRBlock.html">IPv6CIDRBlock</A>, 
+      "description": "Override the neighbor discovery prefix preferred time and prefix valid time for the subnet on uplink port whose network matches with the network address of CIDR specified in network_prefix.", 
+      "required": true, 
+      "title": "Network prefix"
+    }, 
+    "prefix_preferred_time": {
+      "description": "The time interval in seconds, in which the prefix is advertised as preferred.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Prefix preferred time", 
+      "type": "integer"
+    }, 
+    "prefix_valid_time": {
+      "description": "The time interval in seconds, in which the prefix is advertised as valid.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Subnet Prefix Length", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

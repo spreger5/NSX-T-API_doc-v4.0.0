@@ -1,0 +1,122 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceEndpoint.html">ServiceEndpoint</a> (<a href="types_ServiceEndpoint.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "ServiceEndpoint", 
+  "module_id": "ClusterManagement", 
+  "properties": {
+    "certificate": {
+      "required": false, 
+      "title": "Certificate or certificate chain", 
+      "type": "string"
+    }, 
+    "certificate_sha256_thumbprint": {
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "entities_hosted": {
+      "items": {
+        "$ref": "<A HREF="schemas_HostedEntityInfo.html">HostedEntityInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of entities hosted on accessible through the service endpoint", 
+      "type": "array"
+    }, 
+    "fqdn": {
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>, 
+      "required": true
+    }, 
+    "ipv6_address": {
+      "$ref": "<A HREF="schemas_IPv6Address.html">IPv6Address</A>, 
+      "required": false
+    }, 
+    "ipv6_fqdn": {
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "port": {
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": true, 
+      "type": "integer"
+    }, 
+    "service_endpoint_uuid": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Unique identifier of this service endpoint", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

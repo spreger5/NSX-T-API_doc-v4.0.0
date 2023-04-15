@@ -1,0 +1,276 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceDefinition.html">ServiceDefinition</a> (<a href="types_ServiceDefinition.html">type</a>)
+</h3>
+<pre>{
+  "description": "Registering a Service is the first step in the ServiceInsertion mechanism. A ServiceDefinition is used to create a service.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "ServiceDefinition", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "attachment_point": {
+      "description": "The point at which the service is deployed/attached for redirecting the traffic to the the partner appliance. Attachment Point is required if Service caters to any functionality other than EPP and MPS.", 
+      "items": {
+        "enum": [
+          "TIER0_LR", 
+          "TIER1_LR", 
+          "SERVICE_PLANE"
+        ], 
+        "type": "string"
+      }, 
+      "maxItems": 2, 
+      "minItems": 0, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Attachment Point", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "functionalities": {
+      "description": "The capabilities provided by the services. Needs to be one or more of the following | NG_FW - Next Generation Firewall | IDS_IPS - Intrusion Detection System / Intrusion Prevention System | NET_MON - Network Monitoring | HCX - Hybrid Cloud Exchange | BYOD - Bring Your Own Device | TLB -  Transparent Load Balancer | EPP - Endpoint Protection.(Third party AntiVirus partners using NXGI should use this functionality for the service) | MPS - Malware Prevention Solution", 
+      "items": {
+        "enum": [
+          "NG_FW", 
+          "IDS_IPS", 
+          "NET_MON", 
+          "HCX", 
+          "BYOD", 
+          "EPP", 
+          "TLB", 
+          "MPS"
+        ], 
+        "type": "string"
+      }, 
+      "minItems": 1, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Functionality Type", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "implementations": {
+      "description": "This indicates the insertion point of the service i.e whether the service will be used to protect North-South or East-West traffic in the datacenter.", 
+      "items": {
+        "enum": [
+          "NORTH_SOUTH", 
+          "EAST_WEST"
+        ], 
+        "type": "string"
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Implementation Type", 
+      "type": "array"
+    }, 
+    "on_failure_policy": {
+      "default": "ALLOW", 
+      "description": "Failure policy for the service tells datapath, the action to take i.e to Allow or Block traffic during failure scenarios. For north-south ServiceInsertion, failure policy in the service instance takes precedence. For east-west ServiceInsertion, failure policy in the service chain takes precedence. BLOCK is not supported for Endpoint protection (EPP) and MPS functionality.", 
+      "enum": [
+        "ALLOW", 
+        "BLOCK"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "On Failure Policy", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "service_capability": {
+      "$ref": "<A HREF="schemas_ServiceCapability.html">ServiceCapability</A>, 
+      "description": "Service capability.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Service capability"
+    }, 
+    "service_deployment_spec": {
+      "$ref": "<A HREF="schemas_ServiceDeploymentSpec.html">ServiceDeploymentSpec</A>, 
+      "description": "Service Deployment Specification defines takes in information required to deploy and configure a partner appliance/service-vm.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Service Deployment Specification"
+    }, 
+    "service_manager_id": {
+      "description": "ID of the service manager to which this service is attached with. This field is not set during creation of service. This field will be set explicitly when Service Manager is created successfully using this service.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service Manager Id", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transports": {
+      "description": "Transport Type of the service, which is the mechanism of redirecting the traffic to the the partner appliance. Transport type is required if Service caters to any functionality other than EPP and MPS.", 
+      "items": {
+        "enum": [
+          "L2_BRIDGE", 
+          "L3_ROUTED", 
+          "NSH"
+        ], 
+        "type": "string"
+      }, 
+      "maxItems": 1, 
+      "minItems": 0, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Transport Type", 
+      "type": "array"
+    }, 
+    "vendor_id": {
+      "description": "Id which is unique to a vendor or partner for which the service is created.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Vendor ID", 
+      "type": "string"
+    }
+  }, 
+  "title": "Definition of a Service.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbVirtualServerStatus.html">LbVirtualServerStatus</a> (<a href="types_LbVirtualServerStatus.html">type</a>)
+</h3>
+<pre>{
+  "id": "LbVirtualServerStatus", 
+  "module_id": "AggSvcLb", 
+  "properties": {
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "title": "Timestamp when the data was last updated."
+    }, 
+    "status": {
+      "description": "UP means that all primary members in default pool are in UP status. For L7 virtual server, if there is no default pool, the virtual server would be treated as UP. PARTIALLY_UP means that some(not all) primary members in default pool are in UP status. The size of these active primary members should be larger than or equal to the certain number(min_active_members) which is defined in LbPool. When there are no backup members which are in the UP status, the number(min_active_members) would be ignored. PRIMARY_DOWN means that less than certain(min_active_members) primary members in default pool are in UP status but backup members are in UP status, the connections would be dispatched to backup members. DOWN means that all primary and backup members are in DOWN status. DETACHED means that the virtual server is not bound to any service. DISABLED means that the admin state of the virtual server is disabled. UNKNOWN means that no status reported from transport-nodes. The associated load balancer service may be working(or not working).", 
+      "enum": [
+        "UP", 
+        "PARTIALLY_UP", 
+        "PRIMARY_DOWN", 
+        "DOWN", 
+        "DETACHED", 
+        "DISABLED", 
+        "UNKNOWN"
+      ], 
+      "title": "Virtual server status", 
+      "type": "string"
+    }, 
+    "virtual_server_id": {
+      "required": true, 
+      "title": "load balancer virtual server identifier", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

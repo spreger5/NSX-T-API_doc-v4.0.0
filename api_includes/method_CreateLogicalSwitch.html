@@ -1,0 +1,1263 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_switching.html' style='text-decoration: none'> Logical Switching</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_switching_logical_switches.html' style='text-decoration: none'> Logical Switches</a>
+            
+        </P>
+    
+        <div id="CreateLogicalSwitch">
+          <h2>
+            Create a Logical Switch
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Creates a new logical switch. The request must include the
+<br>
+transport_zone_id, display_name, and admin_state (UP or DOWN). The
+<br>
+replication_mode (MTEP or SOURCE) is required for overlay logical
+<br>
+switches, but not for VLAN-based logical switches. A vlan needs to be
+<br>
+provided for VLAN-based logical switches.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <b>Deprecated:</b> This api is now deprecated.
+Please use new api -/infra/segments/&lt;segment-id&gt;
+
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">POST</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/logical-switches
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">LogicalSwitch<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLogicalSwitch', 'LogicalSwitch.CreateLogicalSwitch.Request_Body')">+</span></div>
+  </div>
+    <div id="LogicalSwitch.CreateLogicalSwitch.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LogicalSwitch.html">
+        <span>LogicalSwitch</span>
+      </a> (<a href="schemas_LogicalSwitch.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>admin_state</td>
+            
+            <td>Represents Desired state of the Logical Switch</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: UP, DOWN</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>extra_configs</td>
+            
+            <td>Extra configs on logical switch<br><br>This property could be used for vendor specific configuration in key value
+<br>
+string pairs, the setting in extra_configs will be automatically inheritted
+<br>
+by logical ports in the logical switch.
+<br>
+</td>
+            
+            <td>array of <a href="types_ExtraConfig.html">ExtraConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>global_vni</td>
+            
+            <td>VNI allocated by the global manager<br><br>The VNI is used for intersite traffic and the global logical switch ID. The global VNI pool is agnostic of the local VNI pool, and there is no need to have an exclusive VNI range. For example, VNI x can be the global VNI for logical switch B and the local VNI for logical switch A.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>hybrid</td>
+            
+            <td>Flag to identify a hybrid logical switch<br><br>If this flag is set to true, then all the logical switch ports attached to
+<br>
+this logical switch will behave in a hybrid fashion. The hybrid logical switch port
+<br>
+indicates to NSX that the VM intends to operate in underlay mode,
+<br>
+but retains the ability to forward egress traffic to the NSX overlay network.
+<br>
+This flag can be enabled only for the logical switches in the overlay type transport zone which has
+<br>
+host switch mode as STANDARD and also has either CrossCloud or CloudScope tag scopes.
+<br>
+Only the NSX public cloud gateway (PCG) uses this flag, other host agents like ESX, KVM and Edge
+<br>
+will ignore it. This property cannot be modified once the logical switch is created.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ip_pool_id</td>
+            
+            <td>Allocation ip pool associated with the Logical switch<br><br>IP pool id that associated with a LogicalSwitch.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>mac_pool_id</td>
+            
+            <td>Allocation mac pool associated with the Logical switch<br><br>Mac pool id that associated with a LogicalSwitch.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>node_local_switch</td>
+            
+            <td>A flag to prevent BUM (broadcast, unknown-unicast and multicast) traffic from reaching the other spanned edges.</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>origin_id</td>
+            
+            <td>ID of the LS of type DVPG in the source vCenter<br><br>ID populated by NSX when NSX on DVPG is used to indicate the source DVPG.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>origin_type</td>
+            
+            <td>The type of source from which the DVPG is discovered</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: VCENTER</td>
+          </tr>
+          <tr>
+            <td>replication_mode</td>
+            
+            <td>Replication mode of the Logical Switch</td>
+            
+            <td>string</td>
+            
+            <td>Enum: MTEP, SOURCE</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LogicalSwitch</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>span</td>
+            
+            <td>List of Local Manager IDs the logical switch extends<br><br>Each manager ID represents the NSX Local Manager the logical switch connects. This will be populated by the manager.</td>
+            
+            <td>array of string</td>
+            
+            <td>Minimum items: 0<br>Maximum items: 16</td>
+          </tr>
+          <tr>
+            <td>switch_type</td>
+            
+            <td>Type of LogicalSwitch.<br><br>This field indicates purpose of a LogicalSwitch. It is set by manager internally
+<br>
+or user can provide this field. If not set, DEFAULT type is assigned.
+<br>
+NSX components can use this field to create LogicalSwitch that provides component
+<br>
+specific functionality.
+<br>
+DEFAULT type LogicalSwitches are created for basic L2 connectivity by API users.
+<br>
+SERVICE_PLANE type LogicalSwitches are system created service plane LogicalSwitches for
+<br>
+Service Insertion service. User can not create SERVICE_PLANE type of LogicalSwitch.
+<br>
+DHCP_RELAY type LogicalSwitches are created by external user like Policy with special
+<br>
+permissions or by system and will be treated as internal LogicalSwitches. Such
+<br>
+LogicalSwitch will not be exposed to vSphere user.
+<br>
+GLOBAL type LogicalSwitches are created to span multiple NSX domains to connect multiple
+<br>
+remote sites.
+<br>
+INTER_ROUTER type LogicalSwitches are policy-created LogicalSwitches which
+<br>
+provide inter-router connectivity.
+<br>
+DVPG type LogicalSwitches are NSX-created based on DVPGs found in VC which are used
+<br>
+as shadow objects in NSX on DVPG.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Enum: DEFAULT, SERVICE_PLANE, DHCP_RELAY, GLOBAL, INTER_ROUTER, EVPN, DVPG</td>
+          </tr>
+          <tr>
+            <td>switching_profile_ids</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_SwitchingProfileTypeIdEntry.html">SwitchingProfileTypeIdEntry</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_zone_id</td>
+            
+            <td>Id of the TransportZone to which this LogicalSwitch is associated</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>uplink_teaming_policy_name</td>
+            
+            <td>The name of the switching uplink teaming policy for the logical switch<br><br>This name has to be one of the switching uplink teaming policy names listed inside the logical switch's TransportZone. If this field is not specified, the logical switch will not have a teaming policy associated with it and the host switch's default teaming policy will be used.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vlan</td>
+            
+            <td>VLAN Id of logical switch<br><br>This property is dedicated to VLAN based network, to set VLAN of logical
+<br>
+network. It is mutually exclusive with 'vlan_trunk_spec'.
+<br>
+</td>
+            
+            <td><a href="types_VlanID.html">VlanID</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vlan_trunk_spec</td>
+            
+            <td>VLAN trunk spec of logical switch<br><br>This property is used for VLAN trunk specification of logical switch.
+<br>
+It's mutually exclusive with 'vlan'. Also it could be set to do guest VLAN
+<br>
+tagging in overlay network.
+<br>
+</td>
+            
+            <td><a href="types_VlanTrunkSpec.html">VlanTrunkSpec</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vni</td>
+            
+            <td>VNI for this LogicalSwitch.<br><br>Only for OVERLAY network. A VNI will be auto-allocated from the
+<br>
+default VNI pool if not given; otherwise the given VNI has to be
+<br>
+inside the default pool and not used by any other LogicalSwitch.
+<br>
+</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">POST https://&lt;nsx-mgr&gt;/api/v1/logical-switches
+{
+  "transport_zone_id":"cfaec4c7-45c2-439b-b7c6-2c3aeabd9976",
+  "replication_mode": "MTEP",
+  "admin_state":"UP",
+  "display_name":"test-logical-switch",
+  "hybrid": true
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">201 Created</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">LogicalSwitch<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLogicalSwitch', 'LogicalSwitch.CreateLogicalSwitch.Response_Body')">+</span></div>
+  </div>
+    <div id="LogicalSwitch.CreateLogicalSwitch.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LogicalSwitch.html">
+        <span>LogicalSwitch</span>
+      </a> (<a href="schemas_LogicalSwitch.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>admin_state</td>
+            
+            <td>Represents Desired state of the Logical Switch</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: UP, DOWN</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>extra_configs</td>
+            
+            <td>Extra configs on logical switch<br><br>This property could be used for vendor specific configuration in key value
+<br>
+string pairs, the setting in extra_configs will be automatically inheritted
+<br>
+by logical ports in the logical switch.
+<br>
+</td>
+            
+            <td>array of <a href="types_ExtraConfig.html">ExtraConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>global_vni</td>
+            
+            <td>VNI allocated by the global manager<br><br>The VNI is used for intersite traffic and the global logical switch ID. The global VNI pool is agnostic of the local VNI pool, and there is no need to have an exclusive VNI range. For example, VNI x can be the global VNI for logical switch B and the local VNI for logical switch A.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>hybrid</td>
+            
+            <td>Flag to identify a hybrid logical switch<br><br>If this flag is set to true, then all the logical switch ports attached to
+<br>
+this logical switch will behave in a hybrid fashion. The hybrid logical switch port
+<br>
+indicates to NSX that the VM intends to operate in underlay mode,
+<br>
+but retains the ability to forward egress traffic to the NSX overlay network.
+<br>
+This flag can be enabled only for the logical switches in the overlay type transport zone which has
+<br>
+host switch mode as STANDARD and also has either CrossCloud or CloudScope tag scopes.
+<br>
+Only the NSX public cloud gateway (PCG) uses this flag, other host agents like ESX, KVM and Edge
+<br>
+will ignore it. This property cannot be modified once the logical switch is created.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ip_pool_id</td>
+            
+            <td>Allocation ip pool associated with the Logical switch<br><br>IP pool id that associated with a LogicalSwitch.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>mac_pool_id</td>
+            
+            <td>Allocation mac pool associated with the Logical switch<br><br>Mac pool id that associated with a LogicalSwitch.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>node_local_switch</td>
+            
+            <td>A flag to prevent BUM (broadcast, unknown-unicast and multicast) traffic from reaching the other spanned edges.</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>origin_id</td>
+            
+            <td>ID of the LS of type DVPG in the source vCenter<br><br>ID populated by NSX when NSX on DVPG is used to indicate the source DVPG.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>origin_type</td>
+            
+            <td>The type of source from which the DVPG is discovered</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: VCENTER</td>
+          </tr>
+          <tr>
+            <td>replication_mode</td>
+            
+            <td>Replication mode of the Logical Switch</td>
+            
+            <td>string</td>
+            
+            <td>Enum: MTEP, SOURCE</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LogicalSwitch</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>span</td>
+            
+            <td>List of Local Manager IDs the logical switch extends<br><br>Each manager ID represents the NSX Local Manager the logical switch connects. This will be populated by the manager.</td>
+            
+            <td>array of string</td>
+            
+            <td>Minimum items: 0<br>Maximum items: 16</td>
+          </tr>
+          <tr>
+            <td>switch_type</td>
+            
+            <td>Type of LogicalSwitch.<br><br>This field indicates purpose of a LogicalSwitch. It is set by manager internally
+<br>
+or user can provide this field. If not set, DEFAULT type is assigned.
+<br>
+NSX components can use this field to create LogicalSwitch that provides component
+<br>
+specific functionality.
+<br>
+DEFAULT type LogicalSwitches are created for basic L2 connectivity by API users.
+<br>
+SERVICE_PLANE type LogicalSwitches are system created service plane LogicalSwitches for
+<br>
+Service Insertion service. User can not create SERVICE_PLANE type of LogicalSwitch.
+<br>
+DHCP_RELAY type LogicalSwitches are created by external user like Policy with special
+<br>
+permissions or by system and will be treated as internal LogicalSwitches. Such
+<br>
+LogicalSwitch will not be exposed to vSphere user.
+<br>
+GLOBAL type LogicalSwitches are created to span multiple NSX domains to connect multiple
+<br>
+remote sites.
+<br>
+INTER_ROUTER type LogicalSwitches are policy-created LogicalSwitches which
+<br>
+provide inter-router connectivity.
+<br>
+DVPG type LogicalSwitches are NSX-created based on DVPGs found in VC which are used
+<br>
+as shadow objects in NSX on DVPG.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Enum: DEFAULT, SERVICE_PLANE, DHCP_RELAY, GLOBAL, INTER_ROUTER, EVPN, DVPG</td>
+          </tr>
+          <tr>
+            <td>switching_profile_ids</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_SwitchingProfileTypeIdEntry.html">SwitchingProfileTypeIdEntry</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_zone_id</td>
+            
+            <td>Id of the TransportZone to which this LogicalSwitch is associated</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>uplink_teaming_policy_name</td>
+            
+            <td>The name of the switching uplink teaming policy for the logical switch<br><br>This name has to be one of the switching uplink teaming policy names listed inside the logical switch's TransportZone. If this field is not specified, the logical switch will not have a teaming policy associated with it and the host switch's default teaming policy will be used.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vlan</td>
+            
+            <td>VLAN Id of logical switch<br><br>This property is dedicated to VLAN based network, to set VLAN of logical
+<br>
+network. It is mutually exclusive with 'vlan_trunk_spec'.
+<br>
+</td>
+            
+            <td><a href="types_VlanID.html">VlanID</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vlan_trunk_spec</td>
+            
+            <td>VLAN trunk spec of logical switch<br><br>This property is used for VLAN trunk specification of logical switch.
+<br>
+It's mutually exclusive with 'vlan'. Also it could be set to do guest VLAN
+<br>
+tagging in overlay network.
+<br>
+</td>
+            
+            <td><a href="types_VlanTrunkSpec.html">VlanTrunkSpec</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>vni</td>
+            
+            <td>VNI for this LogicalSwitch.<br><br>Only for OVERLAY network. A VNI will be auto-allocated from the
+<br>
+default VNI pool if not given; otherwise the given VNI has to be
+<br>
+inside the default pool and not used by any other LogicalSwitch.
+<br>
+</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+ "id": "92225022-a786-4c7d-91d1-1f9afa6deebe",
+ "display_name": "test-logical-switch",
+ "resource_type": "LogicalSwitch",
+ "address_bindings": [],
+ "transport_zone_id": "cfaec4c7-45c2-439b-b7c6-2c3aeabd9976",
+ "replication_mode": "MTEP",
+ "admin_state": "UP",
+ "vni": 56200,
+ "hybrid": true,
+ "switching_profile_ids": [
+    {
+       "value": "64814784-7896-3901-9741-badeff705639",
+       "key": "IpDiscoverySwitchingProfile"
+    },
+    {
+       "value": "fad98876-d7ff-11e4-b9d6-1681e6b88ec1",
+       "key": "SpoofGuardSwitchingProfile"
+    },
+    {
+       "value": "93b4b7e8-f116-415d-a50c-3364611b5d09",
+       "key": "PortMirroringSwitchingProfile"
+    },
+    {
+       "value": "fbc4fb17-83d9-4b53-a286-ccdf04301888",
+       "key": "SwitchSecuritySwitchingProfile"
+    },
+    {
+       "value": "f313290b-eba8-4262-bd93-fab5026e9495",
+       "key": "QosSwitchingProfile"
+    }
+ ],
+ "_last_modified_user": "admin",
+ "_last_modified_time": 1435285527986,
+ "_create_time": 1435285527986,
+ "_create_user": "admin",
+ "_revision": 0,
+ "_schema": "/v1/schema/LogicalSwitch"
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">switching_switches</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeAuthProviderVidmProperties.html">NodeAuthProviderVidmProperties</a> (<a href="types_NodeAuthProviderVidmProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "NodeAuthProviderVidmProperties", 
+  "properties": {
+    "client_id": {
+      "required": true, 
+      "title": "vIDM client id", 
+      "type": "string"
+    }, 
+    "client_secret": {
+      "required": false, 
+      "sensitive": true, 
+      "title": "vIDM client secret", 
+      "type": "string"
+    }, 
+    "host_name": {
+      "required": true, 
+      "title": "Fully Qualified Domain Name(FQDN) of vIDM", 
+      "type": "string"
+    }, 
+    "lb_enable": {
+      "required": false, 
+      "title": "Load Balancer enable flag", 
+      "type": "boolean"
+    }, 
+    "node_host_name": {
+      "description": "host name to use when creating the redirect URL for clients to follow after authenticating to vIDM", 
+      "required": true, 
+      "title": "host name of the node redirected to", 
+      "type": "string"
+    }, 
+    "thumbprint": {
+      "description": "Hexadecimal SHA256 hash of the vIDM server's X.509 certificate", 
+      "required": true, 
+      "title": "vIDM certificate thumbprint", 
+      "type": "string"
+    }, 
+    "vidm_enable": {
+      "required": false, 
+      "title": "vIDM enable flag", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Node AAA provider vIDM properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

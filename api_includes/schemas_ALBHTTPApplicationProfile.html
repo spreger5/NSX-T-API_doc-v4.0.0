@@ -1,0 +1,453 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHTTPApplicationProfile.html">ALBHTTPApplicationProfile</a> (<a href="types_ALBHTTPApplicationProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HTTPApplicationProfile object", 
+  "id": "ALBHTTPApplicationProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "allow_dots_in_header_name": {
+      "default": false, 
+      "description": "Allow use of dot (.) in HTTP header names, for instance Header.app.special  PickAppVersionX. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Allow dots in header name", 
+      "type": "boolean"
+    }, 
+    "cache_config": {
+      "$ref": "<A HREF="schemas_ALBHttpCacheConfig.html">ALBHttpCacheConfig</A>, 
+      "description": "HTTP Caching config to use with this HTTP Profile.", 
+      "required": false, 
+      "title": "Cache config"
+    }, 
+    "client_body_timeout": {
+      "default": 30000, 
+      "description": "The maximum length of time allowed between consecutive read operations for a client request body. The value '0' specifies no timeout. This setting generally impacts the length of time allowed for a client to send a POST. Allowed values are 0-100000000. Unit is MILLISECONDS. Allowed in Basic(Allowed values- 30000) edition, Essentials(Allowed values- 30000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 30000.", 
+      "maximum": 100000000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Client body timeout", 
+      "type": "integer"
+    }, 
+    "client_header_timeout": {
+      "default": 10000, 
+      "description": "The maximum length of time allowed for a client to transmit an entire request header. This helps mitigate various forms of SlowLoris attacks. Allowed values are 10-100000000. Unit is MILLISECONDS. Allowed in Basic(Allowed values- 10000) edition, Essentials(Allowed values- 10000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 10000.", 
+      "maximum": 100000000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Client header timeout", 
+      "type": "integer"
+    }, 
+    "client_max_body_size": {
+      "default": 0, 
+      "description": "Maximum size for the client request body. This limits the size of the client data that can be uploaded/posted as part of a single HTTP Request. Default 0 =&gt; Unlimited. Unit is KB. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "required": false, 
+      "title": "Client max body size", 
+      "type": "integer"
+    }, 
+    "client_max_header_size": {
+      "default": 12, 
+      "description": "Maximum size in Kbytes of a single HTTP header in the client request. Allowed values are 1-64. Unit is KB. Allowed in Basic(Allowed values- 12) edition, Essentials(Allowed values- 12) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 12.", 
+      "maximum": 64, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Client max header size", 
+      "type": "integer"
+    }, 
+    "client_max_request_size": {
+      "default": 48, 
+      "description": "Maximum size in Kbytes of all the client HTTP request headers. Allowed values are 1-256. Unit is KB. Default value when not specified in API or module is interpreted by ALB Controller as 48.", 
+      "maximum": 256, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Client max request size", 
+      "type": "integer"
+    }, 
+    "compression_profile": {
+      "$ref": "<A HREF="schemas_ALBCompressionProfile.html">ALBCompressionProfile</A>, 
+      "description": "HTTP Compression settings to use with this HTTP Profile.", 
+      "required": false, 
+      "title": "Compression profile"
+    }, 
+    "connection_multiplexing_enabled": {
+      "default": true, 
+      "description": "Allows HTTP requests, not just TCP connections, to be load balanced across servers. Proxied TCP connections to servers may be reused by multiple clients to improve performance. Not compatible with Preserve Client IP. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Connection multiplexing enabled", 
+      "type": "boolean"
+    }, 
+    "disable_keepalive_posts_msie6": {
+      "default": true, 
+      "description": "Disable keep-alive client side connections for older browsers based off MS Internet Explorer 6.0 (MSIE6). For some applications, this might break NTLM authentication for older clients based off MSIE6. For such applications, set this option to false to allow keep-alive connections. Allowed in Basic(Allowed values- true) edition, Essentials(Allowed values- true) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Disable keepalive posts msie6", 
+      "type": "boolean"
+    }, 
+    "disable_sni_hostname_check": {
+      "default": false, 
+      "description": "Disable strict check between TLS servername and HTTP Host name. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Disable sni hostname check", 
+      "type": "boolean"
+    }, 
+    "enable_chunk_merge": {
+      "default": true, 
+      "description": "Enable chunk body merge for chunked transfer encoding response. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable chunk merge", 
+      "type": "boolean"
+    }, 
+    "enable_fire_and_forget": {
+      "default": false, 
+      "description": "Enable support for fire and forget feature. If enabled, request from client is forwarded to server even if client prematurely closes the connection. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable fire and forget", 
+      "type": "boolean"
+    }, 
+    "enable_request_body_buffering": {
+      "default": false, 
+      "description": "Enable request body buffering for POST requests. If enabled, max buffer size is set to lower of 32M or the value (non-zero) configured in client_max_body_size. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable request body buffering", 
+      "type": "boolean"
+    }, 
+    "enable_request_body_metrics": {
+      "default": false, 
+      "description": "Enable HTTP request body metrics. If enabled, requests from clients are parsed and relevant statistics about them are gathered. Currently, it processes HTTP POST requests with Content-Type application/x-www-form-urlencoded or multipart/form-data, and adds the number of detected parameters to the l7_client.http_params_count. This is an experimental feature and it may have performance impact. Use it when detailed information about the number of HTTP POST parameters is needed, e.g. for WAF sizing. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable request body metrics", 
+      "type": "boolean"
+    }, 
+    "fwd_close_hdr_for_bound_connections": {
+      "default": true, 
+      "description": "Forward the Connection  Close header coming from backend server to the client if connection-switching is enabled, i.e. front-end and backend connections are bound together. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Fwd close hdr for bound connections", 
+      "type": "boolean"
+    }, 
+    "hsts_enabled": {
+      "default": false, 
+      "description": "Inserts HTTP Strict-Transport-Security header in the HTTPS response. HSTS can help mitigate man-in-the-middle attacks by telling browsers that support HSTS that they should only access this site via HTTPS. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Hsts enabled", 
+      "type": "boolean"
+    }, 
+    "hsts_max_age": {
+      "default": 365, 
+      "description": "Number of days for which the client should regard this virtual service as a known HSTS host. Allowed values are 0-10000. Allowed in Basic(Allowed values- 365) edition, Essentials(Allowed values- 365) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 365.", 
+      "maximum": 10000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Hsts max age", 
+      "type": "integer"
+    }, 
+    "hsts_subdomains_enabled": {
+      "default": false, 
+      "description": "Insert the 'includeSubdomains' directive in the HTTP Strict-Transport-Security header. Adding the includeSubdomains directive signals the User-Agent that the HSTS Policy applies to this HSTS Host as well as any subdomains of the host's domain name. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Special default for Basic edition is false, Essentials edition is false, Enterprise is True. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Hsts subdomains enabled", 
+      "type": "boolean"
+    }, 
+    "http2_profile": {
+      "$ref": "<A HREF="schemas_ALBHTTP2ApplicationProfile.html">ALBHTTP2ApplicationProfile</A>, 
+      "description": "Specifies the HTTP/2 specific application profile parameters. Allowed in Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Http2 profile"
+    }, 
+    "http_to_https": {
+      "default": false, 
+      "description": "Client requests received via HTTP will be redirected to HTTPS. Allowed in Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Http to https", 
+      "type": "boolean"
+    }, 
+    "http_upstream_buffer_size": {
+      "default": 0, 
+      "description": "Size of HTTP buffer in kB. Allowed values are 1-256. Special values are 0- 'Auto compute the size of buffer'. Unit is KB. Allowed in Basic(Allowed values- 0) edition, Essentials(Allowed values- 0) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 256, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Http upstream buffer size", 
+      "type": "integer"
+    }, 
+    "httponly_enabled": {
+      "default": false, 
+      "description": "Mark HTTP cookies as HTTPonly. This helps mitigate cross site scripting attacks as browsers will not allow these cookies to be read by third parties, such as javascript. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Httponly enabled", 
+      "type": "boolean"
+    }, 
+    "keepalive_header": {
+      "default": false, 
+      "description": "Send HTTP 'Keep-Alive' header to the client. By default, the timeout specified in the 'Keep-Alive Timeout' field will be used unless the 'Use App Keepalive Timeout' flag is set, in which case the timeout sent by the application will be honored. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Keepalive header", 
+      "type": "boolean"
+    }, 
+    "keepalive_timeout": {
+      "default": 30000, 
+      "description": "The max idle time allowed between HTTP requests over a Keep-alive connection. Allowed values are 10-100000000. Unit is MILLISECONDS. Allowed in Essentials(Allowed values- 30000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 30000.", 
+      "maximum": 100000000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Keepalive timeout", 
+      "type": "integer"
+    }, 
+    "max_bad_rps_cip": {
+      "default": 0, 
+      "description": "Maximum bad requests per second per client IP. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max bad rps cip", 
+      "type": "integer"
+    }, 
+    "max_bad_rps_cip_uri": {
+      "default": 0, 
+      "description": "Maximum bad requests per second per client IP and URI. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max bad rps cip uri", 
+      "type": "integer"
+    }, 
+    "max_bad_rps_uri": {
+      "default": 0, 
+      "description": "Maximum bad requests per second per URI. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max bad rps uri", 
+      "type": "integer"
+    }, 
+    "max_keepalive_requests": {
+      "default": 100, 
+      "description": "The max number of HTTP requests that can be sent over a Keep-Alive connection. '0' means unlimited. Allowed values are 0-1000000. Special values are 0- 'Unlimited requests on a connection'. Allowed in Basic(Allowed values- 100) edition, Essentials(Allowed values- 100) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 100.", 
+      "maximum": 1000000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max keepalive requests", 
+      "type": "integer"
+    }, 
+    "max_response_headers_size": {
+      "default": 48, 
+      "description": "Maximum size in Kbytes of all the HTTP response headers. Allowed values are 1-256. Unit is KB. Allowed in Basic(Allowed values- 48) edition, Essentials(Allowed values- 48) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 48.", 
+      "maximum": 256, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Max response headers size", 
+      "type": "integer"
+    }, 
+    "max_rps_cip": {
+      "default": 0, 
+      "description": "Maximum requests per second per client IP. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max rps cip", 
+      "type": "integer"
+    }, 
+    "max_rps_cip_uri": {
+      "default": 0, 
+      "description": "Maximum requests per second per client IP and URI. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max rps cip uri", 
+      "type": "integer"
+    }, 
+    "max_rps_unknown_cip": {
+      "default": 0, 
+      "description": "Maximum unknown client IPs per second. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max rps unknown cip", 
+      "type": "integer"
+    }, 
+    "max_rps_unknown_uri": {
+      "default": 0, 
+      "description": "Maximum unknown URIs per second. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max rps unknown uri", 
+      "type": "integer"
+    }, 
+    "max_rps_uri": {
+      "default": 0, 
+      "description": "Maximum requests per second per URI. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max rps uri", 
+      "type": "integer"
+    }, 
+    "pki_profile_path": {
+      "description": "Select the PKI profile to be associated with the Virtual Service. This profile defines the Certificate Authority and Revocation List. It is a reference to an object of type PKIProfile.", 
+      "required": false, 
+      "title": "Pki profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_PKIPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBPKIProfile"
+          ]
+        }
+      ]
+    }, 
+    "post_accept_timeout": {
+      "default": 30000, 
+      "description": "The max allowed length of time between a client establishing a TCP connection and Avi receives the first byte of the client's HTTP request. Allowed values are 10-100000000. Unit is MILLISECONDS. Allowed in Basic(Allowed values- 30000) edition, Essentials(Allowed values- 30000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 30000.", 
+      "maximum": 100000000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Post accept timeout", 
+      "type": "integer"
+    }, 
+    "reset_conn_http_on_ssl_port": {
+      "default": false, 
+      "description": "If enabled, an HTTP request on an SSL port will result in connection close instead of a 400 response. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Reset conn http on ssl port", 
+      "type": "boolean"
+    }, 
+    "respond_with_100_continue": {
+      "default": true, 
+      "description": "Avi will respond with 100-Continue response if Expect  100-Continue header received from client. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Respond with 100 continue", 
+      "type": "boolean"
+    }, 
+    "secure_cookie_enabled": {
+      "default": false, 
+      "description": "Mark server cookies with the 'Secure' attribute. Client browsers will not send a cookie marked as secure over an unencrypted connection. If Avi is terminating SSL from clients and passing it as HTTP to the server, the server may return cookies without the secure flag set. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Secure cookie enabled", 
+      "type": "boolean"
+    }, 
+    "server_side_redirect_to_https": {
+      "default": false, 
+      "description": "When terminating client SSL sessions at Avi, servers may incorrectly send redirect to clients as HTTP. This option will rewrite the server's redirect responses for this virtual service from HTTP to HTTPS. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Server side redirect to https", 
+      "type": "boolean"
+    }, 
+    "ssl_client_certificate_action": {
+      "$ref": "<A HREF="schemas_ALBSSLClientCertificateAction.html">ALBSSLClientCertificateAction</A>, 
+      "description": "Set of match/action rules that govern what happens when the client certificate request is enabled.", 
+      "required": false, 
+      "title": "Ssl client certificate action"
+    }, 
+    "ssl_client_certificate_mode": {
+      "$ref": "<A HREF="schemas_ALBSSLClientCertificateMode.html">ALBSSLClientCertificateMode</A>, 
+      "default": "SSL_CLIENT_CERTIFICATE_NONE", 
+      "description": "Specifies whether the client side verification is set to none, request or require. Enum options - SSL_CLIENT_CERTIFICATE_NONE, SSL_CLIENT_CERTIFICATE_REQUEST, SSL_CLIENT_CERTIFICATE_REQUIRE. Allowed in Basic(Allowed values- SSL_CLIENT_CERTIFICATE_NONE,SSL_CLIENT_CERTIFICATE_REQUIRE) edition, Essentials(Allowed values- SSL_CLIENT_CERTIFICATE_NONE,SSL_CLIENT_CERTIFICATE_REQUIRE) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as SSL_CLIENT_CERTIFICATE_NONE.", 
+      "required": false, 
+      "title": "Ssl client certificate mode"
+    }, 
+    "use_app_keepalive_timeout": {
+      "default": false, 
+      "description": "Use 'Keep-Alive' header timeout sent by application instead of sending the HTTP Keep-Alive Timeout. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Use app keepalive timeout", 
+      "type": "boolean"
+    }, 
+    "websockets_enabled": {
+      "default": true, 
+      "description": "Enable Websockets proxy for traffic from clients to the virtual service. Connections to this VS start in HTTP mode. If the client requests an Upgrade to Websockets, and the server responds back with success, then the connection is upgraded to WebSockets mode. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Websockets enabled", 
+      "type": "boolean"
+    }, 
+    "x_forwarded_proto_enabled": {
+      "default": false, 
+      "description": "Insert an X-Forwarded-Proto header in the request sent to the server. When the client connects via SSL, Avi terminates the SSL, and then forwards the requests to the servers via HTTP, so the servers can determine the original protocol via this header. In this example, the value will be 'https'. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "X forwarded proto enabled", 
+      "type": "boolean"
+    }, 
+    "xff_alternate_name": {
+      "default": "X-Forwarded-For", 
+      "description": "Provide a custom name for the X-Forwarded-For header sent to the servers. Default value when not specified in API or module is interpreted by ALB Controller as X-Forwarded-For.", 
+      "required": false, 
+      "title": "Xff alternate name", 
+      "type": "string"
+    }, 
+    "xff_enabled": {
+      "default": true, 
+      "description": "The client's original IP address is inserted into an HTTP request header sent to the server. Servers may use this address for logging or other purposes, rather than Avi's source NAT address used in the Avi to server IP connection. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Xff enabled", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "HTTPApplicationProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

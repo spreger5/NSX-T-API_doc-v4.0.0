@@ -1,0 +1,154 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ColumnItem.html">ColumnItem</a> (<a href="types_ColumnItem.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Represents a column of the Grid", 
+  "id": "ColumnItem", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "column_identifier": {
+      "description": "Identifies the column and used for fetching content upon an user click or drilldown. If column identifier is not provided, the column's data will not participate in searches and drilldowns.", 
+      "title": "Identifier for this column", 
+      "type": "string"
+    }, 
+    "drilldown_id": {
+      "description": "Id of drilldown widget, if any. Id should be a valid id of an existing widget.", 
+      "maxLength": 255, 
+      "title": "Id of drilldown widget", 
+      "type": "string"
+    }, 
+    "field": {
+      "description": "Field from which values of the column will be derived.", 
+      "maxLength": 1024, 
+      "required": true, 
+      "title": "Column Field", 
+      "type": "string"
+    }, 
+    "hidden": {
+      "default": false, 
+      "description": "If set to true, hides the column", 
+      "title": "Hide the column", 
+      "type": "boolean"
+    }, 
+    "label": {
+      "$ref": "<A HREF="schemas_Label.html">Label</A>, 
+      "description": "Label of the column.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Column Label"
+    }, 
+    "navigation": {
+      "description": "Hyperlink of the specified UI page that provides details. If drilldown_id is provided, then navigation cannot be used.", 
+      "maxLength": 1024, 
+      "title": "Navigation to a specified UI page", 
+      "type": "string"
+    }, 
+    "render_configuration": {
+      "description": "Render configuration to be applied, if any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RenderConfiguration.html">RenderConfiguration</A>
+      }, 
+      "title": "Render Configuration", 
+      "type": "array"
+    }, 
+    "sort_ascending": {
+      "default": true, 
+      "description": "If true, the value of the column are sorted in ascending order. Otherwise, in descending order.", 
+      "title": "Represents order of sorting the values", 
+      "type": "boolean"
+    }, 
+    "sort_key": {
+      "description": "Sorting on column is based on the sort_key. sort_key represents the field in the output data on which sort is requested.", 
+      "maxLength": 255, 
+      "title": "Key for sorting on this column", 
+      "type": "string"
+    }, 
+    "tooltip": {
+      "description": "Multi-line text to be shown on tooltip while hovering over a cell in the grid.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tooltip.html">Tooltip</A>
+      }, 
+      "title": "Multi-line tooltip", 
+      "type": "array"
+    }, 
+    "type": {
+      "default": "String", 
+      "description": "Data type of the field.", 
+      "enum": [
+        "String", 
+        "Number", 
+        "Date"
+      ], 
+      "maxLength": 255, 
+      "required": true, 
+      "title": "Field data type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Grid Column", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

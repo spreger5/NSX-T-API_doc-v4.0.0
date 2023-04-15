@@ -1,0 +1,158 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SourceNsxApiEndpoint.html">SourceNsxApiEndpoint</a> (<a href="types_SourceNsxApiEndpoint.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Details about an existing NSX manager to be migrated", 
+  "id": "SourceNsxApiEndpoint", 
+  "module_id": "Migration", 
+  "properties": {
+    "auth_token": {
+      "description": "Auth token used to make REST calls to the source NSX API endpoint. This field is not applicable in case of vSphere network migration. Please generate the token with a sufficiently large duration so that it does not expire in the middle of the migration. If it does expire, then the token needs to be refreshed manually by invoking this API again with a new token. Alternatively, you can provide the username/password of the source NSX.", 
+      "readonly": false, 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Source NSX auth token", 
+      "type": "string"
+    }, 
+    "ip": {
+      "description": "IP address or hostname of a source NSX API endpoint. This field is not applicable in case of vSphere network migration.", 
+      "format": "hostname-or-ip", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Source NSX API endpoint IP address", 
+      "type": "string"
+    }, 
+    "nsx_password": {
+      "description": "Password for connecting to NSX manager. This field is not applicable in case of vSphere network migration.", 
+      "readonly": false, 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Password for NSX manager", 
+      "type": "string"
+    }, 
+    "nsx_syncrole": {
+      "description": "Signifies Universal Sync role status (STANDALONE, PRIMARY, SECONDARY) of a source NSX API endpoint.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Source NSX API endpoint Universal Sync role", 
+      "type": "string"
+    }, 
+    "nsx_username": {
+      "description": "Username for connecting to NSX manager. This field is not applicable in case of vSphere network migration.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Username for NSX manager", 
+      "type": "string"
+    }, 
+    "nsx_version": {
+      "description": "Build version (major, minor, patch) of a source NSX API endpoint.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Source NSX API endpoint build version", 
+      "type": "string"
+    }, 
+    "vc_ip": {
+      "description": "IP address or host name of VC.", 
+      "format": "hostname-or-ip", 
+      "readonly": false, 
+      "required": false, 
+      "title": "VC IP address or host name", 
+      "type": "string"
+    }, 
+    "vc_password": {
+      "description": "Password for connecting to VC.", 
+      "readonly": false, 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Password for VC", 
+      "type": "string"
+    }, 
+    "vc_port": {
+      "default": 443, 
+      "description": "VC port that will be used to fetch details.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "VC port", 
+      "type": "int"
+    }, 
+    "vc_username": {
+      "description": "Username for connecting to VC.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Username for VC", 
+      "type": "string"
+    }, 
+    "vc_version": {
+      "description": "Build version of VC.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VC build version", 
+      "type": "string"
+    }
+  }, 
+  "title": "Source NSX manager details", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

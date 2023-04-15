@@ -1,0 +1,155 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LineChartPlotConfiguration.html">LineChartPlotConfiguration</a> (<a href="types_LineChartPlotConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "A line chart plotting configuration.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_WidgetPlotConfiguration.html">WidgetPlotConfiguration</A>
+  }, 
+  "id": "LineChartPlotConfiguration", 
+  "module_id": "NsxDashboard", 
+  "properties": {
+    "allow_maximize": {
+      "description": "Allow maximize capability for this widget", 
+      "title": "Allow maximize capability for this widget", 
+      "type": "boolean"
+    }, 
+    "condition": {
+      "description": "If the condition is met then the given chart config is applied to the widget configuration.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition for this chart config", 
+      "type": "string"
+    }, 
+    "fill_gradient_area": {
+      "description": "Fill the line chart area with a gradient series color.", 
+      "title": "Fill the line chart area with a gradient series color.", 
+      "type": "boolean"
+    }, 
+    "num_of_series_to_display": {
+      "description": "Specifies the number of series to be displayed in a line chart. If no value is provided all the series will be displayed.", 
+      "maximum": 16, 
+      "minimum": 1, 
+      "title": "A number of series to be displayed upfront.", 
+      "type": "int"
+    }, 
+    "show_curved_lines": {
+      "default": true, 
+      "description": "Used for displaying the curved lines for a series in a line chart. By default, straight line is used to for a series in a line chart.", 
+      "title": "Show curved lines for series", 
+      "type": "boolean"
+    }, 
+    "show_data_in_tooltip": {
+      "default": false, 
+      "description": "Show the data in tooltip.", 
+      "title": "Show data in tooltip.", 
+      "type": "boolean"
+    }, 
+    "show_data_points": {
+      "default": true, 
+      "description": "Controls the visiblity of the data points on the line chart. If value is set to false data points wont be high- lighted on the lines.", 
+      "title": "Show the Data point highlighting in line chart", 
+      "type": "boolean"
+    }, 
+    "show_grid_lines": {
+      "default": true, 
+      "description": "Controls the visiblity of the grid lines in line chart.", 
+      "title": "Show grid lines", 
+      "type": "boolean"
+    }, 
+    "show_grouped_tooltip": {
+      "default": false, 
+      "description": "Controls the visiblity of the grouped tooltip in a line chart across all series.", 
+      "title": "Derives to show the grouped tooltip", 
+      "type": "boolean"
+    }, 
+    "show_min_max_on_series": {
+      "default": false, 
+      "description": "Controls the visiblity of the min and max value across line series in line chart.", 
+      "title": "Show min and max value on line series", 
+      "type": "boolean"
+    }, 
+    "show_unit_in_tooltip": {
+      "default": false, 
+      "description": "Show the data unit in tooltip.", 
+      "title": "Show data unit in tooltip.", 
+      "type": "boolean"
+    }, 
+    "sort_data_in_grouped_tooltip": {
+      "default": false, 
+      "description": "Sort the data in grouped tooltip.", 
+      "title": "Sort the data in grouped tooltip", 
+      "type": "boolean"
+    }, 
+    "sort_series": {
+      "default": false, 
+      "description": "Specifies whether the series should be sorted by the latest data point.", 
+      "title": "Perform sorting on series using the latest data point", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "A line chart plotting configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

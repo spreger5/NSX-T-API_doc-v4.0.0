@@ -1,0 +1,102 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_StatItem.html">StatItem</a> (<a href="types_StatItem.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Displayed as a single number. It can be used to show the characteristics of entities such as Logical Switches, Firewall Rules, and so on. For example, number of logical switches and their admin states.", 
+  "id": "StatItem", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "drilldown_id": {
+      "description": "Id of drilldown widget, if any. Id should be a valid id of an existing widget.", 
+      "title": "Id of drilldown widget", 
+      "type": "string"
+    }, 
+    "tooltip": {
+      "description": "Multi-line text to be shown on tooltip while hovering over the stat.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tooltip.html">Tooltip</A>
+      }, 
+      "minItems": 0, 
+      "title": "Multi-line tooltip", 
+      "type": "array"
+    }, 
+    "total": {
+      "description": "If expression for total is specified, it evaluates it. Total can be omitted if not needed to be shown.", 
+      "title": "Total", 
+      "type": "string"
+    }, 
+    "value": {
+      "description": "Expression for stat to be displayed.", 
+      "maxLength": 1024, 
+      "required": true, 
+      "title": "Stat", 
+      "type": "string"
+    }
+  }, 
+  "title": "Statistic of an entity", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

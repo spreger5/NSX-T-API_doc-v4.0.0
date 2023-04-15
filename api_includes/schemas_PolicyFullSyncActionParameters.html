@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyFullSyncActionParameters.html">PolicyFullSyncActionParameters</a> (<a href="types_PolicyFullSyncActionParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Full sync action request parameters to initiate full sync for the given LM, abort ongoing full sync or purge the histoic full sync events.", 
+  "id": "PolicyFullSyncActionParameters", 
+  "module_id": "PolicyFullSync", 
+  "properties": {
+    "action": {
+      "enum": [
+        "request_full_sync", 
+        "request_notifications_full_sync", 
+        "abort_current_sync", 
+        "purge_history"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "sync_type": {
+      "description": "If not specified, the value is defaulted to gm_to_lm_full_sync.", 
+      "enum": [
+        "gm_to_lm_full_sync"
+      ], 
+      "required": false, 
+      "title": "Type of full sync being requested", 
+      "type": "string"
+    }
+  }, 
+  "title": "Full sync action request parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

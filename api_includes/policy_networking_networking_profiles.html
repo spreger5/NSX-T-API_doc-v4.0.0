@@ -1,0 +1,925 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_networking_profiles.html' style='text-decoration: none'> Networking Profiles</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List BfdProfiles</h4><br>
+                      <span class="help_detail">Paginated list of all BfdProfiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListBfdProfile.html">GET /policy/api/v1/infra/bfd-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListBfdProfile.html">GET /policy/api/v1/global-infra/bfd-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete BFD Config and all the entities contained by this BfdProfile</h4><br>
+                      <span class="help_detail">Delete BFD Config and all the entities contained by this BfdProfile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteBfdProfile.html">DELETE /policy/api/v1/infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteBfdProfile.html">DELETE /policy/api/v1/global-infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a BfdProfile</h4><br>
+                      <span class="help_detail">Read a BfdProfile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBfdProfile.html">GET /policy/api/v1/infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadBfdProfile.html">GET /policy/api/v1/global-infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BfdProfile</h4><br>
+                      <span class="help_detail">If a BfdProfile with the bfd-profile-id is not already present,
+<br>
+create a new BfdProfile. If it already exists, update the
+<br>
+BfdProfile. This operation will fully replace the object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchBfdProfile.html">PATCH /policy/api/v1/infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchBfdProfile.html">PATCH /policy/api/v1/global-infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BfdProfile</h4><br>
+                      <span class="help_detail">If a BfdProfile with the bfd-profile-id is not already present,
+<br>
+create a new BfdProfile. If it already exists, update the
+<br>
+BfdProfile. This operation will fully replace the object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateBfdProfile.html">PUT /policy/api/v1/infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateBfdProfile.html">PUT /policy/api/v1/global-infra/bfd-profiles/&lt;bfd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the connectivity global configuration</h4><br>
+                      <span class="help_detail">Read the connectivity global configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadConnectivityGlobalConfig.html">GET /policy/api/v1/infra/connectivity-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the connectivity global configuration</h4><br>
+                      <span class="help_detail">Update the connectivity global configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchConnectivityGlobalConfig.html">PATCH /policy/api/v1/infra/connectivity-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the connectivity global configuration</h4><br>
+                      <span class="help_detail">Update the connectivity global configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateConnectivityGlobalConfig.html">PUT /policy/api/v1/infra/connectivity-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Evpn Tenant Configuration</h4><br>
+                      <span class="help_detail">List all evpn tunnel endpoint configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListEvpnTenantConfig.html">GET /policy/api/v1/infra/evpn-tenant-configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Evpn Tenant Configuration</h4><br>
+                      <span class="help_detail">Read Evpn Tenant Configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEvpnTenantConfig.html">GET /policy/api/v1/infra/evpn-tenant-configs/&lt;config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update Evpn Tenant Configuration</h4><br>
+                      <span class="help_detail">Create a global evpn tenant configuration if it is not already present,
+<br>
+otherwise update the evpn tenant configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchEvpnTenantConfig.html">PATCH /policy/api/v1/infra/evpn-tenant-configs/&lt;config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update Evpn Tenant Configuration</h4><br>
+                      <span class="help_detail">Create or update Evpn Tenant configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateEvpnTenantConfig.html">PUT /policy/api/v1/infra/evpn-tenant-configs/&lt;config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all gateway QoS profiles</h4><br>
+                      <span class="help_detail">Paginated list of all gateway QoS profle instances
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGatewayQosProfiles.html">GET /policy/api/v1/global-infra/gateway-qos-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListGatewayQosProfiles.html">GET /policy/api/v1/infra/gateway-qos-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete gateway QoS profile</h4><br>
+                      <span class="help_detail">Delete QoS profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGatewayQosProfile.html">DELETE /policy/api/v1/infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteGatewayQosProfile.html">DELETE /policy/api/v1/global-infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read gateway QoS profile</h4><br>
+                      <span class="help_detail">Read gateway QoS profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGatewayQosProfile.html">GET /policy/api/v1/infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadGatewayQosProfile.html">GET /policy/api/v1/global-infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update Gateway QoS profile</h4><br>
+                      <span class="help_detail">If profile with the qos-profile-id is not already present,
+<br>
+create a new gateway QoS profile instance. If it already exists, update
+<br>
+the gateway QoS profile instance with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGatewayQosProfile.html">PATCH /policy/api/v1/infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchGatewayQosProfile.html">PATCH /policy/api/v1/global-infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update Gateway QoS profile</h4><br>
+                      <span class="help_detail">If profile with the qos-profile-id is not already present,
+<br>
+create a new gateway QoS profile instance. If it already exists, replace
+<br>
+the gateway QoS profile instance with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceGatewayQosProfile.html">PUT /policy/api/v1/infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceGatewayQosProfile.html">PUT /policy/api/v1/global-infra/gateway-qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read global configuration</h4><br>
+                      <span class="help_detail">This rest routine is deprecated. Use /infra/connectivity-global-config for Connectivity global config and
+<br>
+/infra/ops-global-config for Operations global config.
+<br>
+Read global configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGlobalConfig.html">GET /policy/api/v1/infra/global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the global configuration</h4><br>
+                      <span class="help_detail">Update the global configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGlobalConfig.html">PATCH /policy/api/v1/infra/global-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the global configuration</h4><br>
+                      <span class="help_detail">This rest routine is deprecated. Use /infra/connectivity-global-config for Connectivity global config and
+<br>
+/infra/ops-global-config for Operations global config.
+<br>
+Update the global configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateGlobalConfig.html">PUT /policy/api/v1/infra/global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Igmp Profile</h4><br>
+                      <span class="help_detail">List all igmp profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyIgmpProfile.html">GET /policy/api/v1/infra/igmp-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Igmp Profile</h4><br>
+                      <span class="help_detail">Delete Igmp Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyIgmpProfile.html">DELETE /policy/api/v1/infra/igmp-profiles/&lt;igmp-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Igmp Profile</h4><br>
+                      <span class="help_detail">Read Igmp Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyIgmpProfile.html">GET /policy/api/v1/infra/igmp-profiles/&lt;igmp-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update igmp profile</h4><br>
+                      <span class="help_detail">Create a igmp profile with the igmp-profile-id is not already present,
+<br>
+otherwise update the igmp profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyIgmpProfile.html">PATCH /policy/api/v1/infra/igmp-profiles/&lt;igmp-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update igmp profile</h4><br>
+                      <span class="help_detail">Create or update igmp profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyIgmpProfile.html">PUT /policy/api/v1/infra/igmp-profiles/&lt;igmp-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all IPv6 DAD profiles</h4><br>
+                      <span class="help_detail">Paginated list of all IPv6 DAD profile instances
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpv6DadProfiles.html">GET /policy/api/v1/infra/ipv6-dad-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIpv6DadProfiles.html">GET /policy/api/v1/global-infra/ipv6-dad-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPv6 DAD profile</h4><br>
+                      <span class="help_detail">Delete IPv6 DAD profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpv6DadProfile.html">DELETE /policy/api/v1/infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteIpv6DadProfile.html">DELETE /policy/api/v1/global-infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read IPv6 DAD profile</h4><br>
+                      <span class="help_detail">Read IPv6 DAD profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIpv6DadProfile.html">GET /policy/api/v1/infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIpv6DadProfile.html">GET /policy/api/v1/global-infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update IPv6 DAD profile</h4><br>
+                      <span class="help_detail">If profile with the dad-profile-id is not already present,
+<br>
+create a new IPv6 DAD profile instance. If it already exists, update
+<br>
+the IPv6 DAD profile instance with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIpv6DadProfile.html">PATCH /policy/api/v1/infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchIpv6DadProfile.html">PATCH /policy/api/v1/global-infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update IPv6 DAD profile</h4><br>
+                      <span class="help_detail">If profile with the dad-profile-id is not already present,
+<br>
+create a new IPv6 DAD profile instance. If it already exists, replace
+<br>
+the IPv6 DAD profile instance with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIpv6DadProfile.html">PUT /policy/api/v1/infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceIpv6DadProfile.html">PUT /policy/api/v1/global-infra/ipv6-dad-profiles/&lt;dad-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all IPv6 NDRA profiles</h4><br>
+                      <span class="help_detail">Paginated list of all IPv6 NDRA profile instances
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpv6NdraProfiles.html">GET /policy/api/v1/infra/ipv6-ndra-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIpv6NdraProfiles.html">GET /policy/api/v1/global-infra/ipv6-ndra-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPv6 NDRA profile</h4><br>
+                      <span class="help_detail">Delete IPv6 NDRA profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpv6NdraProfile.html">DELETE /policy/api/v1/infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteIpv6NdraProfile.html">DELETE /policy/api/v1/global-infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read IPv6 NDRA profile</h4><br>
+                      <span class="help_detail">Read IPv6 NDRA profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIpv6NdraProfile.html">GET /policy/api/v1/infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIpv6NdraProfile.html">GET /policy/api/v1/global-infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update IPv6 NDRA profile</h4><br>
+                      <span class="help_detail">If profile with the ndra-profile-id is not already present,
+<br>
+create a new IPv6 NDRA profile instance. If it already exists, update
+<br>
+the IPv6 NDRA profile instance with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIpv6NdraProfile.html">PATCH /policy/api/v1/infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchIpv6NdraProfile.html">PATCH /policy/api/v1/global-infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update IPv6 NDRA profile</h4><br>
+                      <span class="help_detail">If profile with the ndra-profile-id is not already present,
+<br>
+create a new IPv6 NDRA profile instance. If it already exists, replace
+<br>
+the IPv6 NDRA profile instance with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIpv6NdraProfile.html">PUT /policy/api/v1/infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceIpv6NdraProfile.html">PUT /policy/api/v1/global-infra/ipv6-ndra-profiles/&lt;ndra-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read global Operations Configuration</h4><br>
+                      <span class="help_detail">Read global Operations Configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_readOpsGlobalConfig.html">GET /policy/api/v1/infra/ops-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the global Operationconfiguration</h4><br>
+                      <span class="help_detail">Update the global Operationconfiguration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_patchOpsGlobalConfig.html">PATCH /policy/api/v1/infra/ops-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the global Operations Configuration</h4><br>
+                      <span class="help_detail">Update the global Operations Configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_putOpsGlobalConfig.html">PUT /policy/api/v1/infra/ops-global-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Pim Profile</h4><br>
+                      <span class="help_detail">List all pim profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyPimProfile.html">GET /policy/api/v1/infra/pim-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Pim Profile</h4><br>
+                      <span class="help_detail">Read Pim Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyPimProfile.html">GET /policy/api/v1/infra/pim-profiles/&lt;pim-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update pim profile</h4><br>
+                      <span class="help_detail">Create a pim profile with the pim-profile-id is not already present,
+<br>
+otherwise update the pim profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyPimProfile.html">PATCH /policy/api/v1/infra/pim-profiles/&lt;pim-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update pim profile</h4><br>
+                      <span class="help_detail">Create or update pim profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyPimProfile.html">PUT /policy/api/v1/infra/pim-profiles/&lt;pim-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Policy Transport Zone Profiles</h4><br>
+                      <span class="help_detail">API will list all Policy Transport Zone Profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyTransportZoneProfiles.html">GET /policy/api/v1/infra/transport-zone-profiles</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyTransportZoneProfiles.html">GET /policy/api/v1/global-infra/transport-zone-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Policy Transport Zone Profile</h4><br>
+                      <span class="help_detail">API will delete Policy Transport Zone Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyTransportZoneProfile.html">DELETE /policy/api/v1/infra/transport-zone-profiles/&lt;tz-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Policy Transport Zone Profile</h4><br>
+                      <span class="help_detail">API will fetch Policy Transport Zone Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyTransportZoneProfile.html">GET /policy/api/v1/global-infra/transport-zone-profiles/&lt;tz-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyTransportZoneProfile.html">GET /policy/api/v1/infra/transport-zone-profiles/&lt;tz-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Policy Transport Zone Profile</h4><br>
+                      <span class="help_detail">API will create Policy Transport Zone Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyTransportZoneProfile.html">PATCH /policy/api/v1/infra/transport-zone-profiles/&lt;tz-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Policy Transport Zone Profile</h4><br>
+                      <span class="help_detail">API will update Policy Transport Zone Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyTransportZoneProfile.html">PUT /policy/api/v1/infra/transport-zone-profiles/&lt;tz-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Vni Pool Configuration</h4><br>
+                      <span class="help_detail">List all Vni Pool configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVniPoolConfig.html">GET /policy/api/v1/infra/vni-pools</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Vni Pool Configuration</h4><br>
+                      <span class="help_detail">Delete Vni Pool Configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteVniPoolConfig.html">DELETE /policy/api/v1/infra/vni-pools/&lt;vni-pool-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Vni Pool Configuration</h4><br>
+                      <span class="help_detail">Read Vni Pool Configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadVniPoolConfig.html">GET /policy/api/v1/infra/vni-pools/&lt;vni-pool-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update Vni Pool Configuration</h4><br>
+                      <span class="help_detail">Create a Vni Pool config if it is not already present,
+<br>
+otherwise update the Vni Pool configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchVniPoolConfig.html">PATCH /policy/api/v1/infra/vni-pools/&lt;vni-pool-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update Vni Pool Configuration</h4><br>
+                      <span class="help_detail">Create or update VniPool configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateVniPoolConfig.html">PUT /policy/api/v1/infra/vni-pools/&lt;vni-pool-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

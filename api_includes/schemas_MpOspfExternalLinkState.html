@@ -1,0 +1,123 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MpOspfExternalLinkState.html">MpOspfExternalLinkState</a> (<a href="types_MpOspfExternalLinkState.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "OSPF router link state details.", 
+  "id": "MpOspfExternalLinkState", 
+  "module_id": "AggSvcLogicalRouter", 
+  "properties": {
+    "advertised_router": {
+      "readonly": true, 
+      "required": true, 
+      "title": "OSPF advertised router", 
+      "type": "string"
+    }, 
+    "checksum": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Cost of the route", 
+      "type": "string"
+    }, 
+    "link_state_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "OSPF link id", 
+      "type": "string"
+    }, 
+    "metric_type": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Type of metric", 
+      "type": "string"
+    }, 
+    "route": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Route with ip address and mask"
+    }, 
+    "sequence_number": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Sequence number", 
+      "type": "string"
+    }, 
+    "tag": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Tag", 
+      "type": "integer"
+    }, 
+    "up_time": {
+      "readonly": true, 
+      "required": true, 
+      "title": "LSA age", 
+      "type": "integer"
+    }
+  }, 
+  "title": "OSPF router link state", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

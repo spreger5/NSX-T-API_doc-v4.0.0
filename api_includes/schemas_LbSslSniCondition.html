@@ -1,0 +1,114 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbSslSniCondition.html">LbSslSniCondition</a> (<a href="types_LbSslSniCondition.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This condition is used to match SSL SNI in client hello. This condition is only supported in TRANSPORT phase and HTTP_FORWARDING phase.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleCondition.html">LbRuleCondition</A>
+  }, 
+  "id": "LbSslSniCondition", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbSslSniCondition"
+  }, 
+  "properties": {
+    "case_sensitive": {
+      "default": true, 
+      "description": "If true, case is significant when comparing SNI value.", 
+      "required": false, 
+      "title": "A case sensitive flag for SNI comparing", 
+      "type": "boolean"
+    }, 
+    "inverse": {
+      "default": false, 
+      "required": false, 
+      "title": "A flag to indicate whether reverse the match result of this condition", 
+      "type": "boolean"
+    }, 
+    "match_type": {
+      "$ref": "<A HREF="schemas_LbRuleMatchType.html">LbRuleMatchType</A>, 
+      "default": "REGEX", 
+      "description": "Determine how a specified string value is used to match SNI.", 
+      "required": false, 
+      "title": "Match type of SNI"
+    }, 
+    "sni": {
+      "description": "The SNI(Server Name indication) in client hello message.", 
+      "required": true, 
+      "title": "The server name indication", 
+      "type": "string"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleConditionType.html">LbRuleConditionType</A>, 
+      "required": true, 
+      "title": "Type of load balancer rule condition"
+    }
+  }, 
+  "title": "Condition to match SSL SNI in client hello", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

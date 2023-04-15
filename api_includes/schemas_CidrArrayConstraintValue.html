@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CidrArrayConstraintValue.html">CidrArrayConstraintValue</a> (<a href="types_CidrArrayConstraintValue.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "List of CIDR values", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ConstraintValue.html">ConstraintValue</A>
+  }, 
+  "id": "CidrArrayConstraintValue", 
+  "module_id": "PolicyConstraints", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "CidrArrayConstraintValue"
+  }, 
+  "properties": {
+    "resource_type": {
+      "enum": [
+        "StringArrayConstraintValue", 
+        "CidrArrayConstraintValue", 
+        "IntegerArrayConstraintValue"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "values": {
+      "description": "This array can consist of a single IP address, IP address range or a subnet. Its type can be of either IPv4 or IPv6. Both IPv4 and IPv6 addresses within one expression is not allowed. Supported list of formats are, \"192.168.1.1\", \"192.168.1.1-192.168.1.100\", \"192.168.0.0/24\", \"fe80::250:56ff:fe83:318c\", \"fe80::250:56ff:fe83:3181-fe80::250:56ff:fe83:318c\", \"fe80::250:56ff:fe83:318c/64\".", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPElement.html">IPElement</A>
+      }, 
+      "maxItems": 100, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "Array of IP addresses", 
+      "type": "array"
+    }
+  }, 
+  "title": "Array of CIDR Values to perform operation", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

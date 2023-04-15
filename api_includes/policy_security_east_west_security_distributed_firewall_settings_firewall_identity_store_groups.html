@@ -1,0 +1,146 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_east_west_security.html' style='text-decoration: none'> East West Security</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall.html' style='text-decoration: none'> Distributed Firewall</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings_firewall_identity_store.html' style='text-decoration: none'> Firewall Identity Store</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings_firewall_identity_store_groups.html' style='text-decoration: none'> Groups</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Search for directory groups within a domain based on the substring of a distinguished name. (e.g. CN=User,DC=acme,DC=com) The search filter pattern can optionally support multiple (up to 100 maximum) search pattern separated by '|' (url encoded %7C). In this case, the search results will be returned as the union of all matching criteria. (e.g. CN=Ann,CN=Users,DC=acme,DC=com|CN=Bob,CN=Users,DC=acme,DC=com)</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SearchFirewallIdentityGroups.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List members of a directory group</h4><br>
+                      <span class="help_detail">A member group could be either direct member of the group specified by group_id or nested member of it. Both direct member groups and nested member groups are returned. Directory group member sync must be enabled to get the correct results.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallIdentityStoreGroupMemberGroups.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/groups/&lt;group-id&gt;/member-groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DhGroup.html">DhGroup</a> (<a href="types_DhGroup.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Diffie-Hellman groups represent algorithm used to derive shared keys between IPSec VPN initiator and responder over an unsecured network. GROUP2 uses 1048-bit Modular Exponentiation (MODP) group. GROUP5 uses 1536-bit MODP group. GROUP14 uses 2048-bit MODP group. GROUP15 uses 3072-bit MODP group. GROUP16 uses 4096-bit MODP group. GROUP19 uses 256-bit Random Elliptic Curve (ECP) group. GROUP20 uses 384-bit Random ECP group. GROUP21 uses 521-bit Random ECP group.", 
+  "enum": [
+    "GROUP2", 
+    "GROUP5", 
+    "GROUP14", 
+    "GROUP15", 
+    "GROUP16", 
+    "GROUP19", 
+    "GROUP20", 
+    "GROUP21"
+  ], 
+  "id": "DhGroup", 
+  "module_id": "PolicyVpnIPSecVpn", 
+  "title": "Diffie-Hellman groups", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

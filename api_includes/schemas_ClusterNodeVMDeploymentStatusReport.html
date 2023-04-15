@@ -1,0 +1,124 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ClusterNodeVMDeploymentStatusReport.html">ClusterNodeVMDeploymentStatusReport</a> (<a href="types_ClusterNodeVMDeploymentStatusReport.html">type</a>)
+</h3>
+<pre>{
+  "description": "Contains up-to-date information relating to an auto-deployed VM, including its status and (potentially) an error message.", 
+  "id": "ClusterNodeVMDeploymentStatusReport", 
+  "module_id": "ClusterNodeVMDeployment", 
+  "properties": {
+    "deployment_progress_state": {
+      "$ref": "<A HREF="schemas_VMDeploymentProgressState.html">VMDeploymentProgressState</A>, 
+      "description": "Detailed progress state of node VM deployment realization", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Deployment progress state of node VM"
+    }, 
+    "failure_code": {
+      "description": "In case of auto-deployment-related failure, the code for the error will be stored here.", 
+      "required": false, 
+      "title": "Error code for failure", 
+      "type": "integer"
+    }, 
+    "failure_message": {
+      "description": "In case of auto-deployment-related failure, an error message will be stored here.", 
+      "required": false, 
+      "title": "Error message for failure", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "Status of the addition or deletion of an auto-deployed cluster node VM.", 
+      "enum": [
+        "UNKNOWN_STATE", 
+        "VM_DEPLOYMENT_QUEUED", 
+        "VM_DEPLOYMENT_IN_PROGRESS", 
+        "VM_DEPLOYMENT_FAILED", 
+        "VM_POWER_ON_IN_PROGRESS", 
+        "VM_POWER_ON_FAILED", 
+        "WAITING_TO_REGISTER_VM", 
+        "VM_REGISTRATION_FAILED", 
+        "VM_WAITING_TO_CLUSTER", 
+        "VM_WAITING_TO_COME_ONLINE", 
+        "VM_ONLINE_FAILED", 
+        "VM_CLUSTERING_IN_PROGRESS", 
+        "VM_CLUSTERING_FAILED", 
+        "VM_CLUSTERING_SUCCESSFUL", 
+        "WAITING_TO_UNDEPLOY_VM", 
+        "VM_DECLUSTER_IN_PROGRESS", 
+        "VM_DECLUSTER_FAILED", 
+        "VM_DECLUSTER_SUCCESSFUL", 
+        "VM_POWER_OFF_IN_PROGRESS", 
+        "VM_POWER_OFF_FAILED", 
+        "VM_UNDEPLOY_IN_PROGRESS", 
+        "VM_UNDEPLOY_FAILED", 
+        "VM_UNDEPLOY_SUCCESSFUL"
+      ], 
+      "required": true, 
+      "title": "Auto-deployed VM's deployment status", 
+      "type": "string"
+    }
+  }, 
+  "title": "Report of a VM's deployment status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,1583 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                System Administration >
+            
+            
+                <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+            
+            
+                <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+            
+            
+                <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+            
+            
+                <a href='system_administration_configuration_fabric_nodes_transport_nodes.html' style='text-decoration: none'> Transport Nodes</a>
+            
+        </P>
+    
+        <div id="CreateTransportNodeWithDeploymentInfo">
+          <h2>
+            Create a Transport Node
+          </h2>
+          <span class="help_detail">Transport nodes are hypervisor hosts and NSX Edges that will participate
+<br>
+in an NSX-T overlay. For a hypervisor host, this means that it hosts
+<br>
+VMs that will communicate over NSX-T logical switches. For NSX Edges,
+<br>
+this means that it will have logical router uplinks and downlinks.
+<br>
+
+<br>
+This API creates transport node for a host node (hypervisor) or edge node
+<br>
+(router) in the transport network.
+<br>
+
+<br>
+When you run this command for a host, NSX Manager attempts to install the
+<br>
+NSX kernel modules, which are packaged as VIB, RPM, or DEB files. For the
+<br>
+installation to succeed, you must provide the host login credentials and the
+<br>
+host thumbprint.
+<br>
+
+<br>
+To get the ESXi host thumbprint, SSH to the host and run the
+<br>
+<b>openssl x509 -in /etc/vmware/ssl/rui.crt -fingerprint -sha256 -noout</b>
+<br>
+command.
+<br>
+
+<br>
+To generate host key thumbprint using SHA-256 algorithm please follow the
+<br>
+steps below.
+<br>
+
+<br>
+Log into the host, making sure that the connection is not vulnerable to a
+<br>
+man in the middle attack. Check whether a public key already exists.
+<br>
+Host public key is generally located at '/etc/ssh/ssh_host_rsa_key.pub'.
+<br>
+If the key is not present then generate a new key by running the following
+<br>
+command and follow the instructions.
+<br>
+
+<br>
+<b>ssh-keygen -t rsa</b>
+<br>
+
+<br>
+Now generate a SHA256 hash of the key using the following command. Please
+<br>
+make sure to pass the appropriate file name if the public key is stored with
+<br>
+a different file name other than the default 'id_rsa.pub'.
+<br>
+
+<br>
+<b>awk '{print $2}' id_rsa.pub | base64 -d | sha256sum -b | sed 's/ .*$//' | xxd -r -p | base64</b>
+<br>
+This api is deprecated as part of FN+TN unification. Please use Transport Node API
+<br>
+to install NSX components on a node.
+<br>
+
+<br>
+Additional documentation on creating a transport node can be found
+<br>
+in the NSX-T Installation Guide.
+<br>
+
+<br>
+In order for the transport node to forward packets,
+<br>
+the host_switch_spec property must be specified.
+<br>
+
+<br>
+Host switches (called bridges in OVS on KVM hypervisors) are the
+<br>
+individual switches within the host virtual switch. Virtual machines
+<br>
+are connected to the host switches.
+<br>
+
+<br>
+When creating a transport node, you need to specify if the host switches
+<br>
+are already manually preconfigured on the node, or if NSX should create
+<br>
+and manage the host switches. You specify this choice by the type
+<br>
+of host switches you pass in the host_switch_spec property of the
+<br>
+TransportNode request payload.
+<br>
+
+<br>
+For a KVM host, you can preconfigure the host switch, or you can have
+<br>
+NSX Manager perform the configuration. For an ESXi host or NSX Edge
+<br>
+node, NSX Manager always configures the host switch.
+<br>
+
+<br>
+To preconfigure the host switches on a KVM host, pass an array
+<br>
+of PreconfiguredHostSwitchSpec objects that describes those host
+<br>
+switches. In the current NSX-T release, only one prefonfigured host
+<br>
+switch can be specified.  See the PreconfiguredHostSwitchSpec schema
+<br>
+definition for documentation on the properties that must be provided.
+<br>
+Preconfigured host switches are only supported on KVM hosts, not on
+<br>
+ESXi hosts or NSX Edge nodes.
+<br>
+
+<br>
+To allow NSX to manage the host switch configuration on KVM hosts,
+<br>
+ESXi hosts, or NSX Edge nodes, pass an array of StandardHostSwitchSpec
+<br>
+objects in the host_switch_spec property, and NSX will automatically
+<br>
+create host switches with the properties you provide. In the current
+<br>
+NSX-T release, up to 16 host switches can be automatically managed.
+<br>
+See the StandardHostSwitchSpec schema definition for documentation on
+<br>
+the properties that must be provided.
+<br>
+
+<br>
+Note: Previous versions of NSX-T also used a property named
+<br>
+transport_zone_endpoints at TransportNode level. This property is
+<br>
+deprecated which creates some combinations of new client along with
+<br>
+old client payloads. Examples [1] & [2] show old/existing client
+<br>
+request and response by populating transport_zone_endpoints property
+<br>
+at TransportNode level. Example [3] shows TransportNode creation
+<br>
+request/response by populating transport_zone_endpoints property
+<br>
+at StandardHostSwitch level and other new properties.
+<br>
+
+<br>
+The request should either provide node_deployement_info or node_id.
+<br>
+
+<br>
+If the host node (hypervisor) or edge node (router) is already added in
+<br>
+system then it can be converted to transport node by providing node_id in
+<br>
+request.
+<br>
+
+<br>
+If host node (hypervisor) or edge node (router) is not already present in
+<br>
+system then information should be provided under node_deployment_info.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">POST</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/transport-nodes
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">TransportNode<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateTransportNodeWithDeploymentInfo', 'TransportNode.CreateTransportNodeWithDeploymentInfo.Request_Body')">+</span></div>
+  </div>
+    <div id="TransportNode.CreateTransportNodeWithDeploymentInfo.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_TransportNode.html">
+        <span>TransportNode</span>
+      </a> (<a href="schemas_TransportNode.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>failure_domain_id</td>
+            
+            <td>Id of the failure domain<br><br>Set failure domain of edge transport node which will help in
+<br>
+auto placement of TIER1 logical routers, DHCP Servers and
+<br>
+MDProxies, if failure domain based allocation is enabled in
+<br>
+edge cluster API. It is only supported for edge transport node
+<br>
+and not for host transport node. In case failure domain is not
+<br>
+set by user explicitly, it will be always assigned with default
+<br>
+system created failure domain.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>host_switch_spec</td>
+            
+            <td>Transport node host switch specification<br><br>This property is used to either create standard host switches
+<br>
+or to inform NSX about preconfigured host switches that already
+<br>
+exist on the transport node.
+<br>
+
+<br>
+Pass an array of either StandardHostSwitchSpec objects or
+<br>
+PreconfiguredHostSwitchSpec objects. It is an error to pass
+<br>
+an array containing different types of HostSwitchSpec objects.
+<br>
+</td>
+            
+            <td><a href="types_HostSwitchSpec.html">HostSwitchSpec</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_PreconfiguredHostSwitchSpec.html">PreconfiguredHostSwitchSpec</a><br><a href="types_StandardHostSwitchSpec.html">StandardHostSwitchSpec</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>is_overridden</td>
+            
+            <td>Indicates if config is different than compute collection.<br><br>This flag is relevant to only those hosts which are part of a
+<br>
+compute collection which has transport node profile (TNP)
+<br>
+applied on it. If you change the transport node configuration
+<br>
+and it is different than cluster level TNP then this flag will
+<br>
+be set to true
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>maintenance_mode</td>
+            
+            <td>transport node maintenance mode desired state<br><br>The property is read-only, used for querying result. User could update transport node maintenance mode by UpdateTransportNodeMaintenanceMode call.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: ENABLED, FORCE_ENABLED, DISABLED</td>
+          </tr>
+          <tr>
+            <td>node_deployment_info</td>
+            
+            <td></td>
+            
+            <td><a href="types_Node.html">Node</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_EdgeNode.html">EdgeNode</a><br><a href="types_HostNode.html">HostNode</a><br><a href="types_Node.html">Node</a><br><a href="types_PublicCloudGatewayNode.html">PublicCloudGatewayNode</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>node_id</td>
+            
+            <td>Unique Id of the fabric node</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>remote_tunnel_endpoint</td>
+            
+            <td>Configuration for a remote tunnel endpoint<br><br>This should be configured only on a single host switch. It is only
+<br>
+supported for edge transport nodes and not for host transport nodes.
+<br>
+This configuration will be used by overlay traffic that is meant to
+<br>
+be sent between NSX intersite domains.
+<br>
+</td>
+            
+            <td><a href="types_TransportNodeRemoteTunnelEndpointConfig.html">TransportNodeRemoteTunnelEndpointConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>TransportNode</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">POST https://&lt;nsx-mgr&gt;/api/v1/transport-nodes
+{
+    "resource_type": "TransportNode",
+    "display_name": "NSX Configured TN",
+    "description": "NSX configured Test Transport Node",
+    "host_switch_spec": {
+      "resource_type": "StandardHostSwitchSpec",
+      "host_switches": [
+        {
+           "host_switch_profile_ids": [
+               {
+                  "value": "e331116d-f59e-4004-8cfd-c577aefe563a",
+                  "key": "UplinkHostSwitchProfile"
+               }
+           ],
+           "host_switch_name": "nsxvswitch",
+           "pnics": [
+            {
+              "device_name": "vmnic1",
+              "uplink_name": "uplink1"
+            }
+           ],
+           "ip_assignment_spec": {
+              "resource_type": "StaticIpPoolSpec",
+              "ip_pool_id": "ecddcdde-4dc5-4026-ad4f-8857995d4c92"
+           },
+           "vmk_install_migration": [
+             {
+               "device_name": "vmk1",
+               "destination_network": "849e339e-64b7-47cb-9480-33068f70dc5a"
+             }
+           ],
+           "vmk_uninstall_migration": [
+          ]
+        }
+      ]
+    },
+    "transport_zone_endpoints": [
+      {
+       "transport_zone_id": "e14c6b8a-9edd-489f-b624-f9ef12afbd8f"
+      }
+    ],
+    "node_deployment_info": {
+    "resource_type": "HostNode",
+    "display_name": "FN1",
+    "fqdn": "sc2-rdops-vm03-dhcp-110-133.eng.vmware.com",
+    "ip_addresses": [
+      "10.192.156.199"
+    ],
+    "os_type": "ESXI",
+    "os_version": "6.5.0",
+    "host_credential": {
+    "username": "user1",
+    "password": "password",
+    "thumbprint": "cd57fb90a3c0afecb4db000fe5f1baa334a511f79a147dd63c876b765f027214"
+  }
+}
+POST https://&lt;nsx-mgr&gt;/api/v1/transport-nodes
+{
+   "host_switch_spec":{
+      "host_switches":[
+     {
+        "host_switch_name":"nsxvswitch",
+        "host_switch_profile_ids":[
+           {
+              "key":"UplinkHostSwitchProfile",
+              "value":"d3556a6a-9a8a-4ffd-a7f4-1f647044e195"
+           },
+           {
+              "key":"LldpHostSwitchProfile",
+              "value":"9e0b4d2d-d155-4b4b-8947-fbfe5b79f7cb"
+           }
+        ],
+        "pnics":[
+           {
+              "device_name":"fp-eth1",
+              "uplink_name":"uplink1"
+           }
+        ],
+        "ip_assignment_spec":{
+           "ip_pool_id":"1b261770-043e-4de0-a26f-9ae75bbb5857",
+           "resource_type":"StaticIpPoolSpec"
+        }
+     }
+      ],
+      "resource_type":"StandardHostSwitchSpec"
+   },
+   "transport_zone_endpoints":[
+      {
+     "transport_zone_id":"ccc808be-4d59-40e2-b801-2e550e9a3ecc",
+     "transport_zone_profile_ids":[
+        {
+           "resource_type":"BfdHealthMonitoringProfile",
+           "profile_id":"52035bb3-ab02-4a08-9884-18631312e50a"
+        }
+     ]
+      }
+   ],
+   "node_deployment_info":{
+      "deployment_config":{
+     "vm_deployment_config":{
+        "vc_id":"62c97633-e0f2-4a4e-b68e-5cf4f764b9f2",
+        "compute_id":"domain-c8",
+        "storage_id":"datastore-09",
+        "management_network_id":"network-15",
+        "hostname":"main-edge",
+        "data_network_ids":[
+           "network-15",
+           "network-15",
+           "network-15"
+        ],
+        "placement_type":"VsphereDeploymentConfig"
+     },
+     "form_factor":"SMALL",
+     "node_user_settings":{
+        "cli_username":"admin",
+        "root_password":"Admin!23Admin",
+        "cli_password":"Admin!23Admin"
+     }
+      },
+      "resource_type":"EdgeNode"
+   },
+   "resource_type":"TransportNode",
+   "display_name":"main-edge"
+}
+POST https://&lt;nsx-mgr&gt;/api/v1/transport-nodes
+{
+    "display_name": "VDS-TransportNode"
+    "description": "NSX configured VDS Transport Node",
+    "resource_type": "TransportNode",
+    "host_switch_spec": {
+      "host_switches": [
+      {
+        "host_switch_id": "50 24 3c 5b a4 42 56 9e-c1 7e 5d 1d bd 52 61 14",
+        "host_switch_type": "VDS",
+        "host_switch_mode": "STANDARD",
+        "host_switch_profile_ids": [
+          {
+            "key": "UplinkHostSwitchProfile",
+            "value": "0a26d126-7116-11e5-9d70-feff819cdc9f"
+          }
+        ],
+        "uplinks": [
+          {
+            "vds_uplink_name": "Uplink 1",
+            "uplink_name": "uplink-1"
+          }
+        ],
+        "ip_assignment_spec": {
+          "resource_type": "AssignedByDhcp"
+        },
+        "transport_zone_endpoints": [
+        {
+          "transport_zone_id": "3c930f4e-1817-418d-aed6-d73f6b309e98",
+          "transport_zone_profile_ids": [
+              {
+                  "resource_type": "BfdHealthMonitoringProfile",
+                  "profile_id": "52035bb3-ab02-4a08-9884-18631312e50a"
+              }
+          ]
+        }
+       ]
+      }
+     ],
+    "resource_type": "StandardHostSwitchSpec"
+    },
+    "transport_zone_endpoints": [],
+    "maintenance_mode": "DISABLED",
+    "node_deployment_info": {
+    "os_type": "ESXI",
+    "os_version": "7.0.0",
+    "managed_by_server": "10.184.158.114",
+    "discovered_node_id":"c59b9674-ce9b-4e52-9e8c-6bd1c6301ad3:host-13",
+    "resource_type": "HostNode",
+    "ip_addresses": [
+        "10.193.58.122"
+    ],
+    "host_credential": {
+      "username": "username",
+      "password": "password",
+      "thumbprint": "dd48bed4956e5a8d3b34950b9492013d1fdef3f92430ea337d40c41848867d82"
+    }
+  }
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">201 Created</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">TransportNode<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateTransportNodeWithDeploymentInfo', 'TransportNode.CreateTransportNodeWithDeploymentInfo.Response_Body')">+</span></div>
+  </div>
+    <div id="TransportNode.CreateTransportNodeWithDeploymentInfo.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_TransportNode.html">
+        <span>TransportNode</span>
+      </a> (<a href="schemas_TransportNode.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>failure_domain_id</td>
+            
+            <td>Id of the failure domain<br><br>Set failure domain of edge transport node which will help in
+<br>
+auto placement of TIER1 logical routers, DHCP Servers and
+<br>
+MDProxies, if failure domain based allocation is enabled in
+<br>
+edge cluster API. It is only supported for edge transport node
+<br>
+and not for host transport node. In case failure domain is not
+<br>
+set by user explicitly, it will be always assigned with default
+<br>
+system created failure domain.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>host_switch_spec</td>
+            
+            <td>Transport node host switch specification<br><br>This property is used to either create standard host switches
+<br>
+or to inform NSX about preconfigured host switches that already
+<br>
+exist on the transport node.
+<br>
+
+<br>
+Pass an array of either StandardHostSwitchSpec objects or
+<br>
+PreconfiguredHostSwitchSpec objects. It is an error to pass
+<br>
+an array containing different types of HostSwitchSpec objects.
+<br>
+</td>
+            
+            <td><a href="types_HostSwitchSpec.html">HostSwitchSpec</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_PreconfiguredHostSwitchSpec.html">PreconfiguredHostSwitchSpec</a><br><a href="types_StandardHostSwitchSpec.html">StandardHostSwitchSpec</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>is_overridden</td>
+            
+            <td>Indicates if config is different than compute collection.<br><br>This flag is relevant to only those hosts which are part of a
+<br>
+compute collection which has transport node profile (TNP)
+<br>
+applied on it. If you change the transport node configuration
+<br>
+and it is different than cluster level TNP then this flag will
+<br>
+be set to true
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>maintenance_mode</td>
+            
+            <td>transport node maintenance mode desired state<br><br>The property is read-only, used for querying result. User could update transport node maintenance mode by UpdateTransportNodeMaintenanceMode call.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: ENABLED, FORCE_ENABLED, DISABLED</td>
+          </tr>
+          <tr>
+            <td>node_deployment_info</td>
+            
+            <td></td>
+            
+            <td><a href="types_Node.html">Node</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_EdgeNode.html">EdgeNode</a><br><a href="types_HostNode.html">HostNode</a><br><a href="types_Node.html">Node</a><br><a href="types_PublicCloudGatewayNode.html">PublicCloudGatewayNode</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>node_id</td>
+            
+            <td>Unique Id of the fabric node</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>remote_tunnel_endpoint</td>
+            
+            <td>Configuration for a remote tunnel endpoint<br><br>This should be configured only on a single host switch. It is only
+<br>
+supported for edge transport nodes and not for host transport nodes.
+<br>
+This configuration will be used by overlay traffic that is meant to
+<br>
+be sent between NSX intersite domains.
+<br>
+</td>
+            
+            <td><a href="types_TransportNodeRemoteTunnelEndpointConfig.html">TransportNodeRemoteTunnelEndpointConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>TransportNode</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+      "resource_type": "TransportNode",
+      "description": "Updated NSX configured Test Transport Node",
+      "id": "77816de2-39c3-436c-b891-54d31f580961",
+      "display_name": "NSX Configured TN",
+      "host_switch_spec": {
+        "resource_type": "StandardHostSwitchSpec",
+        "host_switches": [
+          {
+            "host_switch_profile_ids": [
+              {
+                "value": "e331116d-f59e-4004-8cfd-c577aefe563a",
+                "key": "UplinkHostSwitchProfile"
+              },
+              {
+                "value": "9e0b4d2d-d155-4b4b-8947-fbfe5b79f7cb",
+                "key": "LldpHostSwitchProfile"
+              }
+            ],
+            "host_switch_name": "nsxvswitch",
+            "pnics": [
+              {
+                "device_name": "vmnic1",
+                "uplink_name": "uplink1"
+              }
+            ],
+            "ip_assignment_spec": {
+              "resource_type": "StaticIpPoolSpec",
+              "ip_pool_id": "ecddcdde-4dc5-4026-ad4f-8857995d4c92"
+            },
+            "vmk_install_migration": [
+              {
+                "device_name": "vmk1",
+                "destination_network": "849e339e-64b7-47cb-9480-33068f70dc5a"
+              }
+            ],
+            "vmk_uninstall_migration": [
+            ]
+          }
+        ]
+      },
+      "transport_zone_endpoints": [
+        {
+          "transport_zone_id": "e14c6b8a-9edd-489f-b624-f9ef12afbd8f",
+          "transport_zone_profile_ids": []
+        }
+      ],
+      "node_id": "41a4eebd-d6b9-11e6-b722-875041b9955d",
+      "node_deployment_info": {
+        "resource_type": "HostNode",
+        "id": "41a4eebd-d6b9-11e6-b722-875041b9955d",
+        "display_name": "FN1",
+        "fqdn": "sc2-rdops-vm03-dhcp-110-133.eng.vmware.com",
+        "ip_addresses": [
+          "10.192.156.199"
+        ],
+        "external_id": "a5113680-6a56-4386-9017-adffbe56c99e",
+        "discovered_ip_addresses": [],
+        "os_type": "ESXI",
+        "os_version": "",
+        "managed_by_server": "",
+        "_create_time": 1538632396987,
+        "_last_modified_user": "admin",
+        "_protection": "NOT_PROTECTED",
+        "_last_modified_time": 1538632396987,
+        "_create_user": "admin",
+        "_revision": 0
+      },
+      "_create_time": 1485299990773,
+      "_last_modified_user": "admin",
+      "_last_modified_time": 1485301913130,
+      "_create_user": "admin",
+      "_revision": 1
+    }
+{
+    "node_id": "f049ed71-44d1-4ee3-aab3-9945c184188f",
+    "host_switch_spec": {
+        "host_switches": [
+            {
+                "host_switch_name": "nsxvswitch",
+                "host_switch_profile_ids": [
+                    {
+                        "key": "UplinkHostSwitchProfile",
+                        "value": "d3556a6a-9a8a-4ffd-a7f4-1f647044e195"
+                    },
+                    {
+                        "key": "LldpHostSwitchProfile",
+                        "value": "9e0b4d2d-d155-4b4b-8947-fbfe5b79f7cb"
+                    }
+                ],
+                "pnics": [
+                    {
+                        "device_name": "fp-eth1",
+                        "uplink_name": "uplink1"
+                    }
+                ],
+                "is_migrate_pnics": false,
+                "ip_assignment_spec": {
+                    "ip_pool_id": "1b261770-043e-4de0-a26f-9ae75bbb5857",
+                    "resource_type": "StaticIpPoolSpec"
+                },
+                "cpu_config": [],
+                "transport_zone_endpoints": [
+                   {
+                        "transport_zone_id": "ccc808be-4d59-40e2-b801-2e550e9a3ecc",
+                        "transport_zone_profile_ids": [
+                          {
+                            "resource_type": "BfdHealthMonitoringProfile",
+                            "profile_id": "52035bb3-ab02-4a08-9884-18631312e50a"
+                          }
+                        ]
+                   }
+                ],
+                "vmk_install_migration": [],
+                "pnics_uninstall_migration": [],
+                "vmk_uninstall_migration": [],
+                "not_ready": false
+            }
+        ],
+        "resource_type": "StandardHostSwitchSpec"
+    },
+    "maintenance_mode": "DISABLED",
+    "node_deployment_info": {
+        "deployment_config": {
+            "vm_deployment_config": {
+                "vc_id": "62c97633-e0f2-4a4e-b68e-5cf4f764b9f2",
+                "compute_id": "domain-c8",
+                "storage_id": "datastore-09",
+                "management_network_id": "network-15",
+                "data_network_ids": [
+                    "network-15",
+                    "network-15",
+                    "network-15"
+                ],
+                "placement_type": "VsphereDeploymentConfig"
+            },
+            "form_factor": "SMALL",
+            "node_user_settings": {
+                "cli_username": "admin"
+            }
+        },
+        "node_settings": {
+            "hostname": "statEdge",
+            "enable_ssh": false,
+            "allow_ssh_root_login": false
+        },
+        "resource_type": "EdgeNode",
+        "id": "f049ed71-44d1-4ee3-aab3-9945c184188f",
+        "display_name": "statEdgeas1",
+        "external_id": "f049ed71-44d1-4ee3-aab3-9945c184188f",
+        "_create_user": "admin",
+        "_create_time": 1554291902909,
+        "_last_modified_user": "admin",
+        "_last_modified_time": 1554291902909,
+        "_system_owned": false,
+        "_protection": "NOT_PROTECTED",
+        "_revision": 0
+    },
+    "is_overridden": false,
+    "failure_domain_id": "4fc1e3b0-1cd4-4339-86c8-f76baddbaafb",
+    "resource_type": "TransportNode",
+    "id": "f049ed71-44d1-4ee3-aab3-9945c184188f",
+    "display_name": "statEdgeas1",
+    "_create_user": "admin",
+    "_create_time": 1554291903244,
+    "_last_modified_user": "admin",
+    "_last_modified_time": 1554291903244,
+    "_system_owned": false,
+    "_protection": "NOT_PROTECTED",
+    "_revision": 0
+}
+{
+  "node_id": "9820ce57-7e7f-435c-aa7d-b7a92ae41799",
+  "host_switch_spec": {
+    "host_switches": [
+      {
+        "host_switch_name": "dvs1",
+        "host_switch_id": "50 24 3c 5b a4 42 56 9e-c1 7e 5d 1d bd 52 61 14",
+        "host_switch_type": "VDS",
+        "host_switch_mode": "STANDARD",
+        "host_switch_profile_ids": [
+          {
+            "key": "UplinkHostSwitchProfile",
+            "value": "0a26d126-7116-11e5-9d70-feff819cdc9f"
+          }
+        ],
+        "pnics": [],
+        "uplinks": [
+          {
+            "vds_uplink_name": "Uplink 1",
+            "uplink_name": "uplink-1"
+          }
+        ],
+        "is_migrate_pnics": false,
+        "ip_assignment_spec": {
+          "resource_type": "AssignedByDhcp"
+        },
+        "cpu_config": [],
+        "transport_zone_endpoints": [
+          {
+            "transport_zone_id": "3c930f4e-1817-418d-aed6-d73f6b309e98",
+            "transport_zone_profile_ids": [
+              {
+                "resource_type": "BfdHealthMonitoringProfile",
+                "profile_id": "52035bb3-ab02-4a08-9884-18631312e50a"
+              }
+            ]
+          }
+        ],
+        "vmk_install_migration": [],
+        "pnics_uninstall_migration": [],
+        "vmk_uninstall_migration": [],
+        "not_ready": false
+      }
+    ],
+    "resource_type": "StandardHostSwitchSpec"
+  },
+  "transport_zone_endpoints": [],
+  "maintenance_mode": "DISABLED",
+  "node_deployment_info": {
+    "os_type": "ESXI",
+    "os_version": "7.0.0",
+    "managed_by_server": "10.184.158.114",
+    "discovered_node_id": "c59b9674-ce9b-4e52-9e8c-6bd1c6301ad3:host-13",
+    "resource_type": "HostNode",
+    "id": "9820ce57-7e7f-435c-aa7d-b7a92ae41799",
+    "display_name": "10.193.58.122",
+    "description": "",
+    "tags": [],
+    "external_id": "9820ce57-7e7f-435c-aa7d-b7a92ae41799",
+    "fqdn": "sc2-rdops-vm09-dhcp-58-122.eng.vmware.com",
+    "ip_addresses": [
+      "10.193.58.122"
+    ],
+    "discovered_ip_addresses": [
+      "10.193.58.122",
+      "169.254.93.203",
+      "169.254.1.1"
+    ],
+    "_create_user": "admin",
+    "_create_time": 1573674156762,
+    "_last_modified_user": "admin",
+    "_last_modified_time": 1573677951290,
+    "_protection": "NOT_PROTECTED",
+    "_revision": 0
+  },
+  "is_overridden": false,
+  "resource_type": "TransportNode",
+  "id": "9820ce57-7e7f-435c-aa7d-b7a92ae41799",
+  "display_name": "10.193.58.122",
+  "description": "",
+  "tags": [],
+  "_create_user": "admin",
+  "_create_time": 1573674159110,
+  "_last_modified_user": "admin",
+  "_last_modified_time": 1573677951481,
+  "_system_owned": false,
+  "_protection": "NOT_PROTECTED",
+  "_revision": 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">nodes_transport_nodes</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

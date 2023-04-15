@@ -1,0 +1,192 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AwsGatewayConfig.html">AwsGatewayConfig</a> (<a href="types_AwsGatewayConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores AWS gateway configuration like ami_id, key_pair_name and gateway_ha_configuration.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_GatewayConfig.html">GatewayConfig</A>
+  }, 
+  "id": "AwsGatewayConfig", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "ami_id": {
+      "description": "The ID of the Amazon Machine Image on which this gateway resides", 
+      "required": false, 
+      "title": "AMI id", 
+      "type": "string"
+    }, 
+    "ami_id_obsolete": {
+      "default": false, 
+      "description": "If this flag is set, NSX was upgraded after the gateway was deployed and this AMI ID should no longer be used", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag to identify if the AMI ID is related to the previous NSX release", 
+      "type": "boolean"
+    }, 
+    "cloud_fallback_security_group_id": {
+      "description": "Id of security group where the VMs should be moved after last gateway undeployed.", 
+      "required": false, 
+      "title": "Id of cloud security group", 
+      "type": "string"
+    }, 
+    "default_quarantine_policy_enabled": {
+      "default": false, 
+      "required": false, 
+      "title": "Flag to identify if default quarantine policy is enabled", 
+      "type": "boolean"
+    }, 
+    "dns_settings": {
+      "$ref": "<A HREF="schemas_DnsSettings.html">DnsSettings</A>, 
+      "deprecated": true, 
+      "description": "Settings related to Cloud gateway DNS configuration. This determines DNS configuration based on dns_mode.", 
+      "title": "DNS settings"
+    }, 
+    "gateway_connectivity_mode": {
+      "description": "Helps the user choose default connectivity mode that will be used between Cloud Service Manager and Gateway. PUBLIC IP: All the connections will go through the internet. When this mode is selected by the user, the user will have to select a public Ip address from the list of public IP's from the 'Public IP on Mgmt NIC' field. PRIVATE IP: All the connections will go through the VGW or any other configured VPN. When there is no input provided by the user, an attempt will be made using PRIVATE_IP (VGW) first and if that doesn't go through, an attempt will be made using PUBLIC_IP (IGW). And if both fail, it will cause an exception.", 
+      "enum": [
+        "PUBLIC_IP", 
+        "PRIVATE_IP"
+      ], 
+      "title": "Gateway Connectivity Mode", 
+      "type": "string"
+    }, 
+    "gateway_ha_configuration": {
+      "items": {
+        "$ref": "<A HREF="schemas_AwsGatewayHaConfig.html">AwsGatewayHaConfig</A>
+      }, 
+      "required": false, 
+      "title": "Aws Gateway HA configuration", 
+      "type": "array"
+    }, 
+    "is_ha_enabled": {
+      "required": false, 
+      "title": "Flag to identify if HA is enabled", 
+      "type": "boolean"
+    }, 
+    "key_pair_name": {
+      "required": false, 
+      "title": "The key pair name required to authenticate into any instance", 
+      "type": "string"
+    }, 
+    "managed_without_agents": {
+      "default": false, 
+      "description": "This flag determines if this virtual private cloud is managed with or without NSX agents. This flag is applicable only for this network. If this virtual private cloud is being managed without NSX agents, quarantine state and threat state will be NOT_APPLICABLE for all the virtual machines under it.", 
+      "required": false, 
+      "title": "Managed Without NSX Agents", 
+      "type": "boolean"
+    }, 
+    "nsx_manager_connection": {
+      "description": "Determines if connection to NSX Manager is via public IP or private IP", 
+      "enum": [
+        "PUBLIC_IP", 
+        "PRIVATE_IP"
+      ], 
+      "required": false, 
+      "title": "NSX Manager connection", 
+      "type": "string"
+    }, 
+    "proxy_server_profile": {
+      "description": "Id of the proxy server profile, corresponding proxy settings will be applied while deploying the gateway.", 
+      "required": false, 
+      "title": "Id of the proxy server profile", 
+      "type": "string"
+    }, 
+    "target_disk_size": {
+      "description": "This is the target disk size of the PCG appliance in GB. Based on this an additional disk is attached to the PCG appliance, if required. The supported size is 191 GB and this property should only be modified post upgrade for exisiting PCG appliances.", 
+      "required": false, 
+      "title": "Target Disk Size", 
+      "type": "integer"
+    }, 
+    "vpn_service_enabled": {
+      "default": true, 
+      "description": "Flag that will enable or disable inter-operation between NSX and non-NSX services via VPN.", 
+      "required": false, 
+      "title": "Flag to enable or disable inter-operation with services via VPN", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "AWS gateway configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

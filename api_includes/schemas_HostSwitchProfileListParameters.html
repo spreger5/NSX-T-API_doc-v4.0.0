@@ -1,0 +1,136 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostSwitchProfileListParameters.html">HostSwitchProfileListParameters</a> (<a href="types_HostSwitchProfileListParameters.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "HostSwitchProfileListParameters", 
+  "module_id": "BaseHostSwitchProfile", 
+  "properties": {
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "deployment_type": {
+      "$ref": "<A HREF="schemas_EdgeDeploymentType.html">EdgeDeploymentType</A>, 
+      "description": "If the node_type is specified, then deployment_type may be specified to filter uplink profiles applicable to only PHYSICAL_MACHINE or VIRTUAL_MACHINE deployments of these nodes.", 
+      "required": false, 
+      "title": "Deployment type of EdgeNode or PublicCloudGatewayNode"
+    }, 
+    "hostswitch_profile_type": {
+      "$ref": "<A HREF="schemas_HostSwitchProfileType.html">HostSwitchProfileType</A>, 
+      "required": false, 
+      "title": "Type of host switch profile"
+    }, 
+    "include_system_owned": {
+      "default": false, 
+      "required": false, 
+      "title": "Whether the list result contains system resources", 
+      "type": "boolean"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "node_type": {
+      "description": "The fabric node type is the resource_type of the Node such as EdgeNode and PublicCloudGatewayNode. If a fabric node type is given, uplink profiles that apply for nodes of the given type will be returned.", 
+      "enum": [
+        "EdgeNode", 
+        "PublicCloudGatewayNode"
+      ], 
+      "required": false, 
+      "title": "Fabric node type for which uplink profiles are to be listed", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "uplink_teaming_policy_name": {
+      "description": "If populated, only UplinkHostSwitchProfiles with the specified uplink teaming policy name are returned. Otherwise, any HostSwitchProfile can be returned.", 
+      "required": false, 
+      "title": "The host switch profile's uplink teaming policy name", 
+      "type": "string"
+    }
+  }, 
+  "title": "HostSwitchProfile List Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,177 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ComputeCollection.html">ComputeCollection</a> (<a href="types_ComputeCollection.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_DiscoveredResource.html">DiscoveredResource</A>
+  }, 
+  "id": "ComputeCollection", 
+  "module_id": "InventoryCmObj", 
+  "properties": {
+    "_last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cm_local_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Local Id of the compute collection in the Compute Manager", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "External ID of the ComputeCollection in the source Compute manager,\ne.g. mo-ref in VC\n", 
+      "type": "string"
+    }, 
+    "origin_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Id of the compute manager from where this Compute Collection was discovered", 
+      "type": "string"
+    }, 
+    "origin_properties": {
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Key-Value map of additional specific properties of\ncompute collection in the Compute Manager\n", 
+      "type": "array"
+    }, 
+    "origin_type": {
+      "readonly": true, 
+      "required": true, 
+      "title": "ComputeCollection type like VC_Cluster. Here the Compute Manager\ntype prefix would help in differentiating similar named Compute\nCollection types from different Compute Managers\n", 
+      "type": "string"
+    }, 
+    "owner_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Id of the owner of compute collection in the Compute Manager", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "description": "Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DiscoveredResourceScope.html">DiscoveredResourceScope</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of scopes for discovered resource", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

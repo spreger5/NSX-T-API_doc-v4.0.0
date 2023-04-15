@@ -1,0 +1,80 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbServiceSize.html">LbServiceSize</a> (<a href="types_LbServiceSize.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "The size of load balancer service can be, SMALL, MEDIUM, LARGE, XLARGE, or DLB. The first four sizes are realized on Edge node as a centralized load balancer. DLB is realized on each ESXi hypervisor as a distributed load balancer. DLB is supported for k8s cluster IPs managed by vSphere with Kubernetes. DLB is NOT supported for any other workload types. The load balancer service sizes, SMALL, MEDIUM, LARGE and XLARGE are all deprecated. Customers who are using this set of features are advised to migrate to NSX Advanced Load Balancer (Avi) which provides a superset of the NSX-T load balancing functionality.", 
+  "enum": [
+    "SMALL", 
+    "MEDIUM", 
+    "LARGE", 
+    "XLARGE", 
+    "DLB"
+  ], 
+  "id": "LbServiceSize", 
+  "module_id": "LoadBalancer", 
+  "title": "the size of load balancer service", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,375 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafPolicy.html">ALBWafPolicy</a> (<a href="types_ALBWafPolicy.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafPolicy object", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "ALBWafPolicy", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "allow_mode_delegation": {
+      "default": true, 
+      "description": "Allow Rules to overwrite the policy mode. This must be set if the policy mode is set to enforcement. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Allow mode delegation", 
+      "type": "boolean"
+    }, 
+    "application_signatures": {
+      "$ref": "<A HREF="schemas_ALBWafApplicationSignatures.html">ALBWafApplicationSignatures</A>, 
+      "description": "Application Specific Signatures.", 
+      "required": false, 
+      "title": "Application signatures"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "confidence_override": {
+      "$ref": "<A HREF="schemas_ALBAppLearningConfidenceOverride.html">ALBAppLearningConfidenceOverride</A>, 
+      "description": "Configure thresholds for confidence labels.", 
+      "required": false, 
+      "title": "Confidence override"
+    }, 
+    "created_by": {
+      "description": "Creator name.", 
+      "required": false, 
+      "title": "Created by", 
+      "type": "string"
+    }, 
+    "crs_overrides": {
+      "description": "Override attributes for CRS rules.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafRuleGroupOverrides.html">ALBWafRuleGroupOverrides</A>
+      }, 
+      "required": false, 
+      "title": "Crs overrides", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enable_app_learning": {
+      "default": false, 
+      "description": "Enable Application Learning for this WAF policy. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable app learning", 
+      "type": "boolean"
+    }, 
+    "enable_auto_rule_updates": {
+      "default": true, 
+      "description": "Enable Application Learning based rule updates on the WAF Profile. Rules will be programmed in dedicated WAF learning group. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable auto rule updates", 
+      "type": "boolean"
+    }, 
+    "failure_mode": {
+      "$ref": "<A HREF="schemas_ALBWafFailureMode.html">ALBWafFailureMode</A>, 
+      "default": "WAF_FAILURE_MODE_OPEN", 
+      "description": "WAF Policy failure mode. This can be 'Open' or 'Closed'. Enum options - WAF_FAILURE_MODE_OPEN, WAF_FAILURE_MODE_CLOSED. Default value when not specified in API or module is interpreted by ALB Controller as WAF_FAILURE_MODE_OPEN.", 
+      "required": false, 
+      "title": "Failure mode"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "learning_params": {
+      "$ref": "<A HREF="schemas_ALBAppLearningParams.html">ALBAppLearningParams</A>, 
+      "description": "Parameters for tuning Application learning.", 
+      "required": false, 
+      "title": "Learning params"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "markers": {
+      "description": "List of labels to be used for granular RBAC. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</A>
+      }, 
+      "required": false, 
+      "title": "Markers", 
+      "type": "array"
+    }, 
+    "min_confidence": {
+      "$ref": "<A HREF="schemas_ALBAppLearningConfidenceLabel.html">ALBAppLearningConfidenceLabel</A>, 
+      "default": "CONFIDENCE_VERY_HIGH", 
+      "description": "Minimum confidence label required for auto rule updates. Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE. Default value when not specified in API or module is interpreted by ALB Controller as CONFIDENCE_VERY_HIGH.", 
+      "required": false, 
+      "title": "Min confidence"
+    }, 
+    "mode": {
+      "$ref": "<A HREF="schemas_ALBWafMode.html">ALBWafMode</A>, 
+      "default": "WAF_MODE_DETECTION_ONLY", 
+      "description": "WAF Policy mode. This can be detection or enforcement. It can be overwritten by rules if allow_mode_delegation is set. Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT. Default value when not specified in API or module is interpreted by ALB Controller as WAF_MODE_DETECTION_ONLY.", 
+      "required": false, 
+      "title": "Mode"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "paranoia_level": {
+      "$ref": "<A HREF="schemas_ALBWafParanoiaLevel.html">ALBWafParanoiaLevel</A>, 
+      "default": "WAF_PARANOIA_LEVEL_LOW", 
+      "description": "WAF Ruleset paranoia  mode. This is used to select Rules based on the paranoia-level tag. Enum options - WAF_PARANOIA_LEVEL_LOW, WAF_PARANOIA_LEVEL_MEDIUM, WAF_PARANOIA_LEVEL_HIGH, WAF_PARANOIA_LEVEL_EXTREME. Default value when not specified in API or module is interpreted by ALB Controller as WAF_PARANOIA_LEVEL_LOW.", 
+      "required": false, 
+      "title": "Paranoia level"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "positive_security_model": {
+      "$ref": "<A HREF="schemas_ALBWafPositiveSecurityModel.html">ALBWafPositiveSecurityModel</A>, 
+      "description": "The Positive Security Model. This is used to describe how the request or parts of the request should look like. It is executed in the Request Body Phase of Avi WAF.", 
+      "required": false, 
+      "title": "Positive security model"
+    }, 
+    "post_crs_groups": {
+      "description": "WAF Rules are categorized in to groups based on their characterization. These groups are created by the user and will be enforced after the CRS groups.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafRuleGroup.html">ALBWafRuleGroup</A>
+      }, 
+      "required": false, 
+      "title": "Post crs groups", 
+      "type": "array"
+    }, 
+    "pre_crs_groups": {
+      "description": "WAF Rules are categorized in to groups based on their characterization. These groups are created by the user and will be  enforced before the CRS groups.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafRuleGroup.html">ALBWafRuleGroup</A>
+      }, 
+      "required": false, 
+      "title": "Pre crs groups", 
+      "type": "array"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }, 
+    "waf_crs_path": {
+      "description": "WAF core ruleset used for the CRS part of this Policy. It is a reference to an object of type WafCRS.", 
+      "required": false, 
+      "title": "Waf crs path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBWafPolicy"
+          ], 
+          "relationshipType": "ALB_WAFPOLICY_ALB_WAFCRS_RELATIONSHIP", 
+          "rightType": [
+            "ALBWafCRS"
+          ]
+        }
+      ]
+    }, 
+    "waf_profile_path": {
+      "description": "WAF Profile for WAF policy. It is a reference to an object of type WafProfile.", 
+      "required": true, 
+      "title": "Waf profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBWafPolicy"
+          ], 
+          "relationshipType": "ALB_WAFPOLICY_ALB_WAFPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBWafProfile"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "WafPolicy", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,234 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBVip.html">ALBVip</a> (<a href="types_ALBVip.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer Vip object", 
+  "id": "ALBVip", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "auto_allocate_floating_ip": {
+      "default": false, 
+      "description": "Auto-allocate floating/elastic IP from the Cloud infrastructure. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Auto allocate floating ip", 
+      "type": "boolean"
+    }, 
+    "auto_allocate_ip": {
+      "default": false, 
+      "description": "Auto-allocate VIP from the provided subnet. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Auto allocate ip", 
+      "type": "boolean"
+    }, 
+    "auto_allocate_ip_type": {
+      "$ref": "<A HREF="schemas_ALBIpAddressVersions.html">ALBIpAddressVersions</A>, 
+      "default": "V4_ONLY", 
+      "description": "Specifies whether to auto-allocate only a V4 address, only a V6 address, or one of each type. Enum options - V4_ONLY, V6_ONLY, V4_V6. Allowed in Basic(Allowed values- V4_ONLY) edition, Essentials(Allowed values- V4_ONLY) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as V4_ONLY.", 
+      "required": false, 
+      "title": "Auto allocate ip type"
+    }, 
+    "availability_zone": {
+      "description": "Availability-zone to place the Virtual Service. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Availability zone", 
+      "type": "string"
+    }, 
+    "avi_allocated_fip": {
+      "default": false, 
+      "description": "(internal-use) FIP allocated by Avi in the Cloud infrastructure. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Avi allocated fip", 
+      "type": "boolean"
+    }, 
+    "avi_allocated_vip": {
+      "default": false, 
+      "description": "(internal-use) VIP allocated by Avi in the Cloud infrastructure. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Avi allocated vip", 
+      "type": "boolean"
+    }, 
+    "discovered_networks": {
+      "description": "Discovered networks providing reachability for client facing Vip IP.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDiscoveredNetwork.html">ALBDiscoveredNetwork</A>
+      }, 
+      "required": false, 
+      "title": "Discovered networks", 
+      "type": "array"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Enable or disable the Vip. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "floating_ip": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "Floating IPv4 to associate with this Vip. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Floating ip"
+    }, 
+    "floating_ip6": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "Floating IPv6 address to associate with this Vip. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Floating ip6"
+    }, 
+    "floating_subnet6_uuid": {
+      "description": "If auto_allocate_floating_ip is True and more than one floating-ip subnets exist, then the subnet for the floating IPv6 address allocation. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Floating subnet6 uuid", 
+      "type": "string"
+    }, 
+    "floating_subnet_uuid": {
+      "description": "If auto_allocate_floating_ip is True and more than one floating-ip subnets exist, then the subnet for the floating IP address allocation. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Floating subnet uuid", 
+      "type": "string"
+    }, 
+    "ip6_address": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "IPv6 Address of the Vip.", 
+      "required": false, 
+      "title": "Ip6 address"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "IPv4 Address of the VIP.", 
+      "required": false, 
+      "title": "Ip address"
+    }, 
+    "ipam_network_subnet": {
+      "$ref": "<A HREF="schemas_ALBIPNetworkSubnet.html">ALBIPNetworkSubnet</A>, 
+      "description": "Subnet and/or Network for allocating VirtualService IP by IPAM Provider module.", 
+      "required": false, 
+      "title": "Ipam network subnet"
+    }, 
+    "network_name": {
+      "description": "Manually override the network on which the Vip is placed. It is a reference to an object of type Network.", 
+      "required": false, 
+      "title": "Network name", 
+      "type": "string"
+    }, 
+    "placement_networks": {
+      "description": "Placement networks/subnets to use for vip placement. Maximum of 10 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBVipPlacementNetwork.html">ALBVipPlacementNetwork</A>
+      }, 
+      "required": false, 
+      "title": "Placement networks", 
+      "type": "array"
+    }, 
+    "port_uuid": {
+      "description": "(internal-use) Network port assigned to the Vip IP address.", 
+      "required": false, 
+      "title": "Port uuid", 
+      "type": "string"
+    }, 
+    "prefix_length": {
+      "default": 32, 
+      "description": "Mask applied for the Vip, non-default mask supported only for wildcard Vip. Allowed values are 0-32. Allowed in Basic(Allowed values- 32) edition, Essentials(Allowed values- 32) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 32.", 
+      "maximum": 32, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Prefix length", 
+      "type": "integer"
+    }, 
+    "subnet": {
+      "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>, 
+      "description": "Subnet providing reachability for client facing Vip IP.", 
+      "required": false, 
+      "title": "Subnet"
+    }, 
+    "subnet6": {
+      "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>, 
+      "description": "Subnet providing reachability for client facing Vip IPv6. Allowed in Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Subnet6"
+    }, 
+    "subnet6_uuid": {
+      "description": "If auto_allocate_ip is True, then the subnet for the Vip IPv6 address allocation. This field is applicable only if the VirtualService belongs to an Openstack or AWS cloud, in which case it is mandatory, if auto_allocate is selected. Allowed in Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Subnet6 uuid", 
+      "type": "string"
+    }, 
+    "subnet_uuid": {
+      "description": "If auto_allocate_ip is True, then the subnet for the Vip IP address allocation. This field is applicable only if the VirtualService belongs to an Openstack or AWS cloud, in which case it is mandatory, if auto_allocate is selected.", 
+      "required": false, 
+      "title": "Subnet uuid", 
+      "type": "string"
+    }, 
+    "vip_id": {
+      "description": "Unique ID associated with the vip.", 
+      "required": true, 
+      "title": "Vip id", 
+      "type": "string"
+    }
+  }, 
+  "title": "Vip", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

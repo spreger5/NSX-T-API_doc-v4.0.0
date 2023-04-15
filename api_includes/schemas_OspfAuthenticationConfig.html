@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OspfAuthenticationConfig.html">OspfAuthenticationConfig</a> (<a href="types_OspfAuthenticationConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Enables OSPF authentication with specified mode and password.", 
+  "id": "OspfAuthenticationConfig", 
+  "module_id": "PolicyOspf", 
+  "properties": {
+    "key_id": {
+      "description": "Authentication secret key id is mandatory for type md5 with min value of 1 and max value 255.", 
+      "maximum": 255, 
+      "minimum": 1, 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Authentication secret key id", 
+      "type": "integer"
+    }, 
+    "mode": {
+      "default": "NONE", 
+      "description": "If mode is MD5 or PASSWORD, Authentication secret key is mandatory if mode is NONE, then authentication is disabled.", 
+      "enum": [
+        "NONE", 
+        "PASSWORD", 
+        "MD5"
+      ], 
+      "required": false, 
+      "title": "Authentication mode", 
+      "type": "string"
+    }, 
+    "secret_key": {
+      "description": "Authentication secret is mandatory for type password and md5 with min length of 1 and max length 8.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Authentication secret key", 
+      "type": "string"
+    }
+  }, 
+  "title": "OSPF Authentication Configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

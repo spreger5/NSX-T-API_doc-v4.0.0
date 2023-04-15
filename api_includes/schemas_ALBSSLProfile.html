@@ -1,0 +1,325 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSSLProfile.html">ALBSSLProfile</a> (<a href="types_ALBSSLProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SSLProfile object", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "ALBSSLProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "accepted_ciphers": {
+      "default": "AES:3DES:RC4", 
+      "description": "Ciphers suites represented as defined by https //www.openssl.org/docs/apps/ciphers.html. Default value when not specified in API or module is interpreted by ALB Controller as AES:3DES:RC4.", 
+      "required": false, 
+      "title": "Accepted ciphers", 
+      "type": "string"
+    }, 
+    "accepted_versions": {
+      "description": "Set of versions accepted by the server. Minimum of 1 items required.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBSSLVersion.html">ALBSSLVersion</A>
+      }, 
+      "required": true, 
+      "title": "Accepted versions", 
+      "type": "array"
+    }, 
+    "avi_tags": {
+      "description": "Placeholder for description of property tags of obj type SSLProfile field type str  type array.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBTag.html">ALBTag</A>
+      }, 
+      "required": false, 
+      "title": "Avi tags", 
+      "type": "array"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "cipher_enums": {
+      "description": "Enum options - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_3DES_EDE_CBC_SHA, TLS_AES_256_GCM_SHA384... Allowed in Basic(Allowed values- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA) edition, Essentials(Allowed values- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_3DES_EDE_CBC_SHA) edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBAcceptedCipherEnums.html">ALBAcceptedCipherEnums</A>
+      }, 
+      "required": false, 
+      "title": "Cipher enums", 
+      "type": "array"
+    }, 
+    "ciphersuites": {
+      "default": "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256", 
+      "description": "TLS 1.3 Ciphers suites represented as defined by U(https //www.openssl.org/docs/manmaster/man1/ciphers.html). Allowed in Basic edition, Essentials edition, Enterprise edition. Special default for Basic edition is TLS_AES_256_GCM_SHA384-TLS_AES_128_GCM_SHA256, Essentials edition is TLS_AES_256_GCM_SHA384-TLS_AES_128_GCM_SHA256, Enterprise is TLS_AES_256_GCM_SHA384-TLS_CHACHA20_POLY1305_SHA256-TLS_AES_128_GCM_SHA256. Default value when not specified in API or module is interpreted by ALB Controller as TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256.", 
+      "required": false, 
+      "title": "Ciphersuites", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enable_early_data": {
+      "default": false, 
+      "description": "Enable early data processing for TLS1.3 connections. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable early data", 
+      "type": "boolean"
+    }, 
+    "enable_ssl_session_reuse": {
+      "default": true, 
+      "description": "Enable SSL session re-use. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable ssl session reuse", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "markers": {
+      "description": "List of labels to be used for granular RBAC. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</A>
+      }, 
+      "required": false, 
+      "title": "Markers", 
+      "type": "array"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "prefer_client_cipher_ordering": {
+      "default": false, 
+      "description": "Prefer the SSL cipher ordering presented by the client during the SSL handshake over the one specified in the SSL Profile. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Prefer client cipher ordering", 
+      "type": "boolean"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "send_close_notify": {
+      "default": true, 
+      "description": "Send 'close notify' alert message for a clean shutdown of the SSL connection. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Send close notify", 
+      "type": "boolean"
+    }, 
+    "ssl_rating": {
+      "$ref": "<A HREF="schemas_ALBSSLRating.html">ALBSSLRating</A>, 
+      "description": "Placeholder for description of property ssl_rating of obj type SSLProfile field type str  type ref.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Ssl rating"
+    }, 
+    "ssl_session_timeout": {
+      "default": 86400, 
+      "description": "The amount of time in seconds before an SSL session expires. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 86400.", 
+      "required": false, 
+      "title": "Ssl session timeout", 
+      "type": "integer"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBSSLProfileType.html">ALBSSLProfileType</A>, 
+      "default": "SSL_PROFILE_TYPE_APPLICATION", 
+      "description": "SSL Profile Type. Enum options - SSL_PROFILE_TYPE_APPLICATION, SSL_PROFILE_TYPE_SYSTEM. Default value when not specified in API or module is interpreted by ALB Controller as SSL_PROFILE_TYPE_APPLICATION.", 
+      "required": false, 
+      "title": "Type"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "SSLProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

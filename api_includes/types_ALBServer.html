@@ -1,0 +1,522 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      ALBServer (<a href="schemas_ALBServer.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">Server</span>
+    <p>
+    <span class="help_detail">Advanced load balancer Server object</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>autoscaling_group_name</td>
+            
+            <td>Autoscaling group name<br><br>Name of autoscaling group this server belongs to.
+<br>
+Allowed in Essentials edition, Enterprise edition.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>availability_zone</td>
+            
+            <td>Availability zone<br><br>Availability-zone of the server VM.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description<br><br>A description of the Server.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>discovered_networks</td>
+            
+            <td>Discovered networks<br><br>(internal-use) Discovered networks providing reachability
+<br>
+for server IP.
+<br>
+This field is used internally by Avi, not editable by the
+<br>
+user.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBDiscoveredNetwork.html">ALBDiscoveredNetwork</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>Enabled<br><br>Enable, Disable or Graceful Disable determine if new or
+<br>
+existing connections to the server are allowed.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>external_orchestration_id</td>
+            
+            <td>External orchestration id<br><br>UID of server in external orchestration systems.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>external_uuid</td>
+            
+            <td>External uuid<br><br>UUID identifying VM in OpenStack and other external
+<br>
+compute.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>hostname</td>
+            
+            <td>Hostname<br><br>DNS resolvable name of the server.
+<br>
+May be used in place of the IP address.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ip</td>
+            
+            <td>Ip<br><br>IP Address of the server.
+<br>
+Required if there is no resolvable host name.
+<br>
+</td>
+            
+            <td><a href="types_ALBIpAddr.html">ALBIpAddr</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>is_static</td>
+            
+            <td>Is static<br><br>If statically learned.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>location</td>
+            
+            <td>Location<br><br>(internal-use) Geographic location of the server.Currently
+<br>
+only for internal usage.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td><a href="types_ALBGeoLocation.html">ALBGeoLocation</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>mac_address</td>
+            
+            <td>Mac address<br><br>MAC address of server.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>port</td>
+            
+            <td>Port<br><br>Optionally specify the servers port number.
+<br>
+This will override the pool's default server port
+<br>
+attribute.
+<br>
+Allowed values are 1-65535.
+<br>
+Special values are 0- 'use backend port in pool'.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 65535</td>
+          </tr>
+          <tr>
+            <td>prst_hdr_val</td>
+            
+            <td>Prst hdr val<br><br>Header value for custom header persistence.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ratio</td>
+            
+            <td>Ratio<br><br>Ratio of selecting eligible servers in the pool.
+<br>
+Allowed values are 1-20.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 20<br>Default: "1"</td>
+          </tr>
+          <tr>
+            <td>resolve_server_by_dns</td>
+            
+            <td>Resolve server by dns<br><br>Auto resolve server's IP using DNS name.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>rewrite_host_header</td>
+            
+            <td>Rewrite host header<br><br>Rewrite incoming Host Header to server name.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>server_node</td>
+            
+            <td>Server node<br><br>Hostname of the node where the server VM or container
+<br>
+resides.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>verify_network</td>
+            
+            <td>Verify network<br><br>Verify server belongs to a discovered network or reachable
+<br>
+via a discovered network.
+<br>
+Verify reachable network isn't the OpenStack management
+<br>
+network.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

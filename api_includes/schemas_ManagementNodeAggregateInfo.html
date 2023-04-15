@@ -1,0 +1,123 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ManagementNodeAggregateInfo.html">ManagementNodeAggregateInfo</a> (<a href="types_ManagementNodeAggregateInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseNodeAggregateInfo.html">BaseNodeAggregateInfo</A>
+  }, 
+  "id": "ManagementNodeAggregateInfo", 
+  "module_id": "ClusterManagement", 
+  "properties": {
+    "display_name": {
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "readonly": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "node_interface_properties": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeInterfaceProperties.html">NodeInterfaceProperties</A>
+      }, 
+      "readonly": true, 
+      "title": "Array of Node interface statistic properties", 
+      "type": "array"
+    }, 
+    "node_interface_statistics": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeInterfaceStatisticsProperties.html">NodeInterfaceStatisticsProperties</A>
+      }, 
+      "readonly": true, 
+      "title": "Array of Node network interface statistic properties", 
+      "type": "array"
+    }, 
+    "node_status": {
+      "$ref": "<A HREF="schemas_ClusterNodeStatus.html">ClusterNodeStatus</A>, 
+      "readonly": true
+    }, 
+    "node_status_properties": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeStatusProperties.html">NodeStatusProperties</A>
+      }, 
+      "title": "Time series of the node's system properties", 
+      "type": "array"
+    }, 
+    "role_config": {
+      "$ref": "<A HREF="schemas_ManagementClusterRoleConfig.html">ManagementClusterRoleConfig</A>, 
+      "readonly": true
+    }, 
+    "transport_nodes_connected": {
+      "minimum": 0, 
+      "readonly": true, 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

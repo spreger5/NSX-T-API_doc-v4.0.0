@@ -1,0 +1,192 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RuleStatistics.html">RuleStatistics</a> (<a href="types_RuleStatistics.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "RuleStatistics", 
+  "module_id": "Policy", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "byte_count": {
+      "description": "Aggregated number of bytes processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Bytes count", 
+      "type": "integer"
+    }, 
+    "hit_count": {
+      "description": "Aggregated number of hits received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Hits count", 
+      "type": "integer"
+    }, 
+    "internal_rule_id": {
+      "description": "Realized id of the rule on NSX MP. Policy Manager can create more than one rule per policy rule, in which case this identifier helps to distinguish between the multple rules created.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX internal rule id", 
+      "type": "string"
+    }, 
+    "l7_accept_count": {
+      "description": "Aggregated number of L7 Profile Accepted counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Accept count", 
+      "type": "integer"
+    }, 
+    "l7_reject_count": {
+      "description": "Aggregated number of L7 Profile Rejected counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Reject count", 
+      "type": "integer"
+    }, 
+    "l7_reject_with_response_count": {
+      "description": "Aggregated number of L7 Profile Rejected with Response counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Reject with response count", 
+      "type": "integer"
+    }, 
+    "lr_path": {
+      "description": "Path of the LR on which the section is applied in case of Edge FW.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical Router (Tier-0/Tier1) path", 
+      "type": "string"
+    }, 
+    "max_popularity_index": {
+      "description": "Maximum value of popularity index of all rules of the type. This is aggregated statistic which are computed with lower frequency compared to individual generic rule statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The maximum popularity index", 
+      "type": "integer"
+    }, 
+    "max_session_count": {
+      "description": "Maximum value of sessions count of all rules of the type. This is aggregated statistic which are computed with lower frequency compared to generic rule statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Maximum Sessions count", 
+      "type": "integer"
+    }, 
+    "packet_count": {
+      "description": "Aggregated number of packets processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Packets count", 
+      "type": "integer"
+    }, 
+    "popularity_index": {
+      "description": "This is calculated by sessions count divided by age of the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The index of the popularity of rule", 
+      "type": "integer"
+    }, 
+    "rule": {
+      "description": "Path of the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Rule path", 
+      "type": "string"
+    }, 
+    "session_count": {
+      "description": "Aggregated number of sessions processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "sessions count", 
+      "type": "integer"
+    }, 
+    "total_session_count": {
+      "description": "Aggregated number of sessions processed by all the rules This is aggregated statistic which are computed with lower frequency compared to individual generic rule  statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Total Sessions count", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

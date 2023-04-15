@@ -1,0 +1,273 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceInstance.html">ServiceInstance</a> (<a href="types_ServiceInstance.html">type</a>)
+</h3>
+<pre>{
+  "description": "The deployment of a registered service. Service instance is instantiation of service. It is the most used type of instance. It is a default instance to be used when NSX handles lifecycle of appliance. Deployment and appliance related all the information is necessary.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseServiceInstance.html">BaseServiceInstance</A>
+  }, 
+  "id": "ServiceInstance", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "ServiceInstance"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "attachment_point": {
+      "description": "Attachment point to be used by this service instance for deploying the Service-VM.", 
+      "enum": [
+        "TIER0_LR", 
+        "TIER1_LR", 
+        "SERVICE_PLANE", 
+        "HOST"
+      ], 
+      "readonly": false, 
+      "required": true, 
+      "title": "Attachment Point", 
+      "type": "string"
+    }, 
+    "deployed_to": {
+      "description": "List of resource references where service instance be deployed. Ex. Tier 0 Logical Router in case of N-S ServiceInsertion.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 128, 
+      "minItems": 1, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Deployed-to object list", 
+      "type": "array"
+    }, 
+    "deployment_mode": {
+      "default": "ACTIVE_STANDBY", 
+      "description": "Deployment mode specifies where the partner appliance will be deployed in HA or non-HA i.e standalone mode.", 
+      "enum": [
+        "STAND_ALONE", 
+        "ACTIVE_STANDBY"
+      ], 
+      "readonly": false, 
+      "required": true, 
+      "title": "Deployment Mode", 
+      "type": "string"
+    }, 
+    "deployment_spec_name": {
+      "description": "Name of the deployment spec to be used by this service instance.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Deployment Spec Name", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "implementation_type": {
+      "description": "Implementation to be used by this service instance for deploying the Service-VM.", 
+      "enum": [
+        "NORTH_SOUTH", 
+        "EAST_WEST"
+      ], 
+      "readonly": false, 
+      "required": true, 
+      "title": "Implementation Type", 
+      "type": "string"
+    }, 
+    "instance_deployment_config": {
+      "$ref": "<A HREF="schemas_InstanceDeploymentConfig.html">InstanceDeploymentConfig</A>, 
+      "description": "Instance Deployment Config contains the information to be injected during Service-VM deployment. This field is optional if the service only caters to functionality EPP(Endpoint Protection) and MPS.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Instance Deployment Config"
+    }, 
+    "instance_deployment_template": {
+      "$ref": "<A HREF="schemas_DeploymentTemplate.html">DeploymentTemplate</A>, 
+      "description": "The deployment template to be used by this service instance. The attribute values specific to this instance can be added.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Instance Deployment Template"
+    }, 
+    "on_failure_policy": {
+      "description": "Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.", 
+      "enum": [
+        "ALLOW", 
+        "BLOCK"
+      ], 
+      "required": false, 
+      "title": "On Failure Policy", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_ServiceInstanceResourceType.html">ServiceInstanceResourceType</A>, 
+      "required": true
+    }, 
+    "service_deployment_id": {
+      "description": "Id of the Service Deployment using which the instances were deployed. Its available only for instances that were deployed using service deployment API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Id of the Service Deployment using which the instances were deployed", 
+      "type": "string"
+    }, 
+    "service_id": {
+      "description": "The Service to which the service instance is associated.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service Id", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transport_type": {
+      "description": "Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.", 
+      "enum": [
+        "L2_BRIDGE", 
+        "L3_ROUTED", 
+        "NSH", 
+        "NA"
+      ], 
+      "readonly": false, 
+      "required": true, 
+      "title": "Transport Type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Normal Instance of a service", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

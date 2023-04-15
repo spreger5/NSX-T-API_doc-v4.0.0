@@ -1,0 +1,190 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services_bfd_peers.html' style='text-decoration: none'> BFD Peers</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List static routes BFD Peers</h4><br>
+                      <span class="help_detail">Returns information about all BFD peers created on specified logical router for static routes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListStaticHopBfdPeers.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/bfd-peers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a static hop BFD peer</h4><br>
+                      <span class="help_detail">Creates a BFD peer for static route. The required parameters includes peer IP address.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateStaticHopBfdPeer.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/bfd-peers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specified static route BFD peer cofigured on a specified logical router</h4><br>
+                      <span class="help_detail">Deletes the specified BFD peer present on specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteStaticHopBfdPeer.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a static route BFD peer</h4><br>
+                      <span class="help_detail">Read the BFD peer having specified ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadStaticHopBfdPeer.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a static route BFD peer</h4><br>
+                      <span class="help_detail">Modifies the static route BFD peer.
+<br>
+Modifiable parameters includes peer IP, enable flag and configuration of the BFD peer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateStaticHopBfdPeer.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

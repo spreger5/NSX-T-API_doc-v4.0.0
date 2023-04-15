@@ -1,0 +1,140 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSAMLSPConfig.html">ALBSAMLSPConfig</a> (<a href="types_ALBSAMLSPConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SAMLSPConfig object", 
+  "id": "ALBSAMLSPConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "cookie_name": {
+      "description": "HTTP cookie name for authenticated session.", 
+      "required": false, 
+      "title": "Cookie name", 
+      "type": "string"
+    }, 
+    "cookie_timeout": {
+      "default": 60, 
+      "description": "Cookie timeout in minutes. Allowed values are 1-1440. Unit is MIN. Default value when not specified in API or module is interpreted by ALB Controller as 60.", 
+      "maximum": 1440, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Cookie timeout", 
+      "type": "integer"
+    }, 
+    "entity_id": {
+      "description": "Globally unique SAML entityID for this node. The SAML application entity ID on the IDP should match this.", 
+      "required": true, 
+      "title": "Entity id", 
+      "type": "string"
+    }, 
+    "key": {
+      "description": "Key to generate the cookie.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHttpCookiePersistenceKey.html">ALBHttpCookiePersistenceKey</A>
+      }, 
+      "required": false, 
+      "title": "Key", 
+      "type": "array"
+    }, 
+    "signing_ssl_key_and_certificate_path": {
+      "description": "SP will use this SSL certificate to sign requests going to the IdP and decrypt the assertions coming from IdP. It is a reference to an object of type SSLKeyAndCertificate.", 
+      "required": false, 
+      "title": "Signing ssl key and certificate path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SSLKEYANDCERTIFICATE_RELATIONSHIP", 
+          "rightType": [
+            "ALBSSLKeyAndCertificate"
+          ]
+        }
+      ]
+    }, 
+    "single_signon_url": {
+      "description": "SAML Single Signon URL to be programmed on the IDP.", 
+      "required": true, 
+      "title": "Single signon url", 
+      "type": "string"
+    }, 
+    "sp_metadata": {
+      "description": "SAML SP metadata for this application.", 
+      "required": false, 
+      "title": "Sp metadata", 
+      "type": "string"
+    }, 
+    "use_idp_session_timeout": {
+      "description": "By enabling this field IdP can control how long the SP session can exist through the SessionNotOnOrAfter field in the AuthNStatement of SAML Response.", 
+      "required": false, 
+      "title": "Use idp session timeout", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "SAMLSPConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

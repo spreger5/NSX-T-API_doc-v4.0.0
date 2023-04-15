@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FlowInfo.html">FlowInfo</a> (<a href="types_FlowInfo.html">type</a>)
+</h3>
+<pre>{
+  "description": "Provides details of config flow in federation Federation has the following flows - Global Manager to Local Manager (GM -&gt; LM) - Local Manager to Glocal Manager (LM -&gt; GM) - Global Manager Active to Glocal Manager Standby (GM -&gt; GM) - Local Manager to Local Manager (LM -&gt; LM)", 
+  "id": "FlowInfo", 
+  "module_id": "FederationObservability", 
+  "properties": {
+    "cross_site_flow_info": {
+      "$ref": "<A HREF="schemas_CrossSiteFlowInfo.html">CrossSiteFlowInfo</A>, 
+      "read_only": true, 
+      "title": "Corss site flow information for the flow"
+    }, 
+    "flow_type": {
+      "enum": [
+        "GM_TO_LM", 
+        "LM_TO_GM", 
+        "GM_TO_GM", 
+        "LM_TO_LM", 
+        "GM_WORK_QUEUE", 
+        "GM_DELETE_QUEUE"
+      ], 
+      "read_only": true, 
+      "title": "Flow identifier", 
+      "type": "string"
+    }, 
+    "id": {
+      "read_only": true, 
+      "title": "System identifier for the flow", 
+      "type": "string"
+    }, 
+    "queue_infos": {
+      "description": "Every flow will have transmitter and receiver queues.", 
+      "items": {
+        "$ref": "<A HREF="schemas_FederationQueueInfo.html">FederationQueueInfo</A>
+      }, 
+      "read_only": true, 
+      "title": "Queue information for the flow", 
+      "type": "array"
+    }
+  }, 
+  "title": "Details of config flow", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

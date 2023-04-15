@@ -1,0 +1,123 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SupportBundleRequest.html">SupportBundleRequest</a> (<a href="types_SupportBundleRequest.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "SupportBundleRequest", 
+  "properties": {
+    "container_nodes": {
+      "items": {
+        "$ref": "<A HREF="schemas_SupportBundleContainerNode.html">SupportBundleContainerNode</A>
+      }, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "List of container clusters and their nodes requiring support bundle collection", 
+      "type": "array"
+    }, 
+    "content_filters": {
+      "default": [
+        "DEFAULT"
+      ], 
+      "description": "&lt;p&gt;List of content filters that specify additional content or action when collecting support bundle. &lt;/p&gt; &lt;ul&gt;&lt;li&gt;Filter &lt;code&gt;ALL&lt;/code&gt; includes core dumps and audit logs in support bundle&lt;/li&gt; &lt;li&gt;Filter &lt;code&gt;REMOVE_CORE_FILES&lt;/code&gt; can optionally be in list with &lt;code&gt;ALL&lt;/code&gt;, to remove core dump files after collected in support bundle&lt;/li&gt;&lt;/ul&gt; &lt;p&gt;By default no core dumps and audit logs are included in support bundle with filter &lt;code&gt;DEFAULT&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;Note, &lt;code&gt;REMOVE_CORE_FILES&lt;/code&gt; is limited to NSX appliance nodes only.&lt;/p&gt;", 
+      "items": {
+        "$ref": "<A HREF="schemas_ContentFilterValue.html">ContentFilterValue</A>
+      }, 
+      "minItems": 1, 
+      "title": "Bundle should include content of specified type", 
+      "type": "array"
+    }, 
+    "dynamic_content_filters": {
+      "default": [
+        "ALL"
+      ], 
+      "description": "List of dynamic content filters that specify additional content to include in the support bundle. The list of available filters available depends on your NSX-T deployment and can be determined by invoking the GET /api/v1/adminstration/support-bundles/dynamic-content-filters NSX API. For example, if NSX Intelligence is deployed, filters for collecting specific information about services are available.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DynamicContentFilterValue.html">DynamicContentFilterValue</A>
+      }, 
+      "required": false, 
+      "title": "List of content filters that decide the additional content that go into the support bundle", 
+      "type": "array"
+    }, 
+    "log_age_limit": {
+      "minimum": 1, 
+      "title": "Include log files with modified times not past the age limit in days", 
+      "type": "integer"
+    }, 
+    "nodes": {
+      "items": {
+        "type": "string"
+      }, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "List of cluster/fabric node UUIDs processed in specified order", 
+      "type": "array"
+    }, 
+    "remote_file_server": {
+      "$ref": "<A HREF="schemas_SupportBundleRemoteFileServer.html">SupportBundleRemoteFileServer</A>, 
+      "title": "Remote file server to copy bundles to, bundle in response body if not specified"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

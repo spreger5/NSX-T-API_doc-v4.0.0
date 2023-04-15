@@ -1,0 +1,184 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UpgradeUnitAggregateInfo.html">UpgradeUnitAggregateInfo</a> (<a href="types_UpgradeUnitAggregateInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "UpgradeUnitAggregateInfo", 
+  "module_id": "Upgrade", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "current_version": {
+      "description": "This is component version e.g. if upgrade unit is of type edge, then this is edge version.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Current version of upgrade unit", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "readonly": false, 
+      "required": false, 
+      "title": "Name of the upgrade unit", 
+      "type": "string"
+    }, 
+    "errors": {
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of errors occurred during upgrade of this upgrade unit", 
+      "type": "array"
+    }, 
+    "group": {
+      "$ref": "<A HREF="schemas_UpgradeUnitGroupInfo.html">UpgradeUnitGroupInfo</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Info of the group to which this upgrade unit belongs"
+    }, 
+    "id": {
+      "description": "Identifier of the upgrade unit", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Identifier of the upgrade unit", 
+      "type": "string"
+    }, 
+    "metadata": {
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Metadata about upgrade unit", 
+      "type": "array"
+    }, 
+    "percent_complete": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Indicator of upgrade progress in percentage", 
+      "type": "number"
+    }, 
+    "post_upgrade_checks": {
+      "$ref": "<A HREF="schemas_UpgradeCheckListResults.html">UpgradeCheckListResults</A>, 
+      "readonly": true, 
+      "required": false
+    }, 
+    "pre_upgrade_checks": {
+      "$ref": "<A HREF="schemas_UpgradeCheckListResults.html">UpgradeCheckListResults</A>, 
+      "readonly": true, 
+      "required": false
+    }, 
+    "status": {
+      "enum": [
+        "SUCCESS", 
+        "FAILED", 
+        "IN_PROGRESS", 
+        "NOT_STARTED", 
+        "PAUSING", 
+        "PAUSED"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Status of upgrade unit", 
+      "type": "string"
+    }, 
+    "type": {
+      "readonly": false, 
+      "required": false, 
+      "title": "Upgrade unit type", 
+      "type": "string"
+    }, 
+    "warnings": {
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of warnings indicating issues with the upgrade unit that may result in upgrade failure", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBFailActionHTTPRedirect.html">ALBFailActionHTTPRedirect</a> (<a href="types_ALBFailActionHTTPRedirect.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer FailActionHTTPRedirect object", 
+  "id": "ALBFailActionHTTPRedirect", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "host": {
+      "description": "host of FailActionHTTPRedirect.", 
+      "required": true, 
+      "title": "Host", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "path of FailActionHTTPRedirect.", 
+      "required": false, 
+      "title": "Path", 
+      "type": "string"
+    }, 
+    "protocol": {
+      "$ref": "<A HREF="schemas_ALBHTTPProtocol.html">ALBHTTPProtocol</A>, 
+      "default": "HTTP", 
+      "description": "Enum options - HTTP, HTTPS. Allowed in Basic(Allowed values- HTTP) edition, Enterprise edition. Special default for Basic edition is HTTP, Enterprise is HTTPS. Default value when not specified in API or module is interpreted by ALB Controller as HTTP.", 
+      "required": false, 
+      "title": "Protocol"
+    }, 
+    "query": {
+      "description": "query of FailActionHTTPRedirect.", 
+      "required": false, 
+      "title": "Query", 
+      "type": "string"
+    }, 
+    "status_code": {
+      "$ref": "<A HREF="schemas_ALBHTTPRedirectStatusCode.html">ALBHTTPRedirectStatusCode</A>, 
+      "default": "HTTP_REDIRECT_STATUS_CODE_302", 
+      "description": "Enum options - HTTP_REDIRECT_STATUS_CODE_301, HTTP_REDIRECT_STATUS_CODE_302, HTTP_REDIRECT_STATUS_CODE_307. Allowed in Basic(Allowed values- HTTP_REDIRECT_STATUS_CODE_302) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as HTTP_REDIRECT_STATUS_CODE_302.", 
+      "required": false, 
+      "title": "Status code"
+    }
+  }, 
+  "title": "FailActionHTTPRedirect", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

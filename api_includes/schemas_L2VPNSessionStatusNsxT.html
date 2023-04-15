@@ -1,0 +1,125 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_L2VPNSessionStatusNsxT.html">L2VPNSessionStatusNsxT</a> (<a href="types_L2VPNSessionStatusNsxT.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "L2VPN Session Status represents status on an NSX-T type of enforcement point.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_L2VPNSessionStatusPerEP.html">L2VPNSessionStatusPerEP</A>
+  }, 
+  "id": "L2VPNSessionStatusNsxT", 
+  "module_id": "PolicyVpnStats", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "L2VPNSessionStatusNsxT"
+  }, 
+  "properties": {
+    "alarm": {
+      "$ref": "<A HREF="schemas_PolicyRuntimeAlarm.html">PolicyRuntimeAlarm</A>, 
+      "description": "Alarm information details.", 
+      "readonly": true, 
+      "title": "Alarm Information Details"
+    }, 
+    "display_name": {
+      "description": "Display name of l2vpn session.", 
+      "readonly": true, 
+      "title": "Display name", 
+      "type": "string"
+    }, 
+    "enforcement_point_path": {
+      "description": "Policy Path referencing the enforcement point where the info is fetched.", 
+      "readonly": true, 
+      "title": "Enforcement point Path", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "enum": [
+        "L2VPNSessionStatusNsxT"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "runtime_status": {
+      "description": "L2 VPN session status, specifies UP/DOWN.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "readonly": true, 
+      "title": "L2 VPN session status", 
+      "type": "string"
+    }, 
+    "transport_tunnels": {
+      "description": "Transport tunnels status.", 
+      "items": {
+        "$ref": "<A HREF="schemas_L2VPNSessionTransportTunnelStatus.html">L2VPNSessionTransportTunnelStatus</A>
+      }, 
+      "readonly": true, 
+      "title": "Transport tunnels status", 
+      "type": "array"
+    }
+  }, 
+  "title": "L2VPN session status summary", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

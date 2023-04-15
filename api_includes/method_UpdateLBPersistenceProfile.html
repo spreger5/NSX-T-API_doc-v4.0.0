@@ -1,0 +1,2823 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Policy >
+            
+            
+                <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+            
+            
+                <a href='policy_networking_network_services_load_balancing.html' style='text-decoration: none'> Load Balancing</a> >
+            
+            
+                <a href='policy_networking_network_services_load_balancing_load_balancer_profiles.html' style='text-decoration: none'> Load Balancer Profiles</a> >
+            
+            
+                <a href='policy_networking_network_services_load_balancing_load_balancer_profiles_load_balancer_persistence_profiles.html' style='text-decoration: none'> Load Balancer Persistence Profiles</a>
+            
+        </P>
+    
+        <div id="UpdateLBPersistenceProfile">
+          <h2>
+            Create or update a LBPersistenceProfile
+          </h2>
+          <span class="help_detail">If a LBPersistenceProfile with the lb-persistence-profile-id is not
+<br>
+already present, create a new LBPersistenceProfile. If it already exists,
+<br>
+update the LBPersistenceProfile. This is a full replace.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+              <span class="help_detail">This API is available when using VMware Cloud (AWS, Dell-EMC, Outpost, Hyperscalers) or VMware NSX.</span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">PUT</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/infra/lb-persistence-profiles/&lt;lb-persistence-profile-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+                
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">LBCookiePersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBCookiePersistenceProfile.UpdateLBPersistenceProfile.Request_Body')">+</span></div>
+  </div>
+    <div id="LBCookiePersistenceProfile.UpdateLBPersistenceProfile.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBCookiePersistenceProfile.html">
+        <span>LBCookiePersistenceProfile</span>
+      </a> (<a href="schemas_LBCookiePersistenceProfile.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_domain</td>
+            
+            <td>Cookie domain<br><br>HTTP cookie domain could be configured, only available for insert mode.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_fallback</td>
+            
+            <td>Cookie persistence fallback<br><br>If fallback is true, once the cookie points to a server that is down
+<br>
+(i.e. admin state DISABLED or healthcheck state is DOWN), then a new
+<br>
+server is selected by default to handle that request.
+<br>
+If fallback is false, it will cause the request to be rejected if
+<br>
+cookie points to a server.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>cookie_garble</td>
+            
+            <td>Cookie persistence garble<br><br>If garble is set to true, cookie value (server IP and port) would be
+<br>
+encrypted.
+<br>
+If garble is set to false, cookie value would be plain text.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>cookie_httponly</td>
+            
+            <td>Cookie httponly flag<br><br>If cookie httponly flag is true, it prevents a script running in the
+<br>
+browser from accessing the cookie. Only available for insert mode.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>cookie_mode</td>
+            
+            <td>Cookie persistence mode<br><br>Cookie persistence mode.</td>
+            
+            <td><a href="types_CookiePersistenceModeType.html">CookiePersistenceModeType</a></td>
+            
+            <td>Default: "INSERT"</td>
+          </tr>
+          <tr>
+            <td>cookie_name</td>
+            
+            <td>Cookie name<br><br>Cookie name.</td>
+            
+            <td>string</td>
+            
+            <td>Default: "NSXLB"</td>
+          </tr>
+          <tr>
+            <td>cookie_path</td>
+            
+            <td>Cookie path<br><br>HTTP cookie path could be set, only available for insert mode.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_secure</td>
+            
+            <td>Cookie secure flag<br><br>If cookie secure flag is true, it prevents the browser from sending a
+<br>
+cookie over http. The cookie is sent only over https. Only available
+<br>
+for insert mode.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>cookie_time</td>
+            
+            <td>Cookie time setting<br><br>Both session cookie and persistence cookie are supported, if not
+<br>
+specified, it's a session cookie. It expires when the browser is
+<br>
+closed.
+<br>
+</td>
+            
+            <td><a href="types_LBCookieTime.html">LBCookieTime</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_LBPersistenceCookieTime.html">LBPersistenceCookieTime</a><br><a href="types_LBSessionCookieTime.html">LBSessionCookieTime</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBCookiePersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LBGenericPersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBGenericPersistenceProfile.UpdateLBPersistenceProfile.')">+</span></div>
+  </div>
+    <div id="LBGenericPersistenceProfile.UpdateLBPersistenceProfile." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBGenericPersistenceProfile.html">
+        <span>LBGenericPersistenceProfile</span>
+      </a> (<a href="schemas_LBGenericPersistenceProfile.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>ha_persistence_mirroring_enabled</td>
+            
+            <td>Mirroring enabled flag<br><br>The mirroring enabled flag is to synchronize persistence entries.
+<br>
+Persistence entries are not synchronized to the HA peer by default.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBGenericPersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>Persistence entry expiration time in seconds<br><br>When all connections complete (reference count reaches 0), persistence
+<br>
+entry timer is started with the expiration time.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "300"</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LBSourceIpPersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBSourceIpPersistenceProfile.UpdateLBPersistenceProfile.')">+</span></div>
+  </div>
+    <div id="LBSourceIpPersistenceProfile.UpdateLBPersistenceProfile." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBSourceIpPersistenceProfile.html">
+        <span>LBSourceIpPersistenceProfile</span>
+      </a> (<a href="schemas_LBSourceIpPersistenceProfile.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>ha_persistence_mirroring_enabled</td>
+            
+            <td>Mirroring enabled flag to synchronize persistence entries<br><br>Persistence entries are not synchronized to the HA peer by default.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>purge</td>
+            
+            <td>Persistence purge setting<br><br>Persistence purge setting.</td>
+            
+            <td><a href="types_SourceIpPersistencePurge.html">SourceIpPersistencePurge</a></td>
+            
+            <td>Default: "FULL"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBSourceIpPersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>Persistence entry expiration time in seconds<br><br>When all connections complete (reference count reaches 0), persistence
+<br>
+entry timer is started with the expiration time.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "300"</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">PUT https://&lt;policy-mgr&gt;/policy/api/v1/lb-persistence-profiles/sourceIpPersistence
+{
+  "resource_type": "LBSourceIpPersistenceProfile"
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+                    
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">LBCookiePersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBCookiePersistenceProfile.UpdateLBPersistenceProfile.Response_Body')">+</span></div>
+  </div>
+    <div id="LBCookiePersistenceProfile.UpdateLBPersistenceProfile.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBCookiePersistenceProfile.html">
+        <span>LBCookiePersistenceProfile</span>
+      </a> (<a href="schemas_LBCookiePersistenceProfile.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_domain</td>
+            
+            <td>Cookie domain<br><br>HTTP cookie domain could be configured, only available for insert mode.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_fallback</td>
+            
+            <td>Cookie persistence fallback<br><br>If fallback is true, once the cookie points to a server that is down
+<br>
+(i.e. admin state DISABLED or healthcheck state is DOWN), then a new
+<br>
+server is selected by default to handle that request.
+<br>
+If fallback is false, it will cause the request to be rejected if
+<br>
+cookie points to a server.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>cookie_garble</td>
+            
+            <td>Cookie persistence garble<br><br>If garble is set to true, cookie value (server IP and port) would be
+<br>
+encrypted.
+<br>
+If garble is set to false, cookie value would be plain text.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>cookie_httponly</td>
+            
+            <td>Cookie httponly flag<br><br>If cookie httponly flag is true, it prevents a script running in the
+<br>
+browser from accessing the cookie. Only available for insert mode.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>cookie_mode</td>
+            
+            <td>Cookie persistence mode<br><br>Cookie persistence mode.</td>
+            
+            <td><a href="types_CookiePersistenceModeType.html">CookiePersistenceModeType</a></td>
+            
+            <td>Default: "INSERT"</td>
+          </tr>
+          <tr>
+            <td>cookie_name</td>
+            
+            <td>Cookie name<br><br>Cookie name.</td>
+            
+            <td>string</td>
+            
+            <td>Default: "NSXLB"</td>
+          </tr>
+          <tr>
+            <td>cookie_path</td>
+            
+            <td>Cookie path<br><br>HTTP cookie path could be set, only available for insert mode.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cookie_secure</td>
+            
+            <td>Cookie secure flag<br><br>If cookie secure flag is true, it prevents the browser from sending a
+<br>
+cookie over http. The cookie is sent only over https. Only available
+<br>
+for insert mode.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>cookie_time</td>
+            
+            <td>Cookie time setting<br><br>Both session cookie and persistence cookie are supported, if not
+<br>
+specified, it's a session cookie. It expires when the browser is
+<br>
+closed.
+<br>
+</td>
+            
+            <td><a href="types_LBCookieTime.html">LBCookieTime</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_LBPersistenceCookieTime.html">LBPersistenceCookieTime</a><br><a href="types_LBSessionCookieTime.html">LBSessionCookieTime</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBCookiePersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LBGenericPersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBGenericPersistenceProfile.UpdateLBPersistenceProfile.')">+</span></div>
+  </div>
+    <div id="LBGenericPersistenceProfile.UpdateLBPersistenceProfile." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBGenericPersistenceProfile.html">
+        <span>LBGenericPersistenceProfile</span>
+      </a> (<a href="schemas_LBGenericPersistenceProfile.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>ha_persistence_mirroring_enabled</td>
+            
+            <td>Mirroring enabled flag<br><br>The mirroring enabled flag is to synchronize persistence entries.
+<br>
+Persistence entries are not synchronized to the HA peer by default.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBGenericPersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>Persistence entry expiration time in seconds<br><br>When all connections complete (reference count reaches 0), persistence
+<br>
+entry timer is started with the expiration time.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "300"</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LBSourceIpPersistenceProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLBPersistenceProfile', 'LBSourceIpPersistenceProfile.UpdateLBPersistenceProfile.')">+</span></div>
+  </div>
+    <div id="LBSourceIpPersistenceProfile.UpdateLBPersistenceProfile." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LBSourceIpPersistenceProfile.html">
+        <span>LBSourceIpPersistenceProfile</span>
+      </a> (<a href="schemas_LBSourceIpPersistenceProfile.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>ha_persistence_mirroring_enabled</td>
+            
+            <td>Mirroring enabled flag to synchronize persistence entries<br><br>Persistence entries are not synchronized to the HA peer by default.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>persistence_shared</td>
+            
+            <td>Persistence shared across LBVirtualServers<br><br>Persistence shared setting indicates that all LBVirtualServers
+<br>
+that consume this LBPersistenceProfile should share the same
+<br>
+persistence mechanism when enabled.  Meaning, persistence entries of
+<br>
+a client accessing one virtual server will also affect the same
+<br>
+client's connections to a different virtual server. For example, say
+<br>
+there are two virtual servers vip-ip1:80 and vip-ip1:8080 bound to
+<br>
+the same Group g1 consisting of two servers (s11:80 and s12:80). By
+<br>
+default, each virtual server will have its own persistence table or
+<br>
+cookie. So, in the earlier example, there will be two tables
+<br>
+(vip-ip1:80, p1) and (vip-ip1:8080, p1) or cookies. So, if a client
+<br>
+connects to vip1:80 and later connects to vip1:8080, the second
+<br>
+connection may be sent to a different server than the first.  When
+<br>
+persistence_shared is enabled, then the second connection will always
+<br>
+connect to the same server as the original connection. For COOKIE
+<br>
+persistence type, the same cookie will be shared by multiple virtual
+<br>
+servers. For SOURCE_IP persistence type, the persistence table will
+<br>
+be shared across virtual servers. For GENERIC persistence type, the
+<br>
+persistence table will be shared across virtual servers which consume
+<br>
+the same persistence profile in LBRule actions.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>purge</td>
+            
+            <td>Persistence purge setting<br><br>Persistence purge setting.</td>
+            
+            <td><a href="types_SourceIpPersistencePurge.html">SourceIpPersistencePurge</a></td>
+            
+            <td>Default: "FULL"</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LBSourceIpPersistenceProfile</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: LBSourceIpPersistenceProfile, LBCookiePersistenceProfile, LBGenericPersistenceProfile</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>Persistence entry expiration time in seconds<br><br>When all connections complete (reference count reaches 0), persistence
+<br>
+entry timer is started with the expiration time.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "300"</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "resource_type": "LBSourceIpPersistenceProfile",
+  "id": "sourceIpPersistence",
+  "display_name": "/infra/lb-persistence-profiles/sourceIpPersistence",
+  "path": "/infra/lb-persistence-profiles/sourceIpPersistence",
+  "parent_path": "/infra/lb-persistence-profiles/sourceIpPersistence",
+  "relative_path": "sourceIpPersistence",
+  "purge": "FULL",
+  "timeout": 300,
+  "ha_persistence_mirroring_enabled": false,
+  "persistence_shared": false,
+  "_create_user": "admin",
+  "_create_time": 1516320253128,
+  "_last_modified_user": "admin",
+  "_last_modified_time": 1516320253128,
+  "_system_owned": false,
+  "_protection": "NOT_PROTECTED",
+  "_revision": 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">policy_lb</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

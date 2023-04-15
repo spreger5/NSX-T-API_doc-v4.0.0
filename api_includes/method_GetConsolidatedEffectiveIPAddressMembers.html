@@ -1,0 +1,622 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_grouping_objects.html' style='text-decoration: none'> Grouping Objects</a> >
+            
+            
+                <a href='management_plane_api_grouping_objects_ns_groups.html' style='text-decoration: none'> NS Groups</a>
+            
+        </P>
+    
+        <div id="GetConsolidatedEffectiveIPAddressMembers">
+          <h2>
+            Get consolidated Effective IPAddress translated from the NSGroup
+          </h2>
+          <span class="help_detail">Returns consolidated effective ip address members of the specified NSGroup.
+<br>
+Applicable in case of federated environment. The response contains site-wise list of
+<br>
+consolidated effective IP address members. In the response, for the local-site, the
+<br>
+list will contain static and dynamicaly translated IPs. For the remote sites,
+<br>
+the list will contain only the dynamically translated IPs. The static IPs will not be
+<br>
+seen in the response of this API. Hence, user can refer to the local-site Ip response
+<br>
+in the API results or the group definition to see the static IP membership of the Group.
+<br>
+This API is applicable only for NSGroups containing either
+<br>
+VirtualMachine, VIF, LogicalSwitch, LogicalPort or IPSet member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+Use the cursor value in the response to fetch the next page.
+<br>
+If there is no cursor value for a response, it implies the last page in the results
+<br>
+for the query.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/ns-groups/&lt;ns-group-id&gt;/consolidated-effective-ip-address-members
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value">ConsolidatedAPIListRequestParameters<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetConsolidatedEffectiveIPAddressMembers', 'ConsolidatedAPIListRequestParameters.GetConsolidatedEffectiveIPAddressMembers.Query_Parameters')">+</span></div>
+  </div>
+    <div id="ConsolidatedAPIListRequestParameters.GetConsolidatedEffectiveIPAddressMembers.Query_Parameters" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ConsolidatedAPIListRequestParameters.html">
+        <span>ConsolidatedAPIListRequestParameters</span>
+      </a> (<a href="schemas_ConsolidatedAPIListRequestParameters.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>included_fields</td>
+            
+            <td>Comma separated list of fields that should be included in query result<br><br>Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ip_filter</td>
+            
+            <td>An IPAddress or subnet for filtering the results.<br><br>This filter can be used to verify an ip membership in the effective results</td>
+            
+            <td><a href="types_IPElement.html">IPElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>page_size</td>
+            
+            <td>Maximum number of results to return in this page (server may return fewer)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 1000<br>Default: "1000"</td>
+          </tr>
+          <tr>
+            <td>site_id</td>
+            
+            <td>UUID of the site from which the effective IP addresses are to be fetched
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td></td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/ns-groups/0c963c9d-eea8-4180-b6f3-93385fa497ca/consolidated-effective-ip-address-members</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ConsolidatedEffectiveIPAddressMemberListResult<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetConsolidatedEffectiveIPAddressMembers', 'ConsolidatedEffectiveIPAddressMemberListResult.GetConsolidatedEffectiveIPAddressMembers.Response_Body')">+</span></div>
+  </div>
+    <div id="ConsolidatedEffectiveIPAddressMemberListResult.GetConsolidatedEffectiveIPAddressMembers.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ConsolidatedEffectiveIPAddressMemberListResult.html">
+        <span>ConsolidatedEffectiveIPAddressMemberListResult</span>
+      </a> (<a href="schemas_ConsolidatedEffectiveIPAddressMemberListResult.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>result_count</td>
+            
+            <td>Count of results found (across all pages), set only on first page</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>results</td>
+            
+            <td>Paged Collection of site wise consolidated effective ip addresses for the given NSGroup</td>
+            
+            <td>array of <a href="types_EffectiveIPInfo.html">EffectiveIPInfo</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td>If true, results are sorted in ascending order</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+    "results": [
+        {
+            "site_id": "e977e929-255e-41c0-a938-a35d12f860ee",
+            "effective_ips": [
+                "10.160.8.45",
+                "10.160.16.77"
+            ]
+        },
+        {
+            "site_id": "210d7017-5dca-4901-bfcc-c63928215160",
+            "effective_ips": [
+                "10.160.10.118",
+                "10.160.27.172"
+            ]
+        },
+        {
+            "site_id": "fa8be70f-b592-4cb1-add9-b89ccdfd3ee3",
+            "effective_ips": [
+                "25.1.1.1",
+                "25.1.1.2/31",
+                "25.1.1.10",
+                "10.160.15.134",
+                "fd34:fe56:7891:2f3a:0:0:0:0/64",
+                "25.1.1.8/31",
+                "10.160.26.223",
+                "fd01:0:101:2600:20c:29ff:fe23:eef3",
+                "25.1.1.4/30",
+                "20.1.1.1/28",
+                "10.112.10.1"
+            ]
+        }
+    ],
+    "cursor": "7806177147493"
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">groups_groups</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

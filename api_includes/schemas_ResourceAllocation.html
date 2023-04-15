@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ResourceAllocation.html">ResourceAllocation</a> (<a href="types_ResourceAllocation.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "description": "Specify limit, shares and reservation for all kinds of traffic. Values for limit and reservation are expressed in percentage. And for shares, the value is expressed as a number between 1-100. The overall reservation among all traffic types should not exceed 75%. Otherwise, the API request will be rejected.", 
+  "id": "ResourceAllocation", 
+  "module_id": "NiocProfile", 
+  "nsx_feature": "Nioc", 
+  "properties": {
+    "limit": {
+      "default": -1.0, 
+      "description": "The limit property specifies the maximum bandwidth allocation for a given traffic type and is expressed in percentage. The default value for this field is set to -1 which means the traffic is unbounded for the traffic type. All other negative values for this property is not supported and will be rejected by the API.", 
+      "maximum": 100, 
+      "minimum": -1, 
+      "required": true, 
+      "title": "Maximum bandwidth percentage", 
+      "type": "number"
+    }, 
+    "reservation": {
+      "default": 0.0, 
+      "maximum": 75, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Minimum guaranteed bandwidth percentage", 
+      "type": "number"
+    }, 
+    "shares": {
+      "default": 50, 
+      "maximum": 100, 
+      "minimum": 1, 
+      "required": true, 
+      "title": "Shares", 
+      "type": "int"
+    }, 
+    "traffic_type": {
+      "$ref": "<A HREF="schemas_HostInfraTrafficType.html">HostInfraTrafficType</A>, 
+      "required": true, 
+      "title": "Resource allocation traffic type"
+    }
+  }, 
+  "title": "Resource allocation information for a host infrastructure traffic type", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

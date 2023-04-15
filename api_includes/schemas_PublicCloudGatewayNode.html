@@ -1,0 +1,174 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PublicCloudGatewayNode.html">PublicCloudGatewayNode</a> (<a href="types_PublicCloudGatewayNode.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_EdgeNode.html">EdgeNode</A>
+  }, 
+  "id": "PublicCloudGatewayNode", 
+  "module_id": "FabricNode", 
+  "nsx_feature": "PublicCloud", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "PublicCloudGatewayNode"
+  }, 
+  "properties": {
+    "allocation_list": {
+      "description": "List of logical router ids to which this edge node is allocated.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Allocation list", 
+      "type": "array"
+    }, 
+    "deployment_config": {
+      "$ref": "<A HREF="schemas_EdgeNodeDeploymentConfig.html">EdgeNodeDeploymentConfig</A>, 
+      "description": "When this configuration is specified, edge fabric node of deployment_type VIRTUAL_MACHINE will be deployed and registered with MP.", 
+      "required": false, 
+      "title": "Config for automatic deployment of edge node virtual machine."
+    }, 
+    "deployment_type": {
+      "$ref": "<A HREF="schemas_EdgeDeploymentType.html">EdgeDeploymentType</A>, 
+      "readonly": true, 
+      "required": false
+    }, 
+    "description": {
+      "can_sort": true, 
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'description' must be used instead. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "discovered_ip_addresses": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Discovered IP Addresses of the fabric node, version 4 or 6", 
+      "type": "array"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'display_name' must be used instead. For HostNode, this field defaults to ID if not set. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "required": false, 
+      "title": "ID of the Node maintained on the Node and used to recognize the Node", 
+      "type": "string"
+    }, 
+    "fqdn": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Fully qualified domain name of the fabric node", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "description": "Unique identifier of this resource.", 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ip_addresses": {
+      "description": "IP Addresses of the Node, version 4 or 6. This property is mandatory for all nodes except for automatic deployment of edge virtual machine node. For automatic deployment, the ip address from management_port_subnets property will be considered.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "required": false, 
+      "title": "IP Addresses of the Node, version 4 or 6", 
+      "type": "array"
+    }, 
+    "node_settings": {
+      "$ref": "<A HREF="schemas_EdgeNodeSettings.html">EdgeNodeSettings</A>, 
+      "description": "Reports the current configuration of host name, SSH and servers configured for DNS, syslog, NTP. The settings are configured as part of automatic deployment of edge virtual machine. The settings are editable.", 
+      "required": true, 
+      "title": "Current configuration on edge node."
+    }, 
+    "resource_type": {
+      "help_summary": "Possible values are 'HostNode', 'EdgeNode', 'PublicCloudGatewayNode'", 
+      "required": true, 
+      "title": "Fabric node type, for example 'HostNode', 'EdgeNode' or 'PublicCloudGatewayNode'", 
+      "type": "string"
+    }, 
+    "tags": {
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'tags' must be used instead. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

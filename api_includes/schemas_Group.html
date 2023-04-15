@@ -1,0 +1,279 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Group.html">Group</a> (<a href="types_Group.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Group.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "Group", 
+  "module_id": "Policy", 
+  "policy_hierarchical_children": [
+    "ChildDnsSecurityProfileBindingMap", 
+    "ChildGroupDiscoveryProfileBindingMap", 
+    "ChildGroupMonitoringProfileBindingMap", 
+    "ChildPolicyFirewallFloodProtectionProfileBindingMap", 
+    "ChildPolicyFirewallSessionTimerProfileBindingMap"
+  ], 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "expression": {
+      "description": "The expression list must follow below criteria:   1. A non-empty expression list, must be of odd size. In a list, with   indices starting from 0, all non-conjunction expressions must be at   even indices, separated by a conjunction expression at odd   indices.   2. The total of ConditionExpression and NestedExpression in a list   should not exceed 5.   3. The total of IPAddressExpression, MACAddressExpression, external   IDs in an ExternalIDExpression and paths in a PathExpression must not exceed   500.   4. Each expression must be a valid Expression. See the definition of   the Expression type for more information.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Expression.html">Expression</A>
+      }, 
+      "required": false, 
+      "title": "Expression", 
+      "type": "array"
+    }, 
+    "extended_expression": {
+      "description": "Extended Expression allows additional higher level context to be specified for grouping criteria. (e.g. user AD group) This field allow users to specified user context as the source of a firewall rule for IDFW feature. Current version only support a single IdentityGroupExpression. In the future, this might expand to support other conjunction and non-conjunction expression.  The extended expression list must follow below criteria: 1. Contains a single IdentityGroupExpression. No conjunction expression is supported. 2. No other non-conjunction expression is supported, except for IdentityGroupExpression. 3. Each expression must be a valid Expression. See the definition of the Expression type for more information. 4. Extended expression are implicitly AND with expression. 5. No nesting can be supported if this value is used. 6. If a Group is using extended expression, this group must be the only member in the source field of an communication map.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Expression.html">Expression</A>
+      }, 
+      "maxItems": 1, 
+      "required": false, 
+      "title": "Extended Expression", 
+      "type": "array"
+    }, 
+    "group_type": {
+      "description": "Group type can be specified during create and update of a group. Empty group type indicates a 'generic' group, ie group can include any entity from the valid GroupMemberType.", 
+      "items": {
+        "$ref": "<A HREF="schemas_GroupTypes.html">GroupTypes</A>
+      }, 
+      "maxItems": 1, 
+      "required": false, 
+      "title": "Indicates the group type.", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "reference": {
+      "default": false, 
+      "description": "If true, indicates that this is a remote reference group. Such group will have span different from the its parent domain. Default value is false.", 
+      "readonly": true, 
+      "title": "Indicates if the group is a reference.", 
+      "type": "boolean"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "state": {
+      "enum": [
+        "IN_PROGRESS", 
+        "SUCCESS", 
+        "FAILURE"
+      ], 
+      "required": false, 
+      "title": "Realization state of this group", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "Group", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

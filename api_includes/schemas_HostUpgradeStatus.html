@@ -1,0 +1,147 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostUpgradeStatus.html">HostUpgradeStatus</a> (<a href="types_HostUpgradeStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ComponentUpgradeStatus.html">ComponentUpgradeStatus</A>
+  }, 
+  "id": "HostUpgradeStatus", 
+  "module_id": "Upgrade", 
+  "properties": {
+    "can_rollback": {
+      "description": "This field indicates whether we can perform upgrade rollback.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Can perform rollback", 
+      "type": "boolean"
+    }, 
+    "can_skip": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Can the upgrade of the remaining units in this component be skipped", 
+      "type": "boolean"
+    }, 
+    "component_type": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Component type for the upgrade status", 
+      "type": "string"
+    }, 
+    "current_version_node_summary": {
+      "$ref": "<A HREF="schemas_NodeSummaryList.html">NodeSummaryList</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Mapping of current versions of nodes and counts of nodes at the respective versions."
+    }, 
+    "details": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Details about the upgrade status", 
+      "type": "string"
+    }, 
+    "node_count_at_target_version": {
+      "description": "Number of nodes of the type and at the component version", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of nodes at target component version", 
+      "type": "int"
+    }, 
+    "percent_complete": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Indicator of upgrade progress in percentage", 
+      "type": "number"
+    }, 
+    "pre_upgrade_status": {
+      "$ref": "<A HREF="schemas_UpgradeChecksExecutionStatus.html">UpgradeChecksExecutionStatus</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Pre-upgrade status of the component-type"
+    }, 
+    "status": {
+      "enum": [
+        "SUCCESS", 
+        "FAILED", 
+        "IN_PROGRESS", 
+        "NOT_STARTED", 
+        "PAUSING", 
+        "PAUSED"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Upgrade status of component", 
+      "type": "string"
+    }, 
+    "target_component_version": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Target component version", 
+      "type": "string"
+    }
+  }, 
+  "title": "Status of host upgrade", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

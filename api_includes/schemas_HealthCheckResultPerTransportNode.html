@@ -1,0 +1,84 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HealthCheckResultPerTransportNode.html">HealthCheckResultPerTransportNode</a> (<a href="types_HealthCheckResultPerTransportNode.html">type</a>)
+</h3>
+<pre>{
+  "description": "Health check result on specific transport node", 
+  "id": "HealthCheckResultPerTransportNode", 
+  "module_id": "HealthCheck", 
+  "properties": {
+    "result_on_host_switch": {
+      "$ref": "<A HREF="schemas_HealthCheckResultOnHostSwitch.html">HealthCheckResultOnHostSwitch</A>, 
+      "readonly": true
+    }, 
+    "transport_node_id": {
+      "description": "ID of the Transport Node.", 
+      "readonly": true, 
+      "title": "Transport Node ID", 
+      "type": "string"
+    }
+  }, 
+  "title": "Health Check Result Per Transport Node", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

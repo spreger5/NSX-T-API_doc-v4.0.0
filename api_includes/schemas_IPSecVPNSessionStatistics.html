@@ -1,0 +1,126 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPSecVPNSessionStatistics.html">IPSecVPNSessionStatistics</a> (<a href="types_IPSecVPNSessionStatistics.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Session statistics gives aggregated statistics of all policies for all the tunnels.", 
+  "id": "IPSecVPNSessionStatistics", 
+  "module_id": "VPNStatistics", 
+  "properties": {
+    "aggregate_traffic_counters": {
+      "$ref": "<A HREF="schemas_IPSecVPNTrafficCounters.html">IPSecVPNTrafficCounters</A>, 
+      "description": "Aggregate traffic statistics across all ipsec tunnels.", 
+      "readonly": true, 
+      "title": "Traffic summary"
+    }, 
+    "display_name": {
+      "description": "Display name of vpn session.", 
+      "readonly": true, 
+      "title": "Display name", 
+      "type": "string"
+    }, 
+    "ike_status": {
+      "$ref": "<A HREF="schemas_IPSecVPNIKESessionStatus.html">IPSecVPNIKESessionStatus</A>, 
+      "description": "Status for IPSec VPN IKE session UP/DOWN and fail reason if IKE session is down.", 
+      "readonly": true, 
+      "title": "IKE status summary"
+    }, 
+    "ike_traffic_statistics": {
+      "$ref": "<A HREF="schemas_IPSecVPNIKETrafficStatistics.html">IPSecVPNIKETrafficStatistics</A>, 
+      "description": "Traffic statistics for IPSec VPN IKE session. Note - Not supported in this release.", 
+      "readonly": true, 
+      "title": "IKE traffic statistics"
+    }, 
+    "ipsec_vpn_session_id": {
+      "description": "UUID of vpn session.", 
+      "readonly": true, 
+      "title": "Session identifier", 
+      "type": "string"
+    }, 
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the data was last updated.", 
+      "readonly": true, 
+      "title": "Last updated timestamp"
+    }, 
+    "partial_stats": {
+      "description": "Partial statistics if true specifies that the statistics are only from active node.", 
+      "readonly": true, 
+      "title": "Partial Statistics", 
+      "type": "boolean"
+    }, 
+    "policy_statistics": {
+      "description": "Gives aggregate traffic statistics across all ipsec tunnels and individual tunnel statistics.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSecVPNPolicyTrafficStatistics.html">IPSecVPNPolicyTrafficStatistics</A>
+      }, 
+      "readonly": true, 
+      "title": "IPSec policy statistics", 
+      "type": "array"
+    }
+  }, 
+  "title": "IPSec VPN session statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

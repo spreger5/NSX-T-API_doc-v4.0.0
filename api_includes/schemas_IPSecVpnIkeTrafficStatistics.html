@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPSecVpnIkeTrafficStatistics.html">IPSecVpnIkeTrafficStatistics</a> (<a href="types_IPSecVpnIkeTrafficStatistics.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Traffic statistics for IPSec VPN Ike session. Note - Not supported in this release.", 
+  "id": "IPSecVpnIkeTrafficStatistics", 
+  "module_id": "PolicyVPNStatistics", 
+  "properties": {
+    "bytes_in": {
+      "description": "Number of bytes in.", 
+      "readonly": true, 
+      "title": "Bytes in", 
+      "type": "integer"
+    }, 
+    "bytes_out": {
+      "description": "Number of bytes out.", 
+      "readonly": true, 
+      "title": "Bytes out", 
+      "type": "integer"
+    }, 
+    "fail_count": {
+      "description": "Fail count.", 
+      "readonly": true, 
+      "title": "Fail count", 
+      "type": "integer"
+    }, 
+    "packets_in": {
+      "description": "Number of packets in.", 
+      "readonly": true, 
+      "title": "Packets in", 
+      "type": "integer"
+    }, 
+    "packets_out": {
+      "description": "Number of packets out.", 
+      "readonly": true, 
+      "title": "Packets out", 
+      "type": "integer"
+    }
+  }, 
+  "title": "IPSec VPN Ike traffic statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

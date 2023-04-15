@@ -1,0 +1,135 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeProcessProperties.html">NodeProcessProperties</a> (<a href="types_NodeProcessProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "NodeProcessProperties", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cpu_time": {
+      "readonly": true, 
+      "title": "CPU time (user and system) consumed by process in milliseconds", 
+      "type": "integer"
+    }, 
+    "mem_resident": {
+      "readonly": true, 
+      "title": "Resident set size of process in bytes", 
+      "type": "integer"
+    }, 
+    "mem_used": {
+      "readonly": true, 
+      "title": "Virtual memory used by process in bytes", 
+      "type": "integer"
+    }, 
+    "pid": {
+      "readonly": true, 
+      "title": "Process id", 
+      "type": "integer"
+    }, 
+    "ppid": {
+      "readonly": true, 
+      "title": "Parent process id", 
+      "type": "integer"
+    }, 
+    "process_name": {
+      "readonly": true, 
+      "title": "Process name", 
+      "type": "string"
+    }, 
+    "start_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "Process start time expressed in milliseconds since epoch"
+    }, 
+    "uptime": {
+      "readonly": true, 
+      "title": "Milliseconds since process started", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Node process properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

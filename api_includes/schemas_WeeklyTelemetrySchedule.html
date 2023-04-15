@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_WeeklyTelemetrySchedule.html">WeeklyTelemetrySchedule</a> (<a href="types_WeeklyTelemetrySchedule.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_TelemetrySchedule.html">TelemetrySchedule</A>
+  }, 
+  "id": "WeeklyTelemetrySchedule", 
+  "module_id": "TelemetryConfig", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "WeeklyTelemetrySchedule"
+  }, 
+  "properties": {
+    "day_of_week": {
+      "description": "Day of week on which data will be collected. Specify one of SUNDAY through SATURDAY.", 
+      "enum": [
+        "SUNDAY", 
+        "MONDAY", 
+        "TUESDAY", 
+        "WEDNESDAY", 
+        "THURSDAY", 
+        "FRIDAY", 
+        "SATURDAY"
+      ], 
+      "required": true, 
+      "title": "Day of week on which data will be collected", 
+      "type": "string"
+    }, 
+    "frequency_type": {
+      "description": "Specify one of DailyTelemetrySchedule, WeeklyTelemetrySchedule, or MonthlyTelemetrySchedule.", 
+      "required": true, 
+      "title": "Frequency at which data will be collected", 
+      "type": "string"
+    }, 
+    "hour_of_day": {
+      "description": "Hour at which data will be collected. Specify a value between 0 through 23.", 
+      "maximum": 23, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Hour at which data will be collected", 
+      "type": "integer"
+    }, 
+    "minutes": {
+      "default": 0, 
+      "description": "Minute at which data will be collected. Specify a value between 0 through 59.", 
+      "maximum": 59, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Minute at which data will be collected", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

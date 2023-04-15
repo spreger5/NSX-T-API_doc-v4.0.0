@@ -1,0 +1,240 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbPool.html">LbPool</a> (<a href="types_LbPool.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "LbPool", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "active_monitor_ids": {
+      "deprecated": true, 
+      "description": "In case of active healthchecks, load balancer itself initiates new connections (or sends ICMP ping) to the servers periodically to check their health, completely independent of any data traffic. Active healthchecks are disabled by default and can be enabled for a server pool by binding a health monitor to the pool. If multiple active monitors are configured, the pool member status is UP only when the health check status for all the monitors are UP. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "active monitor identifier list", 
+      "type": "array"
+    }, 
+    "algorithm": {
+      "$ref": "<A HREF="schemas_PoolAlgorithm.html">PoolAlgorithm</A>, 
+      "default": "ROUND_ROBIN", 
+      "description": "Load balancing algorithm, configurable per pool controls how the incoming connections are distributed among the members.", 
+      "required": false, 
+      "title": "pool balancing algorithm for backend pool members"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "member_group": {
+      "$ref": "<A HREF="schemas_PoolMemberGroup.html">PoolMemberGroup</A>, 
+      "description": "Load balancer pool support grouping object as dynamic pool members. When member group is defined, members setting should not be specified.", 
+      "required": false, 
+      "title": "Load balancer member setting with grouping object"
+    }, 
+    "members": {
+      "description": "Server pool consists of one or more pool members. Each pool member is identified, typically, by an IP address and a port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PoolMember.html">PoolMember</A>
+      }, 
+      "required": false, 
+      "title": "load balancer pool members", 
+      "type": "array"
+    }, 
+    "min_active_members": {
+      "default": 1, 
+      "description": "A pool is considered active if there are at least certain minimum number of members.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "minimum number of active pool members to consider pool as active", 
+      "type": "integer"
+    }, 
+    "passive_monitor_id": {
+      "deprecated": true, 
+      "description": "Passive healthchecks are disabled by default and can be enabled by attaching a passive health monitor to a server pool. Each time a client connection to a pool member fails, its failed count is incremented. For pools bound to L7 virtual servers, a connection is considered to be failed and failed count is incremented if any TCP connection errors (e.g. TCP RST or failure to send data) or SSL handshake failures occur. For pools bound to L4 virtual servers, if no response is received to a TCP SYN sent to the pool member or if a TCP RST is received in response to a TCP SYN, then the pool member is considered to have failed and the failed count is incremented. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "passive monitor identifier", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "snat_translation": {
+      "$ref": "<A HREF="schemas_LbSnatTranslation.html">LbSnatTranslation</A>, 
+      "deprecated": true, 
+      "description": "Depending on the topology, Source NAT (SNAT) may be required to ensure traffic from the server destined to the client is received by the load balancer. SNAT can be enabled per pool. If SNAT is not enabled for a pool, then load balancer uses the client IP and port (spoofing) while establishing connections to the servers. This is referred to as no-SNAT or TRANSPARENT mode. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "snat translation configuration"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tcp_multiplexing_enabled": {
+      "default": false, 
+      "deprecated": true, 
+      "description": "TCP multiplexing allows the same TCP connection between load balancer and the backend server to be used for sending multiple client requests from different client TCP connections. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "required": false, 
+      "title": "TCP multiplexing enable flag", 
+      "type": "boolean"
+    }, 
+    "tcp_multiplexing_number": {
+      "default": 6, 
+      "deprecated": true, 
+      "description": "The maximum number of TCP connections per pool that are idly kept alive for sending future client requests. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "maximum number of TCP connections for multiplexing", 
+      "type": "integer"
+    }
+  }, 
+  "search_dsl_name": [
+    "lb pool (manager)"
+  ], 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

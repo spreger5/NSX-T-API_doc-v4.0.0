@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Snmpv3User.html">Snmpv3User</a> (<a href="types_Snmpv3User.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "This object contains properties for a SNMP v3 user that can be used to receive SNMP traps/notifications from NSX and/or poll NSX nodes over SNMP.", 
+  "id": "Snmpv3User", 
+  "module_id": "CentralConfig", 
+  "properties": {
+    "access": {
+      "default": "READ_ONLY", 
+      "description": "Access permissions for polling NSX nodes over SNMP v3.", 
+      "enum": [
+        "READ_ONLY"
+      ], 
+      "title": "Type of access", 
+      "type": "string"
+    }, 
+    "auth_password": {
+      "description": "Authentication password used for SNMP v3 communication. This field is required when adding a user. When updating a user, do not include this field in the request. If this field is present in an update request, it will be considered as a new value for authentication password.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Authentication password", 
+      "type": "string"
+    }, 
+    "priv_password": {
+      "description": "Privacy password used for SNMP v3 communication. This field is required when adding a user. When updating a user, do not include this field in the request. If this field is present in an update request, it will be considered as a new value for privacy password.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Privacy password", 
+      "type": "string"
+    }, 
+    "security_level": {
+      "default": "AUTH_PRIV", 
+      "description": "Security level indicates whether SNMP communication involves authentication and privacy protocols for this user. Value \"AUTH_PRIV\" indicates both authentication and privacy protocols will be used for SNMP communication.", 
+      "enum": [
+        "AUTH_PRIV"
+      ], 
+      "title": "Security level", 
+      "type": "string"
+    }, 
+    "user_id": {
+      "description": "Unique SNMP v3 user id.", 
+      "maxLength": 32, 
+      "minLength": 1, 
+      "required": true, 
+      "title": "User ID", 
+      "type": "string"
+    }
+  }, 
+  "title": "SNMP v3 user", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

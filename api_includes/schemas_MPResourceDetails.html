@@ -1,0 +1,117 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MPResourceDetails.html">MPResourceDetails</a> (<a href="types_MPResourceDetails.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Contains manager and policy resource id.", 
+  "id": "MPResourceDetails", 
+  "module_id": "MPPolicyMigration", 
+  "properties": {
+    "linked_ids": {
+      "description": "Linked resources.", 
+      "items": {
+        "$ref": "<A HREF="schemas_MPResourceLinkedDetails.html">MPResourceLinkedDetails</A>
+      }, 
+      "required": false, 
+      "type": "array"
+    }, 
+    "manager_id": {
+      "required": true, 
+      "title": "Manager resource id.", 
+      "type": "string"
+    }, 
+    "metadata": {
+      "description": "Resource metadata.", 
+      "items": {
+        "$ref": "<A HREF="schemas_MPResourceMetadata.html">MPResourceMetadata</A>
+      }, 
+      "required": false, 
+      "type": "array"
+    }, 
+    "override": {
+      "required": false, 
+      "title": "Whether to skip/override the resource in case of multiple resource migration . By default. it will be skip.", 
+      "type": "boolean"
+    }, 
+    "policy_id": {
+      "required": false, 
+      "title": "Policy resource id.", 
+      "type": "string"
+    }, 
+    "policy_path": {
+      "required": false, 
+      "title": "Policy resource path.", 
+      "type": "string"
+    }, 
+    "principle_identity": {
+      "description": "Principle Identity to be used for MP to Policy promotion in GENERIC workflow.This is internal only.", 
+      "required": false, 
+      "title": "Principle Identity to be used for MP to Policy promotion in GENERIC workflow.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Contains manager resource details and policy resource id.\n", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

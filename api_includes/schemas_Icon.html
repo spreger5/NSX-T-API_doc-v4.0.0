@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Icon.html">Icon</a> (<a href="types_Icon.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Icon to be applied at dashboard for widgets and UI elements.", 
+  "id": "Icon", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "color": {
+      "description": "Icon color applied to icon in hex format.", 
+      "title": "Icon color applied to icon in hex format", 
+      "type": "string"
+    }, 
+    "placement": {
+      "default": "PRE", 
+      "description": "If specified as PRE, the icon appears before the UI element. If set as POST, the icon appears after the UI element.", 
+      "enum": [
+        "PRE", 
+        "POST"
+      ], 
+      "title": "Position at which to display icon, if any", 
+      "type": "string"
+    }, 
+    "size": {
+      "description": "Icon size in unit applied to icon.A unit can be specified by the 'size_unit' property.", 
+      "minimum": 1, 
+      "title": "Icon size in unit", 
+      "type": "number"
+    }, 
+    "size_unit": {
+      "description": "Icon size unit applied to icon along with size. if 'size' property value is provided and no value is provided for this property then default value for this proerty is set to 'px'.", 
+      "enum": [
+        "px", 
+        "rem", 
+        "pc"
+      ], 
+      "title": "Icon size unit in rem/px/pc", 
+      "type": "string"
+    }, 
+    "tooltip": {
+      "description": "Multi-line text to be shown on tooltip while hovering over the icon.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tooltip.html">Tooltip</A>
+      }, 
+      "title": "Multi-line tooltip", 
+      "type": "array"
+    }, 
+    "type": {
+      "description": "Icon will be rendered based on its type. For example, if ERROR is chosen, then icon representing error will be rendered. or else custom svg icon name can be given.", 
+      "title": "Type of icon", 
+      "type": "string"
+    }
+  }, 
+  "title": "Icon", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

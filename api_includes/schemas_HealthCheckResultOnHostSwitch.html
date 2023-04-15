@@ -1,0 +1,100 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HealthCheckResultOnHostSwitch.html">HealthCheckResultOnHostSwitch</a> (<a href="types_HealthCheckResultOnHostSwitch.html">type</a>)
+</h3>
+<pre>{
+  "description": "Health check result on specific host switch of specific transport node.", 
+  "id": "HealthCheckResultOnHostSwitch", 
+  "module_id": "HealthCheck", 
+  "properties": {
+    "host_switch_name": {
+      "description": "Name of the host switch.", 
+      "readonly": true, 
+      "title": "Host Switch Name", 
+      "type": "string"
+    }, 
+    "results_per_uplink": {
+      "description": "List of health check results per uplink on current host switch of specific transport node.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HealthCheckResultPerUplink.html">HealthCheckResultPerUplink</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Health Check Results Per uplink", 
+      "type": "array"
+    }, 
+    "updated_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp of check result updated.", 
+      "readonly": true
+    }, 
+    "vlan_mtu_status": {
+      "$ref": "<A HREF="schemas_VlanMtuHealthCheckResultStatus.html">VlanMtuHealthCheckResultStatus</A>, 
+      "description": "Status of VLAN-MTU health check result on host switch.", 
+      "readonly": true
+    }
+  }, 
+  "title": "Health Check Result On Host Switch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

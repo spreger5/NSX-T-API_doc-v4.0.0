@@ -1,0 +1,1928 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_security.html' style='text-decoration: none'> Security</a> >
+            
+            
+                <a href='management_plane_api_security_services.html' style='text-decoration: none'> Services</a> >
+            
+            
+                <a href='management_plane_api_security_services_service_insertion.html' style='text-decoration: none'> Service Insertion</a>
+            
+        </P>
+    
+        <div id="AddServiceInstance">
+          <h2>
+            Add a Service Instance for a specified Service.
+          </h2>
+          <span class="help_detail">Adds a new Service-Instance under the specified Service.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">POST</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+                
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">ByodServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'ByodServiceInstance.AddServiceInstance.Request_Body')">+</span></div>
+  </div>
+    <div id="ByodServiceInstance.AddServiceInstance.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ByodServiceInstance.html">
+        <span>ByodServiceInstance</span>
+      </a> (<a href="schemas_ByodServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>deployment_mode</td>
+            
+            <td>Deployment Mode<br><br>Deployment mode specifies where the partner appliance will be deployed in HA or non-HA i.e standalone mode.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: STAND_ALONE, ACTIVE_STANDBY<br>Default: "ACTIVE_STANDBY"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ByodServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">ServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'ServiceInstance.AddServiceInstance.')">+</span></div>
+  </div>
+    <div id="ServiceInstance.AddServiceInstance." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ServiceInstance.html">
+        <span>ServiceInstance</span>
+      </a> (<a href="schemas_ServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>attachment_point</td>
+            
+            <td>Attachment Point<br><br>Attachment point to be used by this service instance for deploying the Service-VM.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: TIER0_LR, TIER1_LR, SERVICE_PLANE, HOST</td>
+          </tr>
+          <tr>
+            <td>deployed_to</td>
+            
+            <td>Deployed-to object list<br><br>List of resource references where service instance be deployed. Ex. Tier 0 Logical Router in case of N-S ServiceInsertion.</td>
+            
+            <td>array of <a href="types_ResourceReference.html">ResourceReference</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Minimum items: 1<br>Maximum items: 128</td>
+          </tr>
+          <tr>
+            <td>deployment_mode</td>
+            
+            <td>Deployment Mode<br><br>Deployment mode specifies where the partner appliance will be deployed in HA or non-HA i.e standalone mode.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: STAND_ALONE, ACTIVE_STANDBY<br>Default: "ACTIVE_STANDBY"</td>
+          </tr>
+          <tr>
+            <td>deployment_spec_name</td>
+            
+            <td>Deployment Spec Name<br><br>Name of the deployment spec to be used by this service instance.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>implementation_type</td>
+            
+            <td>Implementation Type<br><br>Implementation to be used by this service instance for deploying the Service-VM.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: NORTH_SOUTH, EAST_WEST</td>
+          </tr>
+          <tr>
+            <td>instance_deployment_config</td>
+            
+            <td>Instance Deployment Config<br><br>Instance Deployment Config contains the information to be injected during Service-VM deployment. This field is optional if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td><a href="types_InstanceDeploymentConfig.html">InstanceDeploymentConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>instance_deployment_template</td>
+            
+            <td>Instance Deployment Template<br><br>The deployment template to be used by this service instance. The attribute values specific to this instance can be added.</td>
+            
+            <td><a href="types_DeploymentTemplate.html">DeploymentTemplate</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_deployment_id</td>
+            
+            <td>Id of the Service Deployment using which the instances were deployed<br><br>Id of the Service Deployment using which the instances were deployed. Its available only for instances that were deployed using service deployment API.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">VirtualServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'VirtualServiceInstance.AddServiceInstance.')">+</span></div>
+  </div>
+    <div id="VirtualServiceInstance.AddServiceInstance." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_VirtualServiceInstance.html">
+        <span>VirtualServiceInstance</span>
+      </a> (<a href="schemas_VirtualServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>VirtualServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">POST https://&lt;nsx-mgr&gt;/api/v1/serviceinsertion/services/65a60890-6f48-418d-a7d5-5aaf65fc4e5b/service-instances
+{
+  "resource_type": "ServiceInstance",
+  "description": "This Service Instance is deployed at T0 router",
+  "display_name": "NS Service_Instance_for_ABC",
+  "attachment_point": "TIER0_LR",
+  "deployed_to": [{
+    "is_valid": true,
+    "target_display_name": "Active-LR",
+    "target_id": "ea9ae885-d3ec-4acc-8194-d5d96dc569cd",
+    "target_type": "LogicalRouter"
+  }],
+  "deployment_mode": "STAND_ALONE",
+  "deployment_spec_name": "NS_DepSpec",
+  "display_name": "NS Service_Instance_for_ABC",
+  "implementation_type": "NORTH_SOUTH",
+  "instance_deployment_config": {
+    "compute_id": "domain-c8",
+    "context_id": "44a18335-e72d-4c77-a0b1-7a922c5e086c",
+    "storage_id": "datastore-12",
+    "vm_nic_infos": [{
+      "nic_infos": [{
+          "ip_address": "10.33.79.64",
+          "gateway_address": "10.33.79.66",
+          "subnet_mask": "255.255.255.252",
+          "network_id": "network-16",
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 0,
+            "interface_type": "MANAGEMENT"
+          }
+        },
+        {
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 1,
+            "interface_type": "DATA1"
+          }
+        },
+        {
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 2,
+            "interface_type": "DATA2"
+          }
+        }
+      ]
+    }]
+  },
+  "on_failure_policy": "BLOCK",
+  "service_id": "0ae2295d-d7dc-4b62-94ef-3a02bb2bf2c0",
+  "transport_type": "L2_BRIDGE",
+  "instance_deployment_template": {
+    "name": "NS_DepTemp",
+    "attributes": [{
+      "attribute_type": "STRING",
+      "display_name": "License",
+      "key": "ABC_HA_License",
+      "value": "adklfjakldfjlkajfkl"
+    }]
+  }
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+                    
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ByodServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'ByodServiceInstance.AddServiceInstance.Response_Body')">+</span></div>
+  </div>
+    <div id="ByodServiceInstance.AddServiceInstance.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ByodServiceInstance.html">
+        <span>ByodServiceInstance</span>
+      </a> (<a href="schemas_ByodServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>deployment_mode</td>
+            
+            <td>Deployment Mode<br><br>Deployment mode specifies where the partner appliance will be deployed in HA or non-HA i.e standalone mode.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: STAND_ALONE, ACTIVE_STANDBY<br>Default: "ACTIVE_STANDBY"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ByodServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">ServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'ServiceInstance.AddServiceInstance.')">+</span></div>
+  </div>
+    <div id="ServiceInstance.AddServiceInstance." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ServiceInstance.html">
+        <span>ServiceInstance</span>
+      </a> (<a href="schemas_ServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>attachment_point</td>
+            
+            <td>Attachment Point<br><br>Attachment point to be used by this service instance for deploying the Service-VM.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: TIER0_LR, TIER1_LR, SERVICE_PLANE, HOST</td>
+          </tr>
+          <tr>
+            <td>deployed_to</td>
+            
+            <td>Deployed-to object list<br><br>List of resource references where service instance be deployed. Ex. Tier 0 Logical Router in case of N-S ServiceInsertion.</td>
+            
+            <td>array of <a href="types_ResourceReference.html">ResourceReference</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Minimum items: 1<br>Maximum items: 128</td>
+          </tr>
+          <tr>
+            <td>deployment_mode</td>
+            
+            <td>Deployment Mode<br><br>Deployment mode specifies where the partner appliance will be deployed in HA or non-HA i.e standalone mode.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: STAND_ALONE, ACTIVE_STANDBY<br>Default: "ACTIVE_STANDBY"</td>
+          </tr>
+          <tr>
+            <td>deployment_spec_name</td>
+            
+            <td>Deployment Spec Name<br><br>Name of the deployment spec to be used by this service instance.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>implementation_type</td>
+            
+            <td>Implementation Type<br><br>Implementation to be used by this service instance for deploying the Service-VM.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: NORTH_SOUTH, EAST_WEST</td>
+          </tr>
+          <tr>
+            <td>instance_deployment_config</td>
+            
+            <td>Instance Deployment Config<br><br>Instance Deployment Config contains the information to be injected during Service-VM deployment. This field is optional if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td><a href="types_InstanceDeploymentConfig.html">InstanceDeploymentConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>instance_deployment_template</td>
+            
+            <td>Instance Deployment Template<br><br>The deployment template to be used by this service instance. The attribute values specific to this instance can be added.</td>
+            
+            <td><a href="types_DeploymentTemplate.html">DeploymentTemplate</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_deployment_id</td>
+            
+            <td>Id of the Service Deployment using which the instances were deployed<br><br>Id of the Service Deployment using which the instances were deployed. Its available only for instances that were deployed using service deployment API.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">VirtualServiceInstance<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddServiceInstance', 'VirtualServiceInstance.AddServiceInstance.')">+</span></div>
+  </div>
+    <div id="VirtualServiceInstance.AddServiceInstance." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_VirtualServiceInstance.html">
+        <span>VirtualServiceInstance</span>
+      </a> (<a href="schemas_VirtualServiceInstance.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>on_failure_policy</td>
+            
+            <td>On Failure Policy<br><br>Failure policy of the service instance - if it has to be different from the service. By default the service instance inherits the FailurePolicy of the service it belongs to.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOW, BLOCK</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>VirtualServiceInstance</b></td>
+            
+            <td><a href="types_ServiceInstanceResourceType.html">ServiceInstanceResourceType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>service_id</td>
+            
+            <td>Service Id<br><br>The Service to which the service instance is associated.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_type</td>
+            
+            <td>Transport Type<br><br>Transport to be used by this service instance for deploying the Service-VM. This field is to be set Not Applicable(NA) if the service only caters to functionality EPP(Endpoint Protection) and MPS.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: L2_BRIDGE, L3_ROUTED, NSH, NA</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "resource_type": "ServiceInstance",
+  "description": "This Service Instance is deployed at T0 router",
+  "id": "79b29ea5-051a-4ab2-af85-fb6520a9f881",
+  "display_name": "NS Service_Instance_for_ABC",
+  "attachment_point": "TIER0_LR",
+  "deployed_to": [{
+    "is_valid": true,
+    "target_display_name": "Active-LR",
+    "target_id": "ea9ae885-d3ec-4acc-8194-d5d96dc569cd",
+    "target_type": "LogicalRouter"
+  }],
+  "deployment_mode": "STAND_ALONE",
+  "deployment_spec_name": "NS_DepSpec",
+  "implementation_type": "NORTH_SOUTH",
+  "instance_deployment_config": {
+    "compute_id": "domain-c8",
+    "context_id": "44a18335-e72d-4c77-a0b1-7a922c5e086c",
+    "storage_id": "datastore-12",
+    "vm_nic_infos": [{
+      "nic_infos": [{
+          "ip_address": "10.33.79.64",
+          "gateway_address": "10.33.79.66",
+          "subnet_mask": "255.255.255.252",
+          "network_id": "network-16",
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 0,
+            "interface_type": "MANAGEMENT"
+          }
+        },
+        {
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 1,
+            "interface_type": "DATA1"
+          }
+        },
+        {
+          "nic_metadata": {
+            "interface_label": "eth",
+            "interface_index": 2,
+            "interface_type": "DATA2"
+          }
+        }
+      ]
+    }]
+  },
+  "on_failure_policy": "BLOCK",
+  "service_id": "0ae2295d-d7dc-4b62-94ef-3a02bb2bf2c0",
+  "transport_type": "L2_BRIDGE",
+  "instance_deployment_template": {
+    "name": "NS_DepTemp",
+    "attributes": [{
+      "attribute_type": "STRING",
+      "display_name": "License",
+      "key": "ABC_HA_License",
+      "value": "adklfjakldfjlkajfkl"
+    }]
+  },
+  "_create_user": "admin",
+  "_create_time": 1525889020946,
+  "_last_modified_user": "admin",
+  "_last_modified_time": 1525889025093,
+  "_system_owned": false,
+  "_protection": "NOT_PROTECTED",
+  "_revision": 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">service_insertion_config</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

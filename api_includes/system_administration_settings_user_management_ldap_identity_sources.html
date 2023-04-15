@@ -1,0 +1,245 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='system_administration_settings_user_management.html' style='text-decoration: none'> User Management</a> >
+        
+        
+            <a href='system_administration_settings_user_management_ldap_identity_sources.html' style='text-decoration: none'> LDAP Identity Sources</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List LDAP identity sources</h4><br>
+                      <span class="help_detail">Return a list of all configured LDAP identity sources.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLdapIdentitySources.html">GET /policy/api/v1/aaa/ldap-identity-sources</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Test an LDAP server</h4><br>
+                      <span class="help_detail">Attempt to connect to an LDAP server and ensure that the server can be contacted using the given URL and authentication credentials.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ProbeIdentitySourceLdapServer.html">POST /policy/api/v1/aaa/ldap-identity-sources?action=probe_ldap_server</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Probe an LDAP identity source</h4><br>
+                      <span class="help_detail">Verify that the configuration of an LDAP identity source is correct before actually creating the source.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ProbeUnconfiguredLdapIdentitySource.html">POST /policy/api/v1/aaa/ldap-identity-sources?action=probe_identity_source</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Fetch the server certificate of an LDAP server</h4><br>
+                      <span class="help_detail">Attempt to connect to an LDAP server and retrieve the server certificate it presents.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_FetchIdentitySourceLdapServerCertificate.html">POST /policy/api/v1/aaa/ldap-identity-sources?action=fetch_certificate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an LDAP identity source</h4><br>
+                      <span class="help_detail">Delete an LDAP identity source. Users defined in that source will no longer be able to access NSX.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLdapIdentitySource.html">DELETE /policy/api/v1/aaa/ldap-identity-sources/&lt;ldap-identity-source-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a single LDAP identity source</h4><br>
+                      <span class="help_detail">Return details about one LDAP identity source</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLdapIdentitySource.html">GET /policy/api/v1/aaa/ldap-identity-sources/&lt;ldap-identity-source-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Test the configuration of an existing LDAP identity source</h4><br>
+                      <span class="help_detail">Attempt to connect to an existing LDAP identity source and report any errors encountered.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ProbeConfiguredLdapIdentitySource.html">POST /policy/api/v1/aaa/ldap-identity-sources/&lt;ldap-identity-source-id&gt;?action=probe</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update an LDAP identity source</h4><br>
+                      <span class="help_detail">Create a new LDAP identity source or update the configuration of an existing LDAP identity source. You may wish to verify the new configuration using the POST /aaa/ldap-identity-sources?action=probe API before creating or changing the configuration. Note that if you are using LDAP on an active and standby NSX-T Global Manager in a federated environment, you must use the same name for your LDAP identity sources on the active and standby Global Managers.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateLdapIdentitySource.html">PUT /policy/api/v1/aaa/ldap-identity-sources/&lt;ldap-identity-source-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Search the LDAP identity source</h4><br>
+                      <span class="help_detail">Search the LDAP identity source for users and groups that match the given filter_value. In most cases, the LDAP source performs a case-insensitive search.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SearchLdapIdentitySource.html">POST /policy/api/v1/aaa/ldap-identity-sources/&lt;ldap-identity-source-id&gt;/search</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Search a SCIM endpoint</h4><br>
+                      <span class="help_detail">Search the System for Cross-domain Identity Management (SCIM) source for users and groups whose names match the search string.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SearchScimUsersAndGroups.html">POST /api/v1/trust-management/oidc-uris/&lt;id&gt;/search</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Verify that a given user or group exists on the SCIM endpoint</h4><br>
+                      <span class="help_detail">Search the System for Cross-domain Identity Management (SCIM) source to find a user or group whose name exactly matches the given name.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_VerifyScimUserOrGroupExists.html">GET /api/v1/trust-management/oidc-uris/&lt;id&gt;/user-or-group-exists</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

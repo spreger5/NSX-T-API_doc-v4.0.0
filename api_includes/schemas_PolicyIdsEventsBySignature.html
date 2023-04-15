@@ -1,0 +1,135 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyIdsEventsBySignature.html">PolicyIdsEventsBySignature</a> (<a href="types_PolicyIdsEventsBySignature.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Intrusions that are detected, grouped by signature. It contains the signature id, severity, name, the number of intrusions of that type and the first occurence.", 
+  "id": "PolicyIdsEventsBySignature", 
+  "module_id": "PolicyIDSMetrics", 
+  "properties": {
+    "count": {
+      "description": "Number of times this particular signature was detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Number of times signature was seen", 
+      "type": "integer"
+    }, 
+    "first_occurence": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "First occurence of the intrusion, in epoch milliseconds.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "First occurence of the intrusion"
+    }, 
+    "is_ongoing": {
+      "description": "Flag indicating an ongoing intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag indicating an ongoing intrusion", 
+      "type": "boolean"
+    }, 
+    "resource_type": {
+      "description": "IDSEvent resource type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "IDSEvent resource type", 
+      "type": "string"
+    }, 
+    "severity": {
+      "description": "Severity of the threat covered by the signature, can be Critical, High, Medium, or Low.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Severity of the signature", 
+      "type": "string"
+    }, 
+    "signature_id": {
+      "description": "Signature ID pertaining to the detected intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Signature ID", 
+      "type": "integer"
+    }, 
+    "signature_name": {
+      "description": "Name of the signature pertaining to the detected intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Name of the signature", 
+      "type": "string"
+    }, 
+    "traffic_type": {
+      "description": "The source where the intrusion was detected. Possible values are GATEWAY and HOST.", 
+      "enum": [
+        "GATEWAY", 
+        "HOST"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS event detection source", 
+      "type": "string"
+    }
+  }, 
+  "title": "Detcted intrusions grouped by signature", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

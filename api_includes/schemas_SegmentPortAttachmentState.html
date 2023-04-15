@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SegmentPortAttachmentState.html">SegmentPortAttachmentState</a> (<a href="types_SegmentPortAttachmentState.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "SegmentPortAttachmentState", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "attachers": {
+      "items": {
+        "$ref": "<A HREF="schemas_PortAttacher.html">PortAttacher</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM or vmknic entities that are attached to the Segment Port", 
+      "type": "array"
+    }, 
+    "id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "VIF ID", 
+      "type": "string"
+    }, 
+    "state": {
+      "description": "A segment port must be in one of following states. FREE - If there are no active attachers. The port may or may not have an attachment ID configured on it. This state is applicable only to port of static type. ATTACHED - Segment port has exactly one active attacher and no further configuration is pending. ATTACHED_PENDING_CONF - Segment port has exactly one attacher, however it may not have been configured completely. Additional configuration will be provided by other nsx components. ATTACHED_IN_MOTION - Segment port has multiple active attachers. This state represents a scenario where VM is moving from one location (host or storage) to another (e.g. vmotion, vSphere HA) DETACHED - A temporary state after all port attachers have been detached. This state is applicable only to a port of ephemeral type and the port will soon be deleted.", 
+      "enum": [
+        "FREE", 
+        "ATTACHED", 
+        "ATTACHED_PENDING_CONF", 
+        "ATTACHED_IN_MOTION", 
+        "DETACHED"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "State of the VIF attached to Segment Port", 
+      "type": "string"
+    }
+  }, 
+  "title": "VIF attachment state of a segment port", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

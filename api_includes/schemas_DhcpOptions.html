@@ -1,0 +1,256 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DhcpOptions.html">DhcpOptions</a> (<a href="types_DhcpOptions.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "Define DHCP options of the DHCP service.", 
+  "id": "DhcpOptions", 
+  "module_id": "Dhcp", 
+  "properties": {
+    "option121": {
+      "$ref": "<A HREF="schemas_DhcpOption121.html">DhcpOption121</A>, 
+      "description": "DHCP option 121 to define classless static routes. Once Option 121 was defined, Option 249 will be auto-generated because they are equivalent.", 
+      "required": false, 
+      "title": "Option 121"
+    }, 
+    "others": {
+      "customValidation": {
+        "OPTION_117_NAME_SERVICE_SEARCH": {
+          "allowedValues": [
+            0, 
+            6, 
+            41, 
+            44, 
+            65
+          ], 
+          "code": 117, 
+          "maxItems": 5, 
+          "validator": "exact_match"
+        }, 
+        "OPTION_13_BOOT_FILE_SIZE": {
+          "code": 13, 
+          "maxItems": 1, 
+          "maximum": 65535, 
+          "minimum": 1, 
+          "validator": "range"
+        }, 
+        "OPTION_150_TFTP_SERVER_ADDRESSES": {
+          "code": 150, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_19_IP_FORWARDING_ENABLED": {
+          "allowedValues": [
+            0, 
+            1
+          ], 
+          "code": 19, 
+          "maxItems": 1, 
+          "validator": "exact_match"
+        }, 
+        "OPTION_209_PXE_CONFIG_FILE": {
+          "code": 209, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_210_PATH_PREFIX": {
+          "code": 210, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_211_REBOOT_TIME": {
+          "code": 211, 
+          "maxItems": 1, 
+          "maximum": "4294967295L", 
+          "minimum": 0, 
+          "validator": "range"
+        }, 
+        "OPTION_26_MTU": {
+          "code": 26, 
+          "maxItems": 1, 
+          "maximum": 65535, 
+          "minimum": 68, 
+          "validator": "range"
+        }, 
+        "OPTION_28_BROADCAST_ADDRESS": {
+          "code": 28, 
+          "maxItems": 1, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_2_TIME_OFFSET": {
+          "code": 2, 
+          "maxItems": 1, 
+          "maximum": 43200, 
+          "minimum": -43200, 
+          "validator": "range"
+        }, 
+        "OPTION_35_ARP_CACHE_TIMEOUT": {
+          "code": 35, 
+          "maxItems": 1, 
+          "maximum": "4294967295L", 
+          "minimum": 0, 
+          "validator": "range"
+        }, 
+        "OPTION_40_NIS_DOMAIN_NAME": {
+          "code": 40, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_41_NIS_SERVERS": {
+          "code": 41, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_42_NTP_SERVERS": {
+          "code": 42, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_44_NETBIOS_SERVERS": {
+          "code": 44, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_45_NETBIOS_DIST_SERVERS": {
+          "code": 45, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_46_NETBIOS_NODE_TYPE": {
+          "allowedValues": [
+            1, 
+            2, 
+            4, 
+            8
+          ], 
+          "code": 46, 
+          "maxItems": 4, 
+          "validator": "exact_match"
+        }, 
+        "OPTION_47_NETBIOS_SCOPE": {
+          "code": 47, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_58_RENEW_TIME": {
+          "code": 58, 
+          "maxItems": 1, 
+          "maximum": "4294967295L", 
+          "minimum": 0, 
+          "validator": "range"
+        }, 
+        "OPTION_59_REBINDING_TIME": {
+          "code": 59, 
+          "maxItems": 1, 
+          "maximum": "4294967295L", 
+          "minimum": 0, 
+          "validator": "range"
+        }, 
+        "OPTION_65_NIS_SERVER_ADDRESSES": {
+          "code": 65, 
+          "maxItems": 63, 
+          "validator": "ip_address"
+        }, 
+        "OPTION_66_TFTFP_SERVER_NAME": {
+          "code": 66, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_67_PXE_BOOT_FILE": {
+          "code": 67, 
+          "maxItems": 1, 
+          "maximum": 255, 
+          "validator": "length"
+        }, 
+        "OPTION_6_DNS_SERVERS": {
+          "code": 6, 
+          "maxItems": 2, 
+          "validator": "ip_address"
+        }, 
+        "key": "code", 
+        "keyType": "int", 
+        "namespace": "GenericDhcpOptionOther"
+      }, 
+      "description": "To define DHCP options other than option 121 in generic format. Please note, only the following options can be defined in generic format. Those other options will be accepted without validation but will not take effect. --------------------------   Code    Name --------------------------     2   Time Offset     6   Domain Name Server     13  Boot File Size     19  Forward On/Off     26  MTU Interface     28  Broadcast Address     35  ARP Timeout     40  NIS Domain     41  NIS Servers     42  NTP Servers     44  NETBIOS Name Srv     45  NETBIOS Dist Srv     46  NETBIOS Node Type     47  NETBIOS Scope     58  Renewal Time     59  Rebinding Time     64  NIS+-Domain-Name     65  NIS+-Server-Addr     66  TFTP Server-Name (used by PXE)     67  Bootfile-Name (used by PXE)     93  PXE: Client system architecture     94  PXE: Client NDI     97  PXE: UUID/UNDI     117 Name Service Search     119 Domain Search     150 TFTP server address (used by PXE)     175 Etherboot     209 PXE Configuration File     210 PXE Path Prefix     211 PXE Reboot Time", 
+      "items": {
+        "$ref": "<A HREF="schemas_GenericDhcpOption.html">GenericDhcpOption</A>
+      }, 
+      "maxItems": 255, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Generic DHCP options other than option 121", 
+      "type": "array"
+    }
+  }, 
+  "title": "DHCP options", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

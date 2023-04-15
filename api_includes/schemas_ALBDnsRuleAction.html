@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsRuleAction.html">ALBDnsRuleAction</a> (<a href="types_ALBDnsRuleAction.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsRuleAction object", 
+  "id": "ALBDnsRuleAction", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "allow": {
+      "$ref": "<A HREF="schemas_ALBDnsRuleActionAllowDrop.html">ALBDnsRuleActionAllowDrop</A>, 
+      "description": "Allow or drop the DNS query.", 
+      "required": false, 
+      "title": "Allow"
+    }, 
+    "dns_rate_limiter": {
+      "$ref": "<A HREF="schemas_ALBDnsRateLimiter.html">ALBDnsRateLimiter</A>, 
+      "description": "Rate limits the DNS requests.", 
+      "required": false, 
+      "title": "Dns rate limiter"
+    }, 
+    "gslb_site_selection": {
+      "$ref": "<A HREF="schemas_ALBDnsRuleActionGslbSiteSelection.html">ALBDnsRuleActionGslbSiteSelection</A>, 
+      "description": "Select a specific GSLB site for the DNS query. This action should be used only when GSLB services have been configured for the DNS virtual service.", 
+      "required": false, 
+      "title": "Gslb site selection"
+    }, 
+    "pool_switching": {
+      "$ref": "<A HREF="schemas_ALBDnsRuleActionPoolSwitching.html">ALBDnsRuleActionPoolSwitching</A>, 
+      "description": "Select a pool or pool group for the passthrough DNS query which cannot be served locally but could be served by upstream servers.", 
+      "required": false, 
+      "title": "Pool switching"
+    }, 
+    "response": {
+      "$ref": "<A HREF="schemas_ALBDnsRuleActionResponse.html">ALBDnsRuleActionResponse</A>, 
+      "description": "Generate a response for the DNS query.", 
+      "required": false, 
+      "title": "Response"
+    }
+  }, 
+  "title": "DnsRuleAction", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

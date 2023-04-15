@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DpuStatusProperties.html">DpuStatusProperties</a> (<a href="types_DpuStatusProperties.html">type</a>)
+</h3>
+<pre>{
+  "id": "DpuStatusProperties", 
+  "module_id": "ApplianceStats", 
+  "properties": {
+    "cpu_cores": {
+      "description": "The number of CPU cores on the system.", 
+      "readonly": true, 
+      "title": "CPU core count", 
+      "type": "integer"
+    }, 
+    "dpu_id": {
+      "readonly": true, 
+      "title": "Data processing unit ID", 
+      "type": "string"
+    }, 
+    "load_average": {
+      "description": "One, five, and fifteen minute load averages for the system.", 
+      "items": {
+        "type": "number"
+      }, 
+      "readonly": true, 
+      "title": "System load average", 
+      "type": "array"
+    }, 
+    "mem_cache": {
+      "description": "Amount of RAM on the system that can be flushed out to disk, in kilobytes.", 
+      "readonly": true, 
+      "title": "Cached RAM size in kilobytes", 
+      "type": "integer"
+    }, 
+    "mem_total": {
+      "description": "System Amount of RAM allocated to the system, in kilobytes.", 
+      "readonly": true, 
+      "title": "Total RAM size in kilobytes", 
+      "type": "integer"
+    }, 
+    "mem_used": {
+      "description": "Amount of RAM in use on the system, in kilobytes.", 
+      "readonly": true, 
+      "title": "Used RAM size in kilobytes", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Data processing unit status properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

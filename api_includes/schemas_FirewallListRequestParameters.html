@@ -1,0 +1,160 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FirewallListRequestParameters.html">FirewallListRequestParameters</a> (<a href="types_FirewallListRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Pagination and Filtering parameters to get only a subset of sections/rules.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DSListRequestParameters.html">DSListRequestParameters</A>
+  }, 
+  "id": "FirewallListRequestParameters", 
+  "module_id": "Firewall", 
+  "properties": {
+    "applied_tos": {
+      "description": "Where the Distributed Service Rules are applied.(used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "AppliedTo's referenced by this section or section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "context_profiles": {
+      "description": "The context profile value in Firewall Rules (used for filtering the list). Single value is supported in current release. Multiple comma delmited values may be supported in future releases.", 
+      "title": "Limits results to sections having rules with specific Context Profiles.", 
+      "type": "string"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "deep_search": {
+      "default": false, 
+      "description": "This parameter allows firewall API to search and filter results when references in appliedtos are either directly used in rule/section or indirectly in another container which is used in rule/section. Currently param support is only for LogicalPort. Ignores search_invalid_references to reduce heavy check.", 
+      "required": false, 
+      "title": "Toggle to search with direct or indirect references.", 
+      "type": "boolean"
+    }, 
+    "destinations": {
+      "description": "The destination value in Distributed Service Rules (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "Destinations referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "extended_sources": {
+      "description": "The extended source value in Firewall Rules (used for filtering the list). Single value is supported in current release. Multiple comma delmited values may be supported in future releases.", 
+      "title": "Limits results to sections having rules with specific Extended Sources.", 
+      "type": "string"
+    }, 
+    "filter_type": {
+      "default": "FILTER", 
+      "description": "Filter type defines matching criteria to qualify a rule in result. Type 'FILTER' will ensure all criterias (sources, destinations, services, extended sources, context profiles, appliedtos) are matched. Type 'SEARCH' will match any of the given criteria.", 
+      "enum": [
+        "FILTER", 
+        "SEARCH"
+      ], 
+      "required": false, 
+      "title": "Filter type", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "search_invalid_references": {
+      "default": false, 
+      "description": "Used in conjunction with filter_type to find invalid i.e. non nonexistent references in given criteria (sources, destinations, extended sources, services, context profiles, applied_tos).", 
+      "required": false, 
+      "title": "Return invalid references in results.", 
+      "type": "boolean"
+    }, 
+    "services": {
+      "description": "Specifying this returns the Rules where this NSServiceElement is used (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "NSService referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "sources": {
+      "description": "The source value in Distributed Service Rules (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "Sources referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters to filter list of sections/rules.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyMetadataProxyStatus.html">PolicyMetadataProxyStatus</a> (<a href="types_PolicyMetadataProxyStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "PolicyMetadataProxyStatus", 
+  "module_id": "PolicyMetadataProxy", 
+  "properties": {
+    "error_message": {
+      "required": false, 
+      "title": "Error message, if available", 
+      "type": "string"
+    }, 
+    "proxy_status": {
+      "description": "UP means the metadata proxy is working fine on both transport-nodes(if configured); DOWN means the metadata proxy is is down on both transport-nodes(if configured), hence the metadata proxy will not repsond to any metadata request; Error means there is an error on transport-node(s) or no status is reported from transport-node(s). The metadata proxy may be working (or not working); NO_BACK means metadata proxy is working on one of the transport node while not in the other transport-node (if configured). If the metadata proxy on the working transport-node goes down, the metadata proxy will go down.", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "ERROR", 
+        "NO_BACKUP"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "transport_nodes": {
+      "description": "Order of the transport nodes is insensitive because Metadata Proxy is running in Active-Active mode among target transport nodes.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": true, 
+      "title": "ids of transport nodes where this metadata proxy is running", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

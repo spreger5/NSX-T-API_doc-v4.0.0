@@ -1,0 +1,142 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServicePathHop.html">ServicePathHop</a> (<a href="types_ServicePathHop.html">type</a>)
+</h3>
+<pre>{
+  "description": "Represents a service VM implementing a particular service in a service chain", 
+  "id": "ServicePathHop", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "action": {
+      "description": "Action that will be taken by the corresponding service VM of the hop.", 
+      "enum": [
+        "SERVICE_ACTION_INVALID", 
+        "COPY", 
+        "REDIRECT"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Action", 
+      "type": "string"
+    }, 
+    "can_decrement_si": {
+      "description": "Indicating whether service is configured to decrement SI field in NSH metadata.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "SI decrement flag", 
+      "type": "boolean"
+    }, 
+    "in_maintenance_mode": {
+      "description": "Indicating the maintenance mode of the corresponding service VM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Maintenance mode flag", 
+      "type": "boolean"
+    }, 
+    "is_active_from_ccp": {
+      "description": "Indicating whether the corresponding service VM is active or not per CCP.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Active flag managed by CCP", 
+      "type": "boolean"
+    }, 
+    "is_active_from_dp": {
+      "description": "Indicating whether the corresponding service VM is active or not per DP.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Active flag managed by DP", 
+      "type": "boolean"
+    }, 
+    "is_active_from_mp": {
+      "description": "Indicating whether the corresponding service VM is active or not per MP.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Active flag managed by MP", 
+      "type": "boolean"
+    }, 
+    "mac_address": {
+      "description": "MAC address of the virtual network interface.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "MAC address of the virtual network interface.", 
+      "type": "string"
+    }, 
+    "nsh_liveness_support": {
+      "description": "Indicating whether NSH liveness is supported or not by the corresponding service VM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSH liveness flag", 
+      "type": "boolean"
+    }, 
+    "vif": {
+      "description": "ID of the virtual network interface.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Virtual interface id", 
+      "type": "string"
+    }
+  }, 
+  "title": "Service path hop", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

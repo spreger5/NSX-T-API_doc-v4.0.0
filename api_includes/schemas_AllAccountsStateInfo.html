@@ -1,0 +1,82 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AllAccountsStateInfo.html">AllAccountsStateInfo</a> (<a href="types_AllAccountsStateInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "State Information of all accounts like synchronization in progress count.", 
+  "id": "AllAccountsStateInfo", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "sync_in_progress": {
+      "description": "Number of cloud accounts for which inventory synchronization is in progress.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Sync In Progress Count", 
+      "type": "integer"
+    }
+  }, 
+  "title": "State Information Of All Accounts", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AllocationRuleAction.html">AllocationRuleAction</a> (<a href="types_AllocationRuleAction.html">type</a>)
+</h3>
+<pre>{
+  "abstract": true, 
+  "additionalProperties": false, 
+  "description": "Define action for each allocation rule which added on edge cluster.", 
+  "id": "AllocationRuleAction", 
+  "module_id": "EdgeClusters", 
+  "polymorphic-type-descriptor": {
+    "mode": "enabled", 
+    "property-name": "action_type"
+  }, 
+  "properties": {
+    "action_type": {
+      "$ref": "<A HREF="schemas_AllocationRuleActionType.html">AllocationRuleActionType</A>, 
+      "description": "Set action for each allocation rule on edge cluster which will help in auto placement.", 
+      "required": true, 
+      "title": "Type of action for allocation rule"
+    }
+  }, 
+  "title": "Set action for allocation rule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

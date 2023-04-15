@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHSMAwsCloudHsm.html">ALBHSMAwsCloudHsm</a> (<a href="types_ALBHSMAwsCloudHsm.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HSMAwsCloudHsm object", 
+  "id": "ALBHSMAwsCloudHsm", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "client_config": {
+      "description": "client_config of HSMAwsCloudHsm.", 
+      "required": false, 
+      "title": "Client config", 
+      "type": "string"
+    }, 
+    "cluster_cert": {
+      "description": "AWS CloudHSM Cluster Certificate.", 
+      "required": false, 
+      "title": "Cluster cert", 
+      "type": "string"
+    }, 
+    "crypto_user_name": {
+      "description": "Username of the Crypto User. This will be used to access the keys on the HSM .", 
+      "required": false, 
+      "title": "Crypto user name", 
+      "type": "string"
+    }, 
+    "crypto_user_password": {
+      "description": "Password of the Crypto User. This will be used to access the keys on the HSM .", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Crypto user password", 
+      "type": "string"
+    }, 
+    "hsm_ip": {
+      "description": "IP address of the HSM in the cluster. If there are more than one HSMs, only one is sufficient.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Hsm ip", 
+      "type": "array"
+    }, 
+    "mgmt_config": {
+      "description": "mgmt_config of HSMAwsCloudHsm.", 
+      "required": false, 
+      "title": "Mgmt config", 
+      "type": "string"
+    }
+  }, 
+  "title": "HSMAwsCloudHsm", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,232 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FirewallFloodProtectionProfile.html">FirewallFloodProtectionProfile</a> (<a href="types_FirewallFloodProtectionProfile.html">type</a>)
+</h3>
+<pre>{
+  "description": "A profile holding protection configuration for SYN flood, UDP flood, ICMP flood and other flood attack.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseFirewallProfile.html">BaseFirewallProfile</A>
+  }, 
+  "id": "FirewallFloodProtectionProfile", 
+  "module_id": "FirewallProfile", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "FirewallFloodProtectionProfile"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enable_rst_spoofing": {
+      "default": false, 
+      "description": "The flag to indicate RST spoofing is enabled or not. This option does not apply to EDGE components. This can be enabled only if syncache is enabled.", 
+      "readonly": false, 
+      "title": "Flag to indicate RST spoofing is enabled or not", 
+      "type": "boolean"
+    }, 
+    "enable_syncache": {
+      "default": false, 
+      "description": "The flag to indicate syncache is enabled or not. This option does not apply to EDGE components.", 
+      "readonly": false, 
+      "title": "Flag to indicate syncache is enabled or not", 
+      "type": "boolean"
+    }, 
+    "icmp_active_flow_limit": {
+      "description": "The maximum limit of active icmp connections. If this property is omitted, or set to null, then there is no limit on active icmp connections for those components if it's applied to ESX components (such as segment, segment port, virtual machine, etc); on the other side, if it's applied to EDGE components (such as, gateway), it will be set to default limit (10,000) on the specific components.", 
+      "maximum": 1000000, 
+      "minimum": 1, 
+      "readonly": false, 
+      "title": "Maximum limit of active icmp connections", 
+      "type": "integer"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "nat_active_conn_limit": {
+      "default": 4294967295, 
+      "description": "The maximum limit of active NAT connections. This limit only apply to EDGE components (such as, gateway). If this property is omitted, or set to null, then there is no limit on the specific component. Meanwhile there is an implicit limit which depends on the underlying hardware resource.", 
+      "maximum": 4294967295, 
+      "minimum": 1, 
+      "readonly": false, 
+      "title": "Maximum limit of active NAT connections", 
+      "type": "integer"
+    }, 
+    "other_active_conn_limit": {
+      "description": "The maximum limit of other active connections besides udp, icmp and half open tcp connections. If this property is omitted, or set to null, then there is no limit on other active connections besides udp, icmp and tcp half open connections for those components if it's applied to ESX components (such as segment, segment port, virtual machine, etc); on the other side, if it's applied to EDGE components (such as, gateway), it will be set to default limit (10,000) on the specific components.", 
+      "maximum": 1000000, 
+      "minimum": 1, 
+      "readonly": false, 
+      "title": "Maximum limit of other active connections besides udp, icmp and tcp half open connections", 
+      "type": "integer"
+    }, 
+    "resource_type": {
+      "description": "Resource type to use as profile type", 
+      "enum": [
+        "FirewallSessionTimerProfile", 
+        "FirewallCpuMemThresholdsProfile", 
+        "FirewallFloodProtectionProfile", 
+        "FirewallDnsProfile", 
+        "GeneralSecuritySettingsProfile"
+      ], 
+      "help_summary": "Possible values are 'FirewallSessionTimerProfile',\n'FirewallCpuMemThresholdsProfile',\n'FirewallFloodProtectionProfile',\n'FirewallDnsProfile',\n'GeneralSecuritySettingsProfile'\n", 
+      "required": true, 
+      "title": "Resource type to use as profile type.", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tcp_half_open_conn_limit": {
+      "description": "The maximum limit of tcp half open connections. If this property is omitted, or set to null, then there is no limit on active tcp half open connections for those components if it's applied to ESX components (such as segment, segment port, virtual machine, etc); on the other side, if it's applied to EDGE components (such as, gateway), it will be set to default limit (1,000,000) on the specific components.", 
+      "maximum": 1000000, 
+      "minimum": 1, 
+      "readonly": false, 
+      "title": "Maximum limit of half open tcp connections", 
+      "type": "integer"
+    }, 
+    "udp_active_flow_limit": {
+      "description": "The maximum limit of active udp connections. If this property is omitted, or set to null, then there is no limit on active udp connections for those components if it's applied to ESX components (such as segment, segment port, virtual machine, etc); on the other side, if it's applied to EDGE components (such as, gateway), it will be set to default limit (100,000) on the specific component.", 
+      "maximum": 1000000, 
+      "minimum": 1, 
+      "readonly": false, 
+      "title": "Maximum limit of active udp connections", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Firewall flood protection profile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

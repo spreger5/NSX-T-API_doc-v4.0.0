@@ -1,0 +1,118 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHSMThalesNetHsm.html">ALBHSMThalesNetHsm</a> (<a href="types_ALBHSMThalesNetHsm.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HSMThalesNetHsm object", 
+  "id": "ALBHSMThalesNetHsm", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "esn": {
+      "description": "Electronic serial number of the netHSM device. Use Thales anonkneti utility to find the netHSM ESN.", 
+      "required": true, 
+      "title": "Esn", 
+      "type": "string"
+    }, 
+    "keyhash": {
+      "description": "Hash of the key that netHSM device uses to authenticate itself. Use Thales anonkneti utility to find the netHSM keyhash.", 
+      "required": true, 
+      "title": "Keyhash", 
+      "type": "string"
+    }, 
+    "module_id": {
+      "default": 0, 
+      "description": "Local module id of the netHSM device. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "required": false, 
+      "title": "Module id", 
+      "type": "integer"
+    }, 
+    "priority": {
+      "default": 100, 
+      "description": "Priority class of the nethsm in an high availability setup. 1 is the highest priority and 100 is the lowest priority. Allowed values are 1-100. Default value when not specified in API or module is interpreted by ALB Controller as 100.", 
+      "maximum": 100, 
+      "minimum": 1, 
+      "required": true, 
+      "title": "Priority", 
+      "type": "integer"
+    }, 
+    "remote_ip": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "IP address of the netHSM device.", 
+      "required": true, 
+      "title": "Remote ip"
+    }, 
+    "remote_port": {
+      "default": 9004, 
+      "description": "Port at which the netHSM device accepts the connection. Allowed values are 1-65535. Default value when not specified in API or module is interpreted by ALB Controller as 9004.", 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Remote port", 
+      "type": "integer"
+    }
+  }, 
+  "title": "HSMThalesNetHsm", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBAppLearningConfidenceOverride.html">ALBAppLearningConfidenceOverride</a> (<a href="types_ALBAppLearningConfidenceOverride.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer AppLearningConfidenceOverride object", 
+  "id": "ALBAppLearningConfidenceOverride", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "confid_high_value": {
+      "default": 9500, 
+      "description": "Confidence threshold for label CONFIDENCE_HIGH. Default value when not specified in API or module is interpreted by ALB Controller as 9500.", 
+      "required": false, 
+      "title": "Confid high value", 
+      "type": "integer"
+    }, 
+    "confid_low_value": {
+      "default": 7500, 
+      "description": "Confidence threshold for label CONFIDENCE_LOW. Default value when not specified in API or module is interpreted by ALB Controller as 7500.", 
+      "required": false, 
+      "title": "Confid low value", 
+      "type": "integer"
+    }, 
+    "confid_probable_value": {
+      "default": 9000, 
+      "description": "Confidence threshold for label CONFIDENCE_PROBABLE. Default value when not specified in API or module is interpreted by ALB Controller as 9000.", 
+      "required": false, 
+      "title": "Confid probable value", 
+      "type": "integer"
+    }, 
+    "confid_very_high_value": {
+      "default": 9999, 
+      "description": "Confidence threshold for label CONFIDENCE_VERY_HIGH. Default value when not specified in API or module is interpreted by ALB Controller as 9999.", 
+      "required": false, 
+      "title": "Confid very high value", 
+      "type": "integer"
+    }
+  }, 
+  "title": "AppLearningConfidenceOverride", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

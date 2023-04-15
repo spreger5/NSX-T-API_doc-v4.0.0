@@ -1,0 +1,2208 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways.html' style='text-decoration: none'> Tier-0 Gateways</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Delete evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">Delete evpn tunnel endpoint configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteEvpnTenantConfig.html">DELETE /policy/api/v1/infra/evpn-tenant-configs/&lt;config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Pim Profile</h4><br>
+                      <span class="help_detail">Delete Pim Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyPimProfile.html">DELETE /policy/api/v1/infra/pim-profiles/&lt;pim-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table from segment interface (downlink) in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) in CSV format for the
+<br>
+interface (downlink) attaching segment to tier-0/tier-1 gateway, on a edge
+<br>
+node specified in edge_path parameter.
+<br>
+The edge_path parameter is mandatory.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentInterfaceArpTableCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/arp-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentInterfaceArpTableCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/arp-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table from segment interface (downlink)</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) for the
+<br>
+interface (downlink) attaching segment to tier-0/tier-1 gateway, on a edge
+<br>
+node specified in edge_path parameter.
+<br>
+The edge_path parameter is mandatory.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentInterfaceArpTable.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/arp-table</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentInterfaceArpTable.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/arp-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table for downlink router port on tier-0 router</h4><br>
+                      <span class="help_detail">Get ARP table for downlink router port on tier-0 router.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpTableForInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/gateway-interface-arp-table</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpTableForInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/gateway-interface-arp-table</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table for downlink router port on tier-0 router in CSV</h4><br>
+                      <span class="help_detail">Get ARP table for downlink router port on tier-0 router in CSV.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpTableForInfraSegmentInCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/gateway-interface-arp-table?format=csv</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpTableForInfraSegmentInCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/gateway-interface-arp-table?format=csv</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DAD state for downlink router port on tier-0 router</h4><br>
+                      <span class="help_detail">Segment ID is the ID of the segment that is connected to the the tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortDadStateForInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/gateway-interface-dad-state</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortDadStateForInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/gateway-interface-dad-state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics for downlink router port on tier-0 router</h4><br>
+                      <span class="help_detail">Segment ID is the ID of the segment that is connected to the the tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortStatisticsForInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/gateway-interface-statistics</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortStatisticsForInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/gateway-interface-statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics for downlink router port on tier-0 router</h4><br>
+                      <span class="help_detail">Segment ID is the ID of the segment that is connected to the the tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortStatisticsSummaryForInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/gateway-interface-statistics/summary</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortStatisticsSummaryForInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/gateway-interface-statistics/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-0s</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0s
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0s.html">GET /policy/api/v1/global-infra/tier-0s</a>
+                            <br>
+                            
+                            <a href="method_ListTier0s.html">GET /policy/api/v1/infra/tier-0s</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0</h4><br>
+                      <span class="help_detail">Delete Tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier-0</h4><br>
+                      <span class="help_detail">Read Tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0</h4><br>
+                      <span class="help_detail">If a Tier-0 with the tier-0-id is not already present, create a new
+<br>
+Tier-0. If it already exists, update the Tier-0 for specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reprocess Tier0 gateway configuration and publish updates to NSX controller</h4><br>
+                      <span class="help_detail">Reprocess Tier0 gateway configuration and configuration of related entities like Tier0 interfaces
+<br>
+and static routes, etc. Any missing Updates are published to NSX controller.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_Tier0GatewayReprocess.html">POST /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;?action=reprocess</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0</h4><br>
+                      <span class="help_detail">If a Tier-0 with the tier-0-id is not already present, create a new
+<br>
+Tier-0. If it already exists, replace the Tier-0 instance with the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceTier0.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 Address Resolution Protocol Proxies</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for a tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0GatewayArpProxies.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/arp-proxies</a>
+                            <br>
+                            
+                            <a href="method_GetTier0GatewayArpProxies.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/arp-proxies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 Address Resolution Protocol Proxies in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for a tier-0 in CSV format
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0GatewayArpProxiesInCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/arp-proxies?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0GatewayArpProxiesInCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/arp-proxies?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List BGP community lists</h4><br>
+                      <span class="help_detail">Paginated list of all community lists under a tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListCommunityList.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/community-lists</a>
+                            <br>
+                            
+                            <a href="method_ListCommunityList.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/community-lists</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a BGP community list</h4><br>
+                      <span class="help_detail">Delete a BGP community list</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteCommunityList.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/community-lists/&lt;community-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a BGP community list</h4><br>
+                      <span class="help_detail">Read a BGP community list</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadCommunityList.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/community-lists/&lt;community-list-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadCommunityList.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/community-lists/&lt;community-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP community list</h4><br>
+                      <span class="help_detail">If a community list with the community-list-id is not already present,
+<br>
+create a new community list. If it already exists, update the community
+<br>
+list for specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchCommunityList.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/community-lists/&lt;community-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP community list</h4><br>
+                      <span class="help_detail">If a community list with the community-list-id is not already present,
+<br>
+create a new community list. If it already exists, replace the community
+<br>
+list instance with the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceCommunityList.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/community-lists/&lt;community-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Evpn Configuration</h4><br>
+                      <span class="help_detail">Read Evpn Configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEvpnConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/evpn</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update evpn configuration</h4><br>
+                      <span class="help_detail">Create a evpn configuration if it is not already present,
+<br>
+otherwise update the evpn configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchEvpnConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/evpn</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update evpn configuration</h4><br>
+                      <span class="help_detail">Create or update evpn configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateEvpnConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/evpn</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get forwarding table from tier-0</h4><br>
+                      <span class="help_detail">Get forwarding table from tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0ForwardingTable.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/forwarding-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier0ForwardingTable.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/forwarding-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get forwarding table from tier-0 in CSV format</h4><br>
+                      <span class="help_detail">Get forwarding table from tier-0 gateway in CSV format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0ForwardingTableCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/forwarding-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0ForwardingTableCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/forwarding-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-0 locale-services</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0 locale-services
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0LocaleServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services</a>
+                            <br>
+                            
+                            <a href="method_ListTier0LocaleServices.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 Address Resolution Protocol Proxies</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for a tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0ArpProxies.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/arp-proxies</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                            
+                            <a href="method_GetTier0ArpProxies.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/arp-proxies</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete overridden BGP routing config</h4><br>
+                      <span class="help_detail">Deletes the specified overridden BgpRoutingConfig. If the BgpRoutingConfig
+<br>
+is not overridden, it won't get deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteOverriddenBgpRoutingConfig.html">DELETE /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read BGP routing config</h4><br>
+                      <span class="help_detail">Read BGP routing config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpRoutingConfig.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_ReadBgpRoutingConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update BGP routing config</h4><br>
+                      <span class="help_detail">If an BGP routing config not present, create BGP routing config.
+<br>
+If it already exists, update the routing config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchBgpRoutingConfig.html">PATCH /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_PatchBgpRoutingConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP routing config</h4><br>
+                      <span class="help_detail">If BGP routing config is not already present, create BGP routing config.
+<br>
+If it already exists, replace the BGP routing config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceBgpRoutingConfig.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceBgpRoutingConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List BGP neighbor configurations</h4><br>
+                      <span class="help_detail">Paginated list of all BGP neighbor configurations
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListBgpNeighborConfigs.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors</a>
+                            <br>
+                            
+                            <a href="method_ListBgpNeighborConfigs.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete BGP neighbor config</h4><br>
+                      <span class="help_detail">Delete BGP neighbor config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteBgpNeighborConfig.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteBgpNeighborConfig.html">DELETE /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read BGP neighbor config</h4><br>
+                      <span class="help_detail">Read BGP neighbor config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpNeighborConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadBgpNeighborConfig.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP neighbor config</h4><br>
+                      <span class="help_detail">If BGP neighbor config with the neighbor-id is not already present, create a new
+<br>
+neighbor config. If it already exists, replace the BGP neighbor config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchBgpNeighborConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchBgpNeighborConfig.html">PATCH /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP neighbor config</h4><br>
+                      <span class="help_detail">If BGP neighbor config with the neighbor-id is not already present, create a new
+<br>
+neighbor config. If it already exists, replace the BGP neighbor config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceBgpNeighborConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceBgpNeighborConfig.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor advertised routes</h4><br>
+                      <span class="help_detail">Returns routes advertised by BGP neighbor from all edge transport nodes on which
+<br>
+this neighbor is currently enabled.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor advertised routes in CSV format</h4><br>
+                      <span class="help_detail">Returns routes advertised by BGP neighbor from all edge transport nodes on which
+<br>
+this neighbor is currently enabled in CSV format. Routes from all enforcement points are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutesInCsvFormat.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routes learned by BGP neighbor in CSV format</h4><br>
+                      <span class="help_detail">Returns routes learned by BGP neighbor from all edge nodes on which
+<br>
+this neighbor is currently enabled. Routes from all enforcement points are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutesInCsvFormat.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routes learned by BGP neighbor</h4><br>
+                      <span class="help_detail">Returns routes learned by BGP neighbor from all edge nodes on which
+<br>
+this neighbor is currently enabled.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor status for the Tier0</h4><br>
+                      <span class="help_detail">Returns the status of all the BGP neighbors for the given Tier0.
+<br>
+To get BGP neighbor status for a particular enforcement point,
+<br>
+parameter "enforcement_point_path=&lt;enforcement_point_path&gt;" needs to be specified.
+<br>
+If an enforcement_point is unspecified, then bgp neighbor status for all enforcement points is fetched.
+<br>
+To get BGP neighbors status for the logical router from particular edge node,
+<br>
+parameter "edge_path=&lt;edge_path&gt;" needs to be specified.
+<br>
+If an edge_path is unspecified, then bgp neighbor status for all edges is fetched.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborsStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborsStatus.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 interface group statistics information</h4><br>
+                      <span class="help_detail">Get tier-0 interface group statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceGroupStatistics.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interface-groups/&lt;interface-group-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceGroupStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interface-groups/&lt;interface-group-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-0 Interfaces</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0 Interfaces
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0Interfaces.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces</a>
+                            <br>
+                            
+                            <a href="method_ListTier0Interfaces.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0 interface</h4><br>
+                      <span class="help_detail">Delete Tier-0 interface</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0Interface.html">DELETE /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteTier0Interface.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier-0 interface</h4><br>
+                      <span class="help_detail">Read Tier-0 interface</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0Interface.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0Interface.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 interface</h4><br>
+                      <span class="help_detail">If an interface with the interface-id is not already present, create a new
+<br>
+interface. If it already exists, update the interface for specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0Interface.html">PATCH /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchTier0Interface.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 interface</h4><br>
+                      <span class="help_detail">If an interface with the interface-id is not already present, create a new
+<br>
+interface. If it already exists, replace the interface with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceTier0Interface.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceTier0Interface.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 Interface Address Resolution Protocol Proxies in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for a tier-0 interface in CSV format. Interfaces can be of types
+<br>
+- EXTERNAL and SERVICE. Interfaces of type LOOBACK and downlink are not
+<br>
+supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceArpProxiesInCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceArpProxiesInCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 Interface Address Resolution Protocol Proxies</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for a tier-0 interface. Interfaces can be of types
+<br>
+- EXTERNAL and SERVICE. Interfaces of type LOOBACK and downlink are not
+<br>
+supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceArpProxies.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-proxy</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceArpProxies.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-proxy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table from tier-0 interface in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) in CSV format
+<br>
+for the tier-0 interface, on a edge node if a query parameter
+<br>
+"edge_path=&lt;policy-edge-path&gt;" is given. The edge_path
+<br>
+parameter is mandatory if the interface type is not EXTERNAL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceArpTableCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceArpTableCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table from tier-0 interface</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) for the
+<br>
+tier-0 interface, on a edge node if a query parameter
+<br>
+"edge_path=&lt;policy-edge-path&gt;" is given. The edge_path
+<br>
+parameter is mandatory if the interface type is not EXTERNAL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceArpTable.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceArpTable.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/arp-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DAD status by interface</h4><br>
+                      <span class="help_detail">Get tier-0 interface DAD state information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceDADState.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/dad-state</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceDADState.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/dad-state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 interface statistics information</h4><br>
+                      <span class="help_detail">Get tier-0 interface statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceStatistics.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 interface statistics summary information</h4><br>
+                      <span class="help_detail">Get tier-0 interface statistics summary information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0InterfaceStatisticsSummary.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/statistics/summary</a>
+                            <br>
+                            
+                            <a href="method_GetTier0InterfaceStatisticsSummary.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/statistics/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read OSPF routing config</h4><br>
+                      <span class="help_detail">Read OSPF routing config
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadOspfRoutingConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a OSPF routing config</h4><br>
+                      <span class="help_detail">If OSPF routing config is not already present, create OSPF routing config.
+<br>
+If it already exists, replace the OSPF routing config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchOspfRoutingConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a OSPF routing config</h4><br>
+                      <span class="help_detail">If OSPF routing config is not already present, create OSPF routing config.
+<br>
+If it already exists, replace the OSPF routing config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceOspfRoutingConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List OSPF area configurations</h4><br>
+                      <span class="help_detail">List all OSPF area configurations.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyOspfAreaConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/areas</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete OSPF Area config</h4><br>
+                      <span class="help_detail">Delete OSPF Area config
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteOspfAreaConfig.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/areas/&lt;area-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read OSPF Area config</h4><br>
+                      <span class="help_detail">Read OSPF Area config
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadOspfAreaConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/areas/&lt;area-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a OSPF Area config</h4><br>
+                      <span class="help_detail">If OSPF Area config is not already present, create OSPF Area config.
+<br>
+If it already exists, replace the OSPF Area config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchOspfAreaConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/areas/&lt;area-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a OSPF Area config</h4><br>
+                      <span class="help_detail">If OSPF Area config is not already present, create OSPF Area config.
+<br>
+If it already exists, replace the OSPF Area config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceOspfAreaConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/areas/&lt;area-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get OSPF database information</h4><br>
+                      <span class="help_detail">Get OSPF database information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOspfDatabase.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/database</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get OSPF Database information in CSV format</h4><br>
+                      <span class="help_detail">Get OSPF Database information in CSV format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOspfDatabaseInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/database?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get OSPF neighbor information</h4><br>
+                      <span class="help_detail">Get OSPF neighbor information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOspfNeighbors.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/neighbors</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get OSPF route information</h4><br>
+                      <span class="help_detail">Get OSPF route information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOspfRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get OSPF route information in CSV format</h4><br>
+                      <span class="help_detail">Get OSPF route information in CSV format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOspfRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ospf/routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Service Interfaces</h4><br>
+                      <span class="help_detail">Paginated list of all Service Interfaces
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceInterfaces.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces</a>
+                            <br>
+                            
+                            <a href="method_ListServiceInterfaces.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete service interface</h4><br>
+                      <span class="help_detail">Delete service interface</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceInterface.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service interface</h4><br>
+                      <span class="help_detail">Read service interface</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceInterface.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadServiceInterface.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 interface</h4><br>
+                      <span class="help_detail">If an interface with the interface-id is not already present, create a new
+<br>
+interface. If it already exists, update the interface for specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceInterface.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a service interface</h4><br>
+                      <span class="help_detail">If an interface with the interface-id is not already present, create a new
+<br>
+interface. Modification of service interface is not allowed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateServiceInterface.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-interfaces/&lt;interface-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-0 Deployment maps</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0 Deployment Entries.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0DeploymentMaps.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps</a>
+                            <br>
+                            
+                            <a href="method_ListTier0DeploymentMaps.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0 Deployment Map</h4><br>
+                      <span class="help_detail">Delete Tier-0 Deployment Map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0DeploymentMap.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a Tier-0 Deployment Map</h4><br>
+                      <span class="help_detail">Read a Tier-0 Deployment Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0DeploymentMap.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0DeploymentMap.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Tier-0 Deployment Map under Tier-0</h4><br>
+                      <span class="help_detail">If the passed Tier-0 Deployment Map does not already exist, create a new Tier-0 Deployment Map.
+<br>
+If it already exists, patch it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0DeploymentMap.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new Tier-0 Deployment Map under Tier-0</h4><br>
+                      <span class="help_detail">If the passed Tier-0 Deployment Map does not already exist, create a new Tier-0 Deployment Map.
+<br>
+If it already exists, replace it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0DeploymentMap.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0 locale-services</h4><br>
+                      <span class="help_detail">Delete Tier-0 locale-services</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0LocaleServices.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier-0 locale-services</h4><br>
+                      <span class="help_detail">Read Tier-0 locale-services</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0LocaleServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0LocaleServices.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a tier-0 locale-services</h4><br>
+                      <span class="help_detail">If a Tier-0 locale-services with the locale-services-id is not already
+<br>
+present, create a new locale-services. If it already exists, update
+<br>
+Tier-0 locale-services with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0LocaleServices.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 locale-services</h4><br>
+                      <span class="help_detail">If a Tier-0 locale-services with the locale-services-id is not already
+<br>
+present, create a new locale-services. If it already exists, replace the
+<br>
+Tier-0 locale-services instance with the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceTier0LocaleServices.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">List all evpn tunnel endpoint configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListEvpnTunnelEndpointConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/evpn-tunnel-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">Delete evpn tunnel endpoint configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteEvpnTunnelEndpointConfig.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/evpn-tunnel-endpoints/&lt;tunnel-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">Read evpn tunnel endpoint configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEvpnTunnelEndpointConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/evpn-tunnel-endpoints/&lt;tunnel-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">Create a evpn tunnel endpoint config if the tunnel-endpoint-id is not already present,
+<br>
+otherwise update the tunnel endpoint configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchEvpnTunnelEndpointConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/evpn-tunnel-endpoints/&lt;tunnel-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update evpn tunnel endpoint configuration</h4><br>
+                      <span class="help_detail">Create or update evpn tunnel endpoint configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateEvpnTunnelEndpointConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/evpn-tunnel-endpoints/&lt;tunnel-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Multicast Configuration</h4><br>
+                      <span class="help_detail">Read Multicast Configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyMulticastConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update multicast configuration</h4><br>
+                      <span class="help_detail">Create or update a Tier-0 multicast configuration defining the multicast replication range,
+<br>
+the IGMP or a PIM profile. It will update the configuration if there is already one in place.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyMulticastConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update multicast configuration</h4><br>
+                      <span class="help_detail">Create or update a Tier-0 multicast configuration defining the multicast replication range,
+<br>
+the IGMP or a PIM profile. It will update the configuration if there is already one in place.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyMulticastConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Multicast Forwarding In Csv Format</h4><br>
+                      <span class="help_detail">Get Multicast Forwarding In CSV Format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyMulticastForwardingInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/forwarding?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Multicast Forwarding</h4><br>
+                      <span class="help_detail">Get Multicast Forwarding.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyMulticastForwarding.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/forwarding</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IGMP Memberships in CSV format</h4><br>
+                      <span class="help_detail">Get Igmp Memberships in CSV format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyIgmpMembershipsInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/igmp-memberships?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IGMP Memberships</h4><br>
+                      <span class="help_detail">Get Igmp Memberships.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyIgmpMemberships.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/igmp-memberships</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PIM Rendezvous Point Mappings In CSV Format</h4><br>
+                      <span class="help_detail">Get PIM Rendezvous Point Mappings In CSV Format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyPimRpMappingsInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/pim-rp-mappings?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PIM Rendezvous Point Mappings</h4><br>
+                      <span class="help_detail">Get PIM Rendezvous Point Mappings.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyPimRpMappings.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/pim-rp-mappings</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Multicast Routes in Csv Format</h4><br>
+                      <span class="help_detail">Get Multicast Routes in CSV Format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyMulticastRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Multicast Routes</h4><br>
+                      <span class="help_detail">Get Multicast Routes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyMulticastRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/multicast/routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List prefix lists</h4><br>
+                      <span class="help_detail">Paginated list of all prefix lists
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPrefixLists.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists</a>
+                            <br>
+                            
+                            <a href="method_ListPrefixLists.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a prefix list</h4><br>
+                      <span class="help_detail">Delete a prefix list</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePrefixList.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists/&lt;prefix-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a prefix list</h4><br>
+                      <span class="help_detail">Read a prefix list</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPrefixList.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists/&lt;prefix-list-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadPrefixList.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists/&lt;prefix-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a prefix list</h4><br>
+                      <span class="help_detail">If prefix list for prefix-list-id is not already present, create
+<br>
+a prefix list. If it already exists, patch prefix list for prefix-list-id.
+<br>
+Note:
+<br>
+   Patching existing prefix-list's "prefixes" property will overwrite the existing prefixes.
+<br>
+   GET and PATCH is the expected set of operations to update or append new entries to the existig prefixes.
+<br>
+   Patching existing prefixes require order to be  preserved to avoid traffic impact. During PATCH operation,
+<br>
+   reordering of existing prefixes may impact routes and eventually datapath.
+<br>
+   Order here is crucial and it all depends upon action. If action for every prefix is PERMIT then order may
+<br>
+   not impact but if there is DENY prefix then change in ordering could lead to traffic impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPrefixList.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists/&lt;prefix-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a prefix list</h4><br>
+                      <span class="help_detail">If prefix list for prefix-list-id is not already present, create
+<br>
+a prefix list. If it already exists, replace the prefix list for
+<br>
+prefix-list-id.
+<br>
+Note:
+<br>
+   Updating existing prefixes require order to be  preserved to avoid traffic impact. During PATCH operation,
+<br>
+   reordering of existing prefixes may impact routes and eventually datapath.
+<br>
+   Order here is crucial and it all depends upon action. If action for every prefix is PERMIT then order may
+<br>
+   not impact but if there is DENY prefix then change in ordering could lead to traffic impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplacePrefixList.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/prefix-lists/&lt;prefix-list-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List route maps</h4><br>
+                      <span class="help_detail">Paginated list of all route maps under a tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllRouteMaps.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/route-maps</a>
+                            <br>
+                            
+                            <a href="method_ListAllRouteMaps.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/route-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a route map</h4><br>
+                      <span class="help_detail">Delete a route map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveRouteMap.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/route-maps/&lt;route-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a route map</h4><br>
+                      <span class="help_detail">Read a route map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRouteMap.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/route-maps/&lt;route-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetRouteMap.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/route-maps/&lt;route-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a route map</h4><br>
+                      <span class="help_detail">If a route map with the route-map-id is not already present, create a new
+<br>
+route map. If it already exists, update the route map for specified
+<br>
+attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchRouteMap.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/route-maps/&lt;route-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a route map</h4><br>
+                      <span class="help_detail">If a route map with the route-map-id is not already present,
+<br>
+create a new route map. If it already exists, replace the
+<br>
+route map instance with the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceRouteMap.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/route-maps/&lt;route-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routing table from tier-0</h4><br>
+                      <span class="help_detail">Get routing table from tier-0
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0Routes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/routing-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier0Routes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/routing-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routing table from tier-0 in CSV format</h4><br>
+                      <span class="help_detail">Get routing table from tier-0 gateway in CSV format.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0RoutesCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/routing-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0RoutesCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/routing-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier0 state</h4><br>
+                      <span class="help_detail">Returns
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0State.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/state</a>
+                            <br>
+                            
+                            <a href="method_GetTier0State.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-0 Static Routes</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0 Static Routes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0StaticRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/static-routes</a>
+                            <br>
+                            
+                            <a href="method_ListTier0StaticRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0 static routes</h4><br>
+                      <span class="help_detail">Delete Tier-0 static routes</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0StaticRoutes.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier-0 static routes</h4><br>
+                      <span class="help_detail">Read Tier-0 static routes</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0StaticRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0StaticRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 static routes</h4><br>
+                      <span class="help_detail">If static routes for route-id are not already present, create
+<br>
+static routes. If it already exists, update static routes for route-id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0StaticRoutes.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-0 static routes</h4><br>
+                      <span class="help_detail">If static routes for route-id are not already present, create
+<br>
+static routes. If it already exists, replace the static routes for route-id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceTier0StaticRoutes.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceTier0StaticRoutes.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/static-routes/&lt;route-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List StaticRouteBfdPeers</h4><br>
+                      <span class="help_detail">Paginated list of all StaticRouteBfdPeers.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListStaticRouteBfdPeer.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers</a>
+                            <br>
+                            
+                            <a href="method_ListStaticRouteBfdPeer.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete this StaticRouteBfdPeer and all the entities contained by it.</h4><br>
+                      <span class="help_detail">Delete this StaticRouteBfdPeer and all the entities contained by it.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteStaticRouteBfdPeer.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a StaticRouteBfdPeer</h4><br>
+                      <span class="help_detail">Read a StaticRouteBfdPeer with the bfd-peer-id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadStaticRouteBfdPeer.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadStaticRouteBfdPeer.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a StaticRouteBfdPeer</h4><br>
+                      <span class="help_detail">If a StaticRouteBfdPeer with the bfd-peer-id is not already present,
+<br>
+create a new StaticRouteBfdPeer. If it already exists, update the
+<br>
+StaticRouteBfdPeer. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchStaticRouteBfdPeer.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a StaticRouteBfdPeer</h4><br>
+                      <span class="help_detail">If a StaticRouteBfdPeer with the bfd-peer-id is not already present,
+<br>
+create a new StaticRouteBfdPeer. If it already exists, update the
+<br>
+StaticRouteBfdPeer. This operation will fully replace the object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateStaticRouteBfdPeer.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/static-routes/bfd-peers/&lt;bfd-peer-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 router link arp information</h4><br>
+                      <span class="help_detail">Get tier-0 interface arp information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0RouterLinkArpTable.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/arp-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier0RouterLinkArpTable.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/arp-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get ARP table from tier-0 router link interface in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) in CSV format
+<br>
+for the tier-0 router link interface, on a edge node. The edge_path
+<br>
+parameter is mandatory if the interface type is not EXTERNAL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0RouterLinkArpTableCsv.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/arp-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0RouterLinkArpTableCsv.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/arp-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 router link statistics information</h4><br>
+                      <span class="help_detail">Get tier-0 interface statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0RouterLinkStatistics.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetTier0RouterLinkStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-0 router link statistics summary information</h4><br>
+                      <span class="help_detail">Get tier-0 interface statistics summary information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0RouterLinkSummaryStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/statistics/summary</a>
+                            <br>
+                            
+                            <a href="method_GetTier0RouterLinkSummaryStatistics.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/tier-1-interface/statistics/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DAD status by interface</h4><br>
+                      <span class="help_detail">Get tier-1 interface DAD state information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1InterfaceDADState.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/dad-state</a>
+                            <br>
+                            
+                            <a href="method_GetTier1InterfaceDADState.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/interfaces/&lt;interface-id&gt;/dad-state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

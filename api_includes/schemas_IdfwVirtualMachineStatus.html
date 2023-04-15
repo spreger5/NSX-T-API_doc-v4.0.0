@@ -1,0 +1,89 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdfwVirtualMachineStatus.html">IdfwVirtualMachineStatus</a> (<a href="types_IdfwVirtualMachineStatus.html">type</a>)
+</h3>
+<pre>{
+  "description": "ID and status of the VM on Identity Firewall compute collection.", 
+  "id": "IdfwVirtualMachineStatus", 
+  "module_id": "IdentityFirewall", 
+  "properties": {
+    "vm_id": {
+      "description": "VM ID of the VM on Identity Firewall compute collection.", 
+      "required": true, 
+      "title": "IDFW Virtual Machine ID.", 
+      "type": "string"
+    }, 
+    "vm_status": {
+      "description": "Status of the Identity Firewall compute collection's Virtual Machine.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IdfwVirtualMachineCondition.html">IdfwVirtualMachineCondition</A>
+      }, 
+      "required": true, 
+      "title": "IDFW VM status.", 
+      "type": "array"
+    }
+  }, 
+  "title": "IDFW VM ID and status.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

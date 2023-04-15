@@ -1,0 +1,136 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBLdapAuthSettings.html">ALBLdapAuthSettings</a> (<a href="types_ALBLdapAuthSettings.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer LdapAuthSettings object", 
+  "id": "ALBLdapAuthSettings", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "base_dn": {
+      "description": "The LDAP base DN. For example, avinetworks.com would be DC=avinetworks,DC=com.", 
+      "required": false, 
+      "title": "Base dn", 
+      "type": "string"
+    }, 
+    "bind_as_administrator": {
+      "default": true, 
+      "description": "LDAP administrator credentials are used to search for users and group memberships. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Bind as administrator", 
+      "type": "boolean"
+    }, 
+    "email_attribute": {
+      "default": "email", 
+      "description": "LDAP attribute that refers to user email. Default value when not specified in API or module is interpreted by ALB Controller as email.", 
+      "required": false, 
+      "title": "Email attribute", 
+      "type": "string"
+    }, 
+    "full_name_attribute": {
+      "default": "name", 
+      "description": "LDAP attribute that refers to user's full name. Default value when not specified in API or module is interpreted by ALB Controller as name.", 
+      "required": false, 
+      "title": "Full name attribute", 
+      "type": "string"
+    }, 
+    "port": {
+      "default": 389, 
+      "description": "Query the LDAP servers on this port. Default value when not specified in API or module is interpreted by ALB Controller as 389.", 
+      "required": false, 
+      "title": "Port", 
+      "type": "integer"
+    }, 
+    "security_mode": {
+      "$ref": "<A HREF="schemas_ALBAuthLdapSecurityMode.html">ALBAuthLdapSecurityMode</A>, 
+      "description": "LDAP connection security mode. Enum options - AUTH_LDAP_SECURE_NONE, AUTH_LDAP_SECURE_USE_LDAPS.", 
+      "required": false, 
+      "title": "Security mode"
+    }, 
+    "server": {
+      "description": "LDAP server IP address or Hostname. Use IP address if an auth profile is used to configure Virtual Service. Minimum of 1 items required.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": true, 
+      "title": "Server", 
+      "type": "array"
+    }, 
+    "settings": {
+      "$ref": "<A HREF="schemas_ALBLdapDirectorySettings.html">ALBLdapDirectorySettings</A>, 
+      "description": "LDAP full directory configuration with administrator credentials.", 
+      "required": false, 
+      "title": "Settings"
+    }, 
+    "user_bind": {
+      "$ref": "<A HREF="schemas_ALBLdapUserBindSettings.html">ALBLdapUserBindSettings</A>, 
+      "description": "LDAP anonymous bind configuration.", 
+      "required": false, 
+      "title": "User bind"
+    }
+  }, 
+  "title": "LdapAuthSettings", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

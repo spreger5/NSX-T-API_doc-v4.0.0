@@ -1,0 +1,721 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services_logical_routers.html' style='text-decoration: none'> Logical Routers</a>
+            
+        </P>
+    
+        <div id="ReadLogicalRouter">
+          <h2>
+            Read Logical Router
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Returns information about the specified logical router.</span>
+              <span class="help_detail"></span>
+          <b>Deprecated:</b> <br> Please use below policy apis instead of this API. <br> GET /infra/tier-0s/&lt;id&gt; <br> GET /infra/tier-0s/&lt;id&gt;/locale-services/&lt;id&gt; <br> GET /infra/tier-1s/&lt;id&gt; <br> GET /infra/tier-1s/&lt;id&gt;/locale-services/&lt;id&gt; <br>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/logical-routers/&lt;logical-router-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/logical-routers/f962173f-ac03-4d08-8366-56a41779f61d</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">LogicalRouter<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ReadLogicalRouter', 'LogicalRouter.ReadLogicalRouter.Response_Body')">+</span></div>
+  </div>
+    <div id="LogicalRouter.ReadLogicalRouter.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LogicalRouter.html">
+        <span>LogicalRouter</span>
+      </a> (<a href="schemas_LogicalRouter.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>advanced_config</td>
+            
+            <td>Logical Router Configuration<br><br>Contains config properties for tier0 routers</td>
+            
+            <td><a href="types_LogicalRouterConfig.html">LogicalRouterConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>allocation_profile</td>
+            
+            <td>Edge Cluster Member Allocation Profile<br><br>Configurations options to auto allocate edge cluster members for
+<br>
+logical router. Auto allocation is supported only for TIER1 and pick
+<br>
+least utilized member post current assignment for next allocation.
+<br>
+</td>
+            
+            <td><a href="types_EdgeClusterMemberAllocationProfile.html">EdgeClusterMemberAllocationProfile</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>edge_cluster_id</td>
+            
+            <td>Identifier of the edge cluster for this Logical Router<br><br>Used for tier0 routers</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>edge_cluster_member_indices</td>
+            
+            <td>Member indices of the edge node on the cluster<br><br>For stateful services, the logical router should be associated with
+<br>
+edge cluster. For TIER 1 logical router, for manual placement of
+<br>
+service router within the cluster, edge cluster member indices needs
+<br>
+to be provided else same will be auto-allocated. You can provide
+<br>
+maximum two indices for HA ACTIVE_STANDBY. For TIER0 logical router
+<br>
+this property is no use and placement is derived from logical router
+<br>
+uplink or loopback port.
+<br>
+</td>
+            
+            <td>array of integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>failover_mode</td>
+            
+            <td>Failover mode for active-standby logical router instances.<br><br>Determines the behavior when a logical router instance restarts after
+<br>
+a failure. If set to PREEMPTIVE, the preferred node will take over,
+<br>
+even if it causes another failure. If set to NON_PREEMPTIVE, then the
+<br>
+instance that restarted will remain secondary.
+<br>
+This property must not be populated unless the high_availability_mode property
+<br>
+is set to ACTIVE_STANDBY.
+<br>
+If high_availability_mode property is set to ACTIVE_STANDBY and this property
+<br>
+is not specified then default will be NON_PREEMPTIVE.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Enum: PREEMPTIVE, NON_PREEMPTIVE</td>
+          </tr>
+          <tr>
+            <td>firewall_sections</td>
+            
+            <td>LR Firewall Section References<br><br>List of Firewall sections related to Logical Router.</td>
+            
+            <td>array of <a href="types_ResourceReference.html">ResourceReference</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>high_availability_mode</td>
+            
+            <td>High availability mode</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ACTIVE_ACTIVE, ACTIVE_STANDBY</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ipv6_profiles</td>
+            
+            <td>IPv6 Profiles<br><br>IPv6Profiles captures IPv6 NDRA Profile and DAD Profile
+<br>
+id associated with the logical router.
+<br>
+</td>
+            
+            <td><a href="types_IPv6Profiles.html">IPv6Profiles</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>preferred_edge_cluster_member_index</td>
+            
+            <td>Preferred edge cluster member index<br><br>Preferred edge cluster member index which is required
+<br>
+for PREEMPTIVE failover mode. Used for Tier0 routers only.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LogicalRouter</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>router_type</td>
+            
+            <td>Type of Logical Router<br><br>TIER0 for external connectivity.
+<br>
+TIER1 for two tier topology with TIER0 on top.
+<br>
+VRF for isolation of routing table on TIER0.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: TIER0, TIER1, VRF</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "_revision": 0,
+  "id": "f962173f-ac03-4d08-8366-56a41779f61d",
+  "resource_type": "LogicalRouter",
+  "config": {
+    "internal_transit_network": "169.0.0.0/28",
+    "external_transit_networks": [
+        "100.64.1.0/24"
+    ]
+  },
+  "router_type": "TIER0",
+  "_last_modified_user": "admin",
+  "_last_modified_time": 1414620218840,
+  "_create_time": 1414620218840,
+  "_create_user": "admin"
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">routing_routers</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

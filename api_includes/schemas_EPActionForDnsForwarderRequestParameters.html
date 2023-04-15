@@ -1,0 +1,88 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_EPActionForDnsForwarderRequestParameters.html">EPActionForDnsForwarderRequestParameters</a> (<a href="types_EPActionForDnsForwarderRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "id": "EPActionForDnsForwarderRequestParameters", 
+  "module_id": "PolicyDnsForwarder", 
+  "properties": {
+    "action": {
+      "description": "The valid DNS forwarder actions to be performed on EP are, - clear_cache:       Clear the current cache of the dns forwarder from       specified enforcement point.", 
+      "enum": [
+        "clear_cache"
+      ], 
+      "required": true, 
+      "title": "An action to be performed for DNS forwarder on EP", 
+      "type": "string"
+    }, 
+    "enforcement_point_path": {
+      "default": "/infra/sites/default/enforcement-points/default", 
+      "description": "An enforcement point path, on which the action is to be performed. If not specified, default enforcement point path, /infra/sites/default/enforcement-points/default will be considered.", 
+      "required": false, 
+      "title": "An enforcement point path, on which the action is to be performed", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

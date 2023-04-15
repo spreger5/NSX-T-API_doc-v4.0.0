@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpRequestUriCondition.html">LbHttpRequestUriCondition</a> (<a href="types_LbHttpRequestUriCondition.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This condition is used to match URIs(Uniform Resource Identifier) of HTTP request messages. The URI field can be specified as a regular expression. If an HTTP request message is requesting an URI which matches specified regular expression, it matches the condition. The syntax of whole URI looks like this: scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment] This condition matches only the path part of entire URI. When match_type field is specified as REGEX, the uri field is used as a regular expression to match URI path of HTTP requests. For example, to match any URI that has \"/image/\" or \"/images/\", uri field can be specified as: \"/image[s]?/\". Named capturing groups can be used in the uri field to capture substrings of matched URIs and store them in variables for use in LbRuleAction. For example, specify uri field as: \"/news/(?&amp;lt;year&amp;gt;\\d+)/(?&amp;lt;month&amp;gt;\\d+)/(?&amp;lt;article&amp;gt;.*)\" If the URI path is /articles/news/2017/06/xyz.html, then substring \"2017\" is captured in variable year, \"06\" is captured in variable month, and \"xyz.html\" is captured in variable article. These variables can then be used in an LbRuleAction field which supports variables, such as uri field of LbHttpRequestUriRewriteAction. For example, set the uri field of LbHttpRequestUriRewriteAction as: \"/articles/news/$year-$month-$article\" Then the URI path /articles/news/2017/06/xyz.html is rewritten to: \"/articles/news/2017-06-xyz.html\"", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleCondition.html">LbRuleCondition</A>
+  }, 
+  "id": "LbHttpRequestUriCondition", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpRequestUriCondition"
+  }, 
+  "properties": {
+    "case_sensitive": {
+      "default": true, 
+      "description": "If true, case is significant when comparing URI.", 
+      "required": false, 
+      "title": "A case sensitive flag for URI comparing", 
+      "type": "boolean"
+    }, 
+    "inverse": {
+      "default": false, 
+      "required": false, 
+      "title": "A flag to indicate whether reverse the match result of this condition", 
+      "type": "boolean"
+    }, 
+    "match_type": {
+      "$ref": "<A HREF="schemas_LbRuleMatchType.html">LbRuleMatchType</A>, 
+      "default": "REGEX", 
+      "required": false, 
+      "title": "Match type of URI"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleConditionType.html">LbRuleConditionType</A>, 
+      "required": true, 
+      "title": "Type of load balancer rule condition"
+    }, 
+    "uri": {
+      "required": true, 
+      "title": "A string used to identify resource", 
+      "type": "string"
+    }
+  }, 
+  "title": "Condition to match URIs of HTTP request messages", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

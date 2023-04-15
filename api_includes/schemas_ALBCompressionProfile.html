@@ -1,0 +1,122 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBCompressionProfile.html">ALBCompressionProfile</a> (<a href="types_ALBCompressionProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer CompressionProfile object", 
+  "id": "ALBCompressionProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "compressible_content_path": {
+      "description": "Compress only content types listed in this string group. Content types not present in this list are not compressed. It is a reference to an object of type StringGroup.", 
+      "required": false, 
+      "title": "Compressible content path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }, 
+    "compression": {
+      "default": false, 
+      "description": "Compress HTTP response content if it wasn't already compressed. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": true, 
+      "title": "Compression", 
+      "type": "boolean"
+    }, 
+    "filter": {
+      "description": "Custom filters used when auto compression is not selected.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBCompressionFilter.html">ALBCompressionFilter</A>
+      }, 
+      "required": false, 
+      "title": "Filter", 
+      "type": "array"
+    }, 
+    "remove_accept_encoding_header": {
+      "default": true, 
+      "description": "Offload compression from the servers to AVI. Saves compute cycles on the servers. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": true, 
+      "title": "Remove accept encoding header", 
+      "type": "boolean"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBCompressionType.html">ALBCompressionType</A>, 
+      "default": "AUTO_COMPRESSION", 
+      "description": "Compress content automatically or add custom filters to define compressible content and compression levels. Enum options - AUTO_COMPRESSION, CUSTOM_COMPRESSION. Default value when not specified in API or module is interpreted by ALB Controller as AUTO_COMPRESSION.", 
+      "required": true, 
+      "title": "Type"
+    }
+  }, 
+  "title": "CompressionProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

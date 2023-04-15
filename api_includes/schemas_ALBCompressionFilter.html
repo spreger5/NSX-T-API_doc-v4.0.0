@@ -1,0 +1,171 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBCompressionFilter.html">ALBCompressionFilter</a> (<a href="types_ALBCompressionFilter.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer CompressionFilter object", 
+  "id": "ALBCompressionFilter", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "devices_path": {
+      "description": "It is a reference to an object of type StringGroup.", 
+      "required": false, 
+      "title": "Devices path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }, 
+    "index": {
+      "description": "Number of index.", 
+      "required": true, 
+      "title": "Index", 
+      "type": "integer"
+    }, 
+    "ip_addr_prefixes": {
+      "description": "Placeholder for description of property ip_addr_prefixes of obj type CompressionFilter field type str  type array.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>
+      }, 
+      "required": false, 
+      "title": "Ip addr prefixes", 
+      "type": "array"
+    }, 
+    "ip_addr_ranges": {
+      "description": "Placeholder for description of property ip_addr_ranges of obj type CompressionFilter field type str  type array.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddrRange.html">ALBIpAddrRange</A>
+      }, 
+      "required": false, 
+      "title": "Ip addr ranges", 
+      "type": "array"
+    }, 
+    "ip_addrs": {
+      "description": "Placeholder for description of property ip_addrs of obj type CompressionFilter field type str  type array.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>
+      }, 
+      "required": false, 
+      "title": "Ip addrs", 
+      "type": "array"
+    }, 
+    "ip_addrs_path": {
+      "description": "It is a reference to an object of type IpAddrGroup.", 
+      "required": false, 
+      "title": "Ip addrs path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }
+      ]
+    }, 
+    "level": {
+      "$ref": "<A HREF="schemas_ALBCompressionFilterLevel.html">ALBCompressionFilterLevel</A>, 
+      "default": "NORMAL_COMPRESSION", 
+      "description": "Enum options - AGGRESSIVE_COMPRESSION, NORMAL_COMPRESSION, NO_COMPRESSION. Default value when not specified in API or module is interpreted by ALB Controller as NORMAL_COMPRESSION.", 
+      "required": true, 
+      "title": "Level"
+    }, 
+    "match": {
+      "$ref": "<A HREF="schemas_ALBMatchOperation.html">ALBMatchOperation</A>, 
+      "default": "IS_IN", 
+      "description": "Whether to apply Filter when group criteria is matched or not. Enum options - IS_IN, IS_NOT_IN. Default value when not specified in API or module is interpreted by ALB Controller as IS_IN.", 
+      "required": false, 
+      "title": "Match"
+    }, 
+    "name": {
+      "description": "Name of the object.", 
+      "required": true, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "user_agent": {
+      "description": "Placeholder for description of property user_agent of obj type CompressionFilter field type str  type array.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "User agent", 
+      "type": "array"
+    }
+  }, 
+  "title": "CompressionFilter", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MaintenanceModeParameters.html">MaintenanceModeParameters</a> (<a href="types_MaintenanceModeParameters.html">type</a>)
+</h3>
+<pre>{
+  "id": "MaintenanceModeParameters", 
+  "module_id": "TransportNode", 
+  "properties": {
+    "action": {
+      "description": "User could use this parameter to put transport node into maintenance mode or exit from maintenance mode. 'enter_maintenance_mode' will put Transport Node into maintenance mode if there is no VIFs attached. 'forced_enter_maintenance_mode' will put transport node into maintenance mode forcibly regardless of whether or not VIF attached. 'exit_maintenance_mode' will exit from maintenance mode.", 
+      "enum": [
+        "enter_maintenance_mode", 
+        "forced_enter_maintenance_mode", 
+        "exit_maintenance_mode"
+      ], 
+      "type": "string"
+    }
+  }, 
+  "title": "transport node maintenance mode setting parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

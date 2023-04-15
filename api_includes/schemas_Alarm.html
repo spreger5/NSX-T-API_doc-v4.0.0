@@ -1,0 +1,332 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Alarm.html">Alarm</a> (<a href="types_Alarm.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "Alarm", 
+  "module_id": "Monitoring", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "alarm_source": {
+      "description": "If alarm_source_type = INTENT_PATH, this field will contain a list of intent paths for the entity that the event instance applies to. If alarm_source_type = ENTITY_ID, this field will contain a list with a single item identifying the entity id that the event instance applies to.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Source identifying entity that the Event instance applies to\n", 
+      "type": "array", 
+      "uniqueItems": true
+    }, 
+    "alarm_source_type": {
+      "$ref": "<A HREF="schemas_AlarmSourceType.html">AlarmSourceType</A>, 
+      "description": "Type of alarm source of the Event instance. Can be one of - INTENT_PATH, ENTITY_ID.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Alarm Source type of the Event"
+    }, 
+    "description": {
+      "description": "Detailed description of Alarm. This is the same detailed description as the corresponding Event identified by feature_name.event_type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Detailed description of Alarm", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "entity_id": {
+      "description": "The entity that the Event instance applies to. Note entity_id may not be included in a response body. For example, the cpu_high Event may not return an entity_id.", 
+      "readonly": true, 
+      "title": "The UUID of the entity that the Event instance applies to", 
+      "type": "string"
+    }, 
+    "entity_resource_type": {
+      "description": "The entity type that the Event instance applies to.", 
+      "readonly": true, 
+      "title": "The type of entity that the Event instance applies to", 
+      "type": "string"
+    }, 
+    "event_type": {
+      "description": "Name of Event, e.g. manager_cpu_usage_high, certificate_expired.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Name of event", 
+      "type": "string"
+    }, 
+    "event_type_display_name": {
+      "description": "Display name of Event type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Display name of event type", 
+      "type": "string"
+    }, 
+    "feature_display_name": {
+      "description": "Display name of feature defining this Event.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Display name of feature", 
+      "type": "string"
+    }, 
+    "feature_name": {
+      "description": "Feature defining this Event, e.g. manager_health, certificates.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Feature defining this event", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "ID that uniquely identifies an Alarm.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "ID that uniquely identifies an Alarm", 
+      "type": "string"
+    }, 
+    "kb_article": {
+      "description": "KB article link that contains more information on this alarm and recommended actions. Users can refer to the specified link if needed.", 
+      "readonly": true, 
+      "title": "Link to knowledge base article", 
+      "type": "string"
+    }, 
+    "last_reported_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Indicates when the corresponding Event instance was last reported in milliseconds since epoch.", 
+      "readonly": true, 
+      "title": "Last reported time of event instance"
+    }, 
+    "node_display_name": {
+      "description": "Display name of node that the event instance applies to.", 
+      "readonly": true, 
+      "title": "Display name of node", 
+      "type": "string"
+    }, 
+    "node_id": {
+      "description": "The UUID of the node that the Event instance applies to.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "The UUID of the node that the Event instance applies to", 
+      "type": "string"
+    }, 
+    "node_ip_addresses": {
+      "description": "IP addresses of node that the event instance applies to.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "title": "IP addresses of node", 
+      "type": "array"
+    }, 
+    "node_resource_type": {
+      "description": "The resource type of node that the Event instance applies to eg. ClusterNodeConfig, TransportNode.", 
+      "readonly": true, 
+      "title": "The resource type of node that the Event instance applies to", 
+      "type": "string"
+    }, 
+    "recommended_action": {
+      "description": "Recommended action for Alarm. This is the same action as the corresponding Event identified by feature_name.event_type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Recommended action for Alarm", 
+      "type": "string"
+    }, 
+    "reoccurrences_while_suppressed": {
+      "description": "The number of reoccurrences since this alarm has been SUPPRESSED.", 
+      "readonly": true, 
+      "title": "The number of reoccurrences since this alarm has been SUPPRESSED", 
+      "type": "integer"
+    }, 
+    "resolved_by": {
+      "description": "User ID of the user that set the status value to RESOLVED. This value can be SYSTEM to indicate that the system resolved the Alarm, for example when the system determines CPU usage is no longer high and the cpu_high Alarm is no longer applicable. This property is only returned when the status value is RESOLVED.", 
+      "readonly": true, 
+      "title": "User ID of the user that set the status value to RESOLVED", 
+      "type": "string"
+    }, 
+    "resolved_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Indicates when the Alarm was resolved in milliseconds since epoch. This property is only returned when the status value is RESOLVED.", 
+      "readonly": true, 
+      "title": "Time when Alarm was resolved"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "runtime_data": {
+      "description": "Runtime data for Alarm. When an alarming condition occurs, there may be additional data of interest when triaging the underlying issue, for example, output from system commands captured at the time of the error. Note, the contents of this property are not localized.", 
+      "readonly": true, 
+      "title": "Runtime data for Alarm", 
+      "type": "string"
+    }, 
+    "severity": {
+      "$ref": "<A HREF="schemas_MonitoringSeverity.html">MonitoringSeverity</A>, 
+      "description": "Severity of the Alarm.Can be one of - CRITICAL, HIGH, MEDIUM, LOW.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Severity of the Alarm"
+    }, 
+    "status": {
+      "$ref": "<A HREF="schemas_MonitoringStatus.html">MonitoringStatus</A>, 
+      "description": "Indicate the status which the Alarm is in.", 
+      "required": true, 
+      "title": "Status of the Alarm"
+    }, 
+    "summary": {
+      "description": "Summary description of Alarm. This is the same summary description as the corresponding Event identified by feature_name.event_type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Summary description of Alarm", 
+      "type": "string"
+    }, 
+    "suppress_duration": {
+      "description": "The time period between suppress_start_time and suppress_start_time + suppress_duration (specified in hours) an Alarm is SUPPRESSED. This property is only returned when the status value is SUPPRESSED.", 
+      "title": "Duration in hours for which an Alarm is SUPPRESSED", 
+      "type": "integer"
+    }, 
+    "suppress_start_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Indicates when the Alarm was suppressed in milliseconds since epoch. This property is only returned when the status value is SUPPRESSED.", 
+      "readonly": true, 
+      "title": "Time when Alarm was suppressed"
+    }, 
+    "suppressed_by": {
+      "description": "User ID of the user that set the status value to SUPPRESSED. This property is only returned when the status value is SUPPRESSED.", 
+      "readonly": true, 
+      "title": "User ID of the user that set the status value to SUPPRESSED", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

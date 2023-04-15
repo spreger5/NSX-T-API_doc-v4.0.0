@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NsxTDNSForwarderStatus.html">NsxTDNSForwarderStatus</a> (<a href="types_NsxTDNSForwarderStatus.html">type</a>)
+</h3>
+<pre>{
+  "description": "The current runtime status of the DNS forwarder.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DNSForwarderStatusPerEnforcementPoint.html">DNSForwarderStatusPerEnforcementPoint</A>
+  }, 
+  "id": "NsxTDNSForwarderStatus", 
+  "module_id": "PolicyDNSStatistics", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "NsxTDNSForwarderStatus"
+  }, 
+  "properties": {
+    "enforcement_point_path": {
+      "description": "Policy path referencing the enforcement point from where the status is fetched.", 
+      "readonly": true, 
+      "title": "Enforcement point path", 
+      "type": "string"
+    }, 
+    "extra_message": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Extra message, if available", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "enum": [
+        "NsxTDNSForwarderStatus"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "UP means the DNS forwarder is working correctly on the active transport node and the stand-by transport node (if present). Failover will occur if either node goes down. DOWN means the DNS forwarder is down on both active transport node and standby node (if present). The DNS forwarder does not function in this situation. Error means there is some error on one or both transport node, or no status was reported from one or both transport nodes. The DNS forwarder may be working (or not working). NO_BACKUP means DNS forwarder is working in only one transport node, either because it is down on the standby node, or no standby is configured. An forwarder outage will occur if the active node goes down.", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "ERROR", 
+        "NO_BACKUP", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "Time stamp of the current status, in ms"
+    }
+  }, 
+  "title": "The current runtime status of DNS forwarder", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

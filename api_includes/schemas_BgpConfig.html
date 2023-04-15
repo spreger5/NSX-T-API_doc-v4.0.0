@@ -1,0 +1,235 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BgpConfig.html">BgpConfig</a> (<a href="types_BgpConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "BGP configuration for Tier0 logical router. We create BGP configuration while creation of Tier0 logical router.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "BgpConfig", 
+  "module_id": "Routing", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "as_num": {
+      "description": "For VRF logical router, the as_num from parent logical router will be effective.", 
+      "required": false, 
+      "title": "4 Byte ASN in ASPLAIN/ASDOT Format", 
+      "type": "string"
+    }, 
+    "as_number": {
+      "deprecated": true, 
+      "description": "This is a deprecated property, Please use 'as_num' instead. For VRF logical router, the as_number from parent logical router will be effective.", 
+      "maximum": 4294967296, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Autonomous System Number", 
+      "type": "integer"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "ecmp": {
+      "default": true, 
+      "description": "While creation of BGP config this flag will be set to true User can change this value while updating BGP config. If this property is not specified in the payload, the default value will be considered as true.", 
+      "required": false, 
+      "title": "Flag to enable outbound ECMP", 
+      "type": "boolean"
+    }, 
+    "enabled": {
+      "default": false, 
+      "description": "While creation of BGP config this flag will be set to - true for Tier0 logical router with Active-Active high-availability mode - false for Tier0 logical router with Active-Standby high-availanility mode. User can change this value while updating the config. If this property is not specified in the payload, the default value will be considered as false irrespective of the high-availability mode.", 
+      "required": false, 
+      "title": "Flag to enable this configuration", 
+      "type": "boolean"
+    }, 
+    "graceful_restart": {
+      "deprecated": true, 
+      "description": "Flag to enable graceful restart. This field is deprecated, kindly use graceful_restart_config parameter for graceful restart configuration. If both parameters are set and consistent with each other [i.e. graceful_restart=false and graceful_restart_mode=HELPER_ONLY OR graceful_restart=true and graceful_restart_mode=GR_AND_HELPER] then this is allowed, but if inconsistent with each other then this is not allowed and validation error will be thrown. For VRF logical router, the settings from parent logical router will be effective.", 
+      "required": false, 
+      "title": "Flag to enable graceful restart", 
+      "type": "boolean"
+    }, 
+    "graceful_restart_config": {
+      "$ref": "<A HREF="schemas_GracefulRestartConfig.html">GracefulRestartConfig</A>, 
+      "description": "Configuration parameters for BGP Graceful Restart functionality. It has graceful_restart_mode and graceful_restart_timer parameters. For VRF logical router, the settings from parent logical router will be effective.", 
+      "required": false, 
+      "title": "BGP Graceful Restart configuration"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "inter_sr_ibgp": {
+      "$ref": "<A HREF="schemas_InterSRRoutingConfig.html">InterSRRoutingConfig</A>, 
+      "required": false, 
+      "title": "Inter SR IBGP configuration"
+    }, 
+    "logical_router_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical router id", 
+      "type": "string"
+    }, 
+    "multipath_relax": {
+      "description": "For TIER0 logical router, default is true. For VRF logical router, the settings from parent logical router will be effective.", 
+      "required": false, 
+      "title": "Flag to enable BGP multipath relax option.", 
+      "type": "boolean"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "route_aggregation": {
+      "items": {
+        "$ref": "<A HREF="schemas_BgpRouteAggregation.html">BgpRouteAggregation</A>
+      }, 
+      "maxItems": 1000, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "List of routes to be aggregated", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "BGP configuration for logical router", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

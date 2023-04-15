@@ -1,0 +1,617 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services_logical_routers.html' style='text-decoration: none'> Logical Routers</a>
+            
+        </P>
+    
+        <div id="GetBgpNeighborsStatus">
+          <h2>
+            Get the status of all the BGP neighbors for the Logical Router of the given id
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Returns the status of all the BGP neighbors for the Logical Router of the given id. To get BGP neighbors status for the logical router from particular node, parameter "transport_node_id=&lt;transportnode_id&gt;" needs to be specified. Query parameter "source=realtime" is the only supported source.</span>
+              <span class="help_detail"></span>
+          <b>Deprecated:</b> <br> Please use below Policy API. <br> GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status?enforcement_point_path=/infra/sites/default/enforcement-points/default <br> GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status?enforcement_point_path=/infra/sites/default/enforcement-points/default
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/status
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value">ListByOptionalNodeIdParameters<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetBgpNeighborsStatus', 'ListByOptionalNodeIdParameters.GetBgpNeighborsStatus.Query_Parameters')">+</span></div>
+  </div>
+    <div id="ListByOptionalNodeIdParameters.GetBgpNeighborsStatus.Query_Parameters" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ListByOptionalNodeIdParameters.html">
+        <span>ListByOptionalNodeIdParameters</span>
+      </a> (<a href="schemas_ListByOptionalNodeIdParameters.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>included_fields</td>
+            
+            <td>Comma separated list of fields that should be included in query result<br><br>Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>page_size</td>
+            
+            <td>Maximum number of results to return in this page (server may return fewer)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 1000<br>Default: "1000"</td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td></td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>source</td>
+            
+            <td>The data source, either realtime or cached. If not provided, cached data is returned.</td>
+            
+            <td><a href="types_DataSourceType.html">DataSourceType</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>transport_node_id</td>
+            
+            <td>Transport node id</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/logical-routers/875381be-a4c5-4173-8aa7-ab71695a8129/routing/bgp/neighbors/status?transport_node_id=f8431964-f400-4da5-8c18-4ce4e6bd5fa5&source=realtime</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">BgpNeighborsStatusListResult<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetBgpNeighborsStatus', 'BgpNeighborsStatusListResult.GetBgpNeighborsStatus.Response_Body')">+</span></div>
+  </div>
+    <div id="BgpNeighborsStatusListResult.GetBgpNeighborsStatus.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_BgpNeighborsStatusListResult.html">
+        <span>BgpNeighborsStatusListResult</span>
+      </a> (<a href="schemas_BgpNeighborsStatusListResult.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>last_update_timestamp</td>
+            
+            <td>Timestamp indicating last update time of data<br><br>Timestamp when the data was last updated, unset if data source has never updated the data.</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>logical_router_id</td>
+            
+            <td>Logical router id</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>logical_router_name</td>
+            
+            <td>Name of the logical router</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>result_count</td>
+            
+            <td>Count of results found (across all pages), set only on first page</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>results</td>
+            
+            <td>Status of BGP neighbors of the logical router</td>
+            
+            <td>array of <a href="types_BgpNeighborStatus.html">BgpNeighborStatus</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td>If true, results are sorted in ascending order</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+ "cursor": "00361b9f1d54-2f05-441e-9851-c42518cc8b1dasdfds",
+ "sort_ascending": true,
+ "sort_by": "displayName",
+ "result_count": 1,
+ "logical_router_id": "875381be-a4c5-4173-8aa7-ab71695a8129",
+ "logical_router_name": "PLR",
+ "results": [{
+   "lr_component_id": "70c955dd-22c0-4199-b3a9-8f312478116a",
+   "transport_node_id": "7aaaaadd-22c0-4199-bddd-3aaaaaa8116a",
+   "source_address": "10.1.1.1",
+   "neighbor_address": "10.1.2.1",
+   "remote_as_number": "1",
+   "remote_port": 179,
+   "local_port": 179,
+   "connection_status": "CONNECTED",
+   "messages_received": 12,
+   "messages_sent": 10,
+   "connection_drop_count": 0,
+   "hold_time": 180,
+   "keep_alive_time": 30,
+   "graceful_restart": true,
+   "last_updated_timestamp": 11999191991991
+ }]
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">routing_routers</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

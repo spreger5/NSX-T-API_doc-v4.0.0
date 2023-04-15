@@ -1,0 +1,209 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_user_management.html' style='text-decoration: none'> User Management</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_user_management_authentication_policy.html' style='text-decoration: none'> Authentication Policy</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Read node authentication policy and password complexity configuration</h4><br>
+                      <span class="help_detail">Returns information about the currently configured authentication policies and password complexity
+<br>
+on the node.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAuthenticationPolicyProperties.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/aaa/auth-policy</a>
+                            <br>
+                            
+                            <a href="method_ReadAuthenticationPolicyProperties.html">GET /api/v1/node/aaa/auth-policy</a>
+                            <br>
+                            
+                            <a href="method_ReadAuthenticationPolicyProperties.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/aaa/auth-policy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resets node authentication policy and password complexity configuration</h4><br>
+                      <span class="help_detail">Resets to default, currently configured authentication policy and password complexity on the node.
+<br>
+Administrators need to enforce password change for existing user accounts
+<br>
+in order to match newly configured complexity requirements in system.
+<br>
+<p><b>reset-all</b>: resets configured Authentication policy and Password complexity</p>
+<br>
+<p><b>reset-auth-policies</b>: resets only configured Authentication policy<br />
+<br>
+<i>includes - {api_failed_auth_lockout_period, api_failed_auth_reset_period,
+<br>
+api_max_auth_failures, cli_failed_auth_lockout_period, cli_max_auth_failures}</i></p>
+<br>
+<p><b>reset-pwd-complexity</b>: resets only configured Password complexity</p>
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetAuthenticationPolicyProperties.html">POST /api/v1/node/aaa/auth-policy?action=reset-all|reset-auth-policies|reset-pwd-complexity</a>
+                            <br>
+                            
+                            <a href="method_ResetAuthenticationPolicyProperties.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/aaa/auth-policy?action=reset-all|reset-auth-policies|reset-pwd-complexity</a>
+                            <br>
+                            
+                            <a href="method_ResetAuthenticationPolicyProperties.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/aaa/auth-policy?action=reset-all|reset-auth-policies|reset-pwd-complexity</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update node authentication policy and password complexity configuration</h4><br>
+                      <span class="help_detail">Update the currently configured authentication policy and password complexity on the node.
+<br>
+If any of api_max_auth_failures, api_failed_auth_reset_period, or
+<br>
+api_failed_auth_lockout_period are modified, the http service is
+<br>
+automatically restarted.
+<br>
+Whereas change in any password complexity will not be applicable on already configured
+<br>
+user passwords. Administrators need to enforce password change for existing user accounts
+<br>
+in order to match newly configured complexity requirements enforced in system.
+<br>
+All values from AuthenticationPolicyProperties are in sync among the management cluster nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAuthenticationPolicyProperties.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/aaa/auth-policy</a>
+                            <br>
+                            
+                            <a href="method_UpdateAuthenticationPolicyProperties.html">PUT /api/v1/node/aaa/auth-policy</a>
+                            <br>
+                            
+                            <a href="method_UpdateAuthenticationPolicyProperties.html">PUT /api/v1/cluster/&lt;cluster-node-id&gt;/node/aaa/auth-policy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

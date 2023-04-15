@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AphInfo.html">AphInfo</a> (<a href="types_AphInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "APH information.", 
+  "id": "AphInfo", 
+  "module_id": "SiteManagerModule", 
+  "properties": {
+    "address": {
+      "required": true, 
+      "title": "IP address of APH service", 
+      "type": "string"
+    }, 
+    "certificate": {
+      "required": true, 
+      "title": "PEM Certificate of APH service", 
+      "type": "string"
+    }, 
+    "fqdn": {
+      "required": false, 
+      "title": "FQDN, only returned by GET /sites and GET /sites/self", 
+      "type": "string"
+    }, 
+    "node_id": {
+      "required": true, 
+      "title": "Node ID of the APH service", 
+      "type": "string"
+    }, 
+    "port": {
+      "required": true, 
+      "title": "Port of APH service", 
+      "type": "integer"
+    }, 
+    "use_fqdn": {
+      "required": false, 
+      "title": "whether or not fqdn flag is on", 
+      "type": "boolean"
+    }, 
+    "uuid": {
+      "required": true, 
+      "title": "ID of the APH service", 
+      "type": "string"
+    }
+  }, 
+  "title": "Apliance proxy hub information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

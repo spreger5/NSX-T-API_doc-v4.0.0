@@ -1,0 +1,407 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_lifecycle_management.html' style='text-decoration: none'> Lifecycle Management</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_upgrade.html' style='text-decoration: none'> Upgrade</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_upgrade_plan.html' style='text-decoration: none'> Plan</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Abort pre-upgrade checks</h4><br>
+                      <span class="help_detail">Aborts execution of pre-upgrade checks if already in progress. Halts the
+<br>
+execution of checks awaiting execution at this point and makes best-effort
+<br>
+attempts to stop checks already in execution. Returns without action if
+<br>
+execution of pre-upgrade checks is not in progress.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AbortPreUpgradeChecks.html">POST /api/v1/upgrade?action=abort_pre_upgrade_checks</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Execute pre-upgrade checks</h4><br>
+                      <span class="help_detail">Run pre-defined checks to identify potential issues which can be
+<br>
+encountered during an upgrade or can cause an upgrade to fail. The results
+<br>
+of the checks are added to the respective upgrade units aggregate-info. The
+<br>
+progress and status of operation is part of upgrade status summary of
+<br>
+individual components.
+<br>
+Returns HTTP status 500 with error code 30953 if execution of pre-upgrade
+<br>
+checks is already in progress.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ExecutePreUpgradeChecks.html">POST /api/v1/upgrade?action=execute_pre_upgrade_checks</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Execute post-upgrade checks</h4><br>
+                      <span class="help_detail">Run pre-defined checks to identify issues after upgrade of a component. The
+<br>
+results of the checks are added to the respective upgrade units
+<br>
+aggregate-info. The progress and status of post-upgrade checks is part of
+<br>
+aggregate-info of individual upgrade unit groups.
+<br>
+Returns HTTP status 500 with error code 30953 if execution of post-upgrade
+<br>
+checks is already in progress.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ExecutePostUpgradeChecks.html">POST /api/v1/upgrade/&lt;component-type&gt;?action=execute_post_upgrade_checks</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upgrade selected units</h4><br>
+                      <span class="help_detail">Upgrades, Resumes the upgrade of a selected set of units.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpgradeSelectedUnits.html">POST /api/v1/upgrade/plan?action=upgrade_selected_units</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Execute the upgrade</h4><br>
+                      <span class="help_detail">Depending on current upgrade state, start or continue the upgrade.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ExecuteUpgrade.html">POST /api/v1/upgrade/plan?action=upgrade</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Stage the upgrade bits</h4><br>
+                      <span class="help_detail">This will stage the upgrade bits so that upgrade can be driven
+<br>
+from outside NSX upgrade-coordinator. If component type is not
+<br>
+provided as a request parameter then upgrade staging will be
+<br>
+performed on all the components.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_StageUpgrade.html">POST /api/v1/upgrade/plan?action=stage-upgrade</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Start upgrade</h4><br>
+                      <span class="help_detail">Start the upgrade. Upgrade will start as per the upgrade plan.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_StartUpgrade.html">POST /api/v1/upgrade/plan?action=start</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Pause upgrade</h4><br>
+                      <span class="help_detail">Pause the upgrade. Upgrade will be paused after upgrade of all
+<br>
+the nodes currently in progress is completed either successfully
+<br>
+or with failure. User can make changes in the upgrade plan when
+<br>
+the upgrade is paused.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PauseUpgrade.html">POST /api/v1/upgrade/plan?action=pause</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset upgrade plan to default plan</h4><br>
+                      <span class="help_detail">Reset the upgrade plan to default plan. User has an option to change
+<br>
+the default plan. But if after making changes, user wants to go
+<br>
+back to the default plan, this is the way to do so.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetUpgradePlan.html">POST /api/v1/upgrade/plan?action=reset</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Continue upgrade</h4><br>
+                      <span class="help_detail">Continue the upgrade. Resumes the upgrade from the point where
+<br>
+it was paused.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ContinueUpgrade.html">POST /api/v1/upgrade/plan?action=continue</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get upgrade plan settings for the component</h4><br>
+                      <span class="help_detail">Get the upgrade plan settings for the component.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUpgradePlanSettings.html">GET /api/v1/upgrade/plan/&lt;component_type&gt;/settings</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update upgrade plan settings for the component</h4><br>
+                      <span class="help_detail">Update the upgrade plan settings for the component.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateUpgradePlanSettings.html">PUT /api/v1/upgrade/plan/&lt;component_type&gt;/settings</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns pre-upgrade checks in csv format</h4><br>
+                      <span class="help_detail">Returns pre-upgrade checks in csv format
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAllPreUpgradeChecksInCsvFormat.html">GET /api/v1/upgrade/pre-upgrade-checks?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Acknowledge the pre upgrade check.</h4><br>
+                      <span class="help_detail">Some pre-checks can be marked as ACKNOWLEDGE required. Acknowledge status will be saved across pre-upgrade check runs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AcknowledgePreUpgradeCheck.html">POST /api/v1/upgrade/pre-upgrade-checks/&lt;pre-upgrade-check-id&gt;?action=acknowledge</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Auto resolve the pre upgrade check.</h4><br>
+                      <span class="help_detail">Run auto resolve for a pre upgrade check to try and resolve the issue encountered.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AutoResolvePreUpgradeCheck.html">POST /api/v1/upgrade/pre-upgrade-checks/&lt;pre-upgrade-check-id&gt;?action=resolve</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Pre-upgrade Check Failures</h4><br>
+                      <span class="help_detail">Get failures resulting from the last execution of pre-upgrade checks. If
+<br>
+the execution of checks is in progress, the response has the list of
+<br>
+failures observed so far.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPreUpgradeCheckFailures.html">GET /api/v1/upgrade/pre-upgrade-checks/failures</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns information about upgrade checks</h4><br>
+                      <span class="help_detail">Returns information of pre-upgrade and post-upgrade checks. If request
+<br>
+parameter component type is specified, then returns information about
+<br>
+all pre-upgrade and post-upgrade for the component. Otherwise returns
+<br>
+information of checks across all component types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUpgradeChecksInfo.html">GET /api/v1/upgrade/upgrade-checks-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

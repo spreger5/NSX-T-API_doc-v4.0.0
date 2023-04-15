@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ForwarderZone.html">ForwarderZone</a> (<a href="types_ForwarderZone.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "id": "ForwarderZone", 
+  "module_id": "DnsForwarder", 
+  "properties": {
+    "source_ip": {
+      "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>, 
+      "description": "The source ip used by the fowarder of the zone. If no source ip specified, the ip address of listener of the DNS forwarder will be used.", 
+      "required": false, 
+      "title": "Source ip of the forwarder"
+    }, 
+    "upstream_servers": {
+      "description": "Ip address of the upstream DNS servers the DNS forwarder accesses.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>
+      }, 
+      "maxItems": 3, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "Ips of upsteam DNS servers", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

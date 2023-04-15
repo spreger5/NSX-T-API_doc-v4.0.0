@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_GraphDefinition.html">GraphDefinition</a> (<a href="types_GraphDefinition.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Defines a graph", 
+  "id": "GraphDefinition", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "id": {
+      "description": "Identifier of graph. It can be used to differentiate multiple graph series present in GraphWidgetConfiguration.", 
+      "title": "Identifier of graph", 
+      "type": "string"
+    }, 
+    "label": {
+      "$ref": "<A HREF="schemas_Label.html">Label</A>, 
+      "description": "Describes the graph. It labels the entities of graph. If the label is not provided then it is not shown for a graph. For example, for a single graph, the title of widget can describe the graph and a label may not be necessary to be shown.", 
+      "title": "Label of a graph"
+    }, 
+    "point_definition": {
+      "$ref": "<A HREF="schemas_PointDefinition.html">PointDefinition</A>, 
+      "description": "Defines the points of a graph.", 
+      "required": true, 
+      "title": "Definition for points of a graph"
+    }, 
+    "render_configuration": {
+      "description": "Additional rendering or conditional evaluation of the field values to be performed, if any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RenderConfiguration.html">RenderConfiguration</A>
+      }, 
+      "minItems": 0, 
+      "title": "Render Configuration", 
+      "type": "array"
+    }, 
+    "row_list_field": {
+      "description": "An expression that represents the series of the graph", 
+      "required": false, 
+      "title": "Expression for series of the graph", 
+      "type": "string"
+    }
+  }, 
+  "title": "Definition of a graph", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

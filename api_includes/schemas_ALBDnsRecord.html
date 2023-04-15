@@ -1,0 +1,198 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsRecord.html">ALBDnsRecord</a> (<a href="types_ALBDnsRecord.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsRecord object", 
+  "id": "ALBDnsRecord", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "algorithm": {
+      "$ref": "<A HREF="schemas_ALBDnsRecordResponseAlgorithm.html">ALBDnsRecordResponseAlgorithm</A>, 
+      "default": "DNS_RECORD_RESPONSE_ROUND_ROBIN", 
+      "description": "Specifies the algorithm to pick the IP address(es) to be returned, when multiple entries are configured. This does not apply if num_records_in_response is 0. Default is round-robin. Enum options - DNS_RECORD_RESPONSE_ROUND_ROBIN, DNS_RECORD_RESPONSE_CONSISTENT_HASH. Default value when not specified in API or module is interpreted by ALB Controller as DNS_RECORD_RESPONSE_ROUND_ROBIN.", 
+      "required": false, 
+      "title": "Algorithm"
+    }, 
+    "cname": {
+      "$ref": "<A HREF="schemas_ALBDnsCnameRdata.html">ALBDnsCnameRdata</A>, 
+      "description": "Canonical name in CNAME record.", 
+      "required": false, 
+      "title": "Cname"
+    }, 
+    "delegated": {
+      "default": false, 
+      "description": "Configured FQDNs are delegated domains (i.e. they represent a zone cut). Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Delegated", 
+      "type": "boolean"
+    }, 
+    "description": {
+      "description": "Details of DNS record.", 
+      "required": false, 
+      "title": "Description", 
+      "type": "string"
+    }, 
+    "fqdn": {
+      "description": "Fully Qualified Domain Name. Minimum of 1 items required.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": true, 
+      "title": "Fqdn", 
+      "type": "array"
+    }, 
+    "ip6_address": {
+      "description": "IPv6 address in AAAA record. Maximum of 4 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsAAAARdata.html">ALBDnsAAAARdata</A>
+      }, 
+      "required": false, 
+      "title": "Ip6 address", 
+      "type": "array"
+    }, 
+    "ip_address": {
+      "description": "IP address in A record. Maximum of 4 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsARdata.html">ALBDnsARdata</A>
+      }, 
+      "required": false, 
+      "title": "Ip address", 
+      "type": "array"
+    }, 
+    "metadata": {
+      "description": "Internal metadata for the DNS record.", 
+      "required": false, 
+      "title": "Metadata", 
+      "type": "string"
+    }, 
+    "mx_records": {
+      "description": "MX record. Maximum of 4 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsMxRdata.html">ALBDnsMxRdata</A>
+      }, 
+      "required": false, 
+      "title": "Mx records", 
+      "type": "array"
+    }, 
+    "ns": {
+      "description": "Name Server information in NS record. Maximum of 13 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsNsRdata.html">ALBDnsNsRdata</A>
+      }, 
+      "required": false, 
+      "title": "Ns", 
+      "type": "array"
+    }, 
+    "num_records_in_response": {
+      "default": 0, 
+      "description": "Specifies the number of records returned by the DNS service. Enter 0 to return all records. Default is 0. Allowed values are 0-20. Special values are 0- 'Return all records'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 20, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Num records in response", 
+      "type": "integer"
+    }, 
+    "service_locator": {
+      "description": "Service locator info in SRV record. Maximum of 4 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsSrvRdata.html">ALBDnsSrvRdata</A>
+      }, 
+      "required": false, 
+      "title": "Service locator", 
+      "type": "array"
+    }, 
+    "ttl": {
+      "description": "Time To Live for this DNS record.", 
+      "required": false, 
+      "title": "Ttl", 
+      "type": "integer"
+    }, 
+    "txt_records": {
+      "description": "Text record. Maximum of 4 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsTxtRdata.html">ALBDnsTxtRdata</A>
+      }, 
+      "required": false, 
+      "title": "Txt records", 
+      "type": "array"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBDnsRecordType.html">ALBDnsRecordType</A>, 
+      "description": "DNS record type. Enum options - DNS_RECORD_OTHER, DNS_RECORD_A, DNS_RECORD_NS, DNS_RECORD_CNAME, DNS_RECORD_SOA, DNS_RECORD_PTR, DNS_RECORD_HINFO, DNS_RECORD_MX, DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR, DNS_RECORD_ANY.", 
+      "required": true, 
+      "title": "Type"
+    }, 
+    "wildcard_match": {
+      "default": false, 
+      "description": "Enable wild-card match of fqdn  if an exact match is not found in the DNS table, the longest match is chosen by wild-carding the fqdn in the DNS request. Default is false. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Wildcard match", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "DnsRecord", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

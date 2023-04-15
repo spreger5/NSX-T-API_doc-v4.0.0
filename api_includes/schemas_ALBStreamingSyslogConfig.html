@@ -1,0 +1,118 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBStreamingSyslogConfig.html">ALBStreamingSyslogConfig</a> (<a href="types_ALBStreamingSyslogConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer StreamingSyslogConfig object", 
+  "id": "ALBStreamingSyslogConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "facility": {
+      "default": 16, 
+      "description": "Facility value, as defined in RFC5424, must be between 0 and 23 inclusive. Allowed values are 0-23. Default value when not specified in API or module is interpreted by ALB Controller as 16.", 
+      "maximum": 23, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Facility", 
+      "type": "integer"
+    }, 
+    "filtered_log_severity": {
+      "default": 5, 
+      "description": "Severity code, as defined in RFC5424, for filtered logs. This must be between 0 and 7 inclusive. Allowed values are 0-7. Default value when not specified in API or module is interpreted by ALB Controller as 5.", 
+      "maximum": 7, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Filtered log severity", 
+      "type": "integer"
+    }, 
+    "hostname": {
+      "default": "AviVantage", 
+      "description": "String to use as the hostname in the syslog messages. This string can contain only printable ASCII characters (hex 21 to hex 7E; no space allowed). Default value when not specified in API or module is interpreted by ALB Controller as AviVantage.", 
+      "required": false, 
+      "title": "Hostname", 
+      "type": "string"
+    }, 
+    "non_significant_log_severity": {
+      "default": 6, 
+      "description": "Severity code, as defined in RFC5424, for non-significant logs. This must be between 0 and 7 inclusive. Allowed values are 0-7. Default value when not specified in API or module is interpreted by ALB Controller as 6.", 
+      "maximum": 7, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Non significant log severity", 
+      "type": "integer"
+    }, 
+    "significant_log_severity": {
+      "default": 4, 
+      "description": "Severity code, as defined in RFC5424, for significant logs. This must be between 0 and 7 inclusive. Allowed values are 0-7. Default value when not specified in API or module is interpreted by ALB Controller as 4.", 
+      "maximum": 7, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Significant log severity", 
+      "type": "integer"
+    }
+  }, 
+  "title": "StreamingSyslogConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

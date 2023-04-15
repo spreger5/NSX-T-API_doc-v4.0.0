@@ -1,0 +1,123 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_WidgetItem.html">WidgetItem</a> (<a href="types_WidgetItem.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Represents a reference to a widget that is held by a container or a multi-widget or a View.", 
+  "id": "WidgetItem", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "alignment": {
+      "default": "LEFT", 
+      "description": "Aligns widget either left or right.", 
+      "enum": [
+        "LEFT", 
+        "RIGHT"
+      ], 
+      "title": "Alignment of widget inside container", 
+      "type": "string"
+    }, 
+    "label": {
+      "$ref": "<A HREF="schemas_Label.html">Label</A>, 
+      "description": "Applicable for 'DonutConfiguration' and 'StatsConfiguration' reports only. If label is not specified, then it defaults to the label of the donut or stats report.", 
+      "title": "Label of the the report"
+    }, 
+    "rowspan": {
+      "description": "Represents the vertical span of the widget / container", 
+      "minimum": 1, 
+      "title": "Vertical span", 
+      "type": "int"
+    }, 
+    "separator": {
+      "default": false, 
+      "description": "If true, separates this widget in a container.", 
+      "title": "A separator after this widget", 
+      "type": "boolean"
+    }, 
+    "span": {
+      "description": "Represents the horizontal span of the widget / container.", 
+      "maximum": 12, 
+      "minimum": 1, 
+      "title": "Horizontal span", 
+      "type": "int"
+    }, 
+    "weight": {
+      "default": 10000, 
+      "description": "Determines placement of widget or container relative to other widgets and containers. The lower the weight, the higher it is in the placement order.", 
+      "title": "Weightage or placement of the widget or container", 
+      "type": "int"
+    }, 
+    "widget_id": {
+      "description": "Id of the widget configuration that is held by a multi-widget or a container or a view.", 
+      "maxLength": 255, 
+      "required": true, 
+      "title": "Id of the widget configuration", 
+      "type": "string"
+    }
+  }, 
+  "title": "Widget held by MultiWidgetConfiguration or Container or a View", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

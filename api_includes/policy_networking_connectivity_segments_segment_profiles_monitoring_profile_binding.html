@@ -1,0 +1,484 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+        
+        
+            <a href='policy_networking_connectivity_segments.html' style='text-decoration: none'> Segments</a> >
+        
+        
+            <a href='policy_networking_connectivity_segments_segment_profiles.html' style='text-decoration: none'> Segment Profiles</a> >
+        
+        
+            <a href='policy_networking_connectivity_segments_segment_profiles_monitoring_profile_binding.html' style='text-decoration: none'> Monitoring Profile Binding</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Group Monitoring Profile Binding Map.</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Group Monitoring Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/group-monitoring-profile-binding-maps/&lt;group-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetGroupMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/group-monitoring-profile-binding-maps/&lt;group-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Port Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Port Monitoring Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraPortMonitoringBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraPortMonitoringBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Infra Port Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Infra Port Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraPortMonitoringBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortMonitoringBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortMonitoringBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Infra Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraPortMonitoringBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraPortMonitoringBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Port Monitoring Profile Binding Map mirror stack status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Segment Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Segment Monitoring Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentMonitoringBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentMonitoringBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Infra Segment Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Infra Segment Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentMonitoringBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create infra segment monitoring profile binding map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentMonitoringBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Segment Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraSegmentMonitoringBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Segment Monitoring Profile Binding Map mirror stack status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Port Monitoring Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortMonitoringBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListPortMonitoringBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Port Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortMonitoringBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortMonitoringBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPortMonitoringBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortMonitoringBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePortMonitoringBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Segment Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Segment Monitoring Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentMonitoringBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentMonitoringBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentMonitoringBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentMonitoringBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentMonitoringBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create segment monitoring profile binding map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentMonitoringBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Segment Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSegmentMonitoringBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

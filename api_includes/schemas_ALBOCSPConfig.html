@@ -1,0 +1,122 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBOCSPConfig.html">ALBOCSPConfig</a> (<a href="types_ALBOCSPConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer OCSPConfig object", 
+  "id": "ALBOCSPConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "failed_ocsp_jobs_retry_interval": {
+      "default": 3600, 
+      "description": "Describes the Time Interval after which the next OCSP job needs to be scheduled in case of the OCSP job failures. Allowed values are 60-86400. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 3600.", 
+      "maximum": 86400, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Failed ocsp jobs retry interval", 
+      "type": "integer"
+    }, 
+    "max_tries": {
+      "default": 10, 
+      "description": "Maximum number of times the failed OCSP jobs can be scheduled. Default value when not specified in API or module is interpreted by ALB Controller as 10.", 
+      "required": false, 
+      "title": "Max tries", 
+      "type": "integer"
+    }, 
+    "ocsp_req_interval": {
+      "default": 86400, 
+      "description": "Interval between the OCSP queries. Allowed values are 60-31536000. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 86400.", 
+      "maximum": 31536000, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Ocsp req interval", 
+      "type": "integer"
+    }, 
+    "ocsp_resp_timeout": {
+      "description": "Time in seconds that the system waits for a reply from the OCSP responder before dropping the connection. Unit is SEC.", 
+      "required": false, 
+      "title": "Ocsp resp timeout", 
+      "type": "integer"
+    }, 
+    "responder_url_lists": {
+      "description": "List of Responder URLs configured by user to do failover/override the AIA extension contained in the OCSP responder's SSL/TLS certificate.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Responder url lists", 
+      "type": "array"
+    }, 
+    "url_action": {
+      "$ref": "<A HREF="schemas_ALBOCSPResponderUrlAction.html">ALBOCSPResponderUrlAction</A>, 
+      "default": "OCSP_RESPONDER_URL_FAILOVER", 
+      "description": "Describes the type of action to take with the Responder URLs. Enum options - OCSP_RESPONDER_URL_FAILOVER, OCSP_RESPONDER_URL_OVERRIDE. Default value when not specified in API or module is interpreted by ALB Controller as OCSP_RESPONDER_URL_FAILOVER.", 
+      "required": false, 
+      "title": "Url action"
+    }
+  }, 
+  "title": "OCSPConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

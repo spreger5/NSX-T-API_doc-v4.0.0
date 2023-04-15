@@ -1,0 +1,166 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_GroupedMigrationFeedbackRequest.html">GroupedMigrationFeedbackRequest</a> (<a href="types_GroupedMigrationFeedbackRequest.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Detailed feedback requests from the migration tool where user input is required.", 
+  "id": "GroupedMigrationFeedbackRequest", 
+  "module_id": "Migration", 
+  "properties": {
+    "accepted_actions": {
+      "description": "List of acceptable actions for this feedback request.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Acceptable actions for this feedback request", 
+      "type": "array"
+    }, 
+    "accepted_value_type": {
+      "description": "Data type of the items listed in acceptable values list.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Data type of the items listed in acceptable values", 
+      "type": "string"
+    }, 
+    "accepted_values": {
+      "description": "List of acceptable values for this feedback request.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Acceptable values for this feedback request", 
+      "type": "array"
+    }, 
+    "hash": {
+      "description": "Identify a feedback request type across objects. This can be used to group together objects with similar feedback request and resolve them in one go.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Identifier for a feedback request type", 
+      "type": "string"
+    }, 
+    "message": {
+      "description": "Detailed feedback request with options.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Content of feedback request", 
+      "type": "string"
+    }, 
+    "multi_value": {
+      "description": "Indicates if multiple values can be selected as response from the list of acceptable value.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Indicates if multiple values can be selected as response", 
+      "type": "boolean"
+    }, 
+    "objects": {
+      "items": {
+        "$ref": "<A HREF="schemas_SummaryMigrationFeedbackRequest.html">SummaryMigrationFeedbackRequest</A>
+      }, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Collection of feedback requests of a given type", 
+      "type": "array"
+    }, 
+    "resolved": {
+      "description": "Indicates if a valid response already exist for all feedback requests in this group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates if all feedback requests in this group are resolved", 
+      "type": "boolean"
+    }, 
+    "sub_vertical": {
+      "description": "Functional sub-area that this query falls into.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Functional sub-area for the feedback query", 
+      "type": "string"
+    }, 
+    "suggested_action": {
+      "description": "The suggested action to resolve this feedback request.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Suggested action for this feedback request", 
+      "type": "string"
+    }, 
+    "suggested_value": {
+      "description": "The suggested value to resolve this feedback request.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Suggested value for this feedback request", 
+      "type": "string"
+    }, 
+    "vertical": {
+      "description": "Functional area that this query falls into.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Functional area for the feedback query", 
+      "type": "string"
+    }
+  }, 
+  "title": "Grouped Feedback detail required for Migration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

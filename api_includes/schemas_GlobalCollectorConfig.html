@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_GlobalCollectorConfig.html">GlobalCollectorConfig</a> (<a href="types_GlobalCollectorConfig.html">type</a>)
+</h3>
+<pre>{
+  "abstract": true, 
+  "description": "The GlobalCollectorConfig is the base class for global collector configurations for different types in a NSX domain.", 
+  "id": "GlobalCollectorConfig", 
+  "module_id": "Policy", 
+  "polymorphic-type-descriptor": {
+    "mode": "enabled", 
+    "property-name": "collector_type"
+  }, 
+  "properties": {
+    "collector_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "IP address for the global collector.", 
+      "required": true, 
+      "title": "IP address for the global collector collector"
+    }, 
+    "collector_port": {
+      "description": "Port for the global collector.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Port for the global collector", 
+      "type": "int"
+    }, 
+    "collector_type": {
+      "$ref": "<A HREF="schemas_GlobalCollectorType.html">GlobalCollectorType</A>, 
+      "description": "Specify the global collector type.", 
+      "required": true
+    }
+  }, 
+  "title": "Abstract base type for Global collector configurations of different types", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

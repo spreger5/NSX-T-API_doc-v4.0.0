@@ -1,0 +1,100 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AxisUnit.html">AxisUnit</a> (<a href="types_AxisUnit.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Represents X and Y axis unit of a graph.", 
+  "id": "AxisUnit", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "condition": {
+      "description": "If the condition is met then the above unit will be displayed. to UI. If no condition is provided, then the unit will be displayed unconditionally.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition", 
+      "type": "string"
+    }, 
+    "unit": {
+      "description": "An Axis unit.", 
+      "enum": [
+        "COUNT", 
+        "PERCENT", 
+        "BYTES", 
+        "MILLISECONDS", 
+        "SECONDS", 
+        "MINUTE", 
+        "HOUR", 
+        "DAY", 
+        "KILO_BYTES", 
+        "MEGA_BYTES", 
+        "GIGA_BYTES"
+      ], 
+      "title": "An Axis unit.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Axis unit of a graph", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

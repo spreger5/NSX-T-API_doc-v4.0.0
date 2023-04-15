@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PrefixEntry.html">PrefixEntry</a> (<a href="types_PrefixEntry.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "PrefixEntry", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "action": {
+      "default": "PERMIT", 
+      "description": "Action for the prefix list.", 
+      "enum": [
+        "PERMIT", 
+        "DENY"
+      ], 
+      "required": false, 
+      "title": "Action for the prefix list", 
+      "type": "string"
+    }, 
+    "ge": {
+      "description": "Prefix length greater than or equal to.", 
+      "maximum": 128, 
+      "minimum": 1, 
+      "title": "Prefix length greater than or equal to", 
+      "type": "int"
+    }, 
+    "le": {
+      "description": "Prefix length less than or equal to.", 
+      "maximum": 128, 
+      "minimum": 1, 
+      "title": "Prefix length less than or equal to", 
+      "type": "int"
+    }, 
+    "network": {
+      "description": "Network prefix in CIDR format. \"ANY\" matches all networks.", 
+      "required": true, 
+      "title": "Network prefix in CIDR format", 
+      "type": "string"
+    }
+  }, 
+  "title": "Network prefix entry", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

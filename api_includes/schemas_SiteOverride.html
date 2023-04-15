@@ -1,0 +1,132 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SiteOverride.html">SiteOverride</a> (<a href="types_SiteOverride.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "IPSecVPN site specific attributes specified only on GM. This allows user to specify site specific parameters which overrides the correspondig attributes in the IPSecVpnSession Object.", 
+  "id": "SiteOverride", 
+  "module_id": "PolicyVpnIPSecVpn", 
+  "properties": {
+    "local_endpoint_path": {
+      "description": "Policy path referencing Local endpoint.", 
+      "required": true, 
+      "title": "Local endpoint path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "IpSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_LOCAL_ENDPOINT_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnLocalEndpoint"
+          ]
+        }
+      ]
+    }, 
+    "locale_service_path": {
+      "description": "Policy path referencing LocateService where SiteOverride attributes will be applied", 
+      "required": true, 
+      "title": "Locale service policy path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "IpSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_LOCALE_SERVICE_RELATIONSHIP", 
+          "rightType": [
+            "LocaleServices"
+          ]
+        }
+      ]
+    }, 
+    "peer_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Public IPV4 or IPV6 address of the remote device terminating the VPN connection. Please note that configuring peer_address as IPv6 address is not supported in the deprecated IPSecVpnSession Patch/PUT APIs.", 
+      "required": true, 
+      "title": "IPV4 or IPV6 address of peer endpoint on remote site"
+    }, 
+    "peer_id": {
+      "description": "Peer ID to uniquely identify the peer site. The peer ID is the public IP address of the remote device terminating the VPN tunnel. When NAT is configured for the peer, enter the private IP address of the peer.", 
+      "required": true, 
+      "title": "Peer id", 
+      "type": "string"
+    }, 
+    "tunnel_interfaces": {
+      "description": "IP Tunnel interfaces. This property is mandatory for RouteBasedIpSecVpn session.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSecVpnTunnelInterface.html">IPSecVpnTunnelInterface</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "IP Tunnel interfaces", 
+      "type": "array"
+    }
+  }, 
+  "title": "IPSecVpn Site Override Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

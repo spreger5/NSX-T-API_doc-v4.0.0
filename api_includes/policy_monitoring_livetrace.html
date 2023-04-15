@@ -1,0 +1,242 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_monitoring.html' style='text-decoration: none'> Monitoring</a> >
+        
+        
+            <a href='policy_monitoring_livetrace.html' style='text-decoration: none'> Livetrace</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List livetrace config entities</h4><br>
+                      <span class="help_detail">Get a paginated list of all livetrace config entities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLiveTraceConfig.html">GET /policy/api/v1/infra/livetraces</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a livetrace config</h4><br>
+                      <span class="help_detail">Delete livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLiveTraceConfig.html">DELETE /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a livetrace config</h4><br>
+                      <span class="help_detail">Read livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceConfig.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a livetrace config</h4><br>
+                      <span class="help_detail">If a livetrace config with the specified identifier is not present, then
+<br>
+create a new livetrace config. If it already exists, update the livetrace
+<br>
+config with a full replacement.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLiveTraceConfig.html">PATCH /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart a livetrace session</h4><br>
+                      <span class="help_detail">Restart a livetrace session with the same set of parameters used in creating or updating of a livetrace config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartLivetrace.html">POST /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a livetrace config</h4><br>
+                      <span class="help_detail">If a livetrace config with the specified identifier is not present, then
+<br>
+create a new livetrace config. If it already exists, update the livetrace
+<br>
+config with a full replacement.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLiveTraceConfig.html">PUT /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read livetrace result</h4><br>
+                      <span class="help_detail">Read result for a livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceResult.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;/result</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read livetrace status</h4><br>
+                      <span class="help_detail">Read status for a livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceStatus.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List livetrace status entities</h4><br>
+                      <span class="help_detail">Get a list of all livetrace status entities.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLiveTraceStatus.html">GET /policy/api/v1/infra/livetraces/statuses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

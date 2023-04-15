@@ -1,0 +1,100 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsGeoLocationMatch.html">ALBDnsGeoLocationMatch</a> (<a href="types_ALBDnsGeoLocationMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsGeoLocationMatch object", 
+  "id": "ALBDnsGeoLocationMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "geolocation_name": {
+      "description": "Geographical location of the client IP to be used in the match. This location is of the format Country/State/City e.g. US/CA/Santa Clara.", 
+      "required": false, 
+      "title": "Geolocation name", 
+      "type": "string"
+    }, 
+    "geolocation_tag": {
+      "description": "Geolocation tag for the client IP. This could be any string value for the client IP, e.g. client IPs from US East Coast geolocation would be tagged as 'East Coast'.", 
+      "required": false, 
+      "title": "Geolocation tag", 
+      "type": "string"
+    }, 
+    "match_criteria": {
+      "$ref": "<A HREF="schemas_ALBMatchOperation.html">ALBMatchOperation</A>, 
+      "description": "Criterion to use for matching the client IP's geographical location. Enum options - IS_IN, IS_NOT_IN.", 
+      "required": true, 
+      "title": "Match criteria"
+    }, 
+    "use_edns_client_subnet_ip": {
+      "default": true, 
+      "description": "Use the IP address from the EDNS client subnet option, if available, to derive geo location of the DNS query. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Use edns client subnet ip", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "DnsGeoLocationMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

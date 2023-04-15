@@ -1,0 +1,93 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafPSMLocationMatch.html">ALBWafPSMLocationMatch</a> (<a href="types_ALBWafPSMLocationMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafPSMLocationMatch object", 
+  "id": "ALBWafPSMLocationMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "host": {
+      "$ref": "<A HREF="schemas_ALBHostHdrMatch.html">ALBHostHdrMatch</A>, 
+      "description": "Apply the rules only to requests that match the specified Host header. If this is not set, the host header will not be checked.", 
+      "required": false, 
+      "title": "Host"
+    }, 
+    "methods": {
+      "$ref": "<A HREF="schemas_ALBMethodMatch.html">ALBMethodMatch</A>, 
+      "description": "Apply the rules only to requests that have the specified methods. If this is not set, the method will not be checked.", 
+      "required": false, 
+      "title": "Methods"
+    }, 
+    "path": {
+      "$ref": "<A HREF="schemas_ALBPathMatch.html">ALBPathMatch</A>, 
+      "description": "Apply the rules only to requests that match the specified URI. If this is not set, the path will not be checked.", 
+      "required": false, 
+      "title": "Path"
+    }
+  }, 
+  "title": "WafPSMLocationMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

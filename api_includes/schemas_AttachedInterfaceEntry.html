@@ -1,0 +1,99 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AttachedInterfaceEntry.html">AttachedInterfaceEntry</a> (<a href="types_AttachedInterfaceEntry.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "The Attached interface is only effective for the segment port on Bare metal server.", 
+  "id": "AttachedInterfaceEntry", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "app_intf_name": {
+      "required": true, 
+      "title": "The name of application interface", 
+      "type": "string"
+    }, 
+    "default_gateway": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": false, 
+      "title": "Gateway IP"
+    }, 
+    "migrate_intf": {
+      "description": "IP configuration on migrate_intf will migrate to app_intf_name. It is used for Management and Application sharing the same IP.", 
+      "required": false, 
+      "title": "Interface name to migrate", 
+      "type": "string"
+    }, 
+    "routing_table": {
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Routing rules", 
+      "type": "array"
+    }
+  }, 
+  "title": "Attached interface information for Bare metal server", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

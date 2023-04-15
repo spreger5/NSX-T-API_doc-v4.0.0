@@ -1,0 +1,1257 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+            
+            
+                <a href='management_plane_api_networking_logical_routing_and_services_nat.html' style='text-decoration: none'> NAT</a>
+            
+        </P>
+    
+        <div id="AddNatRule">
+          <h2>
+            Add a NAT rule in a specific logical router
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Add a NAT rule in a specific logical router.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">POST</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/logical-routers/&lt;logical-router-id&gt;/nat/rules
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">NatRule<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddNatRule', 'NatRule.AddNatRule.Request_Body')">+</span></div>
+  </div>
+    <div id="NatRule.AddNatRule.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_NatRule.html">
+        <span>NatRule</span>
+      </a> (<a href="schemas_NatRule.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>action</td>
+            
+            <td>NAT rule action type<br><br>Valid actions: SNAT, DNAT, NO_SNAT, NO_DNAT, REFLEXIVE, NAT64. All
+<br>
+rules in a logical router are either stateless or stateful. Mix is
+<br>
+not supported. SNAT and DNAT are stateful, can NOT be supported when
+<br>
+the logical router is running at active-active HA mode; REFLEXIVE
+<br>
+is stateless. NO_SNAT and NO_DNAT have no translated_fields, only
+<br>
+match fields are supported.
+<br>
+</td>
+            
+            <td><a href="types_NatActions.html">NatActions</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>applied_tos</td>
+            
+            <td>List of LogicalRouterPort resources as applied to<br><br>Holds the list of LogicalRouterPort Ids that a NAT rule can be applied to. The LogicalRouterPort used must belong to the same LogicalRouter for which the NAT Rule is created. As of now a NAT rule can only have a single LogicalRouterPort as applied_tos. When applied_tos is not set, the NAT rule is applied to all LogicalRouterPorts beloging to the LogicalRouter.</td>
+            
+            <td>array of <a href="types_ResourceReference.html">ResourceReference</a></td>
+            
+            <td>Maximum items: 1</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>enable/disable the rule<br><br>Indicator to enable/disable the rule.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>firewall_match</td>
+            
+            <td>The rule how the firewall is applied<br><br>Indicate how firewall is applied to a traffic packet. Firewall can be
+<br>
+bypassed, or be applied to external/internal address of NAT rule.
+<br>
+
+<br>
+The firewall_match will take priority over nat_pass. If the firewall_match
+<br>
+is not provided, the nat_pass will be picked up.
+<br>
+</td>
+            
+            <td><a href="types_NatFirewallMatch.html">NatFirewallMatch</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>internal_rule_id</td>
+            
+            <td>Internal NAT rule uuid<br><br>Internal NAT rule uuid for debug used in Controller and backend.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>logging</td>
+            
+            <td>Enable/disable the logging of rule<br><br>Enable/disable the logging of rule.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>logical_router_id</td>
+            
+            <td>Logical router id<br><br>The logical router id which the nat rule runs on.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>match_destination_network</td>
+            
+            <td>match destination network<br><br>IP Address | CIDR | (null implies Any)
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>match_service</td>
+            
+            <td>match service<br><br>A NSServiceElement that specifies the matching services of source
+<br>
+ports, destination ports, ip protocol version and number, sub protocol
+<br>
+version and number, ICMP type and code, etc.
+<br>
+The match_service can be one of IPProtocolNSService,L4PortSetNSService
+<br>
+or ICMPTypeNSService. REFLEXIVE NAT does not support match_service.
+<br>
+</td>
+            
+            <td><a href="types_NSServiceElement.html">NSServiceElement</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_ALGTypeNSService.html">ALGTypeNSService</a><br><a href="types_EtherTypeNSService.html">EtherTypeNSService</a><br><a href="types_ICMPTypeNSService.html">ICMPTypeNSService</a><br><a href="types_IGMPTypeNSService.html">IGMPTypeNSService</a><br><a href="types_IPProtocolNSService.html">IPProtocolNSService</a><br><a href="types_L4PortSetNSService.html">L4PortSetNSService</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>match_source_network</td>
+            
+            <td>match source network<br><br>IP Address | CIDR | (null implies Any)
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>nat_pass</td>
+            
+            <td>enable/disable to bypass following firewall stage<br><br>Default is true. If the nat_pass is set to true, the following firewall
+<br>
+stage will be skipped. Please note, if action is NO_SNAT or NO_DNAT,
+<br>
+then nat_pass must be set to true or omitted.
+<br>
+
+<br>
+Nat_pass was deprecated with an alternative firewall_match. Please stop
+<br>
+using nat_pass to specify whether firewall stage is skipped. if you want
+<br>
+to skip, please set firewall_match to BYPASS. If you do not want to skip,
+<br>
+please set the firewall_match to MATCH_EXTERNAL_ADDRESS or
+<br>
+MATCH_INTERNAL_ADDRESS.
+<br>
+
+<br>
+Please note, the firewall_match will take priority over the nat_pass.
+<br>
+If both are provided, the nat_pass is ignored. If firewall_match is not
+<br>
+provided while the nat_pass is specified, the nat_pass will still be
+<br>
+picked up. In this case, if nat_pass is set to false, firewall rule will
+<br>
+be applied on internall address of a packet, i.e. MATCH_INTERNAL_ADDRESS.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>pb_vpn_mode</td>
+            
+            <td>The rule how the NAT applies to Policy-Based VPN traffic<br><br>Indicate how the rule applies to Policy-Based VPN traffic.
+<br>
+It's supported only for NAT rule action type DNAT and NO_DNAT.
+<br>
+
+<br>
+BYPASS indicates that NAT rule is applied to the traffic received
+<br>
+on Routed-Based VPN tunnel.
+<br>
+
+<br>
+EXCLUSIVE indicates that NAT rule is applied to the inbound traffic
+<br>
+received on Policy-Based VPN tunnel only.
+<br>
+</td>
+            
+            <td><a href="types_PbVpnMode.html">PbVpnMode</a></td>
+            
+            <td>Default: "BYPASS"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>NatRule</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rule_priority</td>
+            
+            <td>NAT rule priority<br><br>Ascending, valid range [0-2147483647]. If multiple rules have the same
+<br>
+priority, evaluation sequence is undefined.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "1024"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>translated_network</td>
+            
+            <td>IP Address | IP Range | CIDR<br><br>The translated address for the matched IP packet. For a SNAT, it can be
+<br>
+a single ip address, an ip range, or a CIDR block. For a DNAT and
+<br>
+a REFLEXIVE, it can be a single ip address or a CIDR block. Translated
+<br>
+network is not supported for NO_SNAT or NO_DNAT.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>translated_ports</td>
+            
+            <td>port number or port range. DNAT only<br><br>The translated port(s) for the mtached IP packet. It can be a single
+<br>
+port or a port range. Please note, port translating is supported only
+<br>
+for DNAT.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">POST https://&lt;nsx-mgr&gt;/api/v1/logical-routers/1977d30c-eee2-11e4-874d-0050569c7004/nat/rules
+{
+    "action": "SNAT",
+    "match_source_network": "192.168.1.1",
+    "translated_network": "10.117.5.19",
+    "match_service": {
+        "resource_type": "L4PortSetNSService", "source_ports": ["9000"], "destination_ports": ["9000"], "l4_protocol": "TCP"
+    },
+    "enabled": false
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">201 Created</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Location<br>Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">NatRule<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'AddNatRule', 'NatRule.AddNatRule.Response_Body')">+</span></div>
+  </div>
+    <div id="NatRule.AddNatRule.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_NatRule.html">
+        <span>NatRule</span>
+      </a> (<a href="schemas_NatRule.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>action</td>
+            
+            <td>NAT rule action type<br><br>Valid actions: SNAT, DNAT, NO_SNAT, NO_DNAT, REFLEXIVE, NAT64. All
+<br>
+rules in a logical router are either stateless or stateful. Mix is
+<br>
+not supported. SNAT and DNAT are stateful, can NOT be supported when
+<br>
+the logical router is running at active-active HA mode; REFLEXIVE
+<br>
+is stateless. NO_SNAT and NO_DNAT have no translated_fields, only
+<br>
+match fields are supported.
+<br>
+</td>
+            
+            <td><a href="types_NatActions.html">NatActions</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>applied_tos</td>
+            
+            <td>List of LogicalRouterPort resources as applied to<br><br>Holds the list of LogicalRouterPort Ids that a NAT rule can be applied to. The LogicalRouterPort used must belong to the same LogicalRouter for which the NAT Rule is created. As of now a NAT rule can only have a single LogicalRouterPort as applied_tos. When applied_tos is not set, the NAT rule is applied to all LogicalRouterPorts beloging to the LogicalRouter.</td>
+            
+            <td>array of <a href="types_ResourceReference.html">ResourceReference</a></td>
+            
+            <td>Maximum items: 1</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>enable/disable the rule<br><br>Indicator to enable/disable the rule.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>firewall_match</td>
+            
+            <td>The rule how the firewall is applied<br><br>Indicate how firewall is applied to a traffic packet. Firewall can be
+<br>
+bypassed, or be applied to external/internal address of NAT rule.
+<br>
+
+<br>
+The firewall_match will take priority over nat_pass. If the firewall_match
+<br>
+is not provided, the nat_pass will be picked up.
+<br>
+</td>
+            
+            <td><a href="types_NatFirewallMatch.html">NatFirewallMatch</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>internal_rule_id</td>
+            
+            <td>Internal NAT rule uuid<br><br>Internal NAT rule uuid for debug used in Controller and backend.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>logging</td>
+            
+            <td>Enable/disable the logging of rule<br><br>Enable/disable the logging of rule.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>logical_router_id</td>
+            
+            <td>Logical router id<br><br>The logical router id which the nat rule runs on.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>match_destination_network</td>
+            
+            <td>match destination network<br><br>IP Address | CIDR | (null implies Any)
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>match_service</td>
+            
+            <td>match service<br><br>A NSServiceElement that specifies the matching services of source
+<br>
+ports, destination ports, ip protocol version and number, sub protocol
+<br>
+version and number, ICMP type and code, etc.
+<br>
+The match_service can be one of IPProtocolNSService,L4PortSetNSService
+<br>
+or ICMPTypeNSService. REFLEXIVE NAT does not support match_service.
+<br>
+</td>
+            
+            <td><a href="types_NSServiceElement.html">NSServiceElement</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_ALGTypeNSService.html">ALGTypeNSService</a><br><a href="types_EtherTypeNSService.html">EtherTypeNSService</a><br><a href="types_ICMPTypeNSService.html">ICMPTypeNSService</a><br><a href="types_IGMPTypeNSService.html">IGMPTypeNSService</a><br><a href="types_IPProtocolNSService.html">IPProtocolNSService</a><br><a href="types_L4PortSetNSService.html">L4PortSetNSService</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>match_source_network</td>
+            
+            <td>match source network<br><br>IP Address | CIDR | (null implies Any)
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>nat_pass</td>
+            
+            <td>enable/disable to bypass following firewall stage<br><br>Default is true. If the nat_pass is set to true, the following firewall
+<br>
+stage will be skipped. Please note, if action is NO_SNAT or NO_DNAT,
+<br>
+then nat_pass must be set to true or omitted.
+<br>
+
+<br>
+Nat_pass was deprecated with an alternative firewall_match. Please stop
+<br>
+using nat_pass to specify whether firewall stage is skipped. if you want
+<br>
+to skip, please set firewall_match to BYPASS. If you do not want to skip,
+<br>
+please set the firewall_match to MATCH_EXTERNAL_ADDRESS or
+<br>
+MATCH_INTERNAL_ADDRESS.
+<br>
+
+<br>
+Please note, the firewall_match will take priority over the nat_pass.
+<br>
+If both are provided, the nat_pass is ignored. If firewall_match is not
+<br>
+provided while the nat_pass is specified, the nat_pass will still be
+<br>
+picked up. In this case, if nat_pass is set to false, firewall rule will
+<br>
+be applied on internall address of a packet, i.e. MATCH_INTERNAL_ADDRESS.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>pb_vpn_mode</td>
+            
+            <td>The rule how the NAT applies to Policy-Based VPN traffic<br><br>Indicate how the rule applies to Policy-Based VPN traffic.
+<br>
+It's supported only for NAT rule action type DNAT and NO_DNAT.
+<br>
+
+<br>
+BYPASS indicates that NAT rule is applied to the traffic received
+<br>
+on Routed-Based VPN tunnel.
+<br>
+
+<br>
+EXCLUSIVE indicates that NAT rule is applied to the inbound traffic
+<br>
+received on Policy-Based VPN tunnel only.
+<br>
+</td>
+            
+            <td><a href="types_PbVpnMode.html">PbVpnMode</a></td>
+            
+            <td>Default: "BYPASS"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>NatRule</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rule_priority</td>
+            
+            <td>NAT rule priority<br><br>Ascending, valid range [0-2147483647]. If multiple rules have the same
+<br>
+priority, evaluation sequence is undefined.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "1024"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>translated_network</td>
+            
+            <td>IP Address | IP Range | CIDR<br><br>The translated address for the matched IP packet. For a SNAT, it can be
+<br>
+a single ip address, an ip range, or a CIDR block. For a DNAT and
+<br>
+a REFLEXIVE, it can be a single ip address or a CIDR block. Translated
+<br>
+network is not supported for NO_SNAT or NO_DNAT.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>translated_ports</td>
+            
+            <td>port number or port range. DNAT only<br><br>The translated port(s) for the mtached IP packet. It can be a single
+<br>
+port or a port range. Please note, port translating is supported only
+<br>
+for DNAT.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "resource_type": "NatRule",
+  "id": "1029",
+  "display_name": "01003000-0000-0405-0000-000000000018",
+  "match_source_network": "192.168.1.1",
+  "action": "SNAT",
+  "logging": false,
+  "match_service": {
+    "resource_type": "L4PortSetNSService",
+    "destination_ports": [
+      "9000"
+    ],
+    "l4_protocol": "TCP",
+    "source_ports": [
+      "9000"
+    ]
+  },
+  "rule_priority": 1024,
+  "translated_network": "10.117.5.19",
+  "enabled": false,
+  "nat_pass": true,
+  "_last_modified_time": 1458852877750,
+  "_create_time": 1458852877750,
+  "_last_modified_user": "admin",
+  "_system_owned": false,
+  "_create_user": "admin",
+  "_revision": 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">routing_nat</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

@@ -1,0 +1,113 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBPoolGroupMember.html">ALBPoolGroupMember</a> (<a href="types_ALBPoolGroupMember.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer PoolGroupMember object", 
+  "id": "ALBPoolGroupMember", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "deployment_state": {
+      "$ref": "<A HREF="schemas_ALBPoolDeploymentState.html">ALBPoolDeploymentState</A>, 
+      "description": "Pool deployment state used with the PG deployment policy. Enum options - EVALUATION_IN_PROGRESS, IN_SERVICE, OUT_OF_SERVICE, EVALUATION_FAILED.", 
+      "required": false, 
+      "title": "Deployment state"
+    }, 
+    "pool_path": {
+      "description": "path of the pool. It is a reference to an object of type Pool.", 
+      "required": true, 
+      "title": "Pool path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBPoolGroup"
+          ], 
+          "relationshipType": "ALB_POOLGROUP_ALB_POOL_RELATIONSHIP", 
+          "rightType": [
+            "ALBPool"
+          ]
+        }
+      ]
+    }, 
+    "priority_label": {
+      "description": "All pools with same label are treated similarly in a pool group. A pool with a higher priority is selected, as long as the pool is eligible or an explicit policy chooses a different pool.", 
+      "required": false, 
+      "title": "Priority label", 
+      "type": "string"
+    }, 
+    "ratio": {
+      "default": 1, 
+      "description": "Ratio of selecting eligible pools in the pool group. Allowed values are 1-1000. Special values are 0 - 'Do not select this pool for new connections'. Allowed in Basic(Allowed values- 1) edition, Essentials(Allowed values- 1) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 1.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Ratio", 
+      "type": "integer"
+    }
+  }, 
+  "title": "PoolGroupMember", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

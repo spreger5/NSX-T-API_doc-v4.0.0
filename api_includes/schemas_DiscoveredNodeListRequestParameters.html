@@ -1,0 +1,150 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DiscoveredNodeListRequestParameters.html">DiscoveredNodeListRequestParameters</a> (<a href="types_DiscoveredNodeListRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "DiscoveredNodeListRequestParameters", 
+  "module_id": "InventoryCmObj", 
+  "properties": {
+    "cm_local_id": {
+      "required": false, 
+      "title": "Local Id of the discovered node in the Compute Manager", 
+      "type": "string"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "required": false, 
+      "title": "Display name of discovered node", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "required": false, 
+      "title": "External id of the discovered node, ex. a mo-ref from VC", 
+      "type": "string"
+    }, 
+    "has_parent": {
+      "enum": [
+        "true", 
+        "false"
+      ], 
+      "required": false, 
+      "title": "Discovered node has a parent compute collection or is a standalone host", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "required": false, 
+      "title": "IP address of the discovered node", 
+      "type": "string"
+    }, 
+    "node_id": {
+      "required": false, 
+      "title": "Id of the fabric node created from the discovered node", 
+      "type": "string"
+    }, 
+    "node_type": {
+      "required": false, 
+      "title": "Discovered Node type like HostNode", 
+      "type": "string"
+    }, 
+    "origin_id": {
+      "required": false, 
+      "title": "Id of the compute manager from where this node was discovered", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "parent_compute_collection": {
+      "required": false, 
+      "title": "External id of the compute collection to which this node belongs", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }
+  }, 
+  "title": "Discovered Node list parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

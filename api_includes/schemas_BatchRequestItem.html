@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BatchRequestItem.html">BatchRequestItem</a> (<a href="types_BatchRequestItem.html">type</a>)
+</h3>
+<pre>{
+  "id": "BatchRequestItem", 
+  "module_id": "Common", 
+  "properties": {
+    "body": {
+      "type": "object"
+    }, 
+    "method": {
+      "description": "http method type", 
+      "enum": [
+        "GET", 
+        "POST", 
+        "PUT", 
+        "DELETE", 
+        "PATCH"
+      ], 
+      "required": true, 
+      "title": "method type(POST/PUT/DELETE/UPDATE)", 
+      "type": "string"
+    }, 
+    "uri": {
+      "description": "relative uri (path and args), of the call including resource id (if this is a POST/DELETE), exclude hostname and port and prefix, exploded form of parameters", 
+      "required": true, 
+      "title": "Internal uri of the call", 
+      "type": "string"
+    }
+  }, 
+  "title": "A single request within a batch of operations", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

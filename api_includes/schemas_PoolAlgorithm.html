@@ -1,0 +1,80 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PoolAlgorithm.html">PoolAlgorithm</a> (<a href="types_PoolAlgorithm.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Load Balancing algorithm chooses a server for each new connection by going through the list of servers in the pool. Currently, following load balancing algorithms are supported with ROUND_ROBIN as the default. ROUND_ROBIN means that a server is selected in a round-robin fashion. The weight would be ignored even if it is configured. WEIGHTED_ROUND_ROBIN means that a server is selected in a weighted round-robin fashion. Default weight of 1 is used if weight is not configured. LEAST_CONNECTION means that a server is selected when it has the least number of connections. The weight would be ignored even if it is configured. Slow start would be enabled by default. WEIGHTED_LEAST_CONNECTION means that a server is selected in a weighted least connection fashion. Default weight of 1 is used if weight is not configured. Slow start would be enabled by default. IP_HASH means that consistent hash is performed on the source IP address of the incoming connection. This ensures that the same client IP address will always reach the same server as long as no server goes down or up. It may be used on the Internet to provide a best-effort stickiness to clients which refuse session cookies.", 
+  "enum": [
+    "ROUND_ROBIN", 
+    "WEIGHTED_ROUND_ROBIN", 
+    "LEAST_CONNECTION", 
+    "WEIGHTED_LEAST_CONNECTION", 
+    "IP_HASH"
+  ], 
+  "id": "PoolAlgorithm", 
+  "module_id": "LoadBalancer", 
+  "title": "load balancing algorithm", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

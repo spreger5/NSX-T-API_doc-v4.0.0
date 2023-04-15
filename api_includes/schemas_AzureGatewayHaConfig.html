@@ -1,0 +1,134 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AzureGatewayHaConfig.html">AzureGatewayHaConfig</a> (<a href="types_AzureGatewayHaConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "AzureGatewayHaConfig", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "downlink_subnet": {
+      "required": true, 
+      "title": "Downlink subnet", 
+      "type": "string"
+    }, 
+    "gateway_ha_index": {
+      "required": true, 
+      "title": "Index of HA that indicates whether gateway is primary or secondary.\nIf index is 0, then it is primary gateway. Else secondary gateway.\n", 
+      "type": "integer"
+    }, 
+    "management_subnet": {
+      "required": true, 
+      "title": "Management subnet", 
+      "type": "string"
+    }, 
+    "private_ip_settings": {
+      "$ref": "<A HREF="schemas_GatewayPrivateIp.html">GatewayPrivateIp</A>, 
+      "description": "Stores settings related to Azure gateway Private IP configuration. The private_ip will be attached to management interface of the gateway, based on the value of ip_allocation_mode.", 
+      "required": false, 
+      "title": "Private IP settings for management interface"
+    }, 
+    "public_ip_settings": {
+      "$ref": "<A HREF="schemas_GatewayPublicIp.html">GatewayPublicIp</A>, 
+      "description": "Stores settings related to Azure gateway Public IP configuration. The public_ip will be attached for management interface of the gateway.", 
+      "required": false, 
+      "title": "Public IP settings"
+    }, 
+    "uplink_public_ip_settings": {
+      "$ref": "<A HREF="schemas_GatewayPublicIp.html">GatewayPublicIp</A>, 
+      "description": "Stores settings related to Azure gateway Public IP configuration. The public_ip will be attached to uplink interface of the primary gateway, based on the value of ip_allocation_mode.", 
+      "required": false, 
+      "title": "Public IP settings for uplink interface"
+    }, 
+    "uplink_subnet": {
+      "required": true, 
+      "title": "Uplink subnet", 
+      "type": "string"
+    }
+  }, 
+  "title": "Azure subnet configuration to deploy gateways", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

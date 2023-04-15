@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AntreaTraceflowObservation.html">AntreaTraceflowObservation</a> (<a href="types_AntreaTraceflowObservation.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Observation result for Antrea traceflow.", 
+  "id": "AntreaTraceflowObservation", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "component_type": {
+      "description": "The type of component.", 
+      "enum": [
+        "UNKNOWN", 
+        "ANTREA_SPOOFGUARD", 
+        "ANTREA_LB", 
+        "ANTREA_ROUTING", 
+        "ANTREA_DFW", 
+        "ANTREA_FORWARDING"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "The component type", 
+      "type": "string"
+    }, 
+    "container_node_id": {
+      "description": "UID of the container node that observed a traceflow packet.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Container node UID", 
+      "type": "string"
+    }, 
+    "observation_type": {
+      "description": "The type of observation. AntreaTraceflowObservationDelivered: The packet was delivered to destination Pod properly AntreaTraceflowObservationReceived: The packet was received from another ContainerNode AntreaTraceflowObservationForwarded: The packet was forwarded to next logical node or ContainerNode AntreaTraceflowObservationDropped: The packet was dropped", 
+      "enum": [
+        "AntreaTraceflowObservationDelivered", 
+        "AntreaTraceflowObservationReceived", 
+        "AntreaTraceflowObservationForwarded", 
+        "AntreaTraceflowObservationDropped"
+      ], 
+      "required": true, 
+      "title": "The observation type", 
+      "type": "string"
+    }, 
+    "timestamp": {
+      "description": "Timestamp when the observation was collect by Antrea controller.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Observation for Antrea traceflow", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

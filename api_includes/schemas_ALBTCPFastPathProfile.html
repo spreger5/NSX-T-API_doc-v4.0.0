@@ -1,0 +1,97 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBTCPFastPathProfile.html">ALBTCPFastPathProfile</a> (<a href="types_ALBTCPFastPathProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer TCPFastPathProfile object", 
+  "id": "ALBTCPFastPathProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "dsr_profile": {
+      "$ref": "<A HREF="schemas_ALBDsrProfile.html">ALBDsrProfile</A>, 
+      "description": "DSR profile information. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Dsr profile"
+    }, 
+    "enable_syn_protection": {
+      "default": false, 
+      "description": "When enabled, Avi will complete the 3-way handshake with the client before forwarding any packets to the server. This will protect the server from SYN flood and half open SYN connections. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable syn protection", 
+      "type": "boolean"
+    }, 
+    "session_idle_timeout": {
+      "default": 300, 
+      "description": "The amount of time (in sec) for which a connection needs to be idle before it is eligible to be deleted. Allowed values are 5-14400. Special values are 0 - 'infinite'. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 300.", 
+      "maximum": 14400, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Session idle timeout", 
+      "type": "integer"
+    }
+  }, 
+  "title": "TCPFastPathProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

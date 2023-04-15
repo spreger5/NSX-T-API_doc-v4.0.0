@@ -1,0 +1,457 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Segment.html">Segment</a> (<a href="types_Segment.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Segment configuration to attach workloads.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "Segment", 
+  "module_id": "PolicyConnectivity", 
+  "policy_hierarchical_children": [
+    "ChildDhcpStaticBindingConfig", 
+    "ChildSegmentDiscoveryProfileBindingMap", 
+    "ChildSegmentMonitoringProfileBindingMap", 
+    "ChildSegmentPort", 
+    "ChildSegmentQoSProfileBindingMap", 
+    "ChildSegmentSecurityProfileBindingMap", 
+    "ChildStaticARPConfig"
+  ], 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "address_bindings": {
+      "deprecated": true, 
+      "description": "Static address binding used for the Segment. This field is deprecated and will be removed in a future release. Please use address_bindings in SegmentPort to configure static bindings.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PortAddressBindingEntry.html">PortAddressBindingEntry</A>
+      }, 
+      "maxItems": 512, 
+      "required": false, 
+      "title": "Address bindings for the Segment", 
+      "type": "array"
+    }, 
+    "admin_state": {
+      "default": "UP", 
+      "description": "Admin state represents desired state of segment. It does not reflect the state of other logical entities connected/attached to the segment.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "required": false, 
+      "title": "Represents Desired state of the Segment", 
+      "type": "string"
+    }, 
+    "advanced_config": {
+      "$ref": "<A HREF="schemas_SegmentAdvancedConfig.html">SegmentAdvancedConfig</A>, 
+      "description": "Advanced configuration for Segment.", 
+      "required": false, 
+      "title": "Advanced configuration for Segment"
+    }, 
+    "bridge_profiles": {
+      "description": "Multiple distinct L2 bridge profiles can be configured.", 
+      "items": {
+        "$ref": "<A HREF="schemas_BridgeProfileConfig.html">BridgeProfileConfig</A>
+      }, 
+      "title": "Bridge Profile Configuration", 
+      "type": "array"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "connectivity_path": {
+      "description": "Policy path to the connecting Tier-0 or Tier-1. Valid only for segments created under Infra. This field can only be used for overlay segments. VLAN backed segments cannot have connectivity path set.", 
+      "required": false, 
+      "title": "Policy path to the connecting Tier-0 or Tier-1", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "NETWORK_INFRA_SEGMENT_RELATIONSHIP", 
+          "rightType": [
+            "Tier1"
+          ]
+        }, 
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "PROVIDER_INFRA_SEGMENT_RELATIONSHIP", 
+          "rightType": [
+            "Tier0"
+          ]
+        }
+      ]
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "dhcp_config_path": {
+      "description": "Policy path to DHCP server or relay configuration to use for all IPv4 &amp; IPv6 subnets configured on this segment.", 
+      "required": false, 
+      "title": "Policy path to DHCP configuration", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "DHCP_SERVER_CONFIG_RELATIONSHIP", 
+          "rightType": [
+            "DhcpServerConfig"
+          ]
+        }, 
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "DHCP_RELAY_CONFIG_RELATIONSHIP", 
+          "rightType": [
+            "DhcpRelayConfig"
+          ]
+        }
+      ]
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "domain_name": {
+      "required": false, 
+      "title": "DNS domain name", 
+      "type": "string"
+    }, 
+    "evpn_segment": {
+      "description": "Flag to indicate if the Segment is a Child-Segment of type EVPN.", 
+      "readonly": true, 
+      "title": "Evpn Segment Flag.", 
+      "type": "boolean"
+    }, 
+    "evpn_tenant_config_path": {
+      "description": "Policy path to the EvpnTenantConfig resource. Supported only for Route-Server Evpn Mode. Supported only for Overlay Segments. This will be populated for both Parent and Child segments participating in Evpn Route-Server Mode.", 
+      "required": false, 
+      "title": "Policy path to the EvpnTenantConfig", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "SEGMENT_EVPN_TENANT_CONFIG_RELATIONSHIP", 
+          "rightType": [
+            "EvpnTenantConfig"
+          ]
+        }
+      ]
+    }, 
+    "extra_configs": {
+      "description": "This property could be used for vendor specific configuration in key value string pairs, the setting in extra_configs will be automatically inheritted by segment ports in the Segment.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SegmentExtraConfig.html">SegmentExtraConfig</A>
+      }, 
+      "required": false, 
+      "title": "Extra configs on Segment", 
+      "type": "array"
+    }, 
+    "federation_config": {
+      "$ref": "<A HREF="schemas_FederationConnectivityConfig.html">FederationConnectivityConfig</A>, 
+      "description": "Additional config for federation.", 
+      "readonly": true, 
+      "title": "Federation releated config"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "l2_extension": {
+      "$ref": "<A HREF="schemas_L2Extension.html">L2Extension</A>, 
+      "required": false, 
+      "title": "Configuration for extending Segment through L2 VPN"
+    }, 
+    "ls_id": {
+      "deprecated": true, 
+      "description": "This property is deprecated. The property will continue to work as expected for existing segments. The segments that are newly created with ls_id will be ignored. Sepcify pre-creted logical switch id for Segment.", 
+      "required": false, 
+      "title": "Pre-created logical switch id for Segment", 
+      "type": "string"
+    }, 
+    "mac_pool_id": {
+      "description": "Mac pool id that associated with a Segment.", 
+      "required": false, 
+      "title": "Allocation mac pool associated with the Segment", 
+      "type": "string"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "metadata_proxy_paths": {
+      "description": "Policy path to metadata proxy configuration. Multiple distinct MD proxies can be configured.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Metadata Proxy Configuration Paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "SEGMENT_METADATA_PROXY_RELATIONSHIP", 
+          "rightType": [
+            "MetadataProxyConfig"
+          ]
+        }
+      ]
+    }, 
+    "overlay_id": {
+      "description": "Used for overlay connectivity of segments. The overlay_id should be allocated from the pool as definied by enforcement-point. If not provided, it is auto-allocated from the default pool on the enforcement-point.", 
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Overlay connectivity ID for this Segment", 
+      "type": "int"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "replication_mode": {
+      "default": "MTEP", 
+      "description": "If this field is not set for overlay segment, then the default of MTEP will be used.", 
+      "enum": [
+        "MTEP", 
+        "SOURCE"
+      ], 
+      "required": false, 
+      "title": "Replication mode of the Segment", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "subnets": {
+      "items": {
+        "$ref": "<A HREF="schemas_SegmentSubnet.html">SegmentSubnet</A>
+      }, 
+      "required": false, 
+      "title": "Subnet configuration. Max 1 subnet", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transport_zone_path": {
+      "description": "Policy path to the transport zone. Supported for VLAN backed segments as well as Overlay Segments. - This field is required for VLAN backed Segments. - For overlay Segments, it is auto assigned if only one transport zone   exists in the enforcement point. Default transport zone is auto   assigned for  overlay segments if none specified.", 
+      "required": false, 
+      "title": "Policy path to the transport zone", 
+      "type": "string"
+    }, 
+    "type": {
+      "description": "Segment type based on configuration.", 
+      "enum": [
+        "ROUTED", 
+        "EXTENDED", 
+        "ROUTED_AND_EXTENDED", 
+        "DISCONNECTED"
+      ], 
+      "readonly": true, 
+      "title": "Segment type", 
+      "type": "string"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }, 
+    "vlan_ids": {
+      "description": "VLAN ids for a VLAN backed Segment. Can be a VLAN id or a range of VLAN ids specified with '-' in between.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "VLAN ids for VLAN backed Segment", 
+      "type": "array"
+    }
+  }, 
+  "title": "Segment configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

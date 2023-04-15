@@ -1,0 +1,1835 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Policy >
+            
+            
+                <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing.html' style='text-decoration: none'> Advanced Load Balancing</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing_alb_pools.html' style='text-decoration: none'> Alb Pools</a>
+            
+        </P>
+    
+        <div id="PatchALBPool">
+          <h2>
+            Create or update a ALBpool
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">If a ALBpool with the alb-pool-id is not already present,
+<br>
+create a new ALBpool. If it already exists, update the
+<br>
+ALBpool. This is a full replace.
+<br>
+This is a deprecated API. It is recommennded to use NSX Advanced Load Balancer (Avi) Controller UI or API directly instead of NSX-T ALB Policy UI and API.
+<br>
+</span>
+              <span class="help_detail">This API is only available when using VMware NSX.</span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">PATCH</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/infra/alb-pools/&lt;alb-pool-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">ALBPool<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'PatchALBPool', 'ALBPool.PatchALBPool.Request_Body')">+</span></div>
+  </div>
+    <div id="ALBPool.PatchALBPool.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ALBPool.html">
+        <span>ALBPool</span>
+      </a> (<a href="schemas_ALBPool.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>analytics_policy</td>
+            
+            <td>Analytics policy<br><br>Determines analytics settings for the pool.</td>
+            
+            <td><a href="types_ALBPoolAnalyticsPolicy.html">ALBPoolAnalyticsPolicy</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>analytics_profile_path</td>
+            
+            <td>Analytics profile path<br><br>Specifies settings related to analytics.
+<br>
+It is a reference to an object of type AnalyticsProfile.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>apic_epg_name</td>
+            
+            <td>Apic epg name<br><br>Synchronize Cisco APIC EPG members with pool servers.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>application_persistence_profile_path</td>
+            
+            <td>Application persistence profile path<br><br>Persistence will ensure the same user sticks to the same
+<br>
+server for a desired duration of time.
+<br>
+It is a reference to an object of type
+<br>
+ApplicationPersistenceProfile.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>autoscale_launch_config_path</td>
+            
+            <td>Autoscale launch config path<br><br>If configured then Avi will trigger orchestration of pool
+<br>
+server creation and deletion.
+<br>
+It is a reference to an object of type
+<br>
+AutoScaleLaunchConfig.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>autoscale_networks</td>
+            
+            <td>Autoscale networks<br><br>Network Ids for the launch configuration.</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>autoscale_policy_path</td>
+            
+            <td>Autoscale policy path<br><br>Reference to Server Autoscale Policy.
+<br>
+It is a reference to an object of type
+<br>
+ServerAutoScalePolicy.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>capacity_estimation</td>
+            
+            <td>Capacity estimation<br><br>Inline estimation of capacity of servers.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>capacity_estimation_ttfb_thresh</td>
+            
+            <td>Capacity estimation ttfb thresh<br><br>The maximum time-to-first-byte of a server.
+<br>
+Allowed values are 1-5000.
+<br>
+Special values are 0 - 'Automatic'.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 0) edition,
+<br>
+Essentials(Allowed values- 0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 5000<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cloud_config_cksum</td>
+            
+            <td>Cloud config cksum<br><br>Checksum of cloud configuration for Pool.
+<br>
+Internally set by cloud connector.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cloud_name</td>
+            
+            <td>Cloud name<br><br>It is a reference to an object of type Cloud.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>conn_pool_properties</td>
+            
+            <td>Conn pool properties<br><br>Connnection pool properties.</td>
+            
+            <td><a href="types_ALBConnPoolProperties.html">ALBConnPoolProperties</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>connection_ramp_duration</td>
+            
+            <td>Connection ramp duration<br><br>Duration for which new connections will be gradually ramped
+<br>
+up to a server recently brought online.
+<br>
+Useful for LB algorithms that are least connection based.
+<br>
+Allowed values are 1-300.
+<br>
+Special values are 0 - 'Immediate'.
+<br>
+Unit is MIN.
+<br>
+Allowed in Basic(Allowed values- 0) edition,
+<br>
+Essentials(Allowed values- 0) edition, Enterprise edition.
+<br>
+Special default for Basic edition is 0, Essentials edition
+<br>
+is 0, Enterprise is 10.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 300<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>created_by</td>
+            
+            <td>Created by<br><br>Creator name.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>default_server_port</td>
+            
+            <td>Default server port<br><br>Traffic sent to servers will use this destination server
+<br>
+port unless overridden by the server's specific port
+<br>
+attribute.
+<br>
+The SSL checkbox enables Avi to server encryption.
+<br>
+Allowed values are 1-65535.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 80.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 65535<br>Default: "80"</td>
+          </tr>
+          <tr>
+            <td>delete_server_on_dns_refresh</td>
+            
+            <td>Delete server on dns refresh<br><br>Indicates whether existing IPs are disabled(false) or
+<br>
+deleted(true) on dns hostname refreshDetail -- On a dns
+<br>
+refresh, some IPs set on pool may no longer be returned by
+<br>
+the resolver.
+<br>
+These IPs are deleted from the pool when this knob is set
+<br>
+to true.
+<br>
+They are disabled, if the knob is set to false.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>domain_name</td>
+            
+            <td>Domain name<br><br>Comma separated list of domain names which will be used to
+<br>
+verify the common names or subject alternative names
+<br>
+presented by server certificates.
+<br>
+It is performed only when common name check
+<br>
+host_check_enabled is enabled.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>east_west</td>
+            
+            <td>East west<br><br>Inherited config from VirtualService.</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>enable_http2</td>
+            
+            <td>Enable http2<br><br>Enable HTTP/2 for traffic from VirtualService to all
+<br>
+backend servers in this pool.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>Enabled<br><br>Enable or disable the pool.
+<br>
+Disabling will terminate all open connections and pause
+<br>
+health monitors.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>external_autoscale_groups</td>
+            
+            <td>External autoscale groups<br><br>Names of external auto-scale groups for pool servers.
+<br>
+Currently available only for AWS and Azure.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>fail_action</td>
+            
+            <td>Fail action<br><br>Enable an action - Close Connection, HTTP Redirect or Local
+<br>
+HTTP Response - when a pool failure happens.
+<br>
+By default, a connection will be closed, in case the pool
+<br>
+experiences a failure.
+<br>
+</td>
+            
+            <td><a href="types_ALBFailAction.html">ALBFailAction</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>fewest_tasks_feedback_delay</td>
+            
+            <td>Fewest tasks feedback delay<br><br>Periodicity of feedback for fewest tasks server selection
+<br>
+algorithm.
+<br>
+Allowed values are 1-300.
+<br>
+Unit is SEC.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 10.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 300<br>Default: "10"</td>
+          </tr>
+          <tr>
+            <td>graceful_disable_timeout</td>
+            
+            <td>Graceful disable timeout<br><br>Used to gracefully disable a server.
+<br>
+Virtual service waits for the specified time before
+<br>
+terminating the existing connections  to the servers that
+<br>
+are disabled.
+<br>
+Allowed values are 1-7200.
+<br>
+Special values are 0 - 'Immediate', -1 - 'Infinite'.
+<br>
+Unit is MIN.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: -1<br>Maximum: 7200<br>Default: "1"</td>
+          </tr>
+          <tr>
+            <td>group_paths</td>
+            
+            <td>Group paths<br><br>A list of NSX Groups where the Servers for the Pool are
+<br>
+created .
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>gslb_sp_enabled</td>
+            
+            <td>Gslb sp enabled<br><br>Indicates if the pool is a site-persistence pool.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>health_monitor_paths</td>
+            
+            <td>Health monitor paths<br><br>Verify server health by applying one or more health
+<br>
+monitors.
+<br>
+Active monitors generate synthetic traffic from each
+<br>
+Service Engine and mark a server up or down based on the
+<br>
+response.
+<br>
+The Passive monitor listens only to client to server
+<br>
+communication.
+<br>
+It raises or lowers the ratio of traffic destined to a
+<br>
+server based on successful responses.
+<br>
+It is a reference to an object of type HealthMonitor.
+<br>
+Maximum of 50 items allowed.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>host_check_enabled</td>
+            
+            <td>Host check enabled<br><br>Enable common name check for server certificate.
+<br>
+If enabled and no explicit domain name is specified, Avi
+<br>
+will use the incoming host header to do the match.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ignore_server_port</td>
+            
+            <td>Ignore server port<br><br>Ignore the server port in building the load balancing
+<br>
+state.Applicable only for consistent hash load balancing
+<br>
+algorithm or Disable Port translation (use_service_port) use
+<br>
+cases.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>inline_health_monitor</td>
+            
+            <td>Inline health monitor<br><br>The Passive monitor will monitor client to server
+<br>
+connections and requests and adjust traffic load to servers
+<br>
+based on successful responses.
+<br>
+This may alter the expected behavior of the LB method, such
+<br>
+as Round Robin.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>ipaddrgroup_path</td>
+            
+            <td>Ipaddrgroup path<br><br>Use list of servers from Ip Address Group.
+<br>
+It is a reference to an object of type IpAddrGroup.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>lb_algorithm</td>
+            
+            <td>Lb algorithm<br><br>The load balancing algorithm will pick a server within the
+<br>
+pool's list of available servers.
+<br>
+Values LB_ALGORITHM_NEAREST_SERVER and
+<br>
+LB_ALGORITHM_TOPOLOGY are only allowed for GSLB pool.
+<br>
+Enum options - LB_ALGORITHM_LEAST_CONNECTIONS,
+<br>
+LB_ALGORITHM_ROUND_ROBIN, LB_ALGORITHM_FASTEST_RESPONSE,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH, LB_ALGORITHM_LEAST_LOAD,
+<br>
+LB_ALGORITHM_FEWEST_SERVERS, LB_ALGORITHM_RANDOM,
+<br>
+LB_ALGORITHM_FEWEST_TASKS, LB_ALGORITHM_NEAREST_SERVER,
+<br>
+LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
+<br>
+Allowed in Basic(Allowed values-
+<br>
+LB_ALGORITHM_LEAST_CONNECTIONS,LB_ALGORITHM_ROUND_ROBIN,LB_ALGORITHM_CONSISTENT_HASH)
+<br>
+edition, Essentials(Allowed values-
+<br>
+LB_ALGORITHM_LEAST_CONNECTIONS,LB_ALGORITHM_ROUND_ROBIN,LB_ALGORITHM_CONSISTENT_HASH)
+<br>
+edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as
+<br>
+LB_ALGORITHM_LEAST_CONNECTIONS.
+<br>
+</td>
+            
+            <td><a href="types_ALBLbAlgorithm.html">ALBLbAlgorithm</a></td>
+            
+            <td>Default: "LB_ALGORITHM_LEAST_CONNECTIONS"</td>
+          </tr>
+          <tr>
+            <td>lb_algorithm_consistent_hash_hdr</td>
+            
+            <td>Lb algorithm consistent hash hdr<br><br>HTTP header name to be used for the hash key.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>lb_algorithm_core_nonaffinity</td>
+            
+            <td>Lb algorithm core nonaffinity<br><br>Degree of non-affinity for core affinity based server
+<br>
+selection.
+<br>
+Allowed values are 1-65535.
+<br>
+Allowed in Basic(Allowed values- 2) edition,
+<br>
+Essentials(Allowed values- 2) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 65535<br>Default: "2"</td>
+          </tr>
+          <tr>
+            <td>lb_algorithm_hash</td>
+            
+            <td>Lb algorithm hash<br><br>Criteria used as a key for determining the hash between the
+<br>
+client and  server.
+<br>
+Enum options -
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS_AND_PORT,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_URI,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_CUSTOM_HEADER,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_CUSTOM_STRING,
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_CALLID.
+<br>
+Allowed in Basic(Allowed values-
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS) edition,
+<br>
+Essentials(Allowed values-
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS) edition,
+<br>
+Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as
+<br>
+LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS.
+<br>
+</td>
+            
+            <td><a href="types_ALBLbAlgorithmConsistentHash.html">ALBLbAlgorithmConsistentHash</a></td>
+            
+            <td>Default: "LB_ALGORITHM_CONSISTENT_HASH_SOURCE_IP_ADDRESS"</td>
+          </tr>
+          <tr>
+            <td>lookup_server_by_name</td>
+            
+            <td>Lookup server by name<br><br>Allow server lookup by name.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>markers</td>
+            
+            <td>Markers<br><br>List of labels to be used for granular RBAC.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>max_concurrent_connections_per_server</td>
+            
+            <td>Max concurrent connections per server<br><br>The maximum number of concurrent connections allowed to
+<br>
+each server within the pool.
+<br>
+NOTE  applied value will be no less than the number of
+<br>
+service engines that the pool is placed on.
+<br>
+If set to 0, no limit is applied.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>max_conn_rate_per_server</td>
+            
+            <td>Max conn rate per server<br><br>Rate Limit connections to each server.</td>
+            
+            <td><a href="types_ALBRateProfile.html">ALBRateProfile</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>min_health_monitors_up</td>
+            
+            <td>Min health monitors up<br><br>Minimum number of health monitors in UP state to mark
+<br>
+server UP.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>min_servers_up</td>
+            
+            <td>Min servers up<br><br>Minimum number of servers in UP state for marking the pool
+<br>
+UP.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>networks</td>
+            
+            <td>Networks<br><br>(internal-use) Networks designated as containing servers
+<br>
+for this pool.
+<br>
+The servers may be further narrowed down by a filter.
+<br>
+This field is used internally by Avi, not editable by the
+<br>
+user.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBNetworkFilter.html">ALBNetworkFilter</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>pki_profile_path</td>
+            
+            <td>Pki profile path<br><br>Avi will validate the SSL certificate present by a server
+<br>
+against the selected PKI Profile.
+<br>
+It is a reference to an object of type PKIProfile.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>placement_networks</td>
+            
+            <td>Placement networks<br><br>Manually select the networks and subnets used to provide
+<br>
+reachability to the pool's servers.
+<br>
+Specify the Subnet using the following syntax  10-1-1-0/24.
+<br>
+Use static routes in VRF configuration when pool servers
+<br>
+are not directly connected but routable from the service
+<br>
+engine.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBPlacementNetwork.html">ALBPlacementNetwork</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>request_queue_depth</td>
+            
+            <td>Request queue depth<br><br>Minimum number of requests to be queued when pool is full.
+<br>
+Allowed in Basic(Allowed values- 128) edition,
+<br>
+Essentials(Allowed values- 128) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 128.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "128"</td>
+          </tr>
+          <tr>
+            <td>request_queue_enabled</td>
+            
+            <td>Request queue enabled<br><br>Enable request queue when pool is full.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ALBPool</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rewrite_host_header_to_server_name</td>
+            
+            <td>Rewrite host header to server name<br><br>Rewrite incoming Host Header to server name of the server
+<br>
+to which the request is proxied.
+<br>
+Enabling this feature rewrites Host Header for requests to
+<br>
+all servers in the pool.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>rewrite_host_header_to_sni</td>
+            
+            <td>Rewrite host header to sni<br><br>If SNI server name is specified, rewrite incoming host
+<br>
+header to the SNI server name.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>routing_pool</td>
+            
+            <td>Routing pool<br><br>Enable to do routing when this pool is selected to send
+<br>
+traffic.
+<br>
+No servers present in routing pool.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>server_name</td>
+            
+            <td>Server name<br><br>Fully qualified DNS hostname which will be used in the TLS
+<br>
+SNI extension in server connections if SNI is enabled.
+<br>
+If no value is specified, Avi will use the incoming host
+<br>
+header instead.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>server_reselect</td>
+            
+            <td>Server reselect<br><br>Server reselect configuration for HTTP requests.</td>
+            
+            <td><a href="types_ALBHTTPServerReselect.html">ALBHTTPServerReselect</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>server_timeout</td>
+            
+            <td>Server timeout<br><br>Server timeout value specifies the time within which a
+<br>
+server connection needs to be established and a
+<br>
+request-response exchange completes between AVI and the
+<br>
+server.
+<br>
+Value of 0 results in using default timeout of 60 minutes.
+<br>
+Allowed values are 0-21600000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 21600000<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>servers</td>
+            
+            <td>Servers<br><br>The pool directs load balanced traffic to this list of
+<br>
+destination servers.
+<br>
+The servers can be configured by IP address, name, network
+<br>
+or via IP Address Group.
+<br>
+Maximum of 5000 items allowed.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBServer.html">ALBServer</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>service_metadata</td>
+            
+            <td>Service metadata<br><br>Metadata pertaining to the service provided by this Pool.
+<br>
+In Openshift/Kubernetes environments, app metadata info is
+<br>
+stored.
+<br>
+Any user input to this field will be overwritten by Avi
+<br>
+Vantage.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sni_enabled</td>
+            
+            <td>Sni enabled<br><br>Enable TLS SNI for server connections.
+<br>
+If disabled, Avi will not send the SNI extension as part of
+<br>
+the handshake.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>ssl_key_and_certificate_path</td>
+            
+            <td>Ssl key and certificate path<br><br>Service Engines will present a client SSL certificate to
+<br>
+the server.
+<br>
+It is a reference to an object of type
+<br>
+SSLKeyAndCertificate.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ssl_profile_path</td>
+            
+            <td>Ssl profile path<br><br>When enabled, Avi re-encrypts traffic to the backend
+<br>
+servers.
+<br>
+The specific SSL profile defines which ciphers and SSL
+<br>
+versions will be supported.
+<br>
+It is a reference to an object of type SSLProfile.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>tier1_path</td>
+            
+            <td>Tier1 path<br><br>This tier1_lr field should be set same as VirtualService
+<br>
+associated for NSX-T.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>use_service_port</td>
+            
+            <td>Use service port<br><br>Do not translate the client's destination port when sending
+<br>
+the connection to the server.
+<br>
+The pool or servers specified service port will still be
+<br>
+used for health monitoring.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>vrf_name</td>
+            
+            <td>Vrf name<br><br>Virtual Routing Context that the pool is bound to.
+<br>
+This is used to provide the isolation of the set of
+<br>
+networks the pool is attached to.
+<br>
+The pool inherits the Virtual Routing Conext of the Virtual
+<br>
+Service, and this field is used only internally, and is set
+<br>
+by pb-transform.
+<br>
+It is a reference to an object of type VrfContext.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">{
+  "application_persistence_profile_path": "/infra/alb-application-persistence-profiles/persistent_profile_https_ssl_pass_through_enable_src_ip",
+  "cloud_name": "nsxt_cloud_overlay",
+  "display_name": "https_pool_1",
+  "health_monitor_paths": [
+    "/infra/alb-health-monitors/https_monitor_1"
+  ],
+  "lb_algorithm": "LB_ALGORITHM_LEAST_CONNECTIONS",
+  "max_concurrent_connections_per_server": 100,
+  "resource_type": "ALBPool",
+  "servers": [
+    {
+      "enabled": true,
+      "hostname": "member1",
+      "ip": {
+        "addr": "192.168.100.10",
+        "type": "V4"
+      },
+      "port": 443,
+      "ratio": 1
+    }
+  ],
+  "tier1_path": "/infra/tier-1s/London_Tier1Gateway1"
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  <div class="value"><i>n/a</i></div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">200 OK</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">policy_lb</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

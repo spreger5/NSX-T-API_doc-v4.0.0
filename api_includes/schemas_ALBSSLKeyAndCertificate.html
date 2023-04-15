@@ -1,0 +1,361 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSSLKeyAndCertificate.html">ALBSSLKeyAndCertificate</a> (<a href="types_ALBSSLKeyAndCertificate.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SSLKeyAndCertificate object", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "ALBSSLKeyAndCertificate", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "ca_certs": {
+      "description": "CA certificates in certificate chain.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBCertificateAuthority.html">ALBCertificateAuthority</A>
+      }, 
+      "required": false, 
+      "title": "Ca certs", 
+      "type": "array"
+    }, 
+    "certificate": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificate.html">ALBSSLCertificate</A>, 
+      "description": "Placeholder for description of property certificate of obj type SSLKeyAndCertificate field type str  type ref.", 
+      "required": true, 
+      "title": "Certificate"
+    }, 
+    "certificate_base64": {
+      "default": false, 
+      "description": "States if the certificate is base64 encoded. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Certificate base64", 
+      "type": "boolean"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "created_by": {
+      "description": "Creator name.", 
+      "required": false, 
+      "title": "Created by", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "dynamic_params": {
+      "description": "Dynamic parameters needed for certificate management profile.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBCustomParams.html">ALBCustomParams</A>
+      }, 
+      "required": false, 
+      "title": "Dynamic params", 
+      "type": "array"
+    }, 
+    "enable_ocsp_stapling": {
+      "default": false, 
+      "description": "Enables OCSP Stapling. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable ocsp stapling", 
+      "type": "boolean"
+    }, 
+    "enckey_base64": {
+      "description": "Encrypted private key corresponding to the private key (e.g. those generated by an HSM such as Thales nShield).", 
+      "required": false, 
+      "title": "Enckey base64", 
+      "type": "string"
+    }, 
+    "enckey_name": {
+      "description": "Name of the encrypted private key (e.g. those generated by an HSM such as Thales nShield).", 
+      "required": false, 
+      "title": "Enckey name", 
+      "type": "string"
+    }, 
+    "format": {
+      "$ref": "<A HREF="schemas_ALBSSLFormat.html">ALBSSLFormat</A>, 
+      "default": "SSL_PEM", 
+      "description": "Format of the Key/Certificate file. Enum options - SSL_PEM, SSL_PKCS12. Default value when not specified in API or module is interpreted by ALB Controller as SSL_PEM.", 
+      "required": false, 
+      "title": "Format"
+    }, 
+    "hardwaresecuritymodulegroup_path": {
+      "description": "It is a reference to an object of type HardwareSecurityModuleGroup.", 
+      "required": false, 
+      "title": "Hardwaresecuritymodulegroup path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBSSLKeyAndCertificate"
+          ], 
+          "relationshipType": "ALB_SSLKEYANDCERTIFICATE_ALB_HARDWARESECURITYMODULEGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBHardwareSecurityModuleGroup"
+          ]
+        }
+      ]
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "key": {
+      "description": "Private key.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Key", 
+      "type": "string"
+    }, 
+    "key_base64": {
+      "default": false, 
+      "description": "States if the private key is base64 encoded. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Key base64", 
+      "type": "boolean"
+    }, 
+    "key_params": {
+      "$ref": "<A HREF="schemas_ALBSSLKeyParams.html">ALBSSLKeyParams</A>, 
+      "description": "Placeholder for description of property key_params of obj type SSLKeyAndCertificate field type str  type ref.", 
+      "required": false, 
+      "title": "Key params"
+    }, 
+    "key_passphrase": {
+      "description": "Passphrase used to encrypt the private key.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Key passphrase", 
+      "type": "string"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "markers": {
+      "description": "List of labels to be used for granular RBAC. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</A>
+      }, 
+      "required": false, 
+      "title": "Markers", 
+      "type": "array"
+    }, 
+    "ocsp_config": {
+      "$ref": "<A HREF="schemas_ALBOCSPConfig.html">ALBOCSPConfig</A>, 
+      "description": "Configuration related to OCSP. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Ocsp config"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "status": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificateStatus.html">ALBSSLCertificateStatus</A>, 
+      "default": "SSL_CERTIFICATE_FINISHED", 
+      "description": "Enum options - SSL_CERTIFICATE_FINISHED, SSL_CERTIFICATE_PENDING. Default value when not specified in API or module is interpreted by ALB Controller as SSL_CERTIFICATE_FINISHED.", 
+      "required": false, 
+      "title": "Status"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificateType.html">ALBSSLCertificateType</A>, 
+      "description": "Enum options - SSL_CERTIFICATE_TYPE_VIRTUALSERVICE, SSL_CERTIFICATE_TYPE_SYSTEM, SSL_CERTIFICATE_TYPE_CA.", 
+      "required": false, 
+      "title": "Type"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "SSLKeyAndCertificate", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

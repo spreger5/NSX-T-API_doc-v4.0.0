@@ -1,0 +1,90 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_EnforcedStatusInfoNsxT.html">EnforcedStatusInfoNsxT</a> (<a href="types_EnforcedStatusInfoNsxT.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Information about the realized status of the intent object on an NSX-T type of enforcement point. Some very recent changes may be excluded when preparing this information, which is indicated by Pending Changes Info. In addition to the realized status across all scopes, this information holds details about enforced realized status per scope.", 
+  "id": "EnforcedStatusInfoNsxT", 
+  "module_id": "PolicyRealizationStatus", 
+  "properties": {
+    "enforced_status": {
+      "$ref": "<A HREF="schemas_EnforcedStatusNsxT.html">EnforcedStatusNsxT</A>, 
+      "description": "Consolidated Realized Status of an Intent object across all scopes of an NSX-T type of enforcement point.", 
+      "readonly": true, 
+      "title": "Enforced Realized Status"
+    }, 
+    "enforced_status_per_scope": {
+      "description": "List of Enforced Realized Status per Scope.", 
+      "items": {
+        "$ref": "<A HREF="schemas_EnforcedStatusPerScopeNsxT.html">EnforcedStatusPerScopeNsxT</A>
+      }, 
+      "readonly": true, 
+      "title": "List of Enforced Realized Status per Scope", 
+      "type": "array"
+    }
+  }, 
+  "title": "NSX-T Enforced Realized Status Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

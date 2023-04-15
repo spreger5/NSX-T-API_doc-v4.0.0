@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHSMSafenetLuna.html">ALBHSMSafenetLuna</a> (<a href="types_ALBHSMSafenetLuna.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HSMSafenetLuna object", 
+  "id": "ALBHSMSafenetLuna", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "ha_group_num": {
+      "description": "Group Number of generated HA Group.", 
+      "required": false, 
+      "title": "Ha group num", 
+      "type": "integer"
+    }, 
+    "is_ha": {
+      "default": false, 
+      "description": "Set to indicate HA across more than one servers. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": true, 
+      "title": "Is ha", 
+      "type": "boolean"
+    }, 
+    "node_info": {
+      "description": "Node specific information.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHSMSafenetClientInfo.html">ALBHSMSafenetClientInfo</A>
+      }, 
+      "required": false, 
+      "title": "Node info", 
+      "type": "array"
+    }, 
+    "server": {
+      "description": "SafeNet/Gemalto HSM Servers used for crypto operations.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHSMSafenetLunaServer.html">ALBHSMSafenetLunaServer</A>
+      }, 
+      "required": false, 
+      "title": "Server", 
+      "type": "array"
+    }, 
+    "server_pem": {
+      "description": "Generated File - server.pem.", 
+      "required": false, 
+      "title": "Server pem", 
+      "type": "string"
+    }, 
+    "use_dedicated_network": {
+      "default": false, 
+      "description": "If enabled, dedicated network is used to communicate with HSM,else, the management network is used. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Use dedicated network", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "HSMSafenetLuna", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

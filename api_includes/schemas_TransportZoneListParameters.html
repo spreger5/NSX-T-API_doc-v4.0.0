@@ -1,0 +1,129 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TransportZoneListParameters.html">TransportZoneListParameters</a> (<a href="types_TransportZoneListParameters.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "TransportZoneListParameters", 
+  "module_id": "TransportZone", 
+  "properties": {
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "description": "If set, all transport zones with matching display name will be returned.", 
+      "title": "The transport zone's display name", 
+      "type": "string"
+    }, 
+    "include_system_owned": {
+      "default": false, 
+      "required": false, 
+      "title": "Filter to indicate whether to include system owned Transport Zones.", 
+      "type": "boolean"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "is_default": {
+      "description": "If set to true, only the default transport zones will be returned. If set to false, all transport zones except the default ones will be returned. If unset, all transport zones will be returned.", 
+      "title": "Filter to choose if default transport zones will be returned", 
+      "type": "boolean"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "transport_type": {
+      "$ref": "<A HREF="schemas_TransportType.html">TransportType</A>, 
+      "description": "If set, only transport zones of the given type will be returned; otherwise transport zones of all types will be returned.", 
+      "title": "Filter to choose the type of transport zones to return"
+    }, 
+    "uplink_teaming_policy_name": {
+      "description": "All transport zone's with the specified uplink teaming policy name. Otherwise, transport zones with any uplink teaming policy will be returned.", 
+      "required": false, 
+      "title": "The transport zone's uplink teaming policy name", 
+      "type": "string"
+    }
+  }, 
+  "title": "Transport Zone list parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

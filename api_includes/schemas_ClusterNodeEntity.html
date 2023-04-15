@@ -1,0 +1,143 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ClusterNodeEntity.html">ClusterNodeEntity</a> (<a href="types_ClusterNodeEntity.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "NSX Cluster is made up of multiple cluster nodes. Each node can perform multiple functions, commonly referred to as roles. Cluster node entities are processes running in a cluster node that assist in the performance of a role. Cluster Boot Manager is a daemon that securely bootstraps and configures the entities. This type contains attributes of a cluster node entity that are relevant to the Cluster Boot Manager.", 
+  "id": "ClusterNodeEntity", 
+  "module_id": "Cluster", 
+  "properties": {
+    "certificate": {
+      "required": true, 
+      "title": "Public certificate of the entity in PEM format", 
+      "type": "string"
+    }, 
+    "entity_type": {
+      "enum": [
+        "MANAGER", 
+        "CONTROLLER", 
+        "POLICY", 
+        "HTTPS", 
+        "CLUSTER_BOOT_MANAGER", 
+        "DATASTORE", 
+        "GLOBAL_MANAGER", 
+        "ASYNC_REPLICATOR", 
+        "MONITORING", 
+        "IDPS_REPORTING", 
+        "CORFU_NONCONFIG", 
+        "UPGRADE_COORDINATOR", 
+        "CM-INVENTORY", 
+        "MESSAGING-MANAGER"
+      ], 
+      "required": true, 
+      "title": "Type of the entity", 
+      "type": "string"
+    }, 
+    "entity_uuid": {
+      "required": true, 
+      "title": "UUID of the entity", 
+      "type": "string"
+    }, 
+    "fqdn": {
+      "format": "hostname", 
+      "required": false, 
+      "title": "Domain name the entity binds to", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "required": false, 
+      "title": "IP address the entity binds to", 
+      "type": "string"
+    }, 
+    "ipv6_address": {
+      "required": false, 
+      "title": "IPv6 address the entity binds to", 
+      "type": "string"
+    }, 
+    "ipv6_subnet_prefix_length": {
+      "maximum": 128, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "IPv6 subnet mask prefix length of the entity binds to", 
+      "type": "integer"
+    }, 
+    "port": {
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Port the entity binds to", 
+      "type": "integer"
+    }, 
+    "subnet_prefix_length": {
+      "maximum": 32, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Subnet mask prefix length of the entity binds to", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Cluster Node Entity Properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

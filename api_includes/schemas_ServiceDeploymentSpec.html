@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceDeploymentSpec.html">ServiceDeploymentSpec</a> (<a href="types_ServiceDeploymentSpec.html">type</a>)
+</h3>
+<pre>{
+  "description": "ServiceDeployment Spec consists of information required to deploy and configure the partner appliances. viz. Deployment template, deployment spec and NIC metatdata.", 
+  "id": "ServiceDeploymentSpec", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "deployment_specs": {
+      "description": "Deployment Specs holds information required to deploy the Service-VMs. i.e. OVF url where the partner Service-VM OVF is hosted. The host type on which the OVF can be deployed, Form factor to name a few.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SVMDeploymentSpec.html">SVMDeploymentSpec</A>
+      }, 
+      "maxItems": 128, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Service Deployment Spec List", 
+      "type": "array"
+    }, 
+    "deployment_template": {
+      "description": "Deployment Template holds the attributes specific to partner for which the service is created. These attributes are opaque to NSX Manager.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DeploymentTemplate.html">DeploymentTemplate</A>
+      }, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Service Deployment Template", 
+      "type": "array"
+    }, 
+    "nic_metadata_list": {
+      "description": "NIC metadata associated with the deployment spec.", 
+      "items": {
+        "$ref": "<A HREF="schemas_NicMetadata.html">NicMetadata</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "NIC Metadata", 
+      "type": "array"
+    }, 
+    "svm_version": {
+      "description": "Partner needs to specify the Service VM version which will get deployed.", 
+      "required": false, 
+      "title": "Partner Service-VM version.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Service Deployment Specification.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

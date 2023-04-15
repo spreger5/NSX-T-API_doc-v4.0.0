@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBServicePoolSelector.html">ALBServicePoolSelector</a> (<a href="types_ALBServicePoolSelector.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer ServicePoolSelector object", 
+  "id": "ALBServicePoolSelector", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "service_pool_group_path": {
+      "description": "It is a reference to an object of type PoolGroup.", 
+      "required": false, 
+      "title": "Service pool group path", 
+      "type": "string"
+    }, 
+    "service_pool_path": {
+      "description": "It is a reference to an object of type Pool.", 
+      "required": false, 
+      "title": "Service pool path", 
+      "type": "string"
+    }, 
+    "service_port": {
+      "description": "Pool based destination port. Allowed values are 1-65535.", 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "required": true, 
+      "title": "Service port", 
+      "type": "integer"
+    }, 
+    "service_port_range_end": {
+      "default": 0, 
+      "description": "The end of the Service port number range. Allowed values are 1-65535. Special values are 0- 'single port'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Service port range end", 
+      "type": "integer"
+    }, 
+    "service_protocol": {
+      "$ref": "<A HREF="schemas_ALBProtocolType.html">ALBProtocolType</A>, 
+      "description": "Destination protocol to match for the pool selection. If not specified, it will match any protocol. Enum options - PROTOCOL_TYPE_TCP_PROXY, PROTOCOL_TYPE_TCP_FAST_PATH, PROTOCOL_TYPE_UDP_FAST_PATH, PROTOCOL_TYPE_UDP_PROXY.", 
+      "required": false, 
+      "title": "Service protocol"
+    }
+  }, 
+  "title": "ServicePoolSelector", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

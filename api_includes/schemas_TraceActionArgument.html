@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TraceActionArgument.html">TraceActionArgument</a> (<a href="types_TraceActionArgument.html">type</a>)
+</h3>
+<pre>{
+  "id": "TraceActionArgument", 
+  "module_id": "LiveTrace", 
+  "properties": {
+    "dest_ipsec_vpn_config": {
+      "$ref": "<A HREF="schemas_LiveTraceIpsecVpnConfig.html">LiveTraceIpsecVpnConfig</A>, 
+      "description": "It is required only when the trace type is bidirectional. Multiple bi-directional actions in a livetrace session should have the same IPSec VPN config specified for the reverse direction.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IPSec VPN configuration for the reverse direction of a livetrace session."
+    }, 
+    "dest_lport": {
+      "description": "It is required only when the type of trace is bidirectional. Please keep this field aligned with the destination logical port of packet capture action config when the type of packet capture action is bidirectional.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Destination logical port for bidirectional trace", 
+      "type": "string"
+    }, 
+    "reverse_filter": {
+      "$ref": "<A HREF="schemas_LiveTraceFilterData.html">LiveTraceFilterData</A>, 
+      "description": "It takes effect only when the type of trace is bidirectional. Please keep this aligned with the packet filter of reverse direction of packet capture action config when the type of packet capture action is bidirectional.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Packet filter for flows of interest in reverse direction"
+    }, 
+    "trace_type": {
+      "enum": [
+        "UNI_DIRECTIONAL", 
+        "BI_DIRECTIONAL"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Type of trace", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

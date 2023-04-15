@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsRuleActionResponse.html">ALBDnsRuleActionResponse</a> (<a href="types_ALBDnsRuleActionResponse.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsRuleActionResponse object", 
+  "id": "ALBDnsRuleActionResponse", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "authoritative": {
+      "default": true, 
+      "description": "DNS response is authoritative. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Authoritative", 
+      "type": "boolean"
+    }, 
+    "rcode": {
+      "$ref": "<A HREF="schemas_ALBDnsRcode.html">ALBDnsRcode</A>, 
+      "default": "DNS_RCODE_NOERROR", 
+      "description": "DNS response code. Enum options - DNS_RCODE_NOERROR, DNS_RCODE_FORMERR, DNS_RCODE_SERVFAIL, DNS_RCODE_NXDOMAIN, DNS_RCODE_NOTIMP, DNS_RCODE_REFUSED, DNS_RCODE_YXDOMAIN, DNS_RCODE_YXRRSET, DNS_RCODE_NXRRSET, DNS_RCODE_NOTAUTH, DNS_RCODE_NOTZONE. Default value when not specified in API or module is interpreted by ALB Controller as DNS_RCODE_NOERROR.", 
+      "required": false, 
+      "title": "Rcode"
+    }, 
+    "resource_record_sets": {
+      "description": "DNS resource record sets - (resource record set share the DNS domain name, type, and class).", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsRuleDnsRrSet.html">ALBDnsRuleDnsRrSet</A>
+      }, 
+      "required": false, 
+      "title": "Resource record sets", 
+      "type": "array"
+    }, 
+    "truncation": {
+      "default": false, 
+      "description": "DNS response is truncated. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Truncation", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "DnsRuleActionResponse", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

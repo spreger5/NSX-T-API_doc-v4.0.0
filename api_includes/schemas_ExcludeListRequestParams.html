@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ExcludeListRequestParams.html">ExcludeListRequestParams</a> (<a href="types_ExcludeListRequestParams.html">type</a>)
+</h3>
+<pre>{
+  "id": "ExcludeListRequestParams", 
+  "module_id": "ExcludeList", 
+  "properties": {
+    "deep_check": {
+      "default": false, 
+      "description": "Deep check all parents of requested object_id if any of them is in exclude list. If found, makes requested entity as excluded.", 
+      "required": false, 
+      "title": "Check all parents", 
+      "type": "boolean"
+    }, 
+    "object_id": {
+      "maxLength": 64, 
+      "required": true, 
+      "title": "identifier of the object", 
+      "type": "string"
+    }, 
+    "object_type": {
+      "$ref": "<A HREF="schemas_ExcludeMemberType.html">ExcludeMemberType</A>, 
+      "description": "Used if requested for deep_check. Type allows ability to find its association and parent entities.", 
+      "required": false, 
+      "title": "Type of the object"
+    }
+  }, 
+  "title": "Parameters for filtering the exclude list", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

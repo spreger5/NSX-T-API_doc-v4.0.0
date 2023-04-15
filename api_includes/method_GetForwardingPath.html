@@ -1,0 +1,940 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_troubleshooting_and_monitoring.html' style='text-decoration: none'> Troubleshooting And Monitoring</a> >
+            
+            
+                <a href='management_plane_api_troubleshooting_and_monitoring_port_connection.html' style='text-decoration: none'> Port Connection</a>
+            
+        </P>
+    
+        <div id="GetForwardingPath">
+          <h2>
+            Get networking entities between two logical ports with VIF attachment
+          </h2>
+          <span class="help_detail"></span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/logical-ports/&lt;lport-id&gt;/forwarding-path
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value">PortConnectionRequestParameters<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetForwardingPath', 'PortConnectionRequestParameters.GetForwardingPath.Query_Parameters')">+</span></div>
+  </div>
+    <div id="PortConnectionRequestParameters.GetForwardingPath.Query_Parameters" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_PortConnectionRequestParameters.html">
+        <span>PortConnectionRequestParameters</span>
+      </a> (<a href="schemas_PortConnectionRequestParameters.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>peer_port_id</td>
+            
+            <td>ID of peer port</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/logical-ports/3d57aeb9-0bd0-4940-9087-02b227d4401b/forwarding-path?peer_port_id=40dd5385-201f-4fc7-8329-c82a10439da0</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">PortConnectionEntities<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'GetForwardingPath', 'PortConnectionEntities.GetForwardingPath.Response_Body')">+</span></div>
+  </div>
+    <div id="PortConnectionEntities.GetForwardingPath.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_PortConnectionEntities.html">
+        <span>PortConnectionEntities</span>
+      </a> (<a href="schemas_PortConnectionEntities.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>containers</td>
+            
+            <td></td>
+            
+            <td><a href="types_PortConnectionContainersEntities.html">PortConnectionContainersEntities</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>edge_node_groups</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionEdgeNodeGroup.html">PortConnectionEdgeNodeGroup</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>errors</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionError.html">PortConnectionError</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>hypervisors</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionHypervisor.html">PortConnectionHypervisor</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>logical_switches</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionLogicalSwitch.html">PortConnectionLogicalSwitch</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>physical_hosts</td>
+            
+            <td></td>
+            
+            <td><a href="types_PortConnectionBMEntities.html">PortConnectionBMEntities</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>routers</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionRouter.html">PortConnectionRouter</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tunnels</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_PortConnectionTunnel.html">PortConnectionTunnel</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>vms</td>
+            
+            <td></td>
+            
+            <td>array of <a href="types_VirtualMachine.html">VirtualMachine</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+     "logical_switches":[
+      {
+         "id":"b59d2745-d01b-4457-8f2e-d7b098918081",
+         "resource":{
+            "resource_type":"LogicalSwitch",
+            "tags":[
+            ],
+            "id":"b59d2745-d01b-4457-8f2e-d7b098918081",
+            "display_name":"sw2-topo2",
+            "description":"",
+            "resource_type":"LogicalSwitch",
+            "transport_zone_id":"2d8ff7f9-1c04-41ab-995d-1d21ec160581",
+            "replication_mode":"MTEP",
+            "admin_state":"UP",
+            "vni":64392,
+            "switching_profile_ids":[
+               {
+                  "value":"64814784-7896-3901-9741-badeff705639",
+                  "key":"IpDiscoverySwitchingProfile"
+               },
+               {
+                  "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                  "key":"PortMirroringSwitchingProfile"
+               },
+               {
+                  "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                  "key":"QosSwitchingProfile"
+               }
+            ],
+            "_last_modified_user":"admin",
+            "_last_modified_time":1428592659083,
+            "_create_time":1428592659083,
+            "_create_user":"admin",
+            "_revision":0,
+            "_schema":"/v1/schema/LogicalSwitch"
+         },
+         "vm_ports":[
+            {
+               "tags":[
+               ],
+               "id":"3d57aeb9-0bd0-4940-9087-02b227d4401b",
+               "display_name":"port-sw2-topo2",
+               "description":"",
+               "resource_type":"LogicalPort",
+               "logical_switch_id":"b59d2745-d01b-4457-8f2e-d7b098918081",
+               "admin_state":"UP",
+               "attachment":{
+                  "id":"41c585fd-e2c4-42e7-a2c8-cd3ae52fe971",
+                  "attachment_type":"VIF"
+               },
+               "switching_profile_ids":[
+                  {
+                     "value":"64814784-7896-3901-9741-badeff705639",
+                     "key":"IpDiscoverySwitchingProfile"
+                  },
+                  {
+                     "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                     "key":"PortMirroringSwitchingProfile"
+                  },
+                  {
+                     "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                     "key":"QosSwitchingProfile"
+                  }
+               ],
+               "_last_modified_user":"admin",
+               "_last_modified_time":1428647140837,
+               "_create_time":1428647140837,
+               "_create_user":"admin",
+               "_revision":0
+            }
+         ],
+         "router_ports":[
+            {
+               "id":"dda02061-9248-4fc2-9c29-f2c3bb7f9a4c",
+               "display_name":"SwitchPort_p2-t1-topo2",
+               "description":"Switch port created for logical router port.",
+               "resource_type":"LogicalPort",
+               "logical_switch_id":"b59d2745-d01b-4457-8f2e-d7b098918081",
+               "admin_state":"UP",
+               "attachment":{
+                  "id":"c11208c2-c384-46b0-9cac-1e8f37016575",
+                  "attachment_type":"LOGICALROUTER"
+               },
+               "switching_profile_ids":[
+                  {
+                     "value":"64814784-7896-3901-9741-badeff705639",
+                     "key":"IpDiscoverySwitchingProfile"
+                  },
+                  {
+                     "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                     "key":"PortMirroringSwitchingProfile"
+                  },
+                  {
+                     "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                     "key":"QosSwitchingProfile"
+                  }
+               ],
+               "_last_modified_user":"system",
+               "_last_modified_time":1428646868158,
+               "_create_time":1428646867242,
+               "_create_user":"admin",
+               "_revision":1
+            }
+         ],
+         "vm_vnics":[
+            {
+               "id":"564d5bed-bcb9-54bc-2896-7f7955c03e30-4001",
+               "resource_type":"VirtualNetworkInterface",
+               "mac_address":"00:0c:29:c0:3e:3a",
+               "device_key":"4001",
+               "external_id":"564d5bed-bcb9-54bc-2896-7f7955c03e30-4001",
+               "device_name":"Network adapter 2",
+               "lport_attachment_id":"41c585fd-e2c4-42e7-a2c8-cd3ae52fe971",
+               "owner_vm_id":"b93fc7e9-092e-4a44-a6a6-34515ec7a127"
+            }
+         ]
+      },
+      {
+         "id":"5af2abf1-7451-4035-8c14-9220ddf64009",
+         "resource":{
+            "resource_type":"LogicalSwitch",
+            "tags":[
+            ],
+            "id":"5af2abf1-7451-4035-8c14-9220ddf64009",
+            "display_name":"sw1-topo2",
+            "description":"",
+            "resource_type":"LogicalSwitch",
+            "transport_zone_id":"2d8ff7f9-1c04-41ab-995d-1d21ec160581",
+            "replication_mode":"MTEP",
+            "admin_state":"UP",
+            "vni":17288,
+            "switching_profile_ids":[
+               {
+                  "value":"64814784-7896-3901-9741-badeff705639",
+                  "key":"IpDiscoverySwitchingProfile"
+               },
+               {
+                  "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                  "key":"PortMirroringSwitchingProfile"
+               },
+               {
+                  "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                  "key":"QosSwitchingProfile"
+               }
+            ],
+            "_last_modified_user":"admin",
+            "_last_modified_time":1428592648858,
+            "_create_time":1428592648858,
+            "_create_user":"admin",
+            "_revision":0,
+            "_schema":"/v1/schema/LogicalSwitch"
+         },
+         "vm_ports":[
+            {
+               "tags":[
+               ],
+               "id":"40dd5385-201f-4fc7-8329-c82a10439da0",
+               "display_name":"port-sw1-topo2",
+               "description":"",
+               "resource_type":"LogicalPort",
+               "logical_switch_id":"5af2abf1-7451-4035-8c14-9220ddf64009",
+               "admin_state":"UP",
+               "attachment":{
+                  "id":"5e784f5f-8cc7-487f-b306-a2ccb4fb4703",
+                  "attachment_type":"VIF"
+               },
+               "switching_profile_ids":[
+                  {
+                     "value":"64814784-7896-3901-9741-badeff705639",
+                     "key":"IpDiscoverySwitchingProfile"
+                  },
+                  {
+                     "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                     "key":"PortMirroringSwitchingProfile"
+                  },
+                  {
+                     "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                     "key":"QosSwitchingProfile"
+                  }
+               ],
+               "_last_modified_user":"admin",
+               "_last_modified_time":1428647191961,
+               "_create_time":1428647114937,
+               "_create_user":"admin",
+               "_revision":1
+            }
+         ],
+         "router_ports":[
+            {
+               "id":"c70feda2-b1f1-4967-9443-621056c675fa",
+               "display_name":"SwitchPort_p1-t1-topo2",
+               "description":"Switch port created for logical router port.",
+               "resource_type":"LogicalPort",
+               "logical_switch_id":"5af2abf1-7451-4035-8c14-9220ddf64009",
+               "admin_state":"UP",
+               "attachment":{
+                  "id":"39fa7d1e-2f51-477b-bfcd-4bf8eb50fbf1",
+                  "attachment_type":"LOGICALROUTER"
+               },
+               "switching_profile_ids":[
+                  {
+                     "value":"64814784-7896-3901-9741-badeff705639",
+                     "key":"IpDiscoverySwitchingProfile"
+                  },
+                  {
+                     "value":"93b4b7e8-f116-415d-a50c-3364611b5d09",
+                     "key":"PortMirroringSwitchingProfile"
+                  },
+                  {
+                     "value":"f313290b-eba8-4262-bd93-fab5026e9495",
+                     "key":"QosSwitchingProfile"
+                  }
+               ],
+               "_last_modified_user":"system",
+               "_last_modified_time":1428647023195,
+               "_create_time":1428647020639,
+               "_create_user":"admin",
+               "_revision":1
+            }
+         ],
+         "vm_vnics":[
+            {
+               "id":"564d55c8-bc14-fb09-b00c-00f05669610f-4001",
+               "resource_type":"VirtualNetworkInterface",
+               "mac_address":"00:0c:29:69:61:19",
+               "device_key":"4001",
+               "external_id":"564d55c8-bc14-fb09-b00c-00f05669610f-4001",
+               "device_name":"Network adapter 2",
+               "lport_attachment_id":"5e784f5f-8cc7-487f-b306-a2ccb4fb4703",
+               "owner_vm_id":"6dfa0964-2aa6-47b8-85cd-5a5debd0492e"
+            }
+         ]
+      }
+   ],
+   "hypervisors":[
+      {
+         "id":"f87ae89c-de7e-11e4-b13f-711bec13050a",
+         "resource":{
+            "resource_type":"TransportNode",
+            "id":"bf73b615-b50f-42cf-b417-9b721395dd34",
+            "display_name":"bf73b615-b50f-42cf-b417-9b721395dd34",
+            "resource_type":"TransportNode",
+            "host_switches":[
+               {
+                  "pnics":[
+                     {
+                        "device_name":"vmnic1",
+                        "uplink_name":"uplink1"
+                     }
+                  ],
+                  "host_switch_profile_ids":[
+                     {
+                        "value":"c103027b-d605-43cc-9abc-ec719e9bd9c0",
+                        "key":"UplinkHostSwitchProfile"
+                     }
+                  ],
+                  "host_switch_name":"nsxvswitch"
+               }
+            ],
+            "transport_zone_endpoints":[
+               {
+                  "transport_zone_id":"2d8ff7f9-1c04-41ab-995d-1d21ec160581"
+               }
+            ],
+            "node_id":"f87ae89c-de7e-11e4-b13f-711bec13050a",
+            "_last_modified_user":"admin",
+            "_last_modified_time":1428559814141,
+            "_create_time":1428559814141,
+            "_create_user":"admin",
+            "_revision":0
+         }
+      },
+      {
+         "id":"eb0ac74a-de7e-11e4-a12e-dfd0843ec1da",
+         "resource":{
+            "resource_type":"TransportNode",
+            "id":"92d47efe-c80a-4f66-8a0f-c7e0684c343f",
+            "display_name":"92d47efe-c80a-4f66-8a0f-c7e0684c343f",
+            "resource_type":"TransportNode",
+            "host_switches":[
+               {
+                  "pnics":[
+                     {
+                        "device_name":"vmnic1",
+                        "uplink_name":"uplink1"
+                     }
+                  ],
+                  "host_switch_profile_ids":[
+                     {
+                        "value":"c103027b-d605-43cc-9abc-ec719e9bd9c0",
+                        "key":"UplinkHostSwitchProfile"
+                     }
+                  ],
+                  "host_switch_name":"nsxvswitch"
+               }
+            ],
+            "transport_zone_endpoints":[
+               {
+                  "transport_zone_id":"2d8ff7f9-1c04-41ab-995d-1d21ec160581"
+               }
+            ],
+            "node_id":"eb0ac74a-de7e-11e4-a12e-dfd0843ec1da",
+            "_last_modified_user":"admin",
+            "_last_modified_time":1428559798859,
+            "_create_time":1428559798859,
+            "_create_user":"admin",
+            "_revision":0
+         }
+      }
+   ],
+   "vms":[
+      {
+         "id":"b93fc7e9-092e-4a44-a6a6-34515ec7a127",
+         "display_name":"2-vm_RHEL63_srv_64-local-448-1993928d-33f9-419d-83ff-763b90017896",
+         "resource_type":"VirtualMachine",
+         "external_id":"564d5bed-bcb9-54bc-2896-7f7955c03e30564d5bed-bcb9-54bc-2896-7f7955c03e30",
+         "host_id":"f87ae89c-de7e-11e4-b13f-711bec13050a",
+         "compute_ids":[
+            "instanceUuid:1993928d-33f9-419d-83ff-763b90017896",
+            "biosUuid:564d5bed-bcb9-54bc-2896-7f7955c03e30",
+            "moIdOnHost:1"
+         ],
+         "type":"REGULAR"
+      },
+      {
+         "id":"6dfa0964-2aa6-47b8-85cd-5a5debd0492e",
+         "display_name":"1-vm_RHEL63_srv_64-local-448-fe77dd6b-bc33-4f81-88f9-01cec60205e7",
+         "resource_type":"VirtualMachine",
+         "external_id":"564d55c8-bc14-fb09-b00c-00f05669610f564d55c8-bc14-fb09-b00c-00f05669610f",
+         "host_id":"eb0ac74a-de7e-11e4-a12e-dfd0843ec1da",
+         "compute_ids":[
+            "instanceUuid:fe77dd6b-bc33-4f81-88f9-01cec60205e7",
+            "biosUuid:564d55c8-bc14-fb09-b00c-00f05669610f",
+            "moIdOnHost:1"
+         ],
+         "type":"REGULAR"
+      }
+   ],
+   "routers":[
+      {
+         "id":"f98fe386-6015-47cd-85da-de6b816ca37e",
+         "resource":{
+            "resource_type":"LogicalRouter",
+            "id":"f98fe386-6015-47cd-85da-de6b816ca37e",
+            "display_name":"t1-topo2",
+            "resource_type":"LogicalRouter",
+            "router_type":"TIER1",
+            "_last_modified_user":"admin",
+            "_last_modified_time":1428646876929,
+            "_create_time":1428646672257,
+            "_create_user":"admin",
+            "_revision":2
+         },
+         "downlink_ports":[
+            {
+               "resource_type":"LogicalRouterDownLinkPort",
+               "id":"c11208c2-c384-46b0-9cac-1e8f37016575",
+               "display_name":"p2-t1-topo2",
+               "mac_address":"02:50:56:56:44:52",
+               "logical_router_id":"f98fe386-6015-47cd-85da-de6b816ca37e",
+               "linked_logical_switch_port_id":"dda02061-9248-4fc2-9c29-f2c3bb7f9a4c",
+               "_last_modified_user":"admin",
+               "_last_modified_time":1428646867250,
+               "_create_time":1428646867250,
+               "_create_user":"admin",
+               "_revision":0
+            },
+            {
+               "resource_type":"LogicalRouterDownLinkPort",
+               "id":"39fa7d1e-2f51-477b-bfcd-4bf8eb50fbf1",
+               "display_name":"p1-t1-topo2",
+               "mac_address":"02:50:56:56:44:52",
+               "logical_router_id":"f98fe386-6015-47cd-85da-de6b816ca37e",
+               "linked_logical_switch_port_id":"c70feda2-b1f1-4967-9443-621056c675fa",
+               "_last_modified_user":"admin",
+               "_last_modified_time":1428647020649,
+               "_create_time":1428646837970,
+               "_create_user":"admin",
+               "_revision":1
+              }
+           ]
+        }
+     ],
+    "containers" : {
+      "logical_ports" : [ {
+        "resource_type" : "LogicalPort",
+        "description" : "",
+        "id" : "2c34040d-37eb-43c2-a387-9b7fe34104ca",
+        "display_name" : "CIF_PARENT_LP",
+        "tags" : [ ],
+        "attachment" : {
+          "attachment_type" : "VIF",
+          "id" : "7d828b7a-f430-411e-af8f-a4c01bac0b59"
+        },
+        "admin_state" : "UP",
+        "logical_switch_id" : "0edc9a57-a825-4770-a861-1f21c07a8bbd",
+        "address_bindings" : [ ],
+        "switching_profile_ids" : [ {
+          "value" : "fbc4fb17-83d9-4b53-a286-ccdf04301888",
+          "key" : "SwitchSecuritySwitchingProfile"
+        }, {
+          "value" : "fad98876-d7ff-11e4-b9d6-1681e6b88ec1",
+          "key" : "SpoofGuardSwitchingProfile"
+        }, {
+          "value" : "64814784-7896-3901-9741-badeff705639",
+          "key" : "IpDiscoverySwitchingProfile"
+        }, {
+          "value" : "1e7101c8-cfef-415a-9c8c-ce3d8dd078fb",
+          "key" : "MacManagementSwitchingProfile"
+        }, {
+          "value" : "93b4b7e8-f116-415d-a50c-3364611b5d09",
+          "key" : "PortMirroringSwitchingProfile"
+        }, {
+          "value" : "f313290b-eba8-4262-bd93-fab5026e9495",
+          "key" : "QosSwitchingProfile"
+        } ],
+        "_create_time" : 1486506956171,
+        "_last_modified_user" : "admin",
+        "_system_owned" : false,
+        "_last_modified_time" : 1486506956171,
+        "_create_user" : "admin",
+        "_revision" : 0
+      } ]
+    }
+  }</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">execute</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">tools_port_connection</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

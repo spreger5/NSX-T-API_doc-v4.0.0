@@ -1,0 +1,174 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FwContexts.html">FwContexts</a> (<a href="types_FwContexts.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "FwContexts", 
+  "properties": {
+    "ICMP Active/Max": {
+      "description": "ICMP active/max connections", 
+      "readonly": true, 
+      "title": "ICMP Active/Max Connections", 
+      "type": "string"
+    }, 
+    "Other Active/Max": {
+      "description": "Other active/max connections", 
+      "readonly": true, 
+      "title": "Other Active/Max Connections", 
+      "type": "string"
+    }, 
+    "TCP Half Opened Active/Max": {
+      "description": "TCP active/max connections", 
+      "readonly": true, 
+      "title": "TCP Active/Max Connections", 
+      "type": "string"
+    }, 
+    "UDP Active/Max": {
+      "description": "UDP active/max connections", 
+      "readonly": true, 
+      "title": "UDP Active/Max Connections", 
+      "type": "string"
+    }, 
+    "config-loaded": {
+      "description": "Configuration is loaded", 
+      "readonly": true, 
+      "title": "Configuration Loaded", 
+      "type": "string"
+    }, 
+    "connection-count": {
+      "description": "Connection count", 
+      "readonly": true, 
+      "title": "Connection Count", 
+      "type": "string"
+    }, 
+    "connections": {
+      "description": "Connections", 
+      "readonly": true, 
+      "title": "Connections", 
+      "type": "object"
+    }, 
+    "name": {
+      "description": "Name", 
+      "readonly": true, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "ports": {
+      "description": "Ports", 
+      "readonly": true, 
+      "title": "Ports", 
+      "type": "array"
+    }, 
+    "pvi": {
+      "description": "Peer VRF", 
+      "readonly": true, 
+      "title": "Peer VRF", 
+      "type": "integer"
+    }, 
+    "rule-flag": {
+      "description": "Rule flag", 
+      "readonly": true, 
+      "title": "Rule Flag", 
+      "type": "string"
+    }, 
+    "sync-enabled": {
+      "description": "HA enabled", 
+      "readonly": true, 
+      "title": "HA Enabled", 
+      "type": "string"
+    }, 
+    "sync-total-stats": {
+      "description": "HA total statistics", 
+      "readonly": true, 
+      "title": "HA Total Statistics", 
+      "type": "object"
+    }, 
+    "total-stats": {
+      "description": "Total statistics", 
+      "readonly": true, 
+      "title": "Total Statistics", 
+      "type": "object"
+    }, 
+    "type": {
+      "description": "Type", 
+      "readonly": true, 
+      "title": "Type", 
+      "type": "string"
+    }, 
+    "uuid": {
+      "description": "UUID", 
+      "readonly": true, 
+      "title": "UUID", 
+      "type": "string"
+    }, 
+    "vrf": {
+      "description": "VRF", 
+      "readonly": true, 
+      "title": "VRF", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

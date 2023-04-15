@@ -1,0 +1,401 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_intelligence.html' style='text-decoration: none'> NSX Intelligence</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get NSX-Intelligence host configuration</h4><br>
+                      <span class="help_detail">Get the current NSX-Intelligence host configuration.
+<br>
+Recommend to keep the value same for flow_data_collection_interval
+<br>
+and context_data_collection_interval.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPaceHostConfiguration.html">GET /api/v1/intelligence/host-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch NSX-Intelligence host configuration</h4><br>
+                      <span class="help_detail">Patch the current NSX-Intelligence host configuration.
+<br>
+Return error if NSX-Intelligence is not registered with NSX.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPaceHostConfiguration.html">PATCH /api/v1/intelligence/host-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset NSX-Intelligence host configuration</h4><br>
+                      <span class="help_detail">Reset NSX-Intelligence host configuration to the default setting.
+<br>
+Clear NSX-Intelligence host configuration if NSX-Intelligence is not registered with NSX.
+<br>
+Return the NSX-Intelligence host configuration after reset operation.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetPaceHostConfiguration.html">POST /api/v1/intelligence/host-config?action=reset</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns info for all cluster node VM auto-deployment attempts</h4><br>
+                      <span class="help_detail">Returns request information for every attempted deployment of a cluster
+<br>
+node VM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPaceClusterNodeVMDeploymentRequests.html">GET /api/v1/intelligence/nodes/deployments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deploy and register a Intelligence cluster node VM</h4><br>
+                      <span class="help_detail">Deploys a Intelligence cluster node VM as specified by the deployment config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddPaceClusterNodeVM.html">POST /api/v1/intelligence/nodes/deployments</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns info for a Intelligence cluster node VM auto-deployment attempt</h4><br>
+                      <span class="help_detail">Returns deployment request information for a specific attempted
+<br>
+deployment of a cluster node VM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPaceClusterNodeVMDeploymentRequest.html">GET /api/v1/intelligence/nodes/deployments/&lt;node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Attempt to delete an auto-deployed cluster node VM</h4><br>
+                      <span class="help_detail">Attempts to unregister and undeploy a specified auto-deployed cluster
+<br>
+node VM. If it is a member of a cluster, then the VM will be automatically
+<br>
+detached from the cluster before being unregistered and undeployed.
+<br>
+Alternatively, if the original deployment attempt failed or the VM is
+<br>
+not found, cleans up the deployment information associated with the
+<br>
+deployment attempt.
+<br>
+Note: If a VM has been successfully auto-deployed, then the associated
+<br>
+deployment information will not be deleted unless and until the VM is
+<br>
+successfully deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteAutoDeployedPaceClusterNodeVM.html">POST /api/v1/intelligence/nodes/deployments/&lt;node-id&gt;?action=delete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the status of the VM creation/deletion</h4><br>
+                      <span class="help_detail">Returns the current deployment or undeployment status for a VM along with
+<br>
+any other relevant current information, such as error messages.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPaceClusterNodeVMDeploymentStatus.html">GET /api/v1/intelligence/nodes/deployments/&lt;node-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List available Napp appliance form factors</h4><br>
+                      <span class="help_detail">Returns information about all form factors available for Napp cluster
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIntelligenceFormFactors.html">GET /api/v1/node/intelligence/form-factors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                            
+                            <a href="method_ListIntelligenceFormFactors.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/intelligence/form-factors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get list of bundle-ids which are available in repository or in-progress
+</h4><br>
+                      <span class="help_detail">Get list of bundle-ids which are available in repository or in-progress
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetBundleIds.html">GET /api/v1/repository/bundles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload bundle using remote file</h4><br>
+                      <span class="help_detail">Upload the bundle from remote bundle URL. The call returns after fetch is initiated.
+<br>
+Check status by periodically retrieving bundle upload status
+<br>
+using GET /repository/bundles/&lt;bundle-id&gt;/upload-status.
+<br>
+The upload is complete when the status is SUCCESS.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadBundleViaRemoteFile.html">POST /api/v1/repository/bundles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload bundle</h4><br>
+                      <span class="help_detail">Upload the bundle. This call returns after upload is completed.
+<br>
+You can check bundle processing status periodically by retrieving
+<br>
+bundle upload-status to find out if the upload and processing is completed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadBundleViaLocalFile.html">POST /api/v1/repository/bundles?action=upload</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Cancel bundle upload</h4><br>
+                      <span class="help_detail">Cancel upload of bundle. This API works only when bundle upload is
+<br>
+in-progress and will not work during post-processing of bundle. If
+<br>
+bundle upload is in-progress, then the API call returns http OK response
+<br>
+after cancelling the upload and deleting partially uploaded bundle.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CancelBundleUpload.html">POST /api/v1/repository/bundles/&lt;bundle-id&gt;?action=cancel_upload</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get bundle upload status</h4><br>
+                      <span class="help_detail">Get uploaded bundle upload status</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetBundleUploadStatus.html">GET /api/v1/repository/bundles/&lt;bundle-id&gt;/upload-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get information of the OVF which will be getting deployed.
+</h4><br>
+                      <span class="help_detail">Get information of the OVF for specified appliance which is
+<br>
+present in repository and will be used to deploy new VM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOvfDeployInfo.html">GET /api/v1/repository/bundles/ovf-deploy-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Checks bundle upload permissions</h4><br>
+                      <span class="help_detail">Checks whether bundle upload is allowed on given node for given appliance.
+<br>
+There are different kinds of checks for different appliances. Some of the
+<br>
+checks for Intelligence appliance are as follows:
+<br>
+1. Is bundle upload-allowed on given node
+<br>
+2. Is bundle upload already in-progress
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetBundleUploadPermissions.html">GET /api/v1/repository/bundles/upload-allowed</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,824 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      CloudVirtualMachine (<a href="schemas_CloudVirtualMachine.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">Cloud Virtual Machine Information</span>
+    <p>
+    <span class="help_detail">Stores information about a Virtual Machine
+<br>
+</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>agent_status</td>
+            
+            <td>Agent Status<br><br>UP - NSX Agent is up and running
+<br>
+DOWN - NSX Agent is down
+<br>
+NO_AGENT - No NSX Agent installed on instance
+<br>
+UNKNOWN - NSX Agent status is unknown
+<br>
+NEEDS_UPDATE - NSX Agent running on instance needs to be updated
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: UP, DOWN, NO_AGENT, UNKNOWN, NEEDS_UPDATE</td>
+          </tr>
+          <tr>
+            <td>agent_version</td>
+            
+            <td>Agent version details</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>associated_account_ids</td>
+            
+            <td>Associated Cloud Account IDs<br><br>Array of associated cloud account IDs.</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>cloud_instance_type</td>
+            
+            <td>Cloud Instance Type<br><br>This field represents various type of service instances in cloud.
+<br>
+VIRTUAL_MACHINE: Virtual machine deployed in public cloud.
+<br>
+AWS_RDS_INSTANCE: Amazon Relational Database Service Instance.
+<br>
+AWS_RDS_CLUSTER: Amazon Relational Database Service Cluster.
+<br>
+AWS_APPLICATION_ELB_INSTANCE: Amazon Application Elastic LoadBalancer.
+<br>
+AWS_CLASSIC_ELB_INSTANCE: Amazon Classic Elastic LoadBalancer.
+<br>
+HORIZON_MANAGEMENT: Virtual Machines that are deployed on Microsoft Azure using
+<br>
+Horizon Cloud Services(HCS) that are used for managing other instances
+<br>
+in the network. This includes, Management VMs, Unified Access Gateway (UAG) VMs, Base VMs.
+<br>
+HORIZON_VDI: Virtual Desktop Image (VDI) deployed on Microsoft Azure using Horizon
+<br>
+Cloud Services(HCS).
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: VIRTUAL_MACHINE, AWS_RDS_INSTANCE, AWS_RDS_CLUSTER, AWS_APPLICATION_ELB_INSTANCE, AWS_CLASSIC_ELB_INSTANCE, HORIZON_MANAGEMENT, HORIZON_VDI</td>
+          </tr>
+          <tr>
+            <td>cloud_tags</td>
+            
+            <td>Cloud tags for the instance</td>
+            
+            <td>array of <a href="types_CloudTag.html">CloudTag</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>error_messages</td>
+            
+            <td>List of error messages<br><br>List of error messages identified. Returns only error messages
+<br>
+identified in the last 1 hour.
+<br>
+</td>
+            
+            <td>array of <a href="types_ComputeInstanceErrorMessage.html">ComputeInstanceErrorMessage</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>gateway_ha_index</td>
+            
+            <td>Gateway HA Index<br><br>Index of HA that indicates whether gateway is primary or secondary.
+<br>
+If index is 0, then it is primary gateway. Else secondary gateway.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>gateway_status</td>
+            
+            <td>Gateway Status</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: UP, DOWN, DEPLOYING, NOT_AVAILABLE, UNDEPLOYING, COPYING_IMAGE</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>is_gateway</td>
+            
+            <td>Flag to identify if this instance is a gateway node</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>is_gateway_active</td>
+            
+            <td>Flag to identify if this instance is an active gateway node</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>logical_switch_display_name</td>
+            
+            <td>Logical Switch display name</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>logical_switch_id</td>
+            
+            <td>Logical Switch ID</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>managed_by_nsx</td>
+            
+            <td>Indicate if instance is managed by NSX or not</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_failed_rules_count</td>
+            
+            <td>NSX failed rules count<br><br>Number of NSX firewall rules failed to realize on cloud for the instance.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_ip</td>
+            
+            <td>IP address provided by NSX</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_security_group_mapping</td>
+            
+            <td>NSX Security Group Mapping<br><br>Map of cloud security groups associated to the instance and
+<br>
+corresponding NSX security groups.
+<br>
+</td>
+            
+            <td>array of <a href="types_SecurityGroupDetails.html">SecurityGroupDetails</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_security_rule_errors</td>
+            
+            <td>NSX Security Rule Errors<br><br>DEPRECATED. Array of NSX security rule realization errors.
+<br>
+To get this information call /csm/virtual-machines/<virtual-machine-id>/firewall-rules
+<br>
+</td>
+            
+            <td>array of <a href="types_NsxSecurityRuleErrorDetails.html">NsxSecurityRuleErrorDetails</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_security_rule_errors_count</td>
+            
+            <td>NSX Security Rule Errors Count<br><br>DEPRECATED. Count of the NSX security rule realization errors.
+<br>
+To get this information call /csm/virtual-machines/<virtual-machine-id>/firewall-rules
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>nsx_successful_rules_count</td>
+            
+            <td>NSX successful rules count<br><br>Number of NSX firewall rules successfully configured for this instance.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>os_details</td>
+            
+            <td>Operating system details</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>os_type</td>
+            
+            <td>Operating system of the instance</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>private_ip</td>
+            
+            <td>Private IP address of the instance</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>public_ip</td>
+            
+            <td>Public IP address of the instance</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>quarantine_state</td>
+            
+            <td>Quarantine State<br><br>Indicates the quarantine state of the instance.
+<br>
+QUARANTINED - This state implies instance is moved to quarantine security
+<br>
+group because some threat has been detected.
+<br>
+NOT_QUARANTINED - This state implies no quarantine action has been
+<br>
+taken.
+<br>
+UNKNOWN - This state implies either quarantine policy is disabled or
+<br>
+quarantine information is not available.
+<br>
+OVERRIDDEN - This state implies instance is associated with vm_override_sg
+<br>
+which overrides any action based on threat detection.
+<br>
+WHITELISTED - This state implies that quarantine operation will not
+<br>
+be performed on the instance [DEPRECATED - replaced with USERMANAGED].
+<br>
+USERMANAGED - This state implies that quarantine operation will not
+<br>
+be performed on the instance.
+<br>
+NOT_APPLICABLE - This state will be populated for agentless instance, Horizon Management instance.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: QUARANTINED, NOT_QUARANTINED, UNKNOWN, OVERRIDDEN, WHITELISTED, USERMANAGED, NOT_APPLICABLE</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>CloudVirtualMachine</b></td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Enum: AwsVirtualMachine, AzureVirtualMachine</td>
+          </tr>
+          <tr>
+            <td>segment_display_name</td>
+            
+            <td>Segment display name<br><br>Segment display name on which this instance resides.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>segment_id</td>
+            
+            <td>Segment ID<br><br>Segment ID on which this instance resides.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>status</td>
+            
+            <td>Instance status<br><br>POWERED_ON - Powered on instance
+<br>
+POWERED_OFF - Powered off instance
+<br>
+MANAGED_GATEWAY - Instances that are public cloud gateways
+<br>
+MANAGED - Instances that are managed by NSX
+<br>
+UNMANAGED - Instances that are not managed by NSX or untagged
+<br>
+ERRORED - Instances with no NSX Agent connectivity, NSX Agent is down,
+<br>
+No NSX Policy configured for Agentless VMs or Error on NSX Policy
+<br>
+rule realization.
+<br>
+QUARANTINED - Instances which have been quarantined
+<br>
+WHITELISTED - Instances which have been whitelisted [DEPRECATED - replaced with USERMANAGED]
+<br>
+USERMANAGED - Instances which have been marked as usermanaged.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: POWERED_ON, POWERED_OFF, UNMANAGED, MANAGED_GATEWAY, MANAGED, ERRORED, QUARANTINED, WHITELISTED, USERMANAGED</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>threat_state</td>
+            
+            <td>Threat State<br><br>Indicates the threat state of the instance.
+<br>
+NORMAL - This state implies no threat has been detected and instance is
+<br>
+functioning as expected.
+<br>
+THREAT - This state implies quarantine enabling threat has been
+<br>
+detected.
+<br>
+INVALID - This state implies either instance is unmanaged or threat related
+<br>
+information is not available.
+<br>
+NOT_APPLICABLE - This state will be populated for agentless instance.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: NORMAL, THREAT, INVALID, NOT_APPLICABLE</td>
+          </tr>
+          <tr>
+            <td>vm_config_status</td>
+            
+            <td>Status for user configurable properties</td>
+            
+            <td><a href="types_VmConfigStatus.html">VmConfigStatus</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>vm_extension_execution_status</td>
+            
+            <td>VM extension script execution status<br><br>UNKNOWN - This is the default state. Indicates no information available
+<br>
+          regarding extension execution. This can potentially occur for
+<br>
+          a VM when agent is installed out of band or if
+<br>
+          cloud_agent_automated_install_enabled flag is enabled for the
+<br>
+          VNET/VPC which already has managed VMs.
+<br>
+SUCCESSFUL - Indicates VM extension script execution was successful.
+<br>
+          This does not necessarily mean agent installation was
+<br>
+          successful.
+<br>
+FAILED - Indicates VM extension script execution failed.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

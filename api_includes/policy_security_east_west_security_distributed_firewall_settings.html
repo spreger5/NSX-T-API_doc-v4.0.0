@@ -1,0 +1,1241 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_east_west_security.html' style='text-decoration: none'> East West Security</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall.html' style='text-decoration: none'> Distributed Firewall</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings.html' style='text-decoration: none'> Settings</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List policy drafts</h4><br>
+                      <span class="help_detail">List policy drafts.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDrafts.html">GET /policy/api/v1/infra/drafts</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a manual draft</h4><br>
+                      <span class="help_detail">Delete a manual draft.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDraft.html">DELETE /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read draft</h4><br>
+                      <span class="help_detail">Read a draft for a given draft identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a manual draft</h4><br>
+                      <span class="help_detail">Create a new manual draft if the specified draft id does not correspond
+<br>
+to an existing draft. Update the manual draft otherwise.
+<br>
+Auto draft can not be updated.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDraft.html">PATCH /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Publish a draft</h4><br>
+                      <span class="help_detail">Read a draft and publish it by applying changes onto current configuration.
+<br>
+If there are additional changes on top of draft configuration, pass it as a
+<br>
+request body, in form of Infra object. Otherwise, if there are no additional
+<br>
+changes, then pass empty Infra object as a request body.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PublishDraft.html">POST /policy/api/v1/infra/drafts/&lt;draft-id&gt;?action=publish</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a manual draft</h4><br>
+                      <span class="help_detail">Create a new manual draft if the specified draft id does not correspond
+<br>
+to an existing draft. Update the manual draft otherwise.
+<br>
+Auto draft can not be updated.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutDraft.html">PUT /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an aggregated configuration for the draft</h4><br>
+                      <span class="help_detail">Get an aggregated configuration that will get applied onto current
+<br>
+configuration during publish of this draft.
+<br>
+The response is a hierarchical payload containing the aggregated
+<br>
+configuration differences from the latest auto draft till the specified draft.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAggregatedConfigurationToBePublishedForDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/aggregated</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get paginated aggregated configuration for the draft</h4><br>
+                      <span class="help_detail">Get a paginated aggregated configuration of a given draft. This aggregated
+<br>
+configuration is the differnece between the current published firewall
+<br>
+configuration and a firewall configuration stored in a given draft.
+<br>
+For an initial API call, if request_id is present in a response, then this is
+<br>
+a paginated aggregated configuration of a given draft, containing all the
+<br>
+security policies from the aggregated configuration.
+<br>
+Using this request_id, more granular aggregated configuration, at security
+<br>
+policy level, can be fetched from subsequent API calls.
+<br>
+Absence of request_id suggests that whole aggregated configuration has been
+<br>
+returned as a response to initial API call, as the size of aggregated
+<br>
+configuration is not big enough to need pagination.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyDraftPaginatedAggregatedConfigurationResult.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/aggregated_with_pagination</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a preview of a configuration after publish of a draft</h4><br>
+                      <span class="help_detail">Get a preview of a configuration which will be present after publish of
+<br>
+a specified draft. The response essentially is a hierarchical payload
+<br>
+containing the configuration, which will be in active after a specified
+<br>
+draft gets published onto current configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPreviewOfConfigurationAfterPublishOfDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/complete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Test a directory domain event log server connectivity</h4><br>
+                      <span class="help_detail">This API tests a event log server connectivity before the actual domain or event log server is configured. If the connectivity is good, the response will be HTTP status 200. Otherwise the response will be HTTP status 200 and a corresponding error message will be returned.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_VerifyFirewallIdentityStoreEventLogServer.html">POST /policy/api/v1/infra/firewall-identity-store-event-log-servers/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Test a directory domain LDAP server connectivity</h4><br>
+                      <span class="help_detail">This API tests a LDAP server connectivity before the actual domain or LDAP server is configured. If the connectivity is good, the response will be HTTP status 200. Otherwise the response will be HTTP status 500 and corresponding error message will be returned.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_VerifyFirewallIdentityStoreLdapServer.html">POST /policy/api/v1/infra/firewall-identity-store-ldap-server</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Scan  the size of a directory domain</h4><br>
+                      <span class="help_detail">This call scans the size of a directory domain. It may be very | expensive to run this call in some AD domain deployments. Please | use it with caution.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ScanFirewallIdentityStoreSize.html">POST /policy/api/v1/infra/firewall-identity-store-size</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all firewall identity stores</h4><br>
+                      <span class="help_detail">List all firewall identity stores</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallIdentityStores.html">GET /policy/api/v1/infra/firewall-identity-stores</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Fetch all organization units for a LDAP server.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_FetchFirewallIdentityStoreOrgUnits.html">POST /policy/api/v1/infra/firewall-identity-stores-org-units</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete firewall identity store</h4><br>
+                      <span class="help_detail">If the firewall identity store is removed, it will stop the identity
+<br>
+store synchronization. User will not be able to define new IDFW rules
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteFirewallIdentityStore.html">DELETE /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read firewall identity store</h4><br>
+                      <span class="help_detail">Return a firewall identity store based on the store identifier</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFirewallIdentityStore.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a firewall identity store</h4><br>
+                      <span class="help_detail">If a firewall identity store with the firewall-identity-store-id
+<br>
+is not already present, create a new firewall identity store. If it
+<br>
+already exists, update the firewall identity store with specified
+<br>
+attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchFirewallIdentityStore.html">PATCH /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke full sync or delta sync for a specific domain, with
+additional delay in seconds if needed.  Stop sync will try
+to stop any pending sync if any to return to idle state.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RequestFirewallIdentityStoreSync.html">POST /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a firewall identity store</h4><br>
+                      <span class="help_detail">If a firewall identity store with the firewall-identity-store-id
+<br>
+  is not already present, create a new firewall identity store. If it
+<br>
+already exists, replace the firewall identity store instance with
+<br>
+the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceFirewallIdentityStore.html">PUT /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Event Log server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteFirewallIdentityStoreEventLogServer.html">DELETE /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific Event Log server for a given Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFirewallIdentityStoreEventLogServer.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a event log server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceFirewallIdentityStoreEventLogServer.html">PUT /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Search for directory groups within a domain based on the substring of a distinguished name. (e.g. CN=User,DC=acme,DC=com) The search filter pattern can optionally support multiple (up to 100 maximum) search pattern separated by '|' (url encoded %7C). In this case, the search results will be returned as the union of all matching criteria. (e.g. CN=Ann,CN=Users,DC=acme,DC=com|CN=Bob,CN=Users,DC=acme,DC=com)</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SearchFirewallIdentityGroups.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List members of a directory group</h4><br>
+                      <span class="help_detail">A member group could be either direct member of the group specified by group_id or nested member of it. Both direct member groups and nested member groups are returned. Directory group member sync must be enabled to get the correct results.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallIdentityStoreGroupMemberGroups.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/groups/&lt;group-id&gt;/member-groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all configured domain LDAP servers</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallIdentityStoreLdapServers.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteFirewallIdentityStoreLdapServer.html">DELETE /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific LDAP server for a given Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFirewallIdentityStoreLdapServer.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail">More than one LDAP server can be created and only one LDAP
+<br>
+server is used to synchronize directory objects. If more
+<br>
+than one LDAP server is configured, NSX will try all the
+<br>
+servers until it is able to successfully connect to one.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchFirewallIdentityStoreLdapServer.html">PATCH /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Test a LDAP server connection for directory domain</h4><br>
+                      <span class="help_detail">The API tests a LDAP server connection for an already configured domain. If the connection is successful, the response will be HTTP status 200. Otherwise the response will be HTTP status 500 and corresponding error message will be returned.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_TestFirewallIdentityStoreLdapServer.html">POST /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceFirewallIdentityStoreLdapServer.html">PUT /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Fetch all organization units for a Firewall Identity Store.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_FetchFirewallIdentityStoreOrgUnitsForIdentityStore.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/org-units</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Firewall identity store sync statistics for the given identifier</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallIdentityStoreSyncStats.html">GET /policy/api/v1/infra/firewall-identity-stores/&lt;firewall-identity-store-id&gt;/sync-stats</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PolicyFirewallSchedulers</h4><br>
+                      <span class="help_detail">Get all PolicyFirewallSchedulers
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyFirewallSchedulers.html">GET /policy/api/v1/infra/firewall-schedulers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Policy Firewall Scheduler</h4><br>
+                      <span class="help_detail">Deletes the specified PolicyFirewallScheduler. If scheduler
+<br>
+is consumed in a security policy, it won't get deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyFirewallScheduler.html">DELETE /policy/api/v1/infra/firewall-schedulers/&lt;firewall-scheduler-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PolicyFirewallScheduler</h4><br>
+                      <span class="help_detail">Get a PolicyFirewallScheduler by id
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyFirewallScheduler.html">GET /policy/api/v1/infra/firewall-schedulers/&lt;firewall-scheduler-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update PolicyFirewallScheduler</h4><br>
+                      <span class="help_detail">Creates/Updates a PolicyFirewallScheduler, which can be set at security
+<br>
+policy. Note that at least one property out of "days", "start_date",
+<br>
+"time_interval", "end_date" is required if "recurring" field is true. Also
+<br>
+"start_time" and "end_time" should not be present. And if "recurring"
+<br>
+field is false then "start_date" and "end_date" is mandatory, "start_time"
+<br>
+and "end_time" is optional. Also the fields "days" and "time_interval"
+<br>
+should not be present.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyFirewallScheduler.html">PATCH /policy/api/v1/infra/firewall-schedulers/&lt;firewall-scheduler-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Update PolicyFirewallScheduler</h4><br>
+                      <span class="help_detail">Updates a PolicyFirewallScheduler, which can be set at security policy.
+<br>
+Note that at least one property out of "days", "start_date",
+<br>
+"time_interval", "end_date" is required if "recurring" field is true. Also
+<br>
+"start_time" and "end_time" should not be present. And if "recurring"
+<br>
+field is false then "start_date" and "end_date" is mandatory, "start_time"
+<br>
+and "end_time" is optional. Also the fields "days" and "time_interval"
+<br>
+should not be present.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePolicyFirewallScheduler.html">PUT /policy/api/v1/infra/firewall-schedulers/&lt;firewall-scheduler-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all firewall identity stores</h4><br>
+                      <span class="help_detail">List all firewall identity stores</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallIdentityAdStores.html">GET /policy/api/v1/infra/identity-firewall-stores</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete firewall identity store</h4><br>
+                      <span class="help_detail">If the firewall identity store is removed, it will stop the identity
+<br>
+store synchronization. User will not be able to define new IDFW rules
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveFirewallIdentityStore.html">DELETE /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read firewall identity store</h4><br>
+                      <span class="help_detail">Return a firewall identity store based on the store identifier</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallIdentityStore.html">GET /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a firewall identity store</h4><br>
+                      <span class="help_detail">If a firewall identity store with the firewall-identity-store-id
+<br>
+is not already present, create a new firewall identity store. If it
+<br>
+already exists, update the firewall identity store with specified
+<br>
+attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchOrCreateFirewallIdentityStore.html">PATCH /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a firewall identity store</h4><br>
+                      <span class="help_detail">If a firewall identity store with the firewall-identity-store-id
+<br>
+  is not already present, create a new firewall identity store. If it
+<br>
+already exists, replace the firewall identity store instance with
+<br>
+the new object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReplaceOrCreateFirewallIdentityStore.html">PUT /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Event Log server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveFirewallIdentityStoreEventLogServer.html">DELETE /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific Event Log server for a given Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallIdentityStoreEventLogServer.html">GET /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a event log server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReplaceOrCreateFirewallIdentityStoreEventLogServer.html">PUT /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/event-log-servers/&lt;event-log-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all configured domain LDAP servers</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIdentityFirewallStoreLdapServers.html">GET /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/ldap-servers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveFirewallIdentityStoreLdapServer.html">DELETE /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific LDAP server for a given Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallIdentityStoreLdapServer.html">GET /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail">More than one LDAP server can be created and only one LDAP
+<br>
+server is used to synchronize directory objects. If more
+<br>
+than one LDAP server is configured, NSX will try all the
+<br>
+servers until it is able to successfully connect to one.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchOrCreateFirewallIdentityStoreLdapServer.html">PATCH /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a LDAP server for Firewall Identity store</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReplaceOrCreateFirewallIdentityStoreLdapServer.html">PUT /policy/api/v1/infra/identity-firewall-stores/&lt;identity-firewall-store-id&gt;/ldap-servers/&lt;ldap-server-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List compute cluster idfw Configuration</h4><br>
+                      <span class="help_detail">API will list all compute cluster wise identity firewall configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListComputeClusterIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Delete compute cluster identity firewall configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteComputeClusterIdfwConfiguration.html">DELETE /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Read compute cluster identity firewall configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetComputeClusterIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Patch compute cluster identity firewall configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchComputeClusterIdfwConfiguration.html">PATCH /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Update the compute cluster idfw configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutComputeClusterIdfwConfiguration.html">PUT /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IDFW status for a Compute Collection</h4><br>
+                      <span class="help_detail">Get IDFW status for a specific Compute Collection</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIDFWStatusForAComputeCollection.html">GET /policy/api/v1/infra/settings/firewall/idfw/compute-collections/&lt;compute-collection-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IDFW status for Transport Nodes in a Compute Collection</h4><br>
+                      <span class="help_detail">This API will list all transport node and statuses based on idfw enabled
+<br>
+compute collection ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIDFWStatusForAllTransportNodesInAComputeCollection.html">GET /policy/api/v1/infra/settings/firewall/idfw/compute-collections/&lt;compute-collection-id&gt;/transport-nodes/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IDFW status for all Compute Collections</h4><br>
+                      <span class="help_detail">Get IDFW status for all Compute Collections</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIDFWStatusForAllComputeCollections.html">GET /policy/api/v1/infra/settings/firewall/idfw/compute-collections/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all IDFW Group VM details for a given Group</h4><br>
+                      <span class="help_detail">Get all Identity Firewall Group VM details for a given Group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVmDetails.html">GET /policy/api/v1/infra/settings/firewall/idfw/group-vm-details</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Read identity firewall configuration for standalone host
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetStandaloneHostIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Patch identity firewall configuration for standalone host</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchStandaloneHostIdfwConfiguration.html">PATCH /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Update the idfw configuration for standalone host</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutStandaloneHostIdfwConfiguration.html">PUT /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IDFW system statistics data</h4><br>
+                      <span class="help_detail">It will get IDFW system statistics data.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIDFWSystemStatisticsData.html">GET /policy/api/v1/infra/settings/firewall/idfw/system-stats</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IDFW status of VMs by transport node id</h4><br>
+                      <span class="help_detail">This API will list all VMs and statuses based on transport node ID of idfw
+<br>
+enabled compute collection.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualMachineIDFWStatusByTransportNode.html">GET /policy/api/v1/infra/settings/firewall/idfw/transport-nodes/&lt;transport-node-id&gt;/vms/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get user session data</h4><br>
+                      <span class="help_detail">It will get user session data.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUserSessionData.html">GET /policy/api/v1/infra/settings/firewall/idfw/user-session-data</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IDFW user login events for a given user</h4><br>
+                      <span class="help_detail">It will get IDFW user login events for a given user.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUserLoginEvents.html">GET /policy/api/v1/infra/settings/firewall/idfw/user-stats/&lt;user-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IDFW user login events for a given VM</h4><br>
+                      <span class="help_detail">It will get IDFW user login events for a given VM
+<br>
+(all active plus up to 5 most recent archived entries).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUserLoginEventsForAVM.html">GET /policy/api/v1/infra/settings/firewall/idfw/vm-stats/&lt;vm-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get dfw firewall configuration</h4><br>
+                      <span class="help_detail">Get the current dfw firewall configurations.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDfwFirewallConfiguration.html">GET /policy/api/v1/infra/settings/firewall/security</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update dfw firewall configuration</h4><br>
+                      <span class="help_detail">Update dfw firewall related configurations.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDfwFirewallConfiguration.html">PATCH /policy/api/v1/infra/settings/firewall/security</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update dfw firewall configuration</h4><br>
+                      <span class="help_detail">Update dfw firewall related configurations.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutDfwFirewallConfiguration.html">PUT /policy/api/v1/infra/settings/firewall/security</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the list of distributed firewall dependent services</h4><br>
+                      <span class="help_detail">Get the list of distributed firewall dependent services
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDistributedFirewallDependentServices.html">GET /policy/api/v1/infra/settings/firewall/security/dependent-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read security policy exclude list including system and user excluded members</h4><br>
+                      <span class="help_detail">Read security policy exclude list including system and user excluded members.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInternalFirewallExcludeList.html">GET /policy/api/v1/infra/settings/firewall/security/exclude-list?system_owned=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read security policy exclude list</h4><br>
+                      <span class="help_detail">Read exclude list for firewall
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallExcludeList.html">GET /policy/api/v1/infra/settings/firewall/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch exclusion list for security policy</h4><br>
+                      <span class="help_detail">Patch exclusion list for security policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchExcludeList.html">PATCH /policy/api/v1/infra/settings/firewall/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Filter the firewall exclude list</h4><br>
+                      <span class="help_detail">Filter the firewall exclude list by the given object, to check whether
+<br>
+the object is a member of this exclude list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_FilterFirewallExcludeList.html">POST /policy/api/v1/infra/settings/firewall/security/exclude-list?action=filter</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update exclusion list for security policy</h4><br>
+                      <span class="help_detail">Update the exclusion list for security policy
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutExcludeList.html">PUT /policy/api/v1/infra/settings/firewall/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Post User Login/Logout events for IDFW</h4><br>
+                      <span class="help_detail">API to receive User Login and Logout events for IDFW
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PostLoginLogoutEvents.html">POST /policy/api/v1/system/input/login-logout-events</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

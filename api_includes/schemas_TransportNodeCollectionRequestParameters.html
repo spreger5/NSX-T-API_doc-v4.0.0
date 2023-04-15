@@ -1,0 +1,81 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TransportNodeCollectionRequestParameters.html">TransportNodeCollectionRequestParameters</a> (<a href="types_TransportNodeCollectionRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "id": "TransportNodeCollectionRequestParameters", 
+  "module_id": "TransportNodeCollection", 
+  "properties": {
+    "apply_profile": {
+      "additionalProperties": false, 
+      "default": true, 
+      "description": "This flag should be used when the configuration specified by the transport_node_profile_id should not be applied to existing hosts referred to by the compute_collection_id during transport node collection creation. If this flag is set to false, the TNP configuration will not be applied to any of the hosts in the cluster during creation. Any transport node that exists in the cluster that has a different configuration than the TNP configuration will have the is_overridden flag set to true. This will result in the transport node collection creation completing with a status of PROFILE_MISMATCH.  If this flag is set to true, the default value, the TNP configuration will be applied to all hosts in the cluster during transport node collection creation.", 
+      "required": false, 
+      "title": "Indicates if the Transport Node Profile (TNP) configuration should be applied during creation", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Parameters that dictate how operations are processed", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

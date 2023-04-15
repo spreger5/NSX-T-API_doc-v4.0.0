@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ProcessInformation.html">ProcessInformation</a> (<a href="types_ProcessInformation.html">type</a>)
+</h3>
+<pre>{
+  "description": "Describes a process detail informaiton.", 
+  "id": "ProcessInformation", 
+  "module_id": "ShaApplianceMonitor", 
+  "properties": {
+    "command": {
+      "description": "Display the command line used to start the process.", 
+      "title": "Display process command", 
+      "type": "string"
+    }, 
+    "cpu_usage": {
+      "description": "The process's share of the elapsed CPU time since the last screen update, expressed as a percentage of total CPU time.", 
+      "title": "CPU usage", 
+      "type": "number"
+    }, 
+    "memory_usage": {
+      "description": "A process's currently used share of available physical memory.", 
+      "title": "Memory usage", 
+      "type": "number"
+    }, 
+    "nice_value": {
+      "description": "A negative nice value means higher priority, whereas a positive nice value means lower priority. Zero in this field simply means priority will not be adjusted in determining a process's dispatch-ability.", 
+      "title": "The nice value of the process", 
+      "type": "string"
+    }, 
+    "process_id": {
+      "description": "Display the process id.", 
+      "title": "Process id", 
+      "type": "string"
+    }, 
+    "resident_memory_size": {
+      "description": "The non-swapped physical memoery a task is using.", 
+      "title": "Resident Memory Size (MB)", 
+      "type": "number"
+    }, 
+    "shared_memory_size": {
+      "description": "The amount of shared memory available to a process, not all of which is typically resident. It simply reflects memory that could be potentially shared with other processes.", 
+      "title": "Shared Memory Size (MB)", 
+      "type": "number"
+    }, 
+    "user": {
+      "description": "Display the process user.", 
+      "title": "Process user", 
+      "type": "string"
+    }, 
+    "virtual_memory_size": {
+      "description": "The total amount of virtual memory used by the process. It includes all code, data and shared libraries plus pages that have been swapped out and pages that have been mapped but not used.", 
+      "title": "Virtual Memory Size (MB)", 
+      "type": "number"
+    }
+  }, 
+  "title": "Process information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

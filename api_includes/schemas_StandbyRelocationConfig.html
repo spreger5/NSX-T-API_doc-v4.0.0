@@ -1,0 +1,84 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_StandbyRelocationConfig.html">StandbyRelocationConfig</a> (<a href="types_StandbyRelocationConfig.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "id": "StandbyRelocationConfig", 
+  "module_id": "EdgeHighAvailabilityProfile", 
+  "properties": {
+    "standby_relocation_threshold": {
+      "default": 30, 
+      "description": "The time interval (in minutes) to wait before starting the standby service context relocation process. In some cases, the standby relocation trigger may take more time than what is set in threshold because of multiple different reasons, as listed below A. Standby relocation process runs as a background task which poll edge clusters at pre-defined interval of 5 minutes, to check for standby relocation. If during one cycle of standby relocation, an edge is found to be down, and the time remaining to threshold expiry in less then 5 minutes (for example 2 minute), than this relocation will be picked up in next cycle of standby relocation after 5 minutes, and not after 2 minutes. B. If edge becomes down at X time, then edge might take few seconds or minutes for all services to completely go down and report that they are down. So actual time when unified appliance knows edge is down may be X + delta. This delta time adds to the actual standby relocation threshold expiry, and once the [standby relocation threshold time + delta time] is complete for an edge node, and the edge is still down, than the standby relocation task will be performed for this edge node in the next cycle, that may be due to run anytime within next 5 minutes.", 
+      "maximum": 20000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Standby service context relocation wait time", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Standby service contexts relocation setting", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

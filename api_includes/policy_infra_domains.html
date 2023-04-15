@@ -1,0 +1,274 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_infra.html' style='text-decoration: none'> Infra</a> >
+        
+        
+            <a href='policy_infra_domains.html' style='text-decoration: none'> Domains</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List domains for infra</h4><br>
+                      <span class="help_detail">Paginated list of all domains for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDomainForInfra.html">GET /policy/api/v1/global-infra/domains</a>
+                            <br>
+                            
+                            <a href="method_ListDomainForInfra.html">GET /policy/api/v1/infra/domains</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Domain and all the entities contained by this domain</h4><br>
+                      <span class="help_detail">Delete the domain along with all the entities contained by this domain.
+<br>
+The groups that are a part of this domain are also deleted along with
+<br>
+the domain.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDomain.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read domain</h4><br>
+                      <span class="help_detail">Read a domain.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDomainForInfra.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadDomainForInfra.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a domain</h4><br>
+                      <span class="help_detail">If a domain with the domain-id is not already present, create a new
+<br>
+domain. If it already exists, patch the domain
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDomainForInfra.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a domain</h4><br>
+                      <span class="help_detail">If a domain with the domain-id is not already present, create a new
+<br>
+domain. If it already exists, update the domain including the nested
+<br>
+groups. This is a full replace
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDomainForInfra.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Domain Deployment maps for infra</h4><br>
+                      <span class="help_detail">Paginated list of all Domain Deployment Entries for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDomainDeploymentMapsForInfra.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/domain-deployment-maps</a>
+                            <br>
+                            
+                            <a href="method_ListDomainDeploymentMapsForInfra.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/domain-deployment-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Domain Deployment Map</h4><br>
+                      <span class="help_detail">Delete Domain Deployment Map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDomainDeploymentMap.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/domain-deployment-maps/&lt;domain-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a DomainDeploymentMap</h4><br>
+                      <span class="help_detail">Read a Domain Deployment Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDomainDeploymentMapForInfra.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/domain-deployment-maps/&lt;domain-deployment-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadDomainDeploymentMapForInfra.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/domain-deployment-maps/&lt;domain-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch Domain Deployment Map under infra</h4><br>
+                      <span class="help_detail">If the passed Domain Deployment Map does not already exist, create a new Domain Deployment Map.
+<br>
+If it already exist, patch it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDomainDeploymentMapForInfra.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/domain-deployment-maps/&lt;domain-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new Domain Deployment Map under infra</h4><br>
+                      <span class="help_detail">If the passed Domain Deployment Map does not already exist, create a new Domain Deployment Map.
+<br>
+If it already exist, replace it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateDomainDeploymentMapForInfra.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/domain-deployment-maps/&lt;domain-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

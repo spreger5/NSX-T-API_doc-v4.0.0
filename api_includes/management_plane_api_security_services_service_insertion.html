@@ -1,0 +1,1175 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='management_plane_api_security_services.html' style='text-decoration: none'> Services</a> >
+        
+        
+            <a href='management_plane_api_security_services_service_insertion.html' style='text-decoration: none'> Service Insertion</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get all service attachments.</h4><br>
+                      <span class="help_detail">Returns all Service-Attachement(s) present in the system.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceAttachments.html">GET /api/v1/serviceinsertion/service-attachments</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a Service Attachment.</h4><br>
+                      <span class="help_detail">Adds a new Service attachment. A service attachment represents a point
+<br>
+on NSX entity (Example: Logical Router) to which service instance can be
+<br>
+connected through an InstanceEndpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddServiceAttachment.html">POST /api/v1/serviceinsertion/service-attachments</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing service attachment</h4><br>
+                      <span class="help_detail">Delete existing service attachment from system.
+<br>
+Before deletion, please make sure that, no instance endpoints are connected
+<br>
+to this attachment. In turn no appliance should be connected to this attachment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceAttachment.html">DELETE /api/v1/serviceinsertion/service-attachments/&lt;service-attachment-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular service attachment.</h4><br>
+                      <span class="help_detail">Returns detailed Attachment information for a given service attachment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceAttachment.html">GET /api/v1/serviceinsertion/service-attachments/&lt;service-attachment-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing service attachment.</h4><br>
+                      <span class="help_detail">Modifies an existing service attachment. Updates to
+<br>
+name, description and Logical Router list only supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceAttachment.html">PUT /api/v1/serviceinsertion/service-attachments/&lt;service-attachment-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all ServiceChains.</h4><br>
+                      <span class="help_detail">List all service chains in the system.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceChains.html">GET /api/v1/serviceinsertion/service-chains</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Service Chain</h4><br>
+                      <span class="help_detail">Adds a new service chain. Service Chains is can contain profile belonging
+<br>
+to same or different Service(s). It represents a redirection target for a Rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddServiceChain.html">POST /api/v1/serviceinsertion/service-chains</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Service Chain.</h4><br>
+                      <span class="help_detail">Delete a particular service chain.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceChain.html">DELETE /api/v1/serviceinsertion/service-chains/&lt;service-chain-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular service chain.</h4><br>
+                      <span class="help_detail">Returns detailed service chain information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceChain.html">GET /api/v1/serviceinsertion/service-chains/&lt;service-chain-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all service paths</h4><br>
+                      <span class="help_detail">List all service paths for the given service chain for the given service chain id
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServicePaths.html">GET /api/v1/serviceinsertion/service-chains/&lt;service-chain-id&gt;/service-paths</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all Service-Instances present in system</h4><br>
+                      <span class="help_detail">Returns all Service-Instance(s) of all Services present in system.
+<br>
+When request parameter (deployed_to or service_deployment_id) is provided as a part of request,
+<br>
+it will filter out Service-Instances accordingly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceInstances.html">GET /api/v1/serviceinsertion/service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List service managers</h4><br>
+                      <span class="help_detail">List all service managers.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceManagers.html">GET /api/v1/serviceinsertion/service-managers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Register service manager</h4><br>
+                      <span class="help_detail">Register service-manager with NSX with basic details like name, username, password.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RegisterServiceManager.html">POST /api/v1/serviceinsertion/service-managers</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete service manager</h4><br>
+                      <span class="help_detail">Delete service-manager which is registered with NSX with basic details like name, username, password.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceManager.html">DELETE /api/v1/serviceinsertion/service-managers/&lt;service-manager-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get service manager</h4><br>
+                      <span class="help_detail">Retrieve service-manager details like name, username, password, vendor ID, thumbprint for a given ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceManager.html">GET /api/v1/serviceinsertion/service-managers/&lt;service-manager-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update service manager</h4><br>
+                      <span class="help_detail">Update service-manager which is registered with NSX with basic details like name, username, password.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceManager.html">PUT /api/v1/serviceinsertion/service-managers/&lt;service-manager-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all Service-Insertion Services.</h4><br>
+                      <span class="help_detail">List all Service-Insertion Service Definitions.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceInsertionServices.html">GET /api/v1/serviceinsertion/services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Service-Insertion Service</h4><br>
+                      <span class="help_detail">Creates new Service-Insertion Service in the system.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddServiceInsertionService.html">POST /api/v1/serviceinsertion/services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing Service and the Service-Instance associated with it.</h4><br>
+                      <span class="help_detail">Removes Service-Insertion Service from the system. A Service with
+<br>
+Service-Instances can only be deleted by passing "cascade=true" parameter.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceInsertionService.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing Service</h4><br>
+                      <span class="help_detail">Returns information about Service-Insertion Service with the given identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceInsertionService.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing Service</h4><br>
+                      <span class="help_detail">Modifies the specified Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceInsertionService.html">PUT /api/v1/serviceinsertion/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all service deployments for the given service id</h4><br>
+                      <span class="help_detail">Returns the list of deployments for the given service
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceDeployments.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deploys a particular service</h4><br>
+                      <span class="help_detail">This will deploy a particular service on a given cluster / host. Internally multiple service instance can be
+<br>
+created during the deployment. If there are no issues in the parameters, the call returns immediately,
+<br>
+and the service VMs will be deployed asynchronously. To get the overall status of the deployment or to get
+<br>
+the status of individual service vm, please use the deployment status APIs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeployService.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove service deployment</h4><br>
+                      <span class="help_detail">Remove the service deployment. Will remove all the Service VMs that were
+<br>
+created as part of this deployment. User can send optional force delete
+<br>
+option which will force remove the deployment, but should be used
+<br>
+only when the regular delete is not working. Regular delete will ensure
+<br>
+proper cleanup of Service VMs and related objects. Directly calling this
+<br>
+API without trying regular undeploy will result in unexpected results,
+<br>
+and orphan objects.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceDeployment.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular service deployment.</h4><br>
+                      <span class="help_detail">Returns detail of service deployment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceDeployment.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upgrade all VMs part of this service deployment to new Spec OVF.</h4><br>
+                      <span class="help_detail">If new deployment spec is provided, the deployment will be moved to the provided spec provided
+<br>
+that current deployment state is either UPGRADE_FAILED or DEPLOYMENT_SUCCESSFUL
+<br>
+If same deployment spec is provided, upgrade will be done only if current deployment state is
+<br>
+UPGRADE_FAILED 
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpgradeServiceDeployment.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;?action=upgrade</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing Service Deployment</h4><br>
+                      <span class="help_detail">Update an existing Service Deployment.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceDeployment.html">PUT /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Service-Deployment state for Service.</h4><br>
+                      <span class="help_detail">Returns configuration state of deployed partner service using service insertion framework.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceDeploymentState.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular service deployment status.</h4><br>
+                      <span class="help_detail">Returns current status of the deployment of partner service. Available only for EPP Services.
+<br>
+By default this API would return cached status. Caching happens every 3 minutes.
+<br>
+For realtime status, query parameter "source=realtime" needs to be passed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceDeploymentStatus.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-deployments/&lt;service-deployment-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all Service-Instances for Service.</h4><br>
+                      <span class="help_detail">Returns all Service-Instance(s) for a given Service-Insertion Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceInstancesForService.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a Service Instance for a specified Service.</h4><br>
+                      <span class="help_detail">Adds a new Service-Instance under the specified Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddServiceInstance.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing Service-Instance</h4><br>
+                      <span class="help_detail">Delete existing Service-Instance for a given Service-Insertion Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceInstance.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Service-Instance for Service.</h4><br>
+                      <span class="help_detail">Returns Service-Instance information for a given Service-Insertion Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceInstance.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing Service-Instance.</h4><br>
+                      <span class="help_detail">Modifies an existing Service-Instance for a given Service-Insertion Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceInstance.html">PUT /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSgroups for a given ServiceInstance.</h4><br>
+                      <span class="help_detail">Returns list of NSGroups used in Service Insertion North-South rules for a given
+<br>
+Service Instance.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceInstanceNSGroups.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all InstanceEndpoints of a Service Instance.</h4><br>
+                      <span class="help_detail">List all InstanceEndpoints of a service instance.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInstanceEndpoints.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add an InstanceEndpoint for a Service Instance</h4><br>
+                      <span class="help_detail">Adds a new instance endpoint. It belongs to one service instance and is attached
+<br>
+to one service attachment. It represents a redirection target for a Rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddInstanceEndpoint.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-endpoints</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a particular InstanceEndpoint.</h4><br>
+                      <span class="help_detail">Delete instance endpoint information for a given instace endpoint.
+<br>
+Please make sure to delete all the Service Insertion Rules, which
+<br>
+refer to this Endpoint as 'redirect_tos' target.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInstanceEndpoint.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-endpoints/&lt;instance-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular instance endpoint for a service instance.</h4><br>
+                      <span class="help_detail">Returns detailed Endpoint information for a given InstanceEndpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInstanceEndpoint.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-endpoints/&lt;instance-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns list of instance runtimes of service VM being deployed</h4><br>
+                      <span class="help_detail">Returns list of instance runtimes of service VMs being deployed for a given service instance id
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInstanceRuntimes.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deploy and set up service VMs either as standalone or HA</h4><br>
+                      <span class="help_detail">Deploys one service VM as standalone, or two service VMs as HA where one VM is active and another one is standby.
+<br>
+
+<br>
+During the deployment of service VMs, service will be set up based on deployment events using callbacks.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeployServiceVMs.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes?action=deploy</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove service VMs either as standalone or HA</h4><br>
+                      <span class="help_detail">Undeploy one service VM as standalone or two service VMs as HA. Associated deployment information and instance
+<br>
+runtime will also be deleted once service VMs have been un-deployed successfully.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceVMs.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes?action=delete</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upgrade service VMs using newer version of OVF</h4><br>
+                      <span class="help_detail">Upgrade service VMs using newer version of OVF.
+<br>
+Upgrade is a 2 step process. Update the 'deployment_spec_name' in the
+<br>
+ServiceInstance to the new DeploymentSpec to which the service VMs will be
+<br>
+upgraded, folowed by this 'upgrade' api.
+<br>
+In case of HA, the stand-by service VM will be upgrade first. Once it has been upgraded,
+<br>
+it switches to be the Active one and then the other VM will be upgrade.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpgradeServiceVMs.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes?action=upgrade</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update maintenance mode or runtime state of a service VM</h4><br>
+                      <span class="help_detail">Set service VM either in or out of maintenance mode for maintenance mode, or in service or out
+<br>
+of service for runtime state. Only one value can be set at one time.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceVmState.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes/&lt;instance-runtime-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics for a given interface identified by the interface index</h4><br>
+                      <span class="help_detail">Returns statistics of a specified interface via associated logical port. If the logical port is attached to
+<br>
+a logical router port, query parameter "source=realtime" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRuntimeInterfaceStatistics.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes/&lt;instance-runtime-id&gt;/interfaces/&lt;interface_index&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get operational status for an interface</h4><br>
+                      <span class="help_detail">Returns operational status of a specified interface</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRuntimeInterfaceOperationalStatus.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/instance-runtimes/&lt;instance-runtime-id&gt;/interfaces/&lt;interface_index&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Service-Instance state for Service.</h4><br>
+                      <span class="help_detail">Returns configuration state of one instance of a deployed partner service using service insertion framework.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceInstanceState.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Service-Instance status for Service.</h4><br>
+                      <span class="help_detail">Returns status of one instance of a deployed partner service using service insertion framework.
+<br>
+By default this API would return cached status. Caching happens every 3 minutes.
+<br>
+For realtime status, query parameter "source=realtime" needs to be passed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceInstanceStatus.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-instances/&lt;service-instance-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all Service Profiles of a Service.</h4><br>
+                      <span class="help_detail">List all service profiles of a service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSIServiceProfiles.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add ServiceProfile for a given Service.</h4><br>
+                      <span class="help_detail">Adds a new service profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddSIServiceProfile.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a particular ServiceProfile.</h4><br>
+                      <span class="help_detail">Delete service profile for a given service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSIServiceProfile.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular ServiceProfile for a Service.</h4><br>
+                      <span class="help_detail">Returns detailed service profile information for a given Service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSIServiceProfile.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSgroups for a given ServiceProfile.</h4><br>
+                      <span class="help_detail">Returns list of NSGroups used in Service Insertion rules for a given Service Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceProfileNSGroups.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles/&lt;service-profile-id&gt;/nsgroups</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all ServiceChainMappings.</h4><br>
+                      <span class="help_detail">List all service chain mappings in the system for the given service profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceChainMappings.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/service-profiles/&lt;service-profile-id&gt;/service-chain-mappings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Solution Config Information associated with a given service.</h4><br>
+                      <span class="help_detail">Returns Solution Config information for a given service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSolutionConfigs.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Solution Config for a given Service</h4><br>
+                      <span class="help_detail">Adds a solution config. Solution Config are service level objects,
+<br>
+required for configuring the NXGI partner Service after deployment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateSolutionConfig.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deletes solution config information.</h4><br>
+                      <span class="help_detail">Deletes solution config information for a given service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSolutionConfig.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Solution Config Information for a given solution config id.</h4><br>
+                      <span class="help_detail">Returns Solution Config information for a given solution config id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSolutionConfig.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Updates Solution Config for a given Service</h4><br>
+                      <span class="help_detail">Updates a solution config. Solution Config are service level objects,
+<br>
+required for configuring the NXGI partner Service after deployment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSolutionConfig.html">PUT /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deletes extended solution config information.</h4><br>
+                      <span class="help_detail">Deletes extended solution config information for a given solution config id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteExtendedSolutionConfig.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;/extended-solution-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get extended solution Config Information for a given solution config id.</h4><br>
+                      <span class="help_detail">Returns extended solution config information for a given solution config id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetExtendedSolutionConfig.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;/extended-solution-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Extended solution Config for a given Service</h4><br>
+                      <span class="help_detail">Adds a extended solution config. Extended Solution Config are service level objects,
+<br>
+used by the NXGI partner Service inside the SVM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateExtendedSolutionConfig.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;/extended-solution-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Updates extended solution Config for a given Service</h4><br>
+                      <span class="help_detail">Updates a extended solution config. Extended Solution Config are service level objects,
+<br>
+used by the NXGI partner Service inside the SVM.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateExtendedSolutionConfig.html">PUT /api/v1/serviceinsertion/services/&lt;service-id&gt;/solution-configs/&lt;solution-config-id&gt;/extended-solution-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all VendorTemplates of a Service.</h4><br>
+                      <span class="help_detail">List all vendor templates of a service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVendorTemplates.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/vendor-templates</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Vendor Template for a given Service</h4><br>
+                      <span class="help_detail">Adds a new vendor template. Vendor templates are service level objects,
+<br>
+registered to be used in Service Profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddVendorTemplate.html">POST /api/v1/serviceinsertion/services/&lt;service-id&gt;/vendor-templates</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a particular vendor tempalte.</h4><br>
+                      <span class="help_detail">Delete vendor template information for a given service.
+<br>
+Please make sure to delete all the Service Profile(s), which
+<br>
+refer to this vendor tempalte before deleting the template itself.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteVendorTemplate.html">DELETE /api/v1/serviceinsertion/services/&lt;service-id&gt;/vendor-templates/&lt;vendor-template-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a particular vendor template for a given service.</h4><br>
+                      <span class="help_detail">Returns detailed vendor template information for a given service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetVendorTemplate.html">GET /api/v1/serviceinsertion/services/&lt;service-id&gt;/vendor-templates/&lt;vendor-template-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resolve 'source node id' value to source entities.</h4><br>
+                      <span class="help_detail">Service insertion data path inserts unique 'source node id' value
+<br>
+into each packet. This API can be used to identify the source of the packet
+<br>
+using this value. It can be resolved to multiple source entities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResolveSourceEntities.html">GET /api/v1/serviceinsertion/source-entities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

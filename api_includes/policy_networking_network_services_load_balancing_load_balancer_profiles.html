@@ -1,0 +1,570 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+        
+        
+            <a href='policy_networking_network_services_load_balancing.html' style='text-decoration: none'> Load Balancing</a> >
+        
+        
+            <a href='policy_networking_network_services_load_balancing_load_balancer_profiles.html' style='text-decoration: none'> Load Balancer Profiles</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List LBAppProfiles</h4><br>
+                      <span class="help_detail">Paginated list of all LBAppProfiles.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLBAppProfiles.html">GET /policy/api/v1/infra/lb-app-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete LBAppProfile and all the entities contained by this LBAppProfile</h4><br>
+                      <span class="help_detail">Delete the LBAppProfile along with all the entities contained
+<br>
+by this LBAppProfile.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLBAppProfile.html">DELETE /policy/api/v1/infra/lb-app-profiles/&lt;lb-app-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LBAppProfile</h4><br>
+                      <span class="help_detail">Read a LBAppProfile.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLBAppProfile.html">GET /policy/api/v1/infra/lb-app-profiles/&lt;lb-app-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBAppProfile</h4><br>
+                      <span class="help_detail">If a LBAppProfile with the lb-app-profile-id is not already present, create
+<br>
+a new LBAppProfile. If it already exists, update the LBAppProfile. This
+<br>
+is a full replace.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLBAppProfile.html">PATCH /policy/api/v1/infra/lb-app-profiles/&lt;lb-app-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBAppProfile</h4><br>
+                      <span class="help_detail">If a LBAppProfile with the lb-app-profile-id is not already present, create
+<br>
+a new LBAppProfile. If it already exists, update the LBAppProfile. This
+<br>
+is a full replace.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLBAppProfile.html">PUT /policy/api/v1/infra/lb-app-profiles/&lt;lb-app-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List LBClientSslProfiles</h4><br>
+                      <span class="help_detail">Paginated list of all LBClientSslProfiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLBClientSslProfiles.html">GET /policy/api/v1/infra/lb-client-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete LBClientSslProfile and all the entities contained by this
+LBClientSslProfile
+</h4><br>
+                      <span class="help_detail">Delete the LBClientSslProfile along with all the entities contained
+<br>
+by this LBClientSslProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLBClientSslProfile.html">DELETE /policy/api/v1/infra/lb-client-ssl-profiles/&lt;lb-client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LBClientSslProfile</h4><br>
+                      <span class="help_detail">Read a LBClientSslProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLBClientSslProfile.html">GET /policy/api/v1/infra/lb-client-ssl-profiles/&lt;lb-client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBClientSslProfile</h4><br>
+                      <span class="help_detail">If a LBClientSslProfile with the lb-client-ssl-profile-id is not already
+<br>
+present, create a new LBClientSslProfile. If it already exists, update the
+<br>
+LBClientSslProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLBClientSslProfile.html">PATCH /policy/api/v1/infra/lb-client-ssl-profiles/&lt;lb-client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBClientSslProfile</h4><br>
+                      <span class="help_detail">If a LBClientSslProfile with the lb-client-ssl-profile-id is not already
+<br>
+present, create a new LBClientSslProfile. If it already exists, update the
+<br>
+LBClientSslProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLBClientSslProfile.html">PUT /policy/api/v1/infra/lb-client-ssl-profiles/&lt;lb-client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List LBMonitorProfiles for infra</h4><br>
+                      <span class="help_detail">Paginated list of all LBMonitorProfiles for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLBMonitorProfiles.html">GET /policy/api/v1/infra/lb-monitor-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete LBMonitorProfile and all the entities contained by this LBMonitorProfile</h4><br>
+                      <span class="help_detail">Delete the LBMonitorProfile along with all the entities contained
+<br>
+by this LBMonitorProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLBMonitorProfile.html">DELETE /policy/api/v1/infra/lb-monitor-profiles/&lt;lb-monitor-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LBMonitorProfile</h4><br>
+                      <span class="help_detail">Read a LBMonitorProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLBMonitorProfile.html">GET /policy/api/v1/infra/lb-monitor-profiles/&lt;lb-monitor-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBMonitorProfile</h4><br>
+                      <span class="help_detail">If a LBMonitorProfile with the lb-monitor-profile-id is not
+<br>
+already present, create a new LBMonitorProfile. If it already exists,
+<br>
+update the LBMonitorProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLBMonitorProfile.html">PATCH /policy/api/v1/infra/lb-monitor-profiles/&lt;lb-monitor-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBMonitorProfile</h4><br>
+                      <span class="help_detail">If a LBMonitorProfile with the lb-monitor-profile-id is not
+<br>
+already present, create a new LBMonitorProfile. If it already exists,
+<br>
+update the LBMonitorProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLBMonitorProfile.html">PUT /policy/api/v1/infra/lb-monitor-profiles/&lt;lb-monitor-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List LBPersistenceProfiles for infra</h4><br>
+                      <span class="help_detail">Paginated list of all LBPersistenceProfiles for infra.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLBPersistenceProfiles.html">GET /policy/api/v1/infra/lb-persistence-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete LBPersistenceProfile and all the entities contained by this LBPersistenceProfile</h4><br>
+                      <span class="help_detail">Delete the LBPersistenceProfile along with all the entities
+<br>
+contained by this LBPersistenceProfile.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLBPersistenceProfile.html">DELETE /policy/api/v1/infra/lb-persistence-profiles/&lt;lb-persistence-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LBPersistenceProfile</h4><br>
+                      <span class="help_detail">Read a LBPersistenceProfile.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLBPersistenceProfile.html">GET /policy/api/v1/infra/lb-persistence-profiles/&lt;lb-persistence-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBPersistenceProfile</h4><br>
+                      <span class="help_detail">If a LBPersistenceProfile with the lb-persistence-profile-id is not
+<br>
+already present, create a new LBPersistenceProfile. If it already exists,
+<br>
+update the LBPersistenceProfile. This is a full replace.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLBPersistenceProfile.html">PATCH /policy/api/v1/infra/lb-persistence-profiles/&lt;lb-persistence-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBPersistenceProfile</h4><br>
+                      <span class="help_detail">If a LBPersistenceProfile with the lb-persistence-profile-id is not
+<br>
+already present, create a new LBPersistenceProfile. If it already exists,
+<br>
+update the LBPersistenceProfile. This is a full replace.
+<br>
+This API is deprecated for the NSX-T Load Balancer, but not for the NSX-T Distributed Load Balancer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLBPersistenceProfile.html">PUT /policy/api/v1/infra/lb-persistence-profiles/&lt;lb-persistence-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List LBServerSslProfiles</h4><br>
+                      <span class="help_detail">Paginated list of all LBServerSslProfiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLBServerSslProfiles.html">GET /policy/api/v1/infra/lb-server-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete LBServerSslProfile and all the entities contained by this
+LBServerSslProfile
+</h4><br>
+                      <span class="help_detail">Delete the LBServerSslProfile along with all the entities contained
+<br>
+by this LBServerSslProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLBServerSslProfile.html">DELETE /policy/api/v1/infra/lb-server-ssl-profiles/&lt;lb-server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LBServerSslProfile</h4><br>
+                      <span class="help_detail">Read a LBServerSslProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLBServerSslProfile.html">GET /policy/api/v1/infra/lb-server-ssl-profiles/&lt;lb-server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBServerSslProfile</h4><br>
+                      <span class="help_detail">If a LBServerSslProfile with the lb-server-ssl-profile-id is not already
+<br>
+present, create a new LBServerSslProfile. If it already exists, update the
+<br>
+LBServerSslProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLBServerSslProfile.html">PATCH /policy/api/v1/infra/lb-server-ssl-profiles/&lt;lb-server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a LBServerSslProfile</h4><br>
+                      <span class="help_detail">If a LBServerSslProfile with the lb-server-ssl-profile-id is not already
+<br>
+present, create a new LBServerSslProfile. If it already exists, update the
+<br>
+LBServerSslProfile. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLBServerSslProfile.html">PUT /policy/api/v1/infra/lb-server-ssl-profiles/&lt;lb-server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a list of supported SSL ciphers and protocols</h4><br>
+                      <span class="help_detail">Retrieve a list of supported SSL ciphers and protocols.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSslCiphersAndProtocols.html">GET /policy/api/v1/infra/lb-ssl-ciphers-and-protocols</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

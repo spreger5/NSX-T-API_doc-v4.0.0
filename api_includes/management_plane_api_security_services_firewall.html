@@ -1,0 +1,965 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='management_plane_api_security_services.html' style='text-decoration: none'> Services</a> >
+        
+        
+            <a href='management_plane_api_security_services_firewall.html' style='text-decoration: none'> Firewall</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get list of entities in exclude list.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetExcludeList.html">GET /api/v1/firewall/excludelist</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Check if the object a member of the exclude list</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CheckMemberIfExists.html">POST /api/v1/firewall/excludelist?action=check_if_exists</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove an existing object from the exclude list.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveMember.html">POST /api/v1/firewall/excludelist?action=remove_member</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a new object in the exclude list.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddMember.html">POST /api/v1/firewall/excludelist?action=add_member</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Modify exclude list.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateExcludeList.html">PUT /api/v1/firewall/excludelist</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get firewall profiles available.</h4><br>
+                      <span class="help_detail">List all the firewall profiles available by requested resource_type.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallProfiles.html">GET /api/v1/firewall/profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a firewall profile.</h4><br>
+                      <span class="help_detail">Create a firewall profile with values provided. It creates profile based
+<br>
+resource_type in the payload.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateFirewallProfile.html">POST /api/v1/firewall/profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a firewall profile.</h4><br>
+                      <span class="help_detail">Deletes a firewall profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteFirewallProfile.html">DELETE /api/v1/firewall/profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all firewall session timer profiles.</h4><br>
+                      <span class="help_detail">Return firewall session timer profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallProfile.html">GET /api/v1/firewall/profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a firewall profile.</h4><br>
+                      <span class="help_detail">Update user configurable properties of firewall profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateFirewallProfile.html">PUT /api/v1/firewall/profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read an Existing Rule</h4><br>
+                      <span class="help_detail">Return existing firewall rule information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFirewallRule.html">GET /api/v1/firewall/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Realized State of a Firewall Rule</h4><br>
+                      <span class="help_detail">Return realized state information of a firewall rule. Returned response is same as rule's
+<br>
+section realization state response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRuleState.html">GET /api/v1/firewall/rules/&lt;rule-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List All Firewall Sections</h4><br>
+                      <span class="help_detail">List all firewall section in paginated form. A default page size is limited
+<br>
+to 1000 firewall sections. By default list of section is filtered by LAYER3
+<br>
+type.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSections.html">GET /api/v1/firewall/sections</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Section with Rules.</h4><br>
+                      <span class="help_detail">Creates a new firewall section with rules. The limit on the number of
+<br>
+rules is defined by maxItems in collection types for FirewallRule
+<br>
+(FirewallRuleXXXList types). When invoked on a section with a large number
+<br>
+of rules, this API is supported only at low rates of invocation (not more
+<br>
+than 4-5 times per minute). The typical latency of this API with about 1024
+<br>
+rules is about 4-5 seconds. This API should not be invoked with large
+<br>
+payloads at automation speeds. More than 50 rules with a large number of
+<br>
+rule references is not supported.
+<br>
+
+<br>
+Instead, to create sections, use:
+<br>
+POST /api/v1/firewall/sections
+<br>
+
+<br>
+To create rules, use:
+<br>
+POST /api/v1/firewall/sections/&lt;section-id&gt;/rules
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddSectionWithRules.html">POST /api/v1/firewall/sections?action=create_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a New Empty Section</h4><br>
+                      <span class="help_detail">Creates new empty firewall section in the system.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddSection.html">POST /api/v1/firewall/sections</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an Existing Section and Its Associated Rules</h4><br>
+                      <span class="help_detail">Removes firewall section from the system. Firewall section with
+<br>
+rules can only be deleted by passing "cascade=true" parameter.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSection.html">DELETE /api/v1/firewall/sections/&lt;section-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an Existing Section</h4><br>
+                      <span class="help_detail">Returns information about firewall section for the identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSection.html">GET /api/v1/firewall/sections/&lt;section-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Unlock a section</h4><br>
+                      <span class="help_detail">Unlock a section.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UnlockSection.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=unlock</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an Existing Section, Including Rules</h4><br>
+                      <span class="help_detail">Returns firewall section information with rules for a section identifier.
+<br>
+When invoked on a section with a large number of rules, this API is supported
+<br>
+only at low rates of invocation (not more than 4-5 times per minute). The
+<br>
+typical latency of this API with about 1024 rules is about 4-5 seconds. This
+<br>
+API should not be invoked with large payloads at automation speeds. More than
+<br>
+50 rules with a large number rule references is not supported.
+<br>
+
+<br>
+Instead, to read firewall rules, use:
+<br>
+GET /api/v1/firewall/sections/&lt;section-id&gt;/rules with the appropriate
+<br>
+page_size.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSectionWithRules.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=list_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Lock a section</h4><br>
+                      <span class="help_detail">Lock a section.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_LockSection.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=lock</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Section, Including Its Rules</h4><br>
+                      <span class="help_detail">Modifies existing firewall section along with its association with rules.
+<br>
+When invoked on a large number of rules, this API is supported only at low
+<br>
+rates of invocation (not more than 2 times per minute). The typical latency
+<br>
+of this API with about 1024 rules is about 15 seconds in a cluster setup.
+<br>
+This API should not be invoked with large payloads at automation speeds.
+<br>
+
+<br>
+Instead, to update rule content, use:
+<br>
+PUT /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;
+<br>
+
+<br>
+Simultaneous update (modify) operations on same section are not allowed to
+<br>
+prevent overwriting stale contents to firewall section. If a concurrent
+<br>
+update is performed, HTTP response code 409 will be returned to the client
+<br>
+operating on stale data. That client should retrieve the firewall section
+<br>
+again and re-apply its update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSectionWithRules.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=update_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Section, Including Its Position</h4><br>
+                      <span class="help_detail">Modifies an existing firewall section along with its relative position
+<br>
+among other firewall sections in the system. Simultaneous update (modify)
+<br>
+operations on same section are not allowed to prevent overwriting stale
+<br>
+contents to firewall section. If a concurrent update is performed, HTTP
+<br>
+response code 409 will be returned to the client operating on stale data.
+<br>
+That client should retrieve the firewall section again and re-apply its
+<br>
+update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReviseSection.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=revise</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Section with Rules</h4><br>
+                      <span class="help_detail">Modifies an existing firewall section along with its relative position
+<br>
+among other firewall sections with rules. When invoked on a large number
+<br>
+of rules, this API is supported only at low rates of invocation (not more
+<br>
+than 2 times per minute). The typical latency of this API with about 1024
+<br>
+rules is about 15 seconds in a cluster setup. This API should not be
+<br>
+invoked with large payloads at automation speeds.
+<br>
+
+<br>
+Instead, to move a section above or below another section, use:
+<br>
+POST /api/v1/firewall/sections/&lt;section-id&gt;?action=revise
+<br>
+
+<br>
+To modify rules, use:
+<br>
+PUT /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;
+<br>
+
+<br>
+Simultaneous update (modify) operations on same section are not allowed to
+<br>
+prevent overwriting stale contents to firewall section. If a concurrent
+<br>
+update is performed, HTTP response code 409 will be returned to the client
+<br>
+operating on stale data. That client should retrieve the firewall section
+<br>
+again and re-apply its update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReviseSectionWithRules.html">POST /api/v1/firewall/sections/&lt;section-id&gt;?action=revise_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Section</h4><br>
+                      <span class="help_detail">Modifies the specified section, but does not modify the section's
+<br>
+associated rules. Simultaneous update (modify) operations on same section
+<br>
+are not allowed to prevent overwriting stale contents to firewall section.
+<br>
+If a concurrent update is performed, HTTP response code 409 will be
+<br>
+returned to the client operating on stale data. That client should retrieve
+<br>
+the firewall section again and re-apply its update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSection.html">PUT /api/v1/firewall/sections/&lt;section-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get All the Rules for a Section</h4><br>
+                      <span class="help_detail">Return all firewall rule(s) information for a given firewall section.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRules.html">GET /api/v1/firewall/sections/&lt;section-id&gt;/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Multiple Rules in a Section</h4><br>
+                      <span class="help_detail">Create multiple firewall rules in existing firewall section bounded by
+<br>
+limit of 1000 firewall rules per section. Adding multiple firewall rules in
+<br>
+a section modifies parent section entity and simultaneous update (modify)
+<br>
+operations on same section are not allowed to prevent overwriting stale
+<br>
+contents to firewall section. If a concurrent update is performed, HTTP
+<br>
+response code 409 will be returned to the client operating on stale data.
+<br>
+That client should retrieve the firewall section again and re-apply its
+<br>
+update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRulesInSection.html">POST /api/v1/firewall/sections/&lt;section-id&gt;/rules?action=create_multiple</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a Single Rule in a Section</h4><br>
+                      <span class="help_detail">Adds a new firewall rule in existing firewall section. Adding firewall rule
+<br>
+to a section modifies parent section entity and simultaneous update (modify)
+<br>
+operations on same section are not allowed to prevent overwriting stale
+<br>
+content to firewall section. If a concurrent update is performed, HTTP
+<br>
+response code 409 will be returned to the client operating on stale data.
+<br>
+That client should retrieve the firewall section again and re-apply its
+<br>
+update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRuleInSection.html">POST /api/v1/firewall/sections/&lt;section-id&gt;/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an Existing Rule</h4><br>
+                      <span class="help_detail">Delete existing firewall rule in a firewall section. Deleting firewall rule
+<br>
+in a section modifies parent section and simultaneous update (modify)
+<br>
+operations on same section are not allowed to prevent overwriting stale
+<br>
+contents to firewall section. If a concurrent update is performed, HTTP
+<br>
+response code 409 will be returned to the client operating on stale data.
+<br>
+That client should retrieve the firewall section again and re-apply its
+<br>
+update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRule.html">DELETE /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read an Existing Rule</h4><br>
+                      <span class="help_detail">Return existing firewall rule information in a firewall section.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRule.html">GET /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Rule and Reorder the Rule</h4><br>
+                      <span class="help_detail">Modifies existing firewall rule along with relative position among
+<br>
+other firewall rules inside a firewall section. Revising firewall rule in a
+<br>
+section modifies parent section entity and simultaneous update (modify)
+<br>
+operations on same section are not allowed to prevent overwriting stale
+<br>
+contents to firewall section. If a concurrent update is performed, HTTP
+<br>
+response code 409 will be returned to the client operating on stale data.
+<br>
+That client should retrieve the firewall section again and re-apply its
+<br>
+update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReviseRule.html">POST /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;?action=revise</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an Existing Rule</h4><br>
+                      <span class="help_detail">Modifies existing firewall rule in a firewall section. Updating firewall
+<br>
+rule in a section modifies parent section entity and simultaneous update
+<br>
+(modify) operations on same section are not allowed to prevent overwriting
+<br>
+stale contents to firewall section. If a concurrent update is performed,
+<br>
+HTTP response code 409 will be returned to the client operating on stale
+<br>
+data. That client should retrieve the firewall section again and re-apply
+<br>
+its update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRule.html">PUT /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Firewall rule level statistics</h4><br>
+                      <span class="help_detail">Get aggregated statistics for a rule for given firewall section. The
+<br>
+API only supports access to cached (source=cached) statistical data
+<br>
+collected offline in the system. Data includes total number of packets,
+<br>
+bytes, sessions counters and popularity index for a firewall rule and
+<br>
+overall session count, max session count and max popularity index for
+<br>
+all firewall rules on transport nodes or edge nodes. Aggregated
+<br>
+statistics like maximum popularity index, maximum session count and
+<br>
+total session count are computed with lower frequency compared to
+<br>
+individual generic rule statistics, hence they may have a computation
+<br>
+delay up to 15 minutes to reflect in response to this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallStats.html">GET /api/v1/firewall/sections/&lt;section-id&gt;/rules/&lt;rule-id&gt;/stats</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Firewall section level statistics section</h4><br>
+                      <span class="help_detail">Get aggregated statistics for all rules for a given firewall section. The
+<br>
+API only supports access to cached (source=cached) statistical data
+<br>
+collected offline in the system. Data includes total number of packets,
+<br>
+bytes, sessions counters and popularity index for a firewall rule and
+<br>
+overall session count, max session count and max popularity index for
+<br>
+all firewall rules on transport nodes or edge nodes. Aggregated
+<br>
+statistics like maximum popularity index, maximum session count and
+<br>
+total session count are computed with lower frequency compared to
+<br>
+individual generic rule statistics, hence they may have a computation
+<br>
+delay up to 15 minutes to reflect in response to this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallSectionStats.html">GET /api/v1/firewall/sections/&lt;section-id&gt;/rules/stats</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Realized State of a Firewall Section</h4><br>
+                      <span class="help_detail">Return realized state information of a firewall section.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSectionState.html">GET /api/v1/firewall/sections/&lt;section-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the summary of sections in the firewall configuration.</h4><br>
+                      <span class="help_detail">List the summary of number of sections and number of rules for each firewall
+<br>
+category (L2DFW, L3DFW).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSectionsSummary.html">GET /api/v1/firewall/sections/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset firewall rule statistics</h4><br>
+                      <span class="help_detail">Sets firewall rule statistics counter to zero. This operation is supported
+<br>
+for given category, for example: L3DFW i.e. for all layer3 firewall
+<br>
+(transport nodes only) rules or L3EDGE i.e. for all layer3 edge firewall
+<br>
+(edge nodes only) rules or L3BRIDGEPORT i.e. for all layer3 bridge port firewall
+<br>
+(bridge ports only) rules.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetFirewallRuleStats.html">POST /api/v1/firewall/stats?action=reset</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all firewall status for supported contexts</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallStatus.html">GET /api/v1/firewall/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get firewall global status for dfw context</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallStatus.html">GET /api/v1/firewall/status/&lt;context-type&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update global firewall status for dfw context</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateFirewallStatus.html">PUT /api/v1/firewall/status/&lt;context-type&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get firewall status for target resource in dfw context</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFirewallStatusOnTargetResource.html">GET /api/v1/firewall/status/&lt;context-type&gt;/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Enable firewall on target resource in dfw context</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_EnableFirewallOnTargetResource.html">POST /api/v1/firewall/status/&lt;context-type&gt;/&lt;id&gt;?action=enable_firewall</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Disable firewall on target resource in dfw context</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DisableFirewallOnTargetResource.html">POST /api/v1/firewall/status/&lt;context-type&gt;/&lt;id&gt;?action=disable_firewall</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

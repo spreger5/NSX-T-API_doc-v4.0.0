@@ -1,0 +1,2346 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      ALBAnalyticsProfile (<a href="schemas_ALBAnalyticsProfile.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">AnalyticsProfile</span>
+    <p>
+    <span class="help_detail">Advanced load balancer AnalyticsProfile object</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>apdex_response_threshold</td>
+            
+            <td>Apdex response threshold<br><br>If a client receives an HTTP response in less than the
+<br>
+Satisfactory Latency Threshold, the request is considered
+<br>
+Satisfied.
+<br>
+It is considered Tolerated if it is not Satisfied and less
+<br>
+than Tolerated Latency Factor multiplied by the Satisfactory
+<br>
+Latency Threshold.
+<br>
+Greater than this number and the client's request is
+<br>
+considered Frustrated.
+<br>
+Allowed values are 1-30000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 500) edition,
+<br>
+Essentials(Allowed values- 500) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 500.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 30000<br>Default: "500"</td>
+          </tr>
+          <tr>
+            <td>apdex_response_tolerated_factor</td>
+            
+            <td>Apdex response tolerated factor<br><br>Client tolerated response latency factor.
+<br>
+Client must receive a response within this factor times the
+<br>
+satisfactory threshold (apdex_response_threshold) to be
+<br>
+considered tolerated.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 4) edition,
+<br>
+Essentials(Allowed values- 4) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>apdex_rtt_threshold</td>
+            
+            <td>Apdex rtt threshold<br><br>Satisfactory client to Avi Round Trip Time(RTT).
+<br>
+Allowed values are 1-2000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 250) edition,
+<br>
+Essentials(Allowed values- 250) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 250.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2000<br>Default: "250"</td>
+          </tr>
+          <tr>
+            <td>apdex_rtt_tolerated_factor</td>
+            
+            <td>Apdex rtt tolerated factor<br><br>Tolerated client to Avi Round Trip Time(RTT) factor.
+<br>
+It is a multiple of apdex_rtt_tolerated_factor.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 4) edition,
+<br>
+Essentials(Allowed values- 4) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>apdex_rum_threshold</td>
+            
+            <td>Apdex rum threshold<br><br>If a client is able to load a page in less than the
+<br>
+Satisfactory Latency Threshold, the PageLoad is considered
+<br>
+Satisfied.
+<br>
+It is considered tolerated if it is greater than Satisfied
+<br>
+but less than the Tolerated Latency multiplied by Satisifed
+<br>
+Latency.
+<br>
+Greater than this number and the client's request is
+<br>
+considered Frustrated.
+<br>
+A PageLoad includes the time for DNS lookup, download of
+<br>
+all HTTP objects, and page render time.
+<br>
+Allowed values are 1-30000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 5000) edition,
+<br>
+Essentials(Allowed values- 5000) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5000.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 30000<br>Default: "5000"</td>
+          </tr>
+          <tr>
+            <td>apdex_rum_tolerated_factor</td>
+            
+            <td>Apdex rum tolerated factor<br><br>Virtual service threshold factor for tolerated Page Load
+<br>
+Time (PLT) as multiple of apdex_rum_threshold.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 4) edition,
+<br>
+Essentials(Allowed values- 4) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>apdex_server_response_threshold</td>
+            
+            <td>Apdex server response threshold<br><br>A server HTTP response is considered Satisfied if latency
+<br>
+is less than the Satisfactory Latency Threshold.
+<br>
+The response is considered tolerated when it is greater
+<br>
+than Satisfied but less than the Tolerated Latency Factor (STAR)
+<br>
+S_Latency.
+<br>
+Greater than this number and the server response is
+<br>
+considered Frustrated.
+<br>
+Allowed values are 1-30000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 400) edition,
+<br>
+Essentials(Allowed values- 400) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 400.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 30000<br>Default: "400"</td>
+          </tr>
+          <tr>
+            <td>apdex_server_response_tolerated_factor</td>
+            
+            <td>Apdex server response tolerated factor<br><br>Server tolerated response latency factor.
+<br>
+Servermust response within this factor times the
+<br>
+satisfactory threshold (apdex_server_response_threshold) to
+<br>
+be considered tolerated.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 4) edition,
+<br>
+Essentials(Allowed values- 4) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>apdex_server_rtt_threshold</td>
+            
+            <td>Apdex server rtt threshold<br><br>Satisfactory client to Avi Round Trip Time(RTT).
+<br>
+Allowed values are 1-2000.
+<br>
+Unit is MILLISECONDS.
+<br>
+Allowed in Basic(Allowed values- 125) edition,
+<br>
+Essentials(Allowed values- 125) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 125.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2000<br>Default: "125"</td>
+          </tr>
+          <tr>
+            <td>apdex_server_rtt_tolerated_factor</td>
+            
+            <td>Apdex server rtt tolerated factor<br><br>Tolerated client to Avi Round Trip Time(RTT) factor.
+<br>
+It is a multiple of apdex_rtt_tolerated_factor.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 4) edition,
+<br>
+Essentials(Allowed values- 4) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>client_log_config</td>
+            
+            <td>Client log config<br><br>Configure which logs are sent to the Avi Controller from
+<br>
+SEs and how they are processed.
+<br>
+</td>
+            
+            <td><a href="types_ALBClientLogConfiguration.html">ALBClientLogConfiguration</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>client_log_streaming_config</td>
+            
+            <td>Client log streaming config<br><br>Configure to stream logs to an external server.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td><a href="types_ALBClientLogStreamingConfig.html">ALBClientLogStreamingConfig</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>conn_lossy_ooo_threshold</td>
+            
+            <td>Conn lossy ooo threshold<br><br>A connection between client and Avi is considered lossy
+<br>
+when more than this percentage of out of order packets are
+<br>
+received.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 50) edition,
+<br>
+Essentials(Allowed values- 50) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 50.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "50"</td>
+          </tr>
+          <tr>
+            <td>conn_lossy_timeo_rexmt_threshold</td>
+            
+            <td>Conn lossy timeo rexmt threshold<br><br>A connection between client and Avi is considered lossy
+<br>
+when more than this percentage of packets are retransmitted
+<br>
+due to timeout.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 20) edition,
+<br>
+Essentials(Allowed values- 20) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 20.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "20"</td>
+          </tr>
+          <tr>
+            <td>conn_lossy_total_rexmt_threshold</td>
+            
+            <td>Conn lossy total rexmt threshold<br><br>A connection between client and Avi is considered lossy
+<br>
+when more than this percentage of packets are retransmitted.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 50) edition,
+<br>
+Essentials(Allowed values- 50) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 50.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "50"</td>
+          </tr>
+          <tr>
+            <td>conn_lossy_zero_win_size_event_threshold</td>
+            
+            <td>Conn lossy zero win size event threshold<br><br>A client connection is considered lossy when percentage of
+<br>
+times a packet could not be trasmitted due to TCP zero
+<br>
+window is above this threshold.
+<br>
+Allowed values are 0-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 2) edition,
+<br>
+Essentials(Allowed values- 2) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "2"</td>
+          </tr>
+          <tr>
+            <td>conn_server_lossy_ooo_threshold</td>
+            
+            <td>Conn server lossy ooo threshold<br><br>A connection between Avi and server is considered lossy
+<br>
+when more than this percentage of out of order packets are
+<br>
+received.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 50) edition,
+<br>
+Essentials(Allowed values- 50) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 50.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "50"</td>
+          </tr>
+          <tr>
+            <td>conn_server_lossy_timeo_rexmt_threshold</td>
+            
+            <td>Conn server lossy timeo rexmt threshold<br><br>A connection between Avi and server is considered lossy
+<br>
+when more than this percentage of packets are retransmitted
+<br>
+due to timeout.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 20) edition,
+<br>
+Essentials(Allowed values- 20) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 20.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "20"</td>
+          </tr>
+          <tr>
+            <td>conn_server_lossy_total_rexmt_threshold</td>
+            
+            <td>Conn server lossy total rexmt threshold<br><br>A connection between Avi and server is considered lossy
+<br>
+when more than this percentage of packets are retransmitted.
+<br>
+Allowed values are 1-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 50) edition,
+<br>
+Essentials(Allowed values- 50) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 50.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100<br>Default: "50"</td>
+          </tr>
+          <tr>
+            <td>conn_server_lossy_zero_win_size_event_threshold</td>
+            
+            <td>Conn server lossy zero win size event threshold<br><br>A server connection is considered lossy when percentage of
+<br>
+times a packet could not be trasmitted due to TCP zero
+<br>
+window is above this threshold.
+<br>
+Allowed values are 0-100.
+<br>
+Unit is PERCENT.
+<br>
+Allowed in Basic(Allowed values- 2) edition,
+<br>
+Essentials(Allowed values- 2) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "2"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>enable_adaptive_config</td>
+            
+            <td>Enable adaptive config<br><br>Enable adaptive configuration for optimizing resource
+<br>
+usage.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>enable_advanced_analytics</td>
+            
+            <td>Enable advanced analytics<br><br>Enables Advanced Analytics features like Anomaly detection.
+<br>
+If set to false, anomaly computation (and associated
+<br>
+rules/events) for VS, Pool and Server metrics will be
+<br>
+deactivated.
+<br>
+However, setting it to false reduces cpu and memory
+<br>
+requirements for Analytics subsystem.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Special default for Basic edition is false, Essentials
+<br>
+edition is false, Enterprise is True.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>enable_ondemand_metrics</td>
+            
+            <td>Enable ondemand metrics<br><br>Virtual Service (VS) metrics are processed only when there
+<br>
+is live data traffic on the VS.
+<br>
+In case, VS is idle for a period of time as specified by
+<br>
+ondemand_metrics_idle_timeout then metrics processing is
+<br>
+suspended for that VS.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>enable_se_analytics</td>
+            
+            <td>Enable se analytics<br><br>Enable node (service engine) level analytics forvs metrics.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>enable_server_analytics</td>
+            
+            <td>Enable server analytics<br><br>Enables analytics on backend servers.
+<br>
+This may be desired in container environment when there are
+<br>
+large number of ephemeral servers.
+<br>
+Additionally, no healthscore of servers is computed when
+<br>
+server analytics is enabled.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>enable_vs_analytics</td>
+            
+            <td>Enable vs analytics<br><br>Enable VirtualService (frontend) Analytics.
+<br>
+This flag enables metrics and healthscore for
+<br>
+Virtualservice.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>exclude_client_close_before_request_as_error</td>
+            
+            <td>Exclude client close before request as error<br><br>Exclude client closed connection before an HTTP request
+<br>
+could be completed from being classified as an error.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_dns_policy_drop_as_significant</td>
+            
+            <td>Exclude dns policy drop as significant<br><br>Exclude dns policy drops from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_gs_down_as_error</td>
+            
+            <td>Exclude gs down as error<br><br>Exclude queries to GSLB services that are operationally
+<br>
+down from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_http_error_codes</td>
+            
+            <td>Exclude http error codes<br><br>List of HTTP status codes to be excluded from being
+<br>
+classified as an error.
+<br>
+Error connections or responses impacts health score, are
+<br>
+included as significant logs, and may be classified as part
+<br>
+of a DoS attack.
+<br>
+</td>
+            
+            <td>array of integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>exclude_invalid_dns_domain_as_error</td>
+            
+            <td>Exclude invalid dns domain as error<br><br>Exclude dns queries to domains outside the domains
+<br>
+configured in the DNS application profile from the list of
+<br>
+errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_invalid_dns_query_as_error</td>
+            
+            <td>Exclude invalid dns query as error<br><br>Exclude invalid dns queries from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_issuer_revoked_ocsp_responses_as_error</td>
+            
+            <td>Exclude issuer revoked ocsp responses as error<br><br>Exclude the Issuer-Revoked OCSP Responses from the list of
+<br>
+errors.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>exclude_no_dns_record_as_error</td>
+            
+            <td>Exclude no dns record as error<br><br>Exclude queries to domains that did not have configured
+<br>
+services/records from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_no_valid_gs_member_as_error</td>
+            
+            <td>Exclude no valid gs member as error<br><br>Exclude queries to GSLB services that have no available
+<br>
+members from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_persistence_change_as_error</td>
+            
+            <td>Exclude persistence change as error<br><br>Exclude persistence server changed while load balancing'
+<br>
+from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_revoked_ocsp_responses_as_error</td>
+            
+            <td>Exclude revoked ocsp responses as error<br><br>Exclude the Revoked OCSP certificate status responses from
+<br>
+the list of errors.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>exclude_server_dns_error_as_error</td>
+            
+            <td>Exclude server dns error as error<br><br>Exclude server dns error response from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_server_tcp_reset_as_error</td>
+            
+            <td>Exclude server tcp reset as error<br><br>Exclude server TCP reset from errors.
+<br>
+It is common for applications like MS Exchange.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_sip_error_codes</td>
+            
+            <td>Exclude sip error codes<br><br>List of SIP status codes to be excluded from being
+<br>
+classified as an error.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>array of integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>exclude_stale_ocsp_responses_as_error</td>
+            
+            <td>Exclude stale ocsp responses as error<br><br>Exclude the Stale OCSP certificate status responses from
+<br>
+the list of errors.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>exclude_syn_retransmit_as_error</td>
+            
+            <td>Exclude syn retransmit as error<br><br>Exclude 'server unanswered syns' from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_tcp_reset_as_error</td>
+            
+            <td>Exclude tcp reset as error<br><br>Exclude TCP resets by client from the list of potential
+<br>
+errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>exclude_unavailable_ocsp_responses_as_error</td>
+            
+            <td>Exclude unavailable ocsp responses as error<br><br>Exclude the unavailable OCSP Responses from the list of
+<br>
+errors.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>exclude_unsupported_dns_query_as_error</td>
+            
+            <td>Exclude unsupported dns query as error<br><br>Exclude unsupported dns queries from the list of errors.
+<br>
+Allowed in Basic(Allowed values- false) edition,
+<br>
+Essentials(Allowed values- false) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>healthscore_max_server_limit</td>
+            
+            <td>Healthscore max server limit<br><br>Skips health score computation of pool servers when number
+<br>
+of servers in a pool is more than this setting.
+<br>
+Allowed values are 0-5000.
+<br>
+Special values are 0- 'server health score is deactivated'.
+<br>
+Allowed in Basic(Allowed values- 0) edition,
+<br>
+Essentials(Allowed values- 0) edition, Enterprise edition.
+<br>
+Special default for Basic edition is 0, Essentials edition
+<br>
+is 0, Enterprise is 20.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 5000<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>hs_event_throttle_window</td>
+            
+            <td>Hs event throttle window<br><br>Time window (in secs) within which only unique health
+<br>
+change events should occur.
+<br>
+Allowed in Basic(Allowed values- 1209600) edition,
+<br>
+Essentials(Allowed values- 1209600) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1209600.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "1209600"</td>
+          </tr>
+          <tr>
+            <td>hs_max_anomaly_penalty</td>
+            
+            <td>Hs max anomaly penalty<br><br>Maximum penalty that may be deducted from health score for
+<br>
+anomalies.
+<br>
+Allowed values are 0-100.
+<br>
+Allowed in Basic(Allowed values- 10) edition,
+<br>
+Essentials(Allowed values- 10) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 10.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "10"</td>
+          </tr>
+          <tr>
+            <td>hs_max_resources_penalty</td>
+            
+            <td>Hs max resources penalty<br><br>Maximum penalty that may be deducted from health score for
+<br>
+high resource utilization.
+<br>
+Allowed values are 0-100.
+<br>
+Allowed in Basic(Allowed values- 25) edition,
+<br>
+Essentials(Allowed values- 25) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 25.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "25"</td>
+          </tr>
+          <tr>
+            <td>hs_max_security_penalty</td>
+            
+            <td>Hs max security penalty<br><br>Maximum penalty that may be deducted from health score
+<br>
+based on security assessment.
+<br>
+Allowed values are 0-100.
+<br>
+Allowed in Basic(Allowed values- 100) edition,
+<br>
+Essentials(Allowed values- 100) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 100.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "100"</td>
+          </tr>
+          <tr>
+            <td>hs_min_dos_rate</td>
+            
+            <td>Hs min dos rate<br><br>DoS connection rate below which the DoS security assessment
+<br>
+will not kick in.
+<br>
+Allowed in Basic(Allowed values- 1000) edition,
+<br>
+Essentials(Allowed values- 1000) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1000.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "1000"</td>
+          </tr>
+          <tr>
+            <td>hs_performance_boost</td>
+            
+            <td>Hs performance boost<br><br>Adds free performance score credits to health score.
+<br>
+It can be used for compensating health score for known slow
+<br>
+applications.
+<br>
+Allowed values are 0-100.
+<br>
+Allowed in Basic(Allowed values- 0) edition,
+<br>
+Essentials(Allowed values- 0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 100<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>hs_pscore_traffic_threshold_l4_client</td>
+            
+            <td>Hs pscore traffic threshold l4 client<br><br>Threshold number of connections in 5min, below which
+<br>
+apdexr, apdexc, rum_apdex, and other network quality metrics
+<br>
+are not computed.
+<br>
+Allowed in Basic(Allowed values- 10) edition,
+<br>
+Essentials(Allowed values- 10) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 10.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "10.0"</td>
+          </tr>
+          <tr>
+            <td>hs_pscore_traffic_threshold_l4_server</td>
+            
+            <td>Hs pscore traffic threshold l4 server<br><br>Threshold number of connections in 5min, below which
+<br>
+apdexr, apdexc, rum_apdex, and other network quality metrics
+<br>
+are not computed.
+<br>
+Allowed in Basic(Allowed values- 10) edition,
+<br>
+Essentials(Allowed values- 10) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 10.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "10.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_certscore_expired</td>
+            
+            <td>Hs security certscore expired<br><br>Score assigned when the certificate has expired.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 0.0) edition,
+<br>
+Essentials(Allowed values- 0.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "0.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_certscore_gt30d</td>
+            
+            <td>Hs security certscore gt30d<br><br>Score assigned when the certificate expires in more than 30
+<br>
+days.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "5.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_certscore_le07d</td>
+            
+            <td>Hs security certscore le07d<br><br>Score assigned when the certificate expires in less than or
+<br>
+equal to 7 days.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 2.0) edition,
+<br>
+Essentials(Allowed values- 2.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "2.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_certscore_le30d</td>
+            
+            <td>Hs security certscore le30d<br><br>Score assigned when the certificate expires in less than or
+<br>
+equal to 30 days.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 4.0) edition,
+<br>
+Essentials(Allowed values- 4.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 4.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "4.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_chain_invalidity_penalty</td>
+            
+            <td>Hs security chain invalidity penalty<br><br>Penalty for allowing certificates with invalid chain.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 1.0) edition,
+<br>
+Essentials(Allowed values- 1.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "1.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_cipherscore_eq000b</td>
+            
+            <td>Hs security cipherscore eq000b<br><br>Score assigned when the minimum cipher strength is 0 bits.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 0.0) edition,
+<br>
+Essentials(Allowed values- 0.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "0.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_cipherscore_ge128b</td>
+            
+            <td>Hs security cipherscore ge128b<br><br>Score assigned when the minimum cipher strength is greater
+<br>
+than equal to 128 bits.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "5.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_cipherscore_lt128b</td>
+            
+            <td>Hs security cipherscore lt128b<br><br>Score assigned when the minimum cipher strength is less
+<br>
+than 128 bits.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 3.5) edition,
+<br>
+Essentials(Allowed values- 3.5) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 3.5.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "3.5"</td>
+          </tr>
+          <tr>
+            <td>hs_security_encalgo_score_none</td>
+            
+            <td>Hs security encalgo score none<br><br>Score assigned when no algorithm is used for encryption.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 0.0) edition,
+<br>
+Essentials(Allowed values- 0.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "0.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_encalgo_score_rc4</td>
+            
+            <td>Hs security encalgo score rc4<br><br>Score assigned when RC4 algorithm is used for encryption.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 2.5) edition,
+<br>
+Essentials(Allowed values- 2.5) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.5.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "2.5"</td>
+          </tr>
+          <tr>
+            <td>hs_security_hsts_penalty</td>
+            
+            <td>Hs security hsts penalty<br><br>Penalty for not enabling HSTS.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 1.0) edition,
+<br>
+Essentials(Allowed values- 1.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "1.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_nonpfs_penalty</td>
+            
+            <td>Hs security nonpfs penalty<br><br>Penalty for allowing non-PFS handshakes.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 1.0) edition,
+<br>
+Essentials(Allowed values- 1.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "1.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_ocsp_revoked_score</td>
+            
+            <td>Hs security ocsp revoked score<br><br>Score assigned when OCSP Certificate Status is set to
+<br>
+Revoked or Issuer Revoked.
+<br>
+Allowed values are 0.0-5.0.
+<br>
+Allowed in Basic(Allowed values- 0.0) edition,
+<br>
+Essentials(Allowed values- 0.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "0.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_selfsignedcert_penalty</td>
+            
+            <td>Hs security selfsignedcert penalty<br><br>Deprecated.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 1.0) edition,
+<br>
+Essentials(Allowed values- 1.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "1.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_ssl30_score</td>
+            
+            <td>Hs security ssl30 score<br><br>Score assigned when supporting SSL3.0 encryption protocol.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 3.5) edition,
+<br>
+Essentials(Allowed values- 3.5) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 3.5.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "3.5"</td>
+          </tr>
+          <tr>
+            <td>hs_security_tls10_score</td>
+            
+            <td>Hs security tls10 score<br><br>Score assigned when supporting TLS1.0 encryption protocol.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "5.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_tls11_score</td>
+            
+            <td>Hs security tls11 score<br><br>Score assigned when supporting TLS1.1 encryption protocol.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "5.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_tls12_score</td>
+            
+            <td>Hs security tls12 score<br><br>Score assigned when supporting TLS1.2 encryption protocol.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 5.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "5.0"</td>
+          </tr>
+          <tr>
+            <td>hs_security_tls13_score</td>
+            
+            <td>Hs security tls13 score<br><br>Score assigned when supporting TLS1.3 encryption protocol.
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 5.0) edition,
+<br>
+Essentials(Allowed values- 5.0) edition, Enterprise edition.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>hs_security_weak_signature_algo_penalty</td>
+            
+            <td>Hs security weak signature algo penalty<br><br>Penalty for allowing weak signature algorithm(s).
+<br>
+Allowed values are 0-5.
+<br>
+Allowed in Basic(Allowed values- 1.0) edition,
+<br>
+Essentials(Allowed values- 1.0) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.0.
+<br>
+</td>
+            
+            <td>number</td>
+            
+            <td>Default: "1.0"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>markers</td>
+            
+            <td>Markers<br><br>List of labels to be used for granular RBAC.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ondemand_metrics_idle_timeout</td>
+            
+            <td>Ondemand metrics idle timeout<br><br>This flag sets the time duration of no live data traffic
+<br>
+after which Virtual Service metrics processing is suspended.
+<br>
+It is applicable only when enable_ondemand_metrics is set
+<br>
+to false.
+<br>
+Unit is SECONDS.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1800.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "1800"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>ranges</td>
+            
+            <td>Ranges<br><br>List of HTTP status code ranges to be excluded from being
+<br>
+classified as an error.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBHTTPStatusRange.html">ALBHTTPStatusRange</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ALBAnalyticsProfile</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resp_code_block</td>
+            
+            <td>Resp code block<br><br>Block of HTTP response codes to be excluded from being
+<br>
+classified as an error.
+<br>
+Enum options - AP_HTTP_RSP_4XX, AP_HTTP_RSP_5XX.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBAnalyticsProfileRespCodeBlock.html">ALBAnalyticsProfileRespCodeBlock</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sensitive_log_profile</td>
+            
+            <td>Sensitive log profile<br><br>Rules applied to the HTTP application log for filtering
+<br>
+sensitive information.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td><a href="types_ALBSensitiveLogProfile.html">ALBSensitiveLogProfile</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sip_log_depth</td>
+            
+            <td>Sip log depth<br><br>Maximum number of SIP messages added in logs for a SIP
+<br>
+transaction.
+<br>
+By default, this value is 20.
+<br>
+Allowed values are 1-1000.
+<br>
+Allowed in Basic(Allowed values- 20) edition,
+<br>
+Essentials(Allowed values- 20) edition, Enterprise edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 20.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 1000<br>Default: "20"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

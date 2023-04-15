@@ -1,0 +1,195 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSSLCertificate.html">ALBSSLCertificate</a> (<a href="types_ALBSSLCertificate.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SSLCertificate object", 
+  "id": "ALBSSLCertificate", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "certificate": {
+      "description": "certificate of SSLCertificate.", 
+      "required": false, 
+      "title": "Certificate", 
+      "type": "string"
+    }, 
+    "certificate_signing_request": {
+      "description": "certificate_signing_request of SSLCertificate.", 
+      "required": false, 
+      "title": "Certificate signing request", 
+      "type": "string"
+    }, 
+    "chain_verified": {
+      "description": "Placeholder for description of property chain_verified of obj type SSLCertificate field type str  type boolean.", 
+      "required": false, 
+      "title": "Chain verified", 
+      "type": "boolean"
+    }, 
+    "days_until_expire": {
+      "default": 365, 
+      "description": "Number of days_until_expire. Default value when not specified in API or module is interpreted by ALB Controller as 365.", 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Days until expire", 
+      "type": "integer"
+    }, 
+    "expiry_status": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificateExpiryStatus.html">ALBSSLCertificateExpiryStatus</A>, 
+      "default": "SSL_CERTIFICATE_GOOD", 
+      "description": "Enum options - SSL_CERTIFICATE_GOOD, SSL_CERTIFICATE_EXPIRY_WARNING, SSL_CERTIFICATE_EXPIRED. Default value when not specified in API or module is interpreted by ALB Controller as SSL_CERTIFICATE_GOOD.", 
+      "required": false, 
+      "title": "Expiry status"
+    }, 
+    "fingerprint": {
+      "description": "fingerprint of SSLCertificate.", 
+      "required": false, 
+      "title": "Fingerprint", 
+      "type": "string"
+    }, 
+    "issuer": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificateDescription.html">ALBSSLCertificateDescription</A>, 
+      "description": "Placeholder for description of property issuer of obj type SSLCertificate field type str  type ref.", 
+      "required": false, 
+      "title": "Issuer"
+    }, 
+    "key_params": {
+      "$ref": "<A HREF="schemas_ALBSSLKeyParams.html">ALBSSLKeyParams</A>, 
+      "description": "Placeholder for description of property key_params of obj type SSLCertificate field type str  type ref.", 
+      "required": false, 
+      "title": "Key params"
+    }, 
+    "not_after": {
+      "description": "not_after of SSLCertificate.", 
+      "required": false, 
+      "title": "Not after", 
+      "type": "string"
+    }, 
+    "not_before": {
+      "description": "not_before of SSLCertificate.", 
+      "required": false, 
+      "title": "Not before", 
+      "type": "string"
+    }, 
+    "public_key": {
+      "description": "public_key of SSLCertificate.", 
+      "required": false, 
+      "title": "Public key", 
+      "type": "string"
+    }, 
+    "self_signed": {
+      "description": "Placeholder for description of property self_signed of obj type SSLCertificate field type str  type boolean.", 
+      "required": false, 
+      "title": "Self signed", 
+      "type": "boolean"
+    }, 
+    "serial_number": {
+      "description": "serial_number of SSLCertificate.", 
+      "required": false, 
+      "title": "Serial number", 
+      "type": "string"
+    }, 
+    "signature": {
+      "description": "signature of SSLCertificate.", 
+      "required": false, 
+      "title": "Signature", 
+      "type": "string"
+    }, 
+    "signature_algorithm": {
+      "description": "signature_algorithm of SSLCertificate.", 
+      "required": false, 
+      "title": "Signature algorithm", 
+      "type": "string"
+    }, 
+    "subject": {
+      "$ref": "<A HREF="schemas_ALBSSLCertificateDescription.html">ALBSSLCertificateDescription</A>, 
+      "description": "Placeholder for description of property subject of obj type SSLCertificate field type str  type ref.", 
+      "required": false, 
+      "title": "Subject"
+    }, 
+    "subject_alt_names": {
+      "description": "subjectAltName that provides additional subject identities.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Subject alt names", 
+      "type": "array"
+    }, 
+    "text": {
+      "description": "text of SSLCertificate.", 
+      "required": false, 
+      "title": "Text", 
+      "type": "string"
+    }, 
+    "version": {
+      "description": "version of SSLCertificate.", 
+      "required": false, 
+      "title": "Version", 
+      "type": "string"
+    }
+  }, 
+  "title": "SSLCertificate", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

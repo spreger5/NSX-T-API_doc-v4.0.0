@@ -1,0 +1,257 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_monitoring.html' style='text-decoration: none'> Monitoring</a> >
+        
+        
+            <a href='system_administration_monitoring_dashboards.html' style='text-decoration: none'> Dashboards</a> >
+        
+        
+            <a href='system_administration_monitoring_dashboards_widget_configuration.html' style='text-decoration: none'> Widget Configuration</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns the Widget Configurations based on query criteria defined in WidgetQueryParameters.</h4><br>
+                      <span class="help_detail">If no query params are specified then all the Widget Configurations of
+<br>
+the specified view are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListWidgetConfigurations.html">GET /api/v1/ui-views/&lt;view-id&gt;/widgetconfigurations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Creates a new Widget Configuration.</h4><br>
+                      <span class="help_detail">Creates a new Widget Configuration and adds it to the specified view.
+<br>
+Supported resource_types are LabelValueConfiguration, DonutConfiguration,
+<br>
+GridConfiguration, StatsConfiguration, MultiWidgetConfiguration,
+<br>
+GraphConfiguration and ContainerConfiguration.
+<br>
+
+<br>
+Note: Expressions should be given in a single line. If an expression spans
+<br>
+  multiple lines, then form the expression in a single line.
+<br>
+For label-value pairs, expressions are evaluated as follows:
+<br>
+  a. First, render configurations are evaluated in their order of
+<br>
+     appearance in the widget config. The 'field' is evaluated at the end.
+<br>
+  b. Second, when render configuration is provided then the order of
+<br>
+     evaluation is
+<br>
+     1. If expressions provided in 'condition' and 'display value' are
+<br>
+        well-formed and free of runtime-errors such as 'null pointers' and
+<br>
+        evaluates to 'true'; Then remaining render configurations are not
+<br>
+        evaluated, and the current render configuration's 'display value'
+<br>
+        is taken as the final value.
+<br>
+     2. If expression provided in 'condition' of render configuration is
+<br>
+        false, then next render configuration is evaluated.
+<br>
+     3. Finally, 'field' is evaluated only when every render configuration
+<br>
+        evaluates to false and no error occurs during steps 1 and 2 above.
+<br>
+
+<br>
+If an error occurs during evaluation of render configuration, then an
+<br>
+  error message is shown. The display value corresponding to that label is
+<br>
+  not shown and evaluation of the remaining render configurations continues
+<br>
+  to collect and show all the error messages (marked with the 'Label' for
+<br>
+  identification) as 'Error_Messages: {}'.
+<br>
+
+<br>
+If during evaluation of expressions for any label-value pair an error
+<br>
+  occurs, then it is marked with error. The errors are shown in the report,
+<br>
+  along with the label value pairs that are error-free.
+<br>
+
+<br>
+Important: For elements that take expressions, strings should be provided
+<br>
+  by escaping them with a back-slash. These elements are - condition, field,
+<br>
+  tooltip text and render_configuration's display_value.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateWidgetConfiguration.html">POST /api/v1/ui-views/&lt;view-id&gt;/widgetconfigurations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Widget Configuration</h4><br>
+                      <span class="help_detail">Detaches widget from a given view. If the widget is no longer part of any
+<br>
+view, then it will be purged.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteWidgetConfiguration.html">DELETE /api/v1/ui-views/&lt;view-id&gt;/widgetconfigurations/&lt;widgetconfiguration-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns Widget Configuration Information</h4><br>
+                      <span class="help_detail">Returns Information about a specific Widget Configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetWidgetConfiguration.html">GET /api/v1/ui-views/&lt;view-id&gt;/widgetconfigurations/&lt;widgetconfiguration-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Widget Configuration</h4><br>
+                      <span class="help_detail">Updates the widget at the given view. If the widget is referenced by other
+<br>
+views, then the widget will be updated in all the views that it is part of.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateWidgetConfiguration.html">PUT /api/v1/ui-views/&lt;view-id&gt;/widgetconfigurations/&lt;widgetconfiguration-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

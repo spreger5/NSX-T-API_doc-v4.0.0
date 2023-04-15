@@ -1,0 +1,207 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TransportZone.html">TransportZone</a> (<a href="types_TransportZone.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "TransportZone", 
+  "module_id": "TransportZone", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "is_default": {
+      "default": false, 
+      "description": "Only one transport zone can be the default one for a given transport zone type. APIs that need transport zone can choose to use the default transport zone if a transport zone is not given.", 
+      "title": "Flag to indicate if the transport zone is the default one.", 
+      "type": "boolean"
+    }, 
+    "nested_nsx": {
+      "default": false, 
+      "description": "This flag should be set to true in nested NSX environment. When the \"allow_changing_vdr_mac_in_use\" property in the global config object RoutingGlobalConfig is false, this flag can not be changed if this transport zone is OVERLAY and the change will make any transport node in this transport zone to change the VDR MAC used in any host switch. When this flag is true and this transport zone is OVERLAY, all host switches in this transport zone will use the VDR MAC in the \"vdr_mac_nested\" property in the global config object RoutingGlobalConfig.", 
+      "required": false, 
+      "title": "Flag to indicate if all transport nodes in this transport zone are connected through nested NSX.", 
+      "type": "boolean"
+    }, 
+    "origin_id": {
+      "description": "This field is populated only if the transport zone was created by NSX system to support security on vSphere Distributed Switch (vDS). The origin_id will refer to the identifier of corresponding vDS from it's parent vCenter server.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The host switch id generated by the system.", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transport_type": {
+      "$ref": "<A HREF="schemas_TransportType.html">TransportType</A>, 
+      "required": true, 
+      "title": "The transport type of this transport zone."
+    }, 
+    "transport_zone_profile_ids": {
+      "items": {
+        "$ref": "<A HREF="schemas_TransportZoneProfileTypeIdEntry.html">TransportZoneProfileTypeIdEntry</A>
+      }, 
+      "required": false, 
+      "title": "Identifiers of the transport zone profiles associated with this TransportZone.", 
+      "type": "array"
+    }, 
+    "uplink_teaming_policy_names": {
+      "description": "The names of switching uplink teaming policies that all transport nodes in this transport zone must support. An exception will be thrown if a transport node within the transport zone does not support a named teaming policy. The user will need to first ensure all trasnport nodes support the desired named teaming policy before assigning it to the transport zone. If the field is not specified, the host switch's default teaming policy will be used.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Names of the switching uplink teaming policies that are supported by this transport zone.", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

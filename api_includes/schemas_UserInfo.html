@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UserInfo.html">UserInfo</a> (<a href="types_UserInfo.html">type</a>)
+</h3>
+<pre>{
+  "id": "UserInfo", 
+  "module_id": "AAA", 
+  "properties": {
+    "roles": {
+      "items": {
+        "$ref": "<A HREF="schemas_NsxRole.html">NsxRole</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Permissions", 
+      "type": "array"
+    }, 
+    "roles_for_paths": {
+      "description": "The roles that are associated with the user, limiting them to a path. In case the path is null, the roles apply everywhere i.e. it is same as the deprecated property roles.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RolesForPath.html">RolesForPath</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Roles for Paths", 
+      "type": "array"
+    }, 
+    "user_name": {
+      "readonly": true, 
+      "required": true, 
+      "title": "User Name", 
+      "type": "string"
+    }
+  }, 
+  "title": "Authenticated User Info", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

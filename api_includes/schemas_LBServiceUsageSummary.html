@@ -1,0 +1,165 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LBServiceUsageSummary.html">LBServiceUsageSummary</a> (<a href="types_LBServiceUsageSummary.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Describes usage summary of virtual servers, pools and pool members for all load balancer services.", 
+  "id": "LBServiceUsageSummary", 
+  "module_id": "PolicyLBStatistics", 
+  "properties": {
+    "current_pool_count": {
+      "description": "The current count of pools configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The current pool count", 
+      "type": "integer"
+    }, 
+    "current_pool_member_count": {
+      "description": "The current count of pool members configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The current pool member count", 
+      "type": "integer"
+    }, 
+    "current_virtual_server_count": {
+      "description": "The current count of virtual servers configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The current virtual server count", 
+      "type": "integer"
+    }, 
+    "pool_capacity": {
+      "description": "Pool capacity means maximum number of pools which can be configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The capacity of pools", 
+      "type": "integer"
+    }, 
+    "pool_member_capacity": {
+      "description": "Pool capacity means maximum number of pool members which can be configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The capacity of pool members", 
+      "type": "integer"
+    }, 
+    "pool_member_severity": {
+      "$ref": "<A HREF="schemas_LBUsageSeverity.html">LBUsageSeverity</A>, 
+      "description": "The severity calculation is based on the overall usage percentage of pool members for all load balancer services.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "pool_member_usage_percentage": {
+      "description": "Overall pool member usage percentage for all load balancer services.", 
+      "readonly": true, 
+      "title": "Pool member usage percentage", 
+      "type": "number"
+    }, 
+    "pool_severity": {
+      "$ref": "<A HREF="schemas_LBUsageSeverity.html">LBUsageSeverity</A>, 
+      "description": "The severity calculation is based on the overall usage percentage of pools for all load balancer services.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "pool_usage_percentage": {
+      "description": "Overall pool usage percentage for all load balancer services.", 
+      "readonly": true, 
+      "title": "Pool usage percentage", 
+      "type": "number"
+    }, 
+    "service_counts": {
+      "description": "The service count for each load balancer usage severity.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LBServiceCountPerSeverity.html">LBServiceCountPerSeverity</A>
+      }, 
+      "readonly": true, 
+      "title": "LB service count for each severity", 
+      "type": "array"
+    }, 
+    "service_usages": {
+      "description": "The property identifies all lb service usages. By default, it is not included in response. It exists when parameter ?include_usages=true.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LBServiceUsage.html">LBServiceUsage</A>
+      }, 
+      "readonly": true, 
+      "title": "LB service usages", 
+      "type": "array"
+    }, 
+    "virtual_server_capacity": {
+      "description": "Virtual server capacity means maximum number of virtual servers which can be configured for all load balancer services.", 
+      "readonly": true, 
+      "title": "The capacity of virtual servers", 
+      "type": "integer"
+    }, 
+    "virtual_server_severity": {
+      "$ref": "<A HREF="schemas_LBUsageSeverity.html">LBUsageSeverity</A>, 
+      "description": "The severity calculation is based on the overall usage percentage of virtual servers for all load balancer services.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "virtual_server_usage_percentage": {
+      "description": "Overall virtual server usage percentage for all load balancer services.", 
+      "readonly": true, 
+      "title": "Virtual server usage percentage", 
+      "type": "number"
+    }
+  }, 
+  "title": "The usage summary for all load balancer services", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

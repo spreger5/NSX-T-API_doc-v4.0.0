@@ -1,0 +1,140 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OspfDatabaseStatus.html">OspfDatabaseStatus</a> (<a href="types_OspfDatabaseStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "OspfDatabaseStatus", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "area_id": {
+      "description": "OSPF area id to filter the the OSPF database.", 
+      "required": false, 
+      "title": "OSPF area id filter parameter", 
+      "type": "string"
+    }, 
+    "asbr_summary_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfSummaryLinkStates.html">MpOspfSummaryLinkStates</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of ASBR summary link state of OSPF database", 
+      "type": "array"
+    }, 
+    "edge_path": {
+      "description": "Policy path to edge node.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Policy path to edge node", 
+      "type": "string"
+    }, 
+    "external_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfExternalLinkState.html">MpOspfExternalLinkState</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of external link of OSPF database", 
+      "type": "array"
+    }, 
+    "net_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfNetworkLinkStates.html">MpOspfNetworkLinkStates</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of network link state of OSPF database", 
+      "type": "array"
+    }, 
+    "nssa_external_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfExternalLinkState.html">MpOspfExternalLinkState</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of nssa external link of OSPF database", 
+      "type": "array"
+    }, 
+    "router_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfRouterLinkStates.html">MpOspfRouterLinkStates</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of link state of OSPF database", 
+      "type": "array"
+    }, 
+    "summary_link_states": {
+      "items": {
+        "$ref": "<A HREF="schemas_MpOspfSummaryLinkStates.html">MpOspfSummaryLinkStates</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "array of summary link state of OSPF database", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

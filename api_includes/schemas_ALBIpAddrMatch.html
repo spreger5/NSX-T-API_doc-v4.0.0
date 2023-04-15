@@ -1,0 +1,183 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBIpAddrMatch.html">ALBIpAddrMatch</a> (<a href="types_ALBIpAddrMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer IpAddrMatch object", 
+  "id": "ALBIpAddrMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "addrs": {
+      "description": "IP address(es).", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>
+      }, 
+      "required": false, 
+      "title": "Addrs", 
+      "type": "array"
+    }, 
+    "group_paths": {
+      "description": "path of IP address group(s). It is a reference to an object of type IpAddrGroup.", 
+      "items": {
+        "type": "string"
+      }, 
+      "ref": "rel1", 
+      "required": false, 
+      "title": "Group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBDnsPolicy"
+          ], 
+          "relationshipType": "ALB_DNSPOLICY_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBHTTPPolicySet"
+          ], 
+          "relationshipType": "ALB_HTTPPOLICYSET_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBL4PolicySet"
+          ], 
+          "relationshipType": "ALB_L4POLICYSET_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBNetworkSecurityPolicy"
+          ], 
+          "relationshipType": "ALB_NETWORKSECURITYPOLICY_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBSSOPolicy"
+          ], 
+          "relationshipType": "ALB_SSOPOLICY_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBWafPolicy"
+          ], 
+          "relationshipType": "ALB_WAFPOLICY_ALB_IPADDRGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBIpAddrGroup"
+          ]
+        }
+      ]
+    }, 
+    "match_criteria": {
+      "$ref": "<A HREF="schemas_ALBMatchOperation.html">ALBMatchOperation</A>, 
+      "description": "Criterion to use for IP address matching the HTTP request. Enum options - IS_IN, IS_NOT_IN.", 
+      "required": true, 
+      "title": "Match criteria"
+    }, 
+    "prefixes": {
+      "description": "IP address prefix(es).", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>
+      }, 
+      "required": false, 
+      "title": "Prefixes", 
+      "type": "array"
+    }, 
+    "ranges": {
+      "description": "IP address range(s).", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddrRange.html">ALBIpAddrRange</A>
+      }, 
+      "required": false, 
+      "title": "Ranges", 
+      "type": "array"
+    }
+  }, 
+  "title": "IpAddrMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

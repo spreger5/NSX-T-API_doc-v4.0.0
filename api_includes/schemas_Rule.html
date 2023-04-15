@@ -1,0 +1,700 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Rule.html">Rule</a> (<a href="types_Rule.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "A rule indicates the action to be performed for various types of traffic flowing between workload groups.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseRule.html">BaseRule</A>
+  }, 
+  "id": "Rule", 
+  "module_id": "Policy", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "action": {
+      "description": "The action to be applied to all the services The JUMP_TO_APPLICATION action is only supported for rules created in the Environment category. Once a match is hit then the rule processing will jump to the rules present in the Application category, skipping all further rules in the Environment category. If no rules match in the Application category then the default application rule will be hit. This is applicable only for DFW.", 
+      "enum": [
+        "ALLOW", 
+        "DROP", 
+        "REJECT", 
+        "JUMP_TO_APPLICATION"
+      ], 
+      "required": false, 
+      "title": "Action", 
+      "type": "string"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "destination_groups": {
+      "description": "We need paths as duplicate names may exist for groups under different domains. Along with paths we support IP Address of type IPv4 and IPv6. IP Address can be in one of the format(CIDR, IP Address, Range of IP Address). In order to specify all groups, use the constant \"ANY\". This is case insensitive. If \"ANY\" is used, it should be the ONLY element in the group array. Error will be thrown if ANY is used in conjunction with other values.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Destination group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Rule", 
+            "ForwardingRule", 
+            "RedirectionRule"
+          ], 
+          "relationshipType": "COMMUNICATION_ENTRY_DEST_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "TlsRule"
+          ], 
+          "relationshipType": "TLS_GATEWAY_RULE_DEST_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "IdsRule"
+          ], 
+          "relationshipType": "IDS_RULE_DEST_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "SecurityPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "GatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "ForwardingPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "IdsGatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }
+      ]
+    }, 
+    "destinations_excluded": {
+      "default": false, 
+      "description": "If set to true, the rule gets applied on all the groups that are NOT part of the destination groups. If false, the rule applies to the destination groups", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Negation of destination groups", 
+      "type": "boolean"
+    }, 
+    "direction": {
+      "default": "IN_OUT", 
+      "description": "Define direction of traffic.", 
+      "enum": [
+        "IN", 
+        "OUT", 
+        "IN_OUT"
+      ], 
+      "required": false, 
+      "title": "Direction", 
+      "type": "string"
+    }, 
+    "disabled": {
+      "default": false, 
+      "description": "Flag to disable the rule. Default is enabled.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Flag to disable the rule", 
+      "type": "boolean"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ip_protocol": {
+      "description": "Type of IP packet that should be matched while enforcing the rule. The value is set to IPV4_IPV6 for Layer3 rule if not specified. For Layer2/Ether rule the value must be null.", 
+      "enum": [
+        "IPV4", 
+        "IPV6", 
+        "IPV4_IPV6"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "IPv4 vs IPv6 packet type", 
+      "type": "string"
+    }, 
+    "is_default": {
+      "description": "A flag to indicate whether rule is a default rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Default rule flag", 
+      "type": "boolean"
+    }, 
+    "logged": {
+      "default": false, 
+      "description": "Flag to enable packet logging. Default is disabled.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Enable logging flag", 
+      "type": "boolean"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "notes": {
+      "description": "Text for additional notes on changes.", 
+      "maxLength": 2048, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Text for additional notes on changes", 
+      "type": "string"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "profiles": {
+      "description": "Holds the list of layer 7 service profile paths. These profiles accept attributes and sub-attributes of various network services (e.g. L4 AppId, encryption algorithm, domain name, etc) as key value pairs. Instead of Layer 7 service profiles you can use a L7 access profile. One of either Layer 7 service profiles or L7 Access Profile can be used in firewall rule. In case of L7 access profile only one is allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Layer 7 service profiles or TLS action profile", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Rule", 
+            "ForwardingRule", 
+            "RedirectionRule"
+          ], 
+          "relationshipType": "COMMUNICATION_ENTRY_CONTEXT_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "PolicyContextProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "TlsRule"
+          ], 
+          "relationshipType": "TLS_GATEWAY_RULE_CONTEXT_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "PolicyContextProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "IdsRule"
+          ], 
+          "relationshipType": "IDS_RULE_IDS_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IdsProfile", 
+            "IdsProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "SecurityPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "GatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "ForwardingPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "IdsGatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }
+      ]
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "rule_id": {
+      "description": "This is a unique 4 byte positive number that is assigned by the system.  This rule id is passed all the way down to the data path. The first 1GB (1000 to 2^30) will be shared by GM and LM with zebra style striped number space. For E.g 1000 to (1Million -1) by LM, (1M - 2M-1) by GM and so on.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Unique rule ID", 
+      "type": "integer"
+    }, 
+    "scope": {
+      "description": "The list of policy paths where the rule is applied LR/Edge/T0/T1/LRP etc. Note that a given rule can be applied on multiple LRs/LRPs.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Rule", 
+            "ForwardingRule", 
+            "RedirectionRule"
+          ], 
+          "relationshipType": "COMMUNICATION_ENTRY_SCOPE_RELATIONSHIP", 
+          "rightType": [
+            "PolicyLabel", 
+            "Tier0Interface", 
+            "Tier1Interface", 
+            "Tier0", 
+            "Tier1", 
+            "IPSecVpnSession", 
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "TlsRule"
+          ], 
+          "relationshipType": "TLS_GATEWAY_RULE_SCOPE_RELATIONSHIP", 
+          "rightType": [
+            "PolicyLabel", 
+            "Tier1Interface", 
+            "Tier0", 
+            "Tier1Interface", 
+            "Tier1", 
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "IdsRule"
+          ], 
+          "relationshipType": "IDS_RULE_SCOPE_RELATIONSHIP", 
+          "rightType": [
+            "PolicyLabel", 
+            "Tier1Interface", 
+            "Tier0", 
+            "Tier1Interface", 
+            "Tier1", 
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "SecurityPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "GatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "ForwardingPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "IdsGatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }
+      ]
+    }, 
+    "sequence_number": {
+      "description": "This field is used to resolve conflicts between multiple Rules under Security or Gateway Policy for a Domain If no sequence number is specified in the payload, a value of 0 is assigned by default. If there are multiple rules with the same sequence number then their order is not deterministic. If a specific order of rules is desired, then one has to specify unique sequence numbers or use the POST request on the rule entity with a query parameter action=revise to let the framework assign a sequence number", 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Sequence number of the this Rule", 
+      "type": "int"
+    }, 
+    "service_entries": {
+      "description": "In order to specify raw services this can be used, along with services which contains path to services. This can be empty or null.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ServiceEntry.html">ServiceEntry</A>
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Raw services", 
+      "type": "array"
+    }, 
+    "services": {
+      "description": "In order to specify all services, use the constant \"ANY\". This is case insensitive. If \"ANY\" is used, it should be the ONLY element in the services array. Error will be thrown if ANY is used in conjunction with other values.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Names of services", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Rule", 
+            "ForwardingRule", 
+            "RedirectionRule"
+          ], 
+          "relationshipType": "COMMUNICATION_ENTRY_SERVICE_RELATIONSHIP", 
+          "rightType": [
+            "Service"
+          ]
+        }, 
+        {
+          "leftType": [
+            "TlsRule"
+          ], 
+          "relationshipType": "TLS_GATEWAY_RULE_SERVICE_RELATIONSHIP", 
+          "rightType": [
+            "Service"
+          ]
+        }, 
+        {
+          "leftType": [
+            "IdsRule"
+          ], 
+          "relationshipType": "IDS_RULE_SERVICE_RELATIONSHIP", 
+          "rightType": [
+            "Service"
+          ]
+        }, 
+        {
+          "leftType": [
+            "SecurityPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "GatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "ForwardingPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "IdsGatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }
+      ]
+    }, 
+    "source_groups": {
+      "description": "We need paths as duplicate names may exist for groups under different domains. Along with paths we support IP Address of type IPv4 and IPv6. IP Address can be in one of the format(CIDR, IP Address, Range of IP Address). In order to specify all groups, use the constant \"ANY\". This is case insensitive. If \"ANY\" is used, it should be the ONLY element in the group array. Error will be thrown if ANY is used in conjunction with other values.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "Source group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Rule", 
+            "ForwardingRule", 
+            "RedirectionRule"
+          ], 
+          "relationshipType": "COMMUNICATION_ENTRY_SOURCE_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "TlsRule"
+          ], 
+          "relationshipType": "TLS_GATEWAY_RULE_SOURCE_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "IdsRule"
+          ], 
+          "relationshipType": "IDS_RULE_SOURCE_GROUP_RELATIONSHIP", 
+          "rightType": [
+            "Group"
+          ]
+        }, 
+        {
+          "leftType": [
+            "SecurityPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "GatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "ForwardingPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }, 
+        {
+          "leftType": [
+            "IdsGatewayPolicy"
+          ], 
+          "relationshipType": "IGNORE", 
+          "rightType": []
+        }
+      ]
+    }, 
+    "sources_excluded": {
+      "default": false, 
+      "description": "If set to true, the rule gets applied on all the groups that are NOT part of the source groups. If false, the rule applies to the source groups", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Negation of source groups", 
+      "type": "boolean"
+    }, 
+    "tag": {
+      "description": "User level field which will be printed in CLI and packet logs. Even though there is no limitation on length of a tag, internally tag will get truncated after 32 characters.", 
+      "required": false, 
+      "title": "Tag applied on the rule", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "A rule specifies the security policy rule between the workload groups", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

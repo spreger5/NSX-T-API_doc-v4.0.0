@@ -1,0 +1,222 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DirectoryAdDomain.html">DirectoryAdDomain</a> (<a href="types_DirectoryAdDomain.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_DirectoryDomain.html">DirectoryDomain</A>
+  }, 
+  "id": "DirectoryAdDomain", 
+  "module_id": "DirectoryService", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "DirectoryAdDomain"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "base_distinguished_name": {
+      "description": "Each active directory domain has a domain naming context (NC), which contains domain-specific data. The root of this naming context is represented by a domain's distinguished name (DN) and is typically referred to as the NC head.", 
+      "required": true, 
+      "title": "Directory domain base distinguished name", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "event_log_servers": {
+      "description": "Directory domain Event Log server's information including host, name, protocol and so on.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DirectoryEventLogServer.html">DirectoryEventLogServer</A>
+      }, 
+      "maxItems": 50, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Event Log server of directory domain", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ldap_servers": {
+      "description": "Directory domain LDAP servers' information including host, name, port, protocol and so on.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DirectoryLdapServer.html">DirectoryLdapServer</A>
+      }, 
+      "maxItems": 50, 
+      "required": true, 
+      "title": "LDAP server of directory domain", 
+      "type": "array"
+    }, 
+    "name": {
+      "description": "Directory domain name which best describes the domain. It could be unique fqdn name or it could also be descriptive. There is no unique contraint for domain name among different domains.", 
+      "required": true, 
+      "title": "Directory domain name", 
+      "type": "string"
+    }, 
+    "netbios_name": {
+      "description": "NetBIOS names can contain all alphanumeric characters except for the certain disallowed characters. Names can contain a period, but names cannot start with a period. NetBIOS is similar to DNS in that it can serve as a directory service, but more limited as it has no provisions for a name hierarchy and names are limited to 15 characters. The netbios name is case insensitive and is stored in upper case regardless of input case.", 
+      "required": true, 
+      "title": "Directory domain NETBIOS name", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "Domain resource type comes from multiple sub-classes extending this base class. For example, DirectoryAdDomain is one accepted resource_type. If there are more sub-classes defined, they will also be accepted resource_type.", 
+      "enum": [
+        "DirectoryAdDomain"
+      ], 
+      "required": true, 
+      "title": "Directory domain resource type", 
+      "type": "string"
+    }, 
+    "selective_sync_settings": {
+      "$ref": "<A HREF="schemas_SelectiveSyncSettings.html">SelectiveSyncSettings</A>, 
+      "description": "SelectiveSync settings toggle the SelectiveSync feature and selected OrgUnits. If this is not specified, SelectiveSync is disabled by default.", 
+      "required": false, 
+      "title": "SelectiveSync settings"
+    }, 
+    "sync_settings": {
+      "$ref": "<A HREF="schemas_DirectoryDomainSyncSettings.html">DirectoryDomainSyncSettings</A>, 
+      "description": "Each domain sync settings can be changed using this object. It is not required since there are default values used if there is no specification for this object.", 
+      "required": false, 
+      "title": "Directory domain sync settings"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "Active Directory Domain", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

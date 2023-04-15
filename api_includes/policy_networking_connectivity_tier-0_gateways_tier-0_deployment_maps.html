@@ -1,0 +1,194 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways.html' style='text-decoration: none'> Tier-0 Gateways</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways_tier-0_deployment_maps.html' style='text-decoration: none'> Tier-0 Deployment Maps</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Tier-0 Deployment maps</h4><br>
+                      <span class="help_detail">Paginated list of all Tier-0 Deployment Entries.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0DeploymentMaps.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps</a>
+                            <br>
+                            
+                            <a href="method_ListTier0DeploymentMaps.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier-0 Deployment Map</h4><br>
+                      <span class="help_detail">Delete Tier-0 Deployment Map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0DeploymentMap.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a Tier-0 Deployment Map</h4><br>
+                      <span class="help_detail">Read a Tier-0 Deployment Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier0DeploymentMap.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTier0DeploymentMap.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Tier-0 Deployment Map under Tier-0</h4><br>
+                      <span class="help_detail">If the passed Tier-0 Deployment Map does not already exist, create a new Tier-0 Deployment Map.
+<br>
+If it already exists, patch it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier0DeploymentMap.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new Tier-0 Deployment Map under Tier-0</h4><br>
+                      <span class="help_detail">If the passed Tier-0 Deployment Map does not already exist, create a new Tier-0 Deployment Map.
+<br>
+If it already exists, replace it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0DeploymentMap.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/tier-0-deployment-maps/&lt;tier-0-deployment-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

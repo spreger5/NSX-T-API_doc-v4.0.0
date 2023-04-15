@@ -1,0 +1,187 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LBClientSslProfileBinding.html">LBClientSslProfileBinding</a> (<a href="types_LBClientSslProfileBinding.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "Client SSL profile binding. LBClientSslProfileBinding is deprecated as NSX-T Load Balancer is deprecated.", 
+  "id": "LBClientSslProfileBinding", 
+  "module_id": "PolicyLoadBalancer", 
+  "properties": {
+    "certificate_chain_depth": {
+      "default": 3, 
+      "description": "Authentication depth is used to set the verification depth in the client certificates chain.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "The maximum traversal depth of client certificate chain", 
+      "type": "integer"
+    }, 
+    "client_auth": {
+      "$ref": "<A HREF="schemas_ClientAuthType.html">ClientAuthType</A>, 
+      "default": "IGNORE", 
+      "description": "Client authentication mode.", 
+      "required": false, 
+      "title": "Client authentication mode", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "LBVirtualServer"
+          ], 
+          "relationshipType": "LB_VIRTUAL_SERVER_TLS_CERTIFICATE_RELATIONSHIP", 
+          "rightType": [
+            "TlsCertificate"
+          ]
+        }
+      ]
+    }, 
+    "client_auth_ca_paths": {
+      "description": "If client auth type is REQUIRED, client certificate must be signed by one of the trusted Certificate Authorities (CAs), also referred to as root CAs, whose self signed certificates are specified.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "CA path list to verify client certificate", 
+      "type": "array"
+    }, 
+    "client_auth_crl_paths": {
+      "description": "A Certificate Revocation List (CRL) can be specified in the client-side SSL profile binding to disallow compromised client certificates.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "CRL path list to verify client certificate", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "LBVirtualServer"
+          ], 
+          "relationshipType": "LB_VIRTUAL_SERVER_LB_CLIENT_SSL_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "LBClientSslProfile"
+          ]
+        }
+      ]
+    }, 
+    "default_certificate_path": {
+      "description": "A default certificate should be specified which will be used if the server does not host multiple hostnames on the same IP address or if the client does not support SNI extension.", 
+      "required": true, 
+      "title": "Default service certificate identifier", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "LBVirtualServer"
+          ], 
+          "relationshipType": "LB_VIRTUAL_SERVER_TLS_CERTIFICATE_RELATIONSHIP", 
+          "rightType": [
+            "TlsCertificate"
+          ]
+        }
+      ]
+    }, 
+    "sni_certificate_paths": {
+      "description": "Client-side SSL profile binding allows multiple certificates, for different hostnames, to be bound to the same virtual server.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "SNI certificate path list", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "LBVirtualServer"
+          ], 
+          "relationshipType": "LB_VIRTUAL_SERVER_TLS_CERTIFICATE_RELATIONSHIP", 
+          "rightType": [
+            "TlsCertificate"
+          ]
+        }
+      ]
+    }, 
+    "ssl_profile_path": {
+      "description": "Client SSL profile defines reusable, application-independent client side SSL properties.", 
+      "required": false, 
+      "title": "Client SSL profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "LBVirtualServer"
+          ], 
+          "relationshipType": "LB_VIRTUAL_SERVER_LB_CLIENT_SSL_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "LBClientSslProfile"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "Client SSL profile binding", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

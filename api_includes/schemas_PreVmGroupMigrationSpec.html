@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PreVmGroupMigrationSpec.html">PreVmGroupMigrationSpec</a> (<a href="types_PreVmGroupMigrationSpec.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Migration spec for a VM group that will be used in pre VM group migration step.", 
+  "id": "PreVmGroupMigrationSpec", 
+  "module_id": "Migration", 
+  "properties": {
+    "allow_override": {
+      "default": false, 
+      "description": "Flag to indicate whether to re-run the pre migrate steps for the VM group if they are already run before.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Flag for re-running the pre migrate steps", 
+      "type": "boolean"
+    }, 
+    "federation_site_id": {
+      "description": "Id of the site in NSX-T Federation", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Id of the site in NSX-T Federation", 
+      "type": "string"
+    }, 
+    "group_id": {
+      "description": "User defined VM group id that must be unique among all VM groups ids.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "User defined VM group id", 
+      "type": "string"
+    }, 
+    "vm_instance_ids": {
+      "description": "List of VM instance uuids that can be found in VC inventory.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": false, 
+      "required": true, 
+      "title": "List of VM instance uuids", 
+      "type": "array"
+    }
+  }, 
+  "title": "Migration spec for a VM group", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

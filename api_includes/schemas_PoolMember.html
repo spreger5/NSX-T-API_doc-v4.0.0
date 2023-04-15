@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PoolMember.html">PoolMember</a> (<a href="types_PoolMember.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "PoolMember", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "admin_state": {
+      "$ref": "<A HREF="schemas_PoolMemberAdminStateType.html">PoolMemberAdminStateType</A>, 
+      "default": "ENABLED", 
+      "required": false, 
+      "title": "member admin state"
+    }, 
+    "backup_member": {
+      "default": false, 
+      "description": "Backup servers are typically configured with a sorry page indicating to the user that the application is currently unavailable. While the pool is active (a specified minimum number of pool members are active) BACKUP members are skipped during server selection. When the pool is inactive, incoming connections are sent to only the BACKUP member(s).", 
+      "required": false, 
+      "title": "determine whether the pool member is for backup usage", 
+      "type": "boolean"
+    }, 
+    "display_name": {
+      "required": false, 
+      "title": "pool member name", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": true, 
+      "title": "pool member IP address"
+    }, 
+    "max_concurrent_connections": {
+      "description": "To ensure members are not overloaded, connections to a member can be capped by the load balancer. When a member reaches this limit, it is skipped during server selection. If it is not specified, it means that connections are unlimited.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "maximum concurrent connection number", 
+      "type": "integer"
+    }, 
+    "port": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "description": "If port is specified, all connections will be sent to this port. Only single port is supported. If unset, the same port the client connected to will be used, it could be overrode by default_pool_member_port setting in virtual server. The port should not specified for port range case.", 
+      "required": false, 
+      "title": "pool member port number"
+    }, 
+    "weight": {
+      "default": 1, 
+      "description": "Pool member weight is used for WEIGHTED_ROUND_ROBIN balancing algorithm. The weight value would be ignored in other algorithms.", 
+      "maximum": 256, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "pool member weight", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

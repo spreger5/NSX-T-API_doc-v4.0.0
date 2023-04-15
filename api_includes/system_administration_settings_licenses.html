@@ -1,0 +1,306 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='system_administration_settings_licenses.html' style='text-decoration: none'> Licenses</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Accept end user license agreement
+</h4><br>
+                      <span class="help_detail">Accept end user license agreement
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AcceptEULA.html">POST /policy/api/v1/eula/accept</a>
+                            <br>
+                            
+                            <a href="method_AcceptEULA.html">POST /api/v1/eula/accept</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the acceptance status of end user license agreement
+</h4><br>
+                      <span class="help_detail">Return the acceptance status of end user license agreement
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEULAAcceptance.html">GET /policy/api/v1/eula/acceptance</a>
+                            <br>
+                            
+                            <a href="method_GetEULAAcceptance.html">GET /api/v1/eula/acceptance</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the content of end user license agreement
+</h4><br>
+                      <span class="help_detail">Return the content of end user license agreement in the specified format.
+<br>
+By default, it's pure string without line break
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEULAContent.html">GET /policy/api/v1/eula/content</a>
+                            <br>
+                            
+                            <a href="method_GetEULAContent.html">GET /api/v1/eula/content</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the Enterprise License
+</h4><br>
+                      <span class="help_detail">Return the Enterprise License.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLicense.html">GET /api/v1/license</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Assign an Updated Enterprise License Key
+</h4><br>
+                      <span class="help_detail">Assign an Updated Enterprise License Key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLicense.html">PUT /api/v1/license</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all licenses</h4><br>
+                      <span class="help_detail">Returns all licenses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLicenses.html">GET /api/v1/licenses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove a license</h4><br>
+                      <span class="help_detail">This will delete the license key identified in the request body
+<br>
+by "license_key" and its properties from the system.
+<br>
+Attempting to delete the last license key will result in an error.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLicenseKey.html">POST /api/v1/licenses?action=delete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a new license key</h4><br>
+                      <span class="help_detail">This will add a license key to the system.
+<br>
+The API supports adding only one license key for each license edition
+<br>
+type - Standard, Advanced or Enterprise. If a new license key is tried
+<br>
+to add for an edition for which the license key already exists,
+<br>
+then this API will return an error.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLicense.html">POST /api/v1/licenses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove a license identified by the license-key</h4><br>
+                      <span class="help_detail">Remove a license identified by the license-key.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLicense.html">DELETE /api/v1/licenses/&lt;license-key&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get license properties for license identified by the license-key</h4><br>
+                      <span class="help_detail">Get license properties for license identified by the license-key.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLicenseByKey.html">GET /api/v1/licenses/&lt;license-key&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get usage report of all registered modules</h4><br>
+                      <span class="help_detail">Returns usage report of all registered modules
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLicenseUsageReport.html">GET /api/v1/licenses/licenses-usage</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get usage report of all registred modules in CSV format</h4><br>
+                      <span class="help_detail">Returns usage report of all registered modules in CSV format
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLicenseUsageReportInCsvFormat.html">GET /api/v1/licenses/licenses-usage?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

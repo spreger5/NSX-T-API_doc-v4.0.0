@@ -1,0 +1,222 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Cloud Service Manager >
+        
+        
+            <a href='cloud_service_manager_vpn.html' style='text-decoration: none'> VPN</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns all the NSX managed CSM VPN endpoints
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListCsmVpnEndpoints.html">GET /api/v1/csm/vpn/endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the state of the public cloud routing tables from a VPN point of view.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVpnRoutingTableState.html">GET /api/v1/csm/vpn/routing-tables/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a VPN session in cloud service manager.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateCsmVpnSession.html">POST /api/v1/csm/vpn/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a CSM VPN session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteCsmVpnSession.html">DELETE /api/v1/csm/vpn/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the details of the particular CSM VPN session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadCsmVpnSession.html">GET /api/v1/csm/vpn/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Re-establish an existing CSM VPN session in errored state.
+If the create of an CSM VPN session errored out and the state
+is DOWN, this call can be made. CSM will attempt to re-create
+any missing NSX entities and attempt to re-establish the session.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RecreateCsmVpnSession.html">POST /api/v1/csm/vpn/sessions/&lt;session-id&gt;?action=recreate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing CSM VPN session information</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateCsmVpnSession.html">PUT /api/v1/csm/vpn/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the status and details of the particular CSM VPN session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadCsmVpnSessionStatus.html">GET /api/v1/csm/vpn/sessions/&lt;session-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the statuses of the CSM VPN sessions.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListCsmVpnSessionStatus.html">GET /api/v1/csm/vpn/sessions/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

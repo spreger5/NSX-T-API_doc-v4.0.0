@@ -1,0 +1,91 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VirtualMachineTagsUpdate.html">VirtualMachineTagsUpdate</a> (<a href="types_VirtualMachineTagsUpdate.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "List of tags applied to the virtual machine. Based on the enforcement point, the virtual_machine_id will be different. It could be an external id for NSX T or a moid for NSX V", 
+  "id": "VirtualMachineTagsUpdate", 
+  "module_id": "PolicyRealizedState", 
+  "properties": {
+    "tags": {
+      "description": "List of tags to be applied on the virtual machine", 
+      "help_detail": "The list includes both user defined and system defined tags. The\nexisting tags will be replaced by the ones passed.\n", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "required": true, 
+      "title": "List of tags to be applied to the virtual machine", 
+      "type": "array"
+    }, 
+    "virtual_machine_id": {
+      "description": "The identifier that is used in the enforcement point that uniquely identifies the virtual machine. In case of NSXT it would be the value of the external_id of the virtual machine.", 
+      "required": true, 
+      "title": "This is the value of the identifier on the enforcement point that\nuniquely identifies the virtual machine\n", 
+      "type": "string"
+    }
+  }, 
+  "title": "Payload to update the tags on a Virtual Machine", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

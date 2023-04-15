@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UnidirectionalServicePath.html">UnidirectionalServicePath</a> (<a href="types_UnidirectionalServicePath.html">type</a>)
+</h3>
+<pre>{
+  "description": "Representing either forward or reverse service path for ingress or egress traffic respectively.", 
+  "id": "UnidirectionalServicePath", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "hops": {
+      "description": "List of service path hops that constitutes the forward or reverse service path.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ServicePathHop.html">ServicePathHop</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Forward or reverse service path hops", 
+      "type": "array"
+    }, 
+    "host_cross_count": {
+      "description": "The number of times the traffic needs to cross hosts for the given forward or reverse service path.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Host crossing count", 
+      "type": "integer"
+    }, 
+    "in_maintenance_mode": {
+      "description": "Is forward or revserse service path in maintenance mode or not.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Is in maintenance mode", 
+      "type": "boolean"
+    }, 
+    "is_active": {
+      "description": "Is forward or revserse service path active or not.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Is active", 
+      "type": "boolean"
+    }, 
+    "unidir_service_path_id": {
+      "description": "Unique identifier of one directional service path.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Unidirectional service path id", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Forward or reverse service path", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

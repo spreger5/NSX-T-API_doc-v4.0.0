@@ -1,0 +1,217 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostNode.html">HostNode</a> (<a href="types_HostNode.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Host node", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Node.html">Node</A>
+  }, 
+  "id": "HostNode", 
+  "module_id": "FabricNode", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "HostNode"
+  }, 
+  "properties": {
+    "compute_collection_id": {
+      "description": "Id of the compute collection to which discovered node belongs.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Compute collection id", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'description' must be used instead. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "discovered_ip_addresses": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Discovered IP Addresses of the fabric node, version 4 or 6", 
+      "type": "array"
+    }, 
+    "discovered_node_id": {
+      "description": "Id of discovered node which was converted to create this node", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Discovered node id", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'display_name' must be used instead. For HostNode, this field defaults to ID if not set. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "required": false, 
+      "title": "ID of the Node maintained on the Node and used to recognize the Node", 
+      "type": "string"
+    }, 
+    "fqdn": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Fully qualified domain name of the fabric node", 
+      "type": "string"
+    }, 
+    "host_credential": {
+      "$ref": "<A HREF="schemas_HostNodeLoginCredential.html">HostNodeLoginCredential</A>, 
+      "description": "Login credentials for the host. It is mandatory to provide credentials while adding host to MP to create transport node.", 
+      "required": false, 
+      "title": "Host login credentials"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "description": "Unique identifier of this resource.", 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ip_addresses": {
+      "description": "IP Addresses of the Node, version 4 or 6. This property is mandatory for all nodes except for automatic deployment of edge virtual machine node. For automatic deployment, the ip address from management_port_subnets property will be considered.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "required": false, 
+      "title": "IP Addresses of the Node, version 4 or 6", 
+      "type": "array"
+    }, 
+    "maintenance_mode_state": {
+      "description": "Indicates host node's maintenance mode state. The state is ENTERING when a task to put the host in maintenance-mode is in progress.", 
+      "enum": [
+        "OFF", 
+        "ENTERING", 
+        "ON"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Maintenance mode state", 
+      "type": "string"
+    }, 
+    "managed_by_server": {
+      "description": "The id of the vCenter server managing the ESXi type HostNode", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Id of vCenter server managing the HostNode", 
+      "type": "string"
+    }, 
+    "os_type": {
+      "description": "Hypervisor type, for example ESXi or RHEL Container", 
+      "enum": [
+        "ESXI", 
+        "RHELSERVER", 
+        "WINDOWSSERVER", 
+        "RHELCONTAINER", 
+        "UBUNTUSERVER", 
+        "HYPERV", 
+        "CENTOSSERVER", 
+        "CENTOSCONTAINER", 
+        "SLESSERVER", 
+        "OELSERVER"
+      ], 
+      "required": true, 
+      "title": "Hypervisor OS type", 
+      "type": "string"
+    }, 
+    "os_version": {
+      "description": "Version of the hypervisor operating system", 
+      "required": false, 
+      "title": "Hypervisor OS version", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "help_summary": "Possible values are 'HostNode', 'EdgeNode', 'PublicCloudGatewayNode'", 
+      "required": true, 
+      "title": "Fabric node type, for example 'HostNode', 'EdgeNode' or 'PublicCloudGatewayNode'", 
+      "type": "string"
+    }, 
+    "tags": {
+      "deprecated": true, 
+      "description": "This field is deprecated. TransportNode field 'tags' must be used instead. For EdgeNode and PublicCloudGatewayNode, this field is ignored if specified in request payload.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "windows_install_location": {
+      "description": "Specify an installation folder to install the NSX kernel modules for Windows Server. By default, it is C:\\Program Files\\VMware\\NSX\\.", 
+      "required": false, 
+      "title": "Install location of Windows Server on baremetal being managed by NSX", 
+      "type": "string"
+    }
+  }, 
+  "title": "Host node", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

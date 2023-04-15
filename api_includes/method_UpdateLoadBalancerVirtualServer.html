@@ -1,0 +1,1403 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_services.html' style='text-decoration: none'> Services</a> >
+            
+            
+                <a href='management_plane_api_networking_services_loadbalancer.html' style='text-decoration: none'> Loadbalancer</a>
+            
+        </P>
+    
+        <div id="UpdateLoadBalancerVirtualServer">
+          <h2>
+            Update a load balancer virtual server
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Update a load balancer virtual server.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <b>Deprecated:</b> <br> Use the following Policy API - <br> PUT/PATCH /policy/api/v1/infra/lb-virtual-servers/<lb-virtual-server-id>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">PUT</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/loadbalancer/virtual-servers/&lt;virtual-server-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">LbVirtualServer<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLoadBalancerVirtualServer', 'LbVirtualServer.UpdateLoadBalancerVirtualServer.Request_Body')">+</span></div>
+  </div>
+    <div id="LbVirtualServer.UpdateLoadBalancerVirtualServer.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbVirtualServer.html">
+        <span>LbVirtualServer</span>
+      </a> (<a href="schemas_LbVirtualServer.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>access_list_control</td>
+            
+            <td>IP access list control to filter the connections<br><br>Specifies the access list control to define how to filter the
+<br>
+connections from clients.
+<br>
+</td>
+            
+            <td><a href="types_LbAccessListControl.html">LbAccessListControl</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>access_log_enabled</td>
+            
+            <td>Whether access log is enabled</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>application_profile_id</td>
+            
+            <td>application profile identifier<br><br>The application profile defines the application protocol characteristics.
+<br>
+It is used to influence how load balancing is performed. Currently,
+<br>
+LbFastTCPProfile, LbFastUDPProfile and
+<br>
+LbHttpProfile, etc are supported.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>client_ssl_profile_binding</td>
+            
+            <td>Virtual server side SSL binding setting<br><br>The setting is used when load balancer acts as an SSL server and
+<br>
+terminating the client SSL connection
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td><a href="types_ClientSslProfileBinding.html">ClientSslProfileBinding</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>default_pool_member_port</td>
+            
+            <td>Default pool member port when member port is not defined.<br><br>This is a deprecated property, please use 'default_pool_member_ports'
+<br>
+instead.
+<br>
+If default_pool_member_port is configured and default_pool_member_ports
+<br>
+are not specified, both default_pool_member_port
+<br>
+and default_pool_member_ports in response payload would return the same
+<br>
+port value.
+<br>
+If both are specified, default_pool_member_ports setting would take
+<br>
+effect with higher priority.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>default_pool_member_ports</td>
+            
+            <td>Default pool member ports when member port is not defined.<br><br>If default_pool_member_ports are configured, both
+<br>
+default_pool_member_port and default_pool_member_ports in the response
+<br>
+payload would include port settings, notice that the value of
+<br>
+default_pool_member_port is the first element of
+<br>
+default_pool_member_ports.
+<br>
+</td>
+            
+            <td>array of <a href="types_PortElement.html">PortElement</a></td>
+            
+            <td>Maximum items: 14</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>whether the virtual server is enabled</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ip_address</td>
+            
+            <td>virtual server IP address</td>
+            
+            <td><a href="types_IPAddress.html">IPAddress</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>ip_protocol</td>
+            
+            <td>virtual server IP protocol<br><br>Assigned Internet Protocol in IP header, TCP, UDP are supported.
+<br>
+</td>
+            
+            <td><a href="types_VirtualServerIpProtocol.html">VirtualServerIpProtocol</a></td>
+            
+            <td>Default: "TCP"</td>
+          </tr>
+          <tr>
+            <td>log_significant_event_only</td>
+            
+            <td>Log only significant event in access log<br><br>The property log_significant_event_only can take effect only when
+<br>
+access_log_enabled is true. If log_significant_event_only is true,
+<br>
+significant events are logged in access log.
+<br>
+For L4 virtual server, significant event means unsuccessful(error or
+<br>
+dropped) TCP/UDP connections.
+<br>
+For L7 virtual server, significant event means unsuccessful connections
+<br>
+or HTTP/HTTPS requests which have error response code(e.g. 4xx, 5xx).
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>max_concurrent_connections</td>
+            
+            <td>maximum concurrent connection number<br><br>To ensure one virtual server does not over consume resources,
+<br>
+affecting other applications hosted on the same LBS, connections
+<br>
+to a virtual server can be capped.
+<br>
+If it is not specified, it means that connections are unlimited.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Minimum: 1<br>Maximum: 2147483647</td>
+          </tr>
+          <tr>
+            <td>max_new_connection_rate</td>
+            
+            <td>maximum new connection rate in second<br><br>To ensure one virtual server does not over consume resources,
+<br>
+connections to a member can be rate limited.
+<br>
+If it is not specified, it means that connection rate is unlimited.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Minimum: 1<br>Maximum: 2147483647</td>
+          </tr>
+          <tr>
+            <td>persistence_profile_id</td>
+            
+            <td>persistence profile identifier<br><br>Persistence profile is used to allow related client connections to be
+<br>
+sent to the same backend server.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>pool_id</td>
+            
+            <td>default server pool identifier<br><br>The server pool(LbPool) contains backend servers. Server pool
+<br>
+consists of one or more servers, also referred to as pool members, that
+<br>
+are similarly configured and are running the same application.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>port</td>
+            
+            <td>Virtual server port number or port range<br><br>This is a deprecated property, please use 'ports' instead.
+<br>
+Port setting could be single port for both L7 mode and L4 mode.
+<br>
+For L4 mode, a single port range is also supported.
+<br>
+The port setting could be a single port or port range such as
+<br>
+"80", "1234-1236".
+<br>
+If port is configured and ports are not specified, both port and
+<br>
+ports in response payload would return the same port value.
+<br>
+If both port and ports are configured, ports setting would take effect
+<br>
+with higher priority.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>ports</td>
+            
+            <td>Virtual server ports or port ranges<br><br>Port setting could be a single port for both L7 mode and L4 mode.
+<br>
+For L4 mode, multiple ports or port ranges are also supported such
+<br>
+as "80", "443", "1234-1236".
+<br>
+If ports is configured, both port and ports in the response payload
+<br>
+would include port settings, notice that the port field value is the
+<br>
+first element of ports.
+<br>
+</td>
+            
+            <td>array of <a href="types_PortElement.html">PortElement</a></td>
+            
+            <td>Maximum items: 14</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbVirtualServer</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rule_ids</td>
+            
+            <td>List of load balancer rule identifiers<br><br>Load balancer rules allow customization of load balancing behavior using
+<br>
+match/action rules. Currently, load balancer rules are supported for
+<br>
+only layer 7 virtual servers with LbHttpProfile.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Maximum items: 4000</td>
+          </tr>
+          <tr>
+            <td>server_ssl_profile_binding</td>
+            
+            <td>Pool side SSL binding setting<br><br>The setting is used when load balancer acts as an SSL client and
+<br>
+establishing a connection to the backend server.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td><a href="types_ServerSslProfileBinding.html">ServerSslProfileBinding</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>sorry_pool_id</td>
+            
+            <td>Identifier of sorry server pool<br><br>When load balancer can not select a backend server to serve the
+<br>
+request in default pool or pool in rules, the request would be served
+<br>
+by sorry server pool.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">PUT https://&lt;nsx-mgr&gt;/api/v1/loadbalancer/virtual-servers/a332950f-472d-4ae3-be03-e7ccefe28fbd
+{
+  "resource_type" : "LbVirtualServer",
+  "id" : "a332950f-472d-4ae3-be03-e7ccefe28fbd",
+  "display_name" : "vs1",
+  "ip_address" : "192.168.100.101",
+  "ports" : [ "80" ],
+  "pool_id" : "bf972923-9c40-4183-9a27-8e02d138e8e2",
+  "enabled" : true,
+  "ip_protocol" : "TCP",
+  "port" : "80",
+  "access_log_enabled" : false,
+  "application_profile_id" : "cb2d0721-cc15-5b8e-8633-14be114eac5e",
+  "_create_time" : 1515662800997,
+  "_last_modified_user" : "admin",
+  "_last_modified_time" : 1515662800997,
+  "_system_owned" : false,
+  "_create_user" : "admin",
+  "_protection" : "NOT_PROTECTED",
+  "_revision" : 0
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">LbVirtualServer<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'UpdateLoadBalancerVirtualServer', 'LbVirtualServer.UpdateLoadBalancerVirtualServer.Response_Body')">+</span></div>
+  </div>
+    <div id="LbVirtualServer.UpdateLoadBalancerVirtualServer.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbVirtualServer.html">
+        <span>LbVirtualServer</span>
+      </a> (<a href="schemas_LbVirtualServer.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>access_list_control</td>
+            
+            <td>IP access list control to filter the connections<br><br>Specifies the access list control to define how to filter the
+<br>
+connections from clients.
+<br>
+</td>
+            
+            <td><a href="types_LbAccessListControl.html">LbAccessListControl</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>access_log_enabled</td>
+            
+            <td>Whether access log is enabled</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>application_profile_id</td>
+            
+            <td>application profile identifier<br><br>The application profile defines the application protocol characteristics.
+<br>
+It is used to influence how load balancing is performed. Currently,
+<br>
+LbFastTCPProfile, LbFastUDPProfile and
+<br>
+LbHttpProfile, etc are supported.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>client_ssl_profile_binding</td>
+            
+            <td>Virtual server side SSL binding setting<br><br>The setting is used when load balancer acts as an SSL server and
+<br>
+terminating the client SSL connection
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td><a href="types_ClientSslProfileBinding.html">ClientSslProfileBinding</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>default_pool_member_port</td>
+            
+            <td>Default pool member port when member port is not defined.<br><br>This is a deprecated property, please use 'default_pool_member_ports'
+<br>
+instead.
+<br>
+If default_pool_member_port is configured and default_pool_member_ports
+<br>
+are not specified, both default_pool_member_port
+<br>
+and default_pool_member_ports in response payload would return the same
+<br>
+port value.
+<br>
+If both are specified, default_pool_member_ports setting would take
+<br>
+effect with higher priority.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>default_pool_member_ports</td>
+            
+            <td>Default pool member ports when member port is not defined.<br><br>If default_pool_member_ports are configured, both
+<br>
+default_pool_member_port and default_pool_member_ports in the response
+<br>
+payload would include port settings, notice that the value of
+<br>
+default_pool_member_port is the first element of
+<br>
+default_pool_member_ports.
+<br>
+</td>
+            
+            <td>array of <a href="types_PortElement.html">PortElement</a></td>
+            
+            <td>Maximum items: 14</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>enabled</td>
+            
+            <td>whether the virtual server is enabled</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ip_address</td>
+            
+            <td>virtual server IP address</td>
+            
+            <td><a href="types_IPAddress.html">IPAddress</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>ip_protocol</td>
+            
+            <td>virtual server IP protocol<br><br>Assigned Internet Protocol in IP header, TCP, UDP are supported.
+<br>
+</td>
+            
+            <td><a href="types_VirtualServerIpProtocol.html">VirtualServerIpProtocol</a></td>
+            
+            <td>Default: "TCP"</td>
+          </tr>
+          <tr>
+            <td>log_significant_event_only</td>
+            
+            <td>Log only significant event in access log<br><br>The property log_significant_event_only can take effect only when
+<br>
+access_log_enabled is true. If log_significant_event_only is true,
+<br>
+significant events are logged in access log.
+<br>
+For L4 virtual server, significant event means unsuccessful(error or
+<br>
+dropped) TCP/UDP connections.
+<br>
+For L7 virtual server, significant event means unsuccessful connections
+<br>
+or HTTP/HTTPS requests which have error response code(e.g. 4xx, 5xx).
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>max_concurrent_connections</td>
+            
+            <td>maximum concurrent connection number<br><br>To ensure one virtual server does not over consume resources,
+<br>
+affecting other applications hosted on the same LBS, connections
+<br>
+to a virtual server can be capped.
+<br>
+If it is not specified, it means that connections are unlimited.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Minimum: 1<br>Maximum: 2147483647</td>
+          </tr>
+          <tr>
+            <td>max_new_connection_rate</td>
+            
+            <td>maximum new connection rate in second<br><br>To ensure one virtual server does not over consume resources,
+<br>
+connections to a member can be rate limited.
+<br>
+If it is not specified, it means that connection rate is unlimited.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Minimum: 1<br>Maximum: 2147483647</td>
+          </tr>
+          <tr>
+            <td>persistence_profile_id</td>
+            
+            <td>persistence profile identifier<br><br>Persistence profile is used to allow related client connections to be
+<br>
+sent to the same backend server.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>pool_id</td>
+            
+            <td>default server pool identifier<br><br>The server pool(LbPool) contains backend servers. Server pool
+<br>
+consists of one or more servers, also referred to as pool members, that
+<br>
+are similarly configured and are running the same application.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>port</td>
+            
+            <td>Virtual server port number or port range<br><br>This is a deprecated property, please use 'ports' instead.
+<br>
+Port setting could be single port for both L7 mode and L4 mode.
+<br>
+For L4 mode, a single port range is also supported.
+<br>
+The port setting could be a single port or port range such as
+<br>
+"80", "1234-1236".
+<br>
+If port is configured and ports are not specified, both port and
+<br>
+ports in response payload would return the same port value.
+<br>
+If both port and ports are configured, ports setting would take effect
+<br>
+with higher priority.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>ports</td>
+            
+            <td>Virtual server ports or port ranges<br><br>Port setting could be a single port for both L7 mode and L4 mode.
+<br>
+For L4 mode, multiple ports or port ranges are also supported such
+<br>
+as "80", "443", "1234-1236".
+<br>
+If ports is configured, both port and ports in the response payload
+<br>
+would include port settings, notice that the port field value is the
+<br>
+first element of ports.
+<br>
+</td>
+            
+            <td>array of <a href="types_PortElement.html">PortElement</a></td>
+            
+            <td>Maximum items: 14</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbVirtualServer</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rule_ids</td>
+            
+            <td>List of load balancer rule identifiers<br><br>Load balancer rules allow customization of load balancing behavior using
+<br>
+match/action rules. Currently, load balancer rules are supported for
+<br>
+only layer 7 virtual servers with LbHttpProfile.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Maximum items: 4000</td>
+          </tr>
+          <tr>
+            <td>server_ssl_profile_binding</td>
+            
+            <td>Pool side SSL binding setting<br><br>The setting is used when load balancer acts as an SSL client and
+<br>
+establishing a connection to the backend server.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td><a href="types_ServerSslProfileBinding.html">ServerSslProfileBinding</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>sorry_pool_id</td>
+            
+            <td>Identifier of sorry server pool<br><br>When load balancer can not select a backend server to serve the
+<br>
+request in default pool or pool in rules, the request would be served
+<br>
+by sorry server pool.
+<br>
+The property is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "resource_type" : "LbVirtualServer",
+  "id" : "a332950f-472d-4ae3-be03-e7ccefe28fbd",
+  "display_name" : "virtualserver1",
+  "ip_address" : "192.168.100.101",
+  "ports" : [ "80" ],
+  "pool_id" : "bf972923-9c40-4183-9a27-8e02d138e8e2",
+  "enabled" : true,
+  "ip_protocol" : "TCP",
+  "port" : "80",
+  "access_log_enabled" : false,
+  "application_profile_id" : "cb2d0721-cc15-5b8e-8633-14be114eac5e",
+  "_create_time" : 1515662800997,
+  "_last_modified_user" : "admin",
+  "_last_modified_time" : 1515736438559,
+  "_system_owned" : false,
+  "_create_user" : "admin",
+  "_protection" : "NOT_PROTECTED",
+  "_revision" : 1
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">lb_virtual_servers</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

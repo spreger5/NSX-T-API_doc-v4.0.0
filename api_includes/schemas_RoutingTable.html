@@ -1,0 +1,113 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RoutingTable.html">RoutingTable</a> (<a href="types_RoutingTable.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Routing table.", 
+  "id": "RoutingTable", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "count": {
+      "description": "Entry count.", 
+      "readonly": true, 
+      "title": "Entry count", 
+      "type": "int"
+    }, 
+    "edge_node": {
+      "description": "Transport node ID.", 
+      "readonly": true, 
+      "title": "Transport node ID", 
+      "type": "string"
+    }, 
+    "error_message": {
+      "description": "Routing table fetch error message, populated only if status if failure.", 
+      "readonly": true, 
+      "title": "Routing table fetch error.", 
+      "type": "string"
+    }, 
+    "route_entries": {
+      "description": "Route entries.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RoutingEntry.html">RoutingEntry</A>
+      }, 
+      "required": true, 
+      "title": "Route entries", 
+      "type": "array"
+    }, 
+    "status": {
+      "description": "Routing table fetch status from Transport node.", 
+      "enum": [
+        "SUCCESS", 
+        "FAILURE", 
+        "NOT_FOUND"
+      ], 
+      "readonly": true, 
+      "title": "Routing table fetch status.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Routing table", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

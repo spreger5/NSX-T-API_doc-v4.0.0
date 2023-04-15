@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Snmpv3Properties.html">Snmpv3Properties</a> (<a href="types_Snmpv3Properties.html">type</a>)
+</h3>
+<pre>{
+  "description": "This object contains list of SNMP v3 users used to poll NSX nodes over SNMP and list of SNMP v3 targets used to receive SNMP traps/notifications from NSX nodes. Users specified in a SNMP v3 target must exist in the list of SNMP v3 users.", 
+  "id": "Snmpv3Properties", 
+  "module_id": "CentralConfig", 
+  "properties": {
+    "auth_protocol": {
+      "default": "SHA1", 
+      "description": "Authentication protocol used for SNMP v3 communication.", 
+      "enum": [
+        "SHA1"
+      ], 
+      "title": "Authentication protocol", 
+      "type": "string"
+    }, 
+    "priv_protocol": {
+      "default": "AES128", 
+      "description": "Privacy protocol used for SNMP v3 communication.", 
+      "enum": [
+        "AES128"
+      ], 
+      "title": "Privacy protocol", 
+      "type": "string"
+    }, 
+    "targets": {
+      "description": "List of SNMP v3 targets/receivers where SNMP v3 traps/notifications will be sent from NSX nodes.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Snmpv3Target.html">Snmpv3Target</A>
+      }, 
+      "maxItems": 3, 
+      "required": false, 
+      "title": "SNMP v3 targets", 
+      "type": "array"
+    }, 
+    "users": {
+      "description": "List of SNMP v3 users allowed to poll NSX nodes over SNMP. Also, users specified in a SNMP v3 target must exist in this list.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Snmpv3User.html">Snmpv3User</A>
+      }, 
+      "maxItems": 5, 
+      "required": false, 
+      "title": "SNMP v3 users", 
+      "type": "array"
+    }
+  }, 
+  "title": "SNMP v3 properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

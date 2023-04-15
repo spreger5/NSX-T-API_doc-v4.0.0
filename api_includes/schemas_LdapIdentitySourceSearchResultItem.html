@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LdapIdentitySourceSearchResultItem.html">LdapIdentitySourceSearchResultItem</a> (<a href="types_LdapIdentitySourceSearchResultItem.html">type</a>)
+</h3>
+<pre>{
+  "id": "LdapIdentitySourceSearchResultItem", 
+  "module_id": "LdapIdentitySources", 
+  "properties": {
+    "common_name": {
+      "description": "The Common Name (CN) of the entry, if available.", 
+      "title": "Common Name (CN) of entry", 
+      "type": "string"
+    }, 
+    "dn": {
+      "description": "Distinguished name (DN) of the entry.", 
+      "title": "DN of the entry", 
+      "type": "string"
+    }, 
+    "principal_name": {
+      "description": "For Active Directory (AD) users, this will be the user principal name (UPN), in the format user@domain. For non-AD users, this will be the user's uid property, followed by \"@\" and the domain of the directory. For groups, this will be the group's common name, followed by \"@\" and the domain of the directory.", 
+      "title": "The principal name of the user or group, if available", 
+      "type": "string"
+    }, 
+    "type": {
+      "description": "Describes the type of the entry", 
+      "enum": [
+        "USER", 
+        "GROUP"
+      ], 
+      "title": "Type of the entry", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

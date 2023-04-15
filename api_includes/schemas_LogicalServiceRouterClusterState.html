@@ -1,0 +1,193 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalServiceRouterClusterState.html">LogicalServiceRouterClusterState</a> (<a href="types_LogicalServiceRouterClusterState.html">type</a>)
+</h3>
+<pre>{
+  "description": "This holds the state of Service Router. If there are errors in realizing SR outside of MP, it gives details of the components and specific errors.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_EdgeConfigurationState.html">EdgeConfigurationState</A>
+  }, 
+  "id": "LogicalServiceRouterClusterState", 
+  "module_id": "LogicalRouter", 
+  "properties": {
+    "details": {
+      "items": {
+        "$ref": "<A HREF="schemas_ConfigurationStateElement.html">ConfigurationStateElement</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Array of configuration state of various sub systems", 
+      "type": "array"
+    }, 
+    "failure_code": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Error code", 
+      "type": "integer"
+    }, 
+    "failure_message": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Error message in case of failure", 
+      "type": "string"
+    }, 
+    "pending_change_list": {
+      "description": "Request identifier of the API which modified the entity.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of pending changes", 
+      "type": "array"
+    }, 
+    "state": {
+      "description": "Gives details of state of desired configuration. Additional enums with more details on progress/success/error states are sent for edge node. The success states are NODE_READY and TRANSPORT_NODE_READY, pending states are {VM_DEPLOYMENT_QUEUED, VM_DEPLOYMENT_IN_PROGRESS, REGISTRATION_PENDING} and other values indicate failures. \"in_sync\" state indicates that the desired configuration has been received by the host to which it applies, but is not yet in effect. When the configuration is actually in effect, the state will change to \"success\". Please note, failed state is deprecated.", 
+      "enum": [
+        "pending", 
+        "in_progress", 
+        "success", 
+        "failed", 
+        "partial_success", 
+        "orphaned", 
+        "unknown", 
+        "error", 
+        "in_sync", 
+        "NOT_AVAILABLE", 
+        "VM_DEPLOYMENT_QUEUED", 
+        "VM_DEPLOYMENT_IN_PROGRESS", 
+        "VM_DEPLOYMENT_FAILED", 
+        "VM_POWER_ON_IN_PROGRESS", 
+        "VM_POWER_ON_FAILED", 
+        "REGISTRATION_PENDING", 
+        "NODE_NOT_READY", 
+        "NODE_READY", 
+        "VM_POWER_OFF_IN_PROGRESS", 
+        "VM_POWER_OFF_FAILED", 
+        "VM_UNDEPLOY_IN_PROGRESS", 
+        "VM_UNDEPLOY_FAILED", 
+        "VM_UNDEPLOY_SUCCESSFUL", 
+        "EDGE_CONFIG_ERROR", 
+        "VM_DEPLOYMENT_RESTARTED", 
+        "REGISTRATION_FAILED", 
+        "TRANSPORT_NODE_SYNC_PENDING", 
+        "TRANSPORT_NODE_CONFIGURATION_MISSING", 
+        "EDGE_HARDWARE_NOT_SUPPORTED", 
+        "MULTIPLE_OVERLAY_TZS_NOT_SUPPORTED", 
+        "TN_OVERLAY_TZ_IN_USE_BY_EDGE_CLUSTER", 
+        "TZ_ENDPOINTS_NOT_SPECIFIED", 
+        "NO_PNIC_PREPARED_IN_EDGE", 
+        "APPLIANCE_INTERNAL_ERROR", 
+        "VTEP_DHCP_NOT_SUPPORTED", 
+        "UNSUPPORTED_HOST_SWITCH_PROFILE", 
+        "UPLINK_HOST_SWITCH_PROFILE_NOT_SPECIFIED", 
+        "HOSTSWITCH_PROFILE_NOT_FOUND", 
+        "LLDP_SEND_ENABLED_NOT_SUPPORTED", 
+        "UNSUPPORTED_NAMED_TEAMING_POLICY", 
+        "LBSRCID_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "LACP_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "STANDBY_UPLINKS_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "MULTIPLE_ACTIVE_UPLINKS_NOT_SUPPORTED_FOR_EDGE", 
+        "UNSUPPORTED_LACP_LB_ALGO_FOR_NODE", 
+        "EDGE_NODE_VERSION_NOT_SUPPORTED", 
+        "NO_PNIC_SPECIFIED_IN_TN", 
+        "INVALID_PNIC_DEVICE_NAME", 
+        "TRANSPORT_NODE_READY", 
+        "VM_NETWORK_EDIT_PENDING", 
+        "UNSUPPORTED_DEFAULT_TEAMING_POLICY", 
+        "MPA_DISCONNECTED", 
+        "VM_RENAME_PENDING", 
+        "VM_CONFIG_EDIT_PENDING", 
+        "VM_NETWORK_EDIT_FAILED", 
+        "VM_RENAME_FAILED", 
+        "VM_CONFIG_EDIT_FAILED", 
+        "VM_CONFIG_DISCREPANCY", 
+        "VM_NODE_REFRESH_FAILED", 
+        "VM_PLACEMENT_REFRESH_FAILED", 
+        "REGISTRATION_TIMEDOUT", 
+        "REPLACE_FAILED", 
+        "UPLINK_FROM_TEAMING_POLICY_NOT_MAPPED", 
+        "LOGICAL_SWITCH_NAMED_TEAMING_HAS_NO_PNIC_BACKING", 
+        "DELETE_VM_IN_REDEPLOY_FAILED", 
+        "DEPLOY_VM_IN_REDEPLOY_FAILED", 
+        "INSUFFICIENT_RESOURCES_IN_EDGE_NODE_FOR_SERVICE", 
+        "VM_RESOURCE_RESERVATION_FAILED", 
+        "DUPLICATE_PNICS_IN_TEAMINGS_WITH_MULTIPLE_UPLINKS_AND_FAILOVER_ORDER", 
+        "DUPLICATE_VLANS_SHARING_SAME_PNICMULTIPLE_UPLINKS_IN_NAMED_TEAMING_NOT_SUPPORTED_IF_UPLINK_IN_DEFAULT_TEAMING", 
+        "EDGE_NODE_SETTINGS_MISMATCH_RESOLVE", 
+        "EDGE_VM_VSPHERE_SETTINGS_MISMATCH_RESOLVE", 
+        "EDGE_NODE_SETTINGS_AND_VSPHERE_SETTINGS_ARE_CHANGED_RESOLVE", 
+        "EDGE_VSPHERE_LOCATION_MISMATCH_RESOLVE", 
+        "COMPUTE_MANAGER_NOT_FOUND", 
+        "DELETE_IN_PROGRESS"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Overall state of desired configuration", 
+      "type": "string"
+    }
+  }, 
+  "title": "Realization State of Service Router.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

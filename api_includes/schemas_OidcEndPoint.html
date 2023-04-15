@@ -1,0 +1,319 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OidcEndPoint.html">OidcEndPoint</a> (<a href="types_OidcEndPoint.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "OpenID Connect end-point specifying where to fetch the JWKS document used to validate JWT tokens for TokenBasedPrincipalIdentities.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "OidcEndPoint", 
+  "module_id": "CertificateManager", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "authorization_endpoint": {
+      "description": "The URL of the OpenID provider's authorization endpoint.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Authorization endpoint", 
+      "type": "string"
+    }, 
+    "claim_map": {
+      "description": "Configuration for mapping claims in OIDC ID tokens to NSX roles.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ClaimMap.html">ClaimMap</A>
+      }, 
+      "nsx_feature": "OIDC", 
+      "title": "Map from ID token claims to NSX roles", 
+      "type": "array"
+    }, 
+    "claims_supported": {
+      "description": "The list of claims that the OpenID provider supports.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Claims supported", 
+      "type": "array"
+    }, 
+    "client_id": {
+      "description": "The client ID for NSX to use when authenticating via this OIDC provider. This is required when oidc_type is \"ws_one\".", 
+      "nsx_feature": "OIDC", 
+      "readonly": false, 
+      "required": false, 
+      "title": "OIDC Client ID", 
+      "type": "string"
+    }, 
+    "client_secret": {
+      "description": "The client secret for NSX to use when authenticating via this OIDC provider. This is required when oidc_type is \"ws_one\".", 
+      "nsx_feature": "OIDC", 
+      "readonly": false, 
+      "required": false, 
+      "sensitive": true, 
+      "title": "OIDC Client Secret", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "end_session_endpoint_uri": {
+      "description": "URI of the OpenID session logout end-point.", 
+      "maxLength": 255, 
+      "nsx_feature": "OIDC", 
+      "readonly": true, 
+      "title": "OpenID session logout URI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "issuer": {
+      "description": "Issuer of the JWT tokens for the given type. This field is fetched from the meta-data located at the oidc_uri.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "JWT token issuer", 
+      "type": "string"
+    }, 
+    "jwks_uri": {
+      "description": "The URI where the JWKS document is located that has the key used to validate the JWT signature.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "URI of JWKS document", 
+      "type": "string"
+    }, 
+    "name": {
+      "description": "A short, unique name for this OpenID Connect end-point. OIDC endpoint names may not contain spaces. If not provided, defaults to the ID of the OidcEndPoint.", 
+      "required": false, 
+      "title": "Unique name for this OpenID Connect end-point", 
+      "type": "string"
+    }, 
+    "oidc_type": {
+      "default": "vcenter", 
+      "description": "Type used to distinguish the OIDC end-points by IDP.", 
+      "enum": [
+        "vcenter", 
+        "ws_one"
+      ], 
+      "maxLength": 255, 
+      "readonly": false, 
+      "required": false, 
+      "title": "OIDC Type", 
+      "type": "string"
+    }, 
+    "oidc_uri": {
+      "description": "URI of the OpenID Connect end-point.", 
+      "maxLength": 255, 
+      "readonly": false, 
+      "required": true, 
+      "title": "OpenID Connect URI", 
+      "type": "string"
+    }, 
+    "override_roles": {
+      "description": "When specified this role or roles are used instead of the nsx-role in the JWT", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Roles used instead of token roles", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "restrict_scim_search": {
+      "default": false, 
+      "description": "If set to true, then it is only possible to perform a SCIM search against the OIDC provider used to authenticate. If OIDC was not used to authenticate (for example, if authenticated as a local user), then this restriction does not apply.", 
+      "nsx_feature": "OIDC", 
+      "required": false, 
+      "title": "SCIM search restriction indicator", 
+      "type": "boolean"
+    }, 
+    "scim_endpoints": {
+      "description": "The SCIM (System for Cross-domain Identity Management) endpoint URLs to use when enumerating users and groups. All endpoints will be queried to obtain user and group information.", 
+      "items": {
+        "type": "string"
+      }, 
+      "nsx_feature": "OIDC", 
+      "readonly": true, 
+      "title": "SCIM endpoints", 
+      "type": "array"
+    }, 
+    "serviced_domains": {
+      "description": "When a login to NSX using a principal name of the form user@domain is attempted, the list of OIDC providers will be scanned to find one with a matching domain. If a match is found, that OIDC provider is used to authenticate the user.  Each domain must be unique across all OIDC providers. If a duplicate domain is provided when adding or updating and OIDC provider, the request will be rejected.", 
+      "items": {
+        "maxItems": 32, 
+        "type": "string", 
+        "uniqueItems": true
+      }, 
+      "nsx_feature": "OIDC", 
+      "title": "List of domains serviced by this OIDC provider", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "thumbprint": {
+      "description": "Thumbprint in SHA-256 format used to verify the server certificate at the URI.", 
+      "maxLength": 255, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Thumbprint", 
+      "type": "string"
+    }, 
+    "token_endpoint": {
+      "description": "The URL of the OpenID provider's token endpoint.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Token endpoint", 
+      "type": "string"
+    }, 
+    "userinfo_endpoint": {
+      "description": "The URL of the OpenID provider's userinfo endpoint.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Userinfo endpoint", 
+      "type": "string"
+    }
+  }, 
+  "title": "OpenID Connect end-point", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

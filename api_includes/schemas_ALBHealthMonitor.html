@@ -1,0 +1,394 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHealthMonitor.html">ALBHealthMonitor</a> (<a href="types_ALBHealthMonitor.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HealthMonitor object", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "ALBHealthMonitor", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "allow_duplicate_monitors": {
+      "description": "By default, multiple instances of the same healthmonitor to the same server are suppressed intelligently. In rare cases, the monitor may have specific constructs that go beyond the server keys (ip, port, etc.) during which such suppression is not desired. Use this knob to allow duplicates. Allowed in Basic(Allowed values- true) edition, Essentials(Allowed values- true) edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Allow duplicate monitors", 
+      "type": "boolean"
+    }, 
+    "authentication": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorAuthInfo.html">ALBHealthMonitorAuthInfo</A>, 
+      "description": "Authentication information for username/password. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Authentication"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "disable_quickstart": {
+      "description": "During addition of a server or healthmonitors or during bootup, Avi performs sequential health checks rather than waiting for send-interval to kick in, to mark the server up as soon as possible. This knob may be used to turn this feature off. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Disable quickstart", 
+      "type": "boolean"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "dns_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorDNS.html">ALBHealthMonitorDNS</A>, 
+      "description": "Placeholder for description of property dns_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "Dns monitor"
+    }, 
+    "external_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorExternal.html">ALBHealthMonitorExternal</A>, 
+      "description": "Placeholder for description of property external_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "External monitor"
+    }, 
+    "failed_checks": {
+      "default": 2, 
+      "description": "Number of continuous failed health checks before the server is marked down. Allowed values are 1-50. Default value when not specified in API or module is interpreted by ALB Controller as 2.", 
+      "maximum": 50, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Failed checks", 
+      "type": "integer"
+    }, 
+    "http_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorHttp.html">ALBHealthMonitorHttp</A>, 
+      "description": "Placeholder for description of property http_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "Http monitor"
+    }, 
+    "https_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorHttp.html">ALBHealthMonitorHttp</A>, 
+      "description": "Placeholder for description of property https_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "Https monitor"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "imap_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorImap.html">ALBHealthMonitorImap</A>, 
+      "description": "Health monitor for IMAP.", 
+      "required": false, 
+      "title": "Imap monitor"
+    }, 
+    "imaps_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorImap.html">ALBHealthMonitorImap</A>, 
+      "description": "Health monitor for IMAPS.", 
+      "required": false, 
+      "title": "Imaps monitor"
+    }, 
+    "is_federated": {
+      "default": false, 
+      "description": "This field describes the object's replication scope. If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines. If the field is set to true, then the object is replicated across the federation. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Is federated", 
+      "type": "boolean"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "markers": {
+      "description": "List of labels to be used for granular RBAC. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</A>
+      }, 
+      "required": false, 
+      "title": "Markers", 
+      "type": "array"
+    }, 
+    "monitor_port": {
+      "description": "Use this port instead of the port defined for the server in the Pool. If the monitor succeeds to this port, the load balanced traffic will still be sent to the port of the server defined within the Pool. Allowed values are 1-65535. Special values are 0 - 'Use server port'.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Monitor port", 
+      "type": "integer"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "pop3_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorPop3.html">ALBHealthMonitorPop3</A>, 
+      "description": "Health monitor for POP3.", 
+      "required": false, 
+      "title": "Pop3 monitor"
+    }, 
+    "pop3s_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorPop3.html">ALBHealthMonitorPop3</A>, 
+      "description": "Health monitor for POP3S.", 
+      "required": false, 
+      "title": "Pop3s monitor"
+    }, 
+    "radius_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorRadius.html">ALBHealthMonitorRadius</A>, 
+      "description": "Health monitor for Radius. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Radius monitor"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "receive_timeout": {
+      "default": 4, 
+      "description": "A valid response from the server is expected within the receive timeout window. This timeout must be less than the send interval. If server status is regularly flapping up and down, consider increasing this value. Allowed values are 1-2400. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 4.", 
+      "maximum": 2400, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Receive timeout", 
+      "type": "integer"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "send_interval": {
+      "default": 10, 
+      "description": "Frequency, in seconds, that monitors are sent to a server. Allowed values are 1-3600. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 10.", 
+      "maximum": 3600, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Send interval", 
+      "type": "integer"
+    }, 
+    "sip_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorSIP.html">ALBHealthMonitorSIP</A>, 
+      "description": "Health monitor for SIP. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Sip monitor"
+    }, 
+    "smtp_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorSmtp.html">ALBHealthMonitorSmtp</A>, 
+      "description": "Health monitor for SMTP.", 
+      "required": false, 
+      "title": "Smtp monitor"
+    }, 
+    "smtps_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorSmtp.html">ALBHealthMonitorSmtp</A>, 
+      "description": "Health monitor for SMTPS.", 
+      "required": false, 
+      "title": "Smtps monitor"
+    }, 
+    "successful_checks": {
+      "default": 2, 
+      "description": "Number of continuous successful health checks before server is marked up. Allowed values are 1-50. Default value when not specified in API or module is interpreted by ALB Controller as 2.", 
+      "maximum": 50, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Successful checks", 
+      "type": "integer"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tcp_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorTcp.html">ALBHealthMonitorTcp</A>, 
+      "description": "Placeholder for description of property tcp_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "Tcp monitor"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorType.html">ALBHealthMonitorType</A>, 
+      "description": "Type of the health monitor. Enum options - HEALTH_MONITOR_PING, HEALTH_MONITOR_TCP, HEALTH_MONITOR_HTTP, HEALTH_MONITOR_HTTPS, HEALTH_MONITOR_EXTERNAL, HEALTH_MONITOR_UDP, HEALTH_MONITOR_DNS, HEALTH_MONITOR_GSLB, HEALTH_MONITOR_SIP, HEALTH_MONITOR_RADIUS, HEALTH_MONITOR_SMTP, HEALTH_MONITOR_SMTPS, HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS. Allowed in Basic(Allowed values- HEALTH_MONITOR_PING,HEALTH_MONITOR_TCP,HEALTH_MONITOR_UDP,HEALTH_MONITOR_HTTP,HEALTH_MONITOR_HTTPS) edition, Essentials(Allowed values- HEALTH_MONITOR_PING,HEALTH_MONITOR_TCP,HEALTH_MONITOR_UDP) edition, Enterprise edition.", 
+      "required": true, 
+      "title": "Type"
+    }, 
+    "udp_monitor": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorUdp.html">ALBHealthMonitorUdp</A>, 
+      "description": "Placeholder for description of property udp_monitor of obj type HealthMonitor field type str  type ref.", 
+      "required": false, 
+      "title": "Udp monitor"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "HealthMonitor", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

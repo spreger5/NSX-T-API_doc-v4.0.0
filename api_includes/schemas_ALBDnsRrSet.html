@@ -1,0 +1,128 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsRrSet.html">ALBDnsRrSet</a> (<a href="types_ALBDnsRrSet.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsRrSet object", 
+  "id": "ALBDnsRrSet", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "cname": {
+      "$ref": "<A HREF="schemas_ALBDnsCnameRdata.html">ALBDnsCnameRdata</A>, 
+      "description": "Canonical name in CNAME record.", 
+      "required": false, 
+      "title": "Cname"
+    }, 
+    "fqdn": {
+      "description": "Fully Qualified Domain Name.", 
+      "required": true, 
+      "title": "Fqdn", 
+      "type": "string"
+    }, 
+    "ip6_addresses": {
+      "description": "IPv6 address in AAAA record.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsAAAARdata.html">ALBDnsAAAARdata</A>
+      }, 
+      "required": false, 
+      "title": "Ip6 addresses", 
+      "type": "array"
+    }, 
+    "ip_addresses": {
+      "description": "IP address in A record.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsARdata.html">ALBDnsARdata</A>
+      }, 
+      "required": false, 
+      "title": "Ip addresses", 
+      "type": "array"
+    }, 
+    "nses": {
+      "description": "Name Server information in NS record.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsNsRdata.html">ALBDnsNsRdata</A>
+      }, 
+      "required": false, 
+      "title": "Nses", 
+      "type": "array"
+    }, 
+    "ttl": {
+      "description": "Time To Live for this DNS record. Allowed values are 0-2147483647.", 
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Ttl", 
+      "type": "integer"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBDnsRecordType.html">ALBDnsRecordType</A>, 
+      "description": "DNS record type. Enum options - DNS_RECORD_OTHER, DNS_RECORD_A, DNS_RECORD_NS, DNS_RECORD_CNAME, DNS_RECORD_SOA, DNS_RECORD_PTR, DNS_RECORD_HINFO, DNS_RECORD_MX, DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR, DNS_RECORD_ANY.", 
+      "required": true, 
+      "title": "Type"
+    }
+  }, 
+  "title": "DnsRrSet", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

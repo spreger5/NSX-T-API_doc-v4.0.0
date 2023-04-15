@@ -1,0 +1,297 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceInsertionRule.html">ServiceInsertionRule</a> (<a href="types_ServiceInsertionRule.html">type</a>)
+</h3>
+<pre>{
+  "description": "ServiceInsertion Rule.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DSRule.html">DSRule</A>
+  }, 
+  "id": "ServiceInsertionRule", 
+  "module_id": "ServiceInsertionRules", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_owner": {
+      "$ref": "<A HREF="schemas_OwnerResourceLink.html">OwnerResourceLink</A>, 
+      "readonly": true, 
+      "title": "Owner of this resource"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "action": {
+      "description": "Action enforced on the packets which matches the distributed service rule. Currently DS Layer supports below actions. ALLOW           - Forward any packet when a rule with this action gets a match (Used by Firewall). DROP            - Drop any packet when a rule with this action gets a match. Packets won't go further(Used by Firewall). REJECT          - Terminate TCP connection by sending TCP reset for a packet when a rule with this action gets a match (Used by Firewall). REDIRECT        - Redirect any packet to a partner appliance when a rule with this action gets a match (Used by Service Insertion). DO_NOT_REDIRECT - Do not redirect any packet to a partner appliance when a rule with this action gets a match (Used by Service Insertion). DETECT          - Detect IDS Signatures. ALLOW_CONTINUE  - Allows rules to jump from this rule. Action on matching rules in the destination category will decide next step. Application is default destination until new categories are supported to jump to. DETECT_PREVENT  - Detect and Prevent IDS Signatures.", 
+      "enum": [
+        "ALLOW", 
+        "DROP", 
+        "REJECT", 
+        "REDIRECT", 
+        "DO_NOT_REDIRECT", 
+        "DETECT", 
+        "ALLOW_CONTINUE", 
+        "DETECT_PREVENT"
+      ], 
+      "readonly": false, 
+      "required": true, 
+      "title": "Action", 
+      "type": "string"
+    }, 
+    "applied_tos": {
+      "description": "List of object where rule will be enforced. The section level field overrides this one. Null will be treated as any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 128, 
+      "readonly": false, 
+      "required": false, 
+      "title": "AppliedTo List", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "destinations": {
+      "description": "List of the destinations. Null will be treated as any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 128, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Destination List", 
+      "type": "array"
+    }, 
+    "destinations_excluded": {
+      "default": false, 
+      "description": "Negation of the destination.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Negation of destination", 
+      "type": "boolean"
+    }, 
+    "direction": {
+      "default": "IN_OUT", 
+      "description": "Rule direction in case of stateless distributed service rules. This will only considered if section level parameter is set to stateless. Default to IN_OUT if not specified.", 
+      "enum": [
+        "IN", 
+        "OUT", 
+        "IN_OUT"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Rule direction", 
+      "type": "string"
+    }, 
+    "disabled": {
+      "default": false, 
+      "description": "Flag to disable rule. Disabled will only be persisted but never provisioned/realized.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Rule enable/disable flag", 
+      "type": "boolean"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "Identifier of the resource", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "ip_protocol": {
+      "default": "IPV4_IPV6", 
+      "description": "Type of IP packet that should be matched while enforcing the rule.", 
+      "enum": [
+        "IPV4", 
+        "IPV6", 
+        "IPV4_IPV6"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "IPv4 vs IPv6 packet type", 
+      "type": "string"
+    }, 
+    "is_default": {
+      "description": "Flag to indicate whether rule is default.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Default rule", 
+      "type": "boolean"
+    }, 
+    "logged": {
+      "default": false, 
+      "description": "Flag to enable packet logging. Default is disabled.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Enable logging flag", 
+      "type": "boolean"
+    }, 
+    "notes": {
+      "description": "User notes specific to the rule.", 
+      "maxLength": 2048, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Notes", 
+      "type": "string"
+    }, 
+    "priority": {
+      "description": "Priority of the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Rule priority", 
+      "type": "integer"
+    }, 
+    "redirect_tos": {
+      "description": "A rule can be redirected to ServiceInstance, InstanceEndpoint for North/South Traffic. A rule can be redirected to ServiceChain for East/West Traffic. For REDIRECT action, redirect_tos is mandatory. For DO_NOT_REDIRECT action, redirect_tos is optional.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 1, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Redirect_Tos List", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "rule_tag": {
+      "description": "User level field which will be printed in CLI and packet logs.", 
+      "maxLength": 32, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Tag", 
+      "type": "string"
+    }, 
+    "section_id": {
+      "description": "ID of the section to which this rule belongs.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Section Id", 
+      "type": "string"
+    }, 
+    "services": {
+      "description": "List of the services. Null will be treated as any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ServiceInsertionService.html">ServiceInsertionService</A>
+      }, 
+      "maxItems": 128, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Service List", 
+      "type": "array"
+    }, 
+    "sources": {
+      "description": "List of sources. Null will be treated as any.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 128, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Source List", 
+      "type": "array"
+    }, 
+    "sources_excluded": {
+      "default": false, 
+      "description": "Negation of the source.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Negation of source", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "ServiceInsertion Rule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBRateLimiterAction.html">ALBRateLimiterAction</a> (<a href="types_ALBRateLimiterAction.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer RateLimiterAction object", 
+  "id": "ALBRateLimiterAction", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "file": {
+      "$ref": "<A HREF="schemas_ALBHTTPLocalFile.html">ALBHTTPLocalFile</A>, 
+      "description": "File to be used for HTTP Local response rate limit action.", 
+      "required": false, 
+      "title": "File"
+    }, 
+    "redirect": {
+      "$ref": "<A HREF="schemas_ALBHTTPRedirectAction.html">ALBHTTPRedirectAction</A>, 
+      "description": "Parameters for HTTP Redirect rate limit action.", 
+      "required": false, 
+      "title": "Redirect"
+    }, 
+    "status_code": {
+      "$ref": "<A HREF="schemas_ALBHTTPLocalResponseStatusCode.html">ALBHTTPLocalResponseStatusCode</A>, 
+      "default": "HTTP_LOCAL_RESPONSE_STATUS_CODE_429", 
+      "description": "HTTP status code for Local Response rate limit action. Enum options - HTTP_LOCAL_RESPONSE_STATUS_CODE_200, HTTP_LOCAL_RESPONSE_STATUS_CODE_204, HTTP_LOCAL_RESPONSE_STATUS_CODE_403, HTTP_LOCAL_RESPONSE_STATUS_CODE_404, HTTP_LOCAL_RESPONSE_STATUS_CODE_429, HTTP_LOCAL_RESPONSE_STATUS_CODE_501. Default value when not specified in API or module is interpreted by ALB Controller as HTTP_LOCAL_RESPONSE_STATUS_CODE_429.", 
+      "required": false, 
+      "title": "Status code"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBRateLimiterActionType.html">ALBRateLimiterActionType</A>, 
+      "default": "RL_ACTION_NONE", 
+      "description": "Type of action to be enforced upon hitting the rate limit. Enum options - RL_ACTION_NONE, RL_ACTION_DROP_CONN, RL_ACTION_RESET_CONN, RL_ACTION_CLOSE_CONN, RL_ACTION_LOCAL_RSP, RL_ACTION_REDIRECT. Default value when not specified in API or module is interpreted by ALB Controller as RL_ACTION_NONE.", 
+      "required": false, 
+      "title": "Type"
+    }
+  }, 
+  "title": "RateLimiterAction", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

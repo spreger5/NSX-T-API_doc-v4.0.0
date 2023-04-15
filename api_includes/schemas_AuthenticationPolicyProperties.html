@@ -1,0 +1,224 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AuthenticationPolicyProperties.html">AuthenticationPolicyProperties</a> (<a href="types_AuthenticationPolicyProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": {}, 
+  "extends": {
+    "$ref": "<A HREF="schemas_PasswordComplexityProperties.html">PasswordComplexityProperties</A>
+  }, 
+  "id": "AuthenticationPolicyProperties", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_retry_prompt": {
+      "default": 3, 
+      "readonly": true, 
+      "title": "Prompt user at most N times before returning with error.", 
+      "type": "integer"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "api_failed_auth_lockout_period": {
+      "default": 900, 
+      "description": "Once a lockout occurs, the account remains locked out of the API for this time period. Only applies to NSX Manager nodes. Ignored on other node types.", 
+      "minimum": 0, 
+      "title": "Lockout period in seconds", 
+      "type": "integer"
+    }, 
+    "api_failed_auth_reset_period": {
+      "default": 900, 
+      "description": "In order to trigger an account lockout, all authentication failures must occur in this time window. If the reset period expires, the failed login count is reset to zero. Only applies to NSX Manager nodes. Ignored on other node types.", 
+      "minimum": 0, 
+      "title": "Period, in seconds, for authentication failures to trigger lockout", 
+      "type": "integer"
+    }, 
+    "api_max_auth_failures": {
+      "default": 5, 
+      "description": "Only applies to NSX Manager nodes. Ignored on other node types.", 
+      "minimum": 0, 
+      "title": "Number of authentication failures that trigger API lockout", 
+      "type": "integer"
+    }, 
+    "cli_failed_auth_lockout_period": {
+      "default": 900, 
+      "description": "Once a lockout occurs, the account remains locked out of the CLI for this time period. While the lockout period is in effect, additional authentication attempts restart the lockout period, even if a valid password is specified.", 
+      "minimum": 0, 
+      "title": "Lockout period in seconds", 
+      "type": "integer"
+    }, 
+    "cli_max_auth_failures": {
+      "default": 5, 
+      "minimum": 0, 
+      "title": "Number of authentication failures that trigger CLI lockout", 
+      "type": "integer"
+    }, 
+    "digits": {
+      "default": -1, 
+      "description": "Number of digits (0..9) expected in user password. &lt;p&gt;N &gt; 0, to set maximum credit for having digits in the new password, i.e. this is the maximum number of digits that are allowed for a new password.&lt;/p&gt; &lt;p&gt;N &lt; 0, to set minimum credit for having digits in the new password, i.e. this is the minimum number of digits that must be met for a new password.&lt;/p&gt; &lt;p&gt;N = 0, policy will be not applicable.&lt;/p&gt; By default minimum 1 digit is required for a new password.", 
+      "maximum": 128, 
+      "minimum": -128, 
+      "title": "Number of digits in password", 
+      "type": "integer"
+    }, 
+    "hash_algorithm": {
+      "default": "sha512", 
+      "description": "Sets hash/cryptographic algorithm type for new passwords.", 
+      "enum": [
+        "sha512", 
+        "sha256"
+      ], 
+      "title": "Hash algorithm", 
+      "type": "string"
+    }, 
+    "lower_chars": {
+      "default": -1, 
+      "description": "Number of lower case characters (a..z) expected in user password. &lt;p&gt;N &gt; 0, to set maximum credit for having lower case characters in the new password, i.e. this is the maximum number of lower case characaters that are allowed for a new password.&lt;/p&gt; &lt;p&gt;N &lt; 0, to set minimum credit for having lower case characters in the new password, i.e. this is the minimum number of lower case characters that must be met for a new password.&lt;/p&gt; &lt;p&gt;N = 0, policy will be not applicable.&lt;/p&gt; By default minimum 1 lower case character is required for a new password.", 
+      "maximum": 128, 
+      "minimum": -128, 
+      "title": "Number of lower-case characters in password", 
+      "type": "integer"
+    }, 
+    "max_repeats": {
+      "default": 0, 
+      "description": "Reject passwords which contain more than N same consecutive characters, like aaa or 7777. To disable the check, value should be set to 0.", 
+      "maximum": 128, 
+      "minimum": 0, 
+      "title": "Number of same consecutive characters", 
+      "type": "integer"
+    }, 
+    "max_sequence": {
+      "default": 0, 
+      "description": "Reject passwords which contain more than N monotonic character sequences. Monotonic sequences can be '12345' or 'fedcb'. To disable the check, value should be set to 0.", 
+      "maximum": 128, 
+      "minimum": 0, 
+      "title": "Length of permissible monotonic sequence in password substring", 
+      "type": "integer"
+    }, 
+    "maximum_password_length": {
+      "default": 128, 
+      "description": "Maximum number of characters allowed in password; user can not set their password of length greater than this parameter. By default maximum length of password is 128 characters.", 
+      "maximum": 128, 
+      "minimum": 8, 
+      "title": "Maximum password length", 
+      "type": "integer"
+    }, 
+    "minimum_password_length": {
+      "default": 12, 
+      "description": "Minimum number of characters expected in password; user can not set their password of length less than this parameter.&lt;br /&gt; NOTE, for existing users upgrading to NSX-T datacenter version 4.0 or above - &lt;p&gt;if existing appliance is configured with &lt;code&gt;minimum_password_length&lt;/code&gt; less than current default value, then upgraded appliance will reset the configured setting back to recommended default; which can be explicitly modified back to original value or any other integer greater than or equal to supported minimum value.&lt;/p&gt; &lt;p&gt;VMware recommends to set strong passwords for systems and appliances, further suggests to maintain strong &lt;code&gt;minimum_password_length&lt;/code&gt; value. NSX resets this value to default and recommends to maintain upgraded default value or above for password complexity requirement.&lt;/p&gt; &lt;p&gt;If any existing user passwords are set with length of less than newly configured &lt;code&gt;minimum_password_length&lt;/code&gt;, then its recommended to reset the user passwords as per newly configured password complexity compliance.&lt;/p&gt; &lt;p&gt;If existing &lt;code&gt;minimum_password_length&lt;/code&gt; is greater than or equal to default value, which shall be retained as it is in newly upgraded appliance.&lt;/p&gt; By default minimum length of password is 12 characters.", 
+      "maximum": 128, 
+      "minimum": 8, 
+      "title": "Minimum password length", 
+      "type": "integer"
+    }, 
+    "minimum_unique_chars": {
+      "default": 0, 
+      "description": "Number of character changes in the new password that differentiate it from the old password. To disable the check, value should be set to 0.", 
+      "maximum": 128, 
+      "minimum": 0, 
+      "title": "Number of unique characters from old password", 
+      "type": "integer"
+    }, 
+    "password_remembrance": {
+      "default": 0, 
+      "description": "Limit using a password that was used in past; users can not set the same password within the N generations. To disable the check, value should be set to 0.", 
+      "minimum": 0, 
+      "title": "Password remembrance from previous generations", 
+      "type": "integer"
+    }, 
+    "special_chars": {
+      "default": -1, 
+      "description": "Number of special characters (!@#$&amp;*..) expected in user password. &lt;p&gt;N &gt; 0, to set maximum credit for having special characters in the new password, i.e. this is the maximum number of sepcial characters that are allowed for a new password.&lt;/p&gt; &lt;p&gt;N &lt; 0, to set minimum credit for having special characters in the new password, i.e. this is the minimum number of sepcial characters that must be met for a new password.&lt;/p&gt; &lt;p&gt;N = 0, policy will be not applicable.&lt;/p&gt; By default minimum 1 special character is required for a new password.", 
+      "maximum": 128, 
+      "minimum": -128, 
+      "title": "Number of special characters in password", 
+      "type": "integer"
+    }, 
+    "upper_chars": {
+      "default": -1, 
+      "description": "Number of upper case characters (A..Z) expected in user password. &lt;p&gt;N &gt; 0, to set maximum credit for having upper case characters in the new password, i.e. this is the maximum number of upper case characters that are allowed for a new password.&lt;/p&gt; &lt;p&gt;N &lt; 0, to set minimum credit for having upper case characters in the new password, i.e. this is the minimum number of lower case characters that must be met for a new password.&lt;/p&gt; &lt;p&gt;N = 0, policy will be not applicable.&lt;/p&gt; By default minimum 1 upper case character is required for a new password.", 
+      "maximum": 128, 
+      "minimum": -128, 
+      "title": "Number of upper-case characters in password", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Configuration of authentication and password policies for the NSX node", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,99 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpRedirectAction.html">LbHttpRedirectAction</a> (<a href="types_LbHttpRedirectAction.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This action is used to redirect HTTP request messages to a new URL. The reply_status value specified in this action is used as the status code of HTTP response message which is sent back to client (Normally a browser). The HTTP status code for redirection is 3xx, for example, 301, 302, 303, 307, etc. The redirect_url is the new URL that the HTTP request message is redirected to. Normally browser will send another HTTP request to the new URL after receiving a redirection response message. Captured variables and built-in variables can be used in redirect_url field. For example, to redirect all HTTP requests to HTTPS requests for a virtual server. We create an LbRule without any conditions, add an LbHttpRedirectAction to the rule. Set the redirect_url field of the LbHttpRedirectAction to:   https://$_host$_request_uri And set redirect_status to \"302\", which means found. This rule will redirect all HTTP requests to HTTPS server port on the same host.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleAction.html">LbRuleAction</A>
+  }, 
+  "id": "LbHttpRedirectAction", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpRedirectAction"
+  }, 
+  "properties": {
+    "redirect_status": {
+      "required": true, 
+      "title": "HTTP response status code", 
+      "type": "string"
+    }, 
+    "redirect_url": {
+      "required": true, 
+      "title": "The URL that the HTTP request is redirected to", 
+      "type": "string"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleActionType.html">LbRuleActionType</A>, 
+      "description": "The property identifies the load balancer rule action type.", 
+      "required": true, 
+      "title": "Type of load balancer rule action"
+    }
+  }, 
+  "title": "Action to redirect HTTP request messages", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

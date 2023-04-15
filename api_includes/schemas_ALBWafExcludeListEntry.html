@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafExcludeListEntry.html">ALBWafExcludeListEntry</a> (<a href="types_ALBWafExcludeListEntry.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafExcludeListEntry object", 
+  "id": "ALBWafExcludeListEntry", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "client_subnet": {
+      "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>, 
+      "description": "Client IP Subnet to exclude for WAF rules.", 
+      "required": false, 
+      "title": "Client subnet"
+    }, 
+    "description": {
+      "description": "Free-text comment about this exclusion.", 
+      "required": false, 
+      "title": "Description", 
+      "type": "string"
+    }, 
+    "match_element": {
+      "description": "The match_element can be 'ARGS xxx', 'ARGS_GET xxx', 'ARGS_POST xxx', 'ARGS_NAMES xxx', 'FILES xxx', 'QUERY_STRING', 'REQUEST_BASENAME', 'REQUEST_BODY', 'REQUEST_URI', 'REQUEST_URI_RAW', 'REQUEST_COOKIES xxx', 'REQUEST_HEADERS xxx' or 'RESPONSE_HEADERS xxx'. These match_elements in the HTTP Transaction (if present) will be excluded when executing WAF Rules.", 
+      "required": false, 
+      "title": "Match element", 
+      "type": "string"
+    }, 
+    "match_element_criteria": {
+      "$ref": "<A HREF="schemas_ALBWafExclusionType.html">ALBWafExclusionType</A>, 
+      "description": "Criteria for match_element matching.", 
+      "required": false, 
+      "title": "Match element criteria"
+    }, 
+    "uri_match_criteria": {
+      "$ref": "<A HREF="schemas_ALBWafExclusionType.html">ALBWafExclusionType</A>, 
+      "description": "Criteria for URI matching.", 
+      "required": false, 
+      "title": "Uri match criteria"
+    }, 
+    "uri_path": {
+      "description": "URI Path to exclude for WAF rules.", 
+      "required": false, 
+      "title": "Uri path", 
+      "type": "string"
+    }
+  }, 
+  "title": "WafExcludeListEntry", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

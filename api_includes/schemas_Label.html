@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Label.html">Label</a> (<a href="types_Label.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Label that will be displayed for a UI element.", 
+  "id": "Label", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "condition": {
+      "description": "If the condition is met then the label will be applied. Examples of expression syntax are provided under example_request section of CreateWidgetConfiguration API.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition", 
+      "type": "string"
+    }, 
+    "hover": {
+      "default": false, 
+      "description": "If true, displays the label only on hover", 
+      "title": "Show label only on hover", 
+      "type": "boolean"
+    }, 
+    "icons": {
+      "description": "Icons to be applied at dashboard for the label", 
+      "items": {
+        "$ref": "<A HREF="schemas_Icon.html">Icon</A>
+      }, 
+      "minItems": 0, 
+      "title": "Icons", 
+      "type": "array"
+    }, 
+    "navigation": {
+      "description": "Hyperlink of the specified UI page that provides details.", 
+      "maxLength": 1024, 
+      "title": "Navigation to a specified UI page", 
+      "type": "string"
+    }, 
+    "text": {
+      "description": "Text to be displayed at the label.", 
+      "maxLength": 255, 
+      "required": true, 
+      "title": "Label text", 
+      "type": "string"
+    }
+  }, 
+  "title": "Label", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

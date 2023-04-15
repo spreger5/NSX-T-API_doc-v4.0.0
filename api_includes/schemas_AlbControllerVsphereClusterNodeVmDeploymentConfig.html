@@ -1,0 +1,185 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AlbControllerVsphereClusterNodeVmDeploymentConfig.html">AlbControllerVsphereClusterNodeVmDeploymentConfig</a> (<a href="types_AlbControllerVsphereClusterNodeVmDeploymentConfig.html">type</a>)
+</h3>
+<pre>{
+  "description": "The vSphere deployment configuration determines where to deploy the Advanced Load Balancer controller node VM through a vCenter server. It contains settings that are applied during install time. If using DHCP, the following fields must be left unset - management_port_subnets, and default_gateway_addresses", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ALBControllerNodeVMDeploymentConfig.html">ALBControllerNodeVMDeploymentConfig</A>
+  }, 
+  "id": "AlbControllerVsphereClusterNodeVmDeploymentConfig", 
+  "module_id": "PolicyALBControllerDeployment", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "AlbControllerVsphereClusterNodeVmDeploymentConfig"
+  }, 
+  "properties": {
+    "compute_id": {
+      "description": "The Advanced Load Balancer controller node VM will be deployed on the specified cluster or resourcepool for specified VC server.", 
+      "required": true, 
+      "title": "Cluster identifier or resourcepool identifier", 
+      "type": "string"
+    }, 
+    "default_gateway_addresses": {
+      "description": "The default gateway for the VM to be deployed must be specified if all the other VMs it communicates with are not in the same subnet. Do not specify this field and management_port_subnets to use DHCP. Note: only single IPv4 default gateway address is supported and it must belong to management network.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Default gateway for the VM", 
+      "type": "array"
+    }, 
+    "disk_provisioning": {
+      "$ref": "<A HREF="schemas_DiskProvisioning.html">DiskProvisioning</A>, 
+      "default": "THIN", 
+      "description": "Specifies the disk provisioning type of the VM.", 
+      "required": false, 
+      "title": "Disk provitioning type"
+    }, 
+    "display_name": {
+      "description": "Desired display name for Advanced Load Balancer controller VM to be deployed.", 
+      "required": false, 
+      "title": "Advanced Load Balancer controller VM display name", 
+      "type": "string"
+    }, 
+    "dns_servers": {
+      "description": "List of DNS servers.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>
+      }, 
+      "required": false, 
+      "title": "DNS servers.", 
+      "type": "array"
+    }, 
+    "host_id": {
+      "description": "The Advanced Load Balancer controller node VM will be deployed on the specified host in the specified VC server within the cluster if host_id is specified. Note: User must ensure that storage and specified networks are accessible by this host.", 
+      "required": false, 
+      "title": "Host identifier", 
+      "type": "string"
+    }, 
+    "hostname": {
+      "description": "Desired host name/FQDN for the VM to be deployed.", 
+      "format": "hostname-or-ip", 
+      "required": true, 
+      "title": "Host name or FQDN for the VM", 
+      "type": "string"
+    }, 
+    "management_network_id": {
+      "description": "Distributed portgroup identifier to which the management vnic of Advanced Load Balancer controller node VM will be connected.", 
+      "required": true, 
+      "title": "Portgroup identifier for management network connectivity", 
+      "type": "string"
+    }, 
+    "management_port_subnets": {
+      "description": "IP Address and subnet configuration for the management port. Do not specify this field and default_gateway_addresses to use DHCP. Note: only one IPv4 address is supported for the management port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPSubnet.html">IPSubnet</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Port subnets for management port", 
+      "type": "array"
+    }, 
+    "ntp_servers": {
+      "description": "List of NTP servers.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HostnameOrIPv4Address.html">HostnameOrIPv4Address</A>
+      }, 
+      "required": false, 
+      "title": "NTP servers.", 
+      "type": "array"
+    }, 
+    "placement_type": {
+      "description": "Specifies the config for the platform through which to deploy the VM.", 
+      "enum": [
+        "AlbControllerVsphereClusterNodeVmDeploymentConfig"
+      ], 
+      "required": true, 
+      "title": "Type of deployment", 
+      "type": "string"
+    }, 
+    "storage_id": {
+      "description": "The Advanced Load Balancer controller node VM will be deployed on the specified datastore in the specified VC server. User must ensure that storage is accessible by the specified cluster/host.", 
+      "required": true, 
+      "title": "Storage/datastore identifier", 
+      "type": "string"
+    }, 
+    "storage_policy_id": {
+      "description": "The cluster node VM will be deployed with the specified storage policy on the specified datastore in the specified VC server. User must ensure that the storage policy is applicable on the given datastore.", 
+      "required": false, 
+      "title": "Storage policy uuid", 
+      "type": "string"
+    }, 
+    "vc_id": {
+      "description": "The VC-specific identifiers will be resolved on this VC, so all other identifiers specified in the config must belong to this vCenter server.", 
+      "required": true, 
+      "title": "vSphere compute identifier for identifying VC server", 
+      "type": "string"
+    }
+  }, 
+  "title": "Deployment config on the vSphere platform", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

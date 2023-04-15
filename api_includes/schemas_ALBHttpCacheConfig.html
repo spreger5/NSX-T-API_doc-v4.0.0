@@ -1,0 +1,223 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHttpCacheConfig.html">ALBHttpCacheConfig</a> (<a href="types_ALBHttpCacheConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HttpCacheConfig object", 
+  "id": "ALBHttpCacheConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "age_header": {
+      "default": true, 
+      "description": "Add an Age header to content served from cache, which indicates to the client the number of seconds the object has been in the cache. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Age header", 
+      "type": "boolean"
+    }, 
+    "aggressive": {
+      "default": false, 
+      "description": "Enable/disable caching objects without Cache-Control headers. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Aggressive", 
+      "type": "boolean"
+    }, 
+    "date_header": {
+      "default": true, 
+      "description": "If a Date header was not added by the server, add a Date header to the object served from cache. This indicates to the client when the object was originally sent by the server to the cache. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Date header", 
+      "type": "boolean"
+    }, 
+    "default_expire": {
+      "default": 600, 
+      "description": "Default expiration time of cache objects received from the server without a Cache-Control expiration header. This value may be overwritten by the Heuristic Expire setting. Default value when not specified in API or module is interpreted by ALB Controller as 600.", 
+      "required": false, 
+      "title": "Default expire", 
+      "type": "integer"
+    }, 
+    "enabled": {
+      "default": false, 
+      "description": "Enable/disable HTTP object caching.When enabling caching for the first time, SE Group app_cache_percent must be set to allocate shared memory required for caching (A service engine restart is needed after setting/resetting the SE group value). Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "heuristic_expire": {
+      "default": false, 
+      "description": "If a response object from the server does not include the Cache-Control header, but does include a Last-Modified header, the system will use this time to calculate the Cache-Control expiration. If unable to solicit an Last-Modified header, then the system will fall back to the Cache Expire Time value. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Heuristic expire", 
+      "type": "boolean"
+    }, 
+    "ignore_request_cache_control": {
+      "default": false, 
+      "description": "Ignore client's cache control headers when fetching or storing from and to the cache. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Ignore request cache control", 
+      "type": "boolean"
+    }, 
+    "max_cache_size": {
+      "default": 0, 
+      "description": "Max size, in bytes, of the cache. The default, zero, indicates auto configuration. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "required": false, 
+      "title": "Max cache size", 
+      "type": "integer"
+    }, 
+    "max_object_size": {
+      "default": 4194304, 
+      "description": "Maximum size of an object to store in the cache. Default value when not specified in API or module is interpreted by ALB Controller as 4194304.", 
+      "required": false, 
+      "title": "Max object size", 
+      "type": "integer"
+    }, 
+    "mime_types_block_group_paths": {
+      "description": "Blocklist string group of non-cacheable mime types. It is a reference to an object of type StringGroup.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Mime types block group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }, 
+    "mime_types_block_lists": {
+      "description": "Blocklist of non-cacheable mime types.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Mime types block lists", 
+      "type": "array"
+    }, 
+    "mime_types_group_paths": {
+      "description": "Allowlist string group of cacheable mime types. If both Cacheable Mime Types string list and string group are empty, this defaults to (STAR)/(STAR). It is a reference to an object of type StringGroup.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Mime types group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }, 
+    "mime_types_list": {
+      "description": "Allowlist of cacheable mime types. If both Cacheable Mime Types string list and string group are empty, this defaults to (STAR)/(STAR).", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Mime types list", 
+      "type": "array"
+    }, 
+    "min_object_size": {
+      "default": 100, 
+      "description": "Minimum size of an object to store in the cache. Default value when not specified in API or module is interpreted by ALB Controller as 100.", 
+      "required": false, 
+      "title": "Min object size", 
+      "type": "integer"
+    }, 
+    "query_cacheable": {
+      "default": false, 
+      "description": "Allow caching of objects whose URI included a query argument. When disabled, these objects are not cached. When enabled, the request must match the URI query to be considered a hit. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Query cacheable", 
+      "type": "boolean"
+    }, 
+    "uri_non_cacheable": {
+      "$ref": "<A HREF="schemas_ALBPathMatch.html">ALBPathMatch</A>, 
+      "description": "Non-cacheable URI configuration with match criteria.", 
+      "required": false, 
+      "title": "Uri non cacheable"
+    }, 
+    "xcache_header": {
+      "default": true, 
+      "description": "Add an X-Cache header to content served from cache, which indicates to the client that the object was served from an intermediate cache. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Xcache header", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "HttpCacheConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,244 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalRouter.html">LogicalRouter</a> (<a href="types_LogicalRouter.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "LogicalRouter", 
+  "module_id": "LogicalRouter", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "advanced_config": {
+      "$ref": "<A HREF="schemas_LogicalRouterConfig.html">LogicalRouterConfig</A>, 
+      "description": "Contains config properties for tier0 routers", 
+      "required": false, 
+      "title": "Logical Router Configuration"
+    }, 
+    "allocation_profile": {
+      "$ref": "<A HREF="schemas_EdgeClusterMemberAllocationProfile.html">EdgeClusterMemberAllocationProfile</A>, 
+      "description": "Configurations options to auto allocate edge cluster members for logical router. Auto allocation is supported only for TIER1 and pick least utilized member post current assignment for next allocation.", 
+      "required": false, 
+      "title": "Edge Cluster Member Allocation Profile"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "edge_cluster_id": {
+      "description": "Used for tier0 routers", 
+      "required": false, 
+      "title": "Identifier of the edge cluster for this Logical Router", 
+      "type": "string"
+    }, 
+    "edge_cluster_member_indices": {
+      "description": "For stateful services, the logical router should be associated with edge cluster. For TIER 1 logical router, for manual placement of service router within the cluster, edge cluster member indices needs to be provided else same will be auto-allocated. You can provide maximum two indices for HA ACTIVE_STANDBY. For TIER0 logical router this property is no use and placement is derived from logical router uplink or loopback port.", 
+      "items": {
+        "type": "integer"
+      }, 
+      "required": false, 
+      "title": "Member indices of the edge node on the cluster", 
+      "type": "array"
+    }, 
+    "failover_mode": {
+      "description": "Determines the behavior when a logical router instance restarts after a failure. If set to PREEMPTIVE, the preferred node will take over, even if it causes another failure. If set to NON_PREEMPTIVE, then the instance that restarted will remain secondary. This property must not be populated unless the high_availability_mode property is set to ACTIVE_STANDBY. If high_availability_mode property is set to ACTIVE_STANDBY and this property is not specified then default will be NON_PREEMPTIVE.", 
+      "enum": [
+        "PREEMPTIVE", 
+        "NON_PREEMPTIVE"
+      ], 
+      "required": false, 
+      "title": "Failover mode for active-standby logical router instances.", 
+      "type": "string"
+    }, 
+    "firewall_sections": {
+      "description": "List of Firewall sections related to Logical Router.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "LR Firewall Section References", 
+      "type": "array"
+    }, 
+    "high_availability_mode": {
+      "enum": [
+        "ACTIVE_ACTIVE", 
+        "ACTIVE_STANDBY"
+      ], 
+      "required": false, 
+      "title": "High availability mode", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ipv6_profiles": {
+      "$ref": "<A HREF="schemas_IPv6Profiles.html">IPv6Profiles</A>, 
+      "description": "IPv6Profiles captures IPv6 NDRA Profile and DAD Profile id associated with the logical router.", 
+      "required": false, 
+      "title": "IPv6 Profiles"
+    }, 
+    "preferred_edge_cluster_member_index": {
+      "description": "Preferred edge cluster member index which is required for PREEMPTIVE failover mode. Used for Tier0 routers only.", 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Preferred edge cluster member index", 
+      "type": "integer"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "router_type": {
+      "description": "TIER0 for external connectivity. TIER1 for two tier topology with TIER0 on top. VRF for isolation of routing table on TIER0.", 
+      "enum": [
+        "TIER0", 
+        "TIER1", 
+        "VRF"
+      ], 
+      "required": true, 
+      "title": "Type of Logical Router", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

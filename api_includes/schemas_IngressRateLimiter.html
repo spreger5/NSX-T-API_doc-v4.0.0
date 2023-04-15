@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IngressRateLimiter.html">IngressRateLimiter</a> (<a href="types_IngressRateLimiter.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_QoSBaseRateLimiter.html">QoSBaseRateLimiter</A>
+  }, 
+  "id": "IngressRateLimiter", 
+  "module_id": "PolicyQoS", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "IngressRateLimiter"
+  }, 
+  "properties": {
+    "average_bandwidth": {
+      "default": 0, 
+      "description": "You can use the average bandwidth to reduce network congestion.", 
+      "minimum": 0, 
+      "title": "Average bandwidth in Mb/s", 
+      "type": "int"
+    }, 
+    "burst_size": {
+      "default": 0, 
+      "description": "The burst duration is set in the burst size setting.", 
+      "minimum": 0, 
+      "title": "Burst size in bytes", 
+      "type": "int"
+    }, 
+    "enabled": {
+      "required": true, 
+      "type": "boolean"
+    }, 
+    "peak_bandwidth": {
+      "default": 0, 
+      "description": "The peak bandwidth rate is used to support burst traffic.", 
+      "minimum": 0, 
+      "title": "Peak bandwidth in Mb/s", 
+      "type": "int"
+    }, 
+    "resource_type": {
+      "default": "IngressRateLimiter", 
+      "description": "Type rate limiter", 
+      "enum": [
+        "IngressRateLimiter", 
+        "IngressBroadcastRateLimiter", 
+        "EgressRateLimiter"
+      ], 
+      "required": true, 
+      "type": "string"
+    }
+  }, 
+  "title": "A shaper that specifies ingress rate properties in Mb/s", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

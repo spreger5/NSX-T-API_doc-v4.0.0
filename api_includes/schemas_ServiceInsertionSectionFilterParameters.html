@@ -1,0 +1,158 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceInsertionSectionFilterParameters.html">ServiceInsertionSectionFilterParameters</a> (<a href="types_ServiceInsertionSectionFilterParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Pagination and Filtering parameters to get only a subset of sections.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ServiceInsertionListRequestParameters.html">ServiceInsertionListRequestParameters</A>
+  }, 
+  "id": "ServiceInsertionSectionFilterParameters", 
+  "module_id": "ServiceInsertionRules", 
+  "properties": {
+    "applied_tos": {
+      "description": "Where the Distributed Service Rules are applied.(used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "AppliedTo's referenced by this section or section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "destinations": {
+      "description": "The destination value in Distributed Service Rules (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "Destinations referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "exclude_applied_to_type": {
+      "$ref": "<A HREF="schemas_DSAppliedToType.html">DSAppliedToType</A>, 
+      "description": "Used to filter out sections not having a specified AppliedTo target type. This parameter cannot be used along with include_applied_to_type parameter. Section filter only takes a single value for this param.", 
+      "required": false, 
+      "title": "Limit result to sections not having a specific AppliedTo type"
+    }, 
+    "filter_type": {
+      "default": "FILTER", 
+      "description": "Filter type defines matching criteria to qualify a rule in result. Type 'FILTER' will ensure all criterias (sources, destinations, services, extended sources, context profiles, appliedtos) are matched. Type 'SEARCH' will match any of the given criteria.", 
+      "enum": [
+        "FILTER", 
+        "SEARCH"
+      ], 
+      "required": false, 
+      "title": "Filter type", 
+      "type": "string"
+    }, 
+    "include_applied_to_type": {
+      "$ref": "<A HREF="schemas_DSAppliedToType.html">DSAppliedToType</A>, 
+      "description": "Used to filter out results based on target type of a section's AppliedTo. Only sections with matching target type in its applied to will be returned. This parameter cannot be used along with exclude_applied_to_type parameter. Section filter only takes a single value for this param.", 
+      "required": false, 
+      "title": "Limit result to sections having a specific AppliedTo type"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "services": {
+      "description": "Specifying this returns the Rules where this NSServiceElement is used (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "NSService referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "sources": {
+      "description": "The source value in Distributed Service Rules (used for filtering the list). Single value is supported in current release. Multiple Comma delmited values may be supported in future releases.", 
+      "required": false, 
+      "title": "Sources referenced by this section's Distributed Service Rules .", 
+      "type": "string"
+    }, 
+    "type": {
+      "default": "L3REDIRECT", 
+      "description": "Section Type with values L3REDIRECT.", 
+      "enum": [
+        "L3REDIRECT"
+      ], 
+      "required": false, 
+      "title": "Section Type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters to filter section from list of sections", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

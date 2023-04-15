@@ -1,0 +1,678 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_switching.html' style='text-decoration: none'> Logical Switching</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List All Logical Ports</h4><br>
+                      <span class="help_detail">Returns information about all configured logical switch ports. Logical
+<br>
+switch ports connect to VM virtual network interface cards (NICs). Each
+<br>
+logical port is associated with one logical switch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalPorts.html">GET /api/v1/logical-ports</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Logical Port</h4><br>
+                      <span class="help_detail">Creates a new logical switch port. The required parameters are the
+<br>
+associated logical_switch_id and admin_state (UP or DOWN). Optional
+<br>
+parameters are the attachment and switching_profile_ids. If you don't
+<br>
+specify switching_profile_ids, default switching profiles are assigned to
+<br>
+the port. If you don't specify an attachment, the switch port remains
+<br>
+empty. To configure an attachment, you must specify an id, and
+<br>
+optionally you can specify an attachment_type (VIF or LOGICALROUTER).
+<br>
+The attachment_type is VIF by default.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLogicalPort.html">POST /api/v1/logical-ports</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Logical Port</h4><br>
+                      <span class="help_detail">Deletes the specified logical switch port. By default, if logical port has
+<br>
+attachments, or it is added to any NSGroup, the deletion will be failed.
+<br>
+Option detach could be used for deleting logical port forcibly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLogicalPort.html">DELETE /api/v1/logical-ports/&lt;lport-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Information About a Logical Port</h4><br>
+                      <span class="help_detail">Returns information about a specified logical port.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPort.html">GET /api/v1/logical-ports/&lt;lport-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Logical Port</h4><br>
+                      <span class="help_detail">Modifies an existing logical switch port. Parameters that can be modified
+<br>
+include attachment_type (LOGICALROUTER, VIF), admin_state (UP or DOWN),
+<br>
+attachment id and switching_profile_ids. You cannot modify the logical_switch_id.
+<br>
+In other words, you cannot move an existing port from one switch to another switch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLogicalPort.html">PUT /api/v1/logical-ports/&lt;lport-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC table of a logical port with a given port id (lport-id)</h4><br>
+                      <span class="help_detail">Returns MAC table of a specified logical port. If the target transport node id is not provided,
+<br>
+the NSX manager will ask the controller for the transport node where the logical port is located.
+<br>
+The query parameter "source=cached" is not supported. MAC table retrieval is not supported on
+<br>
+logical ports that are attached to a logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortMacTable.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC table of a logical port with a given port id (lport-id)</h4><br>
+                      <span class="help_detail">Returns MAC table in CSV format of a specified logical port. If the target transport node id is not provided,
+<br>
+the NSX manager will ask the controller for the transport node where the logical port is located.
+<br>
+The query parameter "source=cached" is not supported. MAC table retrieval is not supported on
+<br>
+logical ports that are attached to a logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortMacTableInCsvFormat.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get realized state & location of a logical port</h4><br>
+                      <span class="help_detail">Returns transport node id for a specified logical port. Also returns
+<br>
+information about all address bindings of the specified logical port. This
+<br>
+includes address bindings discovered via various snooping methods like ARP
+<br>
+snooping, DHCP snooping etc. and addressing bindings that are realized
+<br>
+based on user configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortState.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Statistics for Logical Port of a Given Port ID (lport-id)</h4><br>
+                      <span class="help_detail">Returns statistics of a specified logical port. If the logical port is attached to
+<br>
+a logical router port, query parameter "source=realtime" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortStatistics.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Operational Status for Logical Port of a Given Port ID (lport-id)</h4><br>
+                      <span class="help_detail">Returns operational status of a specified logical port.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortOperationalStatus.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Operational Status Summary of All Logical Ports in the System</h4><br>
+                      <span class="help_detail">Returns operational status of all logical ports.
+<br>
+The query parameter "source=realtime" is not supported.
+<br>
+Pagination is not supported for this API.
+<br>
+The query parameters "cursor", "sort_ascending", "sort_by", "page_size" and "included_fields"
+<br>
+will be ignored.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalPortStatusSummary.html">GET /api/v1/logical-ports/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all Logical Switches</h4><br>
+                      <span class="help_detail">Returns information about all configured logical switches.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalSwitches.html">GET /api/v1/logical-switches</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Logical Switch</h4><br>
+                      <span class="help_detail">Creates a new logical switch. The request must include the
+<br>
+transport_zone_id, display_name, and admin_state (UP or DOWN). The
+<br>
+replication_mode (MTEP or SOURCE) is required for overlay logical
+<br>
+switches, but not for VLAN-based logical switches. A vlan needs to be
+<br>
+provided for VLAN-based logical switches.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLogicalSwitch.html">POST /api/v1/logical-switches</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Logical Switch</h4><br>
+                      <span class="help_detail">Removes a logical switch from the associated overlay or VLAN transport
+<br>
+zone. By default, a logical switch cannot be deleted if there are logical
+<br>
+ports on the switch, or it is added to a NSGroup.
+<br>
+Cascade option can be used to delete all ports and the logical switch.
+<br>
+Detach option can be used to delete the logical switch forcibly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLogicalSwitch.html">DELETE /api/v1/logical-switches/&lt;lswitch-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Logical Switch associated with the provided id (lswitch-id)</h4><br>
+                      <span class="help_detail">Returns information about the specified logical switch Id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitch.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Logical Switch</h4><br>
+                      <span class="help_detail">Modifies attributes of an existing logical switch. Modifiable
+<br>
+attributes include admin_state, replication_mode, switching_profile_ids
+<br>
+and VLAN spec. You cannot modify the original transport_zone_id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLogicalSwitch.html">PUT /api/v1/logical-switches/&lt;lswitch-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC Table for Logical Switch of the Given ID (lswitch-id)</h4><br>
+                      <span class="help_detail">Returns MAC table of a specified logical switch from the given transport
+<br>
+node if a transport node id is given in the query parameter from the
+<br>
+Central Controller Plane.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchMacTable.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC Table for Logical Switch of the Given ID (lswitch-id)</h4><br>
+                      <span class="help_detail">Returns MAC table of a specified logical switch in CSV format from the given transport
+<br>
+node if a transport node id is given in the query parameter from the
+<br>
+Central Controller Plane.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchMacTableInCsvFormat.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state associated with provided logical switch id</h4><br>
+                      <span class="help_detail">Returns current state of the logical switch configuration and details of only
+<br>
+out-of-sync transport nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchState.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Statistics for Logical Switch of the Given ID (lswitch-id)</h4><br>
+                      <span class="help_detail">Returns statistics  of a specified logical switch.
+<br>
+The query parameter "source=realtime" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchStatistics.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Logical Switch runtime status info for a given logical switch</h4><br>
+                      <span class="help_detail">Returns the number of ports assigned to logical switch.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchStatus.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get virtual tunnel endpoint table for logical switch of the given
+ID (lswitch-id)
+</h4><br>
+                      <span class="help_detail">Returns the virtual tunnel endpoint table of a specified logical switch
+<br>
+from the given transport node if a transport node id is given in the
+<br>
+query parameter, from the Central Controller Plane.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchVtepTable.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/vtep-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get virtual tunnel endpoint table for logical switch of the given
+ID (lswitch-id)
+</h4><br>
+                      <span class="help_detail">Returns virtual tunnel endpoint table of a specified logical switch in
+<br>
+CSV format from the given transport node if a transport node id is
+<br>
+given in the query parameter from the Central Controller Plane.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchVtepTableInCsvFormat.html">GET /api/v1/logical-switches/&lt;lswitch-id&gt;/vtep-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List logical switches by realized state</h4><br>
+                      <span class="help_detail">Returns a list of logical switches states that have realized state as provided
+<br>
+as query parameter.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalSwitchesByState.html">GET /api/v1/logical-switches/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Status Summary of All Logical Switches in the System</h4><br>
+                      <span class="help_detail">Returns Operational status of all logical switches.
+<br>
+The query parameter "source=realtime" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalSwitchStatusSummary.html">GET /api/v1/logical-switches/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Switching Profiles</h4><br>
+                      <span class="help_detail">Returns information about the system-default and user-configured switching
+<br>
+profiles. Each switching profile has a unique ID, a display name, and
+<br>
+various other read-only and configurable properties. The default switching
+<br>
+profiles are assigned automatically to each switch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSwitchingProfiles.html">GET /api/v1/switching-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Switching Profile</h4><br>
+                      <span class="help_detail">Creates a new, custom qos, port-mirroring, spoof-guard or port-security
+<br>
+switching profile. You can override their default switching profile assignments
+<br>
+by creating a new switching profile and assigning it to one or more logical
+<br>
+switches. You cannot override the default ipfix or ip_discovery switching profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateSwitchingProfile.html">POST /api/v1/switching-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Switching Profile</h4><br>
+                      <span class="help_detail">Deletes the specified switching profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSwitchingProfile.html">DELETE /api/v1/switching-profiles/&lt;switching-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Switching Profile by ID</h4><br>
+                      <span class="help_detail">Returns information about a specified switching profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSwitchingProfile.html">GET /api/v1/switching-profiles/&lt;switching-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Switching Profile</h4><br>
+                      <span class="help_detail">Updates the user-configurable parameters of a switching profile. Only the qos,
+<br>
+port-mirroring, spoof-guard and port-security switching profiles can be modified.
+<br>
+You cannot modify the ipfix or ip-discovery switching profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSwitchingProfile.html">PUT /api/v1/switching-profiles/&lt;switching-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Counts of Ports and Switches Using This Switching Profile</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSwitchingProfileStatus.html">GET /api/v1/switching-profiles/&lt;switching-profile-id&gt;/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

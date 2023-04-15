@@ -1,0 +1,133 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TraceflowObservationIpsecVpn.html">TraceflowObservationIpsecVpn</a> (<a href="types_TraceflowObservationIpsecVpn.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "IPSec VPN traceflow observation.", 
+  "id": "TraceflowObservationIpsecVpn", 
+  "module_id": "Traceflow", 
+  "properties": {
+    "inner_dst_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Inner destination IP Address.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Inner destination IP"
+    }, 
+    "inner_src_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Inner source IP Address.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Inner source IP"
+    }, 
+    "local_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Local VPN endpoint IP Address.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Local VPN endpoint IP"
+    }, 
+    "policy_id": {
+      "description": "IPSec tunnel interface universally unique identifier in case of Policy-based IPSec VPN.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IPSec tunnel interface UUID in case of Policy-based IPSec VPN", 
+      "type": "string"
+    }, 
+    "remote_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Peer VPN endpoint IP Address.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Peer VPN endpoint IP"
+    }, 
+    "session_id": {
+      "description": "IPSec VPN session universally unique identifier.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VPN session UUID", 
+      "type": "string"
+    }, 
+    "spi": {
+      "description": "Security Parameter Index is used to uniquely identify a particular IPSec Security Association.", 
+      "maximum": 4294967295, 
+      "minimum": 1, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Security Parameter Index", 
+      "type": "integer"
+    }, 
+    "vti_id": {
+      "description": "Virtual tunnel interface universally unique identifier in case of Route-based IPSec VPN.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Virtual tunnel interface UUID in case of Route-based IPSec VPN", 
+      "type": "string"
+    }
+  }, 
+  "title": "IPSec VPN traceflow observation", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

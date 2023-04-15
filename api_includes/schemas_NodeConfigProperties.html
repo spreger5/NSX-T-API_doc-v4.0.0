@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeConfigProperties.html">NodeConfigProperties</a> (<a href="types_NodeConfigProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "NodeConfigProperties", 
+  "properties": {
+    "maintenance_mode_enabled": {
+      "default": "disabled", 
+      "description": "Maintenance Mode enabled", 
+      "enum": [
+        "entering", 
+        "enabled", 
+        "exiting", 
+        "disabled"
+      ], 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "management_interface": {
+      "description": "Network properties of the management interface", 
+      "readonly": true, 
+      "title": "Management Interface Properties", 
+      "type": [
+        {
+          "$ref": "<A HREF="schemas_NodeNetworkInterfaceProperties.html">NodeNetworkInterfaceProperties</A>
+        }
+      ]
+    }, 
+    "management_interface_vlan_id": {
+      "description": "VLAN ID of the In-Band management interface", 
+      "maximum": 4094, 
+      "minimum": 1, 
+      "readonly": true, 
+      "title": "Management Interface VLAN ID", 
+      "type": "integer"
+    }, 
+    "management_routes": {
+      "description": "Management interface static routes of this node", 
+      "items": {
+        "$ref": "<A HREF="schemas_NodeRouteProperties.html">NodeRouteProperties</A>
+      }, 
+      "readonly": true, 
+      "title": "Management Interface Static Routes", 
+      "type": "array"
+    }
+  }, 
+  "title": "Information about configuration of this node", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_StatisticsRequestParameters.html">StatisticsRequestParameters</a> (<a href="types_StatisticsRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Request parameters that represents an enforcement point path. A request on statistics can be parameterized with this path and will be evaluated as follows: - no enforcement point path specified: the request is evaluated on all enforcement points. - {enforcement_point_path}: the request is evaluated only on the given enforcement point. - {container_cluster_path}: The request is evaluated only on the given container cluster.", 
+  "id": "StatisticsRequestParameters", 
+  "module_id": "PolicyBaseStatistics", 
+  "properties": {
+    "container_cluster_path": {
+      "description": "Path to the container cluster entity where the request will be executed.", 
+      "required": false, 
+      "title": "String Path of the Container Cluster entity", 
+      "type": "string"
+    }, 
+    "enforcement_point_path": {
+      "description": "enforcement point path, forward slashes must be escaped using %2F.", 
+      "required": false, 
+      "title": "String Path of the enforcement point", 
+      "type": "string"
+    }
+  }, 
+  "title": "Statistics Request Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

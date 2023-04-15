@@ -1,0 +1,81 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TlsConfigSettings.html">TlsConfigSettings</a> (<a href="types_TlsConfigSettings.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Pre-defined config settings. Settings could be one of Balanced, High Fidelity, High Security, Custom", 
+  "enum": [
+    "BALANCED", 
+    "HIGH_FIDELITY", 
+    "HIGH_SECURITY", 
+    "CUSTOM"
+  ], 
+  "help_summary": "- High Fidelity setting reduces the likelihood of TLS Proxy breaking an otherwise successful connection.\n  Specifically, TLS Proxy preserves original client and server preferences (TLS version, ciphers, etc.) in the\n  TLS handshake as much as possible.\n  - Client side - support TLS versions and Ciphers\n  - Server side - no restrictions\n- High Security setting enforces a stricter security posture such as enabling only the most secure\n  TLS versions and ciphers.\n  - Support TLS Versions and Ciphers\n- Balanced setting strikes a balance between security, performance and compatibility.\n  - Support TLS Versions and Ciphers\n- Custom allows user to pick the settings to meet their requirements.\nThese pre-settings per release will be preserved for existing profiles even if changed in future releases.\n", 
+  "id": "TlsConfigSettings", 
+  "module_id": "PolicyTlsActionProfile", 
+  "required": true, 
+  "title": "TLS config settings", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

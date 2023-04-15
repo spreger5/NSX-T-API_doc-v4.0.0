@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SegmentSubnet.html">SegmentSubnet</a> (<a href="types_SegmentSubnet.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "SegmentSubnet", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "dhcp_config": {
+      "$ref": "<A HREF="schemas_SegmentDhcpConfig.html">SegmentDhcpConfig</A>, 
+      "description": "Additional DHCP configuration for current subnet.", 
+      "required": false, 
+      "title": "Additional DHCP configuration"
+    }, 
+    "dhcp_ranges": {
+      "description": "DHCP address ranges are used for dynamic IP allocation. Supports address range and CIDR formats. First valid host address from the first value is assigned to DHCP server IP address. Existing values cannot be deleted or modified, but additional DHCP ranges can be added.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPElement.html">IPElement</A>
+      }, 
+      "maxItems": 99, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "DHCP address ranges for dynamic IP allocation", 
+      "type": "array"
+    }, 
+    "gateway_address": {
+      "description": "Gateway IP address in CIDR format for both IPv4 and IPv6.", 
+      "format": "ip-cidr-block", 
+      "title": "Gateway IP address.", 
+      "type": "string"
+    }, 
+    "network": {
+      "description": "Network CIDR for this subnet calculated from gateway_addresses and prefix_len.", 
+      "readonly": true, 
+      "title": "Network CIDR for subnet", 
+      "type": "string"
+    }
+  }, 
+  "title": "Subnet configuration for segment", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

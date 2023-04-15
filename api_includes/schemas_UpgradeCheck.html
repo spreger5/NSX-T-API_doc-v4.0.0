@@ -1,0 +1,118 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UpgradeCheck.html">UpgradeCheck</a> (<a href="types_UpgradeCheck.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Check to identify potential pre/post-upgrade issues", 
+  "id": "UpgradeCheck", 
+  "module_id": "Upgrade", 
+  "properties": {
+    "component_type": {
+      "readonly": false, 
+      "required": true, 
+      "title": "Component type", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "readonly": false, 
+      "required": false, 
+      "title": "Name of the pre/post-upgrade check", 
+      "type": "string"
+    }, 
+    "failure_messages": {
+      "deprecated": true, 
+      "description": "List of failure messages. This field is deprecated now. Please use failures instead.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of failure messages", 
+      "type": "array"
+    }, 
+    "failures": {
+      "items": {
+        "$ref": "<A HREF="schemas_UpgradeCheckFailureMessage.html">UpgradeCheckFailureMessage</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of failures", 
+      "type": "array"
+    }, 
+    "status": {
+      "enum": [
+        "SUCCESS", 
+        "FAILURE", 
+        "WARNING"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Status of pre/post-upgrade check", 
+      "type": "string"
+    }
+  }, 
+  "title": "Pre/post-upgrade check", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

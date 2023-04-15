@@ -1,0 +1,287 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FirewallSessionTimerProfile.html">FirewallSessionTimerProfile</a> (<a href="types_FirewallSessionTimerProfile.html">type</a>)
+</h3>
+<pre>{
+  "description": "A profile holding TCP, UDP and ICMP session timeout configuration.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseFirewallProfile.html">BaseFirewallProfile</A>
+  }, 
+  "id": "FirewallSessionTimerProfile", 
+  "module_id": "FirewallProfile", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "FirewallSessionTimerProfile"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "icmp_error_reply": {
+      "default": 10, 
+      "description": "The timeout value for the connection after an ICMP error came back in response to an ICMP packet. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Timeout after ICMP error", 
+      "type": "integer"
+    }, 
+    "icmp_first_packet": {
+      "default": 20, 
+      "description": "The timeout value of connection in seconds after the first packet. This will be the initial timeout for the new ICMP flow. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "First packet connection timeout", 
+      "type": "integer"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "Resource type to use as profile type", 
+      "enum": [
+        "FirewallSessionTimerProfile", 
+        "FirewallCpuMemThresholdsProfile", 
+        "FirewallFloodProtectionProfile", 
+        "FirewallDnsProfile", 
+        "GeneralSecuritySettingsProfile"
+      ], 
+      "help_summary": "Possible values are 'FirewallSessionTimerProfile',\n'FirewallCpuMemThresholdsProfile',\n'FirewallFloodProtectionProfile',\n'FirewallDnsProfile',\n'GeneralSecuritySettingsProfile'\n", 
+      "required": true, 
+      "title": "Resource type to use as profile type.", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tcp_closed": {
+      "default": 20, 
+      "description": "The timeout value of connection in seconds after one endpoint sends an RST. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Timeout after RST", 
+      "type": "integer"
+    }, 
+    "tcp_closing": {
+      "default": 120, 
+      "description": "The timeout value of connection in seconds after the first FIN has been sent. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Timeout after first TN", 
+      "type": "integer"
+    }, 
+    "tcp_established": {
+      "default": 43200, 
+      "description": "The timeout value of connection in seconds once the connection has become fully established. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 120, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Connection timeout", 
+      "type": "integer"
+    }, 
+    "tcp_finwait": {
+      "default": 45, 
+      "description": "The timeout value of connection in seconds after both FINs have been exchanged and connection is closed. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Timeout after FINs exchanged", 
+      "type": "integer"
+    }, 
+    "tcp_first_packet": {
+      "default": 120, 
+      "description": "The timeout value of connection in seconds after the first packet has been sent. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Connection timout after first packet", 
+      "type": "integer"
+    }, 
+    "tcp_opening": {
+      "default": 30, 
+      "description": "The timeout value of connection in seconds after a second packet has been transferred. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Connection timout after second packet", 
+      "type": "integer"
+    }, 
+    "udp_first_packet": {
+      "default": 60, 
+      "description": "The timeout value of connection in seconds after the first packet. This will be the initial timeout for the new UDP flow. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Connection timout after first packet", 
+      "type": "integer"
+    }, 
+    "udp_multiple": {
+      "default": 60, 
+      "description": "The timeout value of connection in seconds if both hosts have sent packets. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Timeout after hosts sent packet", 
+      "type": "integer"
+    }, 
+    "udp_single": {
+      "default": 30, 
+      "description": "The timeout value of connection in seconds if the source host sends more than one packet but the destination host has never sent one back. The default value for Edges (i.e, Gateway, or Logical Router) may be different than Distributed Firewall hosts.", 
+      "maximum": 4320000, 
+      "minimum": 10, 
+      "readonly": false, 
+      "required": true, 
+      "title": "Connection timeout for destination", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Firewall Session timeout profile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

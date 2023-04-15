@@ -1,0 +1,478 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AwsVirtualMachine.html">AwsVirtualMachine</a> (<a href="types_AwsVirtualMachine.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores information about a AWS Virtual Machine", 
+  "extends": {
+    "$ref": "<A HREF="schemas_CloudVirtualMachine.html">CloudVirtualMachine</A>
+  }, 
+  "id": "AwsVirtualMachine", 
+  "module_id": "CloudVirtualMachineInformation", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "AwsVirtualMachine"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "agent_status": {
+      "description": "UP - NSX Agent is up and running DOWN - NSX Agent is down NO_AGENT - No NSX Agent installed on instance UNKNOWN - NSX Agent status is unknown NEEDS_UPDATE - NSX Agent running on instance needs to be updated", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "NO_AGENT", 
+        "UNKNOWN", 
+        "NEEDS_UPDATE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Agent Status", 
+      "type": "string"
+    }, 
+    "agent_version": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Agent version details", 
+      "type": "string"
+    }, 
+    "associated_account_ids": {
+      "description": "Array of associated cloud account IDs.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Associated Cloud Account IDs", 
+      "type": "array"
+    }, 
+    "availability_zone": {
+      "description": "AWS availability zone in which virtual machine is residing", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AWS Availability Zone", 
+      "type": "string"
+    }, 
+    "cloud_instance_type": {
+      "description": "This field represents various type of service instances in cloud. VIRTUAL_MACHINE: Virtual machine deployed in public cloud. AWS_RDS_INSTANCE: Amazon Relational Database Service Instance. AWS_RDS_CLUSTER: Amazon Relational Database Service Cluster. AWS_APPLICATION_ELB_INSTANCE: Amazon Application Elastic LoadBalancer. AWS_CLASSIC_ELB_INSTANCE: Amazon Classic Elastic LoadBalancer. HORIZON_MANAGEMENT: Virtual Machines that are deployed on Microsoft Azure using Horizon Cloud Services(HCS) that are used for managing other instances in the network. This includes, Management VMs, Unified Access Gateway (UAG) VMs, Base VMs. HORIZON_VDI: Virtual Desktop Image (VDI) deployed on Microsoft Azure using Horizon Cloud Services(HCS).", 
+      "enum": [
+        "VIRTUAL_MACHINE", 
+        "AWS_RDS_INSTANCE", 
+        "AWS_RDS_CLUSTER", 
+        "AWS_APPLICATION_ELB_INSTANCE", 
+        "AWS_CLASSIC_ELB_INSTANCE", 
+        "HORIZON_MANAGEMENT", 
+        "HORIZON_VDI"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Cloud Instance Type", 
+      "type": "string"
+    }, 
+    "cloud_tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_CloudTag.html">CloudTag</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Cloud tags for the instance", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "error_messages": {
+      "description": "List of error messages identified. Returns only error messages identified in the last 1 hour.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ComputeInstanceErrorMessage.html">ComputeInstanceErrorMessage</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of error messages", 
+      "type": "array"
+    }, 
+    "gateway_ha_index": {
+      "description": "Index of HA that indicates whether gateway is primary or secondary. If index is 0, then it is primary gateway. Else secondary gateway.", 
+      "required": false, 
+      "title": "Gateway HA Index", 
+      "type": "integer"
+    }, 
+    "gateway_status": {
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "DEPLOYING", 
+        "NOT_AVAILABLE", 
+        "UNDEPLOYING", 
+        "COPYING_IMAGE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Gateway Status", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "is_gateway": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag to identify if this instance is a gateway node", 
+      "type": "boolean"
+    }, 
+    "is_gateway_active": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag to identify if this instance is an active gateway node", 
+      "type": "boolean"
+    }, 
+    "logical_switch_display_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical Switch display name", 
+      "type": "string"
+    }, 
+    "logical_switch_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical Switch ID", 
+      "type": "string"
+    }, 
+    "managed_by_nsx": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Indicate if instance is managed by NSX or not", 
+      "type": "boolean"
+    }, 
+    "nsx_failed_rules_count": {
+      "description": "Number of NSX firewall rules failed to realize on cloud for the instance.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX failed rules count", 
+      "type": "integer"
+    }, 
+    "nsx_ip": {
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address provided by NSX", 
+      "type": "string"
+    }, 
+    "nsx_security_group_mapping": {
+      "description": "Map of cloud security groups associated to the instance and corresponding NSX security groups.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SecurityGroupDetails.html">SecurityGroupDetails</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX Security Group Mapping", 
+      "type": "array"
+    }, 
+    "nsx_security_rule_errors": {
+      "deprecated": true, 
+      "description": "DEPRECATED. Array of NSX security rule realization errors. To get this information call /csm/virtual-machines/&lt;virtual-machine-id&gt;/firewall-rules", 
+      "items": {
+        "$ref": "<A HREF="schemas_NsxSecurityRuleErrorDetails.html">NsxSecurityRuleErrorDetails</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX Security Rule Errors", 
+      "type": "array"
+    }, 
+    "nsx_security_rule_errors_count": {
+      "deprecated": true, 
+      "description": "DEPRECATED. Count of the NSX security rule realization errors. To get this information call /csm/virtual-machines/&lt;virtual-machine-id&gt;/firewall-rules", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX Security Rule Errors Count", 
+      "type": "integer"
+    }, 
+    "nsx_successful_rules_count": {
+      "description": "Number of NSX firewall rules successfully configured for this instance.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX successful rules count", 
+      "type": "integer"
+    }, 
+    "os_details": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Operating system details", 
+      "type": "string"
+    }, 
+    "os_type": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Operating system of the instance", 
+      "type": "string"
+    }, 
+    "power_state": {
+      "description": "Indicates the power state of the virtual machine as returned by AWS.", 
+      "enum": [
+        "PENDING", 
+        "RUNNING", 
+        "SHUTTING_DOWN", 
+        "TERMINATED", 
+        "STOPPING", 
+        "STOPPED"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Power State", 
+      "type": "string"
+    }, 
+    "private_ip": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Private IP address of the instance", 
+      "type": "string"
+    }, 
+    "public_ip": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Public IP address of the instance", 
+      "type": "string"
+    }, 
+    "quarantine_state": {
+      "description": "Indicates the quarantine state of the instance. QUARANTINED - This state implies instance is moved to quarantine security group because some threat has been detected. NOT_QUARANTINED - This state implies no quarantine action has been taken. UNKNOWN - This state implies either quarantine policy is disabled or quarantine information is not available. OVERRIDDEN - This state implies instance is associated with vm_override_sg which overrides any action based on threat detection. WHITELISTED - This state implies that quarantine operation will not be performed on the instance [DEPRECATED - replaced with USERMANAGED]. USERMANAGED - This state implies that quarantine operation will not be performed on the instance. NOT_APPLICABLE - This state will be populated for agentless instance, Horizon Management instance.", 
+      "enum": [
+        "QUARANTINED", 
+        "NOT_QUARANTINED", 
+        "UNKNOWN", 
+        "OVERRIDDEN", 
+        "WHITELISTED", 
+        "USERMANAGED", 
+        "NOT_APPLICABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Quarantine State", 
+      "type": "string"
+    }, 
+    "region": {
+      "description": "AWS region in which virtual machine is residing", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AWS Region", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource. Possible values are in the form of VirtualMachine prefixed by cloud name. For example, AwsVirtualMachine or AzureVirtualMachine.", 
+      "enum": [
+        "AwsVirtualMachine", 
+        "AzureVirtualMachine"
+      ], 
+      "required": true, 
+      "title": "Resource Type", 
+      "type": "string"
+    }, 
+    "segment_display_name": {
+      "description": "Segment display name on which this instance resides.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Segment display name", 
+      "type": "string"
+    }, 
+    "segment_id": {
+      "description": "Segment ID on which this instance resides.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Segment ID", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "POWERED_ON - Powered on instance POWERED_OFF - Powered off instance MANAGED_GATEWAY - Instances that are public cloud gateways MANAGED - Instances that are managed by NSX UNMANAGED - Instances that are not managed by NSX or untagged ERRORED - Instances with no NSX Agent connectivity, NSX Agent is down, No NSX Policy configured for Agentless VMs or Error on NSX Policy rule realization. QUARANTINED - Instances which have been quarantined WHITELISTED - Instances which have been whitelisted [DEPRECATED - replaced with USERMANAGED] USERMANAGED - Instances which have been marked as usermanaged.", 
+      "enum": [
+        "POWERED_ON", 
+        "POWERED_OFF", 
+        "UNMANAGED", 
+        "MANAGED_GATEWAY", 
+        "MANAGED", 
+        "ERRORED", 
+        "QUARANTINED", 
+        "WHITELISTED", 
+        "USERMANAGED"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance status", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "threat_state": {
+      "description": "Indicates the threat state of the instance. NORMAL - This state implies no threat has been detected and instance is functioning as expected. THREAT - This state implies quarantine enabling threat has been detected. INVALID - This state implies either instance is unmanaged or threat related information is not available. NOT_APPLICABLE - This state will be populated for agentless instance.", 
+      "enum": [
+        "NORMAL", 
+        "THREAT", 
+        "INVALID", 
+        "NOT_APPLICABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Threat State", 
+      "type": "string"
+    }, 
+    "vm_config_status": {
+      "$ref": "<A HREF="schemas_VmConfigStatus.html">VmConfigStatus</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status for user configurable properties"
+    }, 
+    "vm_extension_execution_status": {
+      "description": "UNKNOWN - This is the default state. Indicates no information available           regarding extension execution. This can potentially occur for           a VM when agent is installed out of band or if           cloud_agent_automated_install_enabled flag is enabled for the           VNET/VPC which already has managed VMs. SUCCESSFUL - Indicates VM extension script execution was successful.           This does not necessarily mean agent installation was           successful. FAILED - Indicates VM extension script execution failed.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM extension script execution status", 
+      "type": "string"
+    }, 
+    "vpc": {
+      "description": "AWS VPC ID in which virtual machine is residing", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AWS VPC", 
+      "type": "string"
+    }, 
+    "vpc_name": {
+      "description": "AWS VPC name in which virtual machine is residing", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AWS VPC name", 
+      "type": "string"
+    }
+  }, 
+  "title": "Aws Virtual Machine Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

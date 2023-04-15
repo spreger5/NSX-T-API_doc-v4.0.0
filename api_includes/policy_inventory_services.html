@@ -1,0 +1,274 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_inventory.html' style='text-decoration: none'> Inventory</a> >
+        
+        
+            <a href='policy_inventory_services.html' style='text-decoration: none'> Services</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Services for infra</h4><br>
+                      <span class="help_detail">Paginated list of Services for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServicesForTenant.html">GET /policy/api/v1/infra/services</a>
+                            <br>
+                            
+                            <a href="method_ListServicesForTenant.html">GET /policy/api/v1/global-infra/services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service</h4><br>
+                      <span class="help_detail">Delete Service</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceForTenant.html">DELETE /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a service</h4><br>
+                      <span class="help_detail">Read a service</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceForTenant.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadServiceForTenant.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Service</h4><br>
+                      <span class="help_detail">Create a new service if a service with the given ID does not already
+<br>
+exist. Creates new service entries if populated in the service.
+<br>
+If a service with the given ID already exists, patch the service
+<br>
+including the nested service entries.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceForTenant.html">PATCH /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Service</h4><br>
+                      <span class="help_detail">Create a new service if a service with the given ID does not already
+<br>
+exist. Creates new service entries if populated in the service.
+<br>
+If a service with the given ID already exists, update the service
+<br>
+including the nested service entries. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceForTenant.html">PUT /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Service entries for the given service</h4><br>
+                      <span class="help_detail">Paginated list of Service entries for the given service
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceEntries.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;/service-entries</a>
+                            <br>
+                            
+                            <a href="method_ListServiceEntries.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service entry</h4><br>
+                      <span class="help_detail">Delete Service entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceEntry.html">DELETE /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Service entry</h4><br>
+                      <span class="help_detail">Service entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceEntry.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadServiceEntry.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a ServiceEntry</h4><br>
+                      <span class="help_detail">If a service entry with the service-entry-id is not already present,
+<br>
+create a new service entry. If it already exists, patch the service
+<br>
+entry.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceEntry.html">PATCH /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a ServiceEntry</h4><br>
+                      <span class="help_detail">If a service entry with the service-entry-id is not already present,
+<br>
+create a new service entry. If it already exists, update the service
+<br>
+entry.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceEntry.html">PUT /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

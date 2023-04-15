@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SegmentPortMacAddressCsvListResult.html">SegmentPortMacAddressCsvListResult</a> (<a href="types_SegmentPortMacAddressCsvListResult.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_CsvListResult.html">CsvListResult</A>
+  }, 
+  "id": "SegmentPortMacAddressCsvListResult", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "file_name": {
+      "description": "File name set by HTTP server if API  returns CSV result as a file.", 
+      "required": false, 
+      "title": "File name", 
+      "type": "string"
+    }, 
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the data was last updated; unset if data source has never updated the data.", 
+      "readonly": true
+    }, 
+    "results": {
+      "items": {
+        "$ref": "<A HREF="schemas_SegmentPortMacTableCsvEntry.html">SegmentPortMacTableCsvEntry</A>
+      }, 
+      "required": false, 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,951 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBVirtualService.html">ALBVirtualService</a> (<a href="types_ALBVirtualService.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer VirtualService object", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "ALBVirtualService", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "active_standby_se_tag": {
+      "$ref": "<A HREF="schemas_ALBActiveStandbySeTag.html">ALBActiveStandbySeTag</A>, 
+      "default": "ACTIVE_STANDBY_SE_1", 
+      "description": "This configuration only applies if the VirtualService is in Legacy Active Standby HA mode and Load Distribution among Active Standby is enabled. This field is used to tag the VirtualService so that VirtualServices with the same tag will share the same Active ServiceEngine. VirtualServices with different tags will have different Active ServiceEngines. If one of the ServiceEngine's in the ServiceEngineGroup fails, all VirtualServices will end up using the same Active ServiceEngine. Redistribution of the VirtualServices can be either manual or automated when the failed ServiceEngine recovers. Redistribution is based on the auto redistribute property of the ServiceEngineGroup. Enum options - ACTIVE_STANDBY_SE_1, ACTIVE_STANDBY_SE_2. Default value when not specified in API or module is interpreted by ALB Controller as ACTIVE_STANDBY_SE_1.", 
+      "required": false, 
+      "title": "Active standby se tag"
+    }, 
+    "advertise_down_vs": {
+      "default": false, 
+      "description": "Keep advertising Virtual Service via BGP even if it is marked down by health monitor. This setting takes effect for future Virtual Service flaps. To advertise current VSes that are down, please disable and re-enable the Virtual Service. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Advertise down vs", 
+      "type": "boolean"
+    }, 
+    "allow_invalid_client_cert": {
+      "default": false, 
+      "description": "Process request even if invalid client certificate is presented. Datascript APIs need to be used for processing of such requests. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Allow invalid client cert", 
+      "type": "boolean"
+    }, 
+    "analytics_policy": {
+      "$ref": "<A HREF="schemas_ALBAnalyticsPolicy.html">ALBAnalyticsPolicy</A>, 
+      "description": "Determines analytics settings for the application.", 
+      "required": false, 
+      "title": "Analytics policy"
+    }, 
+    "analytics_profile_path": {
+      "description": "Specifies settings related to analytics. It is a reference to an object of type AnalyticsProfile.", 
+      "required": false, 
+      "title": "Analytics profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_ANALYTICSPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBAnalyticsProfile"
+          ]
+        }
+      ]
+    }, 
+    "apic_contract_graph": {
+      "description": "The name of the Contract/Graph associated with the Virtual Service. Should be in the &lt;Contract name&gt; &lt;Graph name&gt; format. This is applicable only for Service Integration mode with Cisco APIC Controller. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Apic contract graph", 
+      "type": "string"
+    }, 
+    "application_profile_path": {
+      "description": "Enable application layer specific features for the Virtual Service. It is a reference to an object of type ApplicationProfile. Special default for Essentials edition is System-L4-Application.", 
+      "required": false, 
+      "title": "Application profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_APPLICATIONPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBApplicationProfile"
+          ]
+        }
+      ]
+    }, 
+    "azure_availability_set": {
+      "description": "(internal-use)Applicable for Azure only. Azure Availability set to which this VS is associated. Internally set by the cloud connector.", 
+      "required": false, 
+      "title": "Azure availability set", 
+      "type": "string"
+    }, 
+    "bgp_peer_labels": {
+      "description": "Select BGP peers, using peer label, for VsVip advertisement. Maximum of 128 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Bgp peer labels", 
+      "type": "array"
+    }, 
+    "bulk_sync_kvcache": {
+      "default": false, 
+      "description": "(This is a beta feature). Sync Key-Value cache to the new SEs when VS is scaled out. For ex  SSL sessions are stored using VS's Key-Value cache. When the VS is scaled out, the SSL session information is synced to the new SE, allowing existing SSL sessions to be reused on the new SE. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Bulk sync kvcache", 
+      "type": "boolean"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "client_auth": {
+      "$ref": "<A HREF="schemas_ALBHTTPClientAuthenticationParams.html">ALBHTTPClientAuthenticationParams</A>, 
+      "description": "HTTP authentication configuration for protected resources.", 
+      "required": false, 
+      "title": "Client auth"
+    }, 
+    "close_client_conn_on_config_update": {
+      "default": false, 
+      "description": "close client connection on vs config update. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Close client conn on config update", 
+      "type": "boolean"
+    }, 
+    "cloud_config_cksum": {
+      "description": "Checksum of cloud configuration for VS. Internally set by cloud connector.", 
+      "required": false, 
+      "title": "Cloud config cksum", 
+      "type": "string"
+    }, 
+    "cloud_name": {
+      "description": "It is a reference to an object of type Cloud.", 
+      "required": false, 
+      "title": "Cloud name", 
+      "type": "string"
+    }, 
+    "cloud_type": {
+      "$ref": "<A HREF="schemas_ALBCloudType.html">ALBCloudType</A>, 
+      "default": "CLOUD_NONE", 
+      "description": "Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP, CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT. Allowed in Basic(Allowed values- CLOUD_NONE,CLOUD_NSXT) edition, Essentials(Allowed values- CLOUD_NONE,CLOUD_VCENTER) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as CLOUD_NONE.", 
+      "required": false, 
+      "title": "Cloud type"
+    }, 
+    "connections_rate_limit": {
+      "$ref": "<A HREF="schemas_ALBRateProfile.html">ALBRateProfile</A>, 
+      "description": "Rate limit the incoming connections to this virtual service.", 
+      "required": false, 
+      "title": "Connections rate limit"
+    }, 
+    "content_rewrite": {
+      "$ref": "<A HREF="schemas_ALBContentRewriteProfile.html">ALBContentRewriteProfile</A>, 
+      "description": "Profile used to match and rewrite strings in request and/or response body.", 
+      "required": false, 
+      "title": "Content rewrite"
+    }, 
+    "created_by": {
+      "description": "Creator name.", 
+      "required": false, 
+      "title": "Created by", 
+      "type": "string"
+    }, 
+    "delay_fairness": {
+      "default": false, 
+      "description": "Select the algorithm for QoS fairness. This determines how multiple Virtual Services sharing the same Service Engines will prioritize traffic over a congested network. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Delay fairness", 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "dns_info": {
+      "description": "Service discovery specific data including fully qualified domain name, type and Time-To-Live of the DNS record. Note that only one of fqdn and dns_info setting is allowed. Maximum of 1000 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsInfo.html">ALBDnsInfo</A>
+      }, 
+      "required": false, 
+      "title": "Dns info", 
+      "type": "array"
+    }, 
+    "dns_policies": {
+      "description": "DNS Policies applied on the dns traffic of the Virtual Service. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsPolicies.html">ALBDnsPolicies</A>
+      }, 
+      "required": false, 
+      "title": "Dns policies", 
+      "type": "array"
+    }, 
+    "east_west_placement": {
+      "default": false, 
+      "description": "Force placement on all SE's in service group (Mesos mode only). Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "East west placement", 
+      "type": "boolean"
+    }, 
+    "enable_autogw": {
+      "default": false, 
+      "description": "Response traffic to clients will be sent back to the source MAC address of the connection, rather than statically sent to a default gateway. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Special default for Basic edition is false, Essentials edition is false, Enterprise is True. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable autogw", 
+      "type": "boolean"
+    }, 
+    "enable_rhi": {
+      "description": "Enable Route Health Injection using the BGP Config in the vrf context.", 
+      "required": false, 
+      "title": "Enable rhi", 
+      "type": "boolean"
+    }, 
+    "enable_rhi_snat": {
+      "description": "Enable Route Health Injection for Source NAT'ted floating IP Address using the BGP Config in the vrf context.", 
+      "required": false, 
+      "title": "Enable rhi snat", 
+      "type": "boolean"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Enable or disable the Virtual Service. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "error_page_profile_path": {
+      "description": "Error Page Profile to be used for this virtualservice.This profile is used to send the custom error page to the client generated by the proxy. It is a reference to an object of type ErrorPageProfile. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Error page profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_ERRORPAGEPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBErrorPageProfile"
+          ]
+        }
+      ]
+    }, 
+    "flow_dist": {
+      "$ref": "<A HREF="schemas_ALBSeFlowDist.html">ALBSeFlowDist</A>, 
+      "default": "LOAD_AWARE", 
+      "description": "Criteria for flow distribution among SEs. Enum options - LOAD_AWARE, CONSISTENT_HASH_SOURCE_IP_ADDRESS, CONSISTENT_HASH_SOURCE_IP_ADDRESS_AND_PORT. Allowed in Basic(Allowed values- LOAD_AWARE) edition, Essentials(Allowed values- LOAD_AWARE) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as LOAD_AWARE.", 
+      "required": false, 
+      "title": "Flow dist"
+    }, 
+    "flow_label_type": {
+      "$ref": "<A HREF="schemas_ALBFlowLabelType.html">ALBFlowLabelType</A>, 
+      "default": "NO_LABEL", 
+      "description": "Criteria for flow labelling. Enum options - NO_LABEL, APPLICATION_LABEL, SERVICE_LABEL. Default value when not specified in API or module is interpreted by ALB Controller as NO_LABEL.", 
+      "required": false, 
+      "title": "Flow label type"
+    }, 
+    "fqdn": {
+      "description": "DNS resolvable, fully qualified domain name of the virtualservice. Only one of 'fqdn' and 'dns_info' configuration is allowed.", 
+      "required": false, 
+      "title": "Fqdn", 
+      "type": "string"
+    }, 
+    "group_paths": {
+      "description": "A list of NSX Groups representing the Clients which can access the Virtual IP of the Virtual Service.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Group paths", 
+      "type": "array"
+    }, 
+    "host_name_xlate": {
+      "description": "Translate the host name sent to the servers to this value. Translate the host name sent from servers back to the value used by the client.", 
+      "required": false, 
+      "title": "Host name xlate", 
+      "type": "string"
+    }, 
+    "http_policies": {
+      "description": "HTTP Policies applied on the data traffic of the Virtual Service.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHTTPPolicies.html">ALBHTTPPolicies</A>
+      }, 
+      "required": false, 
+      "title": "Http policies", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ign_pool_net_reach": {
+      "default": false, 
+      "description": "Ignore Pool servers network reachability constraints for Virtual Service placement. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Ign pool net reach", 
+      "type": "boolean"
+    }, 
+    "l4_policies": {
+      "description": "L4 Policies applied to the data traffic of the Virtual Service.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBL4Policies.html">ALBL4Policies</A>
+      }, 
+      "required": false, 
+      "title": "L4 policies", 
+      "type": "array"
+    }, 
+    "limit_doser": {
+      "default": false, 
+      "description": "Limit potential DoS attackers who exceed max_cps_per_client significantly to a fraction of max_cps_per_client for a while. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Limit doser", 
+      "type": "boolean"
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "markers": {
+      "description": "List of labels to be used for granular RBAC. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</A>
+      }, 
+      "required": false, 
+      "title": "Markers", 
+      "type": "array"
+    }, 
+    "max_cps_per_client": {
+      "default": 0, 
+      "description": "Maximum connections per second per client IP. Allowed values are 10-1000. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max cps per client", 
+      "type": "integer"
+    }, 
+    "min_pools_up": {
+      "description": "Minimum number of UP pools to mark VS up.", 
+      "required": false, 
+      "title": "Min pools up", 
+      "type": "integer"
+    }, 
+    "network_profile_path": {
+      "description": "Determines network settings such as protocol, TCP or UDP, and related options for the protocol. It is a reference to an object of type NetworkProfile. Special default for Essentials edition is System-TCP-Fast-Path.", 
+      "required": false, 
+      "title": "Network profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_NETWORKPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBNetworkProfile"
+          ]
+        }
+      ]
+    }, 
+    "network_security_policy_path": {
+      "description": "Network security policies for the Virtual Service. It is a reference to an object of type NetworkSecurityPolicy.", 
+      "required": false, 
+      "title": "Network security policy path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_NETWORKSECURITYPOLICY_RELATIONSHIP", 
+          "rightType": [
+            "ALBNetworkSecurityPolicy"
+          ]
+        }
+      ]
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "performance_limits": {
+      "$ref": "<A HREF="schemas_ALBPerformanceLimits.html">ALBPerformanceLimits</A>, 
+      "description": "Optional settings that determine performance limits like max connections or bandwdith etc.", 
+      "required": false, 
+      "title": "Performance limits"
+    }, 
+    "pool_group_path": {
+      "description": "The pool group is an object that contains pools. It is a reference to an object of type PoolGroup.", 
+      "required": false, 
+      "title": "Pool group path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_POOLGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBPoolGroup"
+          ]
+        }
+      ]
+    }, 
+    "pool_path": {
+      "description": "The pool is an object that contains destination servers and related attributes such as load-balancing and persistence. It is a reference to an object of type Pool.", 
+      "required": false, 
+      "title": "Pool path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_POOL_RELATIONSHIP", 
+          "rightType": [
+            "ALBPool"
+          ]
+        }
+      ]
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "remove_listening_port_on_vs_down": {
+      "default": false, 
+      "description": "Remove listening port if VirtualService is down. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Remove listening port on vs down", 
+      "type": "boolean"
+    }, 
+    "requests_rate_limit": {
+      "$ref": "<A HREF="schemas_ALBRateProfile.html">ALBRateProfile</A>, 
+      "description": "Rate limit the incoming requests to this virtual service.", 
+      "required": false, 
+      "title": "Requests rate limit"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "saml_sp_config": {
+      "$ref": "<A HREF="schemas_ALBSAMLSPConfig.html">ALBSAMLSPConfig</A>, 
+      "description": "Application-specific SAML config. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Saml sp config"
+    }, 
+    "se_group_name": {
+      "description": "The Service Engine Group to use for this Virtual Service. Moving to a new SE Group is disruptive to existing connections for this VS. It is a reference to an object of type ServiceEngineGroup.", 
+      "required": false, 
+      "title": "Se group name", 
+      "type": "string"
+    }, 
+    "security_policy_path": {
+      "description": "Security policy applied on the traffic of the Virtual Service. This policy is used to perform security actions such as Distributed Denial of Service (DDoS) attack mitigation, etc. It is a reference to an object of type SecurityPolicy. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Security policy path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SECURITYPOLICY_RELATIONSHIP", 
+          "rightType": [
+            "ALBSecurityPolicy"
+          ]
+        }
+      ]
+    }, 
+    "server_network_profile_path": {
+      "description": "Determines the network settings profile for the server side of TCP proxied connections. Leave blank to use the same settings as the client to VS side of the connection. It is a reference to an object of type NetworkProfile.", 
+      "required": false, 
+      "title": "Server network profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_NETWORKPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBNetworkProfile"
+          ]
+        }
+      ]
+    }, 
+    "service_metadata": {
+      "description": "Metadata pertaining to the Service provided by this virtual service. In Openshift/Kubernetes environments, egress pod info is stored. Any user input to this field will be overwritten by Avi Vantage.", 
+      "required": false, 
+      "title": "Service metadata", 
+      "type": "string"
+    }, 
+    "service_pool_select": {
+      "description": "Select pool based on destination port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBServicePoolSelector.html">ALBServicePoolSelector</A>
+      }, 
+      "required": false, 
+      "title": "Service pool select", 
+      "type": "array"
+    }, 
+    "services": {
+      "description": "List of Services defined for this Virtual Service. Maximum of 2048 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBService.html">ALBService</A>
+      }, 
+      "required": false, 
+      "title": "Services", 
+      "type": "array"
+    }, 
+    "sideband_profile": {
+      "$ref": "<A HREF="schemas_ALBSidebandProfile.html">ALBSidebandProfile</A>, 
+      "description": "Sideband configuration to be used for this virtualservice.It can be used for sending traffic to sideband VIPs for external inspection etc.", 
+      "required": false, 
+      "title": "Sideband profile"
+    }, 
+    "snat_ip": {
+      "description": "NAT'ted floating source IP Address(es) for upstream connection to servers. Maximum of 32 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>
+      }, 
+      "required": false, 
+      "title": "Snat ip", 
+      "type": "array"
+    }, 
+    "sp_pool_paths": {
+      "description": "GSLB pools used to manage site-persistence functionality. Each site-persistence pool contains the virtualservices in all the other sites, that is auto-generated by the GSLB manager. This is a read-only field for the user. It is a reference to an object of type Pool.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Sp pool paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_POOL_RELATIONSHIP", 
+          "rightType": [
+            "ALBPool"
+          ]
+        }
+      ]
+    }, 
+    "ssl_key_and_certificate_paths": {
+      "description": "Select or create one or two certificates, EC and/or RSA, that will be presented to SSL/TLS terminated connections. It is a reference to an object of type SSLKeyAndCertificate.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Ssl key and certificate paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SSLKEYANDCERTIFICATE_RELATIONSHIP", 
+          "rightType": [
+            "ALBSSLKeyAndCertificate"
+          ]
+        }
+      ]
+    }, 
+    "ssl_profile_path": {
+      "description": "Determines the set of SSL versions and ciphers to accept for SSL/TLS terminated connections. It is a reference to an object of type SSLProfile.", 
+      "required": false, 
+      "title": "Ssl profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SSLPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBSSLProfile"
+          ]
+        }
+      ]
+    }, 
+    "ssl_profile_selectors": {
+      "description": "Select SSL Profile based on client IP address match. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBSSLProfileSelector.html">ALBSSLProfileSelector</A>
+      }, 
+      "required": false, 
+      "title": "Ssl profile selectors", 
+      "type": "array"
+    }, 
+    "ssl_sess_cache_avg_size": {
+      "default": 1024, 
+      "description": "Expected number of SSL session cache entries (may be exceeded). Allowed values are 1024-16383. Default value when not specified in API or module is interpreted by ALB Controller as 1024.", 
+      "maximum": 16383, 
+      "minimum": 1024, 
+      "required": false, 
+      "title": "Ssl sess cache avg size", 
+      "type": "integer"
+    }, 
+    "sso_policy_path": {
+      "description": "The SSO Policy attached to the virtualservice. It is a reference to an object of type SSOPolicy. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Sso policy path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SSOPOLICY_RELATIONSHIP", 
+          "rightType": [
+            "ALBSSOPolicy"
+          ]
+        }
+      ]
+    }, 
+    "static_dns_records": {
+      "description": "List of static DNS records applied to this Virtual Service. These are static entries and no health monitoring is performed against the IP addresses. Maximum of 1000 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsRecord.html">ALBDnsRecord</A>
+      }, 
+      "required": false, 
+      "title": "Static dns records", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "topology_policies": {
+      "description": "Topology Policies applied on the dns traffic of the Virtual Service based onGSLB Topology algorithm. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsPolicies.html">ALBDnsPolicies</A>
+      }, 
+      "required": false, 
+      "title": "Topology policies", 
+      "type": "array"
+    }, 
+    "traffic_clone_profile_path": {
+      "description": "Server network or list of servers for cloning traffic. It is a reference to an object of type TrafficCloneProfile. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Traffic clone profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_TRAFFICCLONEPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBTrafficCloneProfile"
+          ]
+        }
+      ]
+    }, 
+    "traffic_enabled": {
+      "default": true, 
+      "description": "Knob to enable the Virtual Service traffic on its assigned service engines. This setting is effective only when the enabled flag is set to True. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Traffic enabled", 
+      "type": "boolean"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBVirtualServiceType.html">ALBVirtualServiceType</A>, 
+      "default": "VS_TYPE_NORMAL", 
+      "description": "Specify if this is a normal Virtual Service, or if it is the parent or child of an SNI-enabled virtual hosted Virtual Service. Enum options - VS_TYPE_NORMAL, VS_TYPE_VH_PARENT, VS_TYPE_VH_CHILD. Allowed in Basic(Allowed values- VS_TYPE_NORMAL,VS_TYPE_VH_PARENT) edition, Essentials(Allowed values- VS_TYPE_NORMAL) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as VS_TYPE_NORMAL.", 
+      "required": false, 
+      "title": "Type"
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }, 
+    "use_bridge_ip_as_vip": {
+      "default": false, 
+      "description": "Use Bridge IP as VIP on each Host in Mesos deployments. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Use bridge ip as vip", 
+      "type": "boolean"
+    }, 
+    "use_vip_as_snat": {
+      "default": false, 
+      "description": "Use the Virtual IP as the SNAT IP for health monitoring and sending traffic to the backend servers instead of the Service Engine interface IP. The caveat of enabling this option is that the VirtualService cannot be configured in an Active-Active HA mode. DNS based Multi VIP solution has to be used for HA &amp; Non-disruptive Upgrade purposes. Allowed in Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Use vip as snat", 
+      "type": "boolean"
+    }, 
+    "vh_domain_name": {
+      "description": "The exact name requested from the client's SNI-enabled TLS hello domain name field. If this is a match, the parent VS will forward the connection to this child VS.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Vh domain name", 
+      "type": "array"
+    }, 
+    "vh_parent_vs_uuid": {
+      "description": "Specifies the Virtual Service acting as Virtual Hosting (SNI) parent.", 
+      "required": false, 
+      "title": "Vh parent vs uuid", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_VIRTUALSERVICE_RELATIONSHIP", 
+          "rightType": [
+            "ALBVirtualService"
+          ]
+        }
+      ]
+    }, 
+    "vip": {
+      "description": "List of Virtual Service IPs. While creating a 'Shared VS',please use vsvip_ref to point to the shared entities.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBVip.html">ALBVip</A>
+      }, 
+      "required": false, 
+      "title": "Vip", 
+      "type": "array"
+    }, 
+    "vrf_context_name": {
+      "description": "Virtual Routing Context that the Virtual Service is bound to. This is used to provide the isolation of the set of networks the application is attached to. It is a reference to an object of type VrfContext.", 
+      "required": false, 
+      "title": "Vrf context name", 
+      "type": "string"
+    }, 
+    "vs_datascripts": {
+      "description": "Datascripts applied on the data traffic of the Virtual Service.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBVSDataScripts.html">ALBVSDataScripts</A>
+      }, 
+      "required": false, 
+      "title": "Vs datascripts", 
+      "type": "array"
+    }, 
+    "vsvip_path": {
+      "description": "Mostly used during the creation of Shared VS, this field refers to entities that can be shared across Virtual Services. It is a reference to an object of type VsVip.", 
+      "required": false, 
+      "title": "Vsvip path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_VSVIP_RELATIONSHIP", 
+          "rightType": [
+            "ALBVsVip"
+          ]
+        }
+      ]
+    }, 
+    "waf_policy_path": {
+      "description": "WAF policy for the Virtual Service. It is a reference to an object of type WafPolicy. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Waf policy path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_WAFPOLICY_RELATIONSHIP", 
+          "rightType": [
+            "ALBWafPolicy"
+          ]
+        }
+      ]
+    }, 
+    "weight": {
+      "default": 1, 
+      "description": "The Quality of Service weight to assign to traffic transmitted from this Virtual Service. A higher weight will prioritize traffic versus other Virtual Services sharing the same Service Engines. Allowed values are 1-128. Allowed in Basic(Allowed values- 1) edition, Essentials(Allowed values- 1) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 1.", 
+      "maximum": 128, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Weight", 
+      "type": "integer"
+    }
+  }, 
+  "title": "VirtualService", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

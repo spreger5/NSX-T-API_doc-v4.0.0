@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHTTPServerReselect.html">ALBHTTPServerReselect</a> (<a href="types_ALBHTTPServerReselect.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HTTPServerReselect object", 
+  "id": "ALBHTTPServerReselect", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "enabled": {
+      "default": false, 
+      "description": "Enable HTTP request reselect when server responds with specific response codes. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": true, 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "num_retries": {
+      "default": 4, 
+      "description": "Number of times to retry an HTTP request when server responds with configured status codes. Default value when not specified in API or module is interpreted by ALB Controller as 4.", 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Num retries", 
+      "type": "integer"
+    }, 
+    "retry_nonidempotent": {
+      "default": false, 
+      "description": "Allow retry of non-idempotent HTTP requests. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Retry nonidempotent", 
+      "type": "boolean"
+    }, 
+    "retry_timeout": {
+      "default": 0, 
+      "description": "Timeout per retry attempt, for a given request. Value of 0 indicates default timeout. Allowed values are 0-3600000. Unit is MILLISECONDS. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 3600000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Retry timeout", 
+      "type": "integer"
+    }, 
+    "svr_resp_code": {
+      "$ref": "<A HREF="schemas_ALBHTTPReselectRespCode.html">ALBHTTPReselectRespCode</A>, 
+      "description": "Server response codes which will trigger an HTTP request retry.", 
+      "required": false, 
+      "title": "Svr resp code"
+    }
+  }, 
+  "title": "HTTPServerReselect", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

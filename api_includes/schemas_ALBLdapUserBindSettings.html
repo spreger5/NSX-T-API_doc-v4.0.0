@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBLdapUserBindSettings.html">ALBLdapUserBindSettings</a> (<a href="types_ALBLdapUserBindSettings.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer LdapUserBindSettings object", 
+  "id": "ALBLdapUserBindSettings", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "dn_template": {
+      "description": "LDAP user DN pattern is used to bind LDAP user after replacing the user token with real username.", 
+      "required": false, 
+      "title": "Dn template", 
+      "type": "string"
+    }, 
+    "token": {
+      "default": "&lt;user&gt;", 
+      "description": "LDAP token is replaced with real user name in the user DN pattern. Default value when not specified in API or module is interpreted by ALB Controller as &lt;user&gt;.", 
+      "required": false, 
+      "title": "Token", 
+      "type": "string"
+    }, 
+    "user_attributes": {
+      "description": "LDAP user attributes to fetch on a successful user bind.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "User attributes", 
+      "type": "array"
+    }, 
+    "user_id_attribute": {
+      "description": "LDAP user id attribute is the login attribute that uniquely identifies a single user record.", 
+      "required": false, 
+      "title": "User id attribute", 
+      "type": "string"
+    }
+  }, 
+  "title": "LdapUserBindSettings", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

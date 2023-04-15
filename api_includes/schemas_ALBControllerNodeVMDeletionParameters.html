@@ -1,0 +1,84 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBControllerNodeVMDeletionParameters.html">ALBControllerNodeVMDeletionParameters</a> (<a href="types_ALBControllerNodeVMDeletionParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Parameters for deletion of a Advanced Load Balancer controller node VM.", 
+  "id": "ALBControllerNodeVMDeletionParameters", 
+  "module_id": "PolicyALBControllerDeployment", 
+  "properties": {
+    "force_delete": {
+      "description": "If true, the VM will be undeployed even if it cannot be removed from its cluster.", 
+      "title": "Delete by force", 
+      "type": "boolean"
+    }, 
+    "inaccessible": {
+      "description": "If inaccessible is provided along with force_delete and if this is the last node then deployment request will be deleted from NSX even if Policy objects are present.", 
+      "title": "Delete when controller is inaccessible", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters for deleting a deployed Advanced Load Balancer Controller", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

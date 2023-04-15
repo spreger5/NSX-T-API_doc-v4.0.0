@@ -1,0 +1,91 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ExportRequestParameter.html">ExportRequestParameter</a> (<a href="types_ExportRequestParameter.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "This holds the request parameters required to invoke export task.", 
+  "id": "ExportRequestParameter", 
+  "module_id": "PolicyTask", 
+  "properties": {
+    "draft_path": {
+      "description": "Policy path of a draft which is to be exported. If not provided, current firewall configuration will then be exported.", 
+      "required": false, 
+      "title": "Policy path of draft", 
+      "type": "string"
+    }, 
+    "passphrase": {
+      "description": "Passphrase to sign exported files. The passphrase specified must be at least 8 characters in length and must contain at least one lowercase, one uppercase, one numeric character and one non-space special character.", 
+      "minLength": 8, 
+      "pattern": "^$|^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d\\s]).{8,}$", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "Passphrase to sign exported files", 
+      "type": "string", 
+      "validation_msg_key": "com.vmware.nsx.validation.constraints.BackupRestore.weak_passprase.message"
+    }
+  }, 
+  "title": "Export task request parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

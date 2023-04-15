@@ -1,0 +1,127 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpPoolSubnet.html">IpPoolSubnet</a> (<a href="types_IpPoolSubnet.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "A set of IPv4 or IPv6 addresses defined by a network CIDR.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "IpPoolSubnet", 
+  "module_id": "Ipam", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "allocation_ranges": {
+      "items": {
+        "$ref": "<A HREF="schemas_IpPoolRange.html">IpPoolRange</A>
+      }, 
+      "required": true, 
+      "title": "A collection of IPv4 or IPv6 IP Pool Ranges.", 
+      "type": "array"
+    }, 
+    "cidr": {
+      "required": true, 
+      "title": "Represents network address and the prefix length which will be associated with a layer-2 broadcast domain", 
+      "type": "string"
+    }, 
+    "dns_nameservers": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "maxItems": 3, 
+      "title": "The collection of upto 3 DNS servers for the subnet.", 
+      "type": "array", 
+      "uniqueItems": true
+    }, 
+    "dns_suffix": {
+      "format": "hostname", 
+      "title": "The DNS suffix for the DNS server.", 
+      "type": "string"
+    }, 
+    "gateway_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "title": "The default gateway address on a layer-3 router."
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

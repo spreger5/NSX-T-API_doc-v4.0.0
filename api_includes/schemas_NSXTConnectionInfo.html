@@ -1,0 +1,137 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NSXTConnectionInfo.html">NSXTConnectionInfo</a> (<a href="types_NSXTConnectionInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Credential info to connect to an NSX-T type of enforcement point.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_EnforcementPointConnectionInfo.html">EnforcementPointConnectionInfo</A>
+  }, 
+  "id": "NSXTConnectionInfo", 
+  "module_id": "PolicyEnforcementPointManagement", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "NSXTConnectionInfo"
+  }, 
+  "properties": {
+    "edge_cluster_ids": {
+      "deprecated": true, 
+      "description": "Edge Cluster UUIDs on enforcement point. Edge cluster information is required for creating logical L2, L3 constructs on enforcement point. Max 1 edge cluster ID. This is a deprecated property. The edge cluster id is now auto populated from enforcement point and its value can be read using APIs GET /infra/sites/site-id/enforcement-points/enforcementpoint-id/edge-clusters and GET /infra/sites/site-id/enforcement-points/enforcementpoint-1/edge-clusters/edge-cluster-id. The value passed through this property will be ignored.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 1, 
+      "required": false, 
+      "title": "Edge Cluster IDs", 
+      "type": "array"
+    }, 
+    "enforcement_point_address": {
+      "description": "Value of this property could be Hostname or IP. For instance: - On an NSX-T MP running on default port, the value could be \"10.192.1.1\" - On an NSX-T MP running on custom port, the value could be \"192.168.1.1:32789\" - On an NSX-T MP in VMC deployments, the value could be \"192.168.1.1:5480/nsxapi\"", 
+      "required": true, 
+      "title": "Enforcement Point Address", 
+      "type": "string"
+    }, 
+    "password": {
+      "description": "Password.", 
+      "sensitive": true, 
+      "title": "Password", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "Resource Type of Enforcement Point Connection Info.", 
+      "enum": [
+        "NSXTConnectionInfo", 
+        "NSXVConnectionInfo", 
+        "CvxConnectionInfo", 
+        "AviConnectionInfo"
+      ], 
+      "required": true, 
+      "title": "Connection Info Resource Type", 
+      "type": "string"
+    }, 
+    "thumbprint": {
+      "description": "Thumbprint of EnforcementPoint in the form of a SHA-256 hash represented in lower case HEX.", 
+      "title": "Thumbprint of Enforcement Point", 
+      "type": "string"
+    }, 
+    "transport_zone_ids": {
+      "deprecated": true, 
+      "description": "Transport Zone UUIDs on enforcement point. Transport zone information is required for creating logical L2, L3 constructs on enforcement point. Max 1 transport zone ID. This is a deprecated property. The transport zone id is now auto populated from enforcement point and its value can be read using APIs GET /infra/sites/site-id/enforcement-points/enforcementpoint-id/transport-zones and GET /infra/sites/site-id/enforcement-points/enforcementpoint-id/transport-zones/transport-zone-id. The value passed through this property will be ignored.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 1, 
+      "required": false, 
+      "title": "Transport Zone IDs", 
+      "type": "array"
+    }, 
+    "username": {
+      "description": "Username.", 
+      "title": "Username", 
+      "type": "string"
+    }
+  }, 
+  "title": "NSX-T Connection Info", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

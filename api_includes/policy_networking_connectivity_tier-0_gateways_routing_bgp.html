@@ -1,0 +1,380 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways.html' style='text-decoration: none'> Tier-0 Gateways</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways_routing.html' style='text-decoration: none'> Routing</a> >
+        
+        
+            <a href='policy_networking_connectivity_tier-0_gateways_routing_bgp.html' style='text-decoration: none'> BGP</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Delete overridden BGP routing config</h4><br>
+                      <span class="help_detail">Deletes the specified overridden BgpRoutingConfig. If the BgpRoutingConfig
+<br>
+is not overridden, it won't get deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteOverriddenBgpRoutingConfig.html">DELETE /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read BGP routing config</h4><br>
+                      <span class="help_detail">Read BGP routing config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpRoutingConfig.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_ReadBgpRoutingConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update BGP routing config</h4><br>
+                      <span class="help_detail">If an BGP routing config not present, create BGP routing config.
+<br>
+If it already exists, update the routing config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchBgpRoutingConfig.html">PATCH /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_PatchBgpRoutingConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP routing config</h4><br>
+                      <span class="help_detail">If BGP routing config is not already present, create BGP routing config.
+<br>
+If it already exists, replace the BGP routing config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceBgpRoutingConfig.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceBgpRoutingConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List BGP neighbor configurations</h4><br>
+                      <span class="help_detail">Paginated list of all BGP neighbor configurations
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListBgpNeighborConfigs.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors</a>
+                            <br>
+                            
+                            <a href="method_ListBgpNeighborConfigs.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete BGP neighbor config</h4><br>
+                      <span class="help_detail">Delete BGP neighbor config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteBgpNeighborConfig.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteBgpNeighborConfig.html">DELETE /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read BGP neighbor config</h4><br>
+                      <span class="help_detail">Read BGP neighbor config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpNeighborConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadBgpNeighborConfig.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP neighbor config</h4><br>
+                      <span class="help_detail">If BGP neighbor config with the neighbor-id is not already present, create a new
+<br>
+neighbor config. If it already exists, replace the BGP neighbor config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchBgpNeighborConfig.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchBgpNeighborConfig.html">PATCH /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a BGP neighbor config</h4><br>
+                      <span class="help_detail">If BGP neighbor config with the neighbor-id is not already present, create a new
+<br>
+neighbor config. If it already exists, replace the BGP neighbor config with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceBgpNeighborConfig.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceBgpNeighborConfig.html">PUT /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor advertised routes</h4><br>
+                      <span class="help_detail">Returns routes advertised by BGP neighbor from all edge transport nodes on which
+<br>
+this neighbor is currently enabled.
+<br>
+The query parameter "source=cached" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor advertised routes in CSV format</h4><br>
+                      <span class="help_detail">Returns routes advertised by BGP neighbor from all edge transport nodes on which
+<br>
+this neighbor is currently enabled in CSV format. Routes from all enforcement points are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutesInCsvFormat.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborAdvertisedRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routes learned by BGP neighbor in CSV format</h4><br>
+                      <span class="help_detail">Returns routes learned by BGP neighbor from all edge nodes on which
+<br>
+this neighbor is currently enabled. Routes from all enforcement points are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutesInCsvFormat.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutesInCsvFormat.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get routes learned by BGP neighbor</h4><br>
+                      <span class="help_detail">Returns routes learned by BGP neighbor from all edge nodes on which
+<br>
+this neighbor is currently enabled.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutes.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborRoutes.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/&lt;neighbor-id&gt;/routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor status for the Tier0</h4><br>
+                      <span class="help_detail">Returns the status of all the BGP neighbors for the given Tier0.
+<br>
+To get BGP neighbor status for a particular enforcement point,
+<br>
+parameter "enforcement_point_path=&lt;enforcement_point_path&gt;" needs to be specified.
+<br>
+If an enforcement_point is unspecified, then bgp neighbor status for all enforcement points is fetched.
+<br>
+To get BGP neighbors status for the logical router from particular edge node,
+<br>
+parameter "edge_path=&lt;edge_path&gt;" needs to be specified.
+<br>
+If an edge_path is unspecified, then bgp neighbor status for all edges is fetched.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0BgpNeighborsStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status</a>
+                            <br>
+                            
+                            <a href="method_GetTier0BgpNeighborsStatus.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/bgp/neighbors/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

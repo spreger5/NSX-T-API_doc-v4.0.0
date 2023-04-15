@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NetworkInterfaceRequestParameters.html">NetworkInterfaceRequestParameters</a> (<a href="types_NetworkInterfaceRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Request parameters to filter REST API for list network interface.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DataSourceParameters.html">DataSourceParameters</A>
+  }, 
+  "id": "NetworkInterfaceRequestParameters", 
+  "module_id": "ApplianceStats", 
+  "properties": {
+    "admin_status": {
+      "description": "Defines admin status of the interface.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Admin status of the interface", 
+      "type": "string"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_DataSourceType.html">DataSourceType</A>, 
+      "required": false, 
+      "title": "The data source, either realtime or cached. If not provided, cached data is returned."
+    }
+  }, 
+  "title": "Node network interface request parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HealthCheckResultPerUplink.html">HealthCheckResultPerUplink</a> (<a href="types_HealthCheckResultPerUplink.html">type</a>)
+</h3>
+<pre>{
+  "description": "Health check result for specific uplink.", 
+  "id": "HealthCheckResultPerUplink", 
+  "module_id": "HealthCheck", 
+  "properties": {
+    "mtu_disallowed": {
+      "description": "List of VLAN ID ranges which are allowed by VLAN settings but may be disallowed by MTU settings.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HealthCheckVlanRange.html">HealthCheckVlanRange</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "MTU Disallowed", 
+      "type": "array"
+    }, 
+    "uplink_name": {
+      "description": "Name of the uplink.", 
+      "readonly": true, 
+      "title": "Uplink Name", 
+      "type": "string"
+    }, 
+    "vlan_and_mtu_allowed": {
+      "description": "List of VLAN ID ranges which are allowed by VLAN and MTU settings.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HealthCheckVlanRange.html">HealthCheckVlanRange</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "VLAN and MTU Allowed", 
+      "type": "array"
+    }, 
+    "vlan_disallowed": {
+      "description": "List of VLAN ID ranges which may be disallowed by VLAN settings.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HealthCheckVlanRange.html">HealthCheckVlanRange</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "VLAN Disallowed", 
+      "type": "array"
+    }
+  }, 
+  "title": "Health Check Result Per Uplink", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

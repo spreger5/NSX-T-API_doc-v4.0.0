@@ -1,0 +1,117 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbVariableCondition.html">LbVariableCondition</a> (<a href="types_LbVariableCondition.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This condition is used to match variable's name and value at all phases. The variables could be captured from REGEX or assigned by LbVariableAssignmentAction or system embedded variable. Varialbe_name and variable_value should be matched at the same time.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleCondition.html">LbRuleCondition</A>
+  }, 
+  "id": "LbVariableCondition", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbVariableCondition"
+  }, 
+  "properties": {
+    "case_sensitive": {
+      "default": true, 
+      "description": "If true, case is significant when comparing variable value.", 
+      "required": false, 
+      "title": "A case sensitive flag for variable value comparing", 
+      "type": "boolean"
+    }, 
+    "inverse": {
+      "default": false, 
+      "required": false, 
+      "title": "A flag to indicate whether reverse the match result of this condition", 
+      "type": "boolean"
+    }, 
+    "match_type": {
+      "$ref": "<A HREF="schemas_LbRuleMatchType.html">LbRuleMatchType</A>, 
+      "default": "REGEX", 
+      "required": false, 
+      "title": "Match type of variable value"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleConditionType.html">LbRuleConditionType</A>, 
+      "required": true, 
+      "title": "Type of load balancer rule condition"
+    }, 
+    "variable_name": {
+      "required": true, 
+      "title": "Name of the variable to be matched", 
+      "type": "string"
+    }, 
+    "variable_value": {
+      "required": true, 
+      "title": "Value of variable to be matched", 
+      "type": "string"
+    }
+  }, 
+  "title": "Condition to match IP header fields", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

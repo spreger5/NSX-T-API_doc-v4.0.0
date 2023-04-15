@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Endpoint.html">Endpoint</a> (<a href="types_Endpoint.html">type</a>)
+</h3>
+<pre>{
+  "description": "An Endpoint object is part of HostSwitch configuration in TransportNode", 
+  "id": "Endpoint", 
+  "module_id": "TransportNode", 
+  "properties": {
+    "default_gateway": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "title": "Gateway IP"
+    }, 
+    "device_name": {
+      "readonly": true, 
+      "title": "Name of the virtual tunnel endpoint", 
+      "type": "string"
+    }, 
+    "ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Depending upon the EndpointIpConfig used in HostSwitch, IP could be allocated either from DHCP (default) or from Static IP Pool.", 
+      "readonly": true, 
+      "title": "IP Address of this virtual tunnel endpoint"
+    }, 
+    "label": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Unique label for this Endpoint", 
+      "type": "int"
+    }, 
+    "mac": {
+      "$ref": "<A HREF="schemas_MACAddress.html">MACAddress</A>, 
+      "readonly": true, 
+      "title": "MAC address"
+    }, 
+    "subnet_mask": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "title": "Subnet mask"
+    }
+  }, 
+  "title": "Tunnel endpoint configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

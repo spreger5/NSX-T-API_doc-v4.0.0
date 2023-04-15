@@ -1,0 +1,90 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceCapability.html">ServiceCapability</a> (<a href="types_ServiceCapability.html">type</a>)
+</h3>
+<pre>{
+  "description": "Service capabilities that will be inherited by service VMs created using a service definition that contains this service capability.", 
+  "id": "ServiceCapability", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "can_decrement_si": {
+      "default": false, 
+      "description": "Indicating whether service is configured to decrement SI field in NSH metadata.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "SI decrement flag", 
+      "type": "boolean"
+    }, 
+    "nsh_liveness_support_enabled": {
+      "default": false, 
+      "description": "Indicating whether service supports NSH liveness detection.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "NSH liveness support flag", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Service capabilities", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

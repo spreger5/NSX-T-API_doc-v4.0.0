@@ -1,0 +1,206 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeInterfaceProperties.html">NodeInterfaceProperties</a> (<a href="types_NodeInterfaceProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "NodeInterfaceProperties", 
+  "module_id": "ApplianceStats", 
+  "properties": {
+    "admin_status": {
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Interface administration status", 
+      "type": "string"
+    }, 
+    "backing_nsx_managed": {
+      "title": "Indicates whether backing of VIRTUAL network interface is managed by NSX", 
+      "type": "boolean"
+    }, 
+    "connected_switch": {
+      "title": "Connected switch", 
+      "type": "string"
+    }, 
+    "connected_switch_type": {
+      "description": "Type of switch associated with the interface.", 
+      "enum": [
+        "VSS", 
+        "DVS", 
+        "N-VDS"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Type of switch", 
+      "type": "string"
+    }, 
+    "device": {
+      "description": "Device name.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Device name", 
+      "type": "string"
+    }, 
+    "driver": {
+      "description": "Driver name.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Driver name", 
+      "type": "string"
+    }, 
+    "ens_capable": {
+      "title": "Interface capability for Enhanced Networking Stack", 
+      "type": "boolean"
+    }, 
+    "ens_enabled": {
+      "title": "Indicates whether interface is enabled for Enhanced Networking Stack", 
+      "type": "boolean"
+    }, 
+    "ens_interrupt_capable": {
+      "description": "This boolean property describes if network interface is capable for Enhanced Networking Stack interrupt", 
+      "title": "Interface capability for Enhanced Networking Stack interrupt", 
+      "type": "boolean"
+    }, 
+    "ens_interrupt_enabled": {
+      "description": "This boolean property describes if network interface is enabled for Enhanced Networking Stack interrupt", 
+      "title": "Indicates whether interface is enabled for Enhanced Networking Stack interrupt", 
+      "type": "boolean"
+    }, 
+    "host_managed": {
+      "title": "Indicates whether interface is managed by the host", 
+      "type": "boolean"
+    }, 
+    "interface_alias": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeInterfaceAlias.html">NodeInterfaceAlias</A>
+      }, 
+      "title": "IP Alias", 
+      "type": "array"
+    }, 
+    "interface_id": {
+      "title": "Interface ID", 
+      "type": "string"
+    }, 
+    "interface_type": {
+      "enum": [
+        "PHYSICAL", 
+        "VIRTUAL", 
+        "BOND", 
+        "TEAMING"
+      ], 
+      "title": "Interface Type", 
+      "type": "string"
+    }, 
+    "interface_uuid": {
+      "readonly": true, 
+      "required": false, 
+      "title": "UUID of the interface", 
+      "type": "string"
+    }, 
+    "key": {
+      "description": "Device key.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Device key", 
+      "type": "string"
+    }, 
+    "link_status": {
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Interface administration status", 
+      "type": "string"
+    }, 
+    "lport_attachment_id": {
+      "title": "LPort Attachment Id assigned to VIRTUAL network interface of a node", 
+      "type": "string"
+    }, 
+    "mtu": {
+      "title": "Interface MTU", 
+      "type": "integer"
+    }, 
+    "pci": {
+      "description": "PCI device.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "PCI device", 
+      "type": "string"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_DataSourceType.html">DataSourceType</A>, 
+      "title": "Source of status data"
+    }, 
+    "speed": {
+      "description": "Interface speed in Mbps.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Speed", 
+      "type": "number"
+    }
+  }, 
+  "title": "Node network interface properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

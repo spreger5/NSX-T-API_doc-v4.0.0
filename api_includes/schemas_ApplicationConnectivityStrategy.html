@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ApplicationConnectivityStrategy.html">ApplicationConnectivityStrategy</a> (<a href="types_ApplicationConnectivityStrategy.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Allows more granular policies for application workloads", 
+  "id": "ApplicationConnectivityStrategy", 
+  "module_id": "Policy", 
+  "properties": {
+    "application_connectivity_strategy": {
+      "description": "App connectivity strategies", 
+      "enum": [
+        "ALLOW_INTRA", 
+        "ALLOW_EGRESS", 
+        "ALLOW_INGRESS", 
+        "DROP_INGRESS", 
+        "DROP_EGRESS"
+      ], 
+      "required": true, 
+      "title": "Application connectivity strategy", 
+      "type": "string"
+    }, 
+    "default_application_rule_id": {
+      "description": "Based on the value of the app connectivity strategy, a default rule is created for the security policy. The rule id is internally assigned by the system for this default rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Default rule ID associated with the application_connectivity_strategy", 
+      "type": "integer"
+    }, 
+    "logging_enabled": {
+      "default": false, 
+      "description": "Flag to enable packet logging. Default is disabled.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Enable logging flag", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Application specific connectivity strategy", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,202 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBServer.html">ALBServer</a> (<a href="types_ALBServer.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer Server object", 
+  "id": "ALBServer", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "autoscaling_group_name": {
+      "description": "Name of autoscaling group this server belongs to. Allowed in Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Autoscaling group name", 
+      "type": "string"
+    }, 
+    "availability_zone": {
+      "description": "Availability-zone of the server VM.", 
+      "required": false, 
+      "title": "Availability zone", 
+      "type": "string"
+    }, 
+    "description": {
+      "description": "A description of the Server.", 
+      "required": false, 
+      "title": "Description", 
+      "type": "string"
+    }, 
+    "discovered_networks": {
+      "description": "(internal-use) Discovered networks providing reachability for server IP. This field is used internally by Avi, not editable by the user.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDiscoveredNetwork.html">ALBDiscoveredNetwork</A>
+      }, 
+      "required": false, 
+      "title": "Discovered networks", 
+      "type": "array"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Enable, Disable or Graceful Disable determine if new or existing connections to the server are allowed. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "external_orchestration_id": {
+      "description": "UID of server in external orchestration systems.", 
+      "required": false, 
+      "title": "External orchestration id", 
+      "type": "string"
+    }, 
+    "external_uuid": {
+      "description": "UUID identifying VM in OpenStack and other external compute.", 
+      "required": false, 
+      "title": "External uuid", 
+      "type": "string"
+    }, 
+    "hostname": {
+      "description": "DNS resolvable name of the server. May be used in place of the IP address.", 
+      "required": false, 
+      "title": "Hostname", 
+      "type": "string"
+    }, 
+    "ip": {
+      "$ref": "<A HREF="schemas_ALBIpAddr.html">ALBIpAddr</A>, 
+      "description": "IP Address of the server. Required if there is no resolvable host name.", 
+      "required": true, 
+      "title": "Ip"
+    }, 
+    "is_static": {
+      "default": false, 
+      "description": "If statically learned. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Is static", 
+      "type": "boolean"
+    }, 
+    "location": {
+      "$ref": "<A HREF="schemas_ALBGeoLocation.html">ALBGeoLocation</A>, 
+      "description": "(internal-use) Geographic location of the server.Currently only for internal usage. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Location"
+    }, 
+    "mac_address": {
+      "description": "MAC address of server.", 
+      "required": false, 
+      "title": "Mac address", 
+      "type": "string"
+    }, 
+    "port": {
+      "description": "Optionally specify the servers port number. This will override the pool's default server port attribute. Allowed values are 1-65535. Special values are 0- 'use backend port in pool'.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Port", 
+      "type": "integer"
+    }, 
+    "prst_hdr_val": {
+      "description": "Header value for custom header persistence.", 
+      "required": false, 
+      "title": "Prst hdr val", 
+      "type": "string"
+    }, 
+    "ratio": {
+      "default": 1, 
+      "description": "Ratio of selecting eligible servers in the pool. Allowed values are 1-20. Default value when not specified in API or module is interpreted by ALB Controller as 1.", 
+      "maximum": 20, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Ratio", 
+      "type": "integer"
+    }, 
+    "resolve_server_by_dns": {
+      "default": false, 
+      "description": "Auto resolve server's IP using DNS name. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Resolve server by dns", 
+      "type": "boolean"
+    }, 
+    "rewrite_host_header": {
+      "default": false, 
+      "description": "Rewrite incoming Host Header to server name. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Rewrite host header", 
+      "type": "boolean"
+    }, 
+    "server_node": {
+      "description": "Hostname of the node where the server VM or container resides.", 
+      "required": false, 
+      "title": "Server node", 
+      "type": "string"
+    }, 
+    "verify_network": {
+      "default": false, 
+      "description": "Verify server belongs to a discovered network or reachable via a discovered network. Verify reachable network isn't the OpenStack management network. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Verify network", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Server", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

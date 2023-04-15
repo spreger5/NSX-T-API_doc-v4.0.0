@@ -1,0 +1,108 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHealthMonitorDNS.html">ALBHealthMonitorDNS</a> (<a href="types_ALBHealthMonitorDNS.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HealthMonitorDNS object", 
+  "id": "ALBHealthMonitorDNS", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "qtype": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorDNSQueryType.html">ALBHealthMonitorDNSQueryType</A>, 
+      "default": "DNS_QUERY_TYPE", 
+      "description": "Query_Type  Response has atleast one answer of which      the resource record type matches the query type   Any_Type  Response should contain atleast one answer  AnyThing  An empty answer is enough. Enum options - DNS_QUERY_TYPE, DNS_ANY_TYPE, DNS_ANY_THING. Default value when not specified in API or module is interpreted by ALB Controller as DNS_QUERY_TYPE.", 
+      "required": false, 
+      "title": "Qtype"
+    }, 
+    "query_name": {
+      "description": "The DNS monitor will query the DNS server for the fully qualified name in this field.", 
+      "required": true, 
+      "title": "Query name", 
+      "type": "string"
+    }, 
+    "rcode": {
+      "$ref": "<A HREF="schemas_ALBHealthMonitorDNSRcode.html">ALBHealthMonitorDNSRcode</A>, 
+      "default": "RCODE_NO_ERROR", 
+      "description": "When No Error is selected, a DNS query will be marked failed is any error code is returned by the server. With Any selected, the monitor ignores error code in the responses. Enum options - RCODE_NO_ERROR, RCODE_ANYTHING. Default value when not specified in API or module is interpreted by ALB Controller as RCODE_NO_ERROR.", 
+      "required": false, 
+      "title": "Rcode"
+    }, 
+    "record_type": {
+      "$ref": "<A HREF="schemas_ALBDnsRecordType.html">ALBDnsRecordType</A>, 
+      "default": "DNS_RECORD_A", 
+      "description": "Resource record type used in the healthmonitor DNS query, only A or AAAA type supported. Enum options - DNS_RECORD_OTHER, DNS_RECORD_A, DNS_RECORD_NS, DNS_RECORD_CNAME, DNS_RECORD_SOA, DNS_RECORD_PTR, DNS_RECORD_HINFO, DNS_RECORD_MX, DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR, DNS_RECORD_ANY. Default value when not specified in API or module is interpreted by ALB Controller as DNS_RECORD_A.", 
+      "required": false, 
+      "title": "Record type"
+    }, 
+    "response_string": {
+      "description": "The resource record of the queried DNS server's response for the Request Name must include the IP address defined in this field.", 
+      "required": false, 
+      "title": "Response string", 
+      "type": "string"
+    }
+  }, 
+  "title": "HealthMonitorDNS", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

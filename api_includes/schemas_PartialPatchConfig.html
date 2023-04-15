@@ -1,0 +1,81 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PartialPatchConfig.html">PartialPatchConfig</a> (<a href="types_PartialPatchConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "This object allows enabling or disabling of partial patch functionality. Enabling partial patch allows patching of a subset of the fields of any object. After enabling partial patching, any object payload provided will be merged with the existing object payload. Note that while all mandatory fields are expected to be provided during the creation of any object, enabling partial patch will allow patching of existing objects with a subset of mandatory fields.", 
+  "id": "PartialPatchConfig", 
+  "module_id": "PolicySystemConfig", 
+  "properties": {
+    "enable_partial_patch": {
+      "description": "boolean value used to enable/disable partial patch", 
+      "required": true, 
+      "title": "This object will contain the partial patch configuration.", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Contains configuration for Partial patch.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

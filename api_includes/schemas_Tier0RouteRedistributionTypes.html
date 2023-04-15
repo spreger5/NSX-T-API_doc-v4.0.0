@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Tier0RouteRedistributionTypes.html">Tier0RouteRedistributionTypes</a> (<a href="types_Tier0RouteRedistributionTypes.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Tier-0 route redistribution types.    TIER0_STATIC: Redistribute user added static routes.   TIER0_CONNECTED: Redistribute all subnets configured on Interfaces and   routes related to TIER0_SEGMENT,   TIER0_DNS_FORWARDER_IP, TIER0_IPSEC_LOCAL_IP, TIER0_NAT types.   TIER1_STATIC: Redistribute all subnets and static routes advertised   by Tier-1s.   TIER0_EXTERNAL_INTERFACE: Redistribute external interface subnets   on Tier-0.   TIER0_LOOPBACK_INTERFACE: Redistribute loopback interface subnets   on Tier-0.   TIER0_SEGMENT: Redistribute subnets configured on Segments connected   to Tier-0.   TIER0_ROUTER_LINK: Redistribute router link port subnets on Tier-0   TIER0_SERVICE_INTERFACE: Redistribute Tier0 service interface subnets.   TIER0_DNS_FORWARDER_IP: Redistribute DNS forwarder subnets.   TIER0_IPSEC_LOCAL_IP: Redistribute IPSec subnets.   TIER0_NAT: Redistribute NAT IPs owned by Tier-0.   TIER0_EVPN_TEP_IP: Redistribute EVPN local endpoint subnets on Tier-0.   TIER1_NAT: Redistribute NAT IPs advertised by Tier-1 instances.   TIER1_LB_VIP: Redistribute LB VIP IPs advertised by Tier-1 instances.   TIER1_LB_SNAT: Redistribute LB SNAT IPs advertised by Tier-1 instances.   TIER1_DNS_FORWARDER_IP: Redistribute DNS forwarder subnets on Tier-1   instances.   TIER1_CONNECTED: Redistribute all subnets configured on Segments and   Service Interfaces.   TIER1_SERVICE_INTERFACE: Redistribute Tier1 service interface subnets.   TIER1_SEGMENT: Redistribute subnets configured on Segments connected   to Tier1.   TIER1_IPSEC_LOCAL_ENDPOINT: Redistribute IPSec VPN local-endpoint   subnets advertised by TIER1.     Route redistribution destination is BGP.", 
+  "enum": [
+    "TIER0_STATIC", 
+    "TIER0_CONNECTED", 
+    "TIER0_EXTERNAL_INTERFACE", 
+    "TIER0_SEGMENT", 
+    "TIER0_ROUTER_LINK", 
+    "TIER0_SERVICE_INTERFACE", 
+    "TIER0_LOOPBACK_INTERFACE", 
+    "TIER0_DNS_FORWARDER_IP", 
+    "TIER0_IPSEC_LOCAL_IP", 
+    "TIER0_NAT", 
+    "TIER0_EVPN_TEP_IP", 
+    "TIER1_NAT", 
+    "TIER1_STATIC", 
+    "TIER1_LB_VIP", 
+    "TIER1_LB_SNAT", 
+    "TIER1_DNS_FORWARDER_IP", 
+    "TIER1_CONNECTED", 
+    "TIER1_SERVICE_INTERFACE", 
+    "TIER1_SEGMENT", 
+    "TIER1_IPSEC_LOCAL_ENDPOINT"
+  ], 
+  "id": "Tier0RouteRedistributionTypes", 
+  "module_id": "PolicyConnectivity", 
+  "title": "Tier-0 route redistribution types", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

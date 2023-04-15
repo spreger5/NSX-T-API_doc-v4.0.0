@@ -1,0 +1,1290 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_service_insertion.html' style='text-decoration: none'> Service Insertion</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List all Service Definitions registered on given enforcement point.</h4><br>
+                      <span class="help_detail">List all Service Definitions registered on given enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceDefinitions.html">GET /policy/api/v1/enforcement-points/&lt;enforcement-point-id&gt;/service-definitions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Service Definition on given enforcement point.</h4><br>
+                      <span class="help_detail">Create a Service Definition on given enforcement point.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateServiceDefinition.html">POST /policy/api/v1/enforcement-points/&lt;enforcement-point-id&gt;/service-definitions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing Service Definition on the given enforcement point
+</h4><br>
+                      <span class="help_detail">Delete an existing Service Definition on the given enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceDefinition.html">DELETE /policy/api/v1/enforcement-points/&lt;enforcement-point-id&gt;/service-definitions/&lt;service-definition-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Service Definition with given service-definition-id.</h4><br>
+                      <span class="help_detail">Read Service Definition with given service-definition-id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceDefinition.html">GET /policy/api/v1/enforcement-points/&lt;enforcement-point-id&gt;/service-definitions/&lt;service-definition-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing Service Definition on the given enforcement point
+</h4><br>
+                      <span class="help_detail">Update an existing Service Definition on the given enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceDefinition.html">PUT /policy/api/v1/enforcement-points/&lt;enforcement-point-id&gt;/service-definitions/&lt;service-definition-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List redirection policies for a domain</h4><br>
+                      <span class="help_detail">List redirection policies for a domain</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionPolicies.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete redirection policy</h4><br>
+                      <span class="help_detail">Delete redirection policy.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRedirectionPolicy.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read redirection policy</h4><br>
+                      <span class="help_detail">Read redirection policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedirectionPolicy.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update redirection policy</h4><br>
+                      <span class="help_detail">Create or update the redirection policy.
+<br>
+Performance Note: If you want to edit several rules in a redirection policy
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchRedirectionPolicy.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update redirection policy</h4><br>
+                      <span class="help_detail">Create or update the redirection policy.
+<br>
+Performance Note: If you want to edit several rules in a redirection policy
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateRedirectionPolicy.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List rules</h4><br>
+                      <span class="help_detail">List rules</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionRules.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete RedirectionRule</h4><br>
+                      <span class="help_detail">Delete RedirectionRule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRedirectionRule.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read rule</h4><br>
+                      <span class="help_detail">Read rule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedirectionRule.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update redirection rule</h4><br>
+                      <span class="help_detail">Create a rule with the rule-id is not already present, otherwise update the rule.
+<br>
+Performance Note: If you want to edit several rules in a redirection
+<br>
+policy, prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;red-policy-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchRedirectionRule.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update redirection rule</h4><br>
+                      <span class="help_detail">Create a rule with the rule-id is not already present, otherwise update the rule.
+<br>
+Performance Note: If you want to edit several rules in a redirection
+<br>
+policy,prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;red-policy-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateRedirectionRule.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List redirection policies</h4><br>
+                      <span class="help_detail">List all redirection policies across all domains ordered by precedence.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionPoliciesAcrossAllDomains.html">GET /policy/api/v1/infra/domains/redirection-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read partner services</h4><br>
+                      <span class="help_detail">Read all the partner services available for service insertion</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPartnerServices.html">GET /policy/api/v1/infra/partner-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read partner service identified by provided name</h4><br>
+                      <span class="help_detail">Read the specific partner service identified by provided name.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPartnerService.html">GET /policy/api/v1/infra/partner-services/&lt;service-name&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List service chains</h4><br>
+                      <span class="help_detail">List all the service chains available for service insertion
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyServiceChains.html">GET /policy/api/v1/infra/service-chains</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service chain</h4><br>
+                      <span class="help_detail">This API can be user to delete service chain with given service-chain-id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyServiceChain.html">DELETE /policy/api/v1/infra/service-chains/&lt;service-chain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service chain</h4><br>
+                      <span class="help_detail">This API can be used to read service chain with given service-chain-id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceChain.html">GET /policy/api/v1/infra/service-chains/&lt;service-chain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service chain</h4><br>
+                      <span class="help_detail">Create Service chain representing the sequence in which 3rd party
+<br>
+services must be consumed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceChain.html">PATCH /policy/api/v1/infra/service-chains/&lt;service-chain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create  or update service chain</h4><br>
+                      <span class="help_detail">Create or update Service chain representing the sequence in which 3rd party
+<br>
+services must be consumed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateServiceChain.html">PUT /policy/api/v1/infra/service-chains/&lt;service-chain-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service paths for a given service chain</h4><br>
+                      <span class="help_detail">This API can be used to read service paths for a given service-chain-id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServicePath.html">GET /policy/api/v1/infra/service-chains/&lt;service-chain-id&gt;/service-paths</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List service references</h4><br>
+                      <span class="help_detail">List all the partner service references available for service insertion
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceReferences.html">GET /policy/api/v1/infra/service-references</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service Reference</h4><br>
+                      <span class="help_detail">This API can be used to delete a service reference with the given service-reference-id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceReference.html">DELETE /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service reference</h4><br>
+                      <span class="help_detail">This API can be used to read service reference with the given service-reference-id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceReference.html">GET /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service reference</h4><br>
+                      <span class="help_detail">Create Service Reference representing the intent to consume a given 3rd party
+<br>
+service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceReference.html">PATCH /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service reference</h4><br>
+                      <span class="help_detail">Create Service Reference representing the intent to consume a given 3rd party
+<br>
+service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateServiceReference.html">PUT /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List service profiles</h4><br>
+                      <span class="help_detail">List all the service profiles available for given service reference
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyServiceProfiles.html">GET /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service profile</h4><br>
+                      <span class="help_detail">This API can be used to delete service profile with given service-profile-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyServiceProfile.html">DELETE /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service profile</h4><br>
+                      <span class="help_detail">This API can be used to read service profile with given service-profile-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyServiceProfile.html">GET /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service profile</h4><br>
+                      <span class="help_detail">Create Service profile to specify vendor template attri- butes for a given 3rd party service.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyServiceProfile.html">PATCH /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update service profile</h4><br>
+                      <span class="help_detail">Create or update Service profile to specify vendor temp- late attributes for a given 3rd party service.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreatePolicyServiceProfile.html">PUT /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Groups used in Redirection rules for a given Service Profile.</h4><br>
+                      <span class="help_detail">List of Groups used in Redirection rules for a given Service Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyServiceProfileGroups.html">GET /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;/group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all service chain mappings for given service profile.</h4><br>
+                      <span class="help_detail">List all service chain mappings in the system for the given service profile.
+<br>
+If no explicit enforcement point is provided in the request, will return for
+<br>
+default. Else, will return for specified points.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyServiceChainMappings.html">GET /policy/api/v1/infra/service-references/&lt;service-reference-id&gt;/service-profiles/&lt;service-profile-id&gt;/service-chain-mappings</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Additional API to read service insertion exclude list without filtering out the system owned members</h4><br>
+                      <span class="help_detail">Read exclude list for service insertion
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInternalSiExcludeList.html">GET /policy/api/v1/infra/settings/service-insertion/security/exclude-list?system_owned=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Default API to read service insertion exclude list with system owned members filtered out</h4><br>
+                      <span class="help_detail">Read exclude list for service insertion
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSiExcludeList.html">GET /policy/api/v1/infra/settings/service-insertion/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch service insertion exclusion list for security policy</h4><br>
+                      <span class="help_detail">Patch service insertion exclusion list for security policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSiExcludeList.html">PATCH /policy/api/v1/infra/settings/service-insertion/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update service insertion exclusion list</h4><br>
+                      <span class="help_detail">Update the exclusion list for service insertion policy
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSiExcludeList.html">PUT /policy/api/v1/infra/settings/service-insertion/security/exclude-list</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get service insertion configuration status</h4><br>
+                      <span class="help_detail">Get the current service insertion status configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSiStatus.html">GET /policy/api/v1/infra/settings/service-insertion/security/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update service insertion status configuration</h4><br>
+                      <span class="help_detail">Update service insertion status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSiStatus.html">PATCH /policy/api/v1/infra/settings/service-insertion/security/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update service insertion status configuration</h4><br>
+                      <span class="help_detail">Update service insertion status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSiStatus.html">PUT /policy/api/v1/infra/settings/service-insertion/security/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read all BYOD service instance objects under a tier-0</h4><br>
+                      <span class="help_detail">Read all BYOD service instance objects under a tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListByodPolicyServiceInstancesForTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete BYOD policy service instance</h4><br>
+                      <span class="help_detail">Delete BYOD policy service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteByodPolicyServiceInstance.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read BYOD service instance</h4><br>
+                      <span class="help_detail">Read BYOD service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadByodPolicyServiceInstance.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create BYOD service instance</h4><br>
+                      <span class="help_detail">Create BYOD Service Instance which represent instance of service definition created on manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchByodPolicyServiceInstance.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create BYOD service instance</h4><br>
+                      <span class="help_detail">Create BYOD Service Instance which represent instance of service definition created on manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateByodPolicyServiceInstance.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all service instance endpoint</h4><br>
+                      <span class="help_detail">List all service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyServiceInstanceEndpoints.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete service instance endpoint</h4><br>
+                      <span class="help_detail">Delete service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyServiceInstanceEndpoint.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service instance endpoint</h4><br>
+                      <span class="help_detail">Read service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyServiceInstanceEndpoint.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service instance endpoint</h4><br>
+                      <span class="help_detail">Create Service instance endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceInstanceEndpoint.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service instance endpoint</h4><br>
+                      <span class="help_detail">Create service instance endpoint with given request if not exist.
+<br>
+Modification of service instance endpoint is not allowed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateServiceInstanceEndpoint.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual endpoints</h4><br>
+                      <span class="help_detail">List all virtual endpoints</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualEndpointsForTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete virtual endpoint</h4><br>
+                      <span class="help_detail">Delete virtual endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteVirtualEndpoint.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read virtual endpoint</h4><br>
+                      <span class="help_detail">Read virtual endpoint with given id under given Tier0.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadVirtualEndpoint.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update virtual endpoint</h4><br>
+                      <span class="help_detail">Create or update virtual endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchVirtualEndpoint.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update virtual endpoint</h4><br>
+                      <span class="help_detail">Create or update virtual endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateVirtualEndpoint.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read all service instance objects under a tier-0</h4><br>
+                      <span class="help_detail">Read all service instance objects under a tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAllPolicyServiceInstancesForTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete policy service instance</h4><br>
+                      <span class="help_detail">Delete policy service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyServiceInstance.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read service instance</h4><br>
+                      <span class="help_detail">Read service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyServiceInstance.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service instance</h4><br>
+                      <span class="help_detail">Create Service Instance.
+<br>
+Please note that, only display_name, description and deployment_spec_name
+<br>
+are allowed to be modified in an exisiting entity. If the deployment spec
+<br>
+name is changed, it will trigger the upgrade operation for the SVMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyServiceInstance.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service instance</h4><br>
+                      <span class="help_detail">Create service instance.
+<br>
+Please note that, only display_name, description and deployment_spec_name
+<br>
+are allowed to be modified in an exisiting entity. If the deployment spec
+<br>
+name is changed, it will trigger the upgrade operation for the SVMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreatePolicyServiceInstance.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics for all runtimes associated with this PolicyServiceInstance</h4><br>
+                      <span class="help_detail">Get statistics for all data NICs on all runtimes associated with this PolicyServiceInstance.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyServiceInstanceStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read all Tier1 BYOD service instance objects under a tier-1</h4><br>
+                      <span class="help_detail">Read all Tier1 BYOD service instance objects under a tier-1</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1ByodPolicyServiceInstances.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete BYOD policy service instance</h4><br>
+                      <span class="help_detail">Delete BYOD policy service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1ByodPolicyServiceInstance.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier1 BYOD service instance</h4><br>
+                      <span class="help_detail">Read Tier1 BYOD service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier1ByodPolicyServiceInstance.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 BYOD service instance</h4><br>
+                      <span class="help_detail">Create Tier1 BYOD Service Instance which represents instance of service definition created on manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier1ByodPolicyServiceInstance.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 BYOD service instance</h4><br>
+                      <span class="help_detail">Create Tier1 BYOD Service Instance which represent instance of service definition created on manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTier1ByodPolicyServiceInstance.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all Tier1 service instance endpoint</h4><br>
+                      <span class="help_detail">List all Tier1 service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1PolicyServiceInstanceEndpoints.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier1 service instance endpoint</h4><br>
+                      <span class="help_detail">Delete Tier1 service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1PolicyServiceInstanceEndpoint.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier1 service instance endpoint</h4><br>
+                      <span class="help_detail">Read Tier1 service instance endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier1PolicyServiceInstanceEndpoint.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 service instance endpoint</h4><br>
+                      <span class="help_detail">Create Tier1 Service instance endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier1ServiceInstanceEndpoint.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 service instance endpoint</h4><br>
+                      <span class="help_detail">Create Tier1 service instance endpoint with given request if not exist.
+<br>
+Modification of Tier1 service instance endpoint is not allowed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTier1ServiceInstanceEndpoint.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/byod-service-instances/&lt;service-instance-id&gt;/service-instance-endpoints/&lt;service-instance-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual endpoints</h4><br>
+                      <span class="help_detail">List all virtual endpoints</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VirtualEndpoints.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete virtual endpoint</h4><br>
+                      <span class="help_detail">Delete virtual endpoint</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VirtualEndpoint.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read virtual endpoint</h4><br>
+                      <span class="help_detail">Read virtual endpoint with given id under given Tier1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier1VirtualEndpoint.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update virtual endpoint</h4><br>
+                      <span class="help_detail">Create or update virtual endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier1VirtualEndpoint.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update virtual endpoint</h4><br>
+                      <span class="help_detail">Create or update virtual endpoint.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VirtualEndpoint.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/endpoints/virtual-endpoints/&lt;virtual-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read all service instance objects under a tier-1</h4><br>
+                      <span class="help_detail">Read all service instance objects under a tier-1</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAllPolicyServiceInstancesForTier1.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Tier1 policy service instance</h4><br>
+                      <span class="help_detail">Delete Tier1 policy service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1PolicyServiceInstance.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Tier1 service instance</h4><br>
+                      <span class="help_detail">Read Tier1 service instance</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTier1PolicyServiceInstance.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 service instance</h4><br>
+                      <span class="help_detail">Create Tier1 Service Instance.
+<br>
+Please note that, only display_name, description and deployment_spec_name
+<br>
+are allowed to be modified in an exisiting entity. If the deployment spec
+<br>
+name is changed, it will trigger the upgrade operation for the SVMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier1PolicyServiceInstance.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Tier1 service instance</h4><br>
+                      <span class="help_detail">Create Tier1 service instance.
+<br>
+Please note that, only display_name, description and deployment_spec_name
+<br>
+are allowed to be modified in an exisiting entity. If the deployment spec
+<br>
+name is changed, it will trigger the upgrade operation for the SVMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTier1PolicyServiceInstance.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics for all runtimes associated with this Tier1 PolicyServiceInstance</h4><br>
+                      <span class="help_detail">Get statistics for all data NICs on all runtimes associated with this Tier1 PolicyServiceInstance.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1PolicyServiceInstanceStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/service-instances/&lt;service-instance-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

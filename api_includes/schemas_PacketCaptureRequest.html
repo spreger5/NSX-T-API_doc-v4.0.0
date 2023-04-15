@@ -1,0 +1,189 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PacketCaptureRequest.html">PacketCaptureRequest</a> (<a href="types_PacketCaptureRequest.html">type</a>)
+</h3>
+<pre>{
+  "description": "This type is used to create packet request on give node. Need to specify related parameters according to the capture point.", 
+  "id": "PacketCaptureRequest", 
+  "module_id": "PacketCapture", 
+  "properties": {
+    "capamount": {
+      "description": "Define the packet capture amount size.", 
+      "title": "Packet capture amount", 
+      "type": "int"
+    }, 
+    "capcore": {
+      "description": "The CPU core id on Edge node.", 
+      "title": "The CPU core id  on Edge node", 
+      "type": "int"
+    }, 
+    "capduration": {
+      "description": "Define the packet capture duration time. After the capture duration time, the capture process will stop working.", 
+      "title": "Packet capture duration time in seconds", 
+      "type": "int"
+    }, 
+    "capfilesize": {
+      "description": "Define the packet capture file size limit.", 
+      "title": "Packet capture file size limit", 
+      "type": "int"
+    }, 
+    "capmode": {
+      "description": "Define the capture streaming mode. The STREAM mode will send the data to given stream address and port. And the STANDALONE mode will save the capture file in local folder.", 
+      "enum": [
+        "STANDALONE", 
+        "STREAM"
+      ], 
+      "title": "Packet Capture streaming mode", 
+      "type": "string"
+    }, 
+    "cappoint": {
+      "description": "Define the point to capture data.", 
+      "enum": [
+        "VNIC", 
+        "VMKNIC", 
+        "VMNIC", 
+        "VDRPORT", 
+        "DVFILTER", 
+        "LOGICALPORT", 
+        "FCPORT", 
+        "VIF", 
+        "PNIC"
+      ], 
+      "required": true, 
+      "title": "Packet capture point", 
+      "type": "string"
+    }, 
+    "caprate": {
+      "description": "Define the rate of packet capture process.", 
+      "title": "Packet capture rate", 
+      "type": "int"
+    }, 
+    "capsnaplen": {
+      "description": "Limit the number of bytes captured from each packet.", 
+      "title": "Packet capture snapshot length", 
+      "type": "int"
+    }, 
+    "capsource": {
+      "description": "This type is used to differenite the incoming request from CLI/UI.", 
+      "enum": [
+        "CLI", 
+        "UI"
+      ], 
+      "required": true, 
+      "title": "Packet capture source type", 
+      "type": "string"
+    }, 
+    "capvalue": {
+      "description": "Define the capture value of given capture point.", 
+      "title": "Packet capture point value", 
+      "type": "string"
+    }, 
+    "direction": {
+      "description": "Define the capture direction. Support three types INPUT/OUTPUT/DUAL.", 
+      "enum": [
+        "INPUT", 
+        "OUTPUT", 
+        "DUAL"
+      ], 
+      "title": "Packet capture direction type", 
+      "type": "string"
+    }, 
+    "filtertype": {
+      "description": "Define the capture filter type. Support PRE/POST mode.", 
+      "enum": [
+        "PRE", 
+        "POST"
+      ], 
+      "title": "Packet capture dvfilter stage type", 
+      "type": "string"
+    }, 
+    "node": {
+      "description": "Define the transport node to capture data.", 
+      "title": "Packet capture node id", 
+      "type": "string"
+    }, 
+    "node_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Define the transport node to capture data.", 
+      "title": "Packet capture node ip"
+    }, 
+    "options": {
+      "$ref": "<A HREF="schemas_PacketCaptureOptionList.html">PacketCaptureOptionList</A>, 
+      "description": "Define the packet capture additional options to filter the capture data.", 
+      "title": "Packet capture options"
+    }, 
+    "streamaddress": {
+      "description": "Set the stream address to receive the capture packet.", 
+      "title": "Packet capture Streaming address", 
+      "type": "string"
+    }, 
+    "streamport": {
+      "description": "Set the stream port to receive the capture packet. The STREAM mode is based on GRE-in-UDP Encapsulation(RFC8086). Packets are sent to UDP port 4754.", 
+      "title": "Packet capture Streaming port", 
+      "type": "int"
+    }
+  }, 
+  "title": "Packet capture request information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

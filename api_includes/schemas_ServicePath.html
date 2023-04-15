@@ -1,0 +1,109 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServicePath.html">ServicePath</a> (<a href="types_ServicePath.html">type</a>)
+</h3>
+<pre>{
+  "description": "An instance of service chain that consists of forward and reverse service paths.", 
+  "id": "ServicePath", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "forward_path": {
+      "$ref": "<A HREF="schemas_UnidirectionalServicePath.html">UnidirectionalServicePath</A>, 
+      "description": "Forward service path if available that applies to ingress traffic.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Forward service path"
+    }, 
+    "reverse_path": {
+      "$ref": "<A HREF="schemas_UnidirectionalServicePath.html">UnidirectionalServicePath</A>, 
+      "description": "Reverse service path if available that applies to egress traffic.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Reverse Service Path"
+    }, 
+    "service_chain_id": {
+      "description": "A unique id of a service chain.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service chain id", 
+      "type": "integer"
+    }, 
+    "service_chain_uuid": {
+      "description": "Uuid of a service chain.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Uuid of a service chain", 
+      "type": "string"
+    }, 
+    "service_path_id": {
+      "description": "Unique identifier of a service path.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service path id", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Service path", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

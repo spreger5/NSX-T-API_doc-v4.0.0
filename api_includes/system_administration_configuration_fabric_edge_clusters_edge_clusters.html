@@ -1,0 +1,332 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_edge_clusters.html' style='text-decoration: none'> Edge Clusters</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_edge_clusters_edge_clusters.html' style='text-decoration: none'> Edge Clusters</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Edge Clusters</h4><br>
+                      <span class="help_detail">Returns information about the configured edge clusters, which enable you to
+<br>
+group together transport nodes of the type EdgeNode and apply fabric
+<br>
+profiles to all members of the edge cluster. Each edge node can participate
+<br>
+in only one edge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListEdgeClusters.html">GET /api/v1/edge-clusters</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Edge Cluster</h4><br>
+                      <span class="help_detail">Creates a new edge cluster.
+<br>
+It only supports homogeneous members.
+<br>
+The TransportNodes backed by EdgeNode are only allowed in cluster members.
+<br>
+DeploymentType (VIRTUAL_MACHINE|PHYSICAL_MACHINE) of these EdgeNodes is
+<br>
+recommended to be the same. EdgeCluster supports members of different
+<br>
+deployment types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateEdgeCluster.html">POST /api/v1/edge-clusters</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Edge Cluster</h4><br>
+                      <span class="help_detail">Deletes the specified edge cluster.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteEdgeCluster.html">DELETE /api/v1/edge-clusters/&lt;edge-cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Edge Cluster</h4><br>
+                      <span class="help_detail">Returns information about the specified edge cluster.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeCluster.html">GET /api/v1/edge-clusters/&lt;edge-cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Relocate service contexts from edge and remove edge node from the edge-cluster</h4><br>
+                      <span class="help_detail">Relocate auto allocated service contexts from edge node at given index.
+<br>
+For API to perform relocate and remove action the edge node at given index must only have auto allocated service contexts.
+<br>
+If any manually allocated service context is present on the edge cluster member, then the task will not be performed.
+<br>
+Also, it is recommended to move edge node for which relocate and remove action is being performed into maintenance mode,
+<br>
+before executing the API. If edge is not not moved into maintenance mode, then API will move edge node into maintenance
+<br>
+mode before performing the actual relocate and remove task.To maintain high availability, Edge cluster should have at
+<br>
+least two healthy edge nodes for relocate and removal.
+<br>
+Once relocate action is performed successfully, the edge node will be removed from the edge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RelocateAndRemoveEdgeClusterMember.html">POST /api/v1/edge-clusters/&lt;edge-cluster-id&gt;?action=relocate_and_remove</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Replace the transport node in the specified member of the edge-cluster</h4><br>
+                      <span class="help_detail">Replace the transport node in the specified member of the edge-cluster.
+<br>
+This is a disruptive action. This will move all the LogicalRouterPorts(uplink and routerLink)
+<br>
+host on the old transport_node to the new transport_node. The transportNode cannot be
+<br>
+present in another member of any edgeClusters.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReplaceEdgeClusterMemberTransportNode.html">POST /api/v1/edge-clusters/&lt;edge-cluster-id&gt;?action=replace_transport_node</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Edge Cluster</h4><br>
+                      <span class="help_detail">Modifies the specified edge cluster. Modifiable parameters include the
+<br>
+description, display_name, transport-node-id. If the optional
+<br>
+fabric_profile_binding is included, resource_type and profile_id are required.
+<br>
+User should do a GET on the edge-cluster and obtain the payload and retain the
+<br>
+member_index of the existing members as returning in the GET output. For new member
+<br>
+additions, the member_index cannot be defined by the user, user can read the system
+<br>
+allocated index to the new member in the output of this API call or by doing a GET call.
+<br>
+User cannot use this PUT api to replace the transport_node of an existing member because
+<br>
+this is a disruption action, we have exposed a explicit API for doing so, refer to
+<br>
+"ReplaceEdgeClusterMemberTransportNode"
+<br>
+EdgeCluster only supports homogeneous members. The TransportNodes backed by EdgeNode are
+<br>
+only allowed in cluster members. DeploymentType (VIRTUAL_MACHINE|PHYSICAL_MACHINE) of these
+<br>
+EdgeNodes is recommended to be the same. EdgeCluster supports members of different
+<br>
+deployment types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateEdgeCluster.html">PUT /api/v1/edge-clusters/&lt;edge-cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Allocation details of an edge cluster</h4><br>
+                      <span class="help_detail">Returns the allocation details of cluster and its members. Lists the edge
+<br>
+node members, active and standby services of each node, utilization details
+<br>
+of configured sub-pools. These allocation details can be monitored by
+<br>
+customers to trigger migration of certain service contexts to different
+<br>
+edge nodes, to balance the utilization of edge node resources.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEdgeClusterAllocationStatus.html">GET /api/v1/edge-clusters/&lt;edge-cluster-id&gt;/allocation-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Realized State of a Edge Cluster</h4><br>
+                      <span class="help_detail">Return realized state information of a edge cluster.
+<br>
+Any configuration update that affects the edge cluster can use this API
+<br>
+to get its realized state by passing a request_id returned by the
+<br>
+configuration change operation. e.g. Update configuration of edge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEdgeClusterState.html">GET /api/v1/edge-clusters/&lt;edge-cluster-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status for the Edge cluster of the given id</h4><br>
+                      <span class="help_detail">Returns the aggregated status for the Edge cluster along with status of
+<br>
+all edge nodes in the cluster. Query parameter "source=realtime" is the
+<br>
+only supported source.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEdgeClusterStatus.html">GET /api/v1/edge-clusters/&lt;edge-cluster-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

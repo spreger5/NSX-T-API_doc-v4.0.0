@@ -1,0 +1,108 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHardwareSecurityModule.html">ALBHardwareSecurityModule</a> (<a href="types_ALBHardwareSecurityModule.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HardwareSecurityModule object", 
+  "id": "ALBHardwareSecurityModule", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "cloudhsm": {
+      "$ref": "<A HREF="schemas_ALBHSMAwsCloudHsm.html">ALBHSMAwsCloudHsm</A>, 
+      "description": "AWS CloudHSM specific configuration.", 
+      "required": false, 
+      "title": "Cloudhsm"
+    }, 
+    "nethsm": {
+      "description": "Thales netHSM specific configuration.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHSMThalesNetHsm.html">ALBHSMThalesNetHsm</A>
+      }, 
+      "required": false, 
+      "title": "Nethsm", 
+      "type": "array"
+    }, 
+    "rfs": {
+      "$ref": "<A HREF="schemas_ALBHSMThalesRFS.html">ALBHSMThalesRFS</A>, 
+      "description": "Thales Remote File Server (RFS), used for the netHSMs, configuration.", 
+      "required": false, 
+      "title": "Rfs"
+    }, 
+    "sluna": {
+      "$ref": "<A HREF="schemas_ALBHSMSafenetLuna.html">ALBHSMSafenetLuna</A>, 
+      "description": "Safenet/Gemalto Luna/Gem specific configuration.", 
+      "required": false, 
+      "title": "Sluna"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBHSMType.html">ALBHSMType</A>, 
+      "description": "HSM type to use. Enum options - HSM_TYPE_THALES_NETHSM, HSM_TYPE_SAFENET_LUNA, HSM_TYPE_AWS_CLOUDHSM.", 
+      "required": true, 
+      "title": "Type"
+    }
+  }, 
+  "title": "HardwareSecurityModule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

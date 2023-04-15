@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPMirrorDestination.html">IPMirrorDestination</a> (<a href="types_IPMirrorDestination.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_MirrorDestination.html">MirrorDestination</A>
+  }, 
+  "id": "IPMirrorDestination", 
+  "module_id": "PortMirroring", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "IPMirrorDestination"
+  }, 
+  "properties": {
+    "destination_ips": {
+      "description": "The destination IPs of the mirror packet will be sent to.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "maxItems": 3, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "List of destination IP addresses", 
+      "type": "array"
+    }, 
+    "encapsulation_type": {
+      "$ref": "<A HREF="schemas_EncapsulationType.html">EncapsulationType</A>, 
+      "default": "GRE", 
+      "description": "You can choose GRE, ERSPAN II or ERSPAN III.", 
+      "required": true, 
+      "title": "IPMirrorDestination encapsulation type"
+    }, 
+    "erspan_id": {
+      "description": "Used by physical switch for the mirror traffic forwarding. Must be provided and only effective when encapsulation type is ERSPAN type II or type III.", 
+      "maximum": 1023, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "ERSPAN session id", 
+      "type": "int"
+    }, 
+    "gre_key": {
+      "description": "User-configurable 32-bit key only for GRE", 
+      "required": false, 
+      "title": "GRE encapsulation key", 
+      "type": "int"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_MirrorDestinationResourceType.html">MirrorDestinationResourceType</A>, 
+      "help_summary": "Possible values are 'LogicalPortMirrorDestination'", 
+      "required": true
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

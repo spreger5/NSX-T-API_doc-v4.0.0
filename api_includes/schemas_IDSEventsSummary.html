@@ -1,0 +1,200 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IDSEventsSummary.html">IDSEventsSummary</a> (<a href="types_IDSEventsSummary.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Intrusion event with all the event and signature details, each event contains the signature id, name, severity, first and recent occurence, users and VMs affected and other signature metadata.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "IDSEventsSummary", 
+  "module_id": "IDSMetrics", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "affected_vm_count": {
+      "description": "Count of VMs on which a particular signature was detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of VMs this signature was detected on", 
+      "type": "integer"
+    }, 
+    "first_occurence": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "First occurence of the intrusion, in epoch milliseconds.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "First occurence of the intrusion"
+    }, 
+    "idsflow_details": {
+      "description": "IDS event flow data specific to each IDS event. The data includes source ip, source port, destination ip, destination port, and protocol.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IdsEventFlowData.html">IdsEventFlowData</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS event flow data details", 
+      "type": "object"
+    }, 
+    "is_ongoing": {
+      "description": "Flag indicating an ongoing intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag indicating an ongoing intrusion", 
+      "type": "boolean"
+    }, 
+    "is_rule_valid": {
+      "description": "Indicates if the rule id is valid or not.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Is the rule id valid", 
+      "type": "boolean"
+    }, 
+    "latest_occurence": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Latest occurence of the intrusion, in epoch milliseconds.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Latest occurence of the intrusion"
+    }, 
+    "resource_type": {
+      "description": "IDSEvent resource type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "IDSEvent resource type", 
+      "type": "string"
+    }, 
+    "rule_id": {
+      "description": "The IDS Rule id that detected this particular intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS Rule id of detected intrusion", 
+      "type": "integer"
+    }, 
+    "signature_id": {
+      "description": "Signature ID pertaining to the detected intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Signature ID", 
+      "type": "integer"
+    }, 
+    "signature_metadata": {
+      "description": "Metadata about the detected signature including name, id, severity, product affected, protocol etc.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IDSSignatureDetail.html">IDSSignatureDetail</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Metadata about the detected signature", 
+      "type": "object"
+    }, 
+    "total_count": {
+      "description": "Number of times this particular signature was detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Number of occurrences of this signature", 
+      "type": "integer"
+    }, 
+    "user_details": {
+      "description": "List of users logged into VMs on which a particular signature was detected.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IdsUserStats.html">IdsUserStats</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of users on the affected VMs", 
+      "type": "object"
+    }, 
+    "vm_details": {
+      "description": "List of VMs on which a particular signature was detected with the count.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IdsVmStats.html">IdsVmStats</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of VMs this signature was seen", 
+      "type": "object"
+    }
+  }, 
+  "title": "Intrusions with event and signature data", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

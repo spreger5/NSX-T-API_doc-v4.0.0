@@ -1,0 +1,86 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_L2VpnSessionPeerCodes.html">L2VpnSessionPeerCodes</a> (<a href="types_L2VpnSessionPeerCodes.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Get the peer_code for each tunnel to paste on the remote end of the tunnel. Currently only stand-along/unmanaged edge is supported on the remote end of the tunnel.", 
+  "id": "L2VpnSessionPeerCodes", 
+  "module_id": "L2VPN", 
+  "properties": {
+    "peer_codes": {
+      "description": "List of peer codes per transport tunnel.", 
+      "items": {
+        "$ref": "<A HREF="schemas_L2VpnTunnelPeerCode.html">L2VpnTunnelPeerCode</A>
+      }, 
+      "maxItems": 1, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "List of peer codes", 
+      "type": "array"
+    }
+  }, 
+  "title": "Peer code to configure the other side of the tunnel", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

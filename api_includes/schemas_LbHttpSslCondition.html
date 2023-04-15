@@ -1,0 +1,130 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpSslCondition.html">LbHttpSslCondition</a> (<a href="types_LbHttpSslCondition.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This condition is used to match SSL handshake and SSL connection at all phases.If multiple properties are configured, the rule is considered a match when all the configured properties are matched.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleCondition.html">LbRuleCondition</A>
+  }, 
+  "id": "LbHttpSslCondition", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpSslCondition"
+  }, 
+  "properties": {
+    "client_certificate_issuer_dn": {
+      "$ref": "<A HREF="schemas_LbClientCertificateIssuerDnCondition.html">LbClientCertificateIssuerDnCondition</A>, 
+      "description": "The issuer DN match condition of the client certificate for an established SSL connection", 
+      "required": false, 
+      "title": "The issuer DN match condition of the client certificate"
+    }, 
+    "client_certificate_subject_dn": {
+      "$ref": "<A HREF="schemas_LbClientCertificateSubjectDnCondition.html">LbClientCertificateSubjectDnCondition</A>, 
+      "description": "The subject DN match condition of the client certificate for an established SSL connection", 
+      "required": false, 
+      "title": "The subject DN match condition of the client certificate"
+    }, 
+    "client_supported_ssl_ciphers": {
+      "items": {
+        "$ref": "<A HREF="schemas_SslCipher.html">SslCipher</A>
+      }, 
+      "required": false, 
+      "title": "Cipher list which supported by client", 
+      "type": "array"
+    }, 
+    "inverse": {
+      "default": false, 
+      "required": false, 
+      "title": "A flag to indicate whether reverse the match result of this condition", 
+      "type": "boolean"
+    }, 
+    "session_reused": {
+      "$ref": "<A HREF="schemas_LbSslSessionReusedType.html">LbSslSessionReusedType</A>, 
+      "default": "IGNORE", 
+      "required": false, 
+      "title": "The type of SSL session reused"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleConditionType.html">LbRuleConditionType</A>, 
+      "required": true, 
+      "title": "Type of load balancer rule condition"
+    }, 
+    "used_protocol": {
+      "$ref": "<A HREF="schemas_SslProtocol.html">SslProtocol</A>, 
+      "required": false, 
+      "title": "Protocol of an established SSL connection"
+    }, 
+    "used_ssl_cipher": {
+      "$ref": "<A HREF="schemas_SslCipher.html">SslCipher</A>, 
+      "required": false, 
+      "title": "Cipher used for an established SSL connection"
+    }
+  }, 
+  "title": "Condition to match SSL handshake and SSL connection", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

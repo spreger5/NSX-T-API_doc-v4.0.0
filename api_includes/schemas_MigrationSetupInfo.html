@@ -1,0 +1,183 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MigrationSetupInfo.html">MigrationSetupInfo</a> (<a href="types_MigrationSetupInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Details about source and destination NSX setup to be migrated", 
+  "id": "MigrationSetupInfo", 
+  "module_id": "Migration", 
+  "properties": {
+    "avi_lb_endpoint": {
+      "$ref": "<A HREF="schemas_AviEndPoint.html">AviEndPoint</A>, 
+      "description": "AVI LB endpoint details.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AVI LB endpoint details"
+    }, 
+    "create_segment_ports": {
+      "default": true, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Flag to indicate whether to create missing segment ports", 
+      "type": "boolean"
+    }, 
+    "destination_nsx": {
+      "$ref": "<A HREF="schemas_DestinationNsxApiEndpoint.html">DestinationNsxApiEndpoint</A>, 
+      "description": "IP address or hostname of the destination NSX API endpoint.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Destination NSX API endpoint"
+    }, 
+    "esg_to_router_mapping_option": {
+      "description": "Mapping option can be - - UI - FILE_UPLOAD - NO_MAPPING", 
+      "enum": [
+        "UI", 
+        "FILE_UPLOAD", 
+        "NO_MAPPING"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Mapping option", 
+      "type": "string"
+    }, 
+    "migration_mode": {
+      "default": "ONPREMISE_V2T", 
+      "description": "Migration mode can be - - VMC_V2T - ONPREMISE_VSPHERE2T - ONPREMISE_V2T - CMP_VRA - FULL_MIGRATION_WITH_BYOT - FULL_MIGRATION_WITH_BYOT_ON_FEDERATION - FULL_MIGRATION_WITH_BYOT_AND_VRA - FULL_MIGRATION_WITH_BYOT_AND_VRA_ON_FEDERATION - CONFIG_MIGRATION_ONLY_WITH_BYOT - CONFIG_MIGRATION_ONLY_WITH_BYOT_ON_FEDERATION - EDGE_CUTOVER - DFW_ONLY - DFW_WITH_BRIDGED_SEG - DFW_AND_HOST_AND_WORKLOAD - DFW_AND_HOST_AND_WORKLOAD_WITH_BRIDGED_SEG", 
+      "enum": [
+        "VMC_V2T", 
+        "ONPREMISE_VSPHERE2T", 
+        "ONPREMISE_V2T", 
+        "CMP_VRA", 
+        "FULL_MIGRATION_WITH_BYOT", 
+        "FULL_MIGRATION_WITH_BYOT_ON_FEDERATION", 
+        "FULL_MIGRATION_WITH_BYOT_AND_VRA", 
+        "FULL_MIGRATION_WITH_BYOT_AND_VRA_ON_FEDERATION", 
+        "CONFIG_MIGRATION_ONLY_WITH_BYOT", 
+        "CONFIG_MIGRATION_ONLY_WITH_BYOT_ON_FEDERATION", 
+        "EDGE_CUTOVER", 
+        "DFW_ONLY", 
+        "DFW_WITH_BRIDGED_SEG", 
+        "DFW_AND_HOST_AND_WORKLOAD", 
+        "DFW_AND_HOST_AND_WORKLOAD_WITH_BRIDGED_SEG"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Migration mode", 
+      "type": "string"
+    }, 
+    "nsxt_site_to_avi_mappings": {
+      "description": "List of mappings between NSX-T site and Avi. This will be populated only when the migration is executed on a cross VC setup.", 
+      "items": {
+        "$ref": "<A HREF="schemas_NsxtSiteToAviMapping.html">NsxtSiteToAviMapping</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of mappings between NSX-T site and Avi", 
+      "type": "array"
+    }, 
+    "nsxt_sites": {
+      "description": "Comprehensive information about NSX-T multi site setup. This will be populated only when the migration is executed on a cross VC setup.", 
+      "items": {
+        "$ref": "<A HREF="schemas_NsxtSite.html">NsxtSite</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Comprehensive information about NSX-T Federation setup", 
+      "type": "array"
+    }, 
+    "nsxv_sites": {
+      "description": "Comprehensive information about NSX-V multi site setup. This will be populated only when the migration is executed on a cross VC setup.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SourceNsxApiEndpoint.html">SourceNsxApiEndpoint</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Comprehensive information about NSX-V multi site setup", 
+      "type": "array"
+    }, 
+    "source_nsx": {
+      "description": "List of source NSX manager endpoints.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SourceNsxApiEndpoint.html">SourceNsxApiEndpoint</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of source NSX managers", 
+      "type": "array"
+    }, 
+    "v2t_site_mappings": {
+      "description": "List of site mappings between NSX-V and NSX-T. This will be populated only when the migration is executed on a cross VC setup.", 
+      "items": {
+        "$ref": "<A HREF="schemas_V2tSiteMapping.html">V2tSiteMapping</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of mappings between NSX-V and NSX-T sites", 
+      "type": "array"
+    }
+  }, 
+  "title": "Details about source and destination NSX setup", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

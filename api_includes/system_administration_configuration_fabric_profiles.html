@@ -1,0 +1,664 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_profiles.html' style='text-decoration: none'> Profiles</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Cluster Profiles</h4><br>
+                      <span class="help_detail">Returns paginated list of cluster profiles
+<br>
+Cluster profiles define policies for edge cluster and bridge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListClusterProfiles.html">GET /api/v1/cluster-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Cluster Profile</h4><br>
+                      <span class="help_detail">Create a cluster profile. The resource_type is required.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateClusterProfile.html">POST /api/v1/cluster-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a cluster profile</h4><br>
+                      <span class="help_detail">Delete a specified cluster profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteClusterProfile.html">DELETE /api/v1/cluster-profiles/&lt;cluster-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get cluster profile by Id</h4><br>
+                      <span class="help_detail">Returns information about a specified cluster profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetClusterProfile.html">GET /api/v1/cluster-profiles/&lt;cluster-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a cluster profile</h4><br>
+                      <span class="help_detail">Modifie a specified cluster profile. The body of the PUT request must
+<br>
+include the resource_type.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateClusterProfile.html">PUT /api/v1/cluster-profiles/&lt;cluster-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Hostswitch Profiles</h4><br>
+                      <span class="help_detail">Returns information about the configured hostswitch profiles. Hostswitch
+<br>
+profiles define networking policies for hostswitches (sometimes referred to
+<br>
+as bridges in OVS). Currently, only uplink teaming is supported. Uplink
+<br>
+teaming allows NSX to load balance traffic across different physical NICs
+<br>
+(PNICs) on the hypervisor hosts. Multiple teaming policies are supported,
+<br>
+including LACP active, LACP passive, load balancing based on source ID, and
+<br>
+failover order.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListHostSwitchProfiles.html">GET /api/v1/host-switch-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Creates a hostswitch profile. The resource_type is required. For uplink
+<br>
+profiles, the teaming and policy parameters are required. By default, the
+<br>
+mtu is 1600 and the transport_vlan is 0. The supported MTU range is 1280
+<br>
+through (uplink_mtu_threshold). (uplink_mtu_threshold) is 9000 by default.
+<br>
+Range can be extended by modifying (uplink_mtu_threshold) in
+<br>
+SwitchingGlobalConfig to the required upper threshold.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateHostSwitchProfile.html">POST /api/v1/host-switch-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Deletes a specified hostswitch profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteHostSwitchProfile.html">DELETE /api/v1/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Hostswitch Profile by ID</h4><br>
+                      <span class="help_detail">Returns information about a specified hostswitch profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetHostSwitchProfile.html">GET /api/v1/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Modifies a specified hostswitch profile. The body of the PUT request must
+<br>
+include the resource_type. For uplink profiles, the put request must also
+<br>
+include teaming parameters. Modifiable attributes include display_name, mtu,
+<br>
+and transport_vlan. For uplink teaming policies, uplink_name and policy are
+<br>
+also modifiable.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateHostSwitchProfile.html">PUT /api/v1/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Hostswitch Profiles</h4><br>
+                      <span class="help_detail">Returns information about the configured hostswitch profiles. Hostswitch
+<br>
+profiles define networking policies for hostswitches (sometimes referred to
+<br>
+as bridges in OVS). Currently, following profiles are supported.
+<br>
+UplinkHostSwitchProfile, LldpHostSwitchProfile, NiocProfile & ExtraConfigHostSwitchProfile.
+<br>
+Uplink profile - teaming defined in this profile allows NSX to load balance traffic across
+<br>
+different physical NICs (PNICs) on the hypervisor hosts. Multiple teaming policies are
+<br>
+supported, including LACP active, LACP passive, load balancing based on source ID, and
+<br>
+failover order.
+<br>
+Lldp profile - Enable or disable sending LLDP packets
+<br>
+NiocProfile - Network I/O Control settings: defines limits, shares and reservations for
+<br>
+various host traffic types.
+<br>
+ExtraConfig - Vendor specific configuration on HostSwitch, logical switch or logical port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyHostSwitchProfiles.html">GET /policy/api/v1/infra/host-switch-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Deletes a specified hostswitch profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyHostSwitchProfile.html">DELETE /policy/api/v1/infra/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Hostswitch Profile by ID</h4><br>
+                      <span class="help_detail">Returns information about a specified hostswitch profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyHostSwitchProfile.html">GET /policy/api/v1/infra/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Patch a hostswitch profile. The resource_type is required and needs to be
+<br>
+one of the following,
+<br>
+UplinkHostSwitchProfile, LldpHostSwitchProfile, NiocProfile &
+<br>
+ExtraConfigHostSwitchProfile.
+<br>
+Uplink profile - For uplink profiles, the teaming and policy parameters are
+<br>
+required. By default, the mtu is 1600 and the transport_vlan is 0. The
+<br>
+supported MTU range is 1280 through (uplink_mtu_threshold).
+<br>
+uplink_mtu_threshold is 9000 by default. Range can be extended by modifying
+<br>
+(uplink_mtu_threshold) in SwitchingGlobalConfig to the required upper threshold.
+<br>
+Teaming defined in this profile allows NSX to load balance traffic across
+<br>
+different physical NICs (PNICs) on the hypervisor hosts. Multiple teaming
+<br>
+policies are supported, including LACP active, LACP passive, load balancing
+<br>
+based on source ID, and failover order.
+<br>
+Lldp profile - Enable or disable sending LLDP packets
+<br>
+NiocProfile - Network I/O Control settings: defines limits, shares and
+<br>
+reservations for various host traffic types.
+<br>
+ExtraConfig - Vendor specific configuration on HostSwitch, logical switch
+<br>
+or logical port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyHostSwitchProfile.html">PATCH /policy/api/v1/infra/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Hostswitch Profile</h4><br>
+                      <span class="help_detail">Create or update a hostswitch profile. The resource_type is required and needs to be
+<br>
+one of the following,
+<br>
+UplinkHostSwitchProfile, LldpHostSwitchProfile, NiocProfile &
+<br>
+ExtraConfigHostSwitchProfile.
+<br>
+Uplink profile - For uplink profiles, the teaming and policy parameters are
+<br>
+required. By default, the mtu is 1600 and the transport_vlan is 0. The
+<br>
+supported MTU range is 1280 through (uplink_mtu_threshold).
+<br>
+uplink_mtu_threshold is 9000 by default. Range can be extended by modifying
+<br>
+(uplink_mtu_threshold) in SwitchingGlobalConfig to the required upper threshold.
+<br>
+Teaming defined in this profile allows NSX to load balance traffic across
+<br>
+different physical NICs (PNICs) on the hypervisor hosts. Multiple teaming
+<br>
+policies are supported, including LACP active, LACP passive, load balancing
+<br>
+based on source ID, and failover order.
+<br>
+Lldp profile - Enable or disable sending LLDP packets
+<br>
+NiocProfile - Network I/O Control settings: defines limits, shares and
+<br>
+reservations for various host traffic types.
+<br>
+ExtraConfig - Vendor specific configuration on HostSwitch, logical switch
+<br>
+or logical port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyHostSwitchProfile.html">PUT /policy/api/v1/infra/host-switch-profiles/&lt;host-switch-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Host Transport Nodes</h4><br>
+                      <span class="help_detail">Returns information about all host transport node profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyHostTransportNodeProfiles.html">GET /policy/api/v1/infra/host-transport-node-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Transport Node</h4><br>
+                      <span class="help_detail">Returns information about a specified host transport node profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyHostTransportNodeProfile.html">GET /policy/api/v1/infra/host-transport-node-profiles/&lt;host-transport-node-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Host Transport Node Profile</h4><br>
+                      <span class="help_detail">Deletes the specified host transport node profile. A host transport node profile
+<br>
+can be deleted only when it is not attached to any compute collection.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyHostTransportNodeProfile.html">DELETE /policy/api/v1/infra/host-transport-node-profiles/&lt;transport-node-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Host Transport Node Profile</h4><br>
+                      <span class="help_detail">Host transport node profile captures the configuration needed to create
+<br>
+a host transport node. A host transport node profile can be attached to
+<br>
+compute collections for automatic host transport node creation of member hosts.
+<br>
+
+<br>
+When configurations of a host transport node profile(TNP) are updated, all the
+<br>
+host transport nodes in all the compute collections to which this TNP is attached
+<br>
+are updated to reflect the updated configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyHostTransportNodeProfile.html">PUT /policy/api/v1/infra/host-transport-node-profiles/&lt;transport-node-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Transport Nodes</h4><br>
+                      <span class="help_detail">Returns information about all transport node profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTransportNodeProfiles.html">GET /api/v1/transport-node-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Transport Node Profile</h4><br>
+                      <span class="help_detail">Transport node profile captures the configuration needed to create
+<br>
+a transport node. A transport node profile can be attached to
+<br>
+compute collections for automatic TN creation of member hosts.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTransportNodeProfile.html">POST /api/v1/transport-node-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Transport Node Profile</h4><br>
+                      <span class="help_detail">Deletes the specified transport node profile. A transport node profile
+<br>
+can be deleted only when it is not attached to any compute collection.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTransportNodeProfile.html">DELETE /api/v1/transport-node-profiles/&lt;transport-node-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Transport Node</h4><br>
+                      <span class="help_detail">Returns information about a specified transport node profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTransportNodeProfile.html">GET /api/v1/transport-node-profiles/&lt;transport-node-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Transport Node Profile</h4><br>
+                      <span class="help_detail">When configurations of a transport node profile(TNP) is updated, all the
+<br>
+transport nodes in all the compute collections to which this TNP is attached
+<br>
+are updated to reflect the updated configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTransportNodeProfile.html">PUT /api/v1/transport-node-profiles/&lt;transport-node-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List transport zone profiles</h4><br>
+                      <span class="help_detail">Returns information about the configured transport zone profiles. Transport zone
+<br>
+profiles define networking policies for transport zones and transport zone endpoints.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTransportZoneProfiles.html">GET /api/v1/transportzone-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a transport zone Profile</h4><br>
+                      <span class="help_detail">Creates a transport zone profile. The resource_type is required.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTransportZoneProfile.html">POST /api/v1/transportzone-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a transport zone Profile</h4><br>
+                      <span class="help_detail">Deletes a specified transport zone profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTransportZoneProfile.html">DELETE /api/v1/transportzone-profiles/&lt;transportzone-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get transport zone profile by identifier</h4><br>
+                      <span class="help_detail">Returns information about a specified transport zone profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTransportZoneProfile.html">GET /api/v1/transportzone-profiles/&lt;transportzone-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a transport zone profile</h4><br>
+                      <span class="help_detail">Modifies a specified transport zone profile. The body of the PUT request must include the resource_type.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTransportZoneProfile.html">PUT /api/v1/transportzone-profiles/&lt;transportzone-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

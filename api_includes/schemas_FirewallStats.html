@@ -1,0 +1,178 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FirewallStats.html">FirewallStats</a> (<a href="types_FirewallStats.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "FirewallStats", 
+  "module_id": "FirewallStatsRule", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "byte_count": {
+      "description": "Aggregated number of bytes processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Bytes count", 
+      "type": "integer"
+    }, 
+    "hit_count": {
+      "description": "Aggregated number of hits received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Hits count", 
+      "type": "integer"
+    }, 
+    "l7_accept_count": {
+      "description": "Aggregated number of L7 Profile Accepted counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Accept count", 
+      "type": "integer"
+    }, 
+    "l7_reject_count": {
+      "description": "Aggregated number of L7 Profile Rejected counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Reject count", 
+      "type": "integer"
+    }, 
+    "l7_reject_with_response_count": {
+      "description": "Aggregated number of L7 Profile Rejected with Response counters received by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L7 Reject with response count", 
+      "type": "integer"
+    }, 
+    "max_popularity_index": {
+      "description": "Maximum value of popularity index of all firewall rules of the type. This is aggregated statistic which are computed with lower frequency compared to individual generic rule statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The maximum popularity index", 
+      "type": "integer"
+    }, 
+    "max_session_count": {
+      "description": "Maximum value of sessions count of all firewall rules of the type. This is aggregated statistic which are computed with lower frequency compared to generic rule statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Maximum sessions count", 
+      "type": "integer"
+    }, 
+    "packet_count": {
+      "description": "Aggregated number of packets processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Packets count", 
+      "type": "integer"
+    }, 
+    "popularity_index": {
+      "description": "This is calculated by sessions count divided by age of the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The index of the popularity of firewall rule", 
+      "type": "integer"
+    }, 
+    "rule_id": {
+      "description": "Rule Identifier of the Firewall rule. This is a globally unique number.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Firewall rule Id", 
+      "type": "string"
+    }, 
+    "session_count": {
+      "description": "Aggregated number of sessions processed by the rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Sessions count", 
+      "type": "integer"
+    }, 
+    "total_session_count": {
+      "description": "Aggregated number of sessions processed by the all firewall rules. This is aggregated statistic which are computed with lower frequency compared to individual generic rule statistics. It may have a computation delay up to 15 minutes in response to this API.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Total sessions count", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

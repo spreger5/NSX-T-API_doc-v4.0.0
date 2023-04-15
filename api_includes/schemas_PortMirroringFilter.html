@@ -1,0 +1,117 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PortMirroringFilter.html">PortMirroringFilter</a> (<a href="types_PortMirroringFilter.html">type</a>)
+</h3>
+<pre>{
+  "id": "PortMirroringFilter", 
+  "module_id": "PortMirroring", 
+  "properties": {
+    "dst_ips": {
+      "$ref": "<A HREF="schemas_IPAddresses.html">IPAddresses</A>, 
+      "description": "Destination IP in the form of IPAddresses, used to match the destination IP of a packet. If not provided, no filtering by destination IPs is performed.", 
+      "required": false, 
+      "title": "Destination IP used to filter packets"
+    }, 
+    "dst_ports": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "description": "Destination port in the form of a port or port range, used to match the destination port of a packet. If not provided, no filtering by destination port is performed.", 
+      "required": false, 
+      "title": "Destination port or port range used to filter packets"
+    }, 
+    "filter_action": {
+      "default": "MIRROR", 
+      "description": "If set to MIRROR, packets will be mirrored. If set to DO_NOT_MIRROR, packets will not be mirrored.", 
+      "enum": [
+        "MIRROR", 
+        "DO_NOT_MIRROR"
+      ], 
+      "required": false, 
+      "title": "Mirror action to filter packets", 
+      "type": "string"
+    }, 
+    "ip_protocol": {
+      "description": "The transport protocols of TCP or UDP, used to match the transport protocol of a packet. If not provided, no filtering by IP protocols is performed.", 
+      "enum": [
+        "TCP", 
+        "UDP"
+      ], 
+      "required": false, 
+      "title": "The protocol used to filter packets.", 
+      "type": "string"
+    }, 
+    "src_ips": {
+      "$ref": "<A HREF="schemas_IPAddresses.html">IPAddresses</A>, 
+      "description": "Source IP in the form of IPAddresses, used to match the source IP of a packet. If not provided, no filtering by source IPs is performed.", 
+      "required": false, 
+      "title": "Source IP used to filter packets"
+    }, 
+    "src_ports": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "description": "Source port in the form of a port or port range, used to match the source port of a packet. If not provided, no filtering by source port is performed.", 
+      "required": false, 
+      "title": "Source port or port range used to filter packets"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

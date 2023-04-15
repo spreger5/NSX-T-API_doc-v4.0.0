@@ -1,0 +1,860 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Policy >
+            
+            
+                <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing.html' style='text-decoration: none'> Advanced Load Balancing</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing_alb_pki_profiles.html' style='text-decoration: none'> Alb Pki Profiles</a>
+            
+        </P>
+    
+        <div id="ReadALBPKIProfile">
+          <h2>
+            Read ALBPKIProfile
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Read a ALBPKIProfile.
+<br>
+This is a deprecated API. It is recommennded to use NSX Advanced Load Balancer (Avi) Controller UI or API directly instead of NSX-T ALB Policy UI and API.
+<br>
+</span>
+              <span class="help_detail">This API is only available when using VMware NSX.</span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/infra/alb-pki-profiles/&lt;alb-pkiprofile-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/alb-pki-profiles/<pkiprofile-id></span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ALBPKIProfile<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ReadALBPKIProfile', 'ALBPKIProfile.ReadALBPKIProfile.Response_Body')">+</span></div>
+  </div>
+    <div id="ALBPKIProfile.ReadALBPKIProfile.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ALBPKIProfile.html">
+        <span>ALBPKIProfile</span>
+      </a> (<a href="schemas_ALBPKIProfile.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>ca_certs</td>
+            
+            <td>Ca certs<br><br>List of Certificate Authorities (Root and Intermediate)
+<br>
+trusted that is used for certificate validation.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBSSLCertificate.html">ALBSSLCertificate</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>created_by</td>
+            
+            <td>Created by<br><br>Creator name.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>crl_check</td>
+            
+            <td>Crl check<br><br>When enabled, Avi will verify via CRL checks that
+<br>
+certificates in the trust chain have not been revoked.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>crls</td>
+            
+            <td>Crls<br><br>Certificate Revocation Lists.</td>
+            
+            <td>array of <a href="types_ALBCRL.html">ALBCRL</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>ignore_peer_chain</td>
+            
+            <td>Ignore peer chain<br><br>When enabled, Avi will not trust Intermediate and Root
+<br>
+certs presented by a client.
+<br>
+Instead, only the chain certs configured in the Certificate
+<br>
+Authority section will be used to verify trust of the
+<br>
+client's cert.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Special default for Basic edition is true, Essentials
+<br>
+edition is true, Enterprise is False.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>is_federated</td>
+            
+            <td>Is federated<br><br>This field describes the object's replication scope.
+<br>
+If the field is set to false, then the object is visible
+<br>
+within the controller-cluster and its associated
+<br>
+service-engines.
+<br>
+If the field is set to true, then the object is replicated
+<br>
+across the federation.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>markers</td>
+            
+            <td>Markers<br><br>List of labels to be used for granular RBAC.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ALBPKIProfile</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>validate_only_leaf_crl</td>
+            
+            <td>Validate only leaf crl<br><br>When enabled, Avi will only validate the revocation status
+<br>
+of the leaf certificate using CRL.
+<br>
+To enable validation for the entire chain, disable this
+<br>
+option and provide all the relevant CRLs.
+<br>
+Allowed in Basic(Allowed values- true) edition,
+<br>
+Essentials(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "_create_time": 1598510578798,
+  "_create_user": "admin",
+  "_last_modified_time": 1598510578802,
+  "_last_modified_user": "admin",
+  "_protection": "NOT_PROTECTED",
+  "_revision": 0,
+  "_system_owned": false,
+  "ca_certs": [
+    {
+      "certificate": "Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number: 0 (0x0)\n    Signature Algorithm: sha1WithRSAEncryption\n        Issuer: C:US, ST:Arizona, L:Scottsdale, O:Starfield Technologies, Inc., OU:http://certificates.starfieldtech.com/repository/, CN:Starfield Services Root Certificate Authority\n        Validity\n            Not Before: Jun  2 00:00:00 2008 GMT\n            Not After : Dec 31 23:59:59 2029 GMT\n        Subject: C:US, ST:Arizona, L:Scottsdale, O:Starfield Technologies, Inc., OU:http://certificates.starfieldtech.com/repository/, CN:Starfield Services Root Certificate Authority\n        Subject Public Key Info:\n            Public Key Algorithm: rsaEncryption\n                Public-Key: (2048 bit)\n                Modulus:\n                    00:f2:cc:56:2a:4d:e6:16:37:5a:97:ea:6d:35:38:\n                    d1:10:9b:db:b8:dc:a9:04:09:95:33:2e:09:c5:00:\n                    7b:1a:78:42:8f:c8:f4:05:8e:fe:d2:68:83:1e:4e:\n                    99:cd:17:db:47:3e:50:f3:89:d2:e7:dc:98:fb:05:\n                    f8:aa:d6:63:f4:54:4d:c1:71:03:b0:1f:1b:76:b3:\n                    1a:34:30:73:f1:28:32:60:83:fd:b4:9c:d7:b6:d2:\n                    22:37:7c:19:aa:3b:de:13:10:69:6e:5c:06:d3:6f:\n                    a3:f2:66:5a:76:42:48:af:80:d1:54:59:3d:d4:b9:\n                    d4:db:ed:b9:ab:39:99:f4:ee:62:ab:e1:78:72:7b:\n                    d8:38:8d:40:b6:cc:dc:12:00:70:43:85:69:d8:18:\n                    e3:ca:57:72:9f:b4:df:3f:fc:22:a8:42:52:f5:77:\n                    5b:99:f0:56:2d:26:70:16:36:12:c2:27:9e:57:a6:\n                    7c:d0:23:f1:79:dc:a3:93:58:28:38:3d:9f:ad:36:\n                    43:ee:37:fb:f8:f9:43:ad:c8:56:f2:94:12:5e:42:\n                    eb:73:b8:13:0d:cb:a6:d5:86:b9:aa:28:6a:54:03:\n                    a1:3f:0f:29:eb:09:00:e8:3f:5e:a2:7f:17:3d:a1:\n                    2b:f8:be:d0:75:1d:a4:84:e3:ab:17:65:06:52:00:\n                    af:b1\n                Exponent: 65537 (0x10001)\n        X509v3 extensions:\n            X509v3 Basic Constraints: critical\n                CA:TRUE\n            X509v3 Key Usage: critical\n                Certificate Sign, CRL Sign\n            X509v3 Subject Key Identifier: \n                B4:C6:7F:1A:43:CC:9B:75:5D:2F:C4:4B:F2:8B:98:10:E9:F1:51:10\n            X509v3 Authority Key Identifier: \n                keyid:B4:C6:7F:1A:43:CC:9B:75:5D:2F:C4:4B:F2:8B:98:10:E9:F1:51:10\n\n    Signature Algorithm: sha1WithRSAEncryption\n         ac:80:bb:c4:25:05:0b:58:a4:e4:7e:29:7e:af:bc:3b:ec:2d:\n         c0:44:2e:f9:91:e0:d2:3b:32:27:90:2d:f6:80:09:5c:c2:ab:\n         65:24:da:38:10:46:c4:49:d2:fd:9a:ab:28:48:77:88:c6:e9:\n         6f:d1:47:91:d5:35:4f:14:09:a8:5b:40:07:1d:7c:71:56:cb:\n         89:42:d4:bf:61:c0:22:f7:2e:df:ab:f3:72:43:8b:40:e8:94:\n         eb:b0:26:da:d1:13:d3:ab:d0:36:2d:2e:3a:95:b3:77:2e:15:\n         39:18:0c:69:ba:aa:80:ed:f1:53:4e:33:9b:68:04:e2:a0:30:\n         2e:d7:d1:5d:d4:a6:66:9d:84:e6:e7:bb:3c:89:bb:36:9d:fc:\n         17:a9:3d:55:2b:8a:fb:9b:c4:4c:84:ff:df:d2:be:69:1b:74:\n         b0:a8:f6:ea:b0:9c:b2:29:74:81:4c:68:3a:9a:7f:73:25:39:\n         f5:13:e0:66:91:69:d4:57:4b:b7:ee:ad:45:e0:2c:c3:88:d3:\n         be:94:49:89:1f:ff:70:d5:5b:6d:39:13:b0:1d:cb:98:e6:67:\n         63:0d:63:f6:fb:c3:d7:61:72:83:88:3f:70:7e:53:c9:9e:89:\n         54:d6:4f:7f:7d:71:b9:ae:f1:60:8b:77:60:ec:f8:bf:fa:6a:\n         a3:9c:01:22\n-----BEGIN CERTIFICATE-----\nMIIEfjCCA2agAwIBAgIBADANBgkqhkiG9w0BAQUFADCBzzELMAkGA1UEBhMCVVMx\nEDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxJTAjBgNVBAoT\nHFN0YXJmaWVsZCBUZWNobm9sb2dpZXMsIEluYy4xOjA4BgNVBAsTMWh0dHA6Ly9j\nZXJ0aWZpY2F0ZXMuc3RhcmZpZWxkdGVjaC5jb20vcmVwb3NpdG9yeS8xNjA0BgNV\nBAMTLVN0YXJmaWVsZCBTZXJ2aWNlcyBSb290IENlcnRpZmljYXRlIEF1dGhvcml0\neTAeFw0wODA2MDIwMDAwMDBaFw0yOTEyMzEyMzU5NTlaMIHPMQswCQYDVQQGEwJV\nUzEQMA4GA1UECBMHQXJpem9uYTETMBEGA1UEBxMKU2NvdHRzZGFsZTElMCMGA1UE\nChMcU3RhcmZpZWxkIFRlY2hub2xvZ2llcywgSW5jLjE6MDgGA1UECxMxaHR0cDov\nL2NlcnRpZmljYXRlcy5zdGFyZmllbGR0ZWNoLmNvbS9yZXBvc2l0b3J5LzE2MDQG\nA1UEAxMtU3RhcmZpZWxkIFNlcnZpY2VzIFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9y\naXR5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8sxWKk3mFjdal+pt\nNTjREJvbuNypBAmVMy4JxQB7GnhCj8j0BY7+0miDHk6ZzRfbRz5Q84nS59yY+wX4\nqtZj9FRNwXEDsB8bdrMaNDBz8SgyYIP9tJzXttIiN3wZqjveExBpblwG02+j8mZa\ndkJIr4DRVFk91LnU2+25qzmZ9O5iq+F4cnvYOI1AtszcEgBwQ4Vp2Bjjyldyn7Tf\nP/wiqEJS9XdbmfBWLSZwFjYSwieeV6Z80CPxedyjk1goOD2frTZD7jf7+PlDrchW\n8pQSXkLrc7gTDcum1Ya5qihqVAOhPw8p6wkA6D9eon8XPaEr+L7QdR2khOOrF2UG\nUgCvsQIDAQABo2MwYTAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAd\nBgNVHQ4EFgQUtMZ/GkPMm3VdL8RL8ouYEOnxURAwHwYDVR0jBBgwFoAUtMZ/GkPM\nm3VdL8RL8ouYEOnxURAwDQYJKoZIhvcNAQEFBQADggEBAKyAu8QlBQtYpOR+KX6v\nvDvsLcBELvmR4NI7MieQLfaACVzCq2Uk2jgQRsRJ0v2aqyhId4jG6W/RR5HVNU8U\nCahbQAcdfHFWy4lC1L9hwCL3Lt+r83JDi0DolOuwJtrRE9Or0DYtLjqVs3cuFTkY\nDGm6qoDt8VNOM5toBOKgMC7X0V3UpmadhObnuzyJuzad/BepPVUrivubxEyE/9/S\nvmkbdLCo9uqwnLIpdIFMaDqaf3MlOfUT4GaRadRXS7furUXgLMOI076USYkf/3DV\nW205E7Ady5jmZ2MNY/b7w9dhcoOIP3B+U8meiVTWT399cbmu8WCLd2Ds+L/6aqOc\nASI:\n-----END CERTIFICATE-----\n\n",
+      "days_until_expire": 365,
+      "expiry_status": "SSL_CERTIFICATE_GOOD"
+    }
+  ],
+  "crl_check": false,
+  "display_name": "demo-nsx-pkiprofile",
+  "id": "demo-nsx-pkiprofile",
+  "ignore_peer_chain": false,
+  "is_federated": false,
+  "marked_for_delete": false,
+  "overridden": false,
+  "parent_path": "/infra",
+  "path": "/infra/alb-pki-profiles/demo-nsx-pkiprofile",
+  "relative_path": "demo-nsx-pkiprofile",
+  "resource_type": "ALBPKIProfile",
+  "unique_id": "857f21f4-5ad1-464b-9932-d8cb6d161993",
+  "validate_only_leaf_crl": true
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">policy_lb</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

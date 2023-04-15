@@ -1,0 +1,131 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbNodeUsageSummary.html">LbNodeUsageSummary</a> (<a href="types_LbNodeUsageSummary.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The load balancer node usage summary for all nodes. Only EdgeNode is supported. The summary calculation is based on all edge nodes configured in edge clusters.", 
+  "id": "LbNodeUsageSummary", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "current_credit_number": {
+      "description": "The current credit number reflects the overall credit usage for all nodes.", 
+      "readonly": true, 
+      "title": "Current credit number", 
+      "type": "integer"
+    }, 
+    "current_pool_members": {
+      "description": "The overall number of pool members configured on all nodes.", 
+      "readonly": true, 
+      "title": "The current number of pool members", 
+      "type": "integer"
+    }, 
+    "node_counts": {
+      "description": "The property identifies array of node count for each severity (RED, ORANGE and GREEN).", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbNodeCountPerSeverity.html">LbNodeCountPerSeverity</A>
+      }, 
+      "readonly": true, 
+      "title": "Array of node count for each severity", 
+      "type": "array"
+    }, 
+    "node_usages": {
+      "description": "The property contains lb node usages for each node.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbNodeUsage.html">LbNodeUsage</A>
+      }, 
+      "readonly": true, 
+      "title": "Array of lb node usages", 
+      "type": "array"
+    }, 
+    "remaining_credit_number": {
+      "description": "The remaining credit number is the overall remaining credits that can be used for load balancer service configuration for all nodes.", 
+      "readonly": true, 
+      "title": "Remaining credit number", 
+      "type": "integer"
+    }, 
+    "remaining_pool_members": {
+      "description": "The overall remaining number of pool members which could be configured on all nodes.", 
+      "readonly": true, 
+      "title": "The remaining number of pool members", 
+      "type": "integer"
+    }, 
+    "severity": {
+      "$ref": "<A HREF="schemas_LbUsageSeverity.html">LbUsageSeverity</A>, 
+      "description": "The severity calculation is based on current credit usage percentage of load balancer for all nodes.", 
+      "readonly": true, 
+      "title": "LB usage severity"
+    }, 
+    "usage_percentage": {
+      "description": "The overall usage percentage of all nodes for load balancer. The value is the larger value between overall pool member usage percentage and overall load balancer credit usage percentage.", 
+      "readonly": true, 
+      "title": "Usage percentage", 
+      "type": "number"
+    }
+  }, 
+  "title": "Lb node usage summary for all nodes", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

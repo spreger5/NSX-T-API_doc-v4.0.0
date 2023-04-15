@@ -1,0 +1,176 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsServiceApplicationProfile.html">ALBDnsServiceApplicationProfile</a> (<a href="types_ALBDnsServiceApplicationProfile.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsServiceApplicationProfile object", 
+  "id": "ALBDnsServiceApplicationProfile", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "aaaa_empty_response": {
+      "default": true, 
+      "description": "Respond to AAAA queries with empty response when there are only IPV4 records. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Aaaa empty response", 
+      "type": "boolean"
+    }, 
+    "admin_email": {
+      "default": "hostmaster", 
+      "description": "Email address of the administrator responsible for this zone. This field is used in SOA records (rname) pertaining to all domain names specified as authoritative domain names. If not configured, the default value 'hostmaster' is used in SOA responses. Default value when not specified in API or module is interpreted by ALB Controller as hostmaster.", 
+      "required": false, 
+      "title": "Admin email", 
+      "type": "string"
+    }, 
+    "dns_over_tcp_enabled": {
+      "default": true, 
+      "description": "Enable DNS query/response over TCP. This enables analytics for pass-through queries as well. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Dns over tcp enabled", 
+      "type": "boolean"
+    }, 
+    "dns_zones": {
+      "description": "DNS zones hosted on this Virtual Service. Maximum of 100 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBDnsZone.html">ALBDnsZone</A>
+      }, 
+      "required": false, 
+      "title": "Dns zones", 
+      "type": "array"
+    }, 
+    "domain_names": {
+      "description": "Subdomain names serviced by this Virtual Service. These are configured as Ends-With semantics. Maximum of 100 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Domain names", 
+      "type": "array"
+    }, 
+    "ecs_stripping_enabled": {
+      "default": true, 
+      "description": "Enable stripping of EDNS client subnet (ecs) option towards client if DNS service inserts ecs option in the DNS query towards upstream servers. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Ecs stripping enabled", 
+      "type": "boolean"
+    }, 
+    "edns": {
+      "default": true, 
+      "description": "Enable DNS service to be aware of EDNS (Extension mechanism for DNS). EDNS extensions are parsed and shown in logs. For GSLB services, the EDNS client subnet option can be used to influence Load Balancing. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Edns", 
+      "type": "boolean"
+    }, 
+    "edns_client_subnet_prefix_len": {
+      "description": "Specifies the IP address prefix length to use in the EDNS client subnet (ECS) option. When the incoming request does not have any ECS option and the prefix length is specified, an ECS option is inserted in the request passed to upstream server. If the incoming request already has an ECS option, the prefix length (and correspondingly the address) in the ECS option is updated, with the minimum of the prefix length present in the incoming and the configured prefix length, before passing the request to upstream server. Allowed values are 1-32.", 
+      "maximum": 32, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Edns client subnet prefix len", 
+      "type": "integer"
+    }, 
+    "error_response": {
+      "$ref": "<A HREF="schemas_ALBDnsErrorResponseType.html">ALBDnsErrorResponseType</A>, 
+      "default": "DNS_ERROR_RESPONSE_NONE", 
+      "description": "Drop or respond to client when the DNS service encounters an error processing a client query. By default, such a request is dropped without any response, or passed through to a passthrough pool, if configured. When set to respond, an appropriate response is sent to client, e.g. NXDOMAIN response for non-existent records, empty NOERROR response for unsupported queries, etc. Enum options - DNS_ERROR_RESPONSE_ERROR, DNS_ERROR_RESPONSE_NONE. Default value when not specified in API or module is interpreted by ALB Controller as DNS_ERROR_RESPONSE_NONE.", 
+      "required": false, 
+      "title": "Error response"
+    }, 
+    "name_server": {
+      "description": "The &lt;domain-name&gt;  of the name server that was the original or primary source of data for this zone. This field is used in SOA records (mname) pertaining to all domain names specified as authoritative domain names. If not configured, domain name is used as name server in SOA response.", 
+      "required": false, 
+      "title": "Name server", 
+      "type": "string"
+    }, 
+    "negative_caching_ttl": {
+      "default": 30, 
+      "description": "Specifies the TTL value (in seconds) for SOA (Start of Authority) (corresponding to a authoritative domain owned by this DNS Virtual Service) record's minimum TTL served by the DNS Virtual Service. Allowed values are 0-86400. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 30.", 
+      "maximum": 86400, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Negative caching ttl", 
+      "type": "integer"
+    }, 
+    "num_dns_ip": {
+      "default": 1, 
+      "description": "Specifies the number of IP addresses returned by the DNS Service. Enter 0 to return all IP addresses. Allowed values are 1-20. Special values are 0- 'Return all IP addresses'. Default value when not specified in API or module is interpreted by ALB Controller as 1.", 
+      "maximum": 20, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Num dns ip", 
+      "type": "integer"
+    }, 
+    "ttl": {
+      "default": 30, 
+      "description": "Specifies the TTL value (in seconds) for records served by DNS Service. Allowed values are 0-86400. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 30.", 
+      "maximum": 86400, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Ttl", 
+      "type": "integer"
+    }
+  }, 
+  "title": "DnsServiceApplicationProfile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

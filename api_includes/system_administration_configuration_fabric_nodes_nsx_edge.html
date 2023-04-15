@@ -1,0 +1,938 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_nsx_edge.html' style='text-decoration: none'> NSX Edge</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Current configuration for this node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNodeConfiguration.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/configuration</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read edge config diagnosis</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDiagnosis.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/diagnosis</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read edge diagnosis inconsistency</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDiagnosisInconsistency.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/diagnosis/inconsistency</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge stateful flows</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFlows.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/flows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge stateful flows by interface</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIfaceFlows.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/flows/interfaces/&lt;iface-uuid&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge stateful flows by router</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRouterFlows.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/flows/logical-routers/&lt;uuid&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Logical-router diagnosis</h4><br>
+                      <span class="help_detail">Returns information of specified logical-router configured on edge.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalRouterDiagnosis.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/logical-routers/&lt;logical-router-id&gt;/diagnosis</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Logical-routers diagnosis</h4><br>
+                      <span class="help_detail">Returns information of all logical-routers or specified type of
+<br>
+logical-routers configured on edge.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalRoutersDiagnosis.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/logical-routers/diagnosis</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Edge maintenance mode</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadMaintenanceMode.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/maintenance-mode</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set Edge maintenance mode</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateMaintenanceMode.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/maintenance-mode</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeDatapath service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDatapathService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart, start or stop the NSX EdgeDatapath service</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateEdgeDatapathServiceAction.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane?action=restart|start|stop</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge Datapath service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateEdgeDatapathService.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane cpu stats</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadCpuStats.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/cpu-stats</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane control packets prioritization setting</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane control packets prioritization.
+<br>
+Dataplane service must be restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateCtrlPrioSetting.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/ctrl-prio</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Check dynamic core feature enabled status of NSX Edge dataplane</h4><br>
+                      <span class="help_detail">Check current status of NSX Edge dataplane dynamic core feature.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDynamicCore.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/dynamic-core</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane dynamic core feature enabled status</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane dynamic core feature. Dataplane service must be
+<br>
+restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDynamicCore.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/dynamic-core</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane flow cache setting</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFlowCacheSetting.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/flow-cache</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane flow cache setting</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane flow cache. Dataplane service must be
+<br>
+restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateFlowCacheSetting.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/flow-cache</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return top 10 flows information</h4><br>
+                      <span class="help_detail">Run flow monitor for <i>timeout</i> seconds for all or certain CPU core(s)
+<br>
+and return top 10 flows.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFlowMonitorTopK.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/flow-mon</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Start NSX Edge dataplane flow monitor</h4><br>
+                      <span class="help_detail">Starts NSX Edge dataplane flow monitor on all or certain CPU core(s) with a timeout.
+<br>
+Stops flow monitor after timeout and dumps the flow file on local file store
+<br>
+on edge. If <i>top_10</i> argument is set to <i>true</i> top 10 flows are collected,
+<br>
+else all flows are collected.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_StartFlowMonitorWithArg.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/flow-mon</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane firewall connections</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFwConns.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/fw-conns</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane firewall stats</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFwStats.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/fw-stats</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane interrupt mode setting</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane interrupt mode.
+<br>
+Dataplane service must be restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIntrMode.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/intr-mode</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane l2vpn pmtu message generation setting</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadL2vpnPmtuSetting.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/l2vpn-pmtu</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane l2vpn pmtu message generation setting</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane pmtu cache in l2vpn.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateL2vpnPmtuSetting.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/l2vpn-pmtu</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Depreciated. Please use /node/services/dataplane/pmtu-learning</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPmtuLearningSettingDepreciated.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/l3vpn-pmtu</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Depreciated. Please use /node/services/dataplane/pmtu-learning</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePmtuLearningSettingDepreciated.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/l3vpn-pmtu</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane pmtu learning setting</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPmtuLearningSetting.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/pmtu-learning</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane pmtu learning setting</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane pmtu learning
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePmtuLearningSetting.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/pmtu-learning</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge dataplane QAT feature enabled status</h4><br>
+                      <span class="help_detail">Enable or disable NSX Edge dataplane QAT feature. Dataplane service must be
+<br>
+restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateQatAdminStatus.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/qat-enable</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge dataplane QAT setting</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadQatStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/qat-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NSX Edge rx and tx queue number per port per core</h4><br>
+                      <span class="help_detail">Get NSX Edge rx and tx queue number per port per core.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadQueueNumPerPortPerCore.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/queue-num-per-port-per-core</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set NSX Edge rx and tx queue number per port per core</h4><br>
+                      <span class="help_detail">Set NSX Edge rx and tx queue number per port per core.
+<br>
+Dataplane service must be restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateQueueNumPerPortPerCore.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/queue-num-per-port-per-core</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return rx/tx ring size information</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRingSize.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/ring-size</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set NSX Edge rx ring size for physical ports</h4><br>
+                      <span class="help_detail">Set NSX Edge rx ring size for physical ports.
+<br>
+Dataplane service must be restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRxRingSize.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/rx-ring-size</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeDatapath service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDatapathServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set NSX Edge tx ring size for physical ports</h4><br>
+                      <span class="help_detail">Set NSX Edge tx ring size for physical ports.
+<br>
+Dataplane service must be restarted for the change to take effect.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTxRingSize.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/tx-ring-size</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Check UPT mode enabled status of NSX Edge dataplane</h4><br>
+                      <span class="help_detail">Check current status of NSX Edge dataplane UPT mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUptMode.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dataplane/upt-mode</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge DHCP service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDHCPService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dhcp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge DHCP service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateEdgeDHCPService.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dhcp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge DHCP service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDHCPServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/dhcp/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge Docker service properties</h4><br>
+                      <span class="help_detail">Read the Docker service process properties from Edge.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDockerService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/docker</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge Docker service status</h4><br>
+                      <span class="help_detail">Checks the status of dockerd process on the Edge.
+<br>
+If dockerd process is running, returns "running",
+<br>
+returns "stopped" otherwise.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeDockerServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/docker/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge Ipsec VPN service properties</h4><br>
+                      <span class="help_detail">Read the IPsec VPN service process properties from Edge.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeIpsecVPNService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/ipsecvpn</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSX Edge Ipsec VPN service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateEdgeIpsecVPNService.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/ipsecvpn</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge Ipsec VPN service status</h4><br>
+                      <span class="help_detail">Checks the status of iked process on the Edge.
+<br>
+If iked process is running, returns "running",
+<br>
+returns "stopped" otherwise.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeIpsecVPNServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/ipsecvpn/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge NSXA service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeNSXAService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/local-controller</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart, start or stop the NSX EdgeNSXA service</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateEdgeNSXAServiceAction.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/local-controller?action=restart|start|stop</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeNSXA service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeNSXAServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/local-controller/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Nestdb service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNsxNestdbService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nestdb</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart, start or stop the NSX Nestdb service</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNsxNestdbServiceAction.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nestdb?action=restart|start|stop</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Nestdb service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNsxNestdbServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nestdb/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX OpsAgent service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadOpsAgentService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nsx-opsagent</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart, start or stop the NSX OpsAgent service</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOpsAgentServiceAction.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nsx-opsagent?action=restart|start|stop</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX OpsAgent service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadOpsAgentServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/nsx-opsagent/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeMSR service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeMSRService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/router</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeMSRConfig service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeMSRConfigService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/router-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeMSRConfig service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeMSRConfigServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/router-config/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX EdgeMSR service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeMSRServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/router/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX security-hub service properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeSecurtyHubService.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/security-hub</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSX Edge security-hub service status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEdgeSecurityHubServiceStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/services/security-hub/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

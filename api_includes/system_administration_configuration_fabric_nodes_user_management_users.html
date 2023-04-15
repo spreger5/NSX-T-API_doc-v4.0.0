@@ -1,0 +1,363 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_user_management.html' style='text-decoration: none'> User Management</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_user_management_users.html' style='text-decoration: none'> Users</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List node users</h4><br>
+                      <span class="help_detail">Returns the list of users configured to log in to the NSX appliance.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNodeUsers.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users</a>
+                            <br>
+                            
+                            <a href="method_ListNodeUsers.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/users</a>
+                            <br>
+                            
+                            <a href="method_ListNodeUsers.html">GET /api/v1/node/users</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset a user's own password. Requires current password</h4><br>
+                      <span class="help_detail">Enables a user to reset their own password.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetNodeUserOwnPassword.html">POST /api/v1/node/users?action=reset_own_password</a>
+                            <br>
+                            
+                            <a href="method_ResetNodeUserOwnPassword.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users?action=reset_own_password</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read node user</h4><br>
+                      <span class="help_detail">Returns information about a specified user who is configured to log in to the
+<br>
+NSX appliance. The valid user IDs are: 0, 10000, 10002.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNodeUser.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users/&lt;userid&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeUser.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeUser.html">GET /api/v1/node/users/&lt;userid&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Activate a user account with a password</h4><br>
+                      <span class="help_detail">Activates the account for this user. When an account is successfully
+<br>
+activated, the "status" field in the response is "ACTIVE".
+<br>
+This API is not supported for userid 0 and userid 10000.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ActivateNodeUser.html">POST /api/v1/node/users/&lt;userid&gt;?action=activate</a>
+                            <br>
+                            
+                            <a href="method_ActivateNodeUser.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;?action=activate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset a user's password without requiring their current password</h4><br>
+                      <span class="help_detail">Unlike the PUT version of this call (PUT /node/users/&lt;userid&gt;), this API
+<br>
+does not require that the current password for the user be provided. The
+<br>
+account of the target user must be "ACTIVE" for the call to succeed.
+<br>
+This API only supports user IDs 10002, 10003, and 10004.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetNodeUserPassword.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;?action=reset_password</a>
+                            <br>
+                            
+                            <a href="method_ResetNodeUserPassword.html">POST /api/v1/node/users/&lt;userid&gt;?action=reset_password</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deactivate a user account</h4><br>
+                      <span class="help_detail">Deactivates the account for this user. Deactivating an account is
+<br>
+permanent, unlike an account that is temporarily locked because of
+<br>
+too many password failures. A deactivated account has to be explicitly
+<br>
+activated. When an account is successfully deactivated, the "status"
+<br>
+field in the response is "NOT_ACTIVATED".
+<br>
+This API is not supported for userid 0 and userid 10000.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeactivateNodeUser.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;?action=deactivate</a>
+                            <br>
+                            
+                            <a href="method_DeactivateNodeUser.html">POST /api/v1/node/users/&lt;userid&gt;?action=deactivate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update node user</h4><br>
+                      <span class="help_detail"><p>Updates attributes of an existing NSX appliance user. This method
+<br>
+cannot be used to add a new user. Modifiable attributes include the
+<br>
+username, full name of the user, and password. If you specify a password in
+<br>
+a PUT request, it is not returned in the response. Nor is it returned in a
+<br>
+GET request.</p>
+<br>
+<p>The specified password does not meet the following (default) complexity requirements:
+<br>
+- minimum 12 characters in length
+<br>
+- minimum 128 characters in length
+<br>
+- minimum 1 uppercase character
+<br>
+- minimum 1 lowercase character
+<br>
+- minimum 1 numeric character
+<br>
+- minimum 1 special character
+<br>
+- minimum 5 unique characters
+<br>
+- default password complexity rules as enforced by the Linux PAM module</p>
+<br>
+<i> the configured password complexity may vary as per defined Authentication and Password policies,
+<br>
+ which shall be available at: [GET]: /api/v1/node/aaa/auth-policy </i> <br />
+<br>
+<p>The valid user IDs are: 0, 10000, 10002.
+<br>
+Note that invoking this API does not update any user-related properties of
+<br>
+existing objects in the system and does not modify the username field in existing
+<br>
+audit log entries.</p>
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNodeUser.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users/&lt;userid&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateNodeUser.html">PUT /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateNodeUser.html">PUT /api/v1/node/users/&lt;userid&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List SSH keys from authorized_keys file for node user</h4><br>
+                      <span class="help_detail">Returns a list of all SSH keys from authorized_keys file for node user
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNodeUserSshKeys.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys</a>
+                            <br>
+                            
+                            <a href="method_ListNodeUserSshKeys.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys</a>
+                            <br>
+                            
+                            <a href="method_ListNodeUserSshKeys.html">GET /api/v1/node/users/&lt;userid&gt;/ssh-keys</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove SSH public key from authorized_keys file for node user</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNodeUserSshKey.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys?action=remove_ssh_key</a>
+                            <br>
+                            
+                            <a href="method_DeleteNodeUserSshKey.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys?action=remove_ssh_key</a>
+                            <br>
+                            
+                            <a href="method_DeleteNodeUserSshKey.html">POST /api/v1/node/users/&lt;userid&gt;/ssh-keys?action=remove_ssh_key</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add SSH public key to authorized_keys file for node user</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddNodeUserSshKey.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys?action=add_ssh_key</a>
+                            <br>
+                            
+                            <a href="method_AddNodeUserSshKey.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/users/&lt;userid&gt;/ssh-keys?action=add_ssh_key</a>
+                            <br>
+                            
+                            <a href="method_AddNodeUserSshKey.html">POST /api/v1/node/users/&lt;userid&gt;/ssh-keys?action=add_ssh_key</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

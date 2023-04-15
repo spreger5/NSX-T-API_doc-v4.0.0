@@ -1,0 +1,218 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IDSSignatureDetail.html">IDSSignatureDetail</a> (<a href="types_IDSSignatureDetail.html">type</a>)
+</h3>
+<pre>{
+  "id": "IDSSignatureDetail", 
+  "module_id": "IDSSignatures", 
+  "properties": {
+    "action": {
+      "description": "Packet analysis action", 
+      "title": "Action", 
+      "type": "string"
+    }, 
+    "affected_product": {
+      "description": "Product affected by the signature.", 
+      "title": "Affected product", 
+      "type": "string"
+    }, 
+    "attack_target": {
+      "description": "Target of the attack tracked in the signature.", 
+      "title": "Attack target", 
+      "type": "string"
+    }, 
+    "category": {
+      "description": "VMware defined signature category.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Category", 
+      "type": "array"
+    }, 
+    "class_type": {
+      "description": "Class type of the signature.", 
+      "title": "Signature class type", 
+      "type": "string"
+    }, 
+    "cves": {
+      "description": "CVE of the signature.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "CVE of the signature", 
+      "type": "array"
+    }, 
+    "cvss": {
+      "description": "Represents the cvss value of a Signature. The value is derived from cvssv3 or cvssv2 score. If cvssv3 exists, then this is the cvssv3 score, else it is the cvssv2 score.", 
+      "required": false, 
+      "title": "Signature CVSS score", 
+      "type": "string"
+    }, 
+    "cvssv2": {
+      "description": "Signature CVSSV2 score.", 
+      "title": "Signature CVSSV2 score", 
+      "type": "string"
+    }, 
+    "cvssv3": {
+      "description": "Signature CVSSV3 score.", 
+      "title": "Signature CVSSV3 score", 
+      "type": "string"
+    }, 
+    "direction": {
+      "description": "Source-destination direction.", 
+      "title": "Direction", 
+      "type": "string"
+    }, 
+    "enabled": {
+      "description": "Signature enabled.", 
+      "title": "Enabled", 
+      "type": "boolean"
+    }, 
+    "flow": {
+      "description": "Flow established from server, from client etc.", 
+      "title": "Flow established", 
+      "type": "string"
+    }, 
+    "malware_family": {
+      "description": "Family of the malware tracked in the signature.", 
+      "title": "Malware Family", 
+      "type": "string"
+    }, 
+    "name": {
+      "description": "Name of the signature.", 
+      "title": "Signature name", 
+      "type": "string"
+    }, 
+    "performance_impact": {
+      "description": "Performance impact of the signature.", 
+      "title": "Performance impact", 
+      "type": "string"
+    }, 
+    "policy": {
+      "description": "Signature policy.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Policy", 
+      "type": "array"
+    }, 
+    "protocol": {
+      "description": "Protocol used in the packet analysis.", 
+      "title": "Protocol", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "IDSSignatureDetail resource type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "IDSSignatureDetail resource type", 
+      "type": "string"
+    }, 
+    "severity": {
+      "description": "VMware defined signature severity.", 
+      "title": "Severity", 
+      "type": "string"
+    }, 
+    "signature_id": {
+      "description": "Unique ID of the signature rule.", 
+      "title": "The signature ID", 
+      "type": "integer"
+    }, 
+    "signature_revision": {
+      "description": "The revision of the signature", 
+      "title": "Signature revision", 
+      "type": "integer"
+    }, 
+    "signature_severity": {
+      "description": "Signature vendor set severity of the signature rule.", 
+      "title": "Signature severity", 
+      "type": "string"
+    }, 
+    "tag": {
+      "description": "Vendor assigned classification tag.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Signature tag", 
+      "type": "array"
+    }, 
+    "type": {
+      "description": "Signature type.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Type", 
+      "type": "array"
+    }, 
+    "urls": {
+      "description": "List of mitre attack URLs pertaining to signature.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "List of mitre attack URLs pertaining to signature", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

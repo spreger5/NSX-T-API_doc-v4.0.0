@@ -1,0 +1,163 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBPathMatch.html">ALBPathMatch</a> (<a href="types_ALBPathMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer PathMatch object", 
+  "id": "ALBPathMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "match_case": {
+      "$ref": "<A HREF="schemas_ALBMatchCase.html">ALBMatchCase</A>, 
+      "default": "INSENSITIVE", 
+      "description": "Case sensitivity to use for the matching. Enum options - SENSITIVE, INSENSITIVE. Default value when not specified in API or module is interpreted by ALB Controller as INSENSITIVE.", 
+      "required": false, 
+      "title": "Match case"
+    }, 
+    "match_criteria": {
+      "$ref": "<A HREF="schemas_ALBStringOperation.html">ALBStringOperation</A>, 
+      "default": "CONTAINS", 
+      "description": "Criterion to use for matching the path in the HTTP request URI. Enum options - BEGINS_WITH, DOES_NOT_BEGIN_WITH, CONTAINS, DOES_NOT_CONTAIN, ENDS_WITH, DOES_NOT_END_WITH, EQUALS, DOES_NOT_EQUAL, REGEX_MATCH, REGEX_DOES_NOT_MATCH. Allowed in Basic(Allowed values- BEGINS_WITH,DOES_NOT_BEGIN_WITH,CONTAINS,DOES_NOT_CONTAIN,ENDS_WITH,DOES_NOT_END_WITH,EQUALS,DOES_NOT_EQUAL) edition, Essentials(Allowed values- BEGINS_WITH,DOES_NOT_BEGIN_WITH,CONTAINS,DOES_NOT_CONTAIN,ENDS_WITH,DOES_NOT_END_WITH,EQUALS,DOES_NOT_EQUAL) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as CONTAINS.", 
+      "required": true, 
+      "title": "Match criteria"
+    }, 
+    "match_str": {
+      "description": "String values.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Match str", 
+      "type": "array"
+    }, 
+    "string_group_paths": {
+      "description": "path of the string group(s). It is a reference to an object of type StringGroup.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "String group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBApplicationProfile"
+          ], 
+          "relationshipType": "ALB_APPLICATIONPROFILE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBHTTPPolicySet"
+          ], 
+          "relationshipType": "ALB_HTTPPOLICYSET_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBSSOPolicy"
+          ], 
+          "relationshipType": "ALB_SSOPOLICY_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBWafPolicy"
+          ], 
+          "relationshipType": "ALB_WAFPOLICY_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }, 
+        {
+          "leftType": [
+            "ALBWafPolicyPSMGroup"
+          ], 
+          "relationshipType": "ALB_WAFPOLICYPSMGROUP_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "PathMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

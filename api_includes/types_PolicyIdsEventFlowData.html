@@ -1,0 +1,407 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      PolicyIdsEventFlowData (<a href="schemas_PolicyIdsEventFlowData.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">IDS event flow data</span>
+    <p>
+    <span class="help_detail">IDS event flow data specific to each IDS
+<br>
+event. The data includes source ip, source
+<br>
+port, destination ip, destination port,
+<br>
+protocol, rule id, profile id, and the
+<br>
+action.
+<br>
+</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>action_type</td>
+            
+            <td>IDS Event action<br><br>The action pertaining to the detected intrusion. Possible values are ALERT, DROP, REJECT, and INVALID. ALERT - If there is a signature match on the packet, it is allowed to pass but a notification is sent to the user notifying an intrusion was detected. DROP - On a signature match, the packet is silently dropped. An alert is sent to the user that an intrusion was detected. REJECT - On a signature match, the packet is dropped and TCP RST or ICMP error messages (for non-TCP pkts) are sent to the endpoints. An alert is sent to the user that an intrusion was detected. INVALID - If the action doesn't belong to any of the above mentioned categories, it is marked as INVALID.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: ALERT, DROP, REJECT, INVALID</td>
+          </tr>
+          <tr>
+            <td>bytes_toclient</td>
+            
+            <td>Bytes to client<br><br>Bytes sent to client.</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>bytes_toserver</td>
+            
+            <td>Bytes to server<br><br>Bytes sent to server.</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>client_ip</td>
+            
+            <td>IP address of the client VM<br><br>IP address of the VM that initiated the communication.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>destination_ip</td>
+            
+            <td>IP address of the destination VM<br><br>IP address of the destination VM on the intrusion flow.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>destination_port</td>
+            
+            <td>Destination port<br><br>Port on the destination VM where the traffic was sent to.</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>gateway</td>
+            
+            <td>Gateway where the intrusion was detected at<br><br>Name of the gateway on which this intrusion was detected.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>gateway_tags</td>
+            
+            <td>Tags associated with the gateway<br><br>Tags associated with the gateway on which this intrusion was detected.</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>host</td>
+            
+            <td>Host where intrusion was seen<br><br>Name of the host on which this intrusion was detected.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>local_vm_ip</td>
+            
+            <td>IP address of the local VM<br><br>IP address of VM on the host where IDS engine is running.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>profile_id</td>
+            
+            <td>IDS profile id<br><br>The IDS profile id that is associated with the IDS rule pertaining to the intrusion event detected.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>protocol</td>
+            
+            <td>Traffic protocol pertaining to the intrusion<br><br>Traffic protocol pertaining to the detected intrusion, could be TCP/UDP etc.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>rule_id</td>
+            
+            <td>IDS Rule id of detected intrusion<br><br>The IDS Rule id pertaining to the detected intrusion.</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>source_ip</td>
+            
+            <td>IP address of the source VM<br><br>IP address of the source VM on the intrusion flow.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>source_port</td>
+            
+            <td>Source port<br><br>Source port through which traffic was initiated that caused the intrusion to be detected.</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>traffic_type</td>
+            
+            <td>IDS event detection source<br><br>The source where the intrusion was detected. Possible values are GATEWAY and HOST.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly<br>Enum: GATEWAY, HOST</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

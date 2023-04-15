@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbAccessListControl.html">LbAccessListControl</a> (<a href="types_LbAccessListControl.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "LbAccessListControl is used to define how IP access list control can filter the connections from clients.", 
+  "id": "LbAccessListControl", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "action": {
+      "description": "ALLOW means connections matching grouping object IP list are allowed and requests not matching grouping object IP list are dropped. DROP means connections matching grouping object IP list are dropped and requests not matching grouping object IP list are allowed.", 
+      "enum": [
+        "ALLOW", 
+        "DROP"
+      ], 
+      "required": true, 
+      "title": "IP access list control action", 
+      "type": "string"
+    }, 
+    "enabled": {
+      "default": false, 
+      "description": "The enabled flag indicates whether to enable access list control option. It is false by default.", 
+      "required": false, 
+      "title": "Whether to enable access list control option", 
+      "type": "boolean"
+    }, 
+    "group_id": {
+      "description": "The identifier of grouping object which defines the IP addresses or ranges to match the client IP.", 
+      "required": true, 
+      "title": "Grouping object identifier", 
+      "type": "string"
+    }
+  }, 
+  "title": "IP access list control to filter the connections from clients", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

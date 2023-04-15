@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_JoinClusterParameters.html">JoinClusterParameters</a> (<a href="types_JoinClusterParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "To join a new node to the NSX cluster, issue a JoinCluster API on the new node. The JoinCluster API takes this object as a parameter. Provide the ID of the NSX cluster you want the new node to join and the IP address of one of the nodes already in that cluster. The Cluster Boot Manager running on the new node will then add the new node to the NSX cluster by making a AttachClusterNode REST API call on the node that is already part of the cluster. In order to make a REST API call to the node in the cluster, the Cluster Boot Manager will need username and password of a priviledged user on the node in the cluster. In place of a username and password, Cluster Boot Manager could also use a OAuth token provided. The Cluster Boot Manager needs either the username and password or the OAuth token to make the REST call but not both.", 
+  "id": "JoinClusterParameters", 
+  "properties": {
+    "certficate_sha256_thumbprint": {
+      "deprecated": true, 
+      "required": false, 
+      "title": "SHA256 Thumbprint of the API certificate of the cluster node", 
+      "type": "string"
+    }, 
+    "certificate_sha256_thumbprint": {
+      "required": false, 
+      "title": "SHA256 Thumbprint of the API certificate of the cluster node", 
+      "type": "string"
+    }, 
+    "cluster_id": {
+      "required": true, 
+      "title": "UUID of the cluster to join", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "required": true, 
+      "title": "IP address of a node already part of the cluster to join", 
+      "type": "string"
+    }, 
+    "password": {
+      "required": false, 
+      "sensitive": true, 
+      "title": "Password of the user on the cluster node", 
+      "type": "string"
+    }, 
+    "port": {
+      "default": 443, 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "API port on the cluster node", 
+      "type": "integer"
+    }, 
+    "token": {
+      "required": false, 
+      "sensitive": true, 
+      "title": "Limited time OAuth token instead of the username/password", 
+      "type": "string"
+    }, 
+    "username": {
+      "required": false, 
+      "title": "Username on the cluster node", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters needed for this node to join the NSX cluster", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

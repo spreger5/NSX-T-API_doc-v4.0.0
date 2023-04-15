@@ -1,0 +1,164 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpfixDfwTemplateParameters.html">IpfixDfwTemplateParameters</a> (<a href="types_IpfixDfwTemplateParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "This entity represents the flow parameters which are exported.", 
+  "id": "IpfixDfwTemplateParameters", 
+  "module_id": "Ipfix", 
+  "properties": {
+    "destination_address": {
+      "default": true, 
+      "description": "The destination IP address of a monitored network flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "destination_transport_port": {
+      "default": true, 
+      "description": "The destination transport port of a monitored network flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "firewall_event": {
+      "default": true, 
+      "description": "Five valid values are allowed: 1. Flow Created. 2. Flow Deleted. 3. Flow Denied. 4. Flow Alert (not used in DropKick implementation). 5. Flow Update.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "flow_direction": {
+      "default": true, 
+      "description": "Two valid values are allowed: 1. 0x00: igress flow to VM. 2. 0x01: egress flow from VM.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "flow_end": {
+      "default": true, 
+      "description": "The absolute timestamp (seconds) of the last packet of this flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "flow_start": {
+      "default": true, 
+      "description": "The absolute timestamp (seconds) of the first packet of this flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "icmp_code": {
+      "default": true, 
+      "description": "Code of the IPv4 ICMP message.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "octet_delta_count": {
+      "default": true, 
+      "description": "The number of octets since the previous report (if any) in incoming packets for this flow at the observation point. The number of octets include IP header(s) and payload.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "packet_delta_count": {
+      "default": true, 
+      "description": "The number of incoming packets since the previous report (if any) for this flow at the observation point.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "protocol_identifier": {
+      "default": true, 
+      "description": "The value of the protocol number in the IP packet header.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "rule_id": {
+      "default": true, 
+      "description": "Firewall rule Id - enterprise specific Information Element that uniquely identifies firewall rule.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "source_address": {
+      "default": true, 
+      "description": "The source IP address of a monitored network flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "source_icmp_type": {
+      "default": true, 
+      "description": "Type of the IPv4 ICMP message.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "source_transport_port": {
+      "default": true, 
+      "description": "The source transport port of a monitored network flow.", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "vif_uuid": {
+      "default": true, 
+      "description": "VIF UUID - enterprise specific Information Element that uniquely identifies VIF.", 
+      "readonly": true, 
+      "type": "boolean"
+    }
+  }, 
+  "title": "IPFIX DFW Template Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

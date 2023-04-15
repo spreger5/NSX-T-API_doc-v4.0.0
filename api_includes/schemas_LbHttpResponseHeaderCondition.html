@@ -1,0 +1,117 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpResponseHeaderCondition.html">LbHttpResponseHeaderCondition</a> (<a href="types_LbHttpResponseHeaderCondition.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This condition is used to match HTTP response messages from backend servers by HTTP header fields. HTTP header fields are components of the header section of HTTP request and response messages. They define the operating parameters of an HTTP transaction. For example, Cookie, Authorization, User-Agent, etc. One condition can be used to match one header field, to match multiple header fields, multiple conditions must be specified. The match_type field defines how header_value field is used to match HTTP responses. The header_name field does not support match types.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleCondition.html">LbRuleCondition</A>
+  }, 
+  "id": "LbHttpResponseHeaderCondition", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpResponseHeaderCondition"
+  }, 
+  "properties": {
+    "case_sensitive": {
+      "default": true, 
+      "description": "If true, case is significant when comparing HTTP header value.", 
+      "required": false, 
+      "title": "A case sensitive flag for HTTP header value comparing", 
+      "type": "boolean"
+    }, 
+    "header_name": {
+      "required": true, 
+      "title": "Name of HTTP header field", 
+      "type": "string"
+    }, 
+    "header_value": {
+      "required": true, 
+      "title": "Value of HTTP header field", 
+      "type": "string"
+    }, 
+    "inverse": {
+      "default": false, 
+      "required": false, 
+      "title": "A flag to indicate whether reverse the match result of this condition", 
+      "type": "boolean"
+    }, 
+    "match_type": {
+      "$ref": "<A HREF="schemas_LbRuleMatchType.html">LbRuleMatchType</A>, 
+      "default": "REGEX", 
+      "required": false, 
+      "title": "Match type of HTTP header value"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleConditionType.html">LbRuleConditionType</A>, 
+      "required": true, 
+      "title": "Type of load balancer rule condition"
+    }
+  }, 
+  "title": "Condition to match a header field of HTTP response", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

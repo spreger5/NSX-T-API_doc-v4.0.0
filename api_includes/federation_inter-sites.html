@@ -1,0 +1,336 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Federation >
+        
+        
+            <a href='federation_inter-sites.html' style='text-decoration: none'> Inter-Sites</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get inter-site status of the edge cluster</h4><br>
+                      <span class="help_detail">Returns the aggregated status for the Edge cluster along with status of
+<br>
+all edge nodes in the cluster. It always returns cached response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEdgeClusterInterSiteStatus.html">GET /api/v1/edge-clusters/&lt;edge-cluster-id&gt;/inter-site/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment cross site forwarder placement and HA status</h4><br>
+                      <span class="help_detail">Get infra segment cross site forwarder placement and HA statuss.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentCsSpanInfo.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/inter-site-forwarder/site-span-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment cross site traffic statistics</h4><br>
+                      <span class="help_detail">Get infra segment cross site traffic statistics.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentCsTrafficStats.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/inter-site-forwarder/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get RTEP span and mac address-table</h4><br>
+                      <span class="help_detail">Get RTEP span and mac address-table.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyInterSiteBgpSummary.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/inter-site/bgp-summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get RTEP mesh connectivity status</h4><br>
+                      <span class="help_detail">Get RTEP mesh connectivity status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyInterSiteStatus.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-services-id&gt;/inter-site/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment cross site forwarder placement and HA status</h4><br>
+                      <span class="help_detail">Get segment cross site forwarder placement and HA statuss.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentCsSpanInfo.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/inter-site-forwarder/site-span-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment cross site traffic statistics</h4><br>
+                      <span class="help_detail">Get segment cross site traffic statistics.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentCsTrafficStats.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/inter-site-forwarder/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2 forwarder remote mac addresses</h4><br>
+                      <span class="help_detail">Returns remote mac addresses of the l2 forwarder on logical switch.
+<br>
+It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2ForwarderRemoteMacs.html">GET /api/v1/logical-switches/&lt;logical-switch-id&gt;/inter-site-forwarder/site-span-info</a>
+                              <span class="experimental"> (Experimental)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2 forwarder statistics</h4><br>
+                      <span class="help_detail">Returns statistics of the l2 forwarder on logical switch.
+<br>
+It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2ForwarderStatistics.html">GET /api/v1/logical-switches/&lt;logical-switch-id&gt;/inter-site-forwarder/statistics</a>
+                              <span class="experimental"> (Experimental)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2 forwarder status</h4><br>
+                      <span class="help_detail">Returns status per transport node of the l2 forwarder on logical switch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2ForwarderStatus.html">GET /api/v1/logical-switches/&lt;logical-switch-id&gt;/inter-site-forwarder/status</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated list of BGP Neighbors on edge transport node</h4><br>
+                      <span class="help_detail">Paginated list of BGP Neighbors on edge transport node.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInterSiteEdgeNodeBgpNeighbors.html">GET /api/v1/transport-nodes/&lt;edge-node-id&gt;/inter-site/bgp/neighbors</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor advertised routes on edge transport node</h4><br>
+                      <span class="help_detail">Returns routes advertised by BGP neighbor from the given edge transport node.
+<br>
+It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInterSiteEdgeNodeBgpNeighborAdvertisedRoutes.html">GET /api/v1/transport-nodes/&lt;edge-node-id&gt;/inter-site/bgp/neighbors/&lt;neighbor-id&gt;/advertised-routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get BGP neighbor learned routes on edge transport node</h4><br>
+                      <span class="help_detail">Returns routes learned by BGP neighbor from the given edge transport node.
+<br>
+It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInterSiteEdgeNodeBgpNeighborRoutes.html">GET /api/v1/transport-nodes/&lt;edge-node-id&gt;/inter-site/bgp/neighbors/&lt;neighbor-id&gt;/routes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get inter-site BGP summary of edge node</h4><br>
+                      <span class="help_detail">Returns BGP summary for all configured neighbors in tunnel VRF
+<br>
+on the given egde node. It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInterSiteEdgeNodeBgpSummary.html">GET /api/v1/transport-nodes/&lt;edge-node-id&gt;/inter-site/bgp/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get inter-site statistics of edge node</h4><br>
+                      <span class="help_detail">Returns RTEP to RTEP tunnel port statistics of the given edge node.
+<br>
+It always returns realtime response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInterSiteEdgeNodeStatistics.html">GET /api/v1/transport-nodes/&lt;edge-node-id&gt;/inter-site/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

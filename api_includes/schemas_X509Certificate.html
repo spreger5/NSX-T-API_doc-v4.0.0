@@ -1,0 +1,301 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_X509Certificate.html">X509Certificate</a> (<a href="types_X509Certificate.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "X509Certificate", 
+  "module_id": "CertificateManager", 
+  "properties": {
+    "dsa_public_key_g": {
+      "description": "One of the DSA cryptogaphic algorithm's strength parameters, base.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "dsa_public_key_p": {
+      "description": "One of the DSA cryptogaphic algorithm's strength parameters, prime.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "dsa_public_key_q": {
+      "description": "One of the DSA cryptogaphic algorithm's strength parameters, sub-prime.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "dsa_public_key_y": {
+      "description": "One of the DSA cryptogaphic algorithm's strength parameters.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "ecdsa_curve_name": {
+      "description": "The Curve name for the ECDSA certificate.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Curve Name", 
+      "type": "string"
+    }, 
+    "ecdsa_ec_field": {
+      "description": "Represents an elliptic curve (EC) finite field in ECDSA.", 
+      "enum": [
+        "F2M", 
+        "FP"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Finite Field", 
+      "type": "string"
+    }, 
+    "ecdsa_ec_field_f2mks": {
+      "description": "The order of the middle term(s) of the reduction polynomial in elliptic curve (EC) | characteristic 2 finite field.| Contents of this array are copied to protect against subsequent modification in ECDSA.", 
+      "items": {
+        "type": "integer"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve F2MKS", 
+      "type": "array"
+    }, 
+    "ecdsa_ec_field_f2mm": {
+      "description": "The first coefficient of this elliptic curve in elliptic curve (EC) | characteristic 2 finite field for ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve F2MM", 
+      "type": "integer"
+    }, 
+    "ecdsa_ec_field_f2mrp": {
+      "description": "The value whose i-th bit corresponds to the i-th coefficient of the reduction polynomial | in elliptic curve (EC) characteristic 2 finite field for ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve F2MRP", 
+      "type": "string"
+    }, 
+    "ecdsa_ec_field_f2pp": {
+      "description": "The specified prime for the elliptic curve prime finite field in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve F2PP", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_a": {
+      "description": "The first coefficient of this elliptic curve in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key A", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_b": {
+      "description": "The second coefficient of this elliptic curve in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key B", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_cofactor": {
+      "description": "The co-factor in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key Cofactor", 
+      "type": "integer"
+    }, 
+    "ecdsa_public_key_generator_x": {
+      "description": "X co-ordinate of G (the generator which is also known as the base point) in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key X", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_generator_y": {
+      "description": "Y co-ordinate of G (the generator which is also known as the base point) in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key Y", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_order": {
+      "description": "The order of generator G in ECDSA.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key Order", 
+      "type": "string"
+    }, 
+    "ecdsa_public_key_seed": {
+      "description": "The bytes used during curve generation for later validation in ECDSA.| Contents of this array are copied to protect against subsequent modification.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "ECDSA Elliptic Curve Public Key Seed", 
+      "type": "array"
+    }, 
+    "is_ca": {
+      "description": "True if this is a CA certificate.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "boolean"
+    }, 
+    "is_valid": {
+      "description": "True if this certificate is valid.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "boolean"
+    }, 
+    "issuer": {
+      "description": "The certificate issuers complete distinguished name.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "issuer_cn": {
+      "description": "The certificate issuer's common name.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "not_after": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "The time in epoch milliseconds at which the certificate becomes invalid.", 
+      "readonly": true, 
+      "required": true
+    }, 
+    "not_before": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "The time in epoch milliseconds at which the certificate becomes valid.", 
+      "readonly": true, 
+      "required": true
+    }, 
+    "public_key_algo": {
+      "description": "Cryptographic algorithm used by the public key for data encryption.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Public Key Algorithm", 
+      "type": "string"
+    }, 
+    "public_key_length": {
+      "description": "Size measured in bits of the public/private keys used in a cryptographic algorithm.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "integer"
+    }, 
+    "rsa_public_key_exponent": {
+      "description": "An RSA public key is made up of the modulus and the public exponent. Exponent is a power number.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "rsa_public_key_modulus": {
+      "description": "An RSA public key is made up of the modulus and the public exponent. Modulus is wrap around number.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "serial_number": {
+      "description": "Certificate's serial number.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "sha_256_thumbprint": {
+      "description": "The SHA256 thumbprint of the certificate, in hexadecimal notation.", 
+      "readonly": true, 
+      "title": "SHA256 thumbprint, in hex", 
+      "type": "string"
+    }, 
+    "signature": {
+      "description": "The signature value(the raw signature bits) used for signing and validate the cert.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "signature_algorithm": {
+      "description": "The algorithm used by the Certificate Authority to sign the certificate.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "subject": {
+      "description": "The certificate owners complete distinguished name.", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "subject_cn": {
+      "description": "The certificate owner's common name.", 
+      "readonly": true, 
+      "required": false, 
+      "type": "string"
+    }, 
+    "version": {
+      "description": "Certificate version (default v1).", 
+      "readonly": true, 
+      "required": true, 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

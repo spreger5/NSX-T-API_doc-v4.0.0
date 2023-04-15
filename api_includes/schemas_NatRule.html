@@ -1,0 +1,270 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NatRule.html">NatRule</a> (<a href="types_NatRule.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The configuration entity to define a NAT rule. It defines how an ip packet is matched via source address or/and destination address or/and service(s), how the address (and/or) port is translated, and how the related firewall stage is involved or bypassed.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "NatRule", 
+  "module_id": "Nat", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "action": {
+      "$ref": "<A HREF="schemas_NatActions.html">NatActions</A>, 
+      "description": "Valid actions: SNAT, DNAT, NO_SNAT, NO_DNAT, REFLEXIVE, NAT64. All rules in a logical router are either stateless or stateful. Mix is not supported. SNAT and DNAT are stateful, can NOT be supported when the logical router is running at active-active HA mode; REFLEXIVE is stateless. NO_SNAT and NO_DNAT have no translated_fields, only match fields are supported.", 
+      "required": true, 
+      "title": "NAT rule action type"
+    }, 
+    "applied_tos": {
+      "description": "Holds the list of LogicalRouterPort Ids that a NAT rule can be applied to. The LogicalRouterPort used must belong to the same LogicalRouter for which the NAT Rule is created. As of now a NAT rule can only have a single LogicalRouterPort as applied_tos. When applied_tos is not set, the NAT rule is applied to all LogicalRouterPorts beloging to the LogicalRouter.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "maxItems": 1, 
+      "required": false, 
+      "title": "List of LogicalRouterPort resources as applied to", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Indicator to enable/disable the rule.", 
+      "required": false, 
+      "title": "enable/disable the rule", 
+      "type": "boolean"
+    }, 
+    "firewall_match": {
+      "$ref": "<A HREF="schemas_NatFirewallMatch.html">NatFirewallMatch</A>, 
+      "description": "Indicate how firewall is applied to a traffic packet. Firewall can be bypassed, or be applied to external/internal address of NAT rule.  The firewall_match will take priority over nat_pass. If the firewall_match is not provided, the nat_pass will be picked up.", 
+      "required": false, 
+      "title": "The rule how the firewall is applied"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "internal_rule_id": {
+      "description": "Internal NAT rule uuid for debug used in Controller and backend.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Internal NAT rule uuid", 
+      "type": "string"
+    }, 
+    "logging": {
+      "default": false, 
+      "description": "Enable/disable the logging of rule.", 
+      "required": false, 
+      "title": "Enable/disable the logging of rule", 
+      "type": "boolean"
+    }, 
+    "logical_router_id": {
+      "description": "The logical router id which the nat rule runs on.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical router id", 
+      "type": "string"
+    }, 
+    "match_destination_network": {
+      "description": "IP Address | CIDR | (null implies Any)", 
+      "required": false, 
+      "title": "match destination network", 
+      "type": "string"
+    }, 
+    "match_service": {
+      "$ref": "<A HREF="schemas_NSServiceElement.html">NSServiceElement</A>, 
+      "description": "A NSServiceElement that specifies the matching services of source ports, destination ports, ip protocol version and number, sub protocol version and number, ICMP type and code, etc. The match_service can be one of IPProtocolNSService,L4PortSetNSService or ICMPTypeNSService. REFLEXIVE NAT does not support match_service.", 
+      "required": false, 
+      "title": "match service"
+    }, 
+    "match_source_network": {
+      "description": "IP Address | CIDR | (null implies Any)", 
+      "required": false, 
+      "title": "match source network", 
+      "type": "string"
+    }, 
+    "nat_pass": {
+      "default": true, 
+      "deprecated": true, 
+      "description": "Default is true. If the nat_pass is set to true, the following firewall stage will be skipped. Please note, if action is NO_SNAT or NO_DNAT, then nat_pass must be set to true or omitted.  Nat_pass was deprecated with an alternative firewall_match. Please stop using nat_pass to specify whether firewall stage is skipped. if you want to skip, please set firewall_match to BYPASS. If you do not want to skip, please set the firewall_match to MATCH_EXTERNAL_ADDRESS or MATCH_INTERNAL_ADDRESS.  Please note, the firewall_match will take priority over the nat_pass. If both are provided, the nat_pass is ignored. If firewall_match is not provided while the nat_pass is specified, the nat_pass will still be picked up. In this case, if nat_pass is set to false, firewall rule will be applied on internall address of a packet, i.e. MATCH_INTERNAL_ADDRESS.", 
+      "required": false, 
+      "title": "enable/disable to bypass following firewall stage", 
+      "type": "boolean"
+    }, 
+    "pb_vpn_mode": {
+      "$ref": "<A HREF="schemas_PbVpnMode.html">PbVpnMode</A>, 
+      "default": "BYPASS", 
+      "description": "Indicate how the rule applies to Policy-Based VPN traffic. It's supported only for NAT rule action type DNAT and NO_DNAT.  BYPASS indicates that NAT rule is applied to the traffic received on Routed-Based VPN tunnel.  EXCLUSIVE indicates that NAT rule is applied to the inbound traffic received on Policy-Based VPN tunnel only.", 
+      "required": false, 
+      "title": "The rule how the NAT applies to Policy-Based VPN traffic"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "rule_priority": {
+      "default": 1024, 
+      "description": "Ascending, valid range [0-2147483647]. If multiple rules have the same priority, evaluation sequence is undefined.", 
+      "required": false, 
+      "title": "NAT rule priority", 
+      "type": "integer"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "translated_network": {
+      "description": "The translated address for the matched IP packet. For a SNAT, it can be a single ip address, an ip range, or a CIDR block. For a DNAT and a REFLEXIVE, it can be a single ip address or a CIDR block. Translated network is not supported for NO_SNAT or NO_DNAT.", 
+      "required": false, 
+      "title": "IP Address | IP Range | CIDR", 
+      "type": "string"
+    }, 
+    "translated_ports": {
+      "description": "The translated port(s) for the mtached IP packet. It can be a single port or a port range. Please note, port translating is supported only for DNAT.", 
+      "required": false, 
+      "title": "port number or port range. DNAT only", 
+      "type": "string"
+    }
+  }, 
+  "title": "The configuration entity to define a NAT rule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

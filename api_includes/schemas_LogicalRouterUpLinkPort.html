@@ -1,0 +1,246 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalRouterUpLinkPort.html">LogicalRouterUpLinkPort</a> (<a href="types_LogicalRouterUpLinkPort.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_LogicalRouterPort.html">LogicalRouterPort</A>
+  }, 
+  "id": "LogicalRouterUpLinkPort", 
+  "module_id": "LogicalRouterPorts", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LogicalRouterUpLinkPort"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "edge_cluster_member_index": {
+      "items": {
+        "type": "integer"
+      }, 
+      "required": true, 
+      "title": "Member index of the edge node on the cluster", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "igmp_config": {
+      "$ref": "<A HREF="schemas_InterfaceIgmpLocalGroupConfig.html">InterfaceIgmpLocalGroupConfig</A>, 
+      "description": "Interface IGMP[Internet Group Management Protocol] local group config parameters.", 
+      "required": false, 
+      "title": "IGMP local group configuration parameters"
+    }, 
+    "linked_logical_switch_port_id": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "required": false, 
+      "title": "Reference to the logical switch port to connect to"
+    }, 
+    "logical_router_id": {
+      "required": true, 
+      "title": "Identifier for logical router on which this port is created", 
+      "type": "string"
+    }, 
+    "mac_address": {
+      "description": "MAC address", 
+      "readonly": true, 
+      "required": false, 
+      "title": "MAC address", 
+      "type": "string"
+    }, 
+    "mtu": {
+      "description": "Maximum transmission unit specifies the size of the largest packet that a network protocol can transmit. If not specified, the global logical MTU set in the /api/v1/global-configs/RoutingGlobalConfig API will be used.", 
+      "minimum": 64, 
+      "title": "Maximum transmission unit (MTU)", 
+      "type": "integer"
+    }, 
+    "ndra_prefix_config": {
+      "description": "Configuration to override the neighbor discovery router advertisement prefix time parameters at the subnet level. Note that users are allowed to override the prefix time only for IPv6 subnets which are configured on the port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_NDRAPrefixConfig.html">NDRAPrefixConfig</A>
+      }, 
+      "required": false, 
+      "type": "array"
+    }, 
+    "ndra_profile_id": {
+      "description": "Identifier of Neighbor Discovery Router Advertisement profile associated with port. When NDRA profile id is associated at both the port level and logical router level, the profile id specified at port level takes the precedence.", 
+      "required": false, 
+      "title": "Identifier for NDRA profile on the port", 
+      "type": "string"
+    }, 
+    "pim_config": {
+      "$ref": "<A HREF="schemas_InterfacePimConfig.html">InterfacePimConfig</A>, 
+      "description": "PIM[Protocol Independent Multicast] configuration parameters.", 
+      "required": false, 
+      "title": "PIM configuration parameters"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_LogicalRouterPortResourceType.html">LogicalRouterPortResourceType</A>, 
+      "required": true
+    }, 
+    "service_bindings": {
+      "items": {
+        "$ref": "<A HREF="schemas_ServiceBinding.html">ServiceBinding</A>
+      }, 
+      "required": false, 
+      "title": "Service Bindings", 
+      "type": "array"
+    }, 
+    "subnets": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPSubnet.html">IPSubnet</A>
+      }, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "Logical router port subnets", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "urpf_mode": {
+      "$ref": "<A HREF="schemas_UrpfMode.html">UrpfMode</A>, 
+      "default": "STRICT", 
+      "required": false, 
+      "title": "Unicast Reverse Path Forwarding mode"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

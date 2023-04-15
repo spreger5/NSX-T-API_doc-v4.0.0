@@ -1,0 +1,230 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ComputeManager.html">ComputeManager</a> (<a href="types_ComputeManager.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "ComputeManager", 
+  "module_id": "InventoryCmObj", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "access_level_for_oidc": {
+      "default": "FULL", 
+      "description": "Specifies the maximum access level allowed for calls from compute manager to NSX using the OIDC provider.", 
+      "enum": [
+        "FULL", 
+        "LIMITED"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Specifies access level to NSX from the compute manager", 
+      "type": "string"
+    }, 
+    "create_service_account": {
+      "default": false, 
+      "description": "Enable this flag to create service account user on compute manager. This is required by features such as vSphere Lifecycle Manager for authentication with vAPIs from nsx.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Specifies whether service account is created or not on compute manager", 
+      "type": "boolean"
+    }, 
+    "credential": {
+      "$ref": "<A HREF="schemas_LoginCredential.html">LoginCredential</A>, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Login credentials for the compute manager"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "origin_properties": {
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Key-Value map of additional specific properties of compute manager", 
+      "type": "array"
+    }, 
+    "origin_type": {
+      "readonly": false, 
+      "required": true, 
+      "title": "Compute manager type like vCenter", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "reverse_proxy_https_port": {
+      "default": 443, 
+      "description": "Specifies https port of the reverse proxy to connect to compute manager. For e.g. In case of VC, this port can be retrieved from this config file /etc/vmware-rhttpproxy/config.xml.", 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Proxy https port of compute manager", 
+      "type": "integer"
+    }, 
+    "server": {
+      "format": "hostname-or-ip", 
+      "readonly": false, 
+      "required": true, 
+      "title": "IP address or hostname of compute manager", 
+      "type": "string"
+    }, 
+    "set_as_oidc_provider": {
+      "default": false, 
+      "description": "If the compute manager is VC and need to set set as OIDC provider for NSX then this flag should be set as true. This is specific to wcp feature, should be enabled when this feature is being used.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Specifies whether compute manager has been set as OIDC provider", 
+      "type": "boolean"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,774 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Policy >
+            
+            
+                <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+            
+            
+                <a href='policy_networking_connectivity_transport_zones.html' style='text-decoration: none'> Transport Zones</a>
+            
+        </P>
+    
+        <div id="ReadTransportZoneForEnforcementPoint">
+          <h2>
+            Read a Transport Zone under an Enforcement Point
+          </h2>
+          <span class="help_detail">Read a Transport Zone under an Enforcement Point
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/global-infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/transport-zones/&lt;transport-zone-id&gt;
+                  <br>
+                  
+                  /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/transport-zones/&lt;transport-zone-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/sites/default/enforcement-points/nsxt-ep/transport-zones/tz</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">PolicyTransportZone<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ReadTransportZoneForEnforcementPoint', 'PolicyTransportZone.ReadTransportZoneForEnforcementPoint.Response_Body')">+</span></div>
+  </div>
+    <div id="PolicyTransportZone.ReadTransportZoneForEnforcementPoint.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_PolicyTransportZone.html">
+        <span>PolicyTransportZone</span>
+      </a> (<a href="schemas_PolicyTransportZone.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>is_default</td>
+            
+            <td>Flag to indicate if the transport zone is the default one<br><br>Flag to indicate if the transport zone is the default one. Only one
+<br>
+transport zone can be the default one for a given transport zone type.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>nested_nsx</td>
+            
+            <td>Flag to indicate if all transport nodes in this transport zone are connected through nested NSX.<br><br>This flag should be set to true in nested NSX environment. When the "allow_changing_vdr_mac_in_use" property in the global config object RoutingGlobalConfig is false, this flag can not be changed if this transport zone is OVERLAY and the change will make any transport node in this transport zone to change the VDR MAC used in any host switch. When this flag is true and this transport zone is OVERLAY, all host switches in this transport zone will use the VDR MAC in the "vdr_mac_nested" property in the global config object RoutingGlobalConfig.</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>nsx_id</td>
+            
+            <td>Transport Zone UUID on NSX-T Enforcement Point<br><br>UUID of transport zone on NSX-T enforcement point.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>origin_id</td>
+            
+            <td>The host switch id generated by the system.<br><br>This field is populated only if the transport zone was created by NSX system to support security on vSphere Distributed Switch (vDS). The origin_id will refer to the identifier of corresponding vDS from it's parent vCenter server.</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>PolicyTransportZone</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>transport_zone_profile_paths</td>
+            
+            <td>Policy Transport Zone Profile paths<br><br>Policy Transport Zone Profile paths</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tz_type</td>
+            
+            <td>Transport Zone Type<br><br>Transport Zone Traffic type, must be one of either VLAN_BACKED or OVERLAY_BACKED.
+<br>
+OVERLAY_STANDARD, OVERLAY_ENS and UNKNOWN are DEPRECATED. STANDARD, ENS and ENS_INTERRUPT
+<br>
+are hostSwitch modes and same need to be given in HostTransportNode.HostSwitchSpec.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Enum: OVERLAY_STANDARD, OVERLAY_ENS, VLAN_BACKED, OVERLAY_BACKED, UNKNOWN</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>uplink_teaming_policy_names</td>
+            
+            <td>Names of the switching uplink teaming policies that are supported by this transport zone.<br><br>The names of switching uplink teaming policies that all transport nodes in this transport zone support. Uplinkin teaming policies are only valid for VLAN backed transport zones.</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "tz_type": "OVERLAY_BACKED",
+  "is_default": true,
+  "nested_nsx": false,
+  "resource_type": "PolicyTransportZone",
+  "id": "tz",
+  "display_name": "tz",
+  "path": "/infra/sites/default/enforcement-points/default/transport-zones/tz",
+  "relative_path": "tz",
+  "parent_path": "/infra/sites/default/enforcement-points/default",
+  "unique_id": "8f4a026d-e3f5-4f23-a3ef-46309d573dc1",
+  "marked_for_delete": false,
+  "overridden": false,
+  "_create_user": "admin",
+  "_create_time": 1607501697823,
+  "_last_modified_user": "admin",
+  "_last_modified_time": 1607582307987,
+  "_system_owned": false,
+  "_protection": "NOT_PROTECTED",
+  "_revision": 5
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">policy_ep_transport_zone</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

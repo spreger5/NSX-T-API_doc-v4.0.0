@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafRuleGroupOverrides.html">ALBWafRuleGroupOverrides</a> (<a href="types_ALBWafRuleGroupOverrides.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafRuleGroupOverrides object", 
+  "id": "ALBWafRuleGroupOverrides", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "enable": {
+      "description": "Override the enable flag for this group.", 
+      "required": false, 
+      "title": "Enable", 
+      "type": "boolean"
+    }, 
+    "exclude_list": {
+      "description": "Replace the exclude list for this group. Maximum of 64 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafExcludeListEntry.html">ALBWafExcludeListEntry</A>
+      }, 
+      "required": false, 
+      "title": "Exclude list", 
+      "type": "array"
+    }, 
+    "mode": {
+      "$ref": "<A HREF="schemas_ALBWafMode.html">ALBWafMode</A>, 
+      "description": "Override the waf mode for this group. Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.", 
+      "required": false, 
+      "title": "Mode"
+    }, 
+    "name": {
+      "description": "The name of the group where attributes or rules are overridden.", 
+      "required": true, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "rule_overrides": {
+      "description": "Rule specific overrides. Maximum of 1024 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafRuleOverrides.html">ALBWafRuleOverrides</A>
+      }, 
+      "required": false, 
+      "title": "Rule overrides", 
+      "type": "array"
+    }
+  }, 
+  "title": "WafRuleGroupOverrides", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

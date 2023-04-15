@@ -1,0 +1,243 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_InterSitePortCounters.html">InterSitePortCounters</a> (<a href="types_InterSitePortCounters.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_LogicalRouterPortCounters.html">LogicalRouterPortCounters</A>
+  }, 
+  "id": "InterSitePortCounters", 
+  "module_id": "AggSvcInterSite", 
+  "properties": {
+    "blocked_packets": {
+      "description": "The total number of packets blocked.", 
+      "required": false, 
+      "title": "The number of blocked packets", 
+      "type": "integer"
+    }, 
+    "dad_dropped_packets": {
+      "description": "Number of duplicate address detected packets dropped.", 
+      "required": false, 
+      "title": "The number of duplicate address detected packets dropped", 
+      "type": "integer"
+    }, 
+    "destination_unsupported_dropped_packets": {
+      "description": "Number of packtes dropped as destination is not supported.", 
+      "required": false, 
+      "title": "The number of destination unsupported packets dropped", 
+      "type": "integer"
+    }, 
+    "dropped_packets": {
+      "description": "The total number of packets dropped.", 
+      "required": false, 
+      "title": "The number of dropped packets", 
+      "type": "integer"
+    }, 
+    "firewall_dropped_packets": {
+      "description": "Number of firewall packets dropped.", 
+      "required": false, 
+      "title": "The number of firewall packets dropped", 
+      "type": "integer"
+    }, 
+    "frag_needed_dropped_packets": {
+      "description": "Number of fragmentation needed packets dropped.", 
+      "required": false, 
+      "title": "The number of fragmentation needed packets dropped", 
+      "type": "integer"
+    }, 
+    "ipsec_dropped_packets": {
+      "description": "Number of IPSec packets dropped", 
+      "required": false, 
+      "title": "The number of IPSec packets dropped", 
+      "type": "integer"
+    }, 
+    "ipsec_no_sa_dropped_packets": {
+      "description": "Number of IPSec no security association packets dropped.", 
+      "required": false, 
+      "title": "The number of IPSec no security association packets dropped", 
+      "type": "integer"
+    }, 
+    "ipsec_no_vti_dropped_packets": {
+      "description": "Number of IPSec packets dropped as no VTI is present.", 
+      "required": false, 
+      "title": "The number of IPSec no VTI packets dropped", 
+      "type": "integer"
+    }, 
+    "ipsec_pol_block_dropped_packets": {
+      "description": "Number of IPSec policy block packets dropped.", 
+      "required": false, 
+      "title": "The number of IPSec policy block packets dropped", 
+      "type": "integer"
+    }, 
+    "ipsec_pol_err_dropped_packets": {
+      "description": "Number of IPSec policy error packets dropped.", 
+      "required": false, 
+      "title": "The number of IPSec policy error packets dropped", 
+      "type": "integer"
+    }, 
+    "ipv6_dropped_packets": {
+      "description": "Number of IPV6 packets dropped.", 
+      "required": false, 
+      "title": "The number of IPV6 packets dropped", 
+      "type": "integer"
+    }, 
+    "kni_dropped_packets": {
+      "description": "Number of DPDK kernal NIC interface packets dropped.", 
+      "required": false, 
+      "title": "The number of kernal NIC interface packets dropped", 
+      "type": "integer"
+    }, 
+    "l4port_unsupported_dropped_packets": {
+      "description": "Number of packets dropped due to unsupported L4 port.", 
+      "required": false, 
+      "title": "The number of L4 port unsupported packets dropped", 
+      "type": "integer"
+    }, 
+    "malformed_dropped_packets": {
+      "description": "Number of packtes dropped as they are malformed.", 
+      "required": false, 
+      "title": "The number of malformed packets dropped", 
+      "type": "integer"
+    }, 
+    "no_arp_dropped_packets": {
+      "description": "Number of no ARP packets dropped.", 
+      "required": false, 
+      "title": "The number of no ARP packets dropped", 
+      "type": "integer"
+    }, 
+    "no_linked_dropped_packets": {
+      "description": "Number of packets dropped as no linked ports are present.", 
+      "required": false, 
+      "title": "The number of no linked packets dropped", 
+      "type": "integer"
+    }, 
+    "no_mem_dropped_packets": {
+      "description": "Number of packets dropped due to insufficient memory.", 
+      "required": false, 
+      "title": "The number of no memory packets dropped", 
+      "type": "integer"
+    }, 
+    "no_receiver_dropped_packets": {
+      "description": "Number of packets dropped due to absence of receiver.", 
+      "required": false, 
+      "title": "The number of no receiver packets dropped", 
+      "type": "integer"
+    }, 
+    "no_route_dropped_packets": {
+      "desrciption": "Number of packets dropped due to absence of routes.", 
+      "required": false, 
+      "title": "The number of no route packets dropped", 
+      "type": "integer"
+    }, 
+    "non_ip_dropped_packets": {
+      "description": "Number of non IP packets dropped.", 
+      "required": false, 
+      "title": "The number of non IP packets dropped", 
+      "type": "integer"
+    }, 
+    "proto_unsupported_dropped_packets": {
+      "description": "Number of packets dropped as protocol is unsupported.", 
+      "required": false, 
+      "title": "The number of protocol unsupported packets dropped", 
+      "type": "integer"
+    }, 
+    "redirect_dropped_packets": {
+      "description": "Number of redirect packets dropped.", 
+      "required": false, 
+      "title": "The number of redirect packets dropped", 
+      "type": "integer"
+    }, 
+    "rpf_check_dropped_packets": {
+      "description": "Number of reverse-path forwarding check packets dropped.", 
+      "required": false, 
+      "title": "The number of reverse-path forwarding check packets dropped", 
+      "type": "integer"
+    }, 
+    "service_insert_dropped_packets": {
+      "description": "Number of service insert packets dropped.", 
+      "required": false, 
+      "title": "The number of service insert packets dropped", 
+      "type": "integer"
+    }, 
+    "total_bytes": {
+      "description": "The total number of bytes transferred.", 
+      "required": false, 
+      "title": "The total number of bytes", 
+      "type": "integer"
+    }, 
+    "total_packets": {
+      "description": "The total number of packets transferred.", 
+      "required": false, 
+      "title": "The total number of packets", 
+      "type": "integer"
+    }, 
+    "ttl_exceeded_dropped_packets": {
+      "description": "Number of time to live exceeded packets dropped.", 
+      "required": false, 
+      "title": "The number of time to live exceeded packets dropped", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

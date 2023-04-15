@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SyslogExporter.html">SyslogExporter</a> (<a href="types_SyslogExporter.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "This object specifies what, where and how logs on NSX nodes are forwarded.", 
+  "id": "SyslogExporter", 
+  "module_id": "CentralConfig", 
+  "properties": {
+    "max_log_level": {
+      "description": "Maximum logging level for messages to be exported.", 
+      "enum": [
+        "EMERG", 
+        "ALERT", 
+        "CRIT", 
+        "ERR", 
+        "WARNING", 
+        "NOTICE", 
+        "INFO", 
+        "DEBUG"
+      ], 
+      "required": true, 
+      "title": "LogLevel", 
+      "type": "string"
+    }, 
+    "port": {
+      "default": 514, 
+      "description": "Server port on which syslog listener is listening.", 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "title": "Syslog port", 
+      "type": "integer"
+    }, 
+    "protocol": {
+      "description": "Protocol to be used to export logs to syslog server.", 
+      "enum": [
+        "TCP", 
+        "UDP", 
+        "LI"
+      ], 
+      "required": true, 
+      "title": "Protocol", 
+      "type": "string"
+    }, 
+    "server": {
+      "$ref": "<A HREF="schemas_HostnameOrIPAddress.html">HostnameOrIPAddress</A>, 
+      "description": "Syslog server IP address or hostname.", 
+      "required": true, 
+      "title": "Syslog server"
+    }
+  }, 
+  "title": "Syslog exporter properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

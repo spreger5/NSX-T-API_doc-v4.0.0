@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AllocatedService.html">AllocatedService</a> (<a href="types_AllocatedService.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "AllocatedService", 
+  "module_id": "EdgeClusters", 
+  "properties": {
+    "allocation_details": {
+      "description": "Additional properties of a service, say the sub_pool_size and sub_pool_type for a LoadBalancer.", 
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": false, 
+      "title": "Key-Value map of additional specific properties of services", 
+      "type": "array"
+    }, 
+    "high_availability_status": {
+      "description": "Represents the active or the standby state of the service.", 
+      "enum": [
+        "ACTIVE", 
+        "STANDBY", 
+        "DOWN", 
+        "SYNC", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "title": "HA Status of the service context node", 
+      "type": "string"
+    }, 
+    "service_reference": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Id and Name of the service context configured on edge node."
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,207 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VmToolsInfo.html">VmToolsInfo</a> (<a href="types_VmToolsInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_DiscoveredResource.html">DiscoveredResource</A>
+  }, 
+  "id": "VmToolsInfo", 
+  "module_id": "VmToolsInfo", 
+  "properties": {
+    "_last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "description": "Current external id of this virtual machine in the system.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM external ID", 
+      "type": "string"
+    }, 
+    "file_agent_version": {
+      "description": "Version of file agent on the VM of a third party partner solution.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "File agent version on the VM", 
+      "type": "string"
+    }, 
+    "host_local_id": {
+      "description": "Id of the VM which is assigned locally by the host. It is the VM-moref on ESXi hosts, in other environments it is VM UUID.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM ID given by the host", 
+      "type": "string"
+    }, 
+    "network_agent_version": {
+      "description": "Version of network agent on the VM of a third party partner solution.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Network agent version on the VM", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "description": "Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DiscoveredResourceScope.html">DiscoveredResourceScope</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of scopes for discovered resource", 
+      "type": "array"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Reference of the Host or Public Cloud Gateway that reported the VM."
+    }, 
+    "svmStatus": {
+      "description": "Connectivity Status between each Guest Introspection Solution deployed in the data center with the guest VM.", 
+      "items": {
+        "$ref": "<A HREF="schemas_SvmConnectivityStatus.html">SvmConnectivityStatus</A>
+      }, 
+      "required": false, 
+      "title": "SvmConnectivityStatus list.", 
+      "type": "array"
+    }, 
+    "svm_connectivity": {
+      "description": "Endpoint Protection (Third party AV partner using NXGI) status on the VM. TRUE  - VM is configured and protected by EPP Service VM. FALSE - VM is either not configured for protection or VM is disconnected from EPP Service VM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Endpoint Protection status on the VM", 
+      "type": "boolean"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tools_version": {
+      "description": "Version of VMTools installed on the VM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM tools version on the VM", 
+      "type": "string"
+    }, 
+    "vm_type": {
+      "description": "Type of VM - Edge, Service or other.", 
+      "enum": [
+        "EDGE", 
+        "SERVICE", 
+        "REGULAR"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Virtual Machine type", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

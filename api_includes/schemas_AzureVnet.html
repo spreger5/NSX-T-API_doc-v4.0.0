@@ -1,0 +1,302 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AzureVnet.html">AzureVnet</a> (<a href="types_AzureVnet.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores information about an Azure VNet (Virtual Network).", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "AzureVnet", 
+  "module_id": "AzureVnetInformation", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "agent_info": {
+      "description": "Array of agent install and download instructions for various OS types.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AgentInfo.html">AgentInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Azure Agent Information", 
+      "type": "array"
+    }, 
+    "associated_account_ids": {
+      "description": "Array of associated Azure account IDs.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Associated Azure Account IDs", 
+      "type": "array"
+    }, 
+    "associated_transit_vnet": {
+      "$ref": "<A HREF="schemas_AzureTransitVnetInfo.html">AzureTransitVnetInfo</A>, 
+      "description": "Stores the VNet ID and associated account IDs of the transit VNet. This property describes the associated transit VNet for a given Azure compute VNet.", 
+      "readonly": true, 
+      "title": "Associated Azure Transit VNet"
+    }, 
+    "capabilities": {
+      "description": "This parameter will list out all external services and/or any other capabilities that are discovered by NSX on this virtual network. The array is empty by default.", 
+      "items": {
+        "description": "HORIZON - Horizon pod is deployed on this virtual network\n", 
+        "enum": [
+          "HORIZON"
+        ], 
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of external capabilities that are discovered on this virtual network", 
+      "type": "array"
+    }, 
+    "cidr_blocks": {
+      "description": "IPv4 CIDR Block of the virtual network.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CidrBlock.html">CidrBlock</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "IPv4 CIDR Block", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "gateway_info": {
+      "$ref": "<A HREF="schemas_AzureGatewayInfo.html">AzureGatewayInfo</A>, 
+      "description": "Gateway information of the virtual network like configuration and status.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Gateway Info"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "instance_stats": {
+      "$ref": "<A HREF="schemas_InstanceStats.html">InstanceStats</A>, 
+      "description": "Stores statistics of the number of MANAGED, UNMANAGED, ERRORED and POWERED_OFF instances.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance Statistics"
+    }, 
+    "is_management_vnet": {
+      "default": false, 
+      "description": "This flag indicates if this is a management virtual network.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Is Management VNet?", 
+      "type": "boolean"
+    }, 
+    "managed_vnets": {
+      "description": "Array of compute VNets managed by a transit VNet. This property describes array of managed compute VNet for a given transit VNet.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ManagedVnetInfo.html">ManagedVnetInfo</A>
+      }, 
+      "readonly": true, 
+      "title": "Array of NSX Managed Compute VNets", 
+      "type": "array"
+    }, 
+    "op_status": {
+      "$ref": "<A HREF="schemas_AzureVnetOpStatus.html">AzureVnetOpStatus</A>, 
+      "description": "Operational status of the virtual network.", 
+      "readonly": true, 
+      "title": "Azure VNet Operational Status"
+    }, 
+    "region_id": {
+      "description": "ID of the Azure region.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Region ID", 
+      "type": "string"
+    }, 
+    "resource_group": {
+      "description": "Resource Group of the Azure VNet.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Resource Group", 
+      "type": "string"
+    }, 
+    "resource_id": {
+      "description": "Resource Id of Azure VNet.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Azure VNet resource id", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "storage_account_name": {
+      "description": "Azure Storage Account where gateway image will be copied.", 
+      "required": false, 
+      "title": "Azure Storage Account Name", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transport_zones": {
+      "description": "Array of transport zones in the virtual network.", 
+      "items": {
+        "$ref": "<A HREF="schemas_TransportZoneInfo.html">TransportZoneInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Transport Zones", 
+      "type": "array"
+    }, 
+    "vdi_stats": {
+      "$ref": "<A HREF="schemas_InstanceStats.html">InstanceStats</A>, 
+      "description": "Stores statistics of the number of Horizon desktops in different states such as MANAGED, UNMANAGED, ERRORED and POWERED_OFF", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Horizon VDI Statistics"
+    }, 
+    "vnet_status": {
+      "$ref": "<A HREF="schemas_AzureComputeVnetStatus.html">AzureComputeVnetStatus</A>, 
+      "description": "Stores onboard and offboard states and corresponding error messages and error code related to Azure compute VNet. The status for a transit VNet should be obtained from gateway_info.", 
+      "readonly": true, 
+      "title": "Azure Compute VNet Status"
+    }
+  }, 
+  "title": "Azure VNet", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

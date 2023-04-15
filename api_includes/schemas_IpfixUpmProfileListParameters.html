@@ -1,0 +1,121 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpfixUpmProfileListParameters.html">IpfixUpmProfileListParameters</a> (<a href="types_IpfixUpmProfileListParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Query parameters for IPFIX profile list", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "IpfixUpmProfileListParameters", 
+  "module_id": "UpmIpfix", 
+  "properties": {
+    "applied_to_entity_id": {
+      "description": "The entity ID works as a filter param. Entity ID and entity type should be both provided or not at a query.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "ID of Entity Applied with Profile", 
+      "type": "string"
+    }, 
+    "applied_to_entity_type": {
+      "$ref": "<A HREF="schemas_UpmEntityType.html">UpmEntityType</A>, 
+      "description": "The entity type works as a filter param. Enumerated value in UpmEntityType could be used here. Entity ID and entity type should be both provided or not at a query.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Type of Entity Applied with Profile"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "profile_types": {
+      "description": "An English comma-separated list of profile types. Enumerated value in IpfixUpmProfileType could be listed here as a filter param.", 
+      "required": false, 
+      "title": "IPFIX Profile Type List", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }
+  }, 
+  "title": "IPFIX Profile List Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

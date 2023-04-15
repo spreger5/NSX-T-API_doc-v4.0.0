@@ -1,0 +1,1646 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_monitoring.html' style='text-decoration: none'> Monitoring</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns the compliance status</h4><br>
+                      <span class="help_detail">Returns the compliance status and details of non compliant configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyComplianceStatus.html">GET /policy/api/v1/compliance/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>For each type of entity what are the attributes owned by policy.</h4><br>
+                      <span class="help_detail">This API provides field names of attributes in NSX types that are owned by
+<br>
+Policy, as opposed to those owned by the enforcement point. For any type on NSX,
+<br>
+some of the attributes of that type may be owned and set by Policy when realizing
+<br>
+the intent, while some others may be owned and set by the enforcement point itself.
+<br>
+This information can be used to disable updates to Policy owned attributes by the
+<br>
+advanced networking UI, while allowing tweaking to the attributes owned by the
+<br>
+management plane.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListResourceInfo.html">GET /policy/api/v1/fine-tuning/resources</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List AntreaTraceflowConfig for infra</h4><br>
+                      <span class="help_detail">Paginated list of all AntreaTraceflowConfig for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAntreaTraceflowConfig.html">GET /policy/api/v1/infra/antrea/traceflows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Antrea traceflow config</h4><br>
+                      <span class="help_detail">Delete Antrea traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteAntreaTraceflowConfig.html">DELETE /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow config</h4><br>
+                      <span class="help_detail">Read Antrea traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAntreaTraceflowConfig.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an Antrea traceflow config</h4><br>
+                      <span class="help_detail">If an Antrea traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchAntreaTraceflowConfig.html">PATCH /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart Antrea traceflow with same set of parameters used during create traceflow</h4><br>
+                      <span class="help_detail">This will retrace even if current traceflow has observations. Current
+<br>
+observations will be lost. Traceflow configuration will be cleaned up
+<br>
+by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartAntreaTraceflow.html">POST /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an Antrea traceflow config</h4><br>
+                      <span class="help_detail">If an Antrea traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAntreaTraceflowConfig.html">PUT /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow observations</h4><br>
+                      <span class="help_detail">Read Antrea traceflow observations for id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAntreaTraceflowObservations.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;/observations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow status</h4><br>
+                      <span class="help_detail">Read Antrea traceflow status with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAntreaTraceflowStatus.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns capacity usage data for NSX objects</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyCapacityDashboardUsage.html">GET /policy/api/v1/infra/capacity/dashboard/usage</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns warning threshold(s) set for NSX Objects.</h4><br>
+                      <span class="help_detail">Returns warning threshold(s) set for NSX Objects.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyCapacityThresholds.html">GET /policy/api/v1/infra/capacity/threshold</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Updates the thresholds for specified NSX Objects.</h4><br>
+                      <span class="help_detail">Updates the warning threshold(s) for NSX Objects specified, does not modify
+<br>
+thresholds for any other objects.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyCapacityThresholds.html">PATCH /policy/api/v1/infra/capacity/threshold</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Updates the warning threshold(s) for NSX Objects.</h4><br>
+                      <span class="help_detail">Updates the warning threshold(s) for NSX Objects specified, and returns
+<br>
+new threshold(s). Threshold list in the request must contain value for GLOBAL_DEFAULT
+<br>
+threshold_type which represents global thresholds.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePolicyCapacityThresholds.html">PUT /policy/api/v1/infra/capacity/threshold</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns capacity usage data for NSX objects</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyCapacityUsage.html">GET /policy/api/v1/infra/capacity/usage</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX Collector profiles.</h4><br>
+                      <span class="help_detail">API will provide list of all IPFIX dfw collector profiles and
+<br>
+their details.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPFIXDFWCollectorProfiles.html">GET /policy/api/v1/global-infra/ipfix-dfw-collector-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIPFIXDFWCollectorProfiles.html">GET /policy/api/v1/infra/ipfix-dfw-collector-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPFIX dfw Collector profile</h4><br>
+                      <span class="help_detail">API deletes IPFIX dfw collector profile. Flow forwarding to
+<br>
+collector will be stopped.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPFIXDFWCollectorProfile.html">DELETE /policy/api/v1/infra/ipfix-dfw-collector-profiles/&lt;ipfix-dfw-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPFIX dfw Collector profile</h4><br>
+                      <span class="help_detail">API will return details of IPFIX dfw collector profile. If profile
+<br>
+does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPFIXDFWCollectorProfile.html">GET /policy/api/v1/infra/ipfix-dfw-collector-profiles/&lt;ipfix-dfw-collector-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIPFIXDFWCollectorProfile.html">GET /policy/api/v1/global-infra/ipfix-dfw-collector-profiles/&lt;ipfix-dfw-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>IPFIX dfw collector profile id</h4><br>
+                      <span class="help_detail">Create a new IPFIX dfw collector profile if the IPFIX dfw collector profile with
+<br>
+given id does not already exist. If the IPFIX dfw collector profile with the
+<br>
+given id already exists, patch with the existing IPFIX dfw collector profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIPFIXDFWCollectorProfile.html">PATCH /policy/api/v1/infra/ipfix-dfw-collector-profiles/&lt;ipfix-dfw-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace IPFIX dfw collector profile</h4><br>
+                      <span class="help_detail">Create or Replace IPFIX dfw collector profile. IPFIX data will be sent to IPFIX
+<br>
+collector port.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIPFIXDFWCollectorProfile.html">PUT /policy/api/v1/infra/ipfix-dfw-collector-profiles/&lt;ipfix-dfw-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX DFW Profile</h4><br>
+                      <span class="help_detail">API provides list IPFIX DFW profiles available on
+<br>
+selected logical DFW.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPFIXDFWProfiles.html">GET /policy/api/v1/infra/ipfix-dfw-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIPFIXDFWProfiles.html">GET /policy/api/v1/global-infra/ipfix-dfw-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPFIX DFW Profile</h4><br>
+                      <span class="help_detail">API deletes IPFIX DFW Profile. Selected IPFIX Collectors will stop
+<br>
+receiving flows.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPFIXDFWProfile.html">DELETE /policy/api/v1/infra/ipfix-dfw-profiles/&lt;ipfix-dfw-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPFIX DFW Profile</h4><br>
+                      <span class="help_detail">API will return details of IPFIX DFW profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPFIXDFWProfile.html">GET /policy/api/v1/infra/ipfix-dfw-profiles/&lt;ipfix-dfw-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIPFIXDFWProfile.html">GET /policy/api/v1/global-infra/ipfix-dfw-profiles/&lt;ipfix-dfw-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch IPFIX DFW profile</h4><br>
+                      <span class="help_detail">Create a new IPFIX DFW profile if the IPFIX DFW profile
+<br>
+with given id does not already exist. If the IPFIX DFW
+<br>
+profile with the given id already exists, patch with
+<br>
+the existing IPFIX DFW profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIPFIXDFWProfile.html">PATCH /policy/api/v1/infra/ipfix-dfw-profiles/&lt;ipfix-dfw-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace IPFIX DFW collection Config.</h4><br>
+                      <span class="help_detail">Create or replace IPFIX DFW profile. Config will start
+<br>
+forwarding data to provided IPFIX DFW collector.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIPFIXDFWProfile.html">PUT /policy/api/v1/infra/ipfix-dfw-profiles/&lt;ipfix-dfw-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX Collector profiles.</h4><br>
+                      <span class="help_detail">API will provide list of all IPFIX collector profiles and their details.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPFIXL2CollectorProfiles.html">GET /policy/api/v1/infra/ipfix-l2-collector-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIPFIXL2CollectorProfiles.html">GET /policy/api/v1/global-infra/ipfix-l2-collector-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPFIX Collector profile</h4><br>
+                      <span class="help_detail">API deletes IPFIX collector profile. Flow forwarding to
+<br>
+collector will be stopped.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPFIXL2CollectorProfile.html">DELETE /policy/api/v1/global-infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteIPFIXL2CollectorProfile.html">DELETE /policy/api/v1/infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPFIX Collector profile</h4><br>
+                      <span class="help_detail">API will return details of IPFIX collector profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPFIXL2CollectorProfile.html">GET /policy/api/v1/global-infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIPFIXL2CollectorProfile.html">GET /policy/api/v1/infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch IPFIX collector profile</h4><br>
+                      <span class="help_detail">Create a new IPFIX collector profile if the IPFIX collector profile with
+<br>
+given id does not already exist. If the IPFIX collector profile with the
+<br>
+given id already exists, patch with the existing IPFIX collector profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIPFIXL2CollectorProfile.html">PATCH /policy/api/v1/global-infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchIPFIXL2CollectorProfile.html">PATCH /policy/api/v1/infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace IPFIX collector profile</h4><br>
+                      <span class="help_detail">Create or Replace IPFIX collector profile. IPFIX data will be sent to IPFIX
+<br>
+collector.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIPFIXL2CollectorProfile.html">PUT /policy/api/v1/global-infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceIPFIXL2CollectorProfile.html">PUT /policy/api/v1/infra/ipfix-l2-collector-profiles/&lt;ipfix-l2-collector-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX L2 Profiles</h4><br>
+                      <span class="help_detail">API provides list IPFIX L2 Profiles available on
+<br>
+selected logical l2.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPFIXL2Profiles.html">GET /policy/api/v1/infra/ipfix-l2-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListIPFIXL2Profiles.html">GET /policy/api/v1/global-infra/ipfix-l2-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPFIX L2 Profile</h4><br>
+                      <span class="help_detail">API deletes IPFIX L2 Profile. Flow forwarding to
+<br>
+selected collector will be stopped.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPFIXL2Profile.html">DELETE /policy/api/v1/infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteIPFIXL2Profile.html">DELETE /policy/api/v1/global-infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPFIX L2 Profile</h4><br>
+                      <span class="help_detail">API will return details of IPFIX L2 profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPFIXL2Profile.html">GET /policy/api/v1/infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadIPFIXL2Profile.html">GET /policy/api/v1/global-infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch IPFIX L2profile</h4><br>
+                      <span class="help_detail">Create a new IPFIX L2 profile if the IPFIX L2 profile
+<br>
+with given id does not already exist. If the IPFIX L2 profile
+<br>
+with the given id already exists, patch with the existing IPFIX L2
+<br>
+profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchIPFIXL2Profile.html">PATCH /policy/api/v1/infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchIPFIXL2Profile.html">PATCH /policy/api/v1/global-infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace IPFIX L2 profile</h4><br>
+                      <span class="help_detail">Create or replace IPFIX L2 Profile. Profile is reusable entity. Single
+<br>
+profile can attached multiple bindings e.g group, segment and port.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceIPFIXL2Profile.html">PUT /policy/api/v1/infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceIPFIXL2Profile.html">PUT /policy/api/v1/global-infra/ipfix-l2-profiles/&lt;ipfix-l2-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List latency profiles</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyLatencyProfiles.html">GET /policy/api/v1/infra/latency-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete latency profile</h4><br>
+                      <span class="help_detail">Delete an existing latency profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyLatencyStatProfile.html">DELETE /policy/api/v1/infra/latency-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read latency profile</h4><br>
+                      <span class="help_detail">Read latency profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPolicyLatencyStatProfile.html">GET /policy/api/v1/infra/latency-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch latency profile</h4><br>
+                      <span class="help_detail">Patch latency profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyLatencyStatProfile.html">PATCH /policy/api/v1/infra/latency-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace latency profile</h4><br>
+                      <span class="help_detail">Create or Replace latency profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplacePolicyLatencyStatProfile.html">PUT /policy/api/v1/infra/latency-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List livetrace config entities</h4><br>
+                      <span class="help_detail">Get a paginated list of all livetrace config entities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLiveTraceConfig.html">GET /policy/api/v1/infra/livetraces</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a livetrace config</h4><br>
+                      <span class="help_detail">Delete livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLiveTraceConfig.html">DELETE /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a livetrace config</h4><br>
+                      <span class="help_detail">Read livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceConfig.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a livetrace config</h4><br>
+                      <span class="help_detail">If a livetrace config with the specified identifier is not present, then
+<br>
+create a new livetrace config. If it already exists, update the livetrace
+<br>
+config with a full replacement.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchLiveTraceConfig.html">PATCH /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart a livetrace session</h4><br>
+                      <span class="help_detail">Restart a livetrace session with the same set of parameters used in creating or updating of a livetrace config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartLivetrace.html">POST /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a livetrace config</h4><br>
+                      <span class="help_detail">If a livetrace config with the specified identifier is not present, then
+<br>
+create a new livetrace config. If it already exists, update the livetrace
+<br>
+config with a full replacement.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLiveTraceConfig.html">PUT /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read livetrace result</h4><br>
+                      <span class="help_detail">Read result for a livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceResult.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;/result</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read livetrace status</h4><br>
+                      <span class="help_detail">Read status for a livetrace config with the specified identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLiveTraceStatus.html">GET /policy/api/v1/infra/livetraces/&lt;livetrace-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List livetrace status entities</h4><br>
+                      <span class="help_detail">Get a list of all livetrace status entities.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLiveTraceStatus.html">GET /policy/api/v1/infra/livetraces/statuses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port Mirroring Profiles</h4><br>
+                      <span class="help_detail">API will list all port mirroring profiles group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortMirroringProfiles.html">GET /policy/api/v1/global-infra/port-mirroring-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListPortMirroringProfiles.html">GET /policy/api/v1/infra/port-mirroring-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port Mirroring Profile</h4><br>
+                      <span class="help_detail">API will delete port mirroring profile. Mirroring from source to destination
+<br>
+ports will be stopped.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortMirroringProfile.html">DELETE /policy/api/v1/infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeletePortMirroringProfile.html">DELETE /policy/api/v1/global-infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Details of Port Mirroring Profile
+</h4><br>
+                      <span class="help_detail">API will return details of port mirroring profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPortMirroringProfile.html">GET /policy/api/v1/infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadPortMirroringProfile.html">GET /policy/api/v1/global-infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch Port Mirroring Profile.</h4><br>
+                      <span class="help_detail">Create a new Port Mirroring Profile if the Port Mirroring Profile with
+<br>
+given id does not already exist. If the Port Mirroring Profile with the
+<br>
+given id already exists, patch with the existing Port Mirroring Profile.
+<br>
+Realized entities of this API can be found using the path of monitoring
+<br>
+profile binding map that is used to apply this profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortMirroringProfile.html">PATCH /policy/api/v1/infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchPortMirroringProfile.html">PATCH /policy/api/v1/global-infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace Port Mirroring Profile.</h4><br>
+                      <span class="help_detail">Create or Replace port mirroring profile. Packets will be mirrored from
+<br>
+source group, segment, port to destination group.
+<br>
+Realized entities of this API can be found using the path of monitoring
+<br>
+profile binding map that is used to apply this profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplacePortMirroringProfile.html">PUT /policy/api/v1/infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplacePortMirroringProfile.html">PUT /policy/api/v1/global-infra/port-mirroring-profiles/&lt;port-mirroring-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the details of latency status in given appliance.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetApplianceLatencyData.html">GET /policy/api/v1/infra/sha/appliances/&lt;appliance-id&gt;/latency/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the details of process status in given appliance.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetProcessDataForAppliance.html">GET /policy/api/v1/infra/sha/appliances/&lt;appliance-id&gt;/process/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the details of latency status for all appliances
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAllApplianceLatencyData.html">GET /policy/api/v1/infra/sha/appliances/latency/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the list of process status for all appliances.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetProcessDataForAllAppliance.html">GET /policy/api/v1/infra/sha/appliances/process/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>API will provide list of Sha dynamic plugin list.</h4><br>
+                      <span class="help_detail">API will provide list of Sha dynamic plugins.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListShaDynamicPlugins.html">GET /policy/api/v1/infra/sha/dynamic-plugins</a>
+                            <br>
+                            
+                            <a href="method_ListShaDynamicPlugins.html">GET /policy/api/v1/global-infra/sha/dynamic-plugins</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Sha dynamic plugin</h4><br>
+                      <span class="help_detail">Read Sha dynamic plugin.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteShaDynamicPlugin.html">DELETE /policy/api/v1/infra/sha/dynamic-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Sha dynamic plugin</h4><br>
+                      <span class="help_detail">Read Sha dynamic plugin.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadShaDynamicPlugin.html">GET /policy/api/v1/global-infra/sha/dynamic-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadShaDynamicPlugin.html">GET /policy/api/v1/infra/sha/dynamic-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload Sha dynamic plugin</h4><br>
+                      <span class="help_detail">Upload Sha dynamic plugin content.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchShaDynamicPlugin.html">PATCH /policy/api/v1/infra/sha/dynamic-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Sha dynamic plugin</h4><br>
+                      <span class="help_detail">Create Sha dynamic plugin.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceShaDynamicPlugin.html">PUT /policy/api/v1/infra/sha/dynamic-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload Sha dynamic plugin</h4><br>
+                      <span class="help_detail">Upload Sha dynamic plugin content.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadShaDynamicPlugin.html">POST /policy/api/v1/infra/sha/dynamic-plugins/&lt;plugin-id&gt;/files/&lt;file-name&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>API will provide list of SHA profile.</h4><br>
+                      <span class="help_detail">API will provide list of SHA profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListShaPluginProfiles.html">GET /policy/api/v1/infra/sha/plugin-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListShaPluginProfiles.html">GET /policy/api/v1/global-infra/sha/plugin-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete SHA profile</h4><br>
+                      <span class="help_detail">Delete Sha profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteShaPluginProfile.html">DELETE /policy/api/v1/infra/sha/plugin-profiles/&lt;sha-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>API will return Sha profile</h4><br>
+                      <span class="help_detail">API will return Sha profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadShaPluginProfile.html">GET /policy/api/v1/global-infra/sha/plugin-profiles/&lt;sha-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadShaPluginProfile.html">GET /policy/api/v1/infra/sha/plugin-profiles/&lt;sha-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace SHA profile</h4><br>
+                      <span class="help_detail">Create or Replace Sha profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchShaPluginProfile.html">PATCH /policy/api/v1/infra/sha/plugin-profiles/&lt;sha-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace Sha profile</h4><br>
+                      <span class="help_detail">Create or Replace Sha profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceShaPluginProfile.html">PUT /policy/api/v1/infra/sha/plugin-profiles/&lt;sha-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Show the plugins status on given node.</h4><br>
+                      <span class="help_detail">Show all the installed system health plugins on given node
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ShowPluginStatusOnNode.html">GET /policy/api/v1/infra/sha/plugin-status/&lt;node-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ShowPluginStatusOnNode.html">GET /policy/api/v1/global-infra/sha/plugin-status/&lt;node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>API will provide list of Sha pre-defined list.</h4><br>
+                      <span class="help_detail">API will provide list of Sha dynamic plugins.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListShaPredefinedPlugins.html">GET /policy/api/v1/global-infra/sha/pre-defined-plugins</a>
+                            <br>
+                            
+                            <a href="method_ListShaPredefinedPlugins.html">GET /policy/api/v1/infra/sha/pre-defined-plugins</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Sha pre-defined plugin</h4><br>
+                      <span class="help_detail">Read SHA dynamic plugin.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadShaPredefinedPlugin.html">GET /policy/api/v1/infra/sha/pre-defined-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadShaPredefinedPlugin.html">GET /policy/api/v1/global-infra/sha/pre-defined-plugins/&lt;plugin-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all the container cluster status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerClusterStatusList.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/container-cluster-ncpstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create container cluster status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddContainerClusterStatus.html">POST /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/container-cluster-ncpstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete container cluster status</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteContainerClusterStatus.html">DELETE /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/container-cluster/&lt;cluster-id&gt;/ncpstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the container cluster status by given id</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerClusterStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/container-cluster/&lt;cluster-id&gt;/ncpstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get high-level summary of all transport nodes. The service layer does not support source = realtime or cached.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAllTNsStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes-aggstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read status of all the transport nodes</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListHostTNStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the container hyperbus status on given node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTnHyperbusStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/hyperbus-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List LLDP Neighbor Properties of given Node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllLldpNeighborInterfaces.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/lldp/interfaces</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read LLDP Neighbor Properties of transport node by Interface Name
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ShowLldpNeighborInterfaces.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/lldp/interfaces/&lt;interface-name&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the container status on given node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTnContainerAgentStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/node-agent-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get high-level summary of a transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPnicStatusesForTN.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/pnic-bond-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read status of all transport nodes with tunnel connections to transport node
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRemoteTNStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/remote-transport-node-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read status of a transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetHostTNStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List of tunnels</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTunnels.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/tunnels</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Tunnel properties</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTunnelByName.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/host-transport-nodes/&lt;node-id&gt;/tunnels/&lt;tunnel-name&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Creates a status report of transport nodes of all the transport zones</h4><br>
+                      <span class="help_detail">You must provide the request header "Accept:application/octet-stream" when calling this API.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTNReport.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/transport-node-status-report</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get high-level summary of all transport zone status. The service layer does not support source = realtime or cached.
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAllTZStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/transport-zones-aggstatus</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get high-level summary of a transport zone</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetHeatmapTZStatus.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/transport-zones/&lt;zone-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read status of transport nodes in a transport zone</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTNStatusForTZ.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/transport-zones/&lt;zone-id&gt;/transport-node-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Creates a status report of transport nodes in a transport zone</h4><br>
+                      <span class="help_detail">You must provide the request header "Accept:application/octet-stream" when calling this API.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTNReportForATZ.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/transport-zones/&lt;zone-id&gt;/transport-node-status-report</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List TraceflowConfig for infra</h4><br>
+                      <span class="help_detail">Paginated list of all TraceflowConfig for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTraceflowConfig.html">GET /policy/api/v1/global-infra/traceflows</a>
+                            <br>
+                            
+                            <a href="method_ListTraceflowConfig.html">GET /policy/api/v1/infra/traceflows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete traceflow config</h4><br>
+                      <span class="help_detail">Delete traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTraceflowConfig.html">DELETE /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteTraceflowConfig.html">DELETE /policy/api/v1/global-infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow config</h4><br>
+                      <span class="help_detail">Read traceflow config with id traceflow-id. This configuration
+<br>
+will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTraceflowConfig.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTraceflowConfig.html">GET /policy/api/v1/global-infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a traceflow config</h4><br>
+                      <span class="help_detail">If a traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config. If it already exists,
+<br>
+update the traceflow config. This is a full replace. This configuration
+<br>
+will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTraceflowConfig.html">PATCH /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart traceflow with same set of parameters used during create/update traceflow</h4><br>
+                      <span class="help_detail">This will retrace even if current traceflow has observations. Current
+<br>
+observations will be lost. Traceflow configuration will be cleaned up
+<br>
+by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartTraceflow.html">POST /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a traceflow config</h4><br>
+                      <span class="help_detail">If a traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config. If it already exists,
+<br>
+update the traceflow config. This is a full replace. This
+<br>
+configuration will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTraceflowConfig.html">PUT /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow observations</h4><br>
+                      <span class="help_detail">Read traceflow observations for id traceflow-id. Traceflow configuration will be cleaned up by the system after two hours of inactivity. Enforcement point path is not required for Federation setup.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTraceflowObservations.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;/observations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow status</h4><br>
+                      <span class="help_detail">Read traceflow status with id traceflow-id.
+<br>
+Traceflow configuration will be cleaned up by the system after
+<br>
+two hours of inactivity.
+<br>
+Enforcement point path is not required for Federation setup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTraceflowStatus.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsTransportProtocolMatch.html">ALBDnsTransportProtocolMatch</a> (<a href="types_ALBDnsTransportProtocolMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsTransportProtocolMatch object", 
+  "id": "ALBDnsTransportProtocolMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "match_criteria": {
+      "$ref": "<A HREF="schemas_ALBMatchOperation.html">ALBMatchOperation</A>, 
+      "description": "Criterion to use for matching the DNS transport protocol. Enum options - IS_IN, IS_NOT_IN.", 
+      "required": true, 
+      "title": "Match criteria"
+    }, 
+    "protocol": {
+      "$ref": "<A HREF="schemas_ALBDnsTransportProtocol.html">ALBDnsTransportProtocol</A>, 
+      "description": "Protocol to match against transport protocol used by DNS query. Enum options - DNS_OVER_UDP, DNS_OVER_TCP.", 
+      "required": true, 
+      "title": "Protocol"
+    }
+  }, 
+  "title": "DnsTransportProtocolMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

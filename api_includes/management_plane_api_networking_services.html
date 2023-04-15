@@ -1,0 +1,2280 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_services.html' style='text-decoration: none'> Services</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List All DHCP Relay Profiles</h4><br>
+                      <span class="help_detail">Returns information about all dhcp relay profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpRelayProfiles.html">GET /api/v1/dhcp/relay-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP Relay Profile</h4><br>
+                      <span class="help_detail">Creates a dhcp relay profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpRelayProfile.html">POST /api/v1/dhcp/relay-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP Relay Profile</h4><br>
+                      <span class="help_detail">Deletes the specified dhcp relay profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpRelayProfile.html">DELETE /api/v1/dhcp/relay-profiles/&lt;relay-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a DHCP Relay Profile</h4><br>
+                      <span class="help_detail">Returns information about the specified dhcp relay profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpRelayProfile.html">GET /api/v1/dhcp/relay-profiles/&lt;relay-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP Relay Profile</h4><br>
+                      <span class="help_detail">Modifies the specified dhcp relay profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpRelayProfile.html">PUT /api/v1/dhcp/relay-profiles/&lt;relay-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all DHCP Relay Services</h4><br>
+                      <span class="help_detail">Returns information about all configured dhcp relay services.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpRelays.html">GET /api/v1/dhcp/relays</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP Relay Service</h4><br>
+                      <span class="help_detail">Creates a dhcp relay service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpRelay.html">POST /api/v1/dhcp/relays</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP Relay Service</h4><br>
+                      <span class="help_detail">Deletes the specified dhcp relay service.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpRelay.html">DELETE /api/v1/dhcp/relays/&lt;relay-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a DHCP Relay Service</h4><br>
+                      <span class="help_detail">Returns the dhcp relay service information.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpRelay.html">GET /api/v1/dhcp/relays/&lt;relay-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP Relay Service</h4><br>
+                      <span class="help_detail">Modifies the specified dhcp relay service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpRelay.html">PUT /api/v1/dhcp/relays/&lt;relay-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DHCP server profiles</h4><br>
+                      <span class="help_detail">Get a paginated list of DHCP server profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpProfiles.html">GET /api/v1/dhcp/server-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP server profile</h4><br>
+                      <span class="help_detail">Create a DHCP server profile. If no edge member is specified, edge members
+<br>
+to run the dhcp servers will be auto-allocated from the edge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpProfile.html">POST /api/v1/dhcp/server-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server profile</h4><br>
+                      <span class="help_detail">Delete a DHCP server profile specified by the profile id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpProfile.html">DELETE /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server profile</h4><br>
+                      <span class="help_detail">Return the DHCP profile specified by the profile id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpProfile.html">GET /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server profile</h4><br>
+                      <span class="help_detail">If both the edge_cluster_member_indexes in the DhcpProfile are changed in
+<br>
+a same PUT API, e.g. change from [a,b] to [x,y], the current DHCP server
+<br>
+leases will be lost, which could cause the network crash due to ip conflicts.
+<br>
+Hence the suggestion is to change only one member index in one single update,
+<br>
+e.g. from [a, b] to [a,y].
+<br>
+
+<br>
+Please note, the edge_cluster_id in DhcpProfile can NOT be changed by this
+<br>
+PUT operation because all existing DHCP leases will lost. If losing leases
+<br>
+is not a problem, a dedicated re-allocation API is suggested to modify the
+<br>
+edge-cluster-id, i.e. "POST /api/v1/dhcp/dhcp-profiles/&lt;profileiid&gt;?action=reallocate".
+<br>
+
+<br>
+Meanwhile, if the edge_cluster_member_indexes was specified currently but
+<br>
+now is changed to none (not specified) via a PUT operation, the edge nodes
+<br>
+will not be auto-selected from edge cluster. Instead, the previously-allocated
+<br>
+edge nodes will continue to be used by the DHCP server. This is because
+<br>
+changing both edge nodes of a DHCP server will lose all existing leases.
+<br>
+In case re-allocation is required and leases lost is not a problem (or can
+<br>
+be recovered), please invoke the reallocate API mentioned above with new
+<br>
+DhcpProfile to accomplish the intent.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpProfile.html">PUT /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reallocate edge cluster and members of given DHCP profile.</h4><br>
+                      <span class="help_detail">As changing edge-cluster-id of a DhcpProfile by a PUT is disallowed,
+<br>
+this re-allocate API is used to modify the edge-cluster-id and members
+<br>
+of a given DhcpProfile.
+<br>
+
+<br>
+Only the edge-cluster-id and the edge-cluster-member-indexes fields will
+<br>
+be picked up by this re-allication API. The othere fields in the payload
+<br>
+will be ignored.
+<br>
+
+<br>
+If the edge-cluster-id in the payload DhcpProfile is different from the
+<br>
+current edge-cluster-id of the profile, the referencing DHCP server(s) will
+<br>
+be re-allocated to the new edge cluster. If the edge-cluster-id is not
+<br>
+changed, the referencing DHCP server(s) will be re-allocated to the
+<br>
+given edge members in the edge cluster. In this case, this REST API will
+<br>
+act same as that of updating a DhcpProfile.
+<br>
+
+<br>
+If the edge cluster member indexes are provided, they should exist in the
+<br>
+given edge cluster. If the indexes are not specified in the DhcpProfile,
+<br>
+edge members will be auto-allocated from the given edge cluster.
+<br>
+
+<br>
+Please note that re-allocating edge-cluster will cause lose of all exisitng
+<br>
+DHCP lease information. This API is used only when loosing DHCP leases is
+<br>
+not a real problem, e.g. cross-site migration or failover and all client
+<br>
+hosts will be reboot and get new IP addresses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReallocateDhcpProfileEdgeCluster.html">POST /api/v1/dhcp/server-profiles/&lt;server-profile-id&gt;?action=reallocate</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DHCP servers</h4><br>
+                      <span class="help_detail">List logical DHCP servers with pagination support.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpServers.html">GET /api/v1/dhcp/servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP server</h4><br>
+                      <span class="help_detail">Create a logical DHCP server with v4 and/or v6 servers.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpServer.html">POST /api/v1/dhcp/servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server</h4><br>
+                      <span class="help_detail">Delete a logical DHCP server specified by server id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpServer.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server with v4 and/or v6 servers</h4><br>
+                      <span class="help_detail">Retrieve a logical DHCP server specified by server id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpServer.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server with v4 and/or v6 servers</h4><br>
+                      <span class="help_detail">Update a logical DHCP server with new configurations.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpServer.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP server's IP pools</h4><br>
+                      <span class="help_detail">List the ip pools of a logical DHCP server with pagination support.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpIpPools.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an ip pool for a DHCP server</h4><br>
+                      <span class="help_detail">Create an ip pool for a local DHCP server</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpIpPool.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server's IP pool</h4><br>
+                      <span class="help_detail">Delete a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpIpPool.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server's IP pool with the specified pool ID</h4><br>
+                      <span class="help_detail">Return a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpIpPool.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server's IP pool</h4><br>
+                      <span class="help_detail">Update a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpIpPool.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp ip pool</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp ip pool.
+<br>
+After a dhcp ip pool is created or updated, you can invoke this API to get
+<br>
+the realization information of the ip pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpIpPoolState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP IPv6 server's IP pools</h4><br>
+                      <span class="help_detail">List the ip pools of a logical DHCP IPv6 server with pagination support.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpV6IpPools.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an ip pool for a DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Create an ip pool for a local DHCP IPv6 server</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpV6IpPool.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP IPv6 server's IP pool</h4><br>
+                      <span class="help_detail">Delete a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpV6IpPool.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP IPv6 server's IP pool with the specified pool ID</h4><br>
+                      <span class="help_detail">Return a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpV6IpPool.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP IPv6 server's IP pool</h4><br>
+                      <span class="help_detail">Update a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpV6IpPool.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP IPv6 server's static bindings</h4><br>
+                      <span class="help_detail">Return a paginated list of a static bindings of a given logical DHCP IPv6 server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpV6StaticBindings.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a static binding for a DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Create a static binding for a logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpV6StaticBinding.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a static binding for DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Delete a specific static binding of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpV6StaticBinding.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP IPv6 server's static binding with the specified binding ID</h4><br>
+                      <span class="help_detail">Return a specific static binding of a given logical DHCP IPv6 server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpV6StaticBinding.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP IPv6 server's static binding</h4><br>
+                      <span class="help_detail">Update a specific static binding of a given local DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpV6StaticBinding.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a single DHCP lease entry specified by ip and mac.</h4><br>
+                      <span class="help_detail">Delete a single DHCP lease entry specified by ip and mac.
+<br>
+
+<br>
+The DHCP server matches the DHCP lease with the given ip address and
+<br>
+the mac address. The matched lease entry will be deleted. If no lease
+<br>
+matches, the request is ignored.
+<br>
+
+<br>
+The DHCP lease to be deleted will be removed by the system from both active
+<br>
+and standby node. The system will report error if the DHCP lease could not
+<br>
+be removed from both nodes. If the DHCP lease could not be removed on either
+<br>
+node, please check the DHCP server status. Once the DHCP server status is
+<br>
+UP, please invoke the deletion API again to ensure the lease gets deleted
+<br>
+from both nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteADhcpLease.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/leases</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get specific leases of a given dhcp server</h4><br>
+                      <span class="help_detail">Get specific leases of a given dhcp server. As a dhcp server could manage
+<br>
+millions of leases, the API has to limit the number of the returned
+<br>
+leases via two mutually-excluded request parameters, i.e. "pool_id" and
+<br>
+"address". Either a "pool_id" or an "address" can be provided, but not both
+<br>
+in a same call.
+<br>
+
+<br>
+If a "pool_id" is specified, the leases of the specific pool are returned.
+<br>
+If an "address" is specified, only the lease(s) represented y this address
+<br>
+is(are) returned. The "address" can be a single IP, an ip-range, or a mac
+<br>
+address.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpLeaseInfo.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/leases</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp server</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp server.
+<br>
+After a dhcp server is created or updated, you can invoke this API to get
+<br>
+the realization information of the server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpServerState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP server's static bindings</h4><br>
+                      <span class="help_detail">Return a paginated list of a static bindings of a given logical DHCP server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpStaticBindings.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a static binding for a DHCP server</h4><br>
+                      <span class="help_detail">Create a static binding for a logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpStaticBinding.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a static binding</h4><br>
+                      <span class="help_detail">Delete a specific static binding of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpStaticBinding.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server's static binding with the specified binding ID</h4><br>
+                      <span class="help_detail">Return a specific static binding of a given logical DHCP server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpStaticBinding.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server's static binding</h4><br>
+                      <span class="help_detail">Update a specific static binding of a given local DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpStaticBinding.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp static binding</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp static binding.
+<br>
+After a dhcp static binding is created or updated, you can invoke this API to get
+<br>
+the realization information of the static binding.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStaticBindingState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DHCP statistics with given dhcp server id</h4><br>
+                      <span class="help_detail">Returns the statistics of the given dhcp server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStatistics.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DHCP service status with given dhcp server id</h4><br>
+                      <span class="help_detail">Returns the service status of the given dhcp server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStatus.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DNS forwarders</h4><br>
+                      <span class="help_detail">Get a paginated list of DNS forwarders.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDnsForwaders.html">GET /api/v1/dns/forwarders</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DNS forwader</h4><br>
+                      <span class="help_detail">Create a DNS forwader upon a logical router. There is only
+<br>
+one DNS forwarder can be created upon a given logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDnsForwader.html">POST /api/v1/dns/forwarders</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific DNS forwarder</h4><br>
+                      <span class="help_detail">Delete a specific DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDnsForwarder.html">DELETE /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a DNS forwarder</h4><br>
+                      <span class="help_detail">Retrieve a DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDnsForwader.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Clear the current cache of the DNS forwarder.</h4><br>
+                      <span class="help_detail">Clear the current cache of the DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ClearDnsForwarderCache.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=clear_cache</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Enable the DNS forwarder.</h4><br>
+                      <span class="help_detail">Enable the DNS forwarder if the forwarder is currently disabled. If the
+<br>
+DNS forwarder is already enabled, the forwarder will not be re-enabled.
+<br>
+
+<br>
+Please note, once a DNS forwarder is disabled then enabled, the previous
+<br>
+DNS forwarder statistics counters will be reset.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_EnableDnsForwarder.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=enable</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Disable the DNS forwarder.</h4><br>
+                      <span class="help_detail">Disable the DNS forwarder if the forwarder is currently enbled. If the DNS
+<br>
+forwarder is already disabled, the forwarder will not be re-disabled.
+<br>
+
+<br>
+Please note, once a DNS forwarder is disabled then enabled, the previous
+<br>
+DNS forwarder statistics counters will be reset.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DisableDnsForwarder.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=disable</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific DNS forwarder</h4><br>
+                      <span class="help_detail">Update a specific DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDnsForwarder.html">PUT /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the recent failed DNS queries</h4><br>
+                      <span class="help_detail">Return the given count of recent failed DNS queries from DNS forwarder.
+<br>
+Since the DNS forwarder is running in Acitve/Standby HA mode on transport
+<br>
+nodes, the given count of queries will be returned from each nodes. Hence
+<br>
+the total queries returned could be doubled.
+<br>
+If no count is specified, 100 recent failed queries are returned. If the
+<br>
+recent failures is less than the given count, all the failures will be
+<br>
+returned. The maximum count is 1,000.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFailedDnsQueries.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/failed-queries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resolve a given address via the DNS forwarder</h4><br>
+                      <span class="help_detail">Query the nameserver for an ip-address or a FQDN of the given an address optionally using
+<br>
+an specified DNS server. If the address is a fqdn, nslookup will resolve ip-address with it.
+<br>
+If the address is an ip-address, do a reverse lookup and answer fqdn(s).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_LookupAddress.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/nslookup</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a DNS forwarder</h4><br>
+                      <span class="help_detail">Return the realized state information of a DNS forwarder.
+<br>
+After a DNS forwarder was created or updated, you can invoke this API to
+<br>
+check the realization state of the forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderState.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics of given dns forwarder</h4><br>
+                      <span class="help_detail">Returns the statistics of the given dns forwarder specified by forwarder id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderStatistics.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get current status of the given DNS forwarder</h4><br>
+                      <span class="help_detail">Returns the current status of the given DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderStatus.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer application profiles</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer application profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerApplicationProfiles.html">GET /api/v1/loadbalancer/application-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer application profile</h4><br>
+                      <span class="help_detail">Create a load balancer application profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerApplicationProfile.html">POST /api/v1/loadbalancer/application-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer application profile</h4><br>
+                      <span class="help_detail">Delete a load balancer application profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerApplicationProfile.html">DELETE /api/v1/loadbalancer/application-profiles/&lt;application-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer application profile</h4><br>
+                      <span class="help_detail">Retrieve a load balancer application profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerApplicationProfile.html">GET /api/v1/loadbalancer/application-profiles/&lt;application-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer application profile</h4><br>
+                      <span class="help_detail">Update a load balancer application profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerApplicationProfile.html">PUT /api/v1/loadbalancer/application-profiles/&lt;application-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer client-ssl profiles</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer client-ssl profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerClientSslProfiles.html">GET /api/v1/loadbalancer/client-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer client-ssl profile</h4><br>
+                      <span class="help_detail">Create a load balancer client-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerClientSslProfile.html">POST /api/v1/loadbalancer/client-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer client-ssl profile</h4><br>
+                      <span class="help_detail">Delete a load balancer client-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerClientSslProfile.html">DELETE /api/v1/loadbalancer/client-ssl-profiles/&lt;client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer client-ssl profile</h4><br>
+                      <span class="help_detail">Retrieve a load balancer client-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerClientSslProfile.html">GET /api/v1/loadbalancer/client-ssl-profiles/&lt;client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer client-ssl profile</h4><br>
+                      <span class="help_detail">Update a load balancer client-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerClientSslProfile.html">PUT /api/v1/loadbalancer/client-ssl-profiles/&lt;client-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer monitors</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer monitors.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerMonitors.html">GET /api/v1/loadbalancer/monitors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer monitor</h4><br>
+                      <span class="help_detail">Create a load balancer monitor.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerMonitor.html">POST /api/v1/loadbalancer/monitors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer monitor</h4><br>
+                      <span class="help_detail">Delete a load balancer monitor.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerMonitor.html">DELETE /api/v1/loadbalancer/monitors/&lt;monitor-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer monitor</h4><br>
+                      <span class="help_detail">Retrieve a load balancer monitor.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerMonitor.html">GET /api/v1/loadbalancer/monitors/&lt;monitor-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer monitor</h4><br>
+                      <span class="help_detail">Update a load balancer monitor.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerMonitor.html">PUT /api/v1/loadbalancer/monitors/&lt;monitor-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read load balancer node usage summary</h4><br>
+                      <span class="help_detail">API is used to retrieve the load balancer node usage summary for all nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerNodeUsageSummary.html">GET /api/v1/loadbalancer/node-usage-summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer persistence profiles</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer persistence profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerPersistenceProfiles.html">GET /api/v1/loadbalancer/persistence-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer persistence profile</h4><br>
+                      <span class="help_detail">Create a load balancer persistence profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerPersistenceProfile.html">POST /api/v1/loadbalancer/persistence-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer persistence profile</h4><br>
+                      <span class="help_detail">Delete a load balancer persistence profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerPersistenceProfile.html">DELETE /api/v1/loadbalancer/persistence-profiles/&lt;persistence-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer persistence profile</h4><br>
+                      <span class="help_detail">Retrieve a load balancer persistence profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerPersistenceProfile.html">GET /api/v1/loadbalancer/persistence-profiles/&lt;persistence-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer persistence profile</h4><br>
+                      <span class="help_detail">Update a load balancer persistence profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerPersistenceProfile.html">PUT /api/v1/loadbalancer/persistence-profiles/&lt;persistence-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer pools</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer pools.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerPools.html">GET /api/v1/loadbalancer/pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer pool</h4><br>
+                      <span class="help_detail">Create a load balancer pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerPool.html">POST /api/v1/loadbalancer/pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer pool</h4><br>
+                      <span class="help_detail">Delete a load balancer pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerPool.html">DELETE /api/v1/loadbalancer/pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer pool</h4><br>
+                      <span class="help_detail">Retrieve a load balancer pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerPool.html">GET /api/v1/loadbalancer/pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add, remove, or modify load balancer pool members</h4><br>
+                      <span class="help_detail">For ADD_MEMBERS, pool members will be created and added to load balancer
+<br>
+pool. This action is only valid for static pool members.
+<br>
+For REMOVE_MEMBERS, pool members will be removed from load balancer pool
+<br>
+via IP and port in pool member settings. This action is only valid for
+<br>
+static pool members.
+<br>
+For UPDATE_MEMBERS, pool members admin state will be updated. This action
+<br>
+is valid for both static pool members and dynamic pool members. For dynamic
+<br>
+pool members, this update will be stored in customized_members field in load
+<br>
+balancer pool member group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PerformPoolMemberAction.html">POST /api/v1/loadbalancer/pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer pool</h4><br>
+                      <span class="help_detail">Update a load balancer pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerPool.html">PUT /api/v1/loadbalancer/pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer rules</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer rules.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerRules.html">GET /api/v1/loadbalancer/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer rule</h4><br>
+                      <span class="help_detail">Create a load balancer rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerRule.html">POST /api/v1/loadbalancer/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer rule</h4><br>
+                      <span class="help_detail">Delete a load balancer rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerRule.html">DELETE /api/v1/loadbalancer/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer rule</h4><br>
+                      <span class="help_detail">Retrieve a load balancer rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerRule.html">GET /api/v1/loadbalancer/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer rule</h4><br>
+                      <span class="help_detail">Update a load balancer rule.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerRule.html">PUT /api/v1/loadbalancer/rules/&lt;rule-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer server-ssl profiles</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer server-ssl profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerServerSslProfiles.html">GET /api/v1/loadbalancer/server-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer server-ssl profile</h4><br>
+                      <span class="help_detail">Create a load balancer server-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerServerSslProfile.html">POST /api/v1/loadbalancer/server-ssl-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer server-ssl profile</h4><br>
+                      <span class="help_detail">Delete a load balancer server-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerServerSslProfile.html">DELETE /api/v1/loadbalancer/server-ssl-profiles/&lt;server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer server-ssl profile</h4><br>
+                      <span class="help_detail">Retrieve a load balancer server-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerServerSslProfile.html">GET /api/v1/loadbalancer/server-ssl-profiles/&lt;server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer server-ssl profile</h4><br>
+                      <span class="help_detail">Update a load balancer server-ssl profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerServerSslProfile.html">PUT /api/v1/loadbalancer/server-ssl-profiles/&lt;server-ssl-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer services</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer services.
+<br>
+When logical_router_id is specified in request parameters, the
+<br>
+associated load balancer services which are related to the given
+<br>
+logical router returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerServices.html">GET /api/v1/loadbalancer/services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer service</h4><br>
+                      <span class="help_detail">Create a load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerService.html">POST /api/v1/loadbalancer/services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer service</h4><br>
+                      <span class="help_detail">Delete a load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerService.html">DELETE /api/v1/loadbalancer/services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer service</h4><br>
+                      <span class="help_detail">Retrieve a load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerService.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer service</h4><br>
+                      <span class="help_detail">Update a load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerService.html">PUT /api/v1/loadbalancer/services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the debug information of the load balancer service</h4><br>
+                      <span class="help_detail">API to download below information which will be used for debugging and
+<br>
+troubleshooting.
+<br>
+1) Load balancer service
+<br>
+2) Load balancer associated virtual servers
+<br>
+3) Load balancer associated pools
+<br>
+4) Load balancer associated profiles such as persistence, SSL, application.
+<br>
+5) Load balancer associated monitors
+<br>
+6) Load balancer associated rules
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerServiceDebugInfo.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/debug-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics of load balancer pool</h4><br>
+                      <span class="help_detail">Returns the statistics of the given load balancer pool by given load balancer
+<br>
+serives id and load balancer pool id.
+<br>
+Currently, only realtime mode is supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerPoolStatistics.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/pools/&lt;pool-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status of load balancer pool</h4><br>
+                      <span class="help_detail">Returns the status of the given load balancer pool by given load balancer
+<br>
+serives id and load balancer pool id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerPoolStatus.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/pools/&lt;pool-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics list of load balancer pools</h4><br>
+                      <span class="help_detail">Returns the statistics list of load balancer pools in given load balancer service.
+<br>
+Currently, only realtime mode is supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerPoolStatistics.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/pools/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status list of load balancer pools</h4><br>
+                      <span class="help_detail">Returns the status list of load balancer pools in given load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerPoolStatuses.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/pools/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics of load balancer service</h4><br>
+                      <span class="help_detail">Returns the statistics of the given load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerServiceStatistics.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status of the given load balancer service</h4><br>
+                      <span class="help_detail">Returns the status of the given load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerServiceStatus.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the usage information of the given load balancer service</h4><br>
+                      <span class="help_detail">API to fetch the capacity and current usage of the given load balancer
+<br>
+service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerServiceUsage.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/usage</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics of the given load balancer virtual server</h4><br>
+                      <span class="help_detail">Returns the statistics of the load balancer virtual server by given load
+<br>
+ balancer serives id and load balancer virtual server id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerVirtualServerStatistics.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/virtual-servers/&lt;virtual-server-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status of the load balancer virtual server</h4><br>
+                      <span class="help_detail">Returns the status of the virtual server by given load balancer serives id
+<br>
+and load balancer virtual server id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLoadBalancerVirtualServerStatus.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/virtual-servers/&lt;virtual-server-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics list of virtual servers</h4><br>
+                      <span class="help_detail">Returns the statistics list of virtual servers in given load balancer service.
+<br>
+Currently, only realtime mode is supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerVirtualServersStatistics.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/virtual-servers/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status list of virtual servers in given load balancer service</h4><br>
+                      <span class="help_detail">Returns the status list of virtual servers in given load balancer service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerVirtualServerStatuses.html">GET /api/v1/loadbalancer/services/&lt;service-id&gt;/virtual-servers/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a list of supported SSL ciphers and protocols</h4><br>
+                      <span class="help_detail">Retrieve a list of supported SSL ciphers and protocols.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerSslCiphersAndProtocols.html">GET /api/v1/loadbalancer/ssl/ciphers-and-protocols</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read load balancer usage for the given node</h4><br>
+                      <span class="help_detail">API is used to retrieve the usage of load balancer entities which include
+<br>
+current number and remaining number of credits, virtual Servers, pools,
+<br>
+pool Members and different size of LB services from the given node.
+<br>
+Currently only Edge node is supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerNodeUsage.html">GET /api/v1/loadbalancer/usage-per-node/&lt;node-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a paginated list of load balancer virtual servers</h4><br>
+                      <span class="help_detail">Retrieve a paginated list of load balancer virtual servers.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLoadBalancerVirtualServers.html">GET /api/v1/loadbalancer/virtual-servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer virtual server</h4><br>
+                      <span class="help_detail">Create a load balancer virtual server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerVirtualServer.html">POST /api/v1/loadbalancer/virtual-servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a load balancer virtual server with rules</h4><br>
+                      <span class="help_detail">It is used to create virtual servers, the associated rules and bind the
+<br>
+rules to the virtual server.
+<br>
+To add new rules, make sure the rules which have no identifier specified,
+<br>
+the new rules are automatically generated and associated to the virtual
+<br>
+server.
+<br>
+If the virtual server need to consume some existed rules without change,
+<br>
+those rules should not be specified in this array, otherwise, the rules
+<br>
+are updated.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLoadBalancerVirtualServerWithRules.html">POST /api/v1/loadbalancer/virtual-servers?action=create_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a load balancer virtual server</h4><br>
+                      <span class="help_detail">Delete a load balancer virtual server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLoadBalancerVirtualServer.html">DELETE /api/v1/loadbalancer/virtual-servers/&lt;virtual-server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a load balancer virtual server</h4><br>
+                      <span class="help_detail">Retrieve a load balancer virtual server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLoadBalancerVirtualServer.html">GET /api/v1/loadbalancer/virtual-servers/&lt;virtual-server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer virtual server with rules</h4><br>
+                      <span class="help_detail">It is used to update virtual servers, the associated rules and update the
+<br>
+binding of virtual server and rules.
+<br>
+To add new rules, make sure the rules which have no identifier specified,
+<br>
+the new rules are automatically generated and associated to the virtual
+<br>
+server.
+<br>
+To delete old rules, the rules should not be configured in new action, the
+<br>
+UUID of deleted rules should be also removed from rule_ids.
+<br>
+To update rules, the rules should be specified with new change and
+<br>
+configured with identifier.
+<br>
+If there are some rules which are not modified, those rule should not be
+<br>
+specified in the rules list, the UUID list of rules should be specified in
+<br>
+rule_ids of LbVirtualServer.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerVirtualServerWithRules.html">PUT /api/v1/loadbalancer/virtual-servers/&lt;virtual-server-id&gt;?action=update_with_rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a load balancer virtual server</h4><br>
+                      <span class="help_detail">Update a load balancer virtual server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLoadBalancerVirtualServer.html">PUT /api/v1/loadbalancer/virtual-servers/&lt;virtual-server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of metadata proxies</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListMetadataProxy.html">GET /api/v1/md-proxies</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a metadata proxy</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateMetadataProxy.html">POST /api/v1/md-proxies</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a metadata proxy</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteMetadataProxy.html">DELETE /api/v1/md-proxies/&lt;proxy-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a metadata proxy</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadMetadataProxy.html">GET /api/v1/md-proxies/&lt;proxy-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a metadata proxy</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateMetadataProxy.html">PUT /api/v1/md-proxies/&lt;proxy-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Metadata Proxy status with given proxy id and attached logical switch.</h4><br>
+                      <span class="help_detail">Returns the status of the given metadata proxy and attached logical switch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMetadataProxyStatus.html">GET /api/v1/md-proxies/&lt;proxy-id&gt;/&lt;logical-switch-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Metadata Proxy statistics with given proxy id</h4><br>
+                      <span class="help_detail">Returns the statistics of the given metatada proxy. If no logical switch
+<br>
+is provided, all staticstics of all the logical switches the proxy was
+<br>
+attached will be returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMetadataProxyStatistics.html">GET /api/v1/md-proxies/&lt;proxy-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

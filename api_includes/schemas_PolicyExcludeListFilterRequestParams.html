@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyExcludeListFilterRequestParams.html">PolicyExcludeListFilterRequestParams</a> (<a href="types_PolicyExcludeListFilterRequestParams.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Parameters for filtering the exclude list.", 
+  "id": "PolicyExcludeListFilterRequestParams", 
+  "module_id": "PolicyFirewallConfiguration", 
+  "properties": {
+    "deep_check": {
+      "default": false, 
+      "description": "Deep check all parents of requested intent object, if any of them is in exclude list. If found, makes requested object as excluded.", 
+      "required": false, 
+      "title": "Check all parents", 
+      "type": "boolean"
+    }, 
+    "enforcement_point_path": {
+      "description": "Path of the enforcement point from where the result need to be fetched. If not provided, available enforcement point will be considered.", 
+      "required": false, 
+      "title": "Path of the enforcement point", 
+      "type": "string"
+    }, 
+    "intent_path": {
+      "description": "Path of the intent object to be searched in the exclude list.", 
+      "required": true, 
+      "title": "Path of the intent object to be searched in the exclude list", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters for filtering the exclude list", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

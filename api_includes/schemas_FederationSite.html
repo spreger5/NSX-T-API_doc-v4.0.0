@@ -1,0 +1,164 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FederationSite.html">FederationSite</a> (<a href="types_FederationSite.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Site information.", 
+  "id": "FederationSite", 
+  "module_id": "SiteManagerModule", 
+  "properties": {
+    "active_gm": {
+      "enum": [
+        "ACTIVE", 
+        "STANDBY", 
+        "NONE", 
+        "INVALID"
+      ], 
+      "required": true, 
+      "title": "Does site have active GM", 
+      "type": "string"
+    }, 
+    "aph_list": {
+      "items": {
+        "$ref": "<A HREF="schemas_AphInfo.html">AphInfo</A>
+      }, 
+      "required": true, 
+      "title": "Aph services in the site", 
+      "type": "array"
+    }, 
+    "cert_hash": {
+      "required": false, 
+      "title": "Hash of the trustManagerCert", 
+      "type": "string"
+    }, 
+    "cluster_id": {
+      "required": false, 
+      "title": "Cluster id", 
+      "type": "string"
+    }, 
+    "config_version": {
+      "required": false, 
+      "title": "Site config version", 
+      "type": "integer"
+    }, 
+    "id": {
+      "required": true, 
+      "title": "Id of the site", 
+      "type": "string"
+    }, 
+    "is_federated": {
+      "required": true, 
+      "title": "Is site federated", 
+      "type": "boolean"
+    }, 
+    "is_local": {
+      "required": true, 
+      "title": "Is site local", 
+      "type": "boolean"
+    }, 
+    "name": {
+      "required": true, 
+      "title": "Name of the site", 
+      "type": "string"
+    }, 
+    "node_type": {
+      "enum": [
+        "GM", 
+        "LM", 
+        "GM_AND_LM"
+      ], 
+      "required": true, 
+      "title": "Type of node", 
+      "type": "string"
+    }, 
+    "site_version": {
+      "required": true, 
+      "title": "Version of the site", 
+      "type": "string"
+    }, 
+    "split_brain": {
+      "required": false, 
+      "title": "Split brain", 
+      "type": "boolean"
+    }, 
+    "system_id": {
+      "required": true, 
+      "title": "System id", 
+      "type": "integer"
+    }, 
+    "trust_manager_cert": {
+      "required": false, 
+      "title": "Cert string from trust manager", 
+      "type": "string"
+    }, 
+    "vip_ip": {
+      "required": false, 
+      "title": "Vip ip", 
+      "type": "string"
+    }
+  }, 
+  "title": "Site information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

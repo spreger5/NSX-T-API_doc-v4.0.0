@@ -1,0 +1,88 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AzureTransitVnetConfig.html">AzureTransitVnetConfig</a> (<a href="types_AzureTransitVnetConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores the account IDs and VNet ID related to the transit VNet.", 
+  "id": "AzureTransitVnetConfig", 
+  "module_id": "AzureVnetInformation", 
+  "properties": {
+    "account_id": {
+      "deprecated": true, 
+      "description": "Azure account ID of the transit VNet. This field is deprecated. Field account_id can be learnt using vnet_id. GET /csm/azure/vnets/&lt;vnet-id&gt; API returns associated_account_ids. Hence, this field is optional.", 
+      "required": false, 
+      "title": "Azure account ID", 
+      "type": "string"
+    }, 
+    "vnet_id": {
+      "description": "VNet ID of the transit VNet.", 
+      "required": true, 
+      "title": "VNet ID", 
+      "type": "string"
+    }
+  }, 
+  "title": "Azure Transit VNet Configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RoutingEntry.html">RoutingEntry</a> (<a href="types_RoutingEntry.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Routing table entry.", 
+  "id": "RoutingEntry", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "admin_distance": {
+      "description": "Admin distance.", 
+      "readonly": true, 
+      "title": "Admin distance", 
+      "type": "int"
+    }, 
+    "interface": {
+      "required": false, 
+      "title": "The policy path of the interface which is used as the next hop", 
+      "type": "string"
+    }, 
+    "lr_component_id": {
+      "required": false, 
+      "title": "Logical router component(Service Router/Distributed Router) id", 
+      "type": "string"
+    }, 
+    "lr_component_type": {
+      "required": false, 
+      "title": "Logical router component(Service Router/Distributed Router) type", 
+      "type": "string"
+    }, 
+    "network": {
+      "description": "Network CIDR.", 
+      "readonly": true, 
+      "title": "Network CIDR", 
+      "type": "string"
+    }, 
+    "next_hop": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Next hop address.", 
+      "readonly": true, 
+      "title": "Next hop address"
+    }, 
+    "route_type": {
+      "description": "Route type in routing table. t0c - Tier-0 Connected t0s - Tier-0 Static b - BGP t0n - Tier-0 NAT t1s - Tier-1 Static t1c - Tier-1 Connected t1n: Tier-1 NAT t1l: Tier-1 LB VIP t1ls: Tier-1 LB SNAT t1d: Tier-1 DNS FORWARDER t1ipsec: Tier-1 IPSec isr: Inter-SR", 
+      "readonly": true, 
+      "title": "Route type (USER, CONNECTED, NSX_INTERNAL,..)", 
+      "type": "string"
+    }
+  }, 
+  "title": "Routing table entry", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

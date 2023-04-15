@@ -1,0 +1,228 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ContainerCluster.html">ContainerCluster</a> (<a href="types_ContainerCluster.html">type</a>)
+</h3>
+<pre>{
+  "description": "Details of container cluster.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DiscoveredResource.html">DiscoveredResource</A>
+  }, 
+  "id": "ContainerCluster", 
+  "module_id": "InventoryContainerObj", 
+  "properties": {
+    "_last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cluster_type": {
+      "description": "Type of the container cluster. In case of creating container cluster first time, it is expected to pass the valid cluster-type. In case of update, if there is no change in cluster-type, then this field can be omitted in the request.", 
+      "enum": [
+        "PAS", 
+        "PKS", 
+        "Kubernetes", 
+        "Openshift", 
+        "WCP", 
+        "WCP_Guest", 
+        "AKS", 
+        "EKS", 
+        "TKGm", 
+        "TKGi", 
+        "GKE", 
+        "Gardener", 
+        "Rancher", 
+        "TAS", 
+        "Other"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Type of the container cluster", 
+      "type": "string"
+    }, 
+    "cni_type": {
+      "default": "Other", 
+      "description": "Specifies Container Network Interface type for container cluster.", 
+      "enum": [
+        "NCP", 
+        "Antrea", 
+        "Other"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "CNI type for container cluster", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "description": "External identifier of the container cluster.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "External identifier of the container cluster", 
+      "type": "string"
+    }, 
+    "infrastructure": {
+      "$ref": "<A HREF="schemas_ContainerInfrastructureInfo.html">ContainerInfrastructureInfo</A>, 
+      "description": "Details of underlying infrastructure that hosts the container cluster. In case of creating container cluster first time, it is expected to pass the valid infrastructure. In case of update, if there is no change in cluster-type, then this field can be omitted in the request.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Details of infrastructure for the container cluster"
+    }, 
+    "network_errors": {
+      "description": "List of network errors related to container cluster.", 
+      "items": {
+        "$ref": "<A HREF="schemas_NetworkError.html">NetworkError</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Network errors", 
+      "type": "array"
+    }, 
+    "network_status": {
+      "description": "Network status of container cluster.", 
+      "enum": [
+        "HEALTHY", 
+        "UNHEALTHY"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Network status of container cluster", 
+      "type": "string"
+    }, 
+    "origin_properties": {
+      "description": "Array of additional specific properties of container cluster in key-value format.", 
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Origin properties", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "description": "Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DiscoveredResourceScope.html">DiscoveredResourceScope</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of scopes for discovered resource", 
+      "type": "array"
+    }, 
+    "supervisor_project_id": {
+      "description": "Specifies supervisor container project identifier for cluster.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Supervisor ContainerProject identifier for cluster", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "Container cluster", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

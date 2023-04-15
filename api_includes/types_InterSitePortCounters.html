@@ -1,0 +1,505 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      InterSitePortCounters (<a href="schemas_InterSitePortCounters.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title"></span>
+    <p>
+    <span class="help_detail"></span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>blocked_packets</td>
+            
+            <td>The number of blocked packets<br><br>The total number of packets blocked.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>dad_dropped_packets</td>
+            
+            <td>The number of duplicate address detected packets dropped<br><br>Number of duplicate address detected packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>destination_unsupported_dropped_packets</td>
+            
+            <td>The number of destination unsupported packets dropped<br><br>Number of packtes dropped as destination is not supported.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>dropped_packets</td>
+            
+            <td>The number of dropped packets<br><br>The total number of packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>firewall_dropped_packets</td>
+            
+            <td>The number of firewall packets dropped<br><br>Number of firewall packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>frag_needed_dropped_packets</td>
+            
+            <td>The number of fragmentation needed packets dropped<br><br>Number of fragmentation needed packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipsec_dropped_packets</td>
+            
+            <td>The number of IPSec packets dropped<br><br>Number of IPSec packets dropped</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipsec_no_sa_dropped_packets</td>
+            
+            <td>The number of IPSec no security association packets dropped<br><br>Number of IPSec no security association packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipsec_no_vti_dropped_packets</td>
+            
+            <td>The number of IPSec no VTI packets dropped<br><br>Number of IPSec packets dropped as no VTI is present.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipsec_pol_block_dropped_packets</td>
+            
+            <td>The number of IPSec policy block packets dropped<br><br>Number of IPSec policy block packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipsec_pol_err_dropped_packets</td>
+            
+            <td>The number of IPSec policy error packets dropped<br><br>Number of IPSec policy error packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ipv6_dropped_packets</td>
+            
+            <td>The number of IPV6 packets dropped<br><br>Number of IPV6 packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>kni_dropped_packets</td>
+            
+            <td>The number of kernal NIC interface packets dropped<br><br>Number of DPDK kernal NIC interface packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>l4port_unsupported_dropped_packets</td>
+            
+            <td>The number of L4 port unsupported packets dropped<br><br>Number of packets dropped due to unsupported L4 port.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>malformed_dropped_packets</td>
+            
+            <td>The number of malformed packets dropped<br><br>Number of packtes dropped as they are malformed.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>no_arp_dropped_packets</td>
+            
+            <td>The number of no ARP packets dropped<br><br>Number of no ARP packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>no_linked_dropped_packets</td>
+            
+            <td>The number of no linked packets dropped<br><br>Number of packets dropped as no linked ports are present.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>no_mem_dropped_packets</td>
+            
+            <td>The number of no memory packets dropped<br><br>Number of packets dropped due to insufficient memory.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>no_receiver_dropped_packets</td>
+            
+            <td>The number of no receiver packets dropped<br><br>Number of packets dropped due to absence of receiver.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>no_route_dropped_packets</td>
+            
+            <td>The number of no route packets dropped</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>non_ip_dropped_packets</td>
+            
+            <td>The number of non IP packets dropped<br><br>Number of non IP packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>proto_unsupported_dropped_packets</td>
+            
+            <td>The number of protocol unsupported packets dropped<br><br>Number of packets dropped as protocol is unsupported.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>redirect_dropped_packets</td>
+            
+            <td>The number of redirect packets dropped<br><br>Number of redirect packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rpf_check_dropped_packets</td>
+            
+            <td>The number of reverse-path forwarding check packets dropped<br><br>Number of reverse-path forwarding check packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>service_insert_dropped_packets</td>
+            
+            <td>The number of service insert packets dropped<br><br>Number of service insert packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>total_bytes</td>
+            
+            <td>The total number of bytes<br><br>The total number of bytes transferred.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>total_packets</td>
+            
+            <td>The total number of packets<br><br>The total number of packets transferred.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ttl_exceeded_dropped_packets</td>
+            
+            <td>The number of time to live exceeded packets dropped<br><br>Number of time to live exceeded packets dropped.</td>
+            
+            <td>integer</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

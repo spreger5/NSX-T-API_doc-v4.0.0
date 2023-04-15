@@ -1,0 +1,746 @@
+<HTML>
+<HEAD>
+<style>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+</style>
+</HEAD>
+<BODY>
+<P STYLE="margin-bottom: 0.2in">
+  <FONT COLOR="#800000">
+      Copyright &copy 2014-2022 VMware, Inc.  All rights reserved.
+      <a href="http://pubs.vmware.com/copyright-trademark.html" target="_blank">
+      Copyright and trademark information.</a>
+  </FONT>
+</P>
+<H1>NSX API Guide</H1>
+<P STYLE="font-size:120%; margin-top: 0.1in">NSX 4.0.0.1.0</P>
+<H2><A name="Overview">Overview</A></H2>
+
+<h3>Introduction</h3>
+<p>
+  NSX provides a programmatic API to automate
+  management activities.  The API follows a resource-oriented
+  Representational State Transfer (REST) architecture, using JSON
+  object encoding. Clients interact with the API using RESTful web service
+  calls over the HTTPS protocol.
+</p>
+<p>
+  Each API method is identified by a request method and URI.  Method
+  parameters are specified as key-value pairs appended to the URI.  Unless
+  otherwise noted, request and response bodies are encoded using JSON, and
+  must conform to the JSON schema associated with each method.  The content
+  type of each request and reply is "application/json" unless otherwise
+  specified.  Each request that can be made is documented in the API Methods
+  section.  The associated request and response body schemas are documented in
+  the API Schemas section.
+</p>
+<p>
+  If you provide URL-encoded UTF-8 characters in the URL of your API request,
+  you must include the header "Content-Type:charset=UTF-8" in your request.
+</p>
+
+<h3>API Policy: Changes, Deprecations and Removals</h3>
+<p>
+VMware NSX and associated firewall offerings may add
+new features in a NSX release. These new features
+may lead to additional APIs or backward compatible changes to
+existing APIs to support the new features.
+</p>
+<p>
+Changes to the API that lead to incompatibility with previous
+releases will be announced at least one year prior to the
+change. APIs or API attributes that will be removed will
+be marked "deprecated" in the API Guide. These changes
+can be implemented in either major or minor releases of NSX.
+</p>
+<p>
+NSX APIs marked as "experimental" or that are not
+documented in the NSX API Guide are not subject
+to this policy. This indicates that the API may be changed or
+removed without notice in a future NSX release.
+</p>
+<p>
+Definitions:
+<ul>
+<li>Major Release: Designated by an increment of the "x" digit of the x.y.z product version.</li>
+<li>Minor Release: Designated by an increment of the "y" digit of the x.y.z product version.</li>
+</ul>
+</p>
+
+<h3>API Data Types and Allowed Ranges</h3>
+<p>
+The NSX API uses JSON to represent API request and response payloads,
+and uses JSONSchema to describe the schema of these payloads.
+The data types are:
+<p>
+string: a sequence of UTF-8 characters. If a particular string property
+has a maximum length, it is represented in the documentation with a
+maxLength property.
+</p>
+<p>
+integer: a signed 64-bit value. Unless a minimum or maximum value is
+shown in the documentation, integer values may take on values in the
+range -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
+</p>
+<p>
+unsigned_integer: an unsigned 64-bit value. Unless a minimum or maximum value is
+shown in the documentation, integer values may take on values in the
+range 0 to 9,223,372,036,854,775,807.
+</p>
+<p>
+int: a signed 32-bit value. Unless a minimum or maximum value is
+shown in the documentation, int values may take on values in the
+range -2,147,483,648 to 2,147,483,647.
+</p>
+<p>
+number: a 64-bit floating point number. Unless a minimum or maximum value is
+shown in the documentation, number values may take on values in the
+range 4.9406564584124654 x 10<sup>-324</sup> to
+1.7976931348623157 x 10<sup>308</sup>.
+</p>
+<p>
+boolean: the values true or false. Do not use quotes when sending boolean
+values in payloads.
+</p>
+<p>
+object: a nested JSON object.
+</p>
+<p>
+array: an array of one of the above types.
+</p>
+
+
+<h3>Formats</h3>
+<p>
+Some API types have a required format, and payloads that do not conform to
+the required format will be rejected. If a property has a required format,
+it is listed in the "Notes" section in this API Guide. The following
+formats are used in NSX:
+</p>
+
+<p>
+ipv4: Must be a valid Internet Protocol version 4 address, in dotted-quad
+notation. For example, "192.168.1.232".
+</p>
+
+<p>
+ipv6: Must be a valid Internet Protocol version 6 address, as described
+in RFC 1924. For example, "2001:0db8:85a3:0000:0000:8a2e:0370:7334".
+Abbreviations are supported.
+</p>
+
+<p>
+ip: Either an ipv4 or ipv6 address.
+</p>
+
+<p>
+hostname: An internet hostname, as described in RFC 1123. For example,
+"example.com"
+</p>
+
+<p>
+ipv4-cidr-block: An ipv4 Classless Inter-Domain Routing (CIDR) block,
+expressed as a base ipv4 address, a slash, and the number of bits in the
+subnet mask. For example, "10.1.0.1/24".
+</p>
+
+<p>
+ipv6-cidr-block: An ipv6 Classless Inter-Domain Routing (CIDR) block,
+expressed as a base ipv6 address, a slash, and the number of bits in
+the subnet mask. For example, "2001:db8::/32".
+</p>
+
+<p>
+ip-cidr-block: Either an ipv4-cidr-block or an ip-v6-cidr-block.
+</p>
+
+<p>
+ipv4-address-range: A range of ipv4 addresses, expressed as a lower-bound
+ipv4 address, a dash, and an upper-bound ipv4 address. For example,
+"192.168.1.0-192.168.1.255"
+</p>
+
+<p>
+ipv6-address-range: A range of ipv6 addresses, expressed as a lower-bound
+ipv6 address, a dash, and an upper-bound ipv6 address. For example,
+"fe80::0202:b3ff:fe1e:8329-fe80::0202:b3ff:fe1e:832a"
+</p>
+
+<p>
+address-or-block-or-range: Either an ip address, an ip-cidr-block, an
+ipv4-address-range, or an ipv6-address-range.
+</p>
+
+<p>
+port-or-range: A port number (an integer in the range 0 to 65535) or a
+range of port numbers, expressed as a lower and upper port number,
+separated by a dash. Examples: "80" or "997-1023".
+</p>
+
+<p>
+hostname-or-ip: Either a hostname or an ip address.
+</p>
+
+<p>
+hostname-or-ipv4: Either a hostname or an ipv4 address.
+</p>
+
+<p>
+list-of-address-or-block-or-range: A comma-separated list
+address-or-block-or-range.
+</p>
+
+<p>
+mac-address: A Media Access Control (MAC) address. MAC addresses are six
+hexadecimal numbers, separated by either colons ":" or dashes "-". Case
+is not significant. Examples: "20:f3:75:5e:47:f0" or "20-F3-75-5E-47-F0".
+</p>
+
+<h3>Request Failures</h3>
+<p>
+  It is possible for any request to fail.  Errors are reported using standard
+  HTTP response codes.  It should be assumed the following errors could be
+  returned by any API method: 301 Moved Permanently, 307 Temporary Redirect, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 412 Precondition Failed, 429 Too Many Requests, 500 Internal Server Error, 503 Service Unavailable.  Where other errors may be
+  returned, the type of error is indicated in the API method description.  All
+  errors are documented in the API Errors section.
+
+  API requests may fail due to concurrent updates, where an API request
+  collides with another API request, and NSX cannot reconcile the
+  two operations. In that case, the client must re-fetch the resource,
+  apply the changes, and re-submit the operation.
+</p>
+<h3>Request Authentication</h3>
+<p>
+Most API calls require authentication.  This API supports
+several different authentication schemes, which are documented
+in this section. Multiple authentication schemes may not be
+used concurrently.
+</p>
+
+<h4>HTTP Basic Authentication</h4>
+<p>
+To authenticate a request using HTTP Basic authentication, the caller's
+credentials are passed using the 'Authorization' header.  The header
+content should consist of a base64-encoded string containing the username and
+password separated by a single colon (":") character, as specified in
+RFC 1945 section 11.1.
+</p>
+<p>
+For example, to authenticate a request using the credentials of
+user <span class="code">admin</span> with password
+<span class="code">admin</span>, include the following header with the
+request:
+</p>
+<div class="code_block">
+Authorization: Basic YWRtaW46YWRtaW4=
+</div>
+<p>
+The following cURL command will authenticate to the manager using basic
+authentication and will issue a GET request for logical ports:
+</p>
+<div class="code_block">
+curl -k -u USERNAME:PASSWORD https://MANAGER/api/v1/logical-ports
+</div>
+<p>
+where:<br>
+<span class="code">USERNAME</span> is the user to authenticate as,<br>
+<span class="code">PASSWORD</span> is the password to provide, and<br>
+<span class="code">MANAGER</span> is the IP address or host name of the NSX manager<br>
+</p>
+<p>
+For example:
+</p>
+<div class="code_block">
+curl -k -u admin:secretPw99 https://192.168.22.32/api/v1/logical-ports
+</div>
+<p>
+Note: the <span class="code">-k</span> argument instructs cURL to skip
+verifying the manager's self-signed X.509 certificate. It is more secure
+to verify that the server's certificate is signed by a Certificate Authority
+(CA) that you trust. To do that, omit the -k argument and use the
+--cacert &lt;ca-file&gt; option, where &lt;ca-file&gt; is a PEM-formatted
+file containing the CA certificate to trust.
+</p>
+<p>
+For example:
+</p>
+<div class="code_block">
+curl --cacert /home/me/certs/rootca.crt  -u admin:secretPw99 https://192.168.22.32/api/v1/logical-ports
+</div>
+<p>
+Additional cURL examples below use the -k flag, but you can always substitute
+the --rootca &lt;ca-file&gt; argument for additional security.
+</p>
+<p>
+In the above examples, USERNAME may be:
+<ol>
+  <li>A local user name. For example, "admin".</li>
+  <li>A remote user name, of the form "user@domain", for example,
+      "joe@example.com". The domain must match a domain for a configured
+      VIDM identity source or a configured LDAP identity source.</li>
+</ol>
+
+Note: in earlier versions of NSX, in order to authenticate to VIDM, it
+was required that you provide an authentication header of the form
+"Authorization: Remote base64-encoded-username-and-password". This is
+no longer required, but still functions for backward compatibility.
+
+<h4>Session-Based Authentication</h4>
+<p>
+Session-based authentication is used by calling the
+<span class="code">/api/session/create</span> authentication API to manage
+a session cookie.  The session cookie returned in the result of a successful
+login must be provided in subsequent requests in order to associate those
+requests with the session.
+</p>
+<p>
+Session state is local to the server responding to the API request.
+Idle sessions will automatically time-out, or can be terminated
+immediately using the <span class="code">POST /api/session/destroy</span> API.
+</p>
+
+<p>
+To obtain a session cookie, POST form data to the server using the
+application/x-ww-form-urlencoded media type, with fields "j_username" and
+"j_password" containing the username and password separated by an ampersand.
+Since an ampersand is a UNIX shell metacharacter, you may need to
+surround the argument with single quotes.
+</p>
+<p>
+If the user is a remote user, append "@domain" to the username, for
+example, "joe@example.com". The domain must match a domain for a
+configured VIDM identity source or a configured LDAP identity source.
+</p>
+<p>
+The following cURL command
+will authenticate to the server, will deposit the session cookie
+in the file "cookies.txt", and will write all HTTP response headers
+to the file headers.txt. One of these headers is the X-XSRF-TOKEN
+header that you will need to provide in subsequent requests.
+</p>
+
+
+<div class="code_block">
+curl -k -c cookies.txt -D headers.txt -X POST     -d 'j_username=USERNAME&j_password=PASSWORD'     https://MANAGER/api/session/create
+</div>
+
+<p>
+For example:
+</p>
+
+<div class="code_block">
+curl -k -c cookies.txt -D headers.txt -X POST     -d 'j_username=admin&j_password=secretPw99'     https://192.168.22.32/api/session/create
+</div>
+
+<p>
+The manager will respond with the roles and permissions granted to the user,
+and cURL will deposit the session cookie into the file "cookies.txt".
+</p>
+
+<p>
+In subsequent cURL requests, use the -b argument to specify the cookie file.
+You also need to pass the X-XSRF-TOKEN header that was saved to the
+headers.txt file, using cURL's -H option:
+</p>
+
+<div class="code_block">
+curl -k -b cookies.txt -H "`grep -i X-XSRF-TOKEN headers.txt`"     https://192.168.22.32/api/v1/logical-ports
+</div>
+
+<p>
+When the session expires, the manager will respond with a 403 Forbidden
+HTTP response, at which point you must obtain a new session cookie
+and X-XSRF-TOKEN.
+</p>
+
+<p>
+Session cookies can be destroyed by using the /api/session/destroy
+API:
+</p>
+
+<div class="code_block">
+curl -k -b cookies.txt -H "`grep -i X-XSRF-TOKEN headers.txt`"     -X POST https://MANAGER/api/session/destroy
+</div>
+
+<h4>Authentication using an X.509 certificate and a Principal
+Identity</h4>
+
+<p>
+NSX supports using an X.509 client certificate for authentication.
+The certificate is associated with a principal identity (a short
+name, similar to a username), and that principal identity
+can be bound to an NSX role. This is useful for automated
+processes or scripts that perform NSX API calls, and has
+the advantage that a user password does not need to be stored
+with the script.
+</p>
+<p>
+For information on how to import a certificate and set up a
+principal identity, see the section "Add a Role Assignment or
+Principal Identity" in the NSX Administration Guide.
+</p>
+<p>
+To use the client certificate to authenticate, your client
+must have access to the certificate and its associated private
+key. How to specify client authentication depends on the client
+you are using. For example, with curl, you use the --key argument
+to give the filename containing the private key and the
+--cert argument to give the filename containg the public
+certificate.
+</p>
+
+<h4>Authentication in VMware Cloud on AWS (VMC)</h4>
+<p>
+To make API calls to an NSX Manager in the VMware Cloud on AWS
+service (VMC), you need to gather a few pieces of information:
+</p>
+
+<ol>
+  <li>Your VMC Organization ID</li>
+  <li>Your Software Defined Data Center (SDDC) ID</li>
+  <li>Your API token</li>
+</ol>
+
+<p>
+All of this information is available in the VMC web console, <a href="https://console.cloud.vmware.com">https://console.cloud.vmware.com</a>
+</p>
+
+<p>
+In VMC, you always exchange your API token for a
+limited-duration authentication token, which you then pass in a
+header with your API calls. This authentication token is valid
+for 30 minutes. After that time, you must obtain a new
+authentication token using your API token. If you use an
+expired authentication token, the API call will be rejected.
+</p>
+
+<p>
+To obtain an authentication token, you issue a POST request to
+the URL
+https://console.cloud.vmware.com/csp/gateway/am/api/auth/api-tokens/authorize,
+passing your API token in a form. To do this with cURL:
+</p>
+
+<div class="code_block">
+curl https://console.cloud.vmware.com/csp/gateway/am/api/auth/api-tokens/authorize -d refresh_token=&lt;token&gt;
+</div>
+
+<p>
+For example, if your refresh token is
+aB1jtC5yk2rDL6A1KPxzM0W4D7OeHFUNuXFHZidufYS3fIwn60ZRag0Y9dvX15Qv, the command will be:
+</p>
+
+<div class="code_block">
+curl https://console.cloud.vmware.com/csp/gateway/am/api/auth/api-tokens/authorize -d refresh_token=aB1jtC5yk2rDL6A1KPxzM0W4D7OeHFUNuXFHZidufYS3fIwn60ZRag0Y9dvX15Qv
+</div>
+
+<p>
+You will receive a JSON response with several properties. The
+"access_token" property contains the token you will need to
+provide with your API requests. An easy way to parse this token
+out of the response is to use the "jq" utility. For example:
+</p>
+
+<div class="code_block">
+curl https://console.cloud.vmware.com/csp/gateway/am/api/auth/api-tokens/authorize -d refresh_token=aB1jtC5yk2rDL6A1KPxzM0W4D7OeHFUNuXFHZidufYS3fIwn60ZRag0Y9dvX15Qv | jq --raw-output '.access_token'
+</div>
+
+<p>
+produces just the access token. You can set an environment variable with the correct authentication header with:
+</p>
+
+<div class="code_block">
+export AUTH_HDR="csp-auth-token: `curl https://console.cloud.vmware.com/csp/gateway/am/api/auth/api-tokens/authorize -d refresh_token=aB1jtC5yk2rDL6A1KPxzM0W4D7OeHFUNuXFHZidufYS3fIwn60ZRag0Y9dvX15Qv | jq --raw-output '.access_token'`"
+</div>
+
+<p>
+The AUTH_HDR environment variable now contains the authentication
+header. The token itself will be a long string of characters and
+digits.
+</p>
+
+<p>
+Once you have your authentication token, you need to determine
+the URL for accessing the NSX manager in your SDDC. To do that,
+you issue a GET request to the endpoint
+https://vmc.vmware.com/vmc/api/orgs/&lt;org-id&gt;/sddcs/&lt;sddc-id&gt;,
+where &lt;org-id&gt; is your organization's ID and &lt;sddc-id&gt; is your
+SDDC's ID. The URL of the NSX manager will be in the
+resource_config.nsx_api_public_endpoint_url property. For
+example, if your organizations's ID is
+a003c3a5-3f68-4a8c-a74f-f79a0625da17 and your SDDC is
+449369c7-7936-4f7f-b46e-624cdb2a0a99:
+</p>
+
+<div class="code_block">
+curl -H "$AUTH_HDR" https://vmc.vmware.com/vmc/api/orgs/a003c3a5-3f68-4a8c-a74f-f79a0625da17/sddcs/449369c7-7936-4f7f-b46e-624cdb2a0a99 | jq --raw-output ".resource_config.nsx_api_public_endpoint_url"
+</div>
+
+<p>
+The output will look like:
+</p>
+
+<div class="code_block">
+https://nsx-52-41-15-143.rp.vmwarevmc.com/vmc/reverse-proxy/api/orgs/a003c3a5-3f68-4a8c-a74f-f79a0625da17/sddcs/449369c7-7936-4f7f-b46e-624cdb2a0a99/sks-nsxt-manager
+</div>
+
+<p>
+This is the URL you should use to access your NSX manager from
+the internet. Append the particular API's URL to this base URL.
+For example, to list all domains, the API is
+"/policy/api/v1/infra/domains", so the full request will look
+like the following:
+</p>
+
+<div class="code_block">
+curl -q -H "$AUTH_HDR" https://nsx-52-41-15-143.rp.vmwarevmc.com/vmc/reverse-proxy/api/orgs/a003c3a5-3f68-4a8c-a74f-f79a0625da17/sddcs/449369c7-7936-4f7f-b46e-624cdb2a0a99/sks-nsxt-manager/policy/api/v1/infra/domains
+</div>
+
+<h3>Example Requests and Responses</h3>
+<p>Example requests and responses are provided for most of the API calls below.
+Your actual response might differ from the example in the number of fields
+returned because optional empty fields are not returned when you make an API
+call.</p>
+
+<h3>Restrictions on Certain Fields in a Request</h3>
+<p>When configuring layer 2 switching, the following fields can contain any
+character except semicolon (;), vertical bar (|), equal sign (=), comma (,),
+tilde (~), and the "at" sign (@). They also have a length limitation as
+specified below:
+<ul>
+  <li>Logical switch display name. Maximum length: 80 bytes.</li>
+  <li>Host switch name in TransportZone. Maximum length: 80 bytes.</li>
+  <li>Uplink name in UplinkHostSwitchProfile. Maximum length: 47 bytes.</li>
+</ul>
+
+<h3>Optimistic Concurrency Control and the _revision property</h3>
+<h4>Overview</h4>
+<p>In order to prevent one client from overwriting another client's
+updates, NSX employs a technique called optimistic concurrency
+control.
+<p>All REST payloads contain a property named &quot;_revision&quot;.
+This is an integer that is incremented each time an existing resource
+is updated. Clients must provide this property in PUT requests
+and it must match the current _revision or the update will be
+rejected. This guards against the following situation:
+<p>
+<p>Client 1 reads resource A.
+<p>Client 2 reads resource A.
+<p>Client 1 replaces the display_name property of resource A and does
+a PUT to replace the resource.
+<p>Client 2 replaces is different property of resource A and attempts
+to perform a PUT operation.
+<p>
+<p>Without optimistic concurrency control, Client 2's update would
+overwrite Client 1's update to the display_name property. Instead,
+Client 2 receives a 409 Conflict error. To recover, Client 2 must
+fetch the resource again, apply the change, and perform a PUT.
+<h4>Exceptions for /policy APIs</h4>
+<p>APIs whose URI begins with /policy have slightly different behavior.
+For those APIs, the _revision property must <b>not</b> be set when PUT
+is used to create a new resource. Once the resource is created,
+however, the _revision property must be provided with PUT operations.
+<h4>PATCH and _revision for /policy APIs</h4>
+<p>APIs whose URI begins with /policy support the PATCH operation.
+Those APIs do not require that the _revision property be provided.
+A client can, however, request that the _revision property be
+checked when it is performing a PATCH in the /infra path. To
+do this, the client should pass the query parameter enforce_revision_check,
+e.g.  PATCH /infra?enforce_revision_check=true.
+</p>
+
+<h4>PUT Operations</h4>
+<p>
+NSX conforms to REST and HTTP standards regarding the operation of
+PUT operations. A PUT is always a full replace of a resource, and if
+any properties are omitted from the payload, those properties will
+be reset to default values. It is suggested that API clients retrieve
+the existing resource, apply any desired changes to the copy of the resource,
+and PUT the entire modified resource.
+</p>
+
+<p>
+Partial patching of objects is a feature supported by NSX that allows patching
+a subset of properties of any object. This behavior needs to be explicitly enabled.
+When partial patching is disabled (default behavior), the entire payload of object
+is expected to be provided in both PUT and PATCH operations for the /policy APIs.
+</p>
+
+<p>
+In order to perform partial patching of existing objects using PATCH operation,
+partial patching should be enabled using either one of the following approach:
+<ol type="1">
+<li><b>System-wide partial patch configuration</b><br>
+Partial patch can be enabled/disabled in the system by using the Partial Patch Config api
+(i.e. PATCH /policy/api/v1/system-config/nsx-partial-patch-config) with sample request payload.<br>
+<div class="code_block">
+{
+    "enable_partial_patch": "true"
+}
+</div>
+Default is <i>'false'</i>.<br>
+<b>Note:</b> If the API request header has <i>'nsx-enable-partial-patch'</i> parameter, then
+the header takes precedence over this system-wide configuration.
+</li>
+<li><b>Header parameter (request level configuration)</b><br>
+Partial patch can also be enabled/disabled using API request header parameter. This will override
+the system-wide configuration for a particular request.<br>
+To enable partial patch, use <i>'nsx-enable-partial-patch=true'</i><br>
+To disable partial patch, use <i>'nsx-enable-partial-patch=false'</i><br>
+If this parameter is not passed in header, the system level configuration will be considered for
+Partial Patch operation. This header parameter will be considered only for PATCH requests.
+For other requests (e.g. PUT, POST etc.), this header parameter will be ignored.
+</li>
+</ol>
+</p>
+
+<p>
+<b>Some important considerations/notes on Partial Patch:</b>
+<ol type="1">
+<li>Array properties will be replaced entirely in partial patch.</li>
+<li>If PATCH api is executed on a non-existing object, a new object will be created after performing
+all applicable validations.</li>
+<li>There are cases where properties of an object are inter-dependent on each other e.g. username
+and password, IP address and thumbprint etc. In such cases, the partial patch request expects all
+such inter-dependent fields to be provided (either all or none).</li>
+<li>Partial patch is not supported for 'Infra' object.</li>
+<li>Certain types like Labels, Security Policies (for the 'rules' attribute) and Services have special
+handling for certain attributes in PATCH request. This behavior will not be overridden by Partial Patch.
+<br>For instance, specifying rules on Security policies as a part of the PATCH invocation merges the
+specified rules with the existing rules. For full replacement of rules, PUT operation needs to be
+performed on the Security Policy.</li>
+<li>Partial patch will not work for properties accepting polymorphic types if the specified value has a
+type that is different from that of the existing value.</li>
+</ol>
+</p>
+
+<h3>API Rate Limiting</h3>
+
+<p>
+The NSX API service has three settings that control the rate
+of incoming API requests:
+</p>
+
+<p>
+1) A per-client rate limit, in requests per second. If a
+client makes more requests than this limit in one second,
+the API server will refuse to service the API request and
+will return an HTTP 429 Too Many Requests Error. By default,
+this limit is 100 requests per second.
+</p>
+
+<p>
+2) A per-client concurrency limit. This is the maximum number
+of outstanding requests that a client can have. For example,
+a client can open multiple connections to NSX and submit
+operations on each connection. When this limit is exceeded, the
+server returns a 429 Too Many Requests error to the client. By
+default, this limit is 40 concurrent requests.
+</p>
+
+<p>
+3) An overall maximum number of concurrent requests. This is
+the maximum number of API requests that can be in process on
+the server. If the server is at this limit, additional requests
+will be refused and the HTTP error 503 Service Unavailable
+will be returned to the client. By default, this limit is 199
+concurrent requests.
+</p>
+
+<p>
+The first two limits exist to provide some level of fairness
+across multiple clients of NSX, and are intended to prevent
+one greedy client from preventing other clients from making
+API requests.
+</p>
+
+<p>
+The last limit is the server's way of protecting itself against
+an unintentional (or intentional) denial of service attack.
+</p>
+
+<p>
+While it is possible to configure these rate limits using the
+/api/v1/node/services/http API, it is not recommended. Instead,
+you should design your API client to gracefully deal with
+situations where limits are exceeded.
+</p>
+
+<h4>Designing API client code to work gracefully with rate limits</h4>
+
+<p>
+One approach is to build in throttling into the client code so
+that it never sends more than 100 requests in a given second and
+that it never has more than 40 concurrent requests in flight.
+</p>
+
+<p>
+However, there isn't any way to ensure that the overall
+concurrency limits are never hit. That is because there may
+be other clients calling APIs, driving up the load on the
+server. API clients need to check for the HTTP error 503
+Service Unavailable. In the event a 503 error is received,
+the simplest strategy is to insert a delay, possibly with an
+exponential backoff in the event that server load is high.
+</p>
+
+<p>
+There are open-source libraries than can help you
+implement this retry/backoff behavior, such as Google's
+Retry helper in its Python google-api-core library. For
+an example of using this library with the NSX APIs, see
+https://github.com/vmware-samples/nsx-t/blob/master/python/basics/rate-limits.py
+</p>
+
+<h3>OpenAPI Specification of NSX APIs</h3>
+<p>You can download OpenAPI specifications for the various NSX APIs
+at the following URLs:
+<p>
+
+NSX Manager API:<br>
+APIs for NSX administration; node and cluster management APIs and
+fabric management APIs for on-premise customers.
+<ul>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_api.yaml</li>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_api.json</li>
+</ul>
+NSX Policy Manager API:<br>
+APIs for managing logical networking in NSX for on-premise customers.
+<ul>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_policy_api.yaml</li>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_policy_api.json</li>
+</ul>
+NSX VMC Policy API:<br>
+APIs for managing logical networking in NSX for VMware Cloud customers.
+<ul>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_vmc_policy_api.yaml</li>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_vmc_policy_api.json</li>
+</ul>
+NSX VMC AWS Integration API:<br>
+APIs for managing AWS underlay networking for VMware Cloud customers.
+<ul>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_vmc_aws_integration_api.yaml</li>
+  <li>GET https://&lt;nsx-mgr&gt;/api/v1/spec/openapi/nsx_vmc_aws_integration_api.json</li>
+</ul>
+

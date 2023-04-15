@@ -1,0 +1,100 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IntelligenceFlowPrivateIpPrefixInfo.html">IntelligenceFlowPrivateIpPrefixInfo</a> (<a href="types_IntelligenceFlowPrivateIpPrefixInfo.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "description": "This is deprecated. Please use CommonAgentPrivateIpRangeInfo instead. An IP prefix to mark the private network that NSX-Intelligence network flow is collected from.", 
+  "id": "IntelligenceFlowPrivateIpPrefixInfo", 
+  "module_id": "NsxIntelligenceHostConfiguration", 
+  "properties": {
+    "address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "The prefix of IP address that marks the range of private network.", 
+      "required": true, 
+      "title": "IP address"
+    }, 
+    "address_type": {
+      "description": "The type of IP address.", 
+      "enum": [
+        "IPV4", 
+        "IPV6"
+      ], 
+      "required": true, 
+      "title": "IP address type", 
+      "type": "string"
+    }, 
+    "prefix_length": {
+      "description": "The length of IP address prefix that marks the range of private network.", 
+      "maximum": 128, 
+      "minimum": 1, 
+      "required": true, 
+      "title": "IP prefix length", 
+      "type": "integer"
+    }
+  }, 
+  "title": "NSX-Intelligence flow private IP prefix", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

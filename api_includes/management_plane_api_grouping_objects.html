@@ -1,0 +1,1086 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_grouping_objects.html' style='text-decoration: none'> Grouping Objects</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List IPSets</h4><br>
+                      <span class="help_detail">Returns paginated list of IPSets.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSets.html">GET /api/v1/ip-sets</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create IPSet</h4><br>
+                      <span class="help_detail">Creates a new IPSet that can group either IPv4 or IPv6 individual ip addresses,
+<br>
+ranges or subnets.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIPSet.html">POST /api/v1/ip-sets</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSet</h4><br>
+                      <span class="help_detail">Deletes the specified IPSet.  By default, if the IPSet is added to an
+<br>
+NSGroup, it won't be deleted. In such situations, pass "force=true" as
+<br>
+query param to force delete the IPSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPSet.html">DELETE /api/v1/ip-sets/&lt;ip-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read IPSet</h4><br>
+                      <span class="help_detail">Returns information about the specified IPSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPSet.html">GET /api/v1/ip-sets/&lt;ip-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a IP address to a IPSet</h4><br>
+                      <span class="help_detail">Add/Remove an individual IP address to an IPSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRemoveIPAddress.html">POST /api/v1/ip-sets/&lt;ip-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update IPSet</h4><br>
+                      <span class="help_detail">Updates the specified IPSet. Modifiable parameters include description,
+<br>
+display_name and ip_addresses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIPSet.html">PUT /api/v1/ip-sets/&lt;ip-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all IPAddresses in a IPSet</h4><br>
+                      <span class="help_detail">List all IP addresses in a IPSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPAddresses.html">GET /api/v1/ip-sets/&lt;ip-set-id&gt;/members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List MACSets</h4><br>
+                      <span class="help_detail">Returns paginated list of MACSets.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListMACSets.html">GET /api/v1/mac-sets</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create MACSet</h4><br>
+                      <span class="help_detail">Creates a new MACSet that can group individual MAC addresses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateMACSet.html">POST /api/v1/mac-sets</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete MACSet</h4><br>
+                      <span class="help_detail">Deletes the specified MACSet. By default, if the MACSet is added to an
+<br>
+NSGroup, it won't be deleted. In such situations, pass "force=true" as
+<br>
+query param to force delete the MACSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteMACSet.html">DELETE /api/v1/mac-sets/&lt;mac-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read MACSet</h4><br>
+                      <span class="help_detail">Returns information about the specified MACSet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadMACSet.html">GET /api/v1/mac-sets/&lt;mac-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update MACSet</h4><br>
+                      <span class="help_detail">Updates the specified MACSet. Modifiable parameters include the
+<br>
+description, display_name and mac_addresses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateMACSet.html">PUT /api/v1/mac-sets/&lt;mac-set-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get all MACAddresses in a MACSet</h4><br>
+                      <span class="help_detail">List all MAC addresses in a MACSet
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMACAddresses.html">GET /api/v1/mac-sets/&lt;mac-set-id&gt;/members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a MAC address to a MACSet</h4><br>
+                      <span class="help_detail">Add an individual MAC address to a MACSet
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddMACAddress.html">POST /api/v1/mac-sets/&lt;mac-set-id&gt;/members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove a MAC address from given MACSet</h4><br>
+                      <span class="help_detail">Remove an individual MAC address from a MACSet
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveMACAddress.html">DELETE /api/v1/mac-sets/&lt;mac-set-id&gt;/members/&lt;mac-address&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NSGroups</h4><br>
+                      <span class="help_detail">List the NSGroups in a paginated format. The page size is restricted
+<br>
+to 50 NSGroups so that the size of the response remains small even
+<br>
+in the worst case.
+<br>
+Optionally, specify valid member types as request parameter to filter NSGroups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSGroups.html">GET /api/v1/ns-groups</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create NSGroup</h4><br>
+                      <span class="help_detail">Creates a new NSGroup that can group NSX resources - VIFs, Lports
+<br>
+and LSwitches as well as the grouping objects - IPSet, MACSet and other
+<br>
+NSGroups.
+<br>
+For NSGroups containing VM criteria(both static and dynamic), system VMs will
+<br>
+not be included as members. This filter applies at VM level only.
+<br>
+Exceptions are as follows:
+<br>
+1. LogicalPorts and VNI of System VMs will be included in NSGroup if the criteria
+<br>
+ is based on LogicalPort, LogicalSwitch or VNI directly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNSGroup.html">POST /api/v1/ns-groups</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NSGroup</h4><br>
+                      <span class="help_detail">Deletes the specified NSGroup. By default, if the NSGroup is added to
+<br>
+another NSGroup, it won't be deleted. In such situations, pass
+<br>
+"force=true" as query param to force delete the NSGroup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNSGroup.html">DELETE /api/v1/ns-groups/&lt;ns-group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSGroup</h4><br>
+                      <span class="help_detail">Returns information about the specified NSGroup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSGroup.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add NSGroup expression</h4><br>
+                      <span class="help_detail">Add/remove the expressions passed in the request body to/from the NSGroup
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddOrRemoveNSGroupExpression.html">POST /api/v1/ns-groups/&lt;ns-group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSGroup</h4><br>
+                      <span class="help_detail">Updates the specified NSGroup. Modifiable parameters include the
+<br>
+description, display_name and members.
+<br>
+For NSGroups containing VM criteria(both static and dynamic), system VMs will
+<br>
+not be included as members. This filter applies at VM level only.
+<br>
+Exceptions are as follows.
+<br>
+1. LogicalPorts and VNI of system VMs will be included in NSGroup if the criteria
+<br>
+ is based on LogicalPort, LogicalSwitch or VNI directly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNSGroup.html">PUT /api/v1/ns-groups/&lt;ns-group-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get consolidated Effective IPAddress translated from the NSGroup</h4><br>
+                      <span class="help_detail">Returns consolidated effective ip address members of the specified NSGroup.
+<br>
+Applicable in case of federated environment. The response contains site-wise list of
+<br>
+consolidated effective IP address members. In the response, for the local-site, the
+<br>
+list will contain static and dynamicaly translated IPs. For the remote sites,
+<br>
+the list will contain only the dynamically translated IPs. The static IPs will not be
+<br>
+seen in the response of this API. Hence, user can refer to the local-site Ip response
+<br>
+in the API results or the group definition to see the static IP membership of the Group.
+<br>
+This API is applicable only for NSGroups containing either
+<br>
+VirtualMachine, VIF, LogicalSwitch, LogicalPort or IPSet member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+Use the cursor value in the response to fetch the next page.
+<br>
+If there is no cursor value for a response, it implies the last page in the results
+<br>
+for the query.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetConsolidatedEffectiveIPAddressMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/consolidated-effective-ip-address-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective Cloud Native Service Instances of the specified NSGroup.</h4><br>
+                      <span class="help_detail">Returns effective cloud native service instances of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing CloudNativeServiceInstance member type.
+<br>
+For NSGroups containing other member types,it returns an empty list. target_id in response
+<br>
+is external_id of CloudNativeServiceInstance
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveCloudNativeServiceInstances.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-cloud-native-service-instance-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective Directory Groups of the specified NSGroup.</h4><br>
+                      <span class="help_detail">Returns effective directory groups which are members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing DirectoryGroup member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveActiveDirectoryGroups.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-directory-group-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective IPAddress translated from the NSGroup</h4><br>
+                      <span class="help_detail">Returns effective ip address members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing either
+<br>
+VirtualMachine, VIF, LogicalSwitch, LogicalPort or IPSet member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveIPAddressMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-ip-address-members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective IPSets of the specified NSGroup.</h4><br>
+                      <span class="help_detail">Returns effective IPSets which are members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing IPSet member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveIPSetMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-ipset-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective Logical Ports translated from the NSgroup</h4><br>
+                      <span class="help_detail">Returns effective logical port members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing either VirtualMachines,
+<br>
+LogicalSwitch or LogicalPort member types.For NSGroups containing other
+<br>
+member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveLogicalPortMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-logical-port-members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective switch members translated from the NSGroup</h4><br>
+                      <span class="help_detail">Returns effective logical switch members of the specified NSGroup.
+<br>
+This API is applicable for NSGroups containing LogicalSwitch members.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveLogicalSwitchMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-logical-switch-members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective Physical Server Memebers of the specified NSGroup.</h4><br>
+                      <span class="help_detail">Returns effective physical server members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing Physical Server member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectivePhysicalServerMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-physical-server-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get effective transport node members translated from the NSGroup</h4><br>
+                      <span class="help_detail">Returns effective transport node members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing TransportNode member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveTransportNodeMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-transport-node-members</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get effective VIF members translated from the NSGroup</h4><br>
+                      <span class="help_detail">Returns effective VIF members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing either
+<br>
+VirtualMachines or VIF member type. For NSGroups containing other
+<br>
+member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveVIFMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-vif-members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Effective Virtual Machine members of the specified NSGroup.</h4><br>
+                      <span class="help_detail">Returns effective virtual machine members of the specified NSGroup.
+<br>
+This API is applicable only for NSGroups containing VirtualMachine member type.
+<br>
+For NSGroups containing other member types,it returns an empty list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetEffectiveVirtualMachineMembers.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/effective-virtual-machine-members</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get member types from NSGroup</h4><br>
+                      <span class="help_detail">Returns member types for a specified NSGroup including child NSGroups.
+<br>
+This considers static members and members added via membership criteria only
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMemberTypes.html">GET /api/v1/ns-groups/&lt;ns-group-id&gt;/member-types</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get services to which the given nsgroup belongs to
+</h4><br>
+                      <span class="help_detail">Returns information about services that are associated with the given NSGroup.
+<br>
+The service name is passed by service_type parameter
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetServiceAssociations.html">GET /api/v1/ns-groups/&lt;nsgroup-id&gt;/service-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the list of all the virtual machines that are not a part of any existing NSGroup.</h4><br>
+                      <span class="help_detail">Get the list of all the virtual machines that are not a part of any existing NSGroup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetUnassociatedVirtualMachines.html">GET /api/v1/ns-groups/unassociated-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NSProfiles</h4><br>
+                      <span class="help_detail">List the NSProfiles created in a paginated format.The page size is restricted
+<br>
+to 50 NSProfiles, so that the size of the response remains small even
+<br>
+when there are high number of NSProfiles with multiple attributes and
+<br>
+multiple attribute values for each attribute.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSProfiles.html">GET /api/v1/ns-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create NSProfile</h4><br>
+                      <span class="help_detail">Creates a new NSProfile which allows users to encapsulate attribute and
+<br>
+sub-attributes of network services.
+<br>
+Rules for using attributes and sub-attributes in single NSProfile
+<br>
+1. One type of attribute can't have multiple occurrences. ( Example -
+<br>
+ Attribute type APP_ID can be used only once per NSProfile.)
+<br>
+2. Values for an attribute are mentioned as array of strings.
+<br>
+ ( Example - For type APP_ID , values can be mentioned as ["SSL","FTP"].)
+<br>
+3. If sub-attribtes are mentioned for an attribute, then only single
+<br>
+ value is allowed for that attribute.
+<br>
+4. To get a list of supported
+<br>
+ attributes and sub-attributes fire the following REST API
+<br>
+ GET https://&lt;nsx-mgr&gt;/api/v1/ns-profiles/attributes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNSProfile.html">POST /api/v1/ns-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NSProfile</h4><br>
+                      <span class="help_detail">Deletes the specified NSProfile. By default, if the NSProfile is
+<br>
+consumed in a Firewall rule, it won't get deleted. In such
+<br>
+situations, pass "force=true" as query param to force delete
+<br>
+the NSProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNSProfile.html">DELETE /api/v1/ns-profiles/&lt;ns-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSProfile</h4><br>
+                      <span class="help_detail">Returns information about the specified NSProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSProfile.html">GET /api/v1/ns-profiles/&lt;ns-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSProfile</h4><br>
+                      <span class="help_detail">Updates the specified NSProfile.
+<br>
+Rules for using attributes and sub-attributes in single NSProfile
+<br>
+1. One type of attribute can't have multiple occurrences. ( Example -
+<br>
+ Attribute type APP_ID can be used only once per NSProfile.)
+<br>
+2. Values for an attribute are mentioned as array of strings.
+<br>
+ ( Example - For type APP_ID , values can be mentioned as ["SSL","FTP"].)
+<br>
+3. If sub-attribtes are mentioned for an attribute, then only single
+<br>
+ value is allowed for that attribute.
+<br>
+4. To get a list of supported
+<br>
+ attributes and sub-attributes fire the following REST API
+<br>
+ GET https://&lt;nsx-mgr&gt;/api/v1/ns-profiles/attributes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNSProfile.html">PUT /api/v1/ns-profiles/&lt;ns-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NSProfile supported attribute types</h4><br>
+                      <span class="help_detail">Returns supported attribute type strings for NSProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSSupportedAttributesTypes.html">GET /api/v1/ns-profiles/attribute-types</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NSProfile supported attribute and sub-attributes</h4><br>
+                      <span class="help_detail">Returns supported attribute and sub-attributes for specified
+<br>
+attribute type with their supported values, if provided in query/request
+<br>
+parameter, else will fetch all supported attribute and sub-attributes for
+<br>
+all supported attribute types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSSupportedAttributes.html">GET /api/v1/ns-profiles/attributes</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all NSServiceGroups</h4><br>
+                      <span class="help_detail">Returns paginated list of NSServiceGroups
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSServiceGroups.html">GET /api/v1/ns-service-groups</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create NSServiceGroup</h4><br>
+                      <span class="help_detail">Creates a new NSServiceGroup which can contain NSServices.
+<br>
+A given NSServiceGroup can contain either only ether type of NSServices
+<br>
+or only non-ether type of NSServices, i.e. an NSServiceGroup cannot
+<br>
+contain a mix of both ether and non-ether types of NSServices.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNSServiceGroup.html">POST /api/v1/ns-service-groups</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NSServiceGroup</h4><br>
+                      <span class="help_detail">Deletes the specified NSServiceGroup. By default, if the NSServiceGroup is
+<br>
+consumed in a Firewall rule, it won't get deleted. In such situations, pass
+<br>
+"force=true" as query param to force delete the NSServiceGroup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNSServiceGroup.html">DELETE /api/v1/ns-service-groups/&lt;ns-service-group-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSServiceGroup</h4><br>
+                      <span class="help_detail">Returns information about the specified NSServiceGroup
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSServiceGroup.html">GET /api/v1/ns-service-groups/&lt;ns-service-group-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSServiceGroup</h4><br>
+                      <span class="help_detail">Updates the specified NSService. Modifiable parameters include the description,
+<br>
+display_name and members.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNSServiceGroup.html">PUT /api/v1/ns-service-groups/&lt;ns-service-group-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all NSServices</h4><br>
+                      <span class="help_detail">Returns paginated list of NSServices
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSServices.html">GET /api/v1/ns-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create NSService</h4><br>
+                      <span class="help_detail">Creates a new NSService which allows users to specify characteristics to use
+<br>
+for matching network traffic.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNSService.html">POST /api/v1/ns-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NSService</h4><br>
+                      <span class="help_detail">Deletes the specified NSService. By default, if the NSService is being
+<br>
+referred in an NSServiceGroup, it can't be deleted. In such situations,
+<br>
+pass "force=true" as a parameter to force delete the NSService. System
+<br>
+defined NSServices can't be deleted using "force" flag.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNSService.html">DELETE /api/v1/ns-services/&lt;ns-service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSService</h4><br>
+                      <span class="help_detail">Returns information about the specified NSService
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSService.html">GET /api/v1/ns-services/&lt;ns-service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NSService</h4><br>
+                      <span class="help_detail">Updates the specified NSService. Modifiable parameters include the description,
+<br>
+display_name and the NSService element. The system defined NSServices can't be
+<br>
+modified
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNSService.html">PUT /api/v1/ns-services/&lt;ns-service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

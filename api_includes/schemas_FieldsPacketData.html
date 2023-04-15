@@ -1,0 +1,149 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FieldsPacketData.html">FieldsPacketData</a> (<a href="types_FieldsPacketData.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_PacketData.html">PacketData</A>
+  }, 
+  "id": "FieldsPacketData", 
+  "module_id": "Traceflow", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "FieldsPacketData"
+  }, 
+  "properties": {
+    "arp_header": {
+      "$ref": "<A HREF="schemas_ArpHeader.html">ArpHeader</A>, 
+      "required": false, 
+      "title": "The ARP header"
+    }, 
+    "eth_header": {
+      "$ref": "<A HREF="schemas_EthernetHeader.html">EthernetHeader</A>, 
+      "required": false, 
+      "title": "The ethernet header"
+    }, 
+    "frame_size": {
+      "default": 128, 
+      "description": "If the requested frame_size is too small (given the payload and traceflow metadata requirement of 16 bytes), the traceflow request will fail with an appropriate message.  The frame will be zero padded to the requested size.", 
+      "maximum": 1000, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Requested total size of the (logical) packet in bytes", 
+      "type": "integer"
+    }, 
+    "ip_header": {
+      "$ref": "<A HREF="schemas_Ipv4Header.html">Ipv4Header</A>, 
+      "required": false, 
+      "title": "The IPv4 header"
+    }, 
+    "ipv6_header": {
+      "$ref": "<A HREF="schemas_Ipv6Header.html">Ipv6Header</A>, 
+      "required": false, 
+      "title": "The IPv6 header"
+    }, 
+    "payload": {
+      "description": "Up to 1000 bytes of payload may be supplied (with a base64-encoded length of 1336 bytes.) Additional bytes of traceflow metadata will be appended to the payload. The payload contains any data the user wants to put after the transport header.", 
+      "maxLength": 1336, 
+      "required": false, 
+      "title": "RFC3548 compatible base64-encoded payload", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "default": "FieldsPacketData", 
+      "enum": [
+        "BinaryPacketData", 
+        "FieldsPacketData"
+      ], 
+      "required": true, 
+      "title": "Packet configuration", 
+      "type": "string"
+    }, 
+    "routed": {
+      "required": false, 
+      "title": "A flag, when set true, indicates that the traceflow packet is of L3 routing.", 
+      "type": "boolean"
+    }, 
+    "transport_header": {
+      "$ref": "<A HREF="schemas_TransportProtocolHeader.html">TransportProtocolHeader</A>, 
+      "description": "This field contains a protocol that is above IP. It is not restricted to the 'transport' defined by the OSI model (e.g., ICMP is supported).", 
+      "required": false, 
+      "title": "The transport header"
+    }, 
+    "transport_type": {
+      "default": "UNICAST", 
+      "description": "This type takes effect only for IP packet.", 
+      "enum": [
+        "BROADCAST", 
+        "UNICAST", 
+        "MULTICAST", 
+        "UNKNOWN"
+      ], 
+      "required": false, 
+      "title": "transport type of the traceflow packet", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,588 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      LbHttpProfile (<a href="schemas_LbHttpProfile.html">schema</a>)
+        <span class="deprecated">(Deprecated)</span>
+    </h3>
+    <p>
+    <span class="api_object_title"></span>
+    <p>
+    <span class="help_detail">The object is deprecated as NSX-T Load Balancer is deprecated.
+<br>
+</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>http_redirect_to</td>
+            
+            <td>http redirect static URL<br><br>If a website is temporarily down or has moved, incoming requests
+<br>
+for that virtual server can be temporarily redirected to a URL
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>http_redirect_to_https</td>
+            
+            <td>flag to indicate whether enable HTTP-HTTPS redirect<br><br>Certain secure applications may want to force communication over SSL,
+<br>
+but instead of rejecting non-SSL connections, they may choose to
+<br>
+redirect the client automatically to use SSL.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>idle_timeout</td>
+            
+            <td>HTTP application idle timeout in seconds<br><br>It is used to specify the HTTP application idle timeout, it means that
+<br>
+how long the load balancer will keep the connection idle to wait for
+<br>
+the client to send the next keep-alive request. It is not a TCP socket
+<br>
+setting.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 5400<br>Default: "15"</td>
+          </tr>
+          <tr>
+            <td>ntlm</td>
+            
+            <td>NTLM support flag<br><br>NTLM is an authentication protocol that can be used over HTTP. If the
+<br>
+flag is set to true, LB will use NTLM challenge/response methodology.
+<br>
+This property is deprecated. Please use the property server_keep_alive
+<br>
+in order to keep the backend server connection alive for the client
+<br>
+connection.
+<br>
+When create a new profile, if both ntlm and server_keep_alive are set
+<br>
+as different values, ERROR will be reported.
+<br>
+When update an existing profile, if either ntlm or server_keep_alive
+<br>
+value is changed, both of them are updated with the changed value.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span></td>
+          </tr>
+          <tr>
+            <td>request_body_size</td>
+            
+            <td>Maximum size of the buffer used to store HTTP request body<br><br>If it is not specified, it means that request body size is unlimited.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647</td>
+          </tr>
+          <tr>
+            <td>request_header_size</td>
+            
+            <td>Maximum size of the buffer used to store HTTP request headers<br><br>A request with header equal to or below this size is guaranteed to be
+<br>
+processed. A request with header larger than request_header_size will
+<br>
+be processed up to 32K bytes on best effort basis.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Default: "1024"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbHttpProfile</b></td>
+            
+            <td><a href="types_ApplicationProfileType.html">ApplicationProfileType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>response_buffering</td>
+            
+            <td>Enable or disable buffering of responses<br><br>When buffering is disabled, the response is passed to a client
+<br>
+synchronously, immediately as it is received.
+<br>
+When buffering is enabled, LB receives a response from the backend
+<br>
+server as soon as possible, saving it into the buffers.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>response_header_size</td>
+            
+            <td>Maximum size of the buffer used to store HTTP response headers<br><br>A response with header larger than response_header_size will be dropped.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 65536<br>Default: "4096"</td>
+          </tr>
+          <tr>
+            <td>response_timeout</td>
+            
+            <td>Maximum server idle time in seconds<br><br>If server doesn't send any packet within this time, the connection is closed.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "60"</td>
+          </tr>
+          <tr>
+            <td>server_keep_alive</td>
+            
+            <td>Server keep-alive flag<br><br>If server_keep_alive is true, it means the backend connection will keep
+<br>
+alive for the client connection. Every client connection is tied 1:1
+<br>
+with the corresponding server-side connection.
+<br>
+If server_keep_alive is false, it means the backend connection won't
+<br>
+keep alive for the client connection. The default value is false.
+<br>
+If server_keep_alive is not specified for API input, its value in API
+<br>
+output will be the same with the property ntlm.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>x_forwarded_for</td>
+            
+            <td>insert or replace x_forwarded_for<br><br>When X-Forwareded-For is configured, X-Forwarded-Proto and
+<br>
+X-Forwarded-Port information is added automatically. The two additional
+<br>
+header information can be also modified or deleted in load balancer
+<br>
+rules.
+<br>
+</td>
+            
+            <td><a href="types_XForwardedForType.html">XForwardedForType</a></td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

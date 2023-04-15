@@ -1,0 +1,137 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdfwUserSessionData.html">IdfwUserSessionData</a> (<a href="types_IdfwUserSessionData.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Identity Firewall user session data on a client machine (typically a VM). Multiple entries for the same user can be returned if the user logins to multiple sessions on the same VM.", 
+  "id": "IdfwUserSessionData", 
+  "module_id": "IdentityFirewall", 
+  "properties": {
+    "domain_name": {
+      "description": "AD Domain of user.", 
+      "required": true, 
+      "title": "AD Domain", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "Identifier of user session data.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "User session data Identifier", 
+      "type": "string"
+    }, 
+    "login_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Login time.", 
+      "required": true, 
+      "title": "Login time"
+    }, 
+    "logout_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Logout time if applicable.  An active user session has no logout time. Non-active user session is stored (up to last 5 most recent entries) per VM and per user.", 
+      "required": false, 
+      "title": "Logout time if applicable"
+    }, 
+    "session_source": {
+      "description": "User session source can be one of:   - GI (Guest Introspection)   - ELS (AD Event log server)   - LI (Log Insight)", 
+      "enum": [
+        "GI", 
+        "ELS", 
+        "LI"
+      ], 
+      "readonly": true, 
+      "title": "Source for the user session", 
+      "type": "string"
+    }, 
+    "user_id": {
+      "description": "AD user ID (may not exist).", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AD user ID (may not exist)", 
+      "type": "string"
+    }, 
+    "user_name": {
+      "description": "AD user name.", 
+      "required": true, 
+      "title": "AD user name", 
+      "type": "string"
+    }, 
+    "user_session_id": {
+      "description": "User session ID.  This also indicates whether this is VDI / RDSH.", 
+      "required": true, 
+      "title": "User session ID", 
+      "type": "int"
+    }, 
+    "vm_ext_id": {
+      "description": "Virtual machine (external ID or BIOS UUID) where login/logout events occurred.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Virtual machine external ID or BIOS UUID", 
+      "type": "string"
+    }
+  }, 
+  "title": "Identity Firewall user session data on client machine", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

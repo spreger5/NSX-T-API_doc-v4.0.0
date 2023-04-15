@@ -1,0 +1,102 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IntelligenceClusterNodeVMDeploymentRequest.html">IntelligenceClusterNodeVMDeploymentRequest</a> (<a href="types_IntelligenceClusterNodeVMDeploymentRequest.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Contains the deployment information for a NSX-Intelligence node VM.", 
+  "id": "IntelligenceClusterNodeVMDeploymentRequest", 
+  "module_id": "NsxIntelligenceDeployment", 
+  "properties": {
+    "deployment_config": {
+      "$ref": "<A HREF="schemas_IntelligenceClusterNodeVMDeploymentConfig.html">IntelligenceClusterNodeVMDeploymentConfig</A>, 
+      "description": "Info needed to configure a NSX-Intelligence cluster node VM at deployment for a specific platform.", 
+      "required": true, 
+      "title": "Deployment config for NSX-Intelligence cluster node VM"
+    }, 
+    "form_factor": {
+      "$ref": "<A HREF="schemas_IntelligenceClusterNodeVMFormFactor.html">IntelligenceClusterNodeVMFormFactor</A>, 
+      "default": "SMALL", 
+      "description": "Specifies the desired \"size\" of the VM", 
+      "required": false, 
+      "title": "Form factor for NSX-Intelligence VMs"
+    }, 
+    "user_settings": {
+      "$ref": "<A HREF="schemas_NodeUserSettings.html">NodeUserSettings</A>, 
+      "description": "Username and password settings for the NSX-Intelligence node VM. Passwords must be at least 12 characters in length and contain at least one lowercase, one uppercase, one numerical, and one special character. Note: These settings will be honored only during VM deployment. Post-deployment, CLI must be used for changing the user settings and changes to these parameters will not have any effect.", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "User settings for the VM"
+    }, 
+    "vm_id": {
+      "description": "ID of the VM maintained internally. Note: This is automatically generated and cannot be modified.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ID of VM used to recognize it", 
+      "type": "string"
+    }
+  }, 
+  "title": "Info for NSX-Intelligence node deployment request", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PointDefinition.html">PointDefinition</a> (<a href="types_PointDefinition.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Defines the point of a graph.", 
+  "id": "PointDefinition", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "drilldown_id": {
+      "description": "Id of drilldown widget, if any. Id should be a valid id of an existing widget. A widget is considered as drilldown widget when it is associated with any other widget and provides more detailed information about any data item from the parent widget.", 
+      "title": "Id of drilldown widget", 
+      "type": "string"
+    }, 
+    "field": {
+      "description": "An expression that represents the points of the graph", 
+      "required": true, 
+      "title": "Expression for points of the graph", 
+      "type": "string"
+    }, 
+    "navigation": {
+      "description": "Hyperlink of the specified UI page that provides details.", 
+      "maxLength": 1024, 
+      "title": "Navigation to a specified UI page", 
+      "type": "string"
+    }, 
+    "tooltip": {
+      "description": "Multi-line text to be shown on tooltip while hovering over the point of a graph.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tooltip.html">Tooltip</A>
+      }, 
+      "minItems": 0, 
+      "title": "Multi-line tooltip", 
+      "type": "array"
+    }, 
+    "x_value": {
+      "description": "Represents the variable for the X value of points that are plotted on the graph.", 
+      "required": true, 
+      "title": "Variable chosen for X value of the point of the graph", 
+      "type": "string"
+    }, 
+    "y_value": {
+      "description": "Represents the variable for the Y value of points that are plotted on the graph.", 
+      "required": true, 
+      "title": "Variable chosen for Y value of the point of the graph", 
+      "type": "string"
+    }
+  }, 
+  "title": "Definition of a point of graph", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

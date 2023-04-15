@@ -1,0 +1,240 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_global_configurations.html' style='text-decoration: none'> Global Configurations</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List all Central Node Config profiles</h4><br>
+                      <span class="help_detail">Returns list of all Central Node Config profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListCentralNodeConfigProfiles.html">GET /api/v1/configs/central-config/node-config-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Configure Node Config profile</h4><br>
+                      <span class="help_detail">Updates properties in the specified Central Node Config profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateCentralNodeConfigProfile.html">PUT /api/v1/configs/central-config/node-config-profiles/&lt;node-config-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Central Node Config profile</h4><br>
+                      <span class="help_detail">Returns properties in specified Central Node Config profile. Sensitive data
+<br>
+(like SNMP v2c community strings) are included only if query parameter
+<br>
+"show_sensitive_data" is true.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadCentralNodeConfigProfile.html">GET /api/v1/configs/central-config/node-config-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List global configurations of a NSX domain</h4><br>
+                      <span class="help_detail">Returns global configurations of a NSX domain grouped by the config types.
+<br>
+These global configurations are valid across NSX domain for their respective
+<br>
+types unless they are overridden by a more granular configurations.
+<br>
+This rest routine is deprecated, and will be removed after a year.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGlobalConfigs.html">GET /api/v1/global-configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get global configs for a config type</h4><br>
+                      <span class="help_detail">Returns global configurations that belong to the config type.
+<br>
+This rest routine is deprecated, and will be removed after a year.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGlobalConfigs.html">GET /api/v1/global-configs/&lt;config-type&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resyncs global configurations of a config-type</h4><br>
+                      <span class="help_detail">It is similar to update global configurations but this request would trigger
+<br>
+update even if the configs are unmodified. However, the realization of the
+<br>
+new configurations is config-type specific. Refer to config-type
+<br>
+specific documentation for details about the configuration push state.
+<br>
+This rest routine is deprecated, and will be removed after a year.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResyncGlobalConfigs.html">PUT /api/v1/global-configs/&lt;config-type&gt;?action=resync_config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update global configurations of a config type</h4><br>
+                      <span class="help_detail">Updates global configurations that belong to a config type. The request must
+<br>
+include the updated values along with the unmodified values. The values that
+<br>
+are updated(different) would trigger update to config-type specific state.
+<br>
+However, the realization of the new configurations is config-type specific.
+<br>
+Refer to config-type specific documentation for details about the config-
+<br>
+uration push state.
+<br>
+This rest routine is deprecated, and will be removed after a year.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateGlobalConfigs.html">PUT /api/v1/global-configs/&lt;config-type&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

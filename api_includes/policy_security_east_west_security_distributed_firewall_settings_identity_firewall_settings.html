@@ -1,0 +1,235 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_east_west_security.html' style='text-decoration: none'> East West Security</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall.html' style='text-decoration: none'> Distributed Firewall</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings_identity_firewall_settings.html' style='text-decoration: none'> Identity Firewall Settings</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List compute cluster idfw Configuration</h4><br>
+                      <span class="help_detail">API will list all compute cluster wise identity firewall configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListComputeClusterIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Delete compute cluster identity firewall configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteComputeClusterIdfwConfiguration.html">DELETE /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Read compute cluster identity firewall configuration
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetComputeClusterIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Patch compute cluster identity firewall configuration.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchComputeClusterIdfwConfiguration.html">PATCH /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update compute cluster idfw configuration</h4><br>
+                      <span class="help_detail">Update the compute cluster idfw configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutComputeClusterIdfwConfiguration.html">PUT /policy/api/v1/infra/settings/firewall/idfw/cluster/&lt;cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Read identity firewall configuration for standalone host
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetStandaloneHostIdfwConfiguration.html">GET /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Patch identity firewall configuration for standalone host</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchStandaloneHostIdfwConfiguration.html">PATCH /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update idfw configuration for standalone host</h4><br>
+                      <span class="help_detail">Update the idfw configuration for standalone host</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutStandaloneHostIdfwConfiguration.html">PUT /policy/api/v1/infra/settings/firewall/idfw/standalone-host-switch-setting</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Post User Login/Logout events for IDFW</h4><br>
+                      <span class="help_detail">API to receive User Login and Logout events for IDFW
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PostLoginLogoutEvents.html">POST /policy/api/v1/system/input/login-logout-events</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

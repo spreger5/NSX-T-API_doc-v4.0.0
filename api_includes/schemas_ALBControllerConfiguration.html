@@ -1,0 +1,124 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBControllerConfiguration.html">ALBControllerConfiguration</a> (<a href="types_ALBControllerConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Alb Controller config details", 
+  "id": "ALBControllerConfiguration", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "cluster_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "The cluster IP of the Advanced Load Balancer controller node cluster. This is mandatory parameter and required for single node controller deployments as well.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Cluster IP of Advanced Load Balancer controller cluster"
+    }, 
+    "dns_servers": {
+      "description": "List of DNS servers.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>
+      }, 
+      "required": false, 
+      "title": "DNS servers.", 
+      "type": "array"
+    }, 
+    "infra_admin_password": {
+      "description": "Password for the controller node admin user. For deployment, this property is required. The password specified must be at least 8 characters in length.", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "Advanced Load Balancer controller admin password", 
+      "type": "string"
+    }, 
+    "infra_admin_username": {
+      "description": "Username for server authentication.", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "Username", 
+      "type": "string"
+    }, 
+    "ntp_servers": {
+      "description": "List of NTP servers.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HostnameOrIPv4Address.html">HostnameOrIPv4Address</A>
+      }, 
+      "required": false, 
+      "title": "NTP servers.", 
+      "type": "array"
+    }, 
+    "owned_by": {
+      "description": "The policy initiates workflow by LCM/VCF", 
+      "enum": [
+        "LCM", 
+        "VCF"
+      ], 
+      "required": true, 
+      "title": "owned_by", 
+      "type": "string"
+    }
+  }, 
+  "title": "ALBControllerConfiguration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

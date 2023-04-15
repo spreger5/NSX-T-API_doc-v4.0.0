@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NDRAAdvertisedRoute.html">NDRAAdvertisedRoute</a> (<a href="types_NDRAAdvertisedRoute.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "NDRAAdvertisedRoute", 
+  "module_id": "Routing", 
+  "properties": {
+    "route_lifetime": {
+      "default": 1800, 
+      "description": "Lifetime of advertised route in seconds.", 
+      "maximum": 65520, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Lifetime of advertised route", 
+      "type": "integer"
+    }, 
+    "route_preference": {
+      "$ref": "<A HREF="schemas_NDRAPreference.html">NDRAPreference</A>, 
+      "default": "MEDIUM", 
+      "description": "NDRA Route preference. Indicates preference of the router associated with a prefix over others, when multiple identical prefixes (for different routers) have been received.", 
+      "required": false, 
+      "title": "Route preference"
+    }, 
+    "subnet": {
+      "$ref": "<A HREF="schemas_IPv6CIDRBlock.html">IPv6CIDRBlock</A>, 
+      "description": "Advertised route subnet", 
+      "required": true, 
+      "title": "Advertised route subnet"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

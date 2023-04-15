@@ -1,0 +1,86 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdentitySourceLdapServerEndpoint.html">IdentitySourceLdapServerEndpoint</a> (<a href="types_IdentitySourceLdapServerEndpoint.html">type</a>)
+</h3>
+<pre>{
+  "description": "Information about a single LDAP server endpoint.", 
+  "id": "IdentitySourceLdapServerEndpoint", 
+  "module_id": "LdapIdentitySources", 
+  "properties": {
+    "url": {
+      "description": "The URL for the LDAP server. Supported URL schemes are LDAP and LDAPS. Either a hostname or an IP address may be given, and the port number is optional and defaults to 389 for the LDAP scheme and 636 for the LDAPS scheme.", 
+      "required": true, 
+      "title": "The URL for the LDAP server", 
+      "type": "string"
+    }, 
+    "use_starttls": {
+      "default": false, 
+      "description": "If set to true, Use the StartTLS extended operation to upgrade the connection to TLS before sending any sensitive information. The LDAP server must support the StartTLS extended operation in order for this protocol to operate correctly. This option is ignored if the URL scheme is LDAPS.", 
+      "title": "Eanble/disable StartTLS", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "An LDAP server endpoint", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,1946 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_inventory.html' style='text-decoration: none'> Inventory</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Return the list of container application instance</h4><br>
+                      <span class="help_detail">Returns information about all container application instance.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerApplicationInstances.html">GET /api/v1/fabric/container-application-instances</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a container application instance</h4><br>
+                      <span class="help_detail">Returns information about a specific container application instance.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerApplicationInstance.html">GET /api/v1/fabric/container-application-instances/&lt;container-application-instance-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Container Applications</h4><br>
+                      <span class="help_detail">Returns information about all Container Applications.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerApplications.html">GET /api/v1/fabric/container-applications</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a Container Application within a container project</h4><br>
+                      <span class="help_detail">Returns information about a specific Container Application within a project.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerApplication.html">GET /api/v1/fabric/container-applications/&lt;container-application-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of container cluster nodes</h4><br>
+                      <span class="help_detail">Returns information about all container cluster nodes.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerClusterNodes.html">GET /api/v1/fabric/container-cluster-nodes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a container cluster node</h4><br>
+                      <span class="help_detail">Returns information about a specific container cluster node.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerClusterNode.html">GET /api/v1/fabric/container-cluster-nodes/&lt;container-cluster-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Container Clusters</h4><br>
+                      <span class="help_detail">Returns information about all Container Clusters.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerClusters.html">GET /api/v1/fabric/container-clusters</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a container cluster</h4><br>
+                      <span class="help_detail">Returns information about a specific container cluster</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerCluster.html">GET /api/v1/fabric/container-clusters/&lt;container-cluster-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Container Ingress Policies</h4><br>
+                      <span class="help_detail">Returns information about all ingress policies.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerIngressPolicies.html">GET /api/v1/fabric/container-ingress-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns an ingress policy spec</h4><br>
+                      <span class="help_detail">Returns information about a specific ingress policy.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerIngressPolicy.html">GET /api/v1/fabric/container-ingress-policies/&lt;ingress-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Container Network Policies</h4><br>
+                      <span class="help_detail">Returns information about all network policies.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerNetworkPolicies.html">GET /api/v1/fabric/container-network-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a network policy spec</h4><br>
+                      <span class="help_detail">Returns information about a specific network policy.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerNetworkPolicy.html">GET /api/v1/fabric/container-network-policies/&lt;network-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of container projects</h4><br>
+                      <span class="help_detail">Returns information about all container projects</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListContainerProjects.html">GET /api/v1/fabric/container-projects</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return a container project</h4><br>
+                      <span class="help_detail">Returns information about a specific project</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetContainerProject.html">GET /api/v1/fabric/container-projects/&lt;container-project-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Virtual Network Interfaces (VIFs)</h4><br>
+                      <span class="help_detail">Returns information about all VIFs. A virtual network interface aggregates
+<br>
+network interfaces into a logical interface unit that is indistinuishable
+<br>
+from a physical network interface.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVifs.html">GET /api/v1/fabric/vifs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Virtual Machines</h4><br>
+                      <span class="help_detail">Returns information about all virtual machines.
+<br>
+If you have not added NSX tags on the VM or removed
+<br>
+all the NSX tags that were earlier added to the VM,
+<br>
+then tags property is not returned in the API response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualMachines.html">GET /api/v1/fabric/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=add_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=remove_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=update_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of tools and agents installed in VMs.</h4><br>
+                      <span class="help_detail">This API returns the list of tools and agents installed in VMs.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVmToolsInfo.html">GET /api/v1/fabric/virtual-machines/tools-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the List of Virtual Switches</h4><br>
+                      <span class="help_detail">Returns information about all virtual switches based on the
+<br>
+request parameters.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualSwitches.html">GET /api/v1/fabric/virtual-switches</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PolicyContextProfiles</h4><br>
+                      <span class="help_detail">Get all PolicyContextProfiles
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyContextProfiles.html">GET /policy/api/v1/global-infra/context-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyContextProfiles.html">GET /policy/api/v1/infra/context-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Policy Context Profile</h4><br>
+                      <span class="help_detail">Deletes the specified Policy Context Profile. If the Policy Context
+<br>
+Profile is consumed in a firewall rule, it won't get deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyContextProfile.html">DELETE /policy/api/v1/infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeletePolicyContextProfile.html">DELETE /policy/api/v1/global-infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get PolicyContextProfile</h4><br>
+                      <span class="help_detail">Get a single PolicyContextProfile by id
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyContextProfile.html">GET /policy/api/v1/infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyContextProfile.html">GET /policy/api/v1/global-infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create PolicyContextProfile</h4><br>
+                      <span class="help_detail">Creates/Updates a PolicyContextProfile, which encapsulates attribute and
+<br>
+sub-attributes of network services.
+<br>
+Rules for using attributes and sub-attributes in single PolicyContextProfile
+<br>
+1. One type of attribute can't have multiple occurrences. ( Eg. -
+<br>
+   Attribute type APP_ID can be used only once per PolicyContextProfile.)
+<br>
+2. For specifying multiple values for an attribute, provide them in an array.
+<br>
+3. If sub-attribtes are mentioned for an attribute, then only single
+<br>
+   value is allowed for that attribute.
+<br>
+4. To get a list of supported attributes and sub-attributes fire the following REST API
+<br>
+   GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/context-profiles/attributes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchCreateOrUpdatePolicyContextProfile.html">PATCH /policy/api/v1/infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchCreateOrUpdatePolicyContextProfile.html">PATCH /policy/api/v1/global-infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create PolicyContextProfile</h4><br>
+                      <span class="help_detail">Creates/Updates a PolicyContextProfile, which encapsulates attribute and
+<br>
+sub-attributes of network services.
+<br>
+Rules for using attributes and sub-attributes in single PolicyContextProfile
+<br>
+1. One type of attribute can't have multiple occurrences. ( Eg. -
+<br>
+   Attribute type APP_ID can be used only once per PolicyContextProfile.)
+<br>
+2. For specifying multiple values for an attribute, provide them in an array.
+<br>
+3. If sub-attribtes are mentioned for an attribute, then only single
+<br>
+   value is allowed for that attribute.
+<br>
+4. To get a list of supported attributes and sub-attributes fire the following REST API
+<br>
+   GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/context-profiles/attributes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutCreateOrUpdatePolicyContextProfile.html">PUT /policy/api/v1/infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PutCreateOrUpdatePolicyContextProfile.html">PUT /policy/api/v1/global-infra/context-profiles/&lt;context-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Policy Context Profile supported attributes and sub-attributes</h4><br>
+                      <span class="help_detail">Returns supported attribute and sub-attributes for specified
+<br>
+attribute key with their supported values, if provided in query/request
+<br>
+parameter, else will fetch all supported attributes and sub-attributes for
+<br>
+all supported attribute keys.
+<br>
+Alternatively, to get a list of supported attributes and sub-attributes fire the following REST API
+<br>
+GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/context-profiles/attributes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListProfileSupportedAttributes.html">GET /policy/api/v1/infra/context-profiles/attributes</a>
+                            <br>
+                            
+                            <a href="method_ListProfileSupportedAttributes.html">GET /policy/api/v1/global-infra/context-profiles/attributes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update custom object attribute value list for given attribute key</h4><br>
+                      <span class="help_detail">This API updates custom attribute value list for given key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchCustomAttributeList.html">PATCH /policy/api/v1/global-infra/context-profiles/custom-attributes</a>
+                            <br>
+                            
+                            <a href="method_PatchCustomAttributeList.html">PATCH /policy/api/v1/infra/context-profiles/custom-attributes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Adds/Removes custom attribute values from list</h4><br>
+                      <span class="help_detail">This API adds/removes custom attribute values from list for a given attribute key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRemoveCustomAttributeValues.html">POST /policy/api/v1/global-infra/context-profiles/custom-attributes</a>
+                            <br>
+                            
+                            <a href="method_AddRemoveCustomAttributeValues.html">POST /policy/api/v1/infra/context-profiles/custom-attributes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update custom object attribute value list for given attribute key</h4><br>
+                      <span class="help_detail">This API updates custom attribute value list for given key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetCustomAttribute.html">GET /policy/api/v1/infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                            
+                            <a href="method_GetCustomAttribute.html">GET /policy/api/v1/global-infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update custom object attribute value list for given attribute key</h4><br>
+                      <span class="help_detail">This API updates custom attribute value list for given key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchCustomAttribute.html">PATCH /policy/api/v1/infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                            
+                            <a href="method_PatchCustomAttribute.html">PATCH /policy/api/v1/global-infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Adds/Removes custom attribute values from list</h4><br>
+                      <span class="help_detail">This API adds/removes custom attribute values from list for a given attribute key.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRemoveCustomAttribute.html">POST /policy/api/v1/infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                            
+                            <a href="method_AddRemoveCustomAttribute.html">POST /policy/api/v1/global-infra/context-profiles/custom-attributes/default</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Groups for a domain</h4><br>
+                      <span class="help_detail">List Groups for a domain. Groups can be filtered using member_types query parameter,
+<br>
+which returns the groups that contains the specified member types. Multiple member types
+<br>
+can be provided as comma separated values. The API also return groups having member
+<br>
+type that are subset of provided member_types.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGroupForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups</a>
+                            <br>
+                            
+                            <a href="method_ListGroupForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group</h4><br>
+                      <span class="help_detail">Delete Group</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroup.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read group</h4><br>
+                      <span class="help_detail">Read group</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGroupForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadGroupForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group</h4><br>
+                      <span class="help_detail">If a group with the group-id is not already present, create a new group.
+<br>
+If it already exists, patch the group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a group</h4><br>
+                      <span class="help_detail">If a group with the group-id is not already present, create a new group.
+<br>
+If it already exists, update the group.
+<br>
+Avoid creating groups with multiple MACAddressExpression and IPAddressExpression.
+<br>
+In future releases, group will be restricted to contain a single
+<br>
+MACAddressExpression and IPAddressExpression along with other expressions.
+<br>
+To group IPAddresses or MACAddresses, use nested groups instead of multiple
+<br>
+IPAddressExpressions/MACAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateGroupForDomain.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group External ID Expression</h4><br>
+                      <span class="help_detail">Delete Group External ID Expression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupExternalIDExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group external ID expression</h4><br>
+                      <span class="help_detail">If a group ExternalIDexpression with the expression-id is not already present, create a new ExternalIDexpresison.
+<br>
+If it already exists, replace the existing ExternalIDexpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupExternalIDExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove external id based members from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified members having external ID for a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupExternalIDMembers.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/external-id-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group IPAddressExpression</h4><br>
+                      <span class="help_detail">Delete Group IPAddressExpression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupIPAddressExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group IP Address expression</h4><br>
+                      <span class="help_detail">If a group IPAddressExpression with the expression-id is not already present, create a new IPAddressExpression.
+<br>
+If it already exists, replace the existing IPAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupIPAddressExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove IP Addresses from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified IP Addresses from a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupIPAddresses.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/ip-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group MACAddressExpression</h4><br>
+                      <span class="help_detail">Delete Group MACAddressExpression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupMACAddressExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group MAC Address expression</h4><br>
+                      <span class="help_detail">If a group MACAddressExpression with the expression-id is not already present, create a new MACAddressExpression.
+<br>
+If it already exists, replace the existing MACAddressExpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupMACAddressExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove MAC Addresses from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified MAC Addresses from a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupMACAddresses.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/mac-address-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get member types for a given Group</h4><br>
+                      <span class="help_detail">It retrieves member types for a given group. In case of nested groups, it calculates
+<br>
+member types of child groups as well. Considers member type for members added
+<br>
+via static members and dynamic membership criteria.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMemberTypesForGroup.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/member-types</a>
+                            <br>
+                            
+                            <a href="method_GetMemberTypesForGroup.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/member-types</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get consolidated effective IPAddress translated from this group across site</h4><br>
+                      <span class="help_detail">Returns consolidated effective ip address members of the specified NSGroup.
+<br>
+Applicable in case of federated environment. The response contains site-wise list of
+<br>
+consolidated effective IP address members. In the response, for the local-site, the
+<br>
+list will contain static and dynamicaly translated IPs. For the remote sites,
+<br>
+the list will contain only the dynamically translated IPs. The static IPs will not be
+<br>
+seen in the response of this API. Hence, user can refer to the local-site Ip response
+<br>
+in the API results or the group definition to see the static IP membership of the Group.
+<br>
+This API is applicable only for Global Groups containing (directly or via nesting)
+<br>
+either VirtualMachine, VIF, Segment, SegmentPort or IPSet member type.
+<br>
+Use the cursor value in the response to fetch the next page.
+<br>
+If there is no cursor value for a response, it implies the last page in the results
+<br>
+for the query.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetConsolidatedEffectiveIPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/consolidated-effective-ip-addresses</a>
+                            <br>
+                            
+                            <a href="method_GetConsolidatedEffectiveIPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/consolidated-effective-ip-addresses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Discovered Port Groups that belong to this Group</h4><br>
+                      <span class="help_detail">Get Discovered Port Groups that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupDVPGMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvpg</a>
+                            <br>
+                            
+                            <a href="method_GetGroupDVPGMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvpg</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get discovered ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get discovered ports that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupDiscoveredPortMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupDiscoveredPortMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/dvports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IP addresses that belong to this Group</h4><br>
+                      <span class="help_detail">Get IP addresses that belong to this Group.
+<br>
+This API is applicable for Groups containing either VirtualMachine, VIF,
+<br>
+Segment ,Segment Port or IP Address member type.For Groups containing other
+<br>
+member types,an empty list is returned
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupIPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/ip-addresses</a>
+                            <br>
+                            
+                            <a href="method_GetGroupIPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/ip-addresses</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get logical ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get logical ports that belong to this Group
+<br>
+This API is applicable for Groups containing either VirtualMachine, VIF,
+<br>
+Segment or Segment Port member type.For Groups containing other
+<br>
+member types,an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupLPMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-ports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupLPMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get logical switches that belong to this Group</h4><br>
+                      <span class="help_detail">Get logical switches that belong to this Group.
+<br>
+This API is applicable for Groups containing Segment member type.
+<br>
+For Groups containing other member types, an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupLSMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-switches</a>
+                            <br>
+                            
+                            <a href="method_GetGroupLSMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/logical-switches</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get pods that belong to this Group</h4><br>
+                      <span class="help_detail">Get pods that belong to this Group. This API is applicable for Groups
+<br>
+containing either Pod, Cluster, Namespace, Service member type. For
+<br>
+Groups containing other member types an empty list is returned
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupPodMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/pods</a>
+                            <br>
+                            
+                            <a href="method_GetGroupPodMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/pods</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment ports that belong to this Group</h4><br>
+                      <span class="help_detail">Get segment ports that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupSegmentPortMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segment-ports</a>
+                            <br>
+                            
+                            <a href="method_GetGroupSegmentPortMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segment-ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segments that belong to this Group</h4><br>
+                      <span class="help_detail">Get segments that belong to this Group
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupSegmentMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segments</a>
+                            <br>
+                            
+                            <a href="method_GetGroupSegmentMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/segments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Virtual Network Interface instances that belong to this Group</h4><br>
+                      <span class="help_detail">Get Virtual Network Interface instances that belong to this Group.
+<br>
+This API is applicable for Groups containing VirtualNetworkInterface and VirtualMachine member types.
+<br>
+For Groups containing other member types,an empty list is returned.target_id in response
+<br>
+is external_id of VirtualNetworkInterface or VirtualMachine.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVIFMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/vifs</a>
+                            <br>
+                            
+                            <a href="method_GetGroupVIFMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/vifs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Virtual machines that belong to this Group</h4><br>
+                      <span class="help_detail">Get Virtual machines that belong to this Group.
+<br>
+This API is applicable for Groups containing VirtualMachine,member type.
+<br>
+For Groups containing other member types,an empty list is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVMMembers.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/virtual-machines</a>
+                            <br>
+                            
+                            <a href="method_GetGroupVMMembers.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/members/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group Path Expression</h4><br>
+                      <span class="help_detail">Delete Group Path Expression</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupPathExpression.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a group path expression</h4><br>
+                      <span class="help_detail">If a group path_expression with the expression-id is not already present, create a new pathexpresison.
+<br>
+If it already exists, replace the existing pathexpression.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupPathExpressionForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add or Remove path based members from/to a Group
+</h4><br>
+                      <span class="help_detail">It will add or remove the specified members having path for a given expression of a group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddorRemoveGroupPathMembers.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/path-expressions/&lt;expression-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get effective VMs for the Group</h4><br>
+                      <span class="help_detail">Get the effective VM membership for the Group. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupVMStatistics.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/statistics/virtual-machines</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tags used to define conditions inside a Group</h4><br>
+                      <span class="help_detail">Get tags used to define conditions inside a Group. Also
+<br>
+includes tags inside nested groups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupTags.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/tags</a>
+                            <br>
+                            
+                            <a href="method_GetGroupTags.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given object is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given object is a member.
+<br>
+In Federation environment, if the given object is a global entity
+<br>
+(eg: global segment) and if the entity is not stretched to the site
+<br>
+specified in the enforcement_point_path parameter,then the following is returned:-
+<br>
+1)If the entity is a member of any global group and that group is stretched
+<br>
+  to the enforcement_point_path site,then the API returns an empty list.
+<br>
+2)If the entity is not a member of any global group,this API returns
+<br>
+  an 'invalid path' error message.
+<br>
+3)If both the entity and its corresponding groups are stretched to the
+<br>
+  enforcement_point_path site , then the API returns the groups list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForObject.html">GET /policy/api/v1/infra/group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForObject.html">GET /policy/api/v1/global-infra/group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given IP address is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given IP address is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForIPAddress.html">GET /policy/api/v1/infra/ip-address-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForIPAddress.html">GET /policy/api/v1/global-infra/ip-address-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List l7 access Profiles</h4><br>
+                      <span class="help_detail">API will list all l7 access Profiles</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL7AccessProfiles.html">GET /policy/api/v1/infra/l7-access-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L7 Access Profile</h4><br>
+                      <span class="help_detail">API will delete L7 Access Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteL7AccessProfile.html">DELETE /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L7 Access Profile</h4><br>
+                      <span class="help_detail">API will get L7 Access Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL7AccessProfile.html">GET /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update L7 Access Profile</h4><br>
+                      <span class="help_detail">API will create/update L7 Access Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchL7AccessProfile.html">PATCH /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update L7 Access Profile</h4><br>
+                      <span class="help_detail">API will update L7 Access Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateL7AccessProfile.html">PUT /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List l7 access profile entries</h4><br>
+                      <span class="help_detail">API will list all l7 access profiles entries</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL7AccessEntries.html">GET /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;/entries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L7 Access Profile entry</h4><br>
+                      <span class="help_detail">API will delete L7 Access Profile entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteL7AccessEntry.html">DELETE /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;/entries/&lt;l7-access-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read L7 Access Profile entry</h4><br>
+                      <span class="help_detail">Read Friewall L7 Access Profile entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadL7AccessEntry.html">GET /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;/entries/&lt;l7-access-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update L7 Access Profile entry</h4><br>
+                      <span class="help_detail">API will create/update L7 Access Profile entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchL7AccessEntry.html">PATCH /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;/entries/&lt;l7-access-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create L7 Access Profile entry</h4><br>
+                      <span class="help_detail">API will create L7 Access Profile entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateL7AccessEntry.html">PUT /policy/api/v1/infra/l7-access-profiles/&lt;l7-access-profile-id&gt;/entries/&lt;l7-access-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Policy L7 access profile supported attributes and sub-attributes</h4><br>
+                      <span class="help_detail">Returns supported attribute and sub-attributes for specified
+<br>
+attribute key with their supported values, if provided in query/request
+<br>
+parameter, else will fetch all supported attributes and sub-attributes for
+<br>
+all supported attribute keys.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL7AccessProfileProfileSupportedAttributes.html">GET /policy/api/v1/infra/l7-access-profiles/attributes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given pod is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given pod is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForContainerApplicationInstance.html">GET /policy/api/v1/global-infra/pod-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForContainerApplicationInstance.html">GET /policy/api/v1/infra/pod-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Listing of Virtual machines on the NSX Manager</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machines from the specified NSX Manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualMachinesOnEnforcementPoint.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Apply tags on virtual machine</h4><br>
+                      <span class="help_detail">Allows an admin to apply multiple tags to a virtual machine. This operation
+<br>
+does not store the intent on the policy side. It applies the tag directly
+<br>
+on the specified enforcement point. This operation will replace the existing
+<br>
+tags on the virtual machine with the ones that have been passed. If the
+<br>
+application of tag fails on the enforcement point, then an error is
+<br>
+reported. The admin will have to retry the operation again. Policy
+<br>
+framework does not perform a retry. Failure could occur due to multiple
+<br>
+reasons. For e.g enforcement point is down, Enforcement point could not
+<br>
+apply the tag due to constraints like max tags limit exceeded, etc.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_TagVirtualMachine.html">POST /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines?action=update_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the details of a virtual machine on the NSX Manager</h4><br>
+                      <span class="help_detail">This API return optional details about a virtual machines (e.g. user login session) from the
+<br>
+specified enforcement point.
+<br>
+In case of NSXT, virtual-machine-id would be the value of the external_id of the virtual machine.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadVirtualMachineDetails.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines/&lt;virtual-machine-id&gt;/details</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Lists all the system excluded virtual machines.</h4><br>
+                      <span class="help_detail">Lists all the system virtual machines that are auto excluded in
+<br>
+firewall exclude list (example -Partner and Edge VMs etc)
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSystemExcludedVMs.html">GET /policy/api/v1/infra/realized-state/system-excluded-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Lists all the system virtual machines.</h4><br>
+                      <span class="help_detail">Lists all the system virtual machines (example -Partner and Edge VMs etc)
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSystemVMs.html">GET /policy/api/v1/infra/realized-state/system-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual machines which are not part of any group</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machine which are not part of any group. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllUnAssociatedVirtualMachines.html">GET /policy/api/v1/infra/realized-state/unassociated-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual machines</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machine. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllVirtualMachines.html">GET /policy/api/v1/infra/realized-state/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Services for infra</h4><br>
+                      <span class="help_detail">Paginated list of Services for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServicesForTenant.html">GET /policy/api/v1/infra/services</a>
+                            <br>
+                            
+                            <a href="method_ListServicesForTenant.html">GET /policy/api/v1/global-infra/services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service</h4><br>
+                      <span class="help_detail">Delete Service</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceForTenant.html">DELETE /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a service</h4><br>
+                      <span class="help_detail">Read a service</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceForTenant.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadServiceForTenant.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Service</h4><br>
+                      <span class="help_detail">Create a new service if a service with the given ID does not already
+<br>
+exist. Creates new service entries if populated in the service.
+<br>
+If a service with the given ID already exists, patch the service
+<br>
+including the nested service entries.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceForTenant.html">PATCH /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Service</h4><br>
+                      <span class="help_detail">Create a new service if a service with the given ID does not already
+<br>
+exist. Creates new service entries if populated in the service.
+<br>
+If a service with the given ID already exists, update the service
+<br>
+including the nested service entries. This is a full replace.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceForTenant.html">PUT /policy/api/v1/infra/services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Service entries for the given service</h4><br>
+                      <span class="help_detail">Paginated list of Service entries for the given service
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceEntries.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;/service-entries</a>
+                            <br>
+                            
+                            <a href="method_ListServiceEntries.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service entry</h4><br>
+                      <span class="help_detail">Delete Service entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceEntry.html">DELETE /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Service entry</h4><br>
+                      <span class="help_detail">Service entry</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceEntry.html">GET /policy/api/v1/global-infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadServiceEntry.html">GET /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a ServiceEntry</h4><br>
+                      <span class="help_detail">If a service entry with the service-entry-id is not already present,
+<br>
+create a new service entry. If it already exists, patch the service
+<br>
+entry.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceEntry.html">PATCH /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a ServiceEntry</h4><br>
+                      <span class="help_detail">If a service entry with the service-entry-id is not already present,
+<br>
+create a new service entry. If it already exists, update the service
+<br>
+entry.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateServiceEntry.html">PUT /policy/api/v1/infra/services/&lt;service-id&gt;/service-entries/&lt;service-entry-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List static mime contents</h4><br>
+                      <span class="help_detail">API will list all static mime contents</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyStaticMimeContents.html">GET /policy/api/v1/infra/static-mime-contents</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete static Mime content</h4><br>
+                      <span class="help_detail">API will delete static mime content</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyStaticMimeContent.html">DELETE /policy/api/v1/infra/static-mime-contents/&lt;static-mime-content-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Static Mime content</h4><br>
+                      <span class="help_detail">API will get static mime content</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyStaticMimeContent.html">GET /policy/api/v1/infra/static-mime-contents/&lt;static-mime-content-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update static mime content id</h4><br>
+                      <span class="help_detail">API will create/update static mime content id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyStaticMimeContent.html">PATCH /policy/api/v1/infra/static-mime-contents/&lt;static-mime-content-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update static mime content id</h4><br>
+                      <span class="help_detail">API will create/update static mime content id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePolicyStaticMimeContent.html">PUT /policy/api/v1/infra/static-mime-contents/&lt;static-mime-content-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all unique tags.</h4><br>
+                      <span class="help_detail">Returns paginated list of all unique tags. Supports filtering by scope, tag and
+<br>
+source from which tags are synched. Supports starts with, equals and
+<br>
+contains operators on scope and tag values.
+<br>
+To filter tags by starts with on scope or tag, use '*' as prefix before the value.
+<br>
+To filter tags by ends with on scope or tag, use '*' as suffix after the value.
+<br>
+To filter tags by contain on scope or tag, use '*' as prefix and suffix on the value.
+<br>
+Below special characters in the filter value needs to be escaped with hex values.
+<br>
+- Character '&' needs to be escaped as '%26'
+<br>
+- Character '[' needs to be escaped as '%5B'
+<br>
+- Character ']' needs to be escaped as '%5D'
+<br>
+- Character '+' needs to be escaped as '%2B'
+<br>
+- Character '#' needs to be escaped as '%23'
+<br>
+Sort option for list of unique tags is available only on tag and scope properties.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllTags.html">GET /policy/api/v1/infra/tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all objects assigned with matching scope and tag values</h4><br>
+                      <span class="help_detail">Paginated list of all objects assigned with matching scope and tag values. Objects
+<br>
+are represented in form of resource reference. Sort option is available only on
+<br>
+target_type and target_display_name properties.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTaggedObjects.html">GET /policy/api/v1/infra/tags/effective-resources</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get details of tag bulk operation request</h4><br>
+                      <span class="help_detail">Get details of tag bulk operation request with which tag is applied or removed
+<br>
+on virtual machines.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTagBulkOperation.html">GET /policy/api/v1/infra/tags/tag-operations/&lt;operation-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Assign or Unassign tag on multiple Virtual Machines.</h4><br>
+                      <span class="help_detail">Tag can be assigned or unassigned on multiple objects. Supported object type is 
+<br>
+restricted to Virtual Machine for now and support for other objects will be added 
+<br>
+later. Permissions for tag bulk operation would be similar to virtual machine
+<br>
+tag permissions.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_TagBulkUpdate.html">PUT /policy/api/v1/infra/tags/tag-operations/&lt;operation-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get status of tag bulk operation</h4><br>
+                      <span class="help_detail">Get status of tag bulk operation with details of tag operation on each virtual machine.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTagBulkOperationStatus.html">GET /policy/api/v1/infra/tags/tag-operations/&lt;operation-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given VM is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given VM is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForVM.html">GET /policy/api/v1/global-infra/virtual-machine-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForVM.html">GET /policy/api/v1/infra/virtual-machine-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get groups for which the given VIF is a member</h4><br>
+                      <span class="help_detail">Get policy groups for which the given VIF is a member.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupsForVIF.html">GET /policy/api/v1/global-infra/virtual-network-interface-group-associations</a>
+                            <br>
+                            
+                            <a href="method_GetGroupsForVIF.html">GET /policy/api/v1/infra/virtual-network-interface-group-associations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all VM tag replication policies</h4><br>
+                      <span class="help_detail">List all VM tag replication policies.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVMTagReplicationPolicies.html">GET /policy/api/v1/global-infra/vm-tag-replication-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the VM tag replication policy specified by id</h4><br>
+                      <span class="help_detail">Get the VM tag replication policy specified by id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetVMTagReplicationPolicy.html">GET /policy/api/v1/global-infra/vm-tag-replication-policies/&lt;id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

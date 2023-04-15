@@ -1,0 +1,113 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_L2Extension.html">L2Extension</a> (<a href="types_L2Extension.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "L2Extension", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "l2vpn_path": {
+      "deprecated": true, 
+      "description": "This property has been deprecated. Please use the property l2vpn_paths for setting the paths of associated L2 VPN session. This property will continue to work as expected to provide backwards compatibility. However, when both l2vpn_path and l2vpn_paths properties are specified, only l2vpn_paths is used.", 
+      "required": false, 
+      "title": "Policy path of associated L2 VPN session", 
+      "type": "string"
+    }, 
+    "l2vpn_paths": {
+      "description": "Policy paths corresponding to the associated L2 VPN sessions", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Policy paths of associated L2 VPN sessions", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "SEGMENT_L2VPN_SESSION_RELATIONSHIP", 
+          "rightType": [
+            "L2VPNSession"
+          ]
+        }
+      ]
+    }, 
+    "local_egress": {
+      "$ref": "<A HREF="schemas_LocalEgress.html">LocalEgress</A>, 
+      "description": "Local Egress.", 
+      "title": "Local Egress"
+    }, 
+    "tunnel_id": {
+      "maximum": 4093, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Tunnel ID", 
+      "type": "int"
+    }
+  }, 
+  "title": "Segment specific L2 VPN configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

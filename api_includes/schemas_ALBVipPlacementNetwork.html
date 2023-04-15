@@ -1,0 +1,93 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBVipPlacementNetwork.html">ALBVipPlacementNetwork</a> (<a href="types_ALBVipPlacementNetwork.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer VipPlacementNetwork object", 
+  "id": "ALBVipPlacementNetwork", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "network_name": {
+      "description": "Network to use for vip placement. It is a reference to an object of type Network.", 
+      "required": false, 
+      "title": "Network name", 
+      "type": "string"
+    }, 
+    "subnet": {
+      "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>, 
+      "description": "IPv4 Subnet to use for vip placement.", 
+      "required": false, 
+      "title": "Subnet"
+    }, 
+    "subnet6": {
+      "$ref": "<A HREF="schemas_ALBIpAddrPrefix.html">ALBIpAddrPrefix</A>, 
+      "description": "IPv6 subnet to use for vip placement.", 
+      "required": false, 
+      "title": "Subnet6"
+    }
+  }, 
+  "title": "VipPlacementNetwork", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

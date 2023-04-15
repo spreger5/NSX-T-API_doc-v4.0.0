@@ -1,0 +1,99 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DuplicateAddressBindingEntry.html">DuplicateAddressBindingEntry</a> (<a href="types_DuplicateAddressBindingEntry.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_AddressBindingEntry.html">AddressBindingEntry</A>
+  }, 
+  "id": "DuplicateAddressBindingEntry", 
+  "module_id": "LogicalPort", 
+  "properties": {
+    "binding": {
+      "$ref": "<A HREF="schemas_PacketAddressClassifier.html">PacketAddressClassifier</A>, 
+      "title": "Combination of IP-MAC-VLAN binding"
+    }, 
+    "binding_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp at which the binding was discovered via snooping or manually specified by the user", 
+      "title": "Timestamp of binding"
+    }, 
+    "conflicting_port": {
+      "description": "Provides the ID of the port on which the same address bidning exists", 
+      "required": false, 
+      "title": "ID of logical port with the same address binding", 
+      "type": "string"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_AddressBindingSource.html">AddressBindingSource</A>, 
+      "default": "UNKNOWN", 
+      "description": "Source from which the address binding entry was obtained", 
+      "title": "Address binding source"
+    }
+  }, 
+  "title": "Duplicate address binding information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

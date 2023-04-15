@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBConnPoolProperties.html">ALBConnPoolProperties</a> (<a href="types_ALBConnPoolProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer ConnPoolProperties object", 
+  "id": "ALBConnPoolProperties", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "upstream_connpool_conn_idle_tmo": {
+      "default": 60000, 
+      "description": "Connection idle timeout. Allowed in Basic(Allowed values- 60000) edition, Essentials(Allowed values- 60000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 60000.", 
+      "required": false, 
+      "title": "Upstream connpool conn idle tmo", 
+      "type": "integer"
+    }, 
+    "upstream_connpool_conn_life_tmo": {
+      "default": 600000, 
+      "description": "Connection life timeout. Allowed in Basic(Allowed values- 600000) edition, Essentials(Allowed values- 600000) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 600000.", 
+      "required": false, 
+      "title": "Upstream connpool conn life tmo", 
+      "type": "integer"
+    }, 
+    "upstream_connpool_conn_max_reuse": {
+      "default": 0, 
+      "description": "Maximum number of times a connection can be reused. Special values are 0- 'unlimited'. Allowed in Basic(Allowed values- 0) edition, Essentials(Allowed values- 0) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "required": false, 
+      "title": "Upstream connpool conn max reuse", 
+      "type": "integer"
+    }, 
+    "upstream_connpool_server_max_cache": {
+      "default": 0, 
+      "description": "Maximum number of connections a server can cache. Special values are 0- 'unlimited'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "required": false, 
+      "title": "Upstream connpool server max cache", 
+      "type": "integer"
+    }
+  }, 
+  "title": "ConnPoolProperties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

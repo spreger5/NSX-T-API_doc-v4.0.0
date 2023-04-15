@@ -1,0 +1,3903 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Management Plane API >
+            
+            
+                <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='management_plane_api_networking_services.html' style='text-decoration: none'> Services</a> >
+            
+            
+                <a href='management_plane_api_networking_services_loadbalancer.html' style='text-decoration: none'> Loadbalancer</a>
+            
+        </P>
+    
+        <div id="CreateLoadBalancerMonitor">
+          <h2>
+            Create a load balancer monitor
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Create a load balancer monitor.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <b>Deprecated:</b> <br> NSX-T Load Balancer is deprecated. <br> Please take advantage of NSX Advanced Load Balancer. <br> Refer to Policy &gt; Networking &gt; Network Services &gt; Advanced Load Balancing section of the API guide.
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">POST</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/loadbalancer/monitors
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+                
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value">LbHttpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbHttpMonitor.CreateLoadBalancerMonitor.Request_Body')">+</span></div>
+  </div>
+    <div id="LbHttpMonitor.CreateLoadBalancerMonitor.Request_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbHttpMonitor.html">
+        <span>LbHttpMonitor</span>
+      </a> (<a href="schemas_LbHttpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_body</td>
+            
+            <td>String to send as part of HTTP health check request body. Valid only
+for certain HTTP methods like POST.
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_headers</td>
+            
+            <td>Array of HTTP request headers</td>
+            
+            <td>array of <a href="types_LbHttpRequestHeader.html">LbHttpRequestHeader</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_method</td>
+            
+            <td>the health check method for HTTP monitor type</td>
+            
+            <td><a href="types_HttpRequestMethodType.html">HttpRequestMethodType</a></td>
+            
+            <td>Default: "GET"</td>
+          </tr>
+          <tr>
+            <td>request_url</td>
+            
+            <td>URL used for HTTP monitor</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_version</td>
+            
+            <td>HTTP request version</td>
+            
+            <td><a href="types_HttpRequestVersionType.html">HttpRequestVersionType</a></td>
+            
+            <td>Default: "HTTP_VERSION_1_1"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbHttpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>response_body</td>
+            
+            <td>response body to match<br><br>If HTTP response body match string (regular expressions not supported)
+<br>
+is specified (using LbHttpMonitor.response_body) then the
+<br>
+healthcheck HTTP response body is matched against the specified string
+<br>
+and server is considered healthy only if there is a match.
+<br>
+If the response body string is not specified, HTTP healthcheck is
+<br>
+considered successful if the HTTP response status code is 2xx, but it
+<br>
+can be configured to accept other status codes as successful.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>response_status_codes</td>
+            
+            <td>Array of single HTTP response status codes<br><br>The HTTP response status code should be a valid HTTP status code.
+<br>
+</td>
+            
+            <td>array of int</td>
+            
+            <td>Maximum items: 64</td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbHttpsMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbHttpsMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbHttpsMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbHttpsMonitor.html">
+        <span>LbHttpsMonitor</span>
+      </a> (<a href="schemas_LbHttpsMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>certificate_chain_depth</td>
+            
+            <td>the maximum traversal depth of server certificate chain<br><br>authentication depth is used to set the verification depth in the server
+<br>
+certificates chain.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>cipher_group_label</td>
+            
+            <td>Label of cipher group<br><br>It is a label of cipher group which is mostly consumed by GUI.
+<br>
+</td>
+            
+            <td><a href="types_SslCipherGroup.html">SslCipherGroup</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ciphers</td>
+            
+            <td>supported SSL cipher list to servers</td>
+            
+            <td>array of <a href="types_SslCipher.html">SslCipher</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>client_certificate_id</td>
+            
+            <td>client certificate identifier<br><br>client certificate can be specified to support client authentication.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>is_fips</td>
+            
+            <td>FIPS compliance of ciphers and protocols<br><br>This flag is set to true when all the ciphers and protocols are FIPS
+<br>
+compliant. It is set to false when one of the ciphers or protocols are
+<br>
+not FIPS compliant..
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>is_secure</td>
+            
+            <td>Secure/Insecure monitor flag<br><br>This flag is set to true when all the ciphers and protocols are secure.
+<br>
+It is set to false when one of the ciphers or protocols is insecure.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>protocols</td>
+            
+            <td>supported SSL protocol list to servers<br><br>SSL versions TLS1.1 and TLS1.2 are supported and enabled by default.
+<br>
+SSLv2, SSLv3, and TLS1.0 are supported, but disabled by default.
+<br>
+</td>
+            
+            <td>array of <a href="types_SslProtocol.html">SslProtocol</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_body</td>
+            
+            <td>String to send as part of HTTP health check request body. Valid only
+for certain HTTP methods like POST.
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_headers</td>
+            
+            <td>Array of HTTP request headers</td>
+            
+            <td>array of <a href="types_LbHttpRequestHeader.html">LbHttpRequestHeader</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_method</td>
+            
+            <td>the health check method for HTTP monitor type</td>
+            
+            <td><a href="types_HttpRequestMethodType.html">HttpRequestMethodType</a></td>
+            
+            <td>Default: "GET"</td>
+          </tr>
+          <tr>
+            <td>request_url</td>
+            
+            <td>URL used for HTTP monitor</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_version</td>
+            
+            <td>HTTP request version</td>
+            
+            <td><a href="types_HttpRequestVersionType.html">HttpRequestVersionType</a></td>
+            
+            <td>Default: "HTTP_VERSION_1_1"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbHttpsMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>response_body</td>
+            
+            <td>response body to match<br><br>If HTTP response body match string (regular expressions not supported)
+<br>
+is specified (using LbHttpMonitor.response_body) then the
+<br>
+healthcheck HTTP response body is matched against the specified string
+<br>
+and server is considered healthy only if there is a match.
+<br>
+If the response body string is not specified, HTTP healthcheck is
+<br>
+considered successful if the HTTP response status code is 2xx, but it
+<br>
+can be configured to accept other status codes as successful.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>response_status_codes</td>
+            
+            <td>Array of single HTTP response status codes<br><br>The HTTP response status code should be a valid HTTP status code.
+<br>
+</td>
+            
+            <td>array of int</td>
+            
+            <td>Maximum items: 64</td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>server_auth</td>
+            
+            <td>server authentication mode</td>
+            
+            <td><a href="types_ServerAuthType.html">ServerAuthType</a></td>
+            
+            <td>Default: "IGNORE"</td>
+          </tr>
+          <tr>
+            <td>server_auth_ca_ids</td>
+            
+            <td>CA identifier list to verify server certificate<br><br>If server auth type is REQUIRED, server certificate must be signed by
+<br>
+one of the trusted Certificate Authorities (CAs), also referred to as
+<br>
+root CAs, whose self signed certificates are specified.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>server_auth_crl_ids</td>
+            
+            <td>CRL identifier list to verify server certificate<br><br>A Certificate Revocation List (CRL) can be specified in the server-side
+<br>
+SSL profile binding to disallow compromised server certificates.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbIcmpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbIcmpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbIcmpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbIcmpMonitor.html">
+        <span>LbIcmpMonitor</span>
+      </a> (<a href="schemas_LbIcmpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>data_length</td>
+            
+            <td>The data size(in byte) of the ICMP healthcheck packet</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 65507<br>Default: "56"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbIcmpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbPassiveMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbPassiveMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbPassiveMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbPassiveMonitor.html">
+        <span>LbPassiveMonitor</span>
+      </a> (<a href="schemas_LbPassiveMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>max_fails</td>
+            
+            <td>number of consecutive connection failures<br><br>When the consecutive failures reach this value, then the member is
+<br>
+considered temporarily unavailable for a configurable period
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbPassiveMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>timeout in seconds before it is selected again for a new connection<br><br>After this timeout period, the member is tried again for a new
+<br>
+connection to see if it is available.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbTcpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbTcpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbTcpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbTcpMonitor.html">
+        <span>LbTcpMonitor</span>
+      </a> (<a href="schemas_LbTcpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>receive</td>
+            
+            <td>expected data received from server<br><br>Expected data, if specified, can be anywhere in the response and it has to
+<br>
+be a string, regular expressions are not supported.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbTcpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>send</td>
+            
+            <td>data to send<br><br>If both send and receive are not specified, then just a TCP connection
+<br>
+is established (3-way handshake) to validate server is healthy, no
+<br>
+data is sent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+                
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbUdpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbUdpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbUdpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbUdpMonitor.html">
+        <span>LbUdpMonitor</span>
+      </a> (<a href="schemas_LbUdpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>receive</td>
+            
+            <td>expected data received from server<br><br>Expected data, can be anywhere in the response and it has to be a
+<br>
+string, regular expressions are not supported.
+<br>
+UDP healthcheck is considered failed if there is no server response
+<br>
+within the timeout period.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbUdpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>send</td>
+            
+            <td>data to send<br><br>The data to be sent to the monitored server.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">POST https://&lt;nsx-mgr&gt;/api/v1/loadbalancer/monitors
+{
+ "request_method":"GET",
+ "response_status_codes":[200],
+ "request_version":"HTTP_VERSION_1_1",
+ "request_url":"/",
+ "monitor_port":"80",
+ "fall_count":1,
+ "interval":1,
+ "rise_count":1,
+ "timeout":1,
+ "resource_type":"LbHttpMonitor",
+ "display_name":"LB_Http_Monitor",
+ "description":"LB_Http_Monitor"
+}</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">201 Created</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+                    
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">LbHttpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbHttpMonitor.CreateLoadBalancerMonitor.Response_Body')">+</span></div>
+  </div>
+    <div id="LbHttpMonitor.CreateLoadBalancerMonitor.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbHttpMonitor.html">
+        <span>LbHttpMonitor</span>
+      </a> (<a href="schemas_LbHttpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_body</td>
+            
+            <td>String to send as part of HTTP health check request body. Valid only
+for certain HTTP methods like POST.
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_headers</td>
+            
+            <td>Array of HTTP request headers</td>
+            
+            <td>array of <a href="types_LbHttpRequestHeader.html">LbHttpRequestHeader</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_method</td>
+            
+            <td>the health check method for HTTP monitor type</td>
+            
+            <td><a href="types_HttpRequestMethodType.html">HttpRequestMethodType</a></td>
+            
+            <td>Default: "GET"</td>
+          </tr>
+          <tr>
+            <td>request_url</td>
+            
+            <td>URL used for HTTP monitor</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_version</td>
+            
+            <td>HTTP request version</td>
+            
+            <td><a href="types_HttpRequestVersionType.html">HttpRequestVersionType</a></td>
+            
+            <td>Default: "HTTP_VERSION_1_1"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbHttpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>response_body</td>
+            
+            <td>response body to match<br><br>If HTTP response body match string (regular expressions not supported)
+<br>
+is specified (using LbHttpMonitor.response_body) then the
+<br>
+healthcheck HTTP response body is matched against the specified string
+<br>
+and server is considered healthy only if there is a match.
+<br>
+If the response body string is not specified, HTTP healthcheck is
+<br>
+considered successful if the HTTP response status code is 2xx, but it
+<br>
+can be configured to accept other status codes as successful.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>response_status_codes</td>
+            
+            <td>Array of single HTTP response status codes<br><br>The HTTP response status code should be a valid HTTP status code.
+<br>
+</td>
+            
+            <td>array of int</td>
+            
+            <td>Maximum items: 64</td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbHttpsMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbHttpsMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbHttpsMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbHttpsMonitor.html">
+        <span>LbHttpsMonitor</span>
+      </a> (<a href="schemas_LbHttpsMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>certificate_chain_depth</td>
+            
+            <td>the maximum traversal depth of server certificate chain<br><br>authentication depth is used to set the verification depth in the server
+<br>
+certificates chain.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>cipher_group_label</td>
+            
+            <td>Label of cipher group<br><br>It is a label of cipher group which is mostly consumed by GUI.
+<br>
+</td>
+            
+            <td><a href="types_SslCipherGroup.html">SslCipherGroup</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ciphers</td>
+            
+            <td>supported SSL cipher list to servers</td>
+            
+            <td>array of <a href="types_SslCipher.html">SslCipher</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>client_certificate_id</td>
+            
+            <td>client certificate identifier<br><br>client certificate can be specified to support client authentication.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>is_fips</td>
+            
+            <td>FIPS compliance of ciphers and protocols<br><br>This flag is set to true when all the ciphers and protocols are FIPS
+<br>
+compliant. It is set to false when one of the ciphers or protocols are
+<br>
+not FIPS compliant..
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>is_secure</td>
+            
+            <td>Secure/Insecure monitor flag<br><br>This flag is set to true when all the ciphers and protocols are secure.
+<br>
+It is set to false when one of the ciphers or protocols is insecure.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>protocols</td>
+            
+            <td>supported SSL protocol list to servers<br><br>SSL versions TLS1.1 and TLS1.2 are supported and enabled by default.
+<br>
+SSLv2, SSLv3, and TLS1.0 are supported, but disabled by default.
+<br>
+</td>
+            
+            <td>array of <a href="types_SslProtocol.html">SslProtocol</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_body</td>
+            
+            <td>String to send as part of HTTP health check request body. Valid only
+for certain HTTP methods like POST.
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_headers</td>
+            
+            <td>Array of HTTP request headers</td>
+            
+            <td>array of <a href="types_LbHttpRequestHeader.html">LbHttpRequestHeader</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_method</td>
+            
+            <td>the health check method for HTTP monitor type</td>
+            
+            <td><a href="types_HttpRequestMethodType.html">HttpRequestMethodType</a></td>
+            
+            <td>Default: "GET"</td>
+          </tr>
+          <tr>
+            <td>request_url</td>
+            
+            <td>URL used for HTTP monitor</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>request_version</td>
+            
+            <td>HTTP request version</td>
+            
+            <td><a href="types_HttpRequestVersionType.html">HttpRequestVersionType</a></td>
+            
+            <td>Default: "HTTP_VERSION_1_1"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbHttpsMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>response_body</td>
+            
+            <td>response body to match<br><br>If HTTP response body match string (regular expressions not supported)
+<br>
+is specified (using LbHttpMonitor.response_body) then the
+<br>
+healthcheck HTTP response body is matched against the specified string
+<br>
+and server is considered healthy only if there is a match.
+<br>
+If the response body string is not specified, HTTP healthcheck is
+<br>
+considered successful if the HTTP response status code is 2xx, but it
+<br>
+can be configured to accept other status codes as successful.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>response_status_codes</td>
+            
+            <td>Array of single HTTP response status codes<br><br>The HTTP response status code should be a valid HTTP status code.
+<br>
+</td>
+            
+            <td>array of int</td>
+            
+            <td>Maximum items: 64</td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>server_auth</td>
+            
+            <td>server authentication mode</td>
+            
+            <td><a href="types_ServerAuthType.html">ServerAuthType</a></td>
+            
+            <td>Default: "IGNORE"</td>
+          </tr>
+          <tr>
+            <td>server_auth_ca_ids</td>
+            
+            <td>CA identifier list to verify server certificate<br><br>If server auth type is REQUIRED, server certificate must be signed by
+<br>
+one of the trusted Certificate Authorities (CAs), also referred to as
+<br>
+root CAs, whose self signed certificates are specified.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>server_auth_crl_ids</td>
+            
+            <td>CRL identifier list to verify server certificate<br><br>A Certificate Revocation List (CRL) can be specified in the server-side
+<br>
+SSL profile binding to disallow compromised server certificates.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbIcmpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbIcmpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbIcmpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbIcmpMonitor.html">
+        <span>LbIcmpMonitor</span>
+      </a> (<a href="schemas_LbIcmpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>data_length</td>
+            
+            <td>The data size(in byte) of the ICMP healthcheck packet</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 65507<br>Default: "56"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbIcmpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbPassiveMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbPassiveMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbPassiveMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbPassiveMonitor.html">
+        <span>LbPassiveMonitor</span>
+      </a> (<a href="schemas_LbPassiveMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>max_fails</td>
+            
+            <td>number of consecutive connection failures<br><br>When the consecutive failures reach this value, then the member is
+<br>
+considered temporarily unavailable for a configurable period
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbPassiveMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>timeout in seconds before it is selected again for a new connection<br><br>After this timeout period, the member is tried again for a new
+<br>
+connection to see if it is available.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbTcpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbTcpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbTcpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbTcpMonitor.html">
+        <span>LbTcpMonitor</span>
+      </a> (<a href="schemas_LbTcpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>receive</td>
+            
+            <td>expected data received from server<br><br>Expected data, if specified, can be anywhere in the response and it has to
+<br>
+be a string, regular expressions are not supported.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbTcpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>send</td>
+            
+            <td>data to send<br><br>If both send and receive are not specified, then just a TCP connection
+<br>
+is established (3-way handshake) to validate server is healthy, no
+<br>
+data is sent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+                    
+  
+  <div class="row">
+    <div class="label"></div>
+    <div class="value">LbUdpMonitor<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'CreateLoadBalancerMonitor', 'LbUdpMonitor.CreateLoadBalancerMonitor.')">+</span></div>
+  </div>
+    <div id="LbUdpMonitor.CreateLoadBalancerMonitor." style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_LbUdpMonitor.html">
+        <span>LbUdpMonitor</span>
+      </a> (<a href="schemas_LbUdpMonitor.html">schema</a>)
+      </h4>
+        <span class="deprecated">(Deprecated)</span>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>fall_count</td>
+            
+            <td>num of consecutive checks must fail before marking it down</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>interval</td>
+            
+            <td>the frequency at which the system issues the monitor check (in second)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "5"</td>
+          </tr>
+          <tr>
+            <td>monitor_port</td>
+            
+            <td>port which is used for healthcheck<br><br>If the monitor port is specified, it would override pool member port
+<br>
+setting for healthcheck. A port range is not supported.
+<br>
+For ICMP monitor, monitor_port is not required.
+<br>
+</td>
+            
+            <td><a href="types_PortElement.html">PortElement</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>receive</td>
+            
+            <td>expected data received from server<br><br>Expected data, can be anywhere in the response and it has to be a
+<br>
+string, regular expressions are not supported.
+<br>
+UDP healthcheck is considered failed if there is no server response
+<br>
+within the timeout period.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>LbUdpMonitor</b></td>
+            
+            <td><a href="types_MonitorType.html">MonitorType</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>rise_count</td>
+            
+            <td>num of consecutive checks must pass before marking it up</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "3"</td>
+          </tr>
+          <tr>
+            <td>send</td>
+            
+            <td>data to send<br><br>The data to be sent to the monitored server.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            
+            <td>the number of seconds the target has in which to respond to the monitor
+request
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 2147483647<br>Default: "15"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+                    
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "resource_type" : "LbHttpMonitor",
+  "description" : "LB_Http_Monitor",
+  "id" : "ab1c038f-565a-4870-a61c-b731f99f0bb4",
+  "display_name" : "LB_Http_Monitor",
+  "monitor_port" : "80",
+  "interval" : 1,
+  "timeout" : 1,
+  "rise_count" : 1,
+  "fall_count" : 1,
+  "response_status_codes" : [ 200 ],
+  "request_version" : "HTTP_VERSION_1_1",
+  "request_method" : "GET",
+  "request_url" : "/",
+  "_create_time" : 1515737352635,
+  "_last_modified_user" : "admin",
+  "_last_modified_time" : 1515737352635,
+  "_system_owned" : false,
+  "_create_user" : "admin",
+  "_protection" : "NOT_PROTECTED",
+  "_revision" : 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">crud</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">lb_monitors</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

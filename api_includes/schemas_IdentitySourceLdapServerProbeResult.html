@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdentitySourceLdapServerProbeResult.html">IdentitySourceLdapServerProbeResult</a> (<a href="types_IdentitySourceLdapServerProbeResult.html">type</a>)
+</h3>
+<pre>{
+  "description": "The results of probing an individual LDAP server.", 
+  "id": "IdentitySourceLdapServerProbeResult", 
+  "module_id": "LdapIdentitySources", 
+  "properties": {
+    "errors": {
+      "description": "Detail about errors encountered during the probe.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LdapProbeError.html">LdapProbeError</A>
+      }, 
+      "title": "Error details", 
+      "type": "array"
+    }, 
+    "result": {
+      "description": "Overall result of the probe. If the probe was able to connect to the LDAP service, authenticate using the provided credentials, and perform searches of the configured user and group search bases without error, the result is SUCCESS. Otherwise, the result is FAILURE, and additional details may be found in the errors property.", 
+      "enum": [
+        "SUCCESS", 
+        "FAILURE"
+      ], 
+      "title": "Overall result", 
+      "type": "string"
+    }, 
+    "url": {
+      "description": "THe URL of the probed LDAP host.", 
+      "title": "LDAP Server URL", 
+      "type": "string"
+    }
+  }, 
+  "title": "Results from one LDAP server probe", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

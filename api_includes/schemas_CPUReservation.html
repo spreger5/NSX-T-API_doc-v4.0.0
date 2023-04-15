@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CPUReservation.html">CPUReservation</a> (<a href="types_CPUReservation.html">type</a>)
+</h3>
+<pre>{
+  "description": "Relative to the form factor pre-defined reservation value. We recommended that you use the predefined measures of CPU reservation shares to reduce the CPU reservation of a VM. Reservation shares are relative to the default form-factor value. Though absolute values for CPU reservation is supported, we advise to use this option with caution as incorrect or high reservation values could lead to deployment failure or lead to resource starvation for other VMs running on the same host.", 
+  "id": "CPUReservation", 
+  "module_id": "FabricNode", 
+  "properties": {
+    "reservation_in_mhz": {
+      "description": "The CPU reservation in MHz is the guaranteed minimum amount of clock cycles that the vmkernel CPU scheduler will give the Edge VM in case of contention. If an Edge VM is not using its reserved resources, then other machines can use them thus preventing waste of CPU cycles on the physical host. Note: We recommend use of reservation_in_shares instead of this absolute configuration. When you specify this value, set reservation_in_shares to LOW_PRIORITY.", 
+      "required": false, 
+      "title": "CPU reservation in MHz.", 
+      "type": "int"
+    }, 
+    "reservation_in_shares": {
+      "default": "HIGH_PRIORITY", 
+      "description": "Shares specify the relative importance of a virtual machine on a given host. When you assign shares to a virtual machine, you always specify the priority for that virtual machine relative to other powered-on virtual machines on the same host. The default priority for shares is HIGH_PRIORITY.", 
+      "enum": [
+        "EXTRA_HIGH_PRIORITY", 
+        "HIGH_PRIORITY", 
+        "NORMAL_PRIORITY", 
+        "LOW_PRIORITY"
+      ], 
+      "required": false, 
+      "title": "CPU reservation in shares.", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,287 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_east_west_security.html' style='text-decoration: none'> East West Security</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall.html' style='text-decoration: none'> Distributed Firewall</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='policy_security_east_west_security_distributed_firewall_settings_drafts.html' style='text-decoration: none'> Drafts</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List policy drafts</h4><br>
+                      <span class="help_detail">List policy drafts.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDrafts.html">GET /policy/api/v1/infra/drafts</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a manual draft</h4><br>
+                      <span class="help_detail">Delete a manual draft.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDraft.html">DELETE /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read draft</h4><br>
+                      <span class="help_detail">Read a draft for a given draft identifier.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a manual draft</h4><br>
+                      <span class="help_detail">Create a new manual draft if the specified draft id does not correspond
+<br>
+to an existing draft. Update the manual draft otherwise.
+<br>
+Auto draft can not be updated.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDraft.html">PATCH /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Publish a draft</h4><br>
+                      <span class="help_detail">Read a draft and publish it by applying changes onto current configuration.
+<br>
+If there are additional changes on top of draft configuration, pass it as a
+<br>
+request body, in form of Infra object. Otherwise, if there are no additional
+<br>
+changes, then pass empty Infra object as a request body.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PublishDraft.html">POST /policy/api/v1/infra/drafts/&lt;draft-id&gt;?action=publish</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a manual draft</h4><br>
+                      <span class="help_detail">Create a new manual draft if the specified draft id does not correspond
+<br>
+to an existing draft. Update the manual draft otherwise.
+<br>
+Auto draft can not be updated.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PutDraft.html">PUT /policy/api/v1/infra/drafts/&lt;draft-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an aggregated configuration for the draft</h4><br>
+                      <span class="help_detail">Get an aggregated configuration that will get applied onto current
+<br>
+configuration during publish of this draft.
+<br>
+The response is a hierarchical payload containing the aggregated
+<br>
+configuration differences from the latest auto draft till the specified draft.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAggregatedConfigurationToBePublishedForDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/aggregated</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get paginated aggregated configuration for the draft</h4><br>
+                      <span class="help_detail">Get a paginated aggregated configuration of a given draft. This aggregated
+<br>
+configuration is the differnece between the current published firewall
+<br>
+configuration and a firewall configuration stored in a given draft.
+<br>
+For an initial API call, if request_id is present in a response, then this is
+<br>
+a paginated aggregated configuration of a given draft, containing all the
+<br>
+security policies from the aggregated configuration.
+<br>
+Using this request_id, more granular aggregated configuration, at security
+<br>
+policy level, can be fetched from subsequent API calls.
+<br>
+Absence of request_id suggests that whole aggregated configuration has been
+<br>
+returned as a response to initial API call, as the size of aggregated
+<br>
+configuration is not big enough to need pagination.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyDraftPaginatedAggregatedConfigurationResult.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/aggregated_with_pagination</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a preview of a configuration after publish of a draft</h4><br>
+                      <span class="help_detail">Get a preview of a configuration which will be present after publish of
+<br>
+a specified draft. The response essentially is a hierarchical payload
+<br>
+containing the configuration, which will be in active after a specified
+<br>
+draft gets published onto current configuration.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPreviewOfConfigurationAfterPublishOfDraft.html">GET /policy/api/v1/infra/drafts/&lt;draft-id&gt;/complete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

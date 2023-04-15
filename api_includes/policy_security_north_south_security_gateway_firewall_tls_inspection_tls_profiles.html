@@ -1,0 +1,1721 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_north_south_security.html' style='text-decoration: none'> North South Security</a> >
+        
+        
+            <a href='policy_security_north_south_security_gateway_firewall.html' style='text-decoration: none'> Gateway Firewall</a> >
+        
+        
+            <a href='policy_security_north_south_security_gateway_firewall_tls_inspection.html' style='text-decoration: none'> Tls Inspection</a> >
+        
+        
+            <a href='policy_security_north_south_security_gateway_firewall_tls_inspection_tls_profiles.html' style='text-decoration: none'> Tls Profiles</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get Tls profiles available.</h4><br>
+                      <span class="help_detail">List all the Tls profiles available by requested resource_type.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTlsProfiles.html">GET /policy/api/v1/infra/tls-inspection-action-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Tls profile.</h4><br>
+                      <span class="help_detail">Deletes a Tls profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTlsProfile.html">DELETE /policy/api/v1/infra/tls-inspection-action-profiles/&lt;action-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get TLS profile with id.</h4><br>
+                      <span class="help_detail">Return Tls profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsProfile.html">GET /policy/api/v1/infra/tls-inspection-action-profiles/&lt;action-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Tls profile.</h4><br>
+                      <span class="help_detail">Create a Tls profile with values provided. It creates profile based on the resource_type in the payload.
+<br>
+Each action profile supports the following 3 pre-defined config setting defaults:
+<br>
+    Balanced, High Fidelity and High Security.
+<br>
+
+<br>
+1 - External Profile Balanced (default)
+<br>
+Sample intent path: /infra/tls-inspection-action-profiles/external-balanced-profile
+<br>
+API payload:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "invalid_cert_action": "ALLOW",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_1",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_1",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "id": "external-balanced-profile",
+<br>
+    "display_name": "external-balanced-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/external-balanced-profile",
+<br>
+    "relative_path": "external-balanced-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "bb236080-e49d-4475-9eb3-b749b075164a",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622225641015,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622225641015,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+2 - External Profile High Fidelity
+<br>
+Sample intent path: /infra/tls-inspection-action-profiles/external-high-fidelity-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "invalid_cert_action": "ALLOW",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "TRANSPARENT",
+<br>
+    "client_min_tls_version": "",
+<br>
+    "client_max_tls_version": "",
+<br>
+    "server_min_tls_version": "",
+<br>
+    "server_max_tls_version": "",
+<br>
+    "client_cipher_suite": [],
+<br>
+    "server_cipher_suite": [],
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "id": "external-high-fidelity-profile",
+<br>
+    "display_name": "external-high-fidelity-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/external-high-fidelity-profile",
+<br>
+    "relative_path": "external-high-fidelity-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "bb6c8604-c8eb-44dd-aded-7407e0ca887c",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622225537386,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622225537386,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+3 - External Profile High Security
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/external-high-security-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+   "tls_config_setting": "HIGH_SECURITY",
+<br>
+   "invalid_cert_action": "BLOCK",
+<br>
+   "decryption_fail_action": "BLOCK",
+<br>
+   "crypto_enforcement": "ENFORCE",
+<br>
+   "client_min_tls_version": "TLS_V1_2",
+<br>
+   "client_max_tls_version": "TLS_V1_2",
+<br>
+   "server_min_tls_version": "TLS_V1_2",
+<br>
+   "server_max_tls_version": "TLS_V1_2",
+<br>
+   "client_cipher_suite": [
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+   ],
+<br>
+   "server_cipher_suite": [
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+   ],
+<br>
+   "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+   "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+   "ocsp_must_staple": false,
+<br>
+   "resource_type": "TlsInspectionExternalProfile",
+<br>
+   "id": "external-high-security-profile",
+<br>
+   "display_name": "external-high-security-profile",
+<br>
+   "path": "/infra/tls-inspection-action-profiles/external-high-security-profile",
+<br>
+   "relative_path": "external-high-security-profile",
+<br>
+   "parent_path": "/infra",
+<br>
+   "unique_id": "e19cbc40-c679-4f32-9e40-aa5eedf7f254",
+<br>
+   "marked_for_delete": false,
+<br>
+   "overridden": false,
+<br>
+   "trusted_ca_bundles": [
+<br>
+       "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+   ],
+<br>
+   "crls": [
+<br>
+       "/infra/crls/nsx_default_public_crl"
+<br>
+   ],
+<br>
+   "idle_connection_timeout": 5400,
+<br>
+   "_system_owned": false,
+<br>
+   "_protection": "NOT_PROTECTED",
+<br>
+   "_create_user": "admin",
+<br>
+   "_create_time": 1622141786963,
+<br>
+   "_last_modified_user": "admin",
+<br>
+   "_last_modified_time": 1622225387352,
+<br>
+   "_revision": 4
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+4 - Internal Profile Balanced
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-balanced-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_1",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_1",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-balanced-profile",
+<br>
+    "display_name": "internal-balanced-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-balanced-profile",
+<br>
+    "relative_path": "internal-balanced-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "b8486763-843a-4894-8dfd-5bceebb10cd3",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071598527,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071598527,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+5 - Internal Profile High Fidelity
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-high-fidelity-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "TRANSPARENT",
+<br>
+    "client_min_tls_version": "",
+<br>
+    "client_max_tls_version": "",
+<br>
+    "server_min_tls_version": "",
+<br>
+    "server_max_tls_version": "",
+<br>
+    "client_cipher_suite": [],
+<br>
+    "server_cipher_suite": [],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-high-fidelity-profile",
+<br>
+    "display_name": "internal-high-fidelity-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-high-fidelity-profile",
+<br>
+    "relative_path": "internal-high-fidelity-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "27609d17-e642-4a7a-b414-176b3f7eca8d",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071452299,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071452299,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+6 - Internal Profile High Security
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-high-security-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "decryption_fail_action": "BLOCK",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_2",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_2",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+    ],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-high-security-profile",
+<br>
+    "display_name": "internal-high-security-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-high-security-profile",
+<br>
+    "relative_path": "internal-high-security-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "52e3e7e8-718d-4eaf-a177-501f196c421a",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071359539,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071359539,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTlsProfile.html">PATCH /policy/api/v1/infra/tls-inspection-action-profiles/&lt;action-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Tls profile.</h4><br>
+                      <span class="help_detail">Update user configurable properties of Tls profile.
+<br>
+Each action profile supports the following 3 pre-defined config setting defaults:
+<br>
+    Balanced, High Fidelity and High Security.
+<br>
+
+<br>
+1 - External Profile Balanced (default)
+<br>
+Sample intent path: /infra/tls-inspection-action-profiles/external-balanced-profile
+<br>
+API payload:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "invalid_cert_action": "ALLOW",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_1",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_1",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "id": "external-balanced-profile",
+<br>
+    "display_name": "external-balanced-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/external-balanced-profile",
+<br>
+    "relative_path": "external-balanced-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "bb236080-e49d-4475-9eb3-b749b075164a",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622225641015,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622225641015,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+2 - External Profile High Fidelity
+<br>
+Sample intent path: /infra/tls-inspection-action-profiles/external-high-fidelity-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "invalid_cert_action": "ALLOW",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "TRANSPARENT",
+<br>
+    "client_min_tls_version": "",
+<br>
+    "client_max_tls_version": "",
+<br>
+    "server_min_tls_version": "",
+<br>
+    "server_max_tls_version": "",
+<br>
+    "client_cipher_suite": [],
+<br>
+    "server_cipher_suite": [],
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "id": "external-high-fidelity-profile",
+<br>
+    "display_name": "external-high-fidelity-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/external-high-fidelity-profile",
+<br>
+    "relative_path": "external-high-fidelity-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "bb6c8604-c8eb-44dd-aded-7407e0ca887c",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622225537386,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622225537386,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+3 - External Profile High Security
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/external-high-security-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "resource_type": "TlsInspectionExternalProfile",
+<br>
+    "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+    "proxy_untrusted_ca_cert": "/infra/certificates/caCert2"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+   "tls_config_setting": "HIGH_SECURITY",
+<br>
+   "invalid_cert_action": "BLOCK",
+<br>
+   "decryption_fail_action": "BLOCK",
+<br>
+   "crypto_enforcement": "ENFORCE",
+<br>
+   "client_min_tls_version": "TLS_V1_2",
+<br>
+   "client_max_tls_version": "TLS_V1_2",
+<br>
+   "server_min_tls_version": "TLS_V1_2",
+<br>
+   "server_max_tls_version": "TLS_V1_2",
+<br>
+   "client_cipher_suite": [
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+   ],
+<br>
+   "server_cipher_suite": [
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+       "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+   ],
+<br>
+   "proxy_trusted_ca_cert": "/infra/certificates/caCert1",
+<br>
+   "proxy_untrusted_ca_cert": "/infra/certificates/caCert2",
+<br>
+   "ocsp_must_staple": false,
+<br>
+   "resource_type": "TlsInspectionExternalProfile",
+<br>
+   "id": "external-high-security-profile",
+<br>
+   "display_name": "external-high-security-profile",
+<br>
+   "path": "/infra/tls-inspection-action-profiles/external-high-security-profile",
+<br>
+   "relative_path": "external-high-security-profile",
+<br>
+   "parent_path": "/infra",
+<br>
+   "unique_id": "e19cbc40-c679-4f32-9e40-aa5eedf7f254",
+<br>
+   "marked_for_delete": false,
+<br>
+   "overridden": false,
+<br>
+   "trusted_ca_bundles": [
+<br>
+       "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+   ],
+<br>
+   "crls": [
+<br>
+       "/infra/crls/nsx_default_public_crl"
+<br>
+   ],
+<br>
+   "idle_connection_timeout": 5400,
+<br>
+   "_system_owned": false,
+<br>
+   "_protection": "NOT_PROTECTED",
+<br>
+   "_create_user": "admin",
+<br>
+   "_create_time": 1622141786963,
+<br>
+   "_last_modified_user": "admin",
+<br>
+   "_last_modified_time": 1622225387352,
+<br>
+   "_revision": 4
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+4 - Internal Profile Balanced
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-balanced-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "BALANCED",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_1",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_1",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_128_CBC_SHA256",
+<br>
+        "TLS_RSA_WITH_AES_256_GCM_SHA384",
+<br>
+        "TLS_RSA_WITH_AES_256_CBC_SHA256"
+<br>
+    ],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-balanced-profile",
+<br>
+    "display_name": "internal-balanced-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-balanced-profile",
+<br>
+    "relative_path": "internal-balanced-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "b8486763-843a-4894-8dfd-5bceebb10cd3",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071598527,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071598527,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+5 - Internal Profile High Fidelity
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-high-fidelity-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_FIDELITY",
+<br>
+    "decryption_fail_action": "BYPASS",
+<br>
+    "crypto_enforcement": "TRANSPARENT",
+<br>
+    "client_min_tls_version": "",
+<br>
+    "client_max_tls_version": "",
+<br>
+    "server_min_tls_version": "",
+<br>
+    "server_max_tls_version": "",
+<br>
+    "client_cipher_suite": [],
+<br>
+    "server_cipher_suite": [],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-high-fidelity-profile",
+<br>
+    "display_name": "internal-high-fidelity-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-high-fidelity-profile",
+<br>
+    "relative_path": "internal-high-fidelity-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "27609d17-e642-4a7a-b414-176b3f7eca8d",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071452299,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071452299,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+6 - Internal Profile High Security
+<br>
+Sample intent path:/infra/tls-inspection-action-profiles/internal-high-security-profile
+<br>
+Sample intent path:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "server_certs_key": ["/infra/certificates/server-cert-1"],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1"
+<br>
+}
+<br>
+</pre>
+<br>
+
+<br>
+Profile with default settings:
+<br>
+<pre>
+<br>
+{
+<br>
+    "tls_config_setting": "HIGH_SECURITY",
+<br>
+    "decryption_fail_action": "BLOCK",
+<br>
+    "crypto_enforcement": "ENFORCE",
+<br>
+    "client_min_tls_version": "TLS_V1_2",
+<br>
+    "client_max_tls_version": "TLS_V1_2",
+<br>
+    "server_min_tls_version": "TLS_V1_2",
+<br>
+    "server_max_tls_version": "TLS_V1_2",
+<br>
+    "client_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+    ],
+<br>
+    "server_cipher_suite": [
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+<br>
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+<br>
+    ],
+<br>
+    "server_certs_key": [
+<br>
+        "/infra/certificates/server-cert-1"
+<br>
+    ],
+<br>
+    "default_cert_key": "/infra/certificates/server-cert-1",
+<br>
+    "ocsp_must_staple": false,
+<br>
+    "certificate_validation": false,
+<br>
+    "resource_type": "TlsInspectionInternalProfile",
+<br>
+    "id": "internal-high-security-profile",
+<br>
+    "display_name": "internal-high-security-profile",
+<br>
+    "path": "/infra/tls-inspection-action-profiles/internal-high-security-profile",
+<br>
+    "relative_path": "internal-high-security-profile",
+<br>
+    "parent_path": "/infra",
+<br>
+    "unique_id": "52e3e7e8-718d-4eaf-a177-501f196c421a",
+<br>
+    "marked_for_delete": false,
+<br>
+    "overridden": false,
+<br>
+    "trusted_ca_bundles": [
+<br>
+        "/infra/cabundles/default_trusted_public_ca_bundle"
+<br>
+    ],
+<br>
+    "crls": [
+<br>
+        "/infra/crls/nsx_default_public_crl"
+<br>
+    ],
+<br>
+    "idle_connection_timeout": 5400,
+<br>
+    "_system_owned": false,
+<br>
+    "_protection": "NOT_PROTECTED",
+<br>
+    "_create_user": "admin",
+<br>
+    "_create_time": 1622071359539,
+<br>
+    "_last_modified_user": "admin",
+<br>
+    "_last_modified_time": 1622071359539,
+<br>
+    "_revision": 0
+<br>
+}
+<br>
+</pre>
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTlsProfile.html">PUT /policy/api/v1/infra/tls-inspection-action-profiles/&lt;action-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

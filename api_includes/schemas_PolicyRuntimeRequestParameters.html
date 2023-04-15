@@ -1,0 +1,88 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyRuntimeRequestParameters.html">PolicyRuntimeRequestParameters</a> (<a href="types_PolicyRuntimeRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Request parameters that represents an enforcement point path and data source. A request on runtime information can be parameterized with this pair and will be evaluted as follows: - no enforcement point path specified: the request is evaluated on all enforcement points. - an enforcement point path is specified: the request is evaluated only on the given enforcement point.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_DataSourceParameters.html">DataSourceParameters</A>
+  }, 
+  "id": "PolicyRuntimeRequestParameters", 
+  "module_id": "PolicyBaseStatistics", 
+  "properties": {
+    "enforcement_point_path": {
+      "description": "enforcement point path, forward slashes must be escaped using %2F.", 
+      "required": false, 
+      "title": "String Path of the enforcement point", 
+      "type": "string"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_DataSourceType.html">DataSourceType</A>, 
+      "required": false, 
+      "title": "The data source, either realtime or cached. If not provided, cached data is returned."
+    }
+  }, 
+  "title": "Request Parameters for Policy Runtime Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

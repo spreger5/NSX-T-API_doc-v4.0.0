@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DropdownFilterPlotConfiguration.html">DropdownFilterPlotConfiguration</a> (<a href="types_DropdownFilterPlotConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Dropdown Filter plotting configuration.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_WidgetPlotConfiguration.html">WidgetPlotConfiguration</A>
+  }, 
+  "id": "DropdownFilterPlotConfiguration", 
+  "module_id": "NsxDashboard", 
+  "properties": {
+    "allow_maximize": {
+      "description": "Allow maximize capability for this widget", 
+      "title": "Allow maximize capability for this widget", 
+      "type": "boolean"
+    }, 
+    "allow_search": {
+      "default": false, 
+      "description": "Allow search on drop down filter.", 
+      "title": "Allow search on drop down filter", 
+      "type": "boolean"
+    }, 
+    "condition": {
+      "description": "If the condition is met then the given chart config is applied to the widget configuration.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition for this chart config", 
+      "type": "string"
+    }
+  }, 
+  "title": "Dropdown Filtert plotting configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

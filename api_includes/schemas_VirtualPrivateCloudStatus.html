@@ -1,0 +1,160 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VirtualPrivateCloudStatus.html">VirtualPrivateCloudStatus</a> (<a href="types_VirtualPrivateCloudStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores the information related to onboard and offboard status of virtual private cloud.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "VirtualPrivateCloudStatus", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "error_code": {
+      "description": "Error code related to virtual private cloud Onboard/Offboard failure.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Error Code", 
+      "type": "integer"
+    }, 
+    "error_message": {
+      "description": "Error message related to virtual private cloud Onboard/Offboard failure.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Error Message", 
+      "type": "string"
+    }, 
+    "offboard_step": {
+      "description": "Stores the different states of virtual private cloud while offboarding from a transit virtual private cloud.", 
+      "enum": [
+        "UNCONFIGURING_GATEWAY", 
+        "DELETING_SECURITY_GROUPS", 
+        "OFFBOARD_SUCCESSFUL", 
+        "OFFBOARD_FAILED", 
+        "NOT_APPLICABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "States of Virtual Private Cloud While OffBoard", 
+      "type": "string"
+    }, 
+    "onboard_step": {
+      "description": "Stores the different states of virtual private cloud while onboarding using a transit virtual private cloud.", 
+      "enum": [
+        "VALIDATING_ENVIRONMENT", 
+        "CREATING_SECURITY_GROUPS", 
+        "CONFIGURING_GATEWAY", 
+        "ONBOARD_SUCCESSFUL", 
+        "ONBOARD_FAILED", 
+        "NOT_APPLICABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "States of Virtual Private Cloud While Onboard", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "Indicates the status of a virtual private cloud. UP: virtual private cloud is NSX managed. DOWN: virtual private cloud is NSX managed with errors. ONBOARDING: virtual private cloud is in the process of   onboarding using a transit virtual private cloud. OFFBOARDING: virtual private cloud is in the process of    offboarding from a transit virtual private cloud. NOT_APPLICABLE: virtual private cloud is NSX unmanaged.", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "ONBOARDING", 
+        "OFFBOARDING", 
+        "NOT_APPLICABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Virtual Private Cloud Status", 
+      "type": "string"
+    }, 
+    "virtual_private_cloud_name": {
+      "description": "Name of the transit virtual private cloud.", 
+      "readonly": true, 
+      "title": "Virtual Private Cloud Name", 
+      "type": "string"
+    }
+  }, 
+  "title": "Virtual Private Cloud Status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

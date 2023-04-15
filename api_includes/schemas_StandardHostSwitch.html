@@ -1,0 +1,212 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_StandardHostSwitch.html">StandardHostSwitch</a> (<a href="types_StandardHostSwitch.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "id": "StandardHostSwitch", 
+  "module_id": "TransportNode", 
+  "properties": {
+    "cpu_config": {
+      "description": "CPU configuration specifies number of Logical cpu cores (Lcores) per Non Uniform Memory Access (NUMA) node dedicated to Enhanced Networking Stack enabled HostSwitch to get the best performance.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CpuCoreConfigForEnhancedNetworkingStackSwitch.html">CpuCoreConfigForEnhancedNetworkingStackSwitch</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Enhanced Networking Stack enabled HostSwitch CPU configuration", 
+      "type": "array"
+    }, 
+    "host_switch_id": {
+      "description": "This field is writable only in case of VDS type HostSwitch and system generated for NVDS type. For VDS type host switch, This field is used to lookup a VDS from corresponding Compute Manager and then can be configured for logical networking. For NVDS type host switch, This field is system generated and if provided will be overwritten.", 
+      "nsx_feature": "NsxtOnVds", 
+      "required": false, 
+      "title": "The host switch id. This ID will be used to reference a host switch.", 
+      "type": "string"
+    }, 
+    "host_switch_mode": {
+      "description": "STANDARD - This mode applies to all the hypervisors. ENS - This is the Enhanced Data Path switch mode. This mode provides accelerated networking performances but also introduces additional prerequisites. In order to benefit from this mode, workloads will be need to be compiled with DPDK and will use VMXNET3 for their vNIC. This mode is only available on ESX hypervisor (6.7 and above, recommended 6.7 U2 and above) and unavailable on KVM, EDGE and Public Cloud Gateway. Not all NSX features are available in this mode, please consult the documentation. ENS_INTERRUPT - This is an interrupt driven variant of the Enhanced Data Path mode. Please, consult your account representative for applicability. This mode is available only on ESX hypervisor (7.0 and above). If this property is specified, transport_zone_endpoints must be specified at StandardHostSwitch level.", 
+      "enum": [
+        "STANDARD", 
+        "ENS", 
+        "ENS_INTERRUPT"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "Operational mode of a HostSwitch.", 
+      "type": "string"
+    }, 
+    "host_switch_name": {
+      "default": "nsxDefaultHostSwitch", 
+      "deprecated": true, 
+      "description": "This field is writable only in case of NVDS type HostSwitch and system generated for VDS type. For NVDS type host switch, If this name is unset or empty then the default host switch name will be used. The name must be unique among all host switches specified in a given transport node; unset name, empty name and the default host switch name are considered the same in terms of uniqueness. For VDS type host switch, Manager fetches VDS name from corresponding Compute Manager and populates this field. If VDS name is given (correct or incorrect) it is ignored and overwritten with correct one.", 
+      "required": false, 
+      "title": "host switch name. This name will be used to reference a host switch.", 
+      "type": "string"
+    }, 
+    "host_switch_profile_ids": {
+      "description": "Host switch profiles bound to this host switch. If a profile ID is not provided for any HostSwitchProfileType that is supported by the transport node, the corresponding default profile will be bound to the host switch. If transport node is created using Policy APIs, use policyPaths instead of UUIDs.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HostSwitchProfileTypeIdEntry.html">HostSwitchProfileTypeIdEntry</A>
+      }, 
+      "required": false, 
+      "title": "Identifiers of host switch profiles to be associated with this host switch.", 
+      "type": "array"
+    }, 
+    "host_switch_type": {
+      "default": "NVDS", 
+      "description": "VDS represents VMware vSphere Distributed Switch from vSphere that is used as HostSwitch through TransportNode or TransportNodeProfile configuration. When VDS is used as a HostSwitch, Hosts have to be added to VDS from vSphere and VDS instance is created on Hosts. To configure NSX on such hosts, you can use this VDS as a HostSwitch from NSX manager. vCenter has the ownership of MTU, LAG, NIOC and LLDP configuration of such VDS backed HostSwitch. Remaining configuration (e.g. UplinkHostswitchProfile) will be managed by NSX. NVDS represents NSX Virtual Switch which is NSX native HostSwitch. All configurations of NVDS will be managed by NSX. HostSwitch of type NVDS has been deprecated on ESX hosts that are managed by a vCenter Server.", 
+      "enum": [
+        "NVDS", 
+        "VDS"
+      ], 
+      "nsx_feature": "NsxtOnVds", 
+      "required": false, 
+      "title": "Type of HostSwitch", 
+      "type": "string"
+    }, 
+    "ip_assignment_spec": {
+      "$ref": "<A HREF="schemas_IpAssignmentSpec.html">IpAssignmentSpec</A>, 
+      "description": "IPs can come from either a static IP pool or an explicitly specified IP list or DHCP. In case a list of IP is specified, the number of IPs provided should be sufficient as per teaming policy associated with host switch uplink profile.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Specification for IPs to be used with host switch virtual tunnel endpoints"
+    }, 
+    "is_migrate_pnics": {
+      "default": false, 
+      "description": "When using the Quick Start workflow on 7.0 and above vCenter clusters, if the pnics specified in the pnics field are used by a single VSS HostSwitch, then they are migrated over to recommended VDS HostSwitch. If any two pnics are not used by the same VSS HostSwitch or VDS HostSwitch, it is not supported. In such cases, please migrate them in multiple steps, one VSS HostSwitch or VDS HostSwitch at a time.", 
+      "required": false, 
+      "title": "Migrate any pnics which are in use", 
+      "type": "boolean"
+    }, 
+    "pnics": {
+      "description": "When using the Quick Start workflow on 7.0 and above vCenter clusters, pnic information will be populated by the recommendation engine when providing a VDS HostSwitch based recommendation for a VSS HostSwitch.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Pnic.html">Pnic</A>
+      }, 
+      "required": false, 
+      "title": "Physical NICs connected to the host switch", 
+      "type": "array"
+    }, 
+    "pnics_uninstall_migration": {
+      "deprecated": true, 
+      "description": "This is only supported for NVDS type of host switch. If this is specified for VDS type of host switch, an error will be returned to user. The pnics to be migrated out to a non N-VDS switch during transport node deletion.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Pnic.html">Pnic</A>
+      }, 
+      "required": false, 
+      "title": "Physical NICs connected to a switch", 
+      "type": "array"
+    }, 
+    "portgroup_transport_zone_id": {
+      "description": "A transport zone will be created for each DVS found across all hosts in a cluster that is installed for NSX on DVPG. This field, populated by NSX, is the ID of the transport zone created for the DVS this host switch represents. All discovered segments created for the DVPGs found on the DVS will have this ID specified as the transport zone id.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Transport Zone ID representing the DVS used in NSX on DVPG", 
+      "type": "string"
+    }, 
+    "transport_zone_endpoints": {
+      "description": "List of TransportZones that are to be associated with specified host switch. If this property is specified, host_switch_mode at StandardHostSwitch level must be specified.", 
+      "items": {
+        "$ref": "<A HREF="schemas_TransportZoneEndPoint.html">TransportZoneEndPoint</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Transport zone endpoints.", 
+      "type": "array"
+    }, 
+    "uplinks": {
+      "description": "If VDS is used as a HostSwitch this attribute must be specified. You can associate uplinks from UplinkHostSwitchProfile to either VDS uplink or LAG. VDS uplink or LAG will inherit the global VDS level teaming policy from vSphere. NSX managed uplink or LAG will have NSX teaming policy configured through UplinkHostSwitchProfile.", 
+      "items": {
+        "$ref": "<A HREF="schemas_VdsUplink.html">VdsUplink</A>
+      }, 
+      "nsx_feature": "NsxtOnVds", 
+      "required": false, 
+      "title": "Uplink/LAG of VMware vSphere Distributed Switch connected to the HostSwitch", 
+      "type": "array"
+    }, 
+    "vmk_install_migration": {
+      "description": "When using the Quick Start workflow on 7.0 and above vCenter clusters, vmnk_install_migration will be populated by the recommendation engine when providing a VDS HostSwitch based recommendation for a VSS HostSwitch. It will contain The vmk interfaces and the associated logical switches on the HostSwitch. The state of this field is realized on the transport node during creation", 
+      "items": {
+        "$ref": "<A HREF="schemas_VmknicNetwork.html">VmknicNetwork</A>
+      }, 
+      "required": false, 
+      "title": "The vmknic and logical switch mappings", 
+      "type": "array"
+    }, 
+    "vmk_uninstall_migration": {
+      "deprecated": true, 
+      "description": "This is only supported for NVDS type of host switch. If this is specified for VDS type of host switch, an error will be returned to user. The vmk interfaces and the associated portgroups on the VSS/DVS. This field is realized on the host during transport node deletion or NSX uninstallation to specify the destination for all vmks on N-VDS switches.", 
+      "items": {
+        "$ref": "<A HREF="schemas_VmknicNetwork.html">VmknicNetwork</A>
+      }, 
+      "required": false, 
+      "title": "The vmknic and portgroup mappings", 
+      "type": "array"
+    }
+  }, 
+  "title": "Standard host switch specification", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

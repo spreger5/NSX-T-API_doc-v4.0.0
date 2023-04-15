@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RenderConfiguration.html">RenderConfiguration</a> (<a href="types_RenderConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Render configuration to be applied to the widget.", 
+  "id": "RenderConfiguration", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "properties": {
+    "color": {
+      "description": "The color to use when rendering an entity. For example, set color as 'RED' to render a portion of donut in red.", 
+      "title": "Color of the entity", 
+      "type": "string"
+    }, 
+    "condition": {
+      "description": "If the condition is met then the rendering specified for the condition will be applied. Examples of expression syntax are provided under 'example_request' section of 'CreateWidgetConfiguration' API.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition", 
+      "type": "string"
+    }, 
+    "display_value": {
+      "description": "If specified, overrides the field value. This can be used to display a meaningful value in situations where field value is not available or not configured.", 
+      "maxLength": 255, 
+      "title": "Overridden value to display, if any", 
+      "type": "string"
+    }, 
+    "icons": {
+      "description": "Icons to be applied at dashboard for widgets and UI elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Icon.html">Icon</A>
+      }, 
+      "minItems": 0, 
+      "title": "Icons", 
+      "type": "array"
+    }, 
+    "tooltip": {
+      "description": "Multi-line text to be shown on tooltip while hovering over the UI element if the condition is met.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tooltip.html">Tooltip</A>
+      }, 
+      "minItems": 0, 
+      "title": "Multi-line tooltip", 
+      "type": "array"
+    }
+  }, 
+  "title": "Render Configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

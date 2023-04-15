@@ -1,0 +1,102 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ControlClusteringConfig.html">ControlClusteringConfig</a> (<a href="types_ControlClusteringConfig.html">type</a>)
+</h3>
+<pre>{
+  "description": "Config for joining cluster nodes VMs to a control cluster", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ClusteringConfig.html">ClusteringConfig</A>
+  }, 
+  "id": "ControlClusteringConfig", 
+  "module_id": "ClusterNodeVMDeployment", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "ControlClusteringConfig"
+  }, 
+  "properties": {
+    "clustering_type": {
+      "description": "Specifies the type of clustering config to be used.", 
+      "enum": [
+        "ControlClusteringConfig"
+      ], 
+      "required": true, 
+      "title": "Type for the clustering config", 
+      "type": "string"
+    }, 
+    "join_to_existing_cluster": {
+      "description": "Specifies whether or not the cluster node VM should try to join to the existing control cluster or initialize a new one. Only required in uncertainty case, i.e. when there are manually- deployed controllers that are registered but not connected to the cluster and no auto-deployed controllers are part of the cluster.", 
+      "required": false, 
+      "title": "Flag to identify the type of clustering", 
+      "type": "boolean"
+    }, 
+    "shared_secret": {
+      "description": "Shared secret to be used when joining the cluster node VM to a control cluster or for initializing a new cluster with the VM. Must contain at least 4 unique characters and be at least 6 characters long.", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "Cluster's shared secret", 
+      "type": "string"
+    }
+  }, 
+  "title": "Clustering config for joining control cluster", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

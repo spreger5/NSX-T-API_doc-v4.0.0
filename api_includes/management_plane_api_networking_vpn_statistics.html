@@ -1,0 +1,230 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_vpn.html' style='text-decoration: none'> VPN</a> >
+        
+        
+            <a href='management_plane_api_networking_vpn_statistics.html' style='text-decoration: none'> Statistics</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session statistics</h4><br>
+                      <span class="help_detail">Get statistics of a vpn session across all tunnels and IKE session. Query parameter "source=realtime" is the only supported source.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVPNSessionStatistics.html">GET /api/v1/vpn/ipsec/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset the statistics of the given VPN session</h4><br>
+                      <span class="help_detail">Reset the statistics of the given VPN session.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetIPSecVPNSessionStatistics.html">POST /api/v1/vpn/ipsec/sessions/&lt;session-id&gt;/statistics?action=reset</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN IKE session status</h4><br>
+                      <span class="help_detail">List status of IPSec session. Query parameter source supports both realtime and cached mode.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVPNIKESessionStatus.html">GET /api/v1/vpn/ipsec/sessions/&lt;session-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>VPN session summary</h4><br>
+                      <span class="help_detail">VPN session summary gets summary per vpn sessions and IKE session. Query parameter source supports only cached mode.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVPNSessionSummary.html">GET /api/v1/vpn/ipsec/sessions/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session remote mac for logical switch</h4><br>
+                      <span class="help_detail">Get L2VPN session remote mac for logical switch.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSessionRemoteMacsForLS.html">GET /api/v1/vpn/l2vpn/sessions/&lt;session-id&gt;/remote-mac</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session statistics</h4><br>
+                      <span class="help_detail">Get statistics of a L2VPN session. Query parameter source=realtime is the only supported source.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSessionStatistics.html">GET /api/v1/vpn/l2vpn/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session status</h4><br>
+                      <span class="help_detail">Aggregated status of L2VPN session. Query parameter source=realtime|cached is supported.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSessionStatus.html">GET /api/v1/vpn/l2vpn/sessions/&lt;session-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get status summary of all existing L2VPN sessions.</h4><br>
+                      <span class="help_detail">Load all the existing L2VPN sessions and return the status summary of all L2VPN sessions. Query parameter source supports only cached mode.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSessionSummary.html">GET /api/v1/vpn/l2vpn/sessions/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Cumulative statistics for one IKE service instance</h4><br>
+                      <span class="help_detail">Cumulative statistics for one IKE service instance. Query parameter source supports only cached mode.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVPNIKEService.html">GET /api/v1/vpn/services/&lt;service-id&gt;/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

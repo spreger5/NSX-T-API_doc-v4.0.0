@@ -1,0 +1,80 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RAMode.html">RAMode</a> (<a href="types_RAMode.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Router Advertisement Modes. DISABLED - RA is disabled SLAAC_DNS_THROUGH_RA - Stateless address auto-configuration RA for address and configuration SLAAC_DNS_THROUGH_DHCP - SLAAC RA for address and DHCPv6 for configuration DHCP_ADDRESS_AND_DNS_THROUGH_DHCP - DHCPv6 for address and configurations SLAAC_AND_ADDRESS_DNS_THROUGH_DHCP - SLAAC RA and DHCPv6 for address and configurations", 
+  "enum": [
+    "DISABLED", 
+    "SLAAC_DNS_THROUGH_RA", 
+    "SLAAC_DNS_THROUGH_DHCP", 
+    "DHCP_ADDRESS_AND_DNS_THROUGH_DHCP", 
+    "SLAAC_AND_ADDRESS_DNS_THROUGH_DHCP"
+  ], 
+  "id": "RAMode", 
+  "module_id": "Routing", 
+  "title": "Router Advertisement Mode", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

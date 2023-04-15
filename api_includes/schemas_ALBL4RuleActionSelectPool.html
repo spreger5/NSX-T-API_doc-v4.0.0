@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBL4RuleActionSelectPool.html">ALBL4RuleActionSelectPool</a> (<a href="types_ALBL4RuleActionSelectPool.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer L4RuleActionSelectPool object", 
+  "id": "ALBL4RuleActionSelectPool", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "action_type": {
+      "$ref": "<A HREF="schemas_ALBL4RuleActionSelectPoolType.html">ALBL4RuleActionSelectPoolType</A>, 
+      "description": "Indicates action to take on rule match. Enum options - L4_RULE_ACTION_SELECT_POOL, L4_RULE_ACTION_SELECT_POOLGROUP. Allowed in Basic(Allowed values- L4_RULE_ACTION_SELECT_POOL) edition, Essentials(Allowed values- L4_RULE_ACTION_SELECT_POOL) edition, Enterprise edition.", 
+      "required": true, 
+      "title": "Action type"
+    }, 
+    "pool_group_path": {
+      "description": "ID of the pool group to serve the request. It is a reference to an object of type PoolGroup. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Pool group path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBL4PolicySet"
+          ], 
+          "relationshipType": "ALB_L4POLICYSET_ALB_POOLGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBPoolGroup"
+          ]
+        }
+      ]
+    }, 
+    "pool_path": {
+      "description": "ID of the pool of servers to serve the request. It is a reference to an object of type Pool.", 
+      "required": false, 
+      "title": "Pool path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBL4PolicySet"
+          ], 
+          "relationshipType": "ALB_L4POLICYSET_ALB_POOL_RELATIONSHIP", 
+          "rightType": [
+            "ALBPool"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "L4RuleActionSelectPool", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

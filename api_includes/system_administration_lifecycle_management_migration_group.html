@@ -1,0 +1,305 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_lifecycle_management.html' style='text-decoration: none'> Lifecycle Management</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_migration.html' style='text-decoration: none'> Migration</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_migration_group.html' style='text-decoration: none'> Group</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Return information of all migration unit groups</h4><br>
+                      <span class="help_detail">Return information of all migration unit groups in the
+<br>
+migration plan.  If request parameter summary is set to true, then
+<br>
+only count of migration units will be returned, migration units list
+<br>
+will be empty. If request parameter component type is specified,
+<br>
+then all migration unit groups for that component will be returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMigrationUnitGroups.html">GET /api/v1/migration/migration-unit-groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a group</h4><br>
+                      <span class="help_detail">Create a group of migration units.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateMigrationUnitGroup.html">POST /api/v1/migration/migration-unit-groups</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get migration status for migration unit groups</h4><br>
+                      <span class="help_detail">Get migration status for migration unit groups</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMigrationUnitGroupsStatus.html">GET /api/v1/migration/migration-unit-groups-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the migration unit group</h4><br>
+                      <span class="help_detail">Delete the specified group.
+<br>
+NOTE - A group can be deleted only if it is empty.
+<br>
+If user tries to delete a group containing one
+<br>
+or more migration units, the operation will fail and an error
+<br>
+will be returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteMigrationUnitGroup.html">DELETE /api/v1/migration/migration-unit-groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return migration unit group information</h4><br>
+                      <span class="help_detail">Returns information about a specific migration unit group in the
+<br>
+migration plan.  If request parameter summary is set to true, then
+<br>
+only count of migration units will be returned, migration units list
+<br>
+will be empty.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMigrationUnitGroup.html">GET /api/v1/migration/migration-unit-groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add migration units to specified migration unit group</h4><br>
+                      <span class="help_detail">Add migration units to specified migration unit group. The migration
+<br>
+units will be added at the end of the migration unit list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddMigrationUnitsToGroup.html">POST /api/v1/migration/migration-unit-groups/&lt;group-id&gt;?action=add_migration_units</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reorder migration unit group</h4><br>
+                      <span class="help_detail">Reorder an migration unit group by placing it before/after
+<br>
+the specified migration unit group.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReorderMigrationUnitGroup.html">POST /api/v1/migration/migration-unit-groups/&lt;group-id&gt;?action=reorder</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the migration unit group</h4><br>
+                      <span class="help_detail">Update the specified migration unit group. Removal of migration units from the group
+<br>
+using this is not allowed. An error will be returned in that case.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateMigrationUnitGroup.html">PUT /api/v1/migration/migration-unit-groups/&lt;group-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reorder an migration unit within the migration unit group</h4><br>
+                      <span class="help_detail">Reorder an migration unit within the migration unit group by placing it
+<br>
+before/after the specified migration unit
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReorderMigrationUnit.html">POST /api/v1/migration/migration-unit-groups/&lt;group-id&gt;/migration-unit/&lt;migration-unit-id&gt;?action=reorder</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get migration status for group</h4><br>
+                      <span class="help_detail">Get migration status for migration units in the specified group. User can
+<br>
+specify whether to show only the migration units with errors.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMigrationUnitGroupStatus.html">GET /api/v1/migration/migration-unit-groups/&lt;group-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return aggregate information of all migration unit groups</h4><br>
+                      <span class="help_detail">Return information of all migration unit groups in the
+<br>
+migration plan.  If request parameter summary is set to true, then
+<br>
+only count of migration units will be returned, migration units list
+<br>
+will be empty. If request parameter component type is specified,
+<br>
+then all migration unit groups for that component will be returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMigrationUnitGroupAggregateInfo.html">GET /api/v1/migration/migration-unit-groups/aggregate-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

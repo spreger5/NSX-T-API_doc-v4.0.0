@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TransportNodeRemoteTunnelEndpointConfig.html">TransportNodeRemoteTunnelEndpointConfig</a> (<a href="types_TransportNodeRemoteTunnelEndpointConfig.html">type</a>)
+</h3>
+<pre>{
+  "id": "TransportNodeRemoteTunnelEndpointConfig", 
+  "module_id": "TransportNode", 
+  "properties": {
+    "host_switch_name": {
+      "description": "The host switch name should reference an existing host switch specified in the transport node configuration. The name will be used to identify the host switch responsible for processing remote tunnel endpoint traffic.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "The host switch name to be used for the remote tunnel endpoint", 
+      "type": "string"
+    }, 
+    "ip_assignment_spec": {
+      "$ref": "<A HREF="schemas_IpAssignmentSpec.html">IpAssignmentSpec</A>, 
+      "description": "IPs can come from either a static IP pool or an explicitly specified IP list. Therefore, specifying any other IP assignment type will result in error. In case a list of IPs is specified, the number of IPs provided should be sufficient as per the teaming policy associated with the host switch uplink profile used by the remote tunnel endpoint.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "Specification for IPs to be used with host switch remote tunnel endpoints"
+    }, 
+    "named_teaming_policy": {
+      "description": "Specifying this field will override the default teaming policy of the host switch and will be used by remote tunnel endpoint traffic.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "The named teaming policy to be used by the remote tunnel endpoint", 
+      "type": "string"
+    }, 
+    "rtep_vlan": {
+      "$ref": "<A HREF="schemas_VlanID.html">VlanID</A>, 
+      "description": "The transport VLAN id used for tagging intersite overlay traffic between remote tunnel endpoints.", 
+      "readonly": false, 
+      "required": true, 
+      "title": "VLAN id for remote tunnel endpoint"
+    }
+  }, 
+  "title": "Remote tunnel endpoint configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

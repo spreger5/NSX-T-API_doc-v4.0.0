@@ -1,0 +1,236 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeNetworkInterfaceProperties.html">NodeNetworkInterfaceProperties</a> (<a href="types_NodeNetworkInterfaceProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "NodeNetworkInterfaceProperties", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "admin_status": {
+      "enum": [
+        "up", 
+        "down"
+      ], 
+      "readonly": true, 
+      "title": "Interface administration status", 
+      "type": "string"
+    }, 
+    "bond_cur_active_slave": {
+      "readonly": true, 
+      "title": "Bond's currently active slave device", 
+      "type": "string"
+    }, 
+    "bond_lacp_rate": {
+      "readonly": true, 
+      "title": "Bond's rate at which we'll ask our link partner to transmit LACPDU packets in 802.3ad mode", 
+      "type": "string"
+    }, 
+    "bond_mode": {
+      "enum": [
+        "ACTIVE_BACKUP", 
+        "802_3AD", 
+        "ROUND_ROBIN", 
+        "BROADCAST", 
+        "XOR", 
+        "TLB", 
+        "ALB"
+      ], 
+      "title": "Bond mode", 
+      "type": "string"
+    }, 
+    "bond_primary": {
+      "title": "Bond's primary device name in active-backup bond mode", 
+      "type": "string"
+    }, 
+    "bond_primary_slave": {
+      "readonly": true, 
+      "title": "Bond's primary device name in active-backup bond mode", 
+      "type": "string"
+    }, 
+    "bond_slaves": {
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Bond's slave devices", 
+      "type": "array"
+    }, 
+    "bond_xmit_hash_policy": {
+      "enum": [
+        "layer2", 
+        "layer2+3", 
+        "layer3+4", 
+        "encap2+3", 
+        "encap3+4"
+      ], 
+      "readonly": true, 
+      "title": "Bond's transmit hash policy for balance-xor and 802.3ad modes", 
+      "type": "string"
+    }, 
+    "broadcast_address": {
+      "pattern": "^[\\d]{1,3}\\.[\\d]{1,3}\\.[\\d]{1,3}\\.[\\d]{1,3}$", 
+      "title": "Interface broadcast address", 
+      "type": "string"
+    }, 
+    "default_gateway": {
+      "pattern": "^[\\d]{1,3}\\.[\\d]{1,3}\\.[\\d]{1,3}\\.[\\d]{1,3}$", 
+      "title": "Interface's default gateway", 
+      "type": "string"
+    }, 
+    "interface_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Interface ID", 
+      "type": "string"
+    }, 
+    "ip6_addresses": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPv6AddressProperties.html">IPv6AddressProperties</A>
+      }, 
+      "title": "Interface IPv6 addresses", 
+      "type": "array"
+    }, 
+    "ip_addresses": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPv4AddressProperties.html">IPv4AddressProperties</A>
+      }, 
+      "maxItems": 1, 
+      "title": "Interface IP addresses", 
+      "type": "array"
+    }, 
+    "ip_configuration": {
+      "enum": [
+        "dhcp", 
+        "static", 
+        "not configured"
+      ], 
+      "required": true, 
+      "title": "Interface configuration", 
+      "type": "string"
+    }, 
+    "is_kni": {
+      "readonly": true, 
+      "title": "Interface is a KNI", 
+      "type": "boolean"
+    }, 
+    "link_status": {
+      "enum": [
+        "up", 
+        "down"
+      ], 
+      "readonly": true, 
+      "title": "Interface administration status", 
+      "type": "string"
+    }, 
+    "mtu": {
+      "title": "Interface MTU", 
+      "type": "integer"
+    }, 
+    "physical_address": {
+      "pattern": "^[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}:[0-9A-Fa-f]{2}$", 
+      "readonly": true, 
+      "title": "Interface MAC address", 
+      "type": "string"
+    }, 
+    "plane": {
+      "enum": [
+        "mgmt", 
+        "debug", 
+        "none"
+      ], 
+      "title": "Interface plane", 
+      "type": "string"
+    }, 
+    "vlan": {
+      "maximum": 4094, 
+      "minimum": 1, 
+      "readonly": true, 
+      "title": "VLAN Id", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Node network interface properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalPortState.html">LogicalPortState</a> (<a href="types_LogicalPortState.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "Contians realized state of the logical port. For example, transport node on which the port is located, discovered and realized address bindings of the logical port.", 
+  "id": "LogicalPortState", 
+  "module_id": "LogicalPort", 
+  "properties": {
+    "attachment": {
+      "$ref": "<A HREF="schemas_LogicalPortAttachmentState.html">LogicalPortAttachmentState</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Logical port attachment state"
+    }, 
+    "discovered_bindings": {
+      "description": "Contains the list of address bindings for a logical port that were automatically dicovered using various snooping methods like ARP, DHCP etc.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AddressBindingEntry.html">AddressBindingEntry</A>
+      }, 
+      "title": "Logical port bindings discovered automatically", 
+      "type": "array"
+    }, 
+    "duplicate_bindings": {
+      "description": "If any address binding discovered on the port is also found on other port on the same logical switch, then it is included in the duplicate bindings list along with the ID of the port with which it conflicts.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DuplicateAddressBindingEntry.html">DuplicateAddressBindingEntry</A>
+      }, 
+      "title": "Duplicate logical port address bindings", 
+      "type": "array"
+    }, 
+    "id": {
+      "required": true, 
+      "title": "Id of the logical port", 
+      "type": "string"
+    }, 
+    "realized_bindings": {
+      "description": "List of logical port bindings that are realized. This list may be populated from the discovered bindings or manual user specified bindings. This binding configuration can be used by features such as firewall, spoof-guard, traceflow etc.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AddressBindingEntry.html">AddressBindingEntry</A>
+      }, 
+      "title": "Realized logical port bindings", 
+      "type": "array"
+    }, 
+    "transport_node_ids": {
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Identifiers of the transport node where the port is located", 
+      "type": "array"
+    }
+  }, 
+  "title": "Realized state of the logical port.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

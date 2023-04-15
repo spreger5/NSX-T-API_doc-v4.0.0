@@ -1,0 +1,129 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MirrorStackStatusListResult.html">MirrorStackStatusListResult</a> (<a href="types_MirrorStackStatusListResult.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ListResult.html">ListResult</A>
+  }, 
+  "id": "MirrorStackStatusListResult", 
+  "module_id": "PortMirroring", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cursor": {
+      "readonly": true, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "overall_status": {
+      "$ref": "<A HREF="schemas_MirrorStackStatusType.html">MirrorStackStatusType</A>, 
+      "description": "SUCCESS if all the TN's stack status are SUCCESS, FAILED if some of the TN's stack status are FAILED.", 
+      "required": true, 
+      "title": "Overall mirror stack status for all the TNs"
+    }, 
+    "result_count": {
+      "readonly": true, 
+      "title": "Count of results found (across all pages), set only on first page", 
+      "type": "integer"
+    }, 
+    "results": {
+      "description": "List all TN nodes which spaned in remote L3 mirror session mirror stack health status detailed info, including mirror stack status, vmknic status, TN node ID, TN node name and last updated status timestamp.", 
+      "items": {
+        "$ref": "<A HREF="schemas_TnNodeStackSpanStatus.html">TnNodeStackSpanStatus</A>
+      }, 
+      "required": true, 
+      "title": "All TN nodes in remote L3 mirror session mirror stack health status", 
+      "type": "array"
+    }, 
+    "sort_ascending": {
+      "readonly": true, 
+      "title": "If true, results are sorted in ascending order", 
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "readonly": true, 
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

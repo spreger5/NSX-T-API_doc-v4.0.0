@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpResponseHeaderDeleteAction.html">LbHttpResponseHeaderDeleteAction</a> (<a href="types_LbHttpResponseHeaderDeleteAction.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This action is used to delete header fields of HTTP response messages at HTTP_RESPONSE_REWRITE phase. One action can be used to delete allgi headers with same header name. To delete headers with different header names, multiple actions must be defined", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleAction.html">LbRuleAction</A>
+  }, 
+  "id": "LbHttpResponseHeaderDeleteAction", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpResponseHeaderDeleteAction"
+  }, 
+  "properties": {
+    "header_name": {
+      "required": true, 
+      "title": "Name of a header field of HTTP response message", 
+      "type": "string"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleActionType.html">LbRuleActionType</A>, 
+      "description": "The property identifies the load balancer rule action type.", 
+      "required": true, 
+      "title": "Type of load balancer rule action"
+    }
+  }, 
+  "title": "Action to delete HTTP response header fields", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

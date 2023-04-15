@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MonitoringError.html">MonitoringError</a> (<a href="types_MonitoringError.html">type</a>)
+</h3>
+<pre>{
+  "description": "Monitoring information is gathered from multiple sub-systems/components, using REST or RPC calls internally. It is quite possible for a component or sub-system fail, in which case it is captured as an error and reported.", 
+  "id": "MonitoringError", 
+  "module_id": "FederationObservability", 
+  "properties": {
+    "error_code": {
+      "read_only": true, 
+      "title": "NSX error code if available", 
+      "type": "integer"
+    }, 
+    "error_message": {
+      "read_only": true, 
+      "title": "Error mesage", 
+      "type": "string"
+    }, 
+    "params": {
+      "items": {
+        "type": "object"
+      }, 
+      "read_only": true, 
+      "title": "Parameters for construcing error details", 
+      "type": "array"
+    }
+  }, 
+  "title": "Represents an error that occurred while gathering information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

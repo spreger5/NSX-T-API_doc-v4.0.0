@@ -1,0 +1,99 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NotificationAuthenticationScheme.html">NotificationAuthenticationScheme</a> (<a href="types_NotificationAuthenticationScheme.html">type</a>)
+</h3>
+<pre>{
+  "description": "NotificationAuthenticationScheme describes how notification requests should authenticate to the server.", 
+  "id": "NotificationAuthenticationScheme", 
+  "module_id": "NfwConfig", 
+  "properties": {
+    "certificate_id": {
+      "description": "Certificate ID with a valid certificate and private key, procured from trust-management API.", 
+      "title": "Valid certificate ID", 
+      "type": "string"
+    }, 
+    "password": {
+      "description": "Password to use if scheme_name is BASIC_AUTH.", 
+      "sensitive": true, 
+      "title": "Password for authentication", 
+      "type": "string"
+    }, 
+    "scheme_name": {
+      "description": "Authentication scheme to use when making notification requests to the partner/customer specified watcher. Specify one of BASIC_AUTH or CERTIFICATE.", 
+      "enum": [
+        "BASIC_AUTH", 
+        "CERTIFICATE"
+      ], 
+      "required": true, 
+      "title": "Authentication scheme to use when making notification requests", 
+      "type": "string"
+    }, 
+    "username": {
+      "description": "Username to use if scheme_name is BASIC_AUTH.", 
+      "title": "Username for authentication", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

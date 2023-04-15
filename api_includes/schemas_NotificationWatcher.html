@@ -1,0 +1,236 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NotificationWatcher.html">NotificationWatcher</a> (<a href="types_NotificationWatcher.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "NotificationWatcher", 
+  "module_id": "NfwConfig", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "authentication_scheme": {
+      "$ref": "<A HREF="schemas_NotificationAuthenticationScheme.html">NotificationAuthenticationScheme</A>, 
+      "description": "A NotificationAuthenticationScheme that describes how notification requests should authenticate to the server.", 
+      "required": true, 
+      "title": "Scheme to authenticate requests sent to the server"
+    }, 
+    "certificate_sha256_thumbprint": {
+      "description": "Contains the hex-encoded SHA256 thumbprint of the HTTPS certificate. It must be specified if use_https is set to true.", 
+      "required": false, 
+      "title": "SHA256 thumbprint of the HTTPS certificate", 
+      "type": "string"
+    }, 
+    "description": {
+      "description": "Optional description that can be associated with this NotificationWatcher.", 
+      "required": false, 
+      "title": "Description associated with this notification watcher", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "System generated identifier to identify a notification watcher uniquely.", 
+      "readonly": true, 
+      "title": "Identifier to identify a notification watcher uniquely", 
+      "type": "string"
+    }, 
+    "max_send_uri_count": {
+      "default": 5000, 
+      "description": "If the number of notification URIs accumulated in specified send_interval exceeds max_send_uri_count, then multiple notification requests (each with max_send_uri_count or less number of notification URIs) will be sent to this NotificationWatcher. The default value is 5000.", 
+      "maximum": 5000, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Optional maximum number of notification URIs batched in a single notification request", 
+      "type": "integer"
+    }, 
+    "method": {
+      "description": "Type of method notification requests should be made on the specified server. The value must be set to POST.", 
+      "enum": [
+        "POST"
+      ], 
+      "required": true, 
+      "title": "Type of method notification requests should be made on the server", 
+      "type": "string"
+    }, 
+    "port": {
+      "description": "Optional integer port value to specify a non-standard HTTP or HTTPS port.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Integer port value to specify a non-standard HTTP or HTTPS port", 
+      "type": "integer"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "send_interval": {
+      "description": "Optional time interval (in seconds) for which notification URIs will be accumulated. At the end of the time interval the accumulated notification URIs will be sent to this NotificationWatcher in the form of zero (nothing accumulated) or more notification requests as soon as possible. If it is not specified, the NotificationWatcher should expected to receive notifications at any time.", 
+      "minimum": 30, 
+      "required": false, 
+      "title": "Optional time interval for which notification URIs will be accumulated", 
+      "type": "integer"
+    }, 
+    "send_timeout": {
+      "default": 30, 
+      "description": "Optional time duration (in seconds) to specify request timeout to notification watcher. If the send reaches the timeout, will try to send refresh_needed as true in the next time interval. The default value is 30 seconds.", 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Optional time period within which response for a notification request should be received from this NotificationWatcher", 
+      "type": "integer"
+    }, 
+    "server": {
+      "description": "IP address or fully qualified domain name of the partner/customer watcher.", 
+      "required": true, 
+      "title": "IP address or fully qualified domain name of watcher", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "uri": {
+      "description": "URI notification requests should be made on the specified server.", 
+      "required": true, 
+      "title": "URI notification requests should be made on the server", 
+      "type": "string"
+    }, 
+    "use_https": {
+      "default": false, 
+      "description": "Optional field, when set to true indicates REST API server should use HTTPS.", 
+      "required": false, 
+      "title": "Flag to indicate if REST API server should use HTTPS", 
+      "type": "boolean"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

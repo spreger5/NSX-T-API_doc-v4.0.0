@@ -1,0 +1,135 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OspfStatusInfo.html">OspfStatusInfo</a> (<a href="types_OspfStatusInfo.html">type</a>)
+</h3>
+<pre>{
+  "id": "OspfStatusInfo", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "database_summary_counter": {
+      "description": "Database summary counter.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Database summary counter", 
+      "type": "integer"
+    }, 
+    "dead_time": {
+      "description": "Time remaining in before considering OSPF neighbor dead.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Time remaining before considering OSPF neighbor dead", 
+      "type": "string"
+    }, 
+    "interface_name": {
+      "description": "Tier0 interface name.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Tier0 interface name", 
+      "type": "string"
+    }, 
+    "last_state_change": {
+      "description": "Time since last change in state.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Time since last change in state", 
+      "type": "string"
+    }, 
+    "priority": {
+      "description": "Priority of the neighbor.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Priority of the neighbor", 
+      "type": "integer"
+    }, 
+    "request_counter": {
+      "description": "request counter.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "request counter", 
+      "type": "integer"
+    }, 
+    "retransmit_counter": {
+      "description": "Retransmit request counter.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Retransmit request counter", 
+      "type": "integer"
+    }, 
+    "source_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Multicast source address.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Multicast source address"
+    }, 
+    "state": {
+      "description": "OSPF neighbor state.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "OSPF neighbor state", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

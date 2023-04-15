@@ -1,0 +1,273 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpDiscoverySwitchingProfile.html">IpDiscoverySwitchingProfile</a> (<a href="types_IpDiscoverySwitchingProfile.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_BaseSwitchingProfile.html">BaseSwitchingProfile</A>
+  }, 
+  "id": "IpDiscoverySwitchingProfile", 
+  "module_id": "IpDiscoverySwitchingProfile", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "IpDiscoverySwitchingProfile"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "arp_bindings_limit": {
+      "default": 1, 
+      "description": "Indicates the number of arp snooped IP addresses to be remembered per LogicalPort. Decreasing this value, will retain the latest bindings from the existing list of address bindings. Increasing this value will retain existing bindings and also learn any new address bindings discovered on the port until the new limit is reached. This limit only applies to IPv4 addresses and is independent of the nd_bindings_limit used for IPv6 snooping.", 
+      "maximum": 256, 
+      "minimum": 1, 
+      "title": "Number of IP addresses to be snooped via ARP snooping", 
+      "type": "int"
+    }, 
+    "arp_nd_binding_timeout": {
+      "default": 10, 
+      "description": "This property controls the ARP and ND cache timeout period.It is recommended that this property be greater than the ARP/ND cache timeout on the VM.", 
+      "maximum": 120, 
+      "minimum": 5, 
+      "readonly": false, 
+      "required": false, 
+      "title": "ARP and ND cache timeout (in minutes)", 
+      "type": "int"
+    }, 
+    "arp_snooping_enabled": {
+      "default": true, 
+      "display": {
+        "order": 1
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates whether ARP snooping is enabled", 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "dhcp_snooping_enabled": {
+      "default": true, 
+      "display": {
+        "order": 2
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates whether DHCP snooping is enabled", 
+      "type": "boolean"
+    }, 
+    "dhcpv6_snooping_enabled": {
+      "default": false, 
+      "description": "This option is the IPv6 equivalent of DHCP snooping.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates if stateful DHCPv6 snooping is enabled", 
+      "type": "boolean"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "duplicate_ip_detection": {
+      "$ref": "<A HREF="schemas_DuplicateIPDetection.html">DuplicateIPDetection</A>, 
+      "description": "Duplicate IP detection is used to determine if there is any IP conflict with any other port on the same logical switch. If a conflict is detected, then the IP is marked as a duplicate on the port where the IP was discovered last. The duplicate IP will not be added to the realized address binings for the port and hence will not be used in DFW rules or other security configurations for the port.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Controls whether duplicate IP detection should be enabled"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "nd_bindings_limit": {
+      "default": 3, 
+      "description": "Indicates the number of neighbor-discovery snooped IP addresses to be remembered per LogicalPort. Decreasing this value, will retain the latest bindings from the existing list of address bindings. Increasing this value will retain existing bindings and also learn any new address bindings discovered on the port until the new limit is reached. This limit only applies to IPv6 addresses and is independent of the arp_bindings_limit used for IPv4 snooping.", 
+      "maximum": 15, 
+      "minimum": 2, 
+      "title": "Number of IP addresses to be snooped via neighbor-discovery(ND) snooping", 
+      "type": "int"
+    }, 
+    "nd_snooping_enabled": {
+      "default": false, 
+      "description": "This option is the IPv6 equivalent of ARP snooping.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates if neighbor discovery snooping is enabled", 
+      "type": "boolean"
+    }, 
+    "required_capabilities": {
+      "help_summary": "List of capabilities required on the fabric node if this profile is used.\nThe required capabilities is determined by whether specific features are enabled in the profile.\n", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "help_summary": "Possible values are 'QosSwitchingProfile', 'PortMirroringSwitchingProfile',\n'IpDiscoverySwitchingProfile', 'MacManagementSwitchingProfile', 'SpoofGuardSwitchingProfile' and 'SwitchSecuritySwitchingProfile'\n'PortMirroringSwitchingProfile' is deprecated, please turn to\n\"Troubleshooting And Monitoring: Portmirroring\" and use\nPortMirroringSession API for port mirror function.\n", 
+      "required": true, 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "trust_on_first_use_enabled": {
+      "default": true, 
+      "description": "ARP snooping being inherently susceptible to ARP spoofing, uses a turst-on-fisrt-use (TOFU) paradigm where only the first IP address discovered via ARP snooping is trusted. The remaining are ignored. In order to allow for more flexibility, we allow the user to configure how many ARP snooped address bindings should be trusted for the lifetime of the logical port. This is controlled by the arp_bindings_limit property in the IP Discovery profile. We refer to this extension of TOFU as N-TOFU. However, if TOFU is disabled, then N ARP snooped IP addresses will be trusted until they are timed out, where N is configured by arp_bindings_limit.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Controls whether trust-on-first-use should be enabled", 
+      "type": "boolean"
+    }, 
+    "vm_tools_enabled": {
+      "default": true, 
+      "description": "This option is only supported on ESX where vm-tools is installed.", 
+      "display": {
+        "order": 3
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates whether fetching IP using vm-tools is enabled", 
+      "type": "boolean"
+    }, 
+    "vm_tools_v6_enabled": {
+      "default": false, 
+      "description": "This option is only supported on ESX where vm-tools is installed.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Indicates whether fetching IPv6 addresses using vm-tools is enabled", 
+      "type": "boolean"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

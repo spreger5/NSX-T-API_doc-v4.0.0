@@ -1,0 +1,376 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_settings.html' style='text-decoration: none'> Settings</a> >
+        
+        
+            <a href='system_administration_settings_user_management.html' style='text-decoration: none'> User Management</a> >
+        
+        
+            <a href='system_administration_settings_user_management_principal_identity.html' style='text-decoration: none'> Principal Identity</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Return the list of OpenID Connect end-points.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListOidcEndPoints.html">GET /api/v1/trust-management/oidc-uris</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a OpenID Connect end-point's thumbprint</h4><br>
+                      <span class="help_detail">Update a OpenID Connect end-point's thumbprint used to connect to the
+<br>
+oidc_uri through SSL
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateOidcEndPointThumbprint.html">POST /api/v1/trust-management/oidc-uris?action=update_thumbprint</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add an OpenID Connect end-point.</h4><br>
+                      <span class="help_detail">This request also fetches the issuer and jwks_uri meta-data from the OIDC
+<br>
+end-point and stores it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddOidcEndPoint.html">POST /api/v1/trust-management/oidc-uris</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an OpenID Connect end-point.</h4><br>
+                      <span class="help_detail">When ?refresh=true is added to the request, the meta-data is newly fetched
+<br>
+from the OIDC end-point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetOidcEndPoint.html">GET /api/v1/trust-management/oidc-uris/&lt;id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Refresh an OpenID Connect end-point</h4><br>
+                      <span class="help_detail">Refresh an OpenID Connect end-point by re-reading data from the OIDC URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RefreshOidcEndPoint.html">POST /api/v1/trust-management/oidc-uris/&lt;id&gt;?action=refresh</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an OpenID Connect end-point.</h4><br>
+                      <span class="help_detail">Update the properties of an OpenID Connect end-point. The oidc_uri property
+<br>
+may not be changed. If you need to update the oidc_uri, you should delete
+<br>
+the OIDC end-point and create a new one with the correct oidc_uri.
+<br>
+
+<br>
+This request also re-fetches the issuer, jwks_uri, and other meta-data
+<br>
+from the OIDC end-point and stores it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateOidcEndPoint.html">PUT /api/v1/trust-management/oidc-uris/&lt;id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Check the health of an OpenID Connect end-point</h4><br>
+                      <span class="help_detail">Connect to the OpenID Connect end-point and verify that it
+<br>
+appears to be functioning properly.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CheckOidcEndPointHealth.html">GET /api/v1/trust-management/oidc-uris/&lt;id&gt;/health</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of principal identities</h4><br>
+                      <span class="help_detail">Returns the list of principals registered with a certificate.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPrincipalIdentities.html">GET /api/v1/trust-management/principal-identities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Register a name-certificate combination.</h4><br>
+                      <span class="help_detail">Associates a principal's name with a certificate that is used to authenticate.
+<br>
+The combination name and node_id needs to be unique across token-based and
+<br>
+certificate-based principal identities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RegisterPrincipalIdentity.html">POST /api/v1/trust-management/principal-identities</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a principal identity's certificate</h4><br>
+                      <span class="help_detail">Update a principal identity's certificate
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePrincipalIdentityCertificate.html">POST /api/v1/trust-management/principal-identities?action=update_certificate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a principal identity</h4><br>
+                      <span class="help_detail">Delete a principal identity. It does not delete the certificate.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePrincipalIdentity.html">DELETE /api/v1/trust-management/principal-identities/&lt;principal-identity-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a principal identity</h4><br>
+                      <span class="help_detail">Get a stored principal identity
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPrincipalIdentity.html">GET /api/v1/trust-management/principal-identities/&lt;principal-identity-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Register a name-certificate combination.</h4><br>
+                      <span class="help_detail">Create a principal identity with a new, unused, certificate.
+<br>
+The combination name and node_id needs to be unique across token-based and
+<br>
+certificate-based principal identities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RegisterPrincipalIdentityWithCertificate.html">POST /api/v1/trust-management/principal-identities/with-certificate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of token-based principal identities. | These don't have certificate or role information.</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTokenBasedPrincipalIdentities.html">GET /api/v1/trust-management/token-principal-identities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Register a token-based principal identity.</h4><br>
+                      <span class="help_detail">Register a principal identity that is going to be authenticated through a token.
+<br>
+The combination name and node_id needs to be unique across token-based and
+<br>
+certificate-based principal identities.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RegisterTokenBasedPrincipalIdentity.html">POST /api/v1/trust-management/token-principal-identities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a token-based principal identity</h4><br>
+                      <span class="help_detail">Delete a token-based principal identity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTokenBasedPrincipalIdentity.html">DELETE /api/v1/trust-management/token-principal-identities/&lt;principal-identity-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a token-based principal identity</h4><br>
+                      <span class="help_detail">Get a stored token-based principal identity
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTokenBasedPrincipalIdentity.html">GET /api/v1/trust-management/token-principal-identities/&lt;principal-identity-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

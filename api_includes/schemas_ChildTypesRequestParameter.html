@@ -1,0 +1,92 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ChildTypesRequestParameter.html">ChildTypesRequestParameter</a> (<a href="types_ChildTypesRequestParameter.html">type</a>)
+</h3>
+<pre>{
+  "description": "Specified child resource types will be populated in the response body", 
+  "id": "ChildTypesRequestParameter", 
+  "module_id": "Policy", 
+  "properties": {
+    "base_path": {
+      "description": "Base path of the resource for which user wants to retrieve the hierarchy. This should be the fully qualified path for the resource. - Sample examples - base_path=/infra/domains/default/groups/Group1 base_path=/infra/domains/default/security-policies/SecurityPolicy1/rules/Rule1", 
+      "required": false, 
+      "title": "Base Path for retrieving hierarchical intent", 
+      "type": "string"
+    }, 
+    "filter": {
+      "description": "Filter string, can contain multiple or single java regular expressions separated by ';'. By default populates immediate child resources of the resource indicated by the URL. These child resources will be filtered by the type provided in the filter. It is recommended to use type_filter parameter instead of filter parameter. - Sample query string to prevent loading services and deployment zones: filter=Type-^(?!.*?(?:Service|DeploymentZone)).*$ - Sample query string to populate all the Group objects under Infra &amp; Domain: filter=Type-Domain%7CGroup - Sample query string to load every policy object under Infra: filter=Type-.*", 
+      "required": false, 
+      "title": "Filter string as java regex", 
+      "type": "string"
+    }, 
+    "type_filter": {
+      "description": "Advanced filter string in which user can directly specify the resourceTypes to be filtered. Can be used in conjunction with base_path. - Sample example of type_filter to load all groups - type_filter=Group - Sample example of multiple type_filter - type_filter=Group;SercurityPolicy;RedirectionPolicy - Sample eaxmple to load all groups in default domain using base_path in conjunction with type_filter - base_path=/infra/domains/default&amp;type_filter=Group", 
+      "required": false, 
+      "title": "Filter string to retrieve hierarchy.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Filter to populate child types of the policyConfigResource", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

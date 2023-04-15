@@ -1,0 +1,125 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBAppLearningParams.html">ALBAppLearningParams</a> (<a href="types_ALBAppLearningParams.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer AppLearningParams object", 
+  "id": "ALBAppLearningParams", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "enable_per_uri_learning": {
+      "default": true, 
+      "description": "Learn the params per URI path. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable per uri learning", 
+      "type": "boolean"
+    }, 
+    "max_params": {
+      "default": 100, 
+      "description": "Maximum number of params to learn for an application. Allowed values are 10-1000. Default value when not specified in API or module is interpreted by ALB Controller as 100.", 
+      "maximum": 1000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Max params", 
+      "type": "integer"
+    }, 
+    "max_uris": {
+      "default": 500, 
+      "description": "Maximum number of URI paths to learn for an application. Allowed values are 10-10000. Default value when not specified in API or module is interpreted by ALB Controller as 500.", 
+      "maximum": 10000, 
+      "minimum": 10, 
+      "required": false, 
+      "title": "Max uris", 
+      "type": "integer"
+    }, 
+    "min_hits_to_learn": {
+      "default": 10000, 
+      "description": "Minimum number of occurances required for a Param to qualify for learning. Default value when not specified in API or module is interpreted by ALB Controller as 10000.", 
+      "required": false, 
+      "title": "Min hits to learn", 
+      "type": "integer"
+    }, 
+    "sampling_percent": {
+      "default": 1, 
+      "description": "Percent of the requests subjected to Application learning. Allowed values are 1-100. Unit is PERCENT. Default value when not specified in API or module is interpreted by ALB Controller as 1.", 
+      "maximum": 100, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Sampling percent", 
+      "type": "integer"
+    }, 
+    "update_interval": {
+      "default": 30, 
+      "description": "Frequency with which SE publishes Application learning data to controller. Allowed values are 1-60. Unit is MIN. Default value when not specified in API or module is interpreted by ALB Controller as 30.", 
+      "maximum": 60, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Update interval", 
+      "type": "integer"
+    }
+  }, 
+  "title": "AppLearningParams", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

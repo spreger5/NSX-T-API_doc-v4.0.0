@@ -1,0 +1,187 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeProperties.html">NodeProperties</a> (<a href="types_NodeProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "NodeProperties", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cli_coredump_config": {
+      "$ref": "<A HREF="schemas_CoreDumpConfig.html">CoreDumpConfig</A>, 
+      "readonly": true, 
+      "title": "NSX CLI core dump files config"
+    }, 
+    "cli_history_size": {
+      "minimum": 0, 
+      "title": "NSX CLI command history limit, set to 0 to configure no history size limit", 
+      "type": "integer"
+    }, 
+    "cli_output_datetime": {
+      "title": "NSX CLI display datetime stamp in command output", 
+      "type": "boolean"
+    }, 
+    "cli_timeout": {
+      "minimum": 0, 
+      "title": "NSX CLI inactivity timeout, set to 0 to configure no timeout", 
+      "type": "integer"
+    }, 
+    "export_type": {
+      "enum": [
+        "RESTRICTED", 
+        "UNRESTRICTED"
+      ], 
+      "readonly": true, 
+      "title": "Export restrictions in effect, if any", 
+      "type": "string"
+    }, 
+    "fully_qualified_domain_name": {
+      "readonly": true, 
+      "title": "Fully qualified domain name", 
+      "type": "string"
+    }, 
+    "hostname": {
+      "$ref": "<A HREF="schemas_SystemHostname.html">SystemHostname</A>, 
+      "title": "Host name or fully qualified domain name of node", 
+      "type": "string"
+    }, 
+    "kernel_version": {
+      "readonly": true, 
+      "title": "Kernel version", 
+      "type": "string"
+    }, 
+    "motd": {
+      "title": "Message of the day to display when users login to node using the NSX CLI", 
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "node_type": {
+      "enum": [
+        "NSX Manager", 
+        "NSX Global Manager", 
+        "NSX Edge", 
+        "NSX Autonomous Edge", 
+        "NSX Cloud Service Manager", 
+        "NSX Public Cloud Gateway"
+      ], 
+      "readonly": true, 
+      "title": "Node type", 
+      "type": "string"
+    }, 
+    "node_uuid": {
+      "maxLength": 36, 
+      "readonly": true, 
+      "title": "Node Unique Identifier", 
+      "type": "string"
+    }, 
+    "node_version": {
+      "readonly": true, 
+      "title": "Node version", 
+      "type": "string"
+    }, 
+    "product_version": {
+      "readonly": true, 
+      "title": "Product version", 
+      "type": "string"
+    }, 
+    "system_datetime": {
+      "$ref": "<A HREF="schemas_DatetimeUTC.html">DatetimeUTC</A>, 
+      "title": "System date time in UTC"
+    }, 
+    "system_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "Current time expressed in milliseconds since epoch"
+    }, 
+    "timezone": {
+      "title": "Timezone", 
+      "type": "string"
+    }
+  }, 
+  "title": "Node properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

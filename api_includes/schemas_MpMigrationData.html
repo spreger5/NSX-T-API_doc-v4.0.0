@@ -1,0 +1,104 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MpMigrationData.html">MpMigrationData</a> (<a href="types_MpMigrationData.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "MpMigrationData", 
+  "module_id": "MPPolicyMigration", 
+  "properties": {
+    "migration_data": {
+      "items": {
+        "$ref": "<A HREF="schemas_MPResource.html">MPResource</A>
+      }, 
+      "required": false, 
+      "title": "migration data ( resource type and Ids ).", 
+      "type": "array"
+    }, 
+    "mode": {
+      "default": "CONSUMER", 
+      "enum": [
+        "GENERIC", 
+        "CONSUMER"
+      ], 
+      "readonly": false, 
+      "title": "Mode of MP2Policy migration", 
+      "type": "string"
+    }, 
+    "setup_details": {
+      "$ref": "<A HREF="schemas_SetupDetails.html">SetupDetails</A>, 
+      "description": "If setup details is not provided, default setup details will be used.", 
+      "required": false, 
+      "title": "Setup Details."
+    }, 
+    "skip_failed_resources": {
+      "default": false, 
+      "required": false, 
+      "title": "Default value is false. This value will indicate if there is error,\nskip the failed objects and proceed with next set of objects for MP to Policy promotion.\n", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "Contains manager and policy resource id.\n", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

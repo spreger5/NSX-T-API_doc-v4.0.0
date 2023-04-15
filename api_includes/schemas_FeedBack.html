@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FeedBack.html">FeedBack</a> (<a href="types_FeedBack.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Provide details of validation/errors occurred during collection ,translation and apply phase in MP to Policy promotion.", 
+  "id": "FeedBack", 
+  "module_id": "MPPolicyMigration", 
+  "properties": {
+    "error_list": {
+      "items": {
+        "$ref": "<A HREF="schemas_FeedBackErrorMessage.html">FeedBackErrorMessage</A>
+      }, 
+      "required": true, 
+      "title": "Error array list", 
+      "type": "array"
+    }, 
+    "mp_display_name": {
+      "required": true, 
+      "title": "Manager resource display name", 
+      "type": "string"
+    }, 
+    "mp_id": {
+      "required": true, 
+      "title": "Manager resource id", 
+      "type": "string"
+    }, 
+    "type": {
+      "required": true, 
+      "title": "Manager resource type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Provide details related to feeback for MP to Policy promotion.\n", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,819 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_troubleshooting_and_monitoring.html' style='text-decoration: none'> Troubleshooting And Monitoring</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List IPFIX Collector Profies</h4><br>
+                      <span class="help_detail">Query IPFIX collector profiles with list parameters. List result can be
+<br>
+filtered by profile type defined by IpfixCollectorUpmProfileType.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpfixCollectorUpmProfiles.html">GET /api/v1/ipfix-collector-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new IPFIX collector profile</h4><br>
+                      <span class="help_detail">Create a new IPFIX collector profile with essential properties.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpfixCollectorUpmProfile.html">POST /api/v1/ipfix-collector-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing IPFIX collector profile</h4><br>
+                      <span class="help_detail">Delete an existing IPFIX collector profile by ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpfixCollectorUpmProfile.html">DELETE /api/v1/ipfix-collector-profiles/&lt;ipfix-collector-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing IPFIX collector profile</h4><br>
+                      <span class="help_detail">Get an existing IPFIX collector profile by profile ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIpfixCollectorUpmProfile.html">GET /api/v1/ipfix-collector-profiles/&lt;ipfix-collector-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing IPFIX collector profile</h4><br>
+                      <span class="help_detail">Update an existing IPFIX collector profile with profile ID and modified
+<br>
+properties.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIpfixCollectorUpmProfile.html">PUT /api/v1/ipfix-collector-profiles/&lt;ipfix-collector-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX Profies</h4><br>
+                      <span class="help_detail">Query IPFIX profiles with list parameters. List result can be filtered by
+<br>
+profile type defined by IpfixUpmProfileType.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpfixUpmProfiles.html">GET /api/v1/ipfix-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new IPFIX profile</h4><br>
+                      <span class="help_detail">Create a new IPFIX profile with essential properties.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpfixUpmProfile.html">POST /api/v1/ipfix-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing IPFIX profile</h4><br>
+                      <span class="help_detail">Delete an existing IPFIX profile by ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpfixUpmProfile.html">DELETE /api/v1/ipfix-profiles/&lt;ipfix-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing IPFIX profile</h4><br>
+                      <span class="help_detail">Get an existing IPFIX profile by profile ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIpfixUpmProfile.html">GET /api/v1/ipfix-profiles/&lt;ipfix-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing IPFIX profile</h4><br>
+                      <span class="help_detail">Update an existing IPFIX profile with profile ID and modified properties.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIpfixUpmProfile.html">PUT /api/v1/ipfix-profiles/&lt;ipfix-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX collector configurations</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpfixCollectorConfig.html">GET /api/v1/ipfix/collectorconfigs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new IPFIX collector configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpfixCollectorConfig.html">POST /api/v1/ipfix/collectorconfigs</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing IPFIX collector configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpfixCollectorConfig.html">DELETE /api/v1/ipfix/collectorconfigs/&lt;collector-config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing IPFIX collector configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIpfixCollectorConfig.html">GET /api/v1/ipfix/collectorconfigs/&lt;collector-config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing IPFIX collector configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIpfixCollectorConfig.html">PUT /api/v1/ipfix/collectorconfigs/&lt;collector-config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPFIX configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpfixConfig.html">GET /api/v1/ipfix/configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new IPFIX configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpfixConfig.html">POST /api/v1/ipfix/configs</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing IPFIX configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpfixConfig.html">DELETE /api/v1/ipfix/configs/&lt;config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing IPFIX configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIpfixConfig.html">GET /api/v1/ipfix/configs/&lt;config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an existing IPFIX configuration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIpfixConfig.html">PUT /api/v1/ipfix/configs/&lt;config-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all livetrace sessions</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLiveTrace.html">GET /api/v1/livetraces</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a livetrace session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLiveTrace.html">POST /api/v1/livetraces</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a livetrace session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLiveTrace.html">DELETE /api/v1/livetraces/&lt;livetrace-session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status of a livetrace session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLiveTraceStatus.html">GET /api/v1/livetraces/&lt;livetrace-session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get forward packet capture file proxy</h4><br>
+                      <span class="help_detail">You must provide the request header
+<br>
+"Accept:application/octet-stream" when calling this API.
+<br>
+The capture file can only be found in MP which receives the capture request.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetForwardPktCapFileProxy.html">GET /api/v1/livetraces/&lt;livetrace-session-id&gt;/proxy/forward/capturefile</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get reverse packet capture file proxy</h4><br>
+                      <span class="help_detail">You must provide the request header
+<br>
+"Accept:application/octet-stream" when calling this API.
+<br>
+The capture file can only be found in MP which receives the capture request.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetReversePktCapFileProxy.html">GET /api/v1/livetraces/&lt;livetrace-session-id&gt;/proxy/reverse/capturefile</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the result of a livetrace session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLiveTraceResult.html">GET /api/v1/livetraces/&lt;livetrace-session-id&gt;/results</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get networking entities between two logical ports with VIF attachment</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetForwardingPath.html">GET /api/v1/logical-ports/&lt;lport-id&gt;/forwarding-path</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List manual health checks</h4><br>
+                      <span class="help_detail">Query manual health checks with list parameters.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListManualHealthChecks.html">GET /api/v1/manual-health-checks</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new manual health check request</h4><br>
+                      <span class="help_detail">Create a new manual health check request with essential properties. It's
+<br>
+disallowed to create new one until the count of in-progress manual health
+<br>
+check is less than 50. A manual health check will be deleted automatically
+<br>
+after finished for 24 hours.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateManualHealthCheck.html">POST /api/v1/manual-health-checks</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an existing manual health check</h4><br>
+                      <span class="help_detail">Delete an existing manual health check by ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteManualHealthCheck.html">DELETE /api/v1/manual-health-checks/&lt;manual-health-check-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get an existing manual health check</h4><br>
+                      <span class="help_detail">Get an existing manual health check by health check ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetManualHealthCheck.html">GET /api/v1/manual-health-checks/&lt;manual-health-check-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all mirror sessions</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortMirroringSession.html">GET /api/v1/mirror-sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a mirror session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreatePortMirroringSessions.html">POST /api/v1/mirror-sessions</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the mirror session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortMirroringSession.html">DELETE /api/v1/mirror-sessions/&lt;mirror-session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the mirror session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortMirroringSession.html">GET /api/v1/mirror-sessions/&lt;mirror-session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Verify whether the mirror session is still valid</h4><br>
+                      <span class="help_detail">Verify whether all participants are on the same transport node</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_VerifyPortMirroringSession.html">POST /api/v1/mirror-sessions/&lt;mirror-session-id&gt;?action=verify</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the mirror session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePortMirroringSession.html">PUT /api/v1/mirror-sessions/&lt;mirror-session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the mirror stack status on given remote L3 mirror session</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMirrorStackStatus.html">GET /api/v1/mirror-sessions/&lt;mirror-session-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an new packet capture session</h4><br>
+                      <span class="help_detail">Create an new packet capture session on given node with specified options
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreatePacketCaptureSession.html">POST /api/v1/pktcap/session</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the status of packet capture session</h4><br>
+                      <span class="help_detail">Get the packet capture status information by session id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadPacketCaptureSession.html">GET /api/v1/pktcap/session/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart the packet capture session</h4><br>
+                      <span class="help_detail">Restart the packet capture session
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartPacketCaptureSession.html">POST /api/v1/pktcap/session/&lt;session-id&gt;?action=restart</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the packet capture session by session id.</h4><br>
+                      <span class="help_detail">Before calling this method, terminate any running capture session.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePacketCaptureSession.html">POST /api/v1/pktcap/session/&lt;session-id&gt;?action=delete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Terminate the packet capture session by session id</h4><br>
+                      <span class="help_detail">Terminate the packet capture session by session id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_TerminatePacketCaptureSession.html">POST /api/v1/pktcap/session/&lt;session-id&gt;?action=terminate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get packet capture file</h4><br>
+                      <span class="help_detail">You must provide the request header
+<br>
+"Accept:application/octet-stream" when calling this API.
+<br>
+The capture file can only be found in MP which receives the capture request.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetCaptureFile.html">GET /api/v1/pktcap/session/&lt;session-id&gt;/capturefile</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the information of all packet capture sessions</h4><br>
+                      <span class="help_detail">Get the information of all packet capture sessions.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPacketCaptureSessions.html">GET /api/v1/pktcap/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete all the packet capture sessions</h4><br>
+                      <span class="help_detail">Delete all the packet capture sessions.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteAllCaptureSessions.html">POST /api/v1/pktcap/sessions?action=delete</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all Traceflow rounds</h4><br>
+                      <span class="help_detail">List all Traceflow rounds; if a logical port id is given as a query parameter,
+<br>
+only those originated from the logical port are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTraceflows.html">GET /api/v1/traceflows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Initiate a Traceflow Operation on the Specified Port</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTraceflow.html">POST /api/v1/traceflows</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the Traceflow round</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTraceflow.html">DELETE /api/v1/traceflows/&lt;traceflow-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Traceflow round status and result summary</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTraceflow.html">GET /api/v1/traceflows/&lt;traceflow-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get observations for the Traceflow round</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTraceflowObservations.html">GET /api/v1/traceflows/&lt;traceflow-id&gt;/observations</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

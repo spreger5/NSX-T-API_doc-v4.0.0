@@ -1,0 +1,126 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceDeploymentStatus.html">ServiceDeploymentStatus</a> (<a href="types_ServiceDeploymentStatus.html">type</a>)
+</h3>
+<pre>{
+  "id": "ServiceDeploymentStatus", 
+  "module_id": "ServiceInsertionVMDeployment", 
+  "properties": {
+    "deployment_issues": {
+      "description": "List of issue and detailed description of the issue in case of deployment failure.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ServiceDeploymentIssue.html">ServiceDeploymentIssue</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service deployment issue", 
+      "type": "array"
+    }, 
+    "deployment_status": {
+      "description": "Deployment status of NXGI Partner Service-VM on a compute collection. It shows the latest status during the process of deployment, redeploy, upgrade, and un-deployment on a compute collection such as VC cluster.", 
+      "enum": [
+        "UPGRADE_IN_PROGRESS", 
+        "UPGRADE_FAILED", 
+        "DEPLOYMENT_QUEUED", 
+        "DEPLOYMENT_IN_PROGRESS", 
+        "DEPLOYMENT_FAILED", 
+        "DEPLOYMENT_SUCCESSFUL", 
+        "UNDEPLOYMENT_QUEUED", 
+        "UNDEPLOYMENT_IN_PROGRESS", 
+        "UNDEPLOYMENT_FAILED", 
+        "UNDEPLOYMENT_SUCCESSFUL", 
+        "UPGRADE_QUEUED"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Compute collection deployment progress status", 
+      "type": "string"
+    }, 
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the data was last updated; unset if data source has never updated the data.", 
+      "readonly": true
+    }, 
+    "service_deployment_id": {
+      "description": "Id of service deployment.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service deployment id", 
+      "type": "string"
+    }, 
+    "sva_current_version": {
+      "description": "Currently deployed Service Virtual Appliance version.", 
+      "required": false, 
+      "title": "Current deployed SVA version", 
+      "type": "string"
+    }, 
+    "sva_max_available_version": {
+      "description": "Max available SVA version for upgrade", 
+      "required": false, 
+      "title": "Max available SVA version", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

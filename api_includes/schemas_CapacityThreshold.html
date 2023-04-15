@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CapacityThreshold.html">CapacityThreshold</a> (<a href="types_CapacityThreshold.html">type</a>)
+</h3>
+<pre>{
+  "id": "CapacityThreshold", 
+  "module_id": "CapacityDashboard", 
+  "properties": {
+    "max_threshold_percentage": {
+      "description": "Set the maximum threshold percentage. Specify a value between 0 and 100. Usage percentage above this value is tagged as critical.", 
+      "maximum": 100, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Maximum threshold percentage", 
+      "type": "number"
+    }, 
+    "min_threshold_percentage": {
+      "description": "Set the minimum threshold percentage. Specify a value between 0 and 100. Usage percentage above this value is tagged as warning.", 
+      "maximum": 100, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Minimum threshold percentage", 
+      "type": "number"
+    }, 
+    "threshold_type": {
+      "description": "Indicate the object type for which threshold is to be set.", 
+      "required": true, 
+      "title": "Object type for which threshold is to be set", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

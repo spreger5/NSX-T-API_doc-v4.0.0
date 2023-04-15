@@ -1,0 +1,840 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                System Administration >
+            
+            
+                <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+            
+            
+                <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+            
+            
+                <a href='system_administration_configuration_fabric_profiles.html' style='text-decoration: none'> Profiles</a> >
+            
+            
+                <a href='system_administration_configuration_fabric_profiles_hostswitch_profiles.html' style='text-decoration: none'> Hostswitch Profiles</a>
+            
+        </P>
+    
+        <div id="ListPolicyHostSwitchProfiles">
+          <h2>
+            List Hostswitch Profiles
+          </h2>
+          <span class="help_detail">Returns information about the configured hostswitch profiles. Hostswitch
+<br>
+profiles define networking policies for hostswitches (sometimes referred to
+<br>
+as bridges in OVS). Currently, following profiles are supported.
+<br>
+UplinkHostSwitchProfile, LldpHostSwitchProfile, NiocProfile & ExtraConfigHostSwitchProfile.
+<br>
+Uplink profile - teaming defined in this profile allows NSX to load balance traffic across
+<br>
+different physical NICs (PNICs) on the hypervisor hosts. Multiple teaming policies are
+<br>
+supported, including LACP active, LACP passive, load balancing based on source ID, and
+<br>
+failover order.
+<br>
+Lldp profile - Enable or disable sending LLDP packets
+<br>
+NiocProfile - Network I/O Control settings: defines limits, shares and reservations for
+<br>
+various host traffic types.
+<br>
+ExtraConfig - Vendor specific configuration on HostSwitch, logical switch or logical port
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/infra/host-switch-profiles
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value">PolicyHostSwitchProfileListRequestParameters<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ListPolicyHostSwitchProfiles', 'PolicyHostSwitchProfileListRequestParameters.ListPolicyHostSwitchProfiles.Query_Parameters')">+</span></div>
+  </div>
+    <div id="PolicyHostSwitchProfileListRequestParameters.ListPolicyHostSwitchProfiles.Query_Parameters" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_PolicyHostSwitchProfileListRequestParameters.html">
+        <span>PolicyHostSwitchProfileListRequestParameters</span>
+      </a> (<a href="schemas_PolicyHostSwitchProfileListRequestParameters.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>deployment_type</td>
+            
+            <td>Deployment type of EdgeNode or PublicCloudGatewayNode<br><br>If the node_type is specified, then deployment_type may be specified to filter uplink profiles applicable to only PHYSICAL_MACHINE or VIRTUAL_MACHINE deployments of these nodes.</td>
+            
+            <td><a href="types_EdgeDeploymentType.html">EdgeDeploymentType</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>hostswitch_profile_type</td>
+            
+            <td>Type of host switch profile</td>
+            
+            <td><a href="types_PolicyHostSwitchProfileType.html">PolicyHostSwitchProfileType</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>include_mark_for_delete_objects</td>
+            
+            <td>Include objects that are marked for deletion in results<br><br>If true, resources that are marked for deletion will be included
+<br>
+in the results. By default, these resources are not included.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>include_system_owned</td>
+            
+            <td>Whether the list result contains system resources</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>included_fields</td>
+            
+            <td>Comma separated list of fields that should be included in query result<br><br>Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>max_active_uplink_count</td>
+            
+            <td>Filter uplink profiles by number of active links in teaming policy.<br><br>Filter uplink profiles whose number of active uplinks in teaming policy is less than or equal to max_active_uplink_count.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>node_type</td>
+            
+            <td>Fabric node type for which uplink profiles are to be listed<br><br>The fabric node type is the resource_type of the Node such as EdgeNode and PublicCloudGatewayNode. If a fabric node type is given, uplink profiles that apply for nodes of the given type will be returned.</td>
+            
+            <td>string</td>
+            
+            <td>Enum: EdgeNode, PublicCloudGatewayNode</td>
+          </tr>
+          <tr>
+            <td>page_size</td>
+            
+            <td>Maximum number of results to return in this page (server may return fewer)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 1000<br>Default: "1000"</td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td></td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>uplink_teaming_policy_name</td>
+            
+            <td>The host switch profile's uplink teaming policy name<br><br>If populated, only UplinkHostSwitchProfiles with the specified uplink teaming policy name are returned. Otherwise, any HostSwitchProfile can be returned.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/host-switch-profiles
+
+GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/host-switch-profiles?
+  hostswitch_profile_type=PolicyUplinkHostSwitchProfile&
+  include_system_owned=true&
+  node_type=EdgeNode&
+  deployment_type=VIRTUAL_MACHINE&
+  max_active_uplink_count=2</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">PolicyHostSwitchProfilesListResult<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ListPolicyHostSwitchProfiles', 'PolicyHostSwitchProfilesListResult.ListPolicyHostSwitchProfiles.Response_Body')">+</span></div>
+  </div>
+    <div id="PolicyHostSwitchProfilesListResult.ListPolicyHostSwitchProfiles.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_PolicyHostSwitchProfilesListResult.html">
+        <span>PolicyHostSwitchProfilesListResult</span>
+      </a> (<a href="schemas_PolicyHostSwitchProfilesListResult.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>result_count</td>
+            
+            <td>Count of results found (across all pages), set only on first page</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>results</td>
+            
+            <td>HostSwitch Profile Results</td>
+            
+            <td>array of <a href="types_PolicyBaseHostSwitchProfile.html">PolicyBaseHostSwitchProfile</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_PolicyExtraConfigHostSwitchProfile.html">PolicyExtraConfigHostSwitchProfile</a><br><a href="types_PolicyLldpHostSwitchProfile.html">PolicyLldpHostSwitchProfile</a><br><a href="types_PolicyNiocProfile.html">PolicyNiocProfile</a><br><a href="types_PolicyUplinkHostSwitchProfile.html">PolicyUplinkHostSwitchProfile</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td>If true, results are sorted in ascending order</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+   "TODO" : "Add all 4 profile examples"
+   "results" : [
+     {
+       "lags": [
+           {
+               "name": "lag1",
+               "id": "7535",
+               "mode": "ACTIVE",
+               "load_balance_algorithm": "SRCMAC",
+               "number_of_uplinks": 2,
+               "uplinks": [
+                   {
+                       "uplink_name": "lag1-0",
+                       "uplink_type": "PNIC"
+                   },
+                   {
+                       "uplink_name": "lag1-1",
+                       "uplink_type": "PNIC"
+                   }
+               ],
+               "timeout_type": "FAST"
+           }
+       ],
+       "teaming": {
+           "policy": "LOADBALANCE_SRC_MAC",
+           "active_list": [
+               {
+                   "uplink_name": "lag1",
+                   "uplink_type": "LAG"
+               }
+           ]
+       },
+       "transport_vlan": 19,
+       "overlay_encap": "GENEVE",
+       "resource_type": "PolicyUplinkHostSwitchProfile",
+       "id": "uplinkProfile1",
+       "display_name": "Custom-uplinkProfile1",
+       "path": "/infra/host-switch-profiles/uplinkProfile1",
+       "relative_path": "uplinkProfile1",
+       "parent_path": "/infra",
+       "unique_id": "0a72be13-046f-4872-97a3-785841b9df28",
+       "marked_for_delete": false,
+       "overridden": false,
+       "_create_user": "unknown",
+       "_create_time": 1612465522414,
+       "_last_modified_user": "unknown",
+       "_last_modified_time": 1612465522414,
+       "_system_owned": false,
+       "_protection": "NOT_PROTECTED",
+       "_revision": 0
+     },
+     {
+         "send_enabled": true,
+         "resource_type": "LldpHostSwitchProfile",
+         "id": "lldpProfile1",
+         "display_name": "Custom-lldpProfile1",
+         "path": "/infra/host-switch-profiles/lldpProfile1",
+         "relative_path": "lldpProfile1",
+         "parent_path": "/infra",
+         "unique_id": "b84d93ce-43e1-4930-8e74-bef8ad1c8f18",
+         "marked_for_delete": false,
+         "overridden": false,
+         "_create_user": "unknown",
+         "_create_time": 1612464678118,
+         "_last_modified_user": "unknown",
+         "_last_modified_time": 1612464678118,
+         "_system_owned": false,
+         "_protection": "NOT_PROTECTED",
+         "_revision": 0
+     },
+     {
+         "host_infra_traffic_res": [
+             {
+                 "traffic_type": {
+                     "traffic_name": "FAULT_TOLERANCE"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "HBR"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "ISCSI"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "MANAGEMENT"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "NFS"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "VDP"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "VIRTUAL_MACHINE"
+                 },
+                 "limit": -1.0,
+                 "shares": 100,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "VMOTION"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             },
+             {
+                 "traffic_type": {
+                     "traffic_name": "VSAN"
+                 },
+                 "limit": -1.0,
+                 "shares": 50,
+                 "reservation": 0.0
+             }
+         ],
+         "enabled": true,
+         "resource_type": "NiocProfile",
+         "id": "niocProfile1",
+         "display_name": "Custom-niocProfile1",
+         "path": "/infra/host-switch-profiles/niocProfile1",
+         "relative_path": "niocProfile1",
+         "parent_path": "/infra",
+         "unique_id": "32ea1c6a-96c8-466b-ac51-3486efdbf153",
+         "marked_for_delete": false,
+         "overridden": false,
+         "_create_user": "unknown",
+         "_create_time": 1612468369585,
+         "_last_modified_user": "unknown",
+         "_last_modified_time": 1612468369585,
+         "_system_owned": false,
+         "_protection": "NOT_PROTECTED",
+         "_revision": 0
+     },
+     {
+         "extra_configs": [
+             {
+                 "config_pair": {
+                     "key": "sampleKey",
+                     "value": "sampleValue"
+                 }
+             }
+         ],
+         "resource_type": "ExtraConfigHostSwitchProfile",
+         "id": "extraConfigProfile1",
+         "display_name": "Custom-extraConfigProfile1",
+         "path": "/infra/host-switch-profiles/extraConfigProfile1",
+         "relative_path": "extraConfigProfile1",
+         "parent_path": "/infra",
+         "unique_id": "609673e1-a33f-4aef-ad0d-48e39715df4b",
+         "marked_for_delete": false,
+         "overridden": false,
+         "_create_user": "unknown",
+         "_create_time": 1612410420180,
+         "_last_modified_user": "unknown",
+         "_last_modified_time": 1612410420180,
+         "_system_owned": false,
+         "_protection": "NOT_PROTECTED",
+         "_revision": 0
+     }
+   ],
+   "result_count": 4,
+   "sort_by": "display_name",
+   "sort_ascending": true
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">profiles_host_switch_profiles</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

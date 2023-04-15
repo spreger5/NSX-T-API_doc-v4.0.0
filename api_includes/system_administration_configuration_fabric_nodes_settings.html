@@ -1,0 +1,318 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_settings.html' style='text-decoration: none'> Settings</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Read node properties</h4><br>
+                      <span class="help_detail">Returns information about the NSX appliance. Information includes
+<br>
+release number, time zone, system time, kernel version, message of the day
+<br>
+(motd), and host name.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNodeProperties.html">GET /api/v1/node</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeProperties.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeProperties.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart or shutdown node</h4><br>
+                      <span class="help_detail">Restarts or shuts down the NSX appliance.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartOrShutdownNode.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node?action=restart|shutdown</a>
+                            <br>
+                            
+                            <a href="method_RestartOrShutdownNode.html">POST /api/v1/node?action=restart|shutdown</a>
+                            <br>
+                            
+                            <a href="method_RestartOrShutdownNode.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node?action=restart|shutdown</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set the node system time</h4><br>
+                      <span class="help_detail">Set the node system time to the given time in UTC in the RFC3339 format
+<br>
+'yyyy-mm-ddThh:mm:ssZ'.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SetNodeTime.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node?action=set_system_time</a>
+                            <br>
+                            
+                            <a href="method_SetNodeTime.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node?action=set_system_time</a>
+                            <br>
+                            
+                            <a href="method_SetNodeTime.html">POST /api/v1/node?action=set_system_time</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update node properties</h4><br>
+                      <span class="help_detail">Modifies NSX appliance properties. Modifiable properties include the
+<br>
+timezone, message of the day (motd), and hostname. The NSX appliance
+<br>
+node_version, system_time, and kernel_version are read only and cannot be
+<br>
+modified with this method.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNodeProperties.html">PUT /api/v1/node</a>
+                            <br>
+                            
+                            <a href="method_UpdateNodeProperties.html">PUT /api/v1/cluster/&lt;cluster-node-id&gt;/node</a>
+                            <br>
+                            
+                            <a href="method_UpdateNodeProperties.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;/node</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List node processes</h4><br>
+                      <span class="help_detail">Returns the number of processes and information about each
+<br>
+process. Process information includes 1) mem_resident, which is roughly
+<br>
+equivalent to the amount of RAM, in bytes, currently used by the process,
+<br>
+2) parent process ID (ppid), 3) process name, 4) process up time in milliseconds,
+<br>
+5) mem_used, wich is the amount of virtual memory used by the process, in
+<br>
+bytes, 6) process start time, in milliseconds since epoch, 7) process ID
+<br>
+(pid), 8) CPU time, both user and the system, consumed by the process in
+<br>
+milliseconds.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNodeProcesses.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/processes</a>
+                            <br>
+                            
+                            <a href="method_ListNodeProcesses.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/processes</a>
+                            <br>
+                            
+                            <a href="method_ListNodeProcesses.html">GET /api/v1/node/processes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read node process</h4><br>
+                      <span class="help_detail">Returns information for a specified process ID (pid).</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNodeProcess.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/processes/&lt;process-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeProcess.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/processes/&lt;process-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeProcess.html">GET /api/v1/node/processes/&lt;process-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read node status</h4><br>
+                      <span class="help_detail">Returns information about the node appliance's file system, CPU,
+<br>
+memory, disk usage, and uptime.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadApplianceNodeStatus.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/status</a>
+                            <br>
+                            
+                            <a href="method_ReadApplianceNodeStatus.html">GET /api/v1/node/status</a>
+                            <br>
+                            
+                            <a href="method_ReadApplianceNodeStatus.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update node status</h4><br>
+                      <span class="help_detail">Clear node bootup status
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateApplianceNodeStatus.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/status?action=clear_bootup_error</a>
+                            <br>
+                            
+                            <a href="method_UpdateApplianceNodeStatus.html">POST /api/v1/cluster/&lt;cluster-node-id&gt;/node/status?action=clear_bootup_error</a>
+                            <br>
+                            
+                            <a href="method_UpdateApplianceNodeStatus.html">POST /api/v1/node/status?action=clear_bootup_error</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read node version</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNodeVersion.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/node/version</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeVersion.html">GET /api/v1/node/version</a>
+                            <br>
+                            
+                            <a href="method_ReadNodeVersion.html">GET /api/v1/cluster/&lt;cluster-node-id&gt;/node/version</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

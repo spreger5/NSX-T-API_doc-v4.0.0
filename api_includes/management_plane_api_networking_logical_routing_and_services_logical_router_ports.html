@@ -1,0 +1,343 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services_logical_router_ports.html' style='text-decoration: none'> Logical Router Ports</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Logical Router Ports</h4><br>
+                      <span class="help_detail">Returns information about all logical router ports. Information includes the
+<br>
+resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort,
+<br>
+LogicalRouterLinkPort, LogicalRouterLoopbackPort, LogicalRouterCentralizedServicePort);
+<br>
+logical_router_id (the router to which each logical router port is assigned);
+<br>
+and any service_bindings (such as DHCP relay service).
+<br>
+The GET request can include a query parameter (logical_router_id
+<br>
+or logical_switch_id).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListLogicalRouterPorts.html">GET /api/v1/logical-router-ports</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Logical Router Port</h4><br>
+                      <span class="help_detail">Creates a logical router port. The required parameters include resource_type
+<br>
+(LogicalRouterUpLinkPort, LogicalRouterDownLinkPort, LogicalRouterLinkPort,
+<br>
+LogicalRouterLoopbackPort, LogicalRouterCentralizedServicePort); and
+<br>
+logical_router_id (the router to which each logical router port is assigned).
+<br>
+The service_bindings parameter is optional.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateLogicalRouterPort.html">POST /api/v1/logical-router-ports</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Logical Router Port</h4><br>
+                      <span class="help_detail">Deletes the specified logical router port. You must delete logical router
+<br>
+ports before you can delete the associated logical router. To Delete Tier0
+<br>
+router link port you must have to delete attached tier1 router link port,
+<br>
+otherwise pass "force=true" as query param to force delete the Tier0
+<br>
+router link port.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteLogicalRouterPort.html">DELETE /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Logical Router Port</h4><br>
+                      <span class="help_detail">Returns information about the specified logical router port.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadLogicalRouterPort.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Logical Router Port</h4><br>
+                      <span class="help_detail">Modifies the specified logical router port. Required parameters include the
+<br>
+resource_type and logical_router_id. Modifiable parameters include the
+<br>
+resource_type (LogicalRouterUpLinkPort, LogicalRouterDownLinkPort,
+<br>
+LogicalRouterLinkPort, LogicalRouterLoopbackPort, LogicalRouterCentralizedServicePort),
+<br>
+logical_router_id (to reassign the port to a different router), and service_bindings.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateLogicalRouterPort.html">PUT /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the ARP table (IPv4) or Neighbor Discovery table (IPv6) for the
+Logical Router Port of the given id
+</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) for the
+<br>
+Logical Router Port of the given id, on a node if a query parameter
+<br>
+"transport_node_id=&lt;transport-node-id&gt;" is given. The transport_node_id
+<br>
+parameter is mandatory if the router port is not uplink type.
+<br>
+Query parameter "source=realtime" is the only supported source.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalRouterPortArpTable.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;/arp-table</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the ARP table (IPv4) or Neighbor Discovery table (IPv6) for the
+Logical Router Port of the given id
+</h4><br>
+                      <span class="help_detail">Returns ARP table (IPv4) or Neighbor Discovery table (IPv6) in CSV format
+<br>
+for the Logical Router Port of the given id, on a node if a query
+<br>
+parameter "transport_node_id=&lt;transport-node-id&gt;" is given. The
+<br>
+transport_node_id parameter is mandatory if the router port is not uplink
+<br>
+type. Query parameter "source=realtime" is the only supported source.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalRouterPortArpTableInCsvFormat.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;/arp-table?format=csv</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the Realized State of a Logical Router Port</h4><br>
+                      <span class="help_detail">Return realized state information of a logical router port.
+<br>
+Any configuration update that affects the logical router port can use this API
+<br>
+to get its realized state by passing a request_id returned by the
+<br>
+configuration change operation. e.g. Update configuration of logical router ports,
+<br>
+dhcp relays, etc.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalRouterPortState.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics of a specified logical router port on all or a specified node</h4><br>
+                      <span class="help_detail">Returns the statistics for the Logical Router Port. If query parameter
+<br>
+"transport_node_id=&lt;transport-node-id&gt;" is given,  only the statistics
+<br>
+from the given node for the logical router port will be returned.
+<br>
+Otherwise the statistics from each node for the same logical router port
+<br>
+will be returned. The transport_node_id is mandatory if the router port
+<br>
+is not uplink type.
+<br>
+The query parameter "source=cached" will be ignored and it will always return
+<br>
+realtime statistics of the logical router port.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalRouterPortStatistics.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the statistics summary of a specified logical router port</h4><br>
+                      <span class="help_detail">Returns the summation of statistics from all nodes for the Specified
+<br>
+Logical Router Port.
+<br>
+The query parameter "source=realtime" is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetLogicalRouterPortStatisticsSummary.html">GET /api/v1/logical-router-ports/&lt;logical-router-port-id&gt;/statistics/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,134 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ClusterNodeInfo.html">ClusterNodeInfo</a> (<a href="types_ClusterNodeInfo.html">type</a>)
+</h3>
+<pre>{
+  "id": "ClusterNodeInfo", 
+  "module_id": "ClusterManagement", 
+  "properties": {
+    "api_listen_addr": {
+      "$ref": "<A HREF="schemas_ServiceEndpoint.html">ServiceEndpoint</A>, 
+      "readonly": true, 
+      "title": "The IP and port for the public API service on this node"
+    }, 
+    "appliance_connection_info": {
+      "$ref": "<A HREF="schemas_ServiceEndpoint.html">ServiceEndpoint</A>, 
+      "readonly": true, 
+      "title": "The IP, port and certificate for connecting to appliance."
+    }, 
+    "certificates": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeCertificateInfo.html">NodeCertificateInfo</A>
+      }, 
+      "title": "Certificate and thumbprint of all entities", 
+      "type": "array"
+    }, 
+    "control_plane_listen_addr": {
+      "$ref": "<A HREF="schemas_ServiceEndpoint.html">ServiceEndpoint</A>, 
+      "readonly": true, 
+      "title": "The IP and port for the control plane service on this node"
+    }, 
+    "display_name": {
+      "title": "The display name of this node", 
+      "type": "string"
+    }, 
+    "entities": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeEntityInfo.html">NodeEntityInfo</A>
+      }, 
+      "title": "Service endpoint of all entities", 
+      "type": "array"
+    }, 
+    "fqdn": {
+      "title": "The fqdn of this node", 
+      "type": "string"
+    }, 
+    "msg_clients": {
+      "items": {
+        "$ref": "<A HREF="schemas_NodeMessagingClientInfo.html">NodeMessagingClientInfo</A>
+      }, 
+      "title": "Messaging client of all entities", 
+      "type": "array"
+    }, 
+    "node_uuid": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Unique identifier of this node", 
+      "type": "string"
+    }, 
+    "status": {
+      "enum": [
+        "JOINING", 
+        "JOINED", 
+        "REMOVING", 
+        "REMOVED"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Node clustering status", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

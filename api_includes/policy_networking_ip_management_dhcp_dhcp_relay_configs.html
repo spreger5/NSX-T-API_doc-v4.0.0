@@ -1,0 +1,194 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_ip_management.html' style='text-decoration: none'> IP Management</a> >
+        
+        
+            <a href='policy_networking_ip_management_dhcp.html' style='text-decoration: none'> DHCP</a> >
+        
+        
+            <a href='policy_networking_ip_management_dhcp_dhcp_relay_configs.html' style='text-decoration: none'> DHCP Relay Configs</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List DHCP relay config instances</h4><br>
+                      <span class="help_detail">Paginated list of all DHCP relay config instances
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpRelayConfig.html">GET /policy/api/v1/global-infra/dhcp-relay-configs</a>
+                            <br>
+                            
+                            <a href="method_ListDhcpRelayConfig.html">GET /policy/api/v1/infra/dhcp-relay-configs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete DHCP relay configuration</h4><br>
+                      <span class="help_detail">Delete DHCP relay configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpRelayConfig.html">DELETE /policy/api/v1/infra/dhcp-relay-configs/&lt;dhcp-relay-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read DHCP relay configuration</h4><br>
+                      <span class="help_detail">Read DHCP relay configuration</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpRelayConfig.html">GET /policy/api/v1/infra/dhcp-relay-configs/&lt;dhcp-relay-config-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadDhcpRelayConfig.html">GET /policy/api/v1/global-infra/dhcp-relay-configs/&lt;dhcp-relay-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update DHCP relay configuration</h4><br>
+                      <span class="help_detail">If DHCP relay config with the dhcp-relay-config-id is not already present, create a new DHCP relay config instance.
+<br>
+If it already exists, update the DHCP relay config instance with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchDhcpRelayConfig.html">PATCH /policy/api/v1/infra/dhcp-relay-configs/&lt;dhcp-relay-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update DHCP relay configuration</h4><br>
+                      <span class="help_detail">If DHCP relay config with the dhcp-relay-config-id is not already present,
+<br>
+create a new DHCP relay config instance. If it already exists, replace
+<br>
+the DHCP relay config instance with this object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceDhcpRelayConfig.html">PUT /policy/api/v1/infra/dhcp-relay-configs/&lt;dhcp-relay-config-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

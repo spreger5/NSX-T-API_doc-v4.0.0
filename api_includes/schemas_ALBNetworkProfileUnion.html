@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBNetworkProfileUnion.html">ALBNetworkProfileUnion</a> (<a href="types_ALBNetworkProfileUnion.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer NetworkProfileUnion object", 
+  "id": "ALBNetworkProfileUnion", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "tcp_fast_path_profile": {
+      "$ref": "<A HREF="schemas_ALBTCPFastPathProfile.html">ALBTCPFastPathProfile</A>, 
+      "description": "Placeholder for description of property tcp_fast_path_profile of obj type NetworkProfileUnion field type str  type ref.", 
+      "required": false, 
+      "title": "Tcp fast path profile"
+    }, 
+    "tcp_proxy_profile": {
+      "$ref": "<A HREF="schemas_ALBTCPProxyProfile.html">ALBTCPProxyProfile</A>, 
+      "description": "Placeholder for description of property tcp_proxy_profile of obj type NetworkProfileUnion field type str  type ref.", 
+      "required": false, 
+      "title": "Tcp proxy profile"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_ALBProtocolType.html">ALBProtocolType</A>, 
+      "default": "PROTOCOL_TYPE_TCP_PROXY", 
+      "description": "Configure one of either proxy or fast path profiles. Enum options - PROTOCOL_TYPE_TCP_PROXY, PROTOCOL_TYPE_TCP_FAST_PATH, PROTOCOL_TYPE_UDP_FAST_PATH, PROTOCOL_TYPE_UDP_PROXY. Allowed in Basic(Allowed values- PROTOCOL_TYPE_TCP_PROXY,PROTOCOL_TYPE_TCP_FAST_PATH,PROTOCOL_TYPE_UDP_FAST_PATH) edition, Essentials(Allowed values- PROTOCOL_TYPE_TCP_FAST_PATH,PROTOCOL_TYPE_UDP_FAST_PATH) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as PROTOCOL_TYPE_TCP_PROXY.", 
+      "required": true, 
+      "title": "Type"
+    }, 
+    "udp_fast_path_profile": {
+      "$ref": "<A HREF="schemas_ALBUDPFastPathProfile.html">ALBUDPFastPathProfile</A>, 
+      "description": "Placeholder for description of property udp_fast_path_profile of obj type NetworkProfileUnion field type str  type ref.", 
+      "required": false, 
+      "title": "Udp fast path profile"
+    }, 
+    "udp_proxy_profile": {
+      "$ref": "<A HREF="schemas_ALBUDPProxyProfile.html">ALBUDPProxyProfile</A>, 
+      "description": "Configure UDP Proxy network profile. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Udp proxy profile"
+    }
+  }, 
+  "title": "NetworkProfileUnion", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

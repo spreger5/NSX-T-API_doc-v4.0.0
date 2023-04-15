@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSSLProfileSelector.html">ALBSSLProfileSelector</a> (<a href="types_ALBSSLProfileSelector.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SSLProfileSelector object", 
+  "id": "ALBSSLProfileSelector", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "client_ip_list": {
+      "$ref": "<A HREF="schemas_ALBIpAddrMatch.html">ALBIpAddrMatch</A>, 
+      "description": "Configure client IP address groups.", 
+      "required": true, 
+      "title": "Client ip list"
+    }, 
+    "ssl_profile_path": {
+      "description": "SSL profile for the client IP addresses listed. It is a reference to an object of type SSLProfile.", 
+      "required": true, 
+      "title": "Ssl profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_SSLPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBSSLProfile"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "SSLProfileSelector", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

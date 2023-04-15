@@ -1,0 +1,212 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AwsSecurityGroup.html">AwsSecurityGroup</a> (<a href="types_AwsSecurityGroup.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Stores information about an AWS security group.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_CloudSecurityGroup.html">CloudSecurityGroup</A>
+  }, 
+  "id": "AwsSecurityGroup", 
+  "module_id": "AwsVpcResources", 
+  "properties": {
+    "_last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "cloud_tags": {
+      "description": "Array of tags associated to a cloud security group.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CloudTag.html">CloudTag</A>
+      }, 
+      "readonly": true, 
+      "title": "Cloud Tags", 
+      "type": "array"
+    }, 
+    "description": {
+      "description": "Description of AWS security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Security Group Description", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "inbound_rules": {
+      "description": "Array of inbound rules of the AWS security group.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AwsSecurityGroupRule.html">AwsSecurityGroupRule</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Inbound Rules", 
+      "type": "array"
+    }, 
+    "instances_count": {
+      "description": "Number of instances associated to cloud security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Count Of Instances", 
+      "type": "integer"
+    }, 
+    "is_managed_by_nsx": {
+      "description": "If the flag is true, the cloud security group is managed by NSX.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Is Managed By NSX", 
+      "type": "boolean"
+    }, 
+    "nsx_security_group": {
+      "$ref": "<A HREF="schemas_SecurityGroup.html">SecurityGroup</A>, 
+      "description": "Stores information about the NSX security group corresponding to the AWS security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "NSX Security Group"
+    }, 
+    "outbound_rules": {
+      "description": "Array of outbound rules of the AWS security group.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AwsSecurityGroupRule.html">AwsSecurityGroupRule</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Outbound Rules", 
+      "type": "array"
+    }, 
+    "region_id": {
+      "description": "ID of the cloud region.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Region ID", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "description": "Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DiscoveredResourceScope.html">DiscoveredResourceScope</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of scopes for discovered resource", 
+      "type": "array"
+    }, 
+    "security_group_id": {
+      "description": "ID of the cloud security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Security Group ID", 
+      "type": "string"
+    }, 
+    "security_group_name": {
+      "description": "Name of the cloud security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Security Group Name", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "AWS Security Group", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Tier0GatewayState.html">Tier0GatewayState</a> (<a href="types_Tier0GatewayState.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "Tier0GatewayState", 
+  "module_id": "PolicyConnectivityStatistics", 
+  "properties": {
+    "auto_rds": {
+      "$ref": "<A HREF="schemas_AutoRds.html">AutoRds</A>, 
+      "description": "Object that holds auto assigned route distingushers for this gateway.", 
+      "title": "Auto assigned Route Distingushers"
+    }, 
+    "enforcement_point_path": {
+      "description": "String Path of the enforcement point. When not specified, routes from all enforcement-points are returned.", 
+      "title": "Enforcement point path", 
+      "type": "string"
+    }, 
+    "ipv6_status": {
+      "description": "IPv6 DAD status for interfaces configured on Tier0", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPv6Status.html">IPv6Status</A>
+      }, 
+      "title": "IPv6 DAD status for Tier0 interfaces", 
+      "type": "array"
+    }, 
+    "tier0_state": {
+      "$ref": "<A HREF="schemas_LogicalRouterState.html">LogicalRouterState</A>, 
+      "description": "Detailed realized state information for Tier0", 
+      "title": "Tier0 state"
+    }, 
+    "tier0_status": {
+      "$ref": "<A HREF="schemas_LogicalRouterStatus.html">LogicalRouterStatus</A>, 
+      "description": "Detailed realized status information for Tier0", 
+      "title": "Tier0 status"
+    }, 
+    "transport_zone": {
+      "$ref": "<A HREF="schemas_PolicyTransportZone.html">PolicyTransportZone</A>, 
+      "description": "Transport Zone information which got configured on Gateway.", 
+      "title": "Transport Zone Information"
+    }
+  }, 
+  "title": "Tier0 gateway state", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

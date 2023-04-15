@@ -1,0 +1,179 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+        
+        
+            <a href='policy_networking_network_services_vpn.html' style='text-decoration: none'> VPN</a> >
+        
+        
+            <a href='policy_networking_network_services_vpn_ipsec.html' style='text-decoration: none'> IPSEC</a> >
+        
+        
+            <a href='policy_networking_network_services_vpn_ipsec_ipsec_profiles.html' style='text-decoration: none'> IPSEC Profiles</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List IPSec tunnel profiles</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec tunnel Profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSecVpnTunnelProfiles.html">GET /policy/api/v1/infra/ipsec-vpn-tunnel-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Delete custom IPSec tunnel Profile. Profile can not be deleted if profile has references to it.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPSecVpnTunnelProfile.html">DELETE /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Get custom IPSec tunnel Profile, given the particular id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVpnTunnelProfile.html">GET /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Create or patch custom IPSec tunnel profile. IPSec tunnel profile is a reusable profile that captures phase two negotiation parameters and tunnel properties. System will be provisioned with system owned editable default IPSec tunnel profile. Any change in profile affects all sessions consuming this profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchIPSecVpnTunnelProfile.html">PATCH /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Create or fully replace custom IPSec tunnel profile. IPSec tunnel profile is a reusable profile that captures phase two negotiation parameters and tunnel properties. System will be provisioned with system owned editable default IPSec tunnel profile. Any change in profile affects all sessions consuming this profile. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateIPSecVpnTunnelProfile.html">PUT /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

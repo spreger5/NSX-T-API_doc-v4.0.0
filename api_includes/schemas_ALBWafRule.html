@@ -1,0 +1,143 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafRule.html">ALBWafRule</a> (<a href="types_ALBWafRule.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafRule object", 
+  "id": "ALBWafRule", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "avi_tags": {
+      "description": "Tags for WAF rule as per Modsec language. They are extracted from the tag actions in a Modsec rule. This field is generated from the rule itself and cannot be set by the user. Maximum of 64 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Avi tags", 
+      "type": "array"
+    }, 
+    "enable": {
+      "default": true, 
+      "description": "Enable or disable WAF Rule Group. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable", 
+      "type": "boolean"
+    }, 
+    "exclude_list": {
+      "description": "Exclude list for the WAF rule. The fields in the exclude list entry are logically and'ed to deduce the exclusion criteria. If there are multiple excludelist entries, it will be 'logical or' of them. Maximum of 64 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafExcludeListEntry.html">ALBWafExcludeListEntry</A>
+      }, 
+      "required": false, 
+      "title": "Exclude list", 
+      "type": "array"
+    }, 
+    "index": {
+      "description": "Number of index.", 
+      "required": true, 
+      "title": "Index", 
+      "type": "integer"
+    }, 
+    "is_sensitive": {
+      "default": false, 
+      "description": "The rule field is sensitive and will not be displayed. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Is sensitive", 
+      "type": "boolean"
+    }, 
+    "mode": {
+      "$ref": "<A HREF="schemas_ALBWafMode.html">ALBWafMode</A>, 
+      "description": "WAF Rule mode. This can be detection or enforcement. If this is not set, the Policy mode is used. This only takes effect if the policy allows delegation. Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.", 
+      "required": false, 
+      "title": "Mode"
+    }, 
+    "name": {
+      "description": "User-friendly optional name for a rule.", 
+      "required": false, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "phase": {
+      "$ref": "<A HREF="schemas_ALBWafPhase.html">ALBWafPhase</A>, 
+      "description": "The execution phase where this rule will be executed. Enum options - WAF_PHASE_CONNECTION, WAF_PHASE_REQUEST_HEADER, WAF_PHASE_REQUEST_BODY, WAF_PHASE_RESPONSE_HEADER, WAF_PHASE_RESPONSE_BODY, WAF_PHASE_LOGGING.", 
+      "required": false, 
+      "title": "Phase"
+    }, 
+    "rule": {
+      "description": "Rule as per Modsec language.", 
+      "required": true, 
+      "title": "Rule", 
+      "type": "string"
+    }, 
+    "rule_id": {
+      "description": "Identifier (id) for a rule per Modsec language. All SecRule and SecAction directives require an id. It is extracted from the id action in a Modsec rule. Rules within a single WAF Policy are required to have unique rule_ids.", 
+      "required": false, 
+      "title": "Rule id", 
+      "type": "string"
+    }
+  }, 
+  "title": "WafRule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

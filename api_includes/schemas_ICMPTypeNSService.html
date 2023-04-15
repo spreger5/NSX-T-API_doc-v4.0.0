@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ICMPTypeNSService.html">ICMPTypeNSService</a> (<a href="types_ICMPTypeNSService.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_NSServiceElement.html">NSServiceElement</A>
+  }, 
+  "id": "ICMPTypeNSService", 
+  "module_id": "Types", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "ICMPTypeNSService"
+  }, 
+  "properties": {
+    "icmp_code": {
+      "required": false, 
+      "title": "ICMP message code", 
+      "type": "integer"
+    }, 
+    "icmp_type": {
+      "required": false, 
+      "title": "ICMP message type", 
+      "type": "integer"
+    }, 
+    "protocol": {
+      "enum": [
+        "ICMPv4", 
+        "ICMPv6"
+      ], 
+      "required": true, 
+      "title": "ICMP protocol type", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "enum": [
+        "EtherTypeNSService", 
+        "IPProtocolNSService", 
+        "IGMPTypeNSService", 
+        "ICMPTypeNSService", 
+        "ALGTypeNSService", 
+        "L4PortSetNSService"
+      ], 
+      "required": true, 
+      "title": "The specific type of NSServiceElement", 
+      "type": "string"
+    }
+  }, 
+  "title": "A NSService that represents IPv4 or IPv6 ICMP protocol", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

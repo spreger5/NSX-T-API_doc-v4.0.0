@@ -1,0 +1,272 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AwsVpc.html">AwsVpc</a> (<a href="types_AwsVpc.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "AwsVpc", 
+  "module_id": "AwsVpcInformation", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "agent_info": {
+      "description": "Array of agent install and download instructions for various OS types.", 
+      "items": {
+        "$ref": "<A HREF="schemas_AgentInfo.html">AgentInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Aws Agent Information", 
+      "type": "array"
+    }, 
+    "ami_id": {
+      "description": "Amazon Machine Image is a special type of virtual appliance that is used to create a virtual machine with the Amazon Elastic Compute Cloud. It serves as the basic unit of deployment for services delivered using Amazon EC2", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AMI ID", 
+      "type": "string"
+    }, 
+    "associated_account_ids": {
+      "description": "Array of associated AWS account IDs.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Associated AWS Account IDs", 
+      "type": "array"
+    }, 
+    "associated_transit_vpc": {
+      "$ref": "<A HREF="schemas_AwsTransitVpcInfo.html">AwsTransitVpcInfo</A>, 
+      "description": "Stores the VPC ID and associated account IDs of the transit VPC. This property describes the associated transit VPC for a given AWS compute VPC.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Associated AWS Transit VPC"
+    }, 
+    "cidr": {
+      "deprecated": true, 
+      "description": "This field is DEPRECATED as AWS started supporting multiple CIDR blocks per VPC. This field will return only the first CIDR block from the response received from AWS. Please use cidr_blocks to see the multiple CIDR blocks associated with the VPC.", 
+      "format": "ipv4-cidr-block", 
+      "readonly": true, 
+      "title": "IPV4 CIDR Block for the Vpc", 
+      "type": "string"
+    }, 
+    "cidr_blocks": {
+      "description": "IPv4 CIDR Block of the virtual network.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CidrBlock.html">CidrBlock</A>
+      }, 
+      "readonly": true, 
+      "title": "IPv4 CIDR Block", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "gateway_info": {
+      "$ref": "<A HREF="schemas_AwsGatewayInfo.html">AwsGatewayInfo</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Gateway details for the Vpc"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "instance_stats": {
+      "$ref": "<A HREF="schemas_InstanceStats.html">InstanceStats</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Managed, unmanaged and error instance counts for the Vpc"
+    }, 
+    "is_management_vpc": {
+      "default": false, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Flag to identify if this is the management Vpc", 
+      "type": "boolean"
+    }, 
+    "managed_vpcs": {
+      "description": "Array of compute VPCs managed by a transit VPC. This property describes array of managed compute VPC for a given transit VPC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ManagedVpcInfo.html">ManagedVpcInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Array of NSX Managed Compute VPCs", 
+      "type": "array"
+    }, 
+    "op_status": {
+      "$ref": "<A HREF="schemas_AwsVpcOpStatus.html">AwsVpcOpStatus</A>, 
+      "description": "Operational status of the VPC.", 
+      "readonly": true, 
+      "title": "AWS VPC Operational Status"
+    }, 
+    "region_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Id of the AWS region", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "transport_zones": {
+      "items": {
+        "$ref": "<A HREF="schemas_TransportZoneInfo.html">TransportZoneInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Transport zones for the Vpc", 
+      "type": "array"
+    }, 
+    "vpc_status": {
+      "$ref": "<A HREF="schemas_AwsComputeVpcStatus.html">AwsComputeVpcStatus</A>, 
+      "description": "Stores onboard and offboard states and corresponding error messages and error code related to AWS compute VPC. The status for a transit VPC should be obtained from gateway_info.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "AWS Compute VPC Status"
+    }
+  }, 
+  "title": "Vpc Information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

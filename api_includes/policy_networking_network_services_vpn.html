@@ -1,0 +1,2844 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+        
+        
+            <a href='policy_networking_network_services_vpn.html' style='text-decoration: none'> VPN</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List DPD profiles</h4><br>
+                      <span class="help_detail">Get paginated list of all DPD Profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSecVpnDpdProfiles.html">GET /policy/api/v1/infra/ipsec-vpn-dpd-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete custom dead peer detection (DPD) profile</h4><br>
+                      <span class="help_detail">Delete custom dead peer detection (DPD) profile. Profile can not be deleted if profile has references to it.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPSecVpnDpdProfile.html">DELETE /policy/api/v1/infra/ipsec-vpn-dpd-profiles/&lt;dpd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get dead peer detection (DPD) profile</h4><br>
+                      <span class="help_detail">Get custom dead peer detection (DPD) profile, given the particular id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVpnDpdProfile.html">GET /policy/api/v1/infra/ipsec-vpn-dpd-profiles/&lt;dpd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom DPD Profile</h4><br>
+                      <span class="help_detail">Create or patch dead peer detection (DPD) profile. Any change in profile affects all sessions consuming this profile. System will be provisioned with system owned editable default DPD profile. Any change in profile affects all sessions consuming this profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchIPSecVpnDpdProfile.html">PATCH /policy/api/v1/infra/ipsec-vpn-dpd-profiles/&lt;dpd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Create or patch dead peer detection (DPD) profile. Any change in profile affects all sessions consuming this profile. System will be provisioned with system owned editable default DPD profile. Any change in profile affects all sessions consuming this profile. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateIPSecVpnDpdProfile.html">PUT /policy/api/v1/infra/ipsec-vpn-dpd-profiles/&lt;dpd-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IKE profiles</h4><br>
+                      <span class="help_detail">Get paginated list of all IKE Profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSecVpnIkeProfiles.html">GET /policy/api/v1/infra/ipsec-vpn-ike-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete custom IKE Profile</h4><br>
+                      <span class="help_detail">Delete custom IKE Profile. Profile can not be deleted if profile has references to it.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPSecVpnIkeProfile.html">DELETE /policy/api/v1/infra/ipsec-vpn-ike-profiles/&lt;ike-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IKE Profile</h4><br>
+                      <span class="help_detail">Get custom IKE Profile, given the particular id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVpnIkeProfile.html">GET /policy/api/v1/infra/ipsec-vpn-ike-profiles/&lt;ike-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom internet key exchange (IKE) Profile</h4><br>
+                      <span class="help_detail">Create or patch custom internet key exchange (IKE) Profile. IKE Profile is a reusable profile that captures IKE and phase one negotiation parameters. System will be pre provisioned with system owned editable default IKE profile and suggested set of profiles that can be used for peering with popular remote peers like AWS VPN. User can create custom profiles as needed. Any change in profile affects all sessions consuming this profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchIPSecVpnIkeProfile.html">PATCH /policy/api/v1/infra/ipsec-vpn-ike-profiles/&lt;ike-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a custom internet key exchange (IKE) Profile</h4><br>
+                      <span class="help_detail">Create or fully replace custom internet key exchange (IKE) Profile. IKE Profile is a reusable profile that captures IKE and phase one negotiation parameters. System will be pre provisioned with system owned editable default IKE profile and suggested set of profiles that can be used for peering with popular remote peers like AWS VPN. User can create custom profiles as needed. Any change in profile affects all sessions consuming this profile. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateIPSecVpnIkeProfile.html">PUT /policy/api/v1/infra/ipsec-vpn-ike-profiles/&lt;ike-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPSec tunnel profiles</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec tunnel Profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSecVpnTunnelProfiles.html">GET /policy/api/v1/infra/ipsec-vpn-tunnel-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Delete custom IPSec tunnel Profile. Profile can not be deleted if profile has references to it.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPSecVpnTunnelProfile.html">DELETE /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Get custom IPSec tunnel Profile, given the particular id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPSecVpnTunnelProfile.html">GET /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Create or patch custom IPSec tunnel profile. IPSec tunnel profile is a reusable profile that captures phase two negotiation parameters and tunnel properties. System will be provisioned with system owned editable default IPSec tunnel profile. Any change in profile affects all sessions consuming this profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchIPSecVpnTunnelProfile.html">PATCH /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a custom IPSec tunnel Profile</h4><br>
+                      <span class="help_detail">Create or fully replace custom IPSec tunnel profile. IPSec tunnel profile is a reusable profile that captures phase two negotiation parameters and tunnel properties. System will be provisioned with system owned editable default IPSec tunnel profile. Any change in profile affects all sessions consuming this profile. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateIPSecVpnTunnelProfile.html">PUT /policy/api/v1/infra/ipsec-vpn-tunnel-profiles/&lt;tunnel-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN services
+<br>
+for given Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0VpnIPSecVpnServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN service</h4><br>
+                      <span class="help_detail">Delete IPSec VPN service for under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0VpnIPSecVpnService.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service</h4><br>
+                      <span class="help_detail">Get IPSec VPN service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnService.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or patch IPSec VPN service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnIPSecVpnService.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN service under given Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0VpnIPSecVpnService.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN local endpoints
+<br>
+for a given ipsec vpn service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0VpnIPSecVpnLocalEndpoints.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Delete IPSec VPN local endpoint for a given ipsec vpn
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0VpnIPSecVpnLocalEndpoint.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Get IPSec VPN local endpoint for a given ipsec vpn
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnLocalEndpoint.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or patch a custom IPSec VPN local endpoint
+<br>
+under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnIPSecVpnLocalEndpoint.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN local endpoint
+<br>
+for a given ipsec vpn service under Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0VpnIPSecVpnLocalEndpoint.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN sessions list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN sessions
+<br>
+for a given ipsec vpn service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0VpnIPSecVpnSessions.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN session</h4><br>
+                      <span class="help_detail">Delete IPSec VPN session for a given ipsec vpn
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0VpnIPSecVpnSession.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session with senstive data for
+<br>
+a given ipsec vpn service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnSessionWithSensitiveData.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=show_sensitive_data</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session without sensitive data
+<br>
+for a given ipsec vpn service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnSession.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or patch an IPSec VPN session for
+<br>
+a given ipsec vpn service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnIPSecVpnSession.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN session for a given
+<br>
+ipsec vpn service under Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0VpnIPSecVpnSession.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session detailed status under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed status is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed status is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status from enforcement point is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnSessionStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN configuration for the peer site</h4><br>
+                      <span class="help_detail">Download IPSec VPN configuration for the peer site. Peer config also
+<br>
+contains PSK; be careful when sharing or storing it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnPeerConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session statistics under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIPSecVpnSessionStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset the statistics of the given VPN session</h4><br>
+                      <span class="help_detail">Resets the statistics of the given VPN session.
+<br>
+Since source of data is enforcement point, data is
+<br>
+reset there.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetTier0VpnIPSecVpnSessionStatistics.html">POST /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_ResetTier0VpnIPSecVpnSessionStatistics.html">POST /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session Summary</h4><br>
+                      <span class="help_detail">Summarized view of all tier-0 IPSec VPN sessions for a specified service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnIpsecVpnSessionSummary.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service list result under Tier-0</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN services under Tier-0.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0VpnL2VPNServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Delete L2VPN service for given Tier-0.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0VpnL2VPNService.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Get L2VPN service for given Tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VPNService.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Create or patch L2VPN service for given Tier-0</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnL2VPNService.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN service for given Tier-0. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0VpnL2VPNService.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN sessions list result under Tier-0</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN sessions under Tier-0.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0VpnL2VPNSessions.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Delete L2VPN session under Tier-0. When L2VPN Service is in CLIENT Mode, the L2VPN Session is deleted along with its transpot tunnels and related resources.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0VpnL2VPNSession.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN Session under Tier-0</h4><br>
+                      <span class="help_detail">Get L2VPN session under Tier-0.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VPNSession.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-0. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnL2VPNSession.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-0 from Peer Codes</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-0 from Peer Codes.
+<br>
+In addition to the L2VPN Session, the IPSec VPN Session, along
+<br>
+with the IKE, Tunnel, and DPD Profiles are created and owned by
+<br>
+the system. IPSec VPN Service and Local Endpoint are created only
+<br>
+when required, i.e., an IPSec VPN Service does not already exist,
+<br>
+or an IPSec VPN Local Endpoint with same local address does not
+<br>
+already exist.
+<br>
+Updating the L2VPN Session can be performed only through this API
+<br>
+by specifying new peer codes. Use of specific APIs to update the
+<br>
+L2VPN Session and the different resources associated with it is
+<br>
+not allowed, except for IPSec VPN Service and Local Endpoint,
+<br>
+resources that are not system owned.
+<br>
+API supported only when L2VPN Service is in Client Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0VpnL2VPNSessionFromPeerCodes.html">POST /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=create_with_peer_code</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN session under Tier-0. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0VpnL2VPNSession.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session detailed status under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed tatus is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed tatus is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VpnSessionStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 L2VPN session configuration for the peer site</h4><br>
+                      <span class="help_detail">Get peer config for the Tier-0 L2VPN session to configure the remote
+<br>
+side of the tunnel.
+<br>
+- no enforcement point path specified: L2VPN Session Peer Codes
+<br>
+will be evaluated on each enforcement point.
+<br>
+- enforcement point paths specified: L2VPN Session Peer Codes
+<br>
+are evaluated only on the given enforcement points.
+<br>
+API supported only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VPNSessionPeerConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2Vpn session remote mac for logical switch</h4><br>
+                      <span class="help_detail">Returns L2Vpn session remote macs for a logical switch.
+<br>
+Data is fetched from enforcement point.
+<br>
+This API is deprecated. Please use GET /infra/tier-0s/&lt;tier-0-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/
+<br>
+sessions/&lt;session-id&gt;/detailed-status instead.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VpnSessionRemoteMacsForLS.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/remote-mac</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session statistics under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from the enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0VpnL2VpnSessionStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN services
+<br>
+for given locale service under Tier-0.
+<br>
+Note:
+<br>
+  Please note that request is validated and any error messages returned from validation may include the new VPN path
+<br>
+  instead of the deprecated path. Both new path and old path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0IPSecVpnServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN service</h4><br>
+                      <span class="help_detail">Delete IPSec VPN service for given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0IPSecVpnService.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service</h4><br>
+                      <span class="help_detail">Get IPSec VPN service for given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnService.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or patch IPSec VPN service for given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0IPSecVpnService.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN service for given
+<br>
+locale service under Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0IPSecVpnService.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN local endpoints
+<br>
+for a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0IPSecVpnLocalEndpoints.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Delete IPSec VPN local endpoint for a given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0IPSecVpnLocalEndpoint.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Get IPSec VPN local endpoint for a given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnLocalEndpoint.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or patch a custom IPSec VPN local endpoint
+<br>
+for a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0IPSecVpnLocalEndpoint.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN local endpoint
+<br>
+for a given locale service under Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+Note:
+<br>
+  Please note that request is validated and any error messages returned from validation may include the new VPN path
+<br>
+  instead of the deprecated path. Both new path and old path refer to same resource.
+<br>
+  Also VPN path returned in the Alarm, GPRR payload may include the new VPN path
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0IPSecVpnLocalEndpoint.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN sessions list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN sessions
+<br>
+for a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier0IPSecVpnSessions.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN session</h4><br>
+                      <span class="help_detail">Delete IPSec VPN session for a given locale
+<br>
+service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier0IPSecVpnSession.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session with senstive data for
+<br>
+a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnSessionWithSensitiveData.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=show_sensitive_data</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session without sensitive data
+<br>
+for a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnSession.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or patch an IPSec VPN session for
+<br>
+a given locale service under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier0IPSecVpnSession.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN session for a given
+<br>
+locale service under Tier-0.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier0IPSecVpnSession.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session detailed status under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed status is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed status is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status from enforcement point is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnSessionStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN configuration for the peer site</h4><br>
+                      <span class="help_detail">Download IPSec VPN configuration for the peer site. Peer config also
+<br>
+contains PSK; be careful when sharing or storing it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnPeerConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session statistics under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IPSecVpnSessionStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset the statistics of the given VPN session</h4><br>
+                      <span class="help_detail">Resets the statistics of the given VPN session.
+<br>
+Since source of data is enforcement point, data is
+<br>
+reset there.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetTier0IPSecVpnSessionStatistics.html">POST /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session Summary</h4><br>
+                      <span class="help_detail">Summarized view of all tier-0 IPSec VPN sessions for a specified service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0IpsecVpnSessionSummary.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service list result under Tier-0</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN services under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL2VPNServices.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Delete L2VPN service for given Tier-0 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteL2VPNService.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Get L2VPN service for given Tier-0 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNService.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Create or patch L2VPN service for given Tier-0 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchL2VPNService.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN service under Tier-0</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN service for given Tier-0 locale service.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateL2VPNService.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN sessions list result under Tier-0</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN sessions under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL2VPNSessions.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Delete L2VPN session under Tier-0. When L2VPN Service is in CLIENT Mode,
+<br>
+the L2VPN Session is deleted along with its transpot tunnels and related
+<br>
+resources.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteL2VPNSession.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN Session under Tier-0</h4><br>
+                      <span class="help_detail">Get L2VPN session under Tier-0.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSession.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-0. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchL2VPNSession.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-0 from Peer Codes</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-0 from Peer Codes.
+<br>
+In addition to the L2VPN Session, the IPSec VPN Session, along
+<br>
+with the IKE, Tunnel, and DPD Profiles are created and owned by
+<br>
+the system. IPSec VPN Service and Local Endpoint are created only
+<br>
+when required, i.e., an IPSec VPN Service does not already exist,
+<br>
+or an IPSec VPN Local Endpoint with same local address does not
+<br>
+already exist.
+<br>
+Updating the L2VPN Session can be performed only through this API
+<br>
+by specifying new peer codes. Use of specific APIs to update the
+<br>
+L2VPN Session and the different resources associated with it is
+<br>
+not allowed, except for IPSec VPN Service and Local Endpoint,
+<br>
+resources that are not system owned.
+<br>
+API supported only when L2VPN Service is in Client Mode.
+<br>
+Note:
+<br>
+ Please note that request is validated and any error messages returned from validation may include the new VPN path
+<br>
+ instead of the deprecated path. Both new path and old path refer to same resource.
+<br>
+ Also VPN path returned in the Alarm, GPRR payload may include the new VPN path.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchL2VPNSessionFromPeerCodes.html">POST /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=create_with_peer_code</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN session under Tier-0</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN session under Tier-0. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateL2VPNSession.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session detailed status under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed tatus is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed tatus is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VpnSessionStatus.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-0 L2VPN session configuration for the peer site</h4><br>
+                      <span class="help_detail">Get peer config for the Tier-0 L2VPN session to configure the remote
+<br>
+side of the tunnel.
+<br>
+- no enforcement point path specified: L2VPN Session Peer Codes
+<br>
+will be evaluated on each enforcement point.
+<br>
+- enforcement point paths specified: L2VPN Session Peer Codes
+<br>
+are evaluated only on the given enforcement points.
+<br>
+API supported only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VPNSessionPeerConfig.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2Vpn session remote mac for logical switch</h4><br>
+                      <span class="help_detail">Returns L2Vpn session remote macs for a logical switch.
+<br>
+Data is fetched from enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier0L2VpnSessionRemoteMacsForLS.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/remote-mac</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session statistics under Tier-0</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from the enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetL2VpnSessionStatistics.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN services
+<br>
+under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VpnIPSecVpnServices.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN service</h4><br>
+                      <span class="help_detail">Delete given IPSec VPN service under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VpnIPSecVpnService.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service</h4><br>
+                      <span class="help_detail">Get given IPSec VPN service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnService.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or patch IPSec VPN service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnIPSecVpnService.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VpnIPSecVpnService.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN local endpoints
+<br>
+for a given ipsec vpn service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VpnIPSecVpnLocalEndpoints.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Delete IPSec VPN local endpoint for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VpnIPSecVpnLocalEndpoint.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Get IPSec VPN local endpoint for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnLocalEndpoint.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or patch a custom IPSec VPN local endpoint for a given ipsec vpn service under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnIPSecVpnLocalEndpoint.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN local endpoint
+<br>
+for a given ipsec vpn service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VpnIPSecVpnLocalEndpoint.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN sessions list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN sessions for a given ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VpnIPSecVpnSessions.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN session</h4><br>
+                      <span class="help_detail">Delete IPSec VPN session for a given ipsec-vpn service under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VpnIPSecVpnSession.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session without sensitive data for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnSession.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session with senstive data for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnSessionWithSensitiveData.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=show_sensitive_data</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or patch an IPSec VPN session for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnIPSecVpnSession.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN session for a ipsec vpn
+<br>
+service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VpnIPSecVpnSession.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session detailed status under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed status is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed status is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status from enforcement point is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnSessionStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN configuration for the peer site</h4><br>
+                      <span class="help_detail">Download IPSec VPN configuration for the peer site. Peer config also
+<br>
+contains PSK; be careful when sharing or storing it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnPeerConfig.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session statistics under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIPSecVpnSessionStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset the statistics of the given VPN session</h4><br>
+                      <span class="help_detail">Resets the statistics of the given VPN session.
+<br>
+Since source of data is enforcement point, data is
+<br>
+reset there.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetTier1VpnIPSecVpnSessionStatistics.html">POST /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_ResetTier1VpnIPSecVpnSessionStatistics.html">POST /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session Summary</h4><br>
+                      <span class="help_detail">Summarized view of all tier-1 IPSec VPN sessions for a specified service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnIpsecVpnSessionSummary.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/summary</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service list result under Tier-1</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN services under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VpnL2VPNServices.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Delete L2VPN service for given Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VpnL2VPNService.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Get L2VPN service for given Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VPNService.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Create or patch L2VPN service for given Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnL2VPNService.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN service for given Tier-1. Revision is optional for creation and required for update.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VpnL2VPNService.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN sessions list result under Tier-1</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN sessions under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1VpnL2VPNSessions.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Delete L2VPN session under Tier-1. When L2VPN Service is in CLIENT Mode, the L2VPN Session is deleted along with its transpot tunnels and related resources.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1VpnL2VPNSession.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN Session under Tier-1</h4><br>
+                      <span class="help_detail">Get L2VPN session under Tier-1.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VPNSession.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-1. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnL2VPNSession.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-1 from Peer Codes</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-1 from Peer Codes.
+<br>
+In addition to the L2VPN Session, the IPSec VPN Session, along
+<br>
+with the IKE, Tunnel, and DPD Profiles are created and owned by
+<br>
+the system. IPSec VPN Service and Local Endpoint are created only
+<br>
+when required, i.e., an IPSec VPN Service does not already exist,
+<br>
+or an IPSec VPN Local Endpoint with same local address does not
+<br>
+already exist.
+<br>
+Updating the L2VPN Session can be performed only through this API
+<br>
+by specifying new peer codes. Use of specific APIs to update the
+<br>
+L2VPN Session and the different resources associated with it is
+<br>
+not allowed, except for IPSec VPN Service and Local Endpoint,
+<br>
+resources that are not system owned.
+<br>
+API supported only when L2VPN Service is in Client Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1VpnL2VPNSessionFromPeerCodes.html">POST /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=create_with_peer_code</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN session under Tier-1. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1VpnL2VPNSession.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session detailed status under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed tatus is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed tatus is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VpnSessionStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 L2VPN session configuration for the peer site</h4><br>
+                      <span class="help_detail">Get peer config for the Tier-1 L2VPN session to configure the remote
+<br>
+side of the tunnel.
+<br>
+- no enforcement point path specified: L2VPN Session Peer Codes
+<br>
+will be evaluated on each enforcement point.
+<br>
+- enforcement point paths specified: L2VPN Session Peer Codes
+<br>
+are evaluated only on the given enforcement points.
+<br>
+API supported only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VPNSessionPeerConfig.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2Vpn session remote mac for logical switch</h4><br>
+                      <span class="help_detail">Returns L2Vpn session remote macs for a logical switch.
+<br>
+Data is fetched from enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VpnSessionRemoteMacsForLS.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/remote-mac</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session statistics under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from the enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1VpnL2VpnSessionStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN services
+<br>
+for a given locale service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1IPSecVpnServices.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN service</h4><br>
+                      <span class="help_detail">Delete IPSec VPN service for a given locale service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1IPSecVpnService.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN service</h4><br>
+                      <span class="help_detail">Get IPSec VPN service for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnService.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or patch IPSec VPN service for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1IPSecVpnService.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN service</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN service
+<br>
+for a given locale service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1IPSecVpnService.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN local endpoints
+<br>
+for a given locale service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1IPSecVpnLocalEndpoints.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Delete IPSec VPN local endpoint for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1IPSecVpnLocalEndpoint.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Get IPSec VPN local endpoint for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnLocalEndpoint.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a custom IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or patch a custom IPSec VPN local endpoint for a given locale service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1IPSecVpnLocalEndpoint.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN local endpoint</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN local endpoint
+<br>
+for a given locale service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1IPSecVpnLocalEndpoint.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/local-endpoints/&lt;local-endpoint-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN sessions list result</h4><br>
+                      <span class="help_detail">Get paginated list of all IPSec VPN sessions for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1IPSecVpnSessions.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IPSec VPN session</h4><br>
+                      <span class="help_detail">Delete IPSec VPN session for a given locale service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1IPSecVpnSession.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session with senstive data for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnSessionWithSensitiveData.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=show_sensitive_data</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session</h4><br>
+                      <span class="help_detail">Get IPSec VPN session without sensitive data for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnSession.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or patch an IPSec VPN session for a given locale
+<br>
+service under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1IPSecVpnSession.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace IPSec VPN session</h4><br>
+                      <span class="help_detail">Create or fully replace IPSec VPN session for a given locale
+<br>
+service under Tier-1.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1IPSecVpnSession.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session detailed status under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed status is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed status is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status from enforcement point is returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnSessionStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN configuration for the peer site</h4><br>
+                      <span class="help_detail">Download IPSec VPN configuration for the peer site. Peer config also
+<br>
+contains PSK; be careful when sharing or storing it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnPeerConfig.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN session statistics under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IPSecVpnSessionStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reset the statistics of the given VPN session</h4><br>
+                      <span class="help_detail">Resets the statistics of the given VPN session.
+<br>
+Since source of data is enforcement point, data is
+<br>
+reset there.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResetTier1IPSecVpnSessionStatistics.html">POST /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IPSec VPN Session Summary</h4><br>
+                      <span class="help_detail">Summarized view of all tier-1 IPSec VPN sessions for a specified service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1IpsecVpnSessionSummary.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/ipsec-vpn-services/&lt;service-id&gt;/summary</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service list result under Tier-1</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN services under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1L2VPNServices.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Delete L2VPN service for given Tier-1 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1L2VPNService.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Get L2VPN service for given Tier-1 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VPNService.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Create or patch L2VPN service for given Tier-1 locale service.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1L2VPNService.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN service under Tier-1</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN service for given Tier-1 locale service.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1L2VPNService.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN sessions list result under Tier-1</h4><br>
+                      <span class="help_detail">Get paginated list of all L2VPN sessions under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1L2VPNSessions.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Delete L2VPN session under Tier-1. When L2VPN Service is
+<br>
+in CLIENT Mode, the L2VPN Session is deleted along with its transpot
+<br>
+tunnels and related resources.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1L2VPNSession.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN Session under Tier-1</h4><br>
+                      <span class="help_detail">Get L2VPN session under Tier-1.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VPNSession.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-1. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1L2VPNSession.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch an L2VPN session under Tier-1 from Peer Codes</h4><br>
+                      <span class="help_detail">Create or patch an L2VPN session under Tier-1 from Peer Codes.
+<br>
+In addition to the L2VPN Session, the IPSec VPN Session, along
+<br>
+with the IKE, Tunnel, and DPD Profiles are created and owned by
+<br>
+the system. IPSec VPN Service and Local Endpoint are created only
+<br>
+when required, i.e., an IPSec VPN Service does not already exist,
+<br>
+or an IPSec VPN Local Endpoint with same local address does not
+<br>
+already exist.
+<br>
+Updating the L2VPN Session can be performed only through this API
+<br>
+by specifying new peer codes. Use of specific APIs to update the
+<br>
+L2VPN Session and the different resources associated with it is
+<br>
+not allowed, except for IPSec VPN Service and Local Endpoint,
+<br>
+resources that are not system owned.
+<br>
+API supported only when L2VPN Service is in Client Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTier1L2VPNSessionFromPeerCodes.html">POST /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;?action=create_with_peer_code</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace L2VPN session under Tier-1</h4><br>
+                      <span class="help_detail">Create or fully replace L2VPN session under Tier-1. API supported
+<br>
+only when L2VPN Service is in Server Mode.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTier1L2VPNSession.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session detailed status under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: detailed tatus is evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: detailed status is evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: detailed tatus is fetched realtime from the enforcement point.
+<br>
+- source=cached: cached detailed status is returned.
+<br>
+sessions/&lt;session-id&gt;/detailed-status instead.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VpnSessionStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/detailed-status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 L2VPN session configuration for the peer site</h4><br>
+                      <span class="help_detail">Get peer config for the Tier-1 L2VPN session to configure the remote
+<br>
+side of the tunnel.
+<br>
+- no enforcement point path specified: L2VPN Session Peer Codes
+<br>
+will be evaluated on each enforcement point.
+<br>
+- enforcement point paths specified: L2VPN Session Peer Codes
+<br>
+are evaluated only on the given enforcement points.
+<br>
+API supported only when L2VPN Service is in Server Mode.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VPNSessionPeerConfig.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/peer-config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2Vpn session remote mac for logical switch</h4><br>
+                      <span class="help_detail">Returns L2Vpn session remote macs for a logical switch.
+<br>
+Data is fetched from enforcement point.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VpnSessionRemoteMacsForLS.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/remote-mac</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2VPN session statistics under Tier-1</h4><br>
+                      <span class="help_detail">- no enforcement point path specified: statistics are evaluated on each enforcement point.
+<br>
+- an enforcement point path is specified: statistics are evaluated only on the given
+<br>
+enforcement point.
+<br>
+- source=realtime: statistics are fetched realtime from the enforcement point.
+<br>
+- source=cached: cached statistics from the enforcement point are returned.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1L2VpnSessionStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/locale-services/&lt;locale-service-id&gt;/l2vpn-services/&lt;service-id&gt;/sessions/&lt;session-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

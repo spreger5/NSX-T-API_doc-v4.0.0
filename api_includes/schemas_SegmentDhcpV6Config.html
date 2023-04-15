@@ -1,0 +1,151 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SegmentDhcpV6Config.html">SegmentDhcpV6Config</a> (<a href="types_SegmentDhcpV6Config.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_SegmentDhcpConfig.html">SegmentDhcpConfig</A>
+  }, 
+  "id": "SegmentDhcpV6Config", 
+  "module_id": "PolicyConnectivity", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "SegmentDhcpV6Config"
+  }, 
+  "properties": {
+    "dns_servers": {
+      "description": "IP address of DNS servers for subnet. DNS server IP address must belong to the same address family as segment gateway_address property.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "maxItems": 2, 
+      "required": false, 
+      "title": "DNS servers for subnet", 
+      "type": "array"
+    }, 
+    "domain_names": {
+      "description": "Domain names for subnet.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Domain names for subnet", 
+      "type": "array"
+    }, 
+    "excluded_ranges": {
+      "description": "Excluded addresses to define dynamic ip allocation ranges.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPElement.html">IPElement</A>
+      }, 
+      "maxItems": 128, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Excluded range of IPv6 addresses", 
+      "type": "array"
+    }, 
+    "lease_time": {
+      "default": 86400, 
+      "description": "DHCP lease time in seconds. When specified, this property overwrites lease time configured DHCP server config.", 
+      "maximum": 4294967295, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "DHCP lease time for subnet", 
+      "type": "integer"
+    }, 
+    "preferred_time": {
+      "description": "The length of time that a valid address is preferred. When the preferred lifetime expires, the address becomes deprecated.", 
+      "maximum": 4294967295, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Preferred time", 
+      "type": "integer"
+    }, 
+    "resource_type": {
+      "enum": [
+        "SegmentDhcpV4Config", 
+        "SegmentDhcpV6Config"
+      ], 
+      "required": true, 
+      "type": "string"
+    }, 
+    "server_address": {
+      "$ref": "<A HREF="schemas_IPCIDRBlock.html">IPCIDRBlock</A>, 
+      "description": "IP address of the DHCP server in CIDR format. The server_address is mandatory in case this segment has provided a dhcp_config_path and it represents a DHCP server config. If this SegmentDhcpConfig is a SegmentDhcpV4Config, the address must be an IPv4 address. If this is a SegmentDhcpV6Config, the address must be an IPv6 address. This address must not overlap the ip-ranges of the subnet, or the gateway address of the subnet, or the DHCP static-binding addresses of this segment.", 
+      "required": false, 
+      "title": "IP address of the DHCP server"
+    }, 
+    "sntp_servers": {
+      "description": "IPv6 address of SNTP servers for subnet.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPv6Address.html">IPv6Address</A>
+      }, 
+      "maxItems": 2, 
+      "required": false, 
+      "title": "SNTP servers for subnet", 
+      "type": "array"
+    }
+  }, 
+  "title": "DHCP configuration of IPv6 subnet in a segment", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

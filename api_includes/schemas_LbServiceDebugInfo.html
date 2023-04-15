@@ -1,0 +1,157 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbServiceDebugInfo.html">LbServiceDebugInfo</a> (<a href="types_LbServiceDebugInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "The information for a given load balancer service could be used for debugging and troubleshooting. It includes load balancer service, associated virtual servers, associated pools, associated profiles such as persistence, SSL, application, associated monitors and associated rules.", 
+  "id": "LbServiceDebugInfo", 
+  "module_id": "LoadBalancer", 
+  "properties": {
+    "application_profiles": {
+      "description": "The application profiles are associated to virtual servers", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbAppProfile.html">LbAppProfile</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer application profile settings", 
+      "type": "array"
+    }, 
+    "client_ssl_profiles": {
+      "deprecated": true, 
+      "description": "The client SSL profiles are associated to virtual servers. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbClientSslProfile.html">LbClientSslProfile</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer client SSL profile settings", 
+      "type": "array"
+    }, 
+    "monitors": {
+      "deprecated": true, 
+      "description": "The load balancer monitors are associated to pools. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbMonitor.html">LbMonitor</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer monitor configurations", 
+      "type": "array"
+    }, 
+    "persistence_profiles": {
+      "description": "The persistence profiles are associated to virtual servers", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbPersistenceProfile.html">LbPersistenceProfile</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer persistence profile settings", 
+      "type": "array"
+    }, 
+    "pools": {
+      "description": "The pools which are associated to the given load balancer service would be included. The pools could be defined in virtual server default pool, sorry pool or load balancer rule action.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbPool.html">LbPool</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer pool settings", 
+      "type": "array"
+    }, 
+    "rules": {
+      "deprecated": true, 
+      "description": "The load balancer rules are associated to virtual servers. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbRule.html">LbRule</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer rule settings", 
+      "type": "array"
+    }, 
+    "server_ssl_profiles": {
+      "deprecated": true, 
+      "description": "The server SSL profiles are associated to virtual servers. The property is deprecated as NSX-T Load Balancer is deprecated.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbServerSslProfile.html">LbServerSslProfile</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated load balancer server SSL profile settings", 
+      "type": "array"
+    }, 
+    "service": {
+      "$ref": "<A HREF="schemas_LbService.html">LbService</A>, 
+      "description": "Load balancer service setting for a given load balancer service identifier.", 
+      "readonly": true, 
+      "title": "Load balancer service setting"
+    }, 
+    "virtual_servers": {
+      "description": "The virtual servers which are associated to the given load balancer service would be included.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LbVirtualServer.html">LbVirtualServer</A>
+      }, 
+      "readonly": true, 
+      "title": "Associated virtual server settings", 
+      "type": "array"
+    }
+  }, 
+  "title": "The debug information of the load balancer service", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

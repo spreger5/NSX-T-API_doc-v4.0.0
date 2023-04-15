@@ -1,0 +1,90 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_VmConfigProperties.html">VmConfigProperties</a> (<a href="types_VmConfigProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Properties to configure the way NSX manages virtual machine.", 
+  "id": "VmConfigProperties", 
+  "module_id": "CloudVirtualMachineInformation", 
+  "properties": {
+    "usermanaged": {
+      "default": false, 
+      "description": "Setting this flag to true means NSX will not consider this instance while performing quarantine operation.", 
+      "required": false, 
+      "title": "Flag to identify if this instance is usermanaged or not.", 
+      "type": "boolean"
+    }, 
+    "whitelisted": {
+      "default": false, 
+      "deprecated": true, 
+      "description": "Setting this flag to true means NSX will not consider this instance while performing quarantine operation. [DEPRECATED - replace with usermanaged]", 
+      "required": false, 
+      "title": "Flag to identify if this instance is whitelisted or not.", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "User configurable properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

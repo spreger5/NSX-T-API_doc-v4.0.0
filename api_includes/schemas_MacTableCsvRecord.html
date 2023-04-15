@@ -1,0 +1,100 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MacTableCsvRecord.html">MacTableCsvRecord</a> (<a href="types_MacTableCsvRecord.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_CsvRecord.html">CsvRecord</A>
+  }, 
+  "id": "MacTableCsvRecord", 
+  "module_id": "AggSvcLogicalSwitch", 
+  "properties": {
+    "mac_address": {
+      "required": true, 
+      "title": "The MAC address", 
+      "type": "string"
+    }, 
+    "rtep_group_id": {
+      "description": "RTEP group id is applicable when the logical switch is stretched across multiple sites. When rtep_group_id is set, mac_address represents remote mac_address.", 
+      "title": "Remote tunnel endpoint(RTEP) group id", 
+      "type": "integer"
+    }, 
+    "vtep_group_id": {
+      "description": "VTEP group id is applicable when the logical switch is stretched across multiple sites. When vtep_group_id is set, mac_address represents remote mac_address.", 
+      "title": "Virtual tunnel endpoint(VTEP) group id", 
+      "type": "integer"
+    }, 
+    "vtep_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": false, 
+      "title": "The virtual tunnel endpoint IP address"
+    }, 
+    "vtep_mac_address": {
+      "required": false, 
+      "title": "The virtual tunnel endpoint MAC address", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

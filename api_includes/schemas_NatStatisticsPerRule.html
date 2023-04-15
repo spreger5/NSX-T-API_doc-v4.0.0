@@ -1,0 +1,118 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NatStatisticsPerRule.html">NatStatisticsPerRule</a> (<a href="types_NatStatisticsPerRule.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_NatCounters.html">NatCounters</A>
+  }, 
+  "id": "NatStatisticsPerRule", 
+  "module_id": "AggSvcLogicalRouter", 
+  "properties": {
+    "active_sessions": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The number of active sessions", 
+      "type": "integer"
+    }, 
+    "id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "The id of the NAT rule.", 
+      "type": "string"
+    }, 
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "Timestamp when the data was last updated; unset if data source has never updated the data."
+    }, 
+    "logical_router_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "The id of the logical router which owns the NAT rule.", 
+      "type": "string"
+    }, 
+    "total_bytes": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The number of bytes", 
+      "type": "integer"
+    }, 
+    "total_packets": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The number of packets", 
+      "type": "integer"
+    }, 
+    "warning_message": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The warning message about the NAT Rule statistics.", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,927 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      SecurityPolicy (<a href="schemas_SecurityPolicy.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">Contains ordered list of Rules</span>
+    <p>
+    <span class="help_detail">Ordered list of Rules.
+<br>
+</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>application_connectivity_strategy</td>
+            
+            <td>List of Application Connectivity strategy for this SecurityPolicy<br><br>This field indicates the application connectivity policy for the security
+<br>
+policy.
+<br>
+</td>
+            
+            <td>array of <a href="types_ApplicationConnectivityStrategy.html">ApplicationConnectivityStrategy</a></td>
+            
+            <td>Maximum items: 3</td>
+          </tr>
+          <tr>
+            <td>category</td>
+            
+            <td>A way to classify a security policy, if needed.<br><br>- Distributed Firewall -
+<br>
+Policy framework provides five pre-defined categories for classifying
+<br>
+a security policy. They are "Ethernet","Emergency", "Infrastructure"
+<br>
+"Environment" and "Application". There is a pre-determined order in
+<br>
+which the policy framework manages the priority of these security
+<br>
+policies. Ethernet category is for supporting layer 2 firewall rules.
+<br>
+The other four categories are applicable for layer 3 rules. Amongst
+<br>
+them, the Emergency category has the highest priority followed by
+<br>
+Infrastructure, Environment and then Application rules. Administrator
+<br>
+can choose to categorize a security policy into the above categories
+<br>
+or can choose to leave it empty. If empty it will have the least
+<br>
+precedence w.r.t the above four categories.
+<br>
+- Edge Firewall -
+<br>
+Policy Framework for Edge Firewall provides six pre-defined categories
+<br>
+"Emergency", "SystemRules", "SharedPreRules", "LocalGatewayRules",
+<br>
+"AutoServiceRules" and "Default", in order of priority of rules.
+<br>
+All categories are allowed for Gatetway Policies that belong
+<br>
+to 'default' Domain. However, for user created domains, category is
+<br>
+restricted to "SharedPreRules" or "LocalGatewayRules" only. Also, the
+<br>
+users can add/modify/delete rules from only the "SharedPreRules" and
+<br>
+"LocalGatewayRules" categories. If user doesn't specify the category
+<br>
+then defaulted to "Rules". System generated category is used by NSX
+<br>
+created rules, for example BFD rules. Autoplumbed category used by
+<br>
+NSX verticals to autoplumb data path rules. Finally, "Default" category
+<br>
+is the placeholder default rules with lowest in the order of priority.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_ChildRule.html">ChildRule</a><br><a href="types_ChildSecurityPolicyContainerCluster.html">ChildSecurityPolicyContainerCluster</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>comments</td>
+            
+            <td>SecurityPolicy lock/unlock comments<br><br>Comments for security policy lock/unlock.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>connectivity_preference</td>
+            
+            <td>Connectivity preference applicable for this SecurityPolicy<br><br>This field indicates the default connectivity policy for the security
+<br>
+policy. Based on the connectivitiy preference, a default rule for this
+<br>
+security policy will be created. An appropriate action will be set on
+<br>
+the rule based on the value of the connectivity preference. If NONE is
+<br>
+selected or no connectivity preference is specified, then no default
+<br>
+rule for the security policy gets created. The default rule that gets
+<br>
+created will be a any-any rule and applied to entities specified in the
+<br>
+scope of the security policy. Specifying the connectivity_preference
+<br>
+without specifying the scope is not allowed. The scope has to be a
+<br>
+Group and one cannot specify IPAddress directly in the group that is
+<br>
+used as scope. This default rule is only applicable for the Layer3
+<br>
+security policies.
+<br>
+ALLOWLIST - Adds a default drop rule. Administrator can then use "allow"
+<br>
+rules to allow traffic between groups
+<br>
+DENYLIST - Adds a default allow rule. Admin can then use "drop" rules
+<br>
+to block traffic between groups
+<br>
+ALLOWLIST_ENABLE_LOGGING - Allowlisting with logging enabled
+<br>
+DENYLIST_ENABLE_LOGGING - Denylisting with logging enabled
+<br>
+NONE - No default rule is created.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Enum: ALLOWLIST, DENYLIST, ALLOWLIST_ENABLE_LOGGING, DENYLIST_ENABLE_LOGGING, NONE</td>
+          </tr>
+          <tr>
+            <td>connectivity_strategy</td>
+            
+            <td>Connectivity strategy applicable for this SecurityPolicy<br><br>This field indicates the default connectivity policy for the security
+<br>
+policy. Based on the connectivity strategy, a default rule for this
+<br>
+security policy will be created. An appropriate action will be set on
+<br>
+the rule based on the value of the connectivity strategy. If NONE is
+<br>
+selected or no connectivity strategy is specified, then no default
+<br>
+rule for the security policy gets created. The default rule that gets
+<br>
+created will be a any-any rule and applied to entities specified in the
+<br>
+scope of the security policy. Specifying the connectivity_strategy
+<br>
+without specifying the scope is not allowed. The scope has to be a
+<br>
+Group and one cannot specify IPAddress directly in the group that is
+<br>
+used as scope. This default rule is only applicable for the Layer3
+<br>
+security policies.
+<br>
+This property is deprecated. Use the type connectivity_preference instead.
+<br>
+WHITELIST - Adds a default drop rule. Administrator can then use "allow"
+<br>
+rules (aka whitelist) to allow traffic between groups
+<br>
+BLACKLIST - Adds a default allow rule. Admin can then use "drop" rules
+<br>
+(aka blacklist) to block traffic between groups
+<br>
+WHITELIST_ENABLE_LOGGING - Whitelising with logging enabled
+<br>
+BLACKLIST_ENABLE_LOGGING - Blacklisting with logging enabled
+<br>
+NONE - No default rule is created.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Enum: WHITELIST, BLACKLIST, WHITELIST_ENABLE_LOGGING, BLACKLIST_ENABLE_LOGGING, NONE</td>
+          </tr>
+          <tr>
+            <td>default_rule_id</td>
+            
+            <td>Default rule ID associated with the connectivity_preference<br><br>Based on the value of the connectivity strategy, a default rule is
+<br>
+created for the security policy. The rule id is internally assigned
+<br>
+by the system for this default rule.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>internal_sequence_number</td>
+            
+            <td>Internal sequence number<br><br>This field is to indicate the internal sequence number of a policy
+<br>
+with respect to the policies across categories.
+<br>
+</td>
+            
+            <td>int</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>is_default</td>
+            
+            <td>Default policy flag<br><br>A flag to indicate whether policy is a default policy.</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>lock_modified_by</td>
+            
+            <td>User who locked the security policy<br><br>ID of the user who last modified the lock for the secruity policy.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>lock_modified_time</td>
+            
+            <td>SecuirtyPolicy locked/unlocked time<br><br>SecurityPolicy locked/unlocked time in epoch milliseconds.</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>locked</td>
+            
+            <td>Lock a security policy<br><br>Indicates whether a security policy should be locked. If the
+<br>
+security policy is locked by a user, then no other user would
+<br>
+be able to modify this security policy. Once the user releases
+<br>
+the lock, other users can update this security policy.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>logging_enabled</td>
+            
+            <td>Enable logging flag<br><br>This property is deprecated.
+<br>
+Flag to enable logging for all the rules in the security policy.
+<br>
+If the value is true then logging will be enabled for all the rules
+<br>
+in the security policy. If the value is false, then the rule level
+<br>
+logging value will be honored.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Deprecated</span><br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>SecurityPolicy</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>rule_count</td>
+            
+            <td>Rule count<br><br>The count of rules in the policy.
+<br>
+</td>
+            
+            <td>int</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>rules</td>
+            
+            <td>Rules that are a part of this SecurityPolicy</td>
+            
+            <td>array of <a href="types_Rule.html">Rule</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>scheduler_path</td>
+            
+            <td>Path to the scheduler for time based scheduling<br><br>Provides a mechanism to apply the rules in this policy for a specified
+<br>
+time duration.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>scope</td>
+            
+            <td>The list of group paths where the rules in this policy will get
+<br>
+applied. This scope will take precedence over rule level scope.
+<br>
+Supported only for security and redirection policies. In case of
+<br>
+RedirectionPolicy, it is expected only when the policy is NS and
+<br>
+redirecting to service chain.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td>Maximum items: 128</td>
+          </tr>
+          <tr>
+            <td>sequence_number</td>
+            
+            <td>Sequence number to resolve conflicts across Domains<br><br>This field is used to resolve conflicts between security policies
+<br>
+across domains. In order to change the sequence number of a policy
+<br>
+one can fire a POST request on the policy entity with
+<br>
+a query parameter action=revise
+<br>
+The sequence number field will reflect the value of the computed
+<br>
+sequence number upon execution of the above mentioned POST request.
+<br>
+For scenarios where the administrator is using a template to update
+<br>
+several security policies, the only way to set the sequence number is
+<br>
+to explicitly specify the sequence number for each security policy.
+<br>
+If no sequence number is specified in the payload, a value of 0 is
+<br>
+assigned by default. If there are multiple policies with the same
+<br>
+sequence number then their order is not deterministic. If a specific
+<br>
+order of policies is desired, then one has to specify unique sequence
+<br>
+numbers or use the POST request on the policy entity with
+<br>
+a query parameter action=revise to let the framework assign a
+<br>
+sequence number.
+<br>
+The value of sequence number must be between 0 and 999,999.
+<br>
+</td>
+            
+            <td>int</td>
+            
+            <td>Minimum: 0</td>
+          </tr>
+          <tr>
+            <td>stateful</td>
+            
+            <td>Stateful nature of the entries within this security policy.<br><br>Stateful or Stateless nature of security policy is enforced on all
+<br>
+rules in this security policy. When it is stateful, the state of
+<br>
+the network connects are tracked and a stateful packet inspection is
+<br>
+performed.
+<br>
+Layer3 security policies can be stateful or stateless. By default, they are stateful.
+<br>
+Layer2 security policies can only be stateless.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>tcp_strict</td>
+            
+            <td>Enforce strict tcp handshake before allowing data packets<br><br>Ensures that a 3 way TCP handshake is done before the data packets
+<br>
+are sent.
+<br>
+tcp_strict=true is supported only for stateful security policies.
+<br>
+If the tcp_strict flag is not specified and the security policy
+<br>
+is stateful, then tcp_strict will be set to true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

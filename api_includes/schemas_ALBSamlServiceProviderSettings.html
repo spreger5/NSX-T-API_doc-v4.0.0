@@ -1,0 +1,126 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBSamlServiceProviderSettings.html">ALBSamlServiceProviderSettings</a> (<a href="types_ALBSamlServiceProviderSettings.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer SamlServiceProviderSettings object", 
+  "id": "ALBSamlServiceProviderSettings", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "fqdn": {
+      "description": "FQDN if entity type is DNS_FQDN .", 
+      "required": false, 
+      "title": "Fqdn", 
+      "type": "string"
+    }, 
+    "org_display_name": {
+      "description": "Service Provider Organization Display Name.", 
+      "required": false, 
+      "title": "Org display name", 
+      "type": "string"
+    }, 
+    "org_name": {
+      "description": "Service Provider Organization Name.", 
+      "required": false, 
+      "title": "Org name", 
+      "type": "string"
+    }, 
+    "org_url": {
+      "description": "Service Provider Organization URL.", 
+      "required": false, 
+      "title": "Org url", 
+      "type": "string"
+    }, 
+    "saml_entity_type": {
+      "$ref": "<A HREF="schemas_ALBAuthSamlEntityType.html">ALBAuthSamlEntityType</A>, 
+      "description": "Type of SAML endpoint. Enum options - AUTH_SAML_CLUSTER_VIP, AUTH_SAML_DNS_FQDN, AUTH_SAML_APP_VS.", 
+      "required": false, 
+      "title": "Saml entity type"
+    }, 
+    "sp_nodes": {
+      "description": "Service Provider node information.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBSamlServiceProviderNode.html">ALBSamlServiceProviderNode</A>
+      }, 
+      "required": false, 
+      "title": "Sp nodes", 
+      "type": "array"
+    }, 
+    "tech_contact_email": {
+      "description": "Service Provider technical contact email.", 
+      "required": false, 
+      "title": "Tech contact email", 
+      "type": "string"
+    }, 
+    "tech_contact_name": {
+      "description": "Service Provider technical contact name.", 
+      "required": false, 
+      "title": "Tech contact name", 
+      "type": "string"
+    }
+  }, 
+  "title": "SamlServiceProviderSettings", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

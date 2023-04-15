@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPv6DADStatus.html">IPv6DADStatus</a> (<a href="types_IPv6DADStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "IPv6DADStatus", 
+  "module_id": "LogicalRouterPorts", 
+  "properties": {
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "IP address on the port for which DAD status is reported.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address"
+    }, 
+    "status": {
+      "$ref": "<A HREF="schemas_DADStatus.html">DADStatus</A>, 
+      "description": "DAD status for IP address on the port.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "DAD Status"
+    }, 
+    "transport_node": {
+      "description": "Array of transport node id on which DAD status is reported for given IP address.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Transport node", 
+      "type": "array"
+    }
+  }, 
+  "title": "IPv6 DAD status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

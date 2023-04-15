@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AdvertisementRuleFilter.html">AdvertisementRuleFilter</a> (<a href="types_AdvertisementRuleFilter.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "To filter the routes advertised by the TIER1 LR to TIER0 LR. Filtering will be based on the type of route and the prefix operator configured.", 
+  "id": "AdvertisementRuleFilter", 
+  "module_id": "Routing", 
+  "properties": {
+    "match_route_types": {
+      "items": {
+        "$ref": "<A HREF="schemas_AdvertisementRuleFilterRouteType.html">AdvertisementRuleFilterRouteType</A>
+      }, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "Array of route types to filter routes", 
+      "type": "array"
+    }, 
+    "prefix_operator": {
+      "default": "GE", 
+      "description": "GE prefix operator filters all the routes having network subset of any of the networks configured in Advertise rule. EQ prefix operator filter all the routes having network equal to any of the network configured in Advertise rule.", 
+      "enum": [
+        "GE", 
+        "EQ"
+      ], 
+      "required": true, 
+      "title": "Prefix operator to apply on networks", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

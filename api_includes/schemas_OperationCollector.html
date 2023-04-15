@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_OperationCollector.html">OperationCollector</a> (<a href="types_OperationCollector.html">type</a>)
+</h3>
+<pre>{
+  "description": "The operation collector is defined to receive stats from hosts. (eg. vRNI-collector collects all the system metrics)", 
+  "id": "OperationCollector", 
+  "module_id": "GlobalConfigs", 
+  "properties": {
+    "collector_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "IP address for the operation collector.", 
+      "required": true, 
+      "title": "IP address for the operation collector"
+    }, 
+    "collector_port": {
+      "description": "Port for the operation collector.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Port for the operation collector", 
+      "type": "int"
+    }, 
+    "collector_type": {
+      "default": "VRNI", 
+      "description": "Define the operation collector type.", 
+      "enum": [
+        "VRNI", 
+        "WAVE_FRONT"
+      ], 
+      "title": "The operation collector type", 
+      "type": "string"
+    }, 
+    "tracing_port": {
+      "description": "Port for the Wavefront tracing.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Port for the Wavefront tracing", 
+      "type": "int"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

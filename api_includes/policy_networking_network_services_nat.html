@@ -1,0 +1,511 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+        
+        
+            <a href='policy_networking_network_services_nat.html' style='text-decoration: none'> NAT</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Policy NAT types.</h4><br>
+                      <span class="help_detail">List all NAT sections under the given Tier-0 ID.
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatOnTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatOnTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/nat</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NAT Rules</h4><br>
+                      <span class="help_detail">List NAT Rules from Tier-0 denoted by Tier-0 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-0 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PATCH/PUT API, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatRulesFromTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatRulesFromTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NAT Rule</h4><br>
+                      <span class="help_detail">Delete NAT Rule from Tier-0 denoted by Tier-0 ID, under NAT section denoted by &lt;nat-id&gt;. Under tier-0 there will be 3 different NATs(sections). (INTERNAL, USER and DEFAULT) For more details related to NAT section please refer to PolicyNAT schema.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyNatRuleFromTier0.html">DELETE /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NAT Rule</h4><br>
+                      <span class="help_detail">Get NAT Rule from Tier-0 denoted by Tier-0 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-0 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PUT/PATCH API, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyNatRuleFromTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyNatRuleFromTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a NAT Rule on tier-0</h4><br>
+                      <span class="help_detail">If a NAT Rule is not already present on Tier-0 denoted by Tier-0 ID,
+<br>
+under NAT section denoted by &lt;nat-id&gt;, create a new NAT Rule.
+<br>
+If it already exists, update the NAT Rule.
+<br>
+Under tier-0 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PATCH API, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyNatRuleOnTier0.html">PATCH /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NAT Rule</h4><br>
+                      <span class="help_detail">Update NAT Rule on Tier-0 denoted by Tier-0 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-0 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PUT API, the path returned in the PUT/GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplacePolicyNatRuleOnTier0.html">PUT /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NAT Rule Statistics</h4><br>
+                      <span class="help_detail">Get NAT Rule Statistics from Tier-0 denoted by Tier-0 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-0 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyNatRuleStatisticsFromTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyNatRuleStatisticsFromTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NAT Rules Statistics</h4><br>
+                      <span class="help_detail">List NAT Rules Statistics from Tier-0 denoted by Tier-0 ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatRulesStatisticsFromTier0.html">GET /policy/api/v1/global-infra/tier-0s/&lt;tier-0-id&gt;/nat/statistics</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatRulesStatisticsFromTier0.html">GET /policy/api/v1/infra/tier-0s/&lt;tier-0-id&gt;/nat/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Policy NAT types.</h4><br>
+                      <span class="help_detail">List all NAT sections under the given Tier-1 ID.
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatOnTier1.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatOnTier1.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/nat</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NAT Rules</h4><br>
+                      <span class="help_detail">List NAT Rules from Tier-1 denoted by Tier-1 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-1 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PATCH/PUT PoliycNatRule API, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatRules.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatRules.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NAT Rule</h4><br>
+                      <span class="help_detail">Delete NAT Rule from Tier-1 denoted by Tier-1 ID, under NAT section denoted by &lt;nat-id&gt;. Under tier-1 there will be 3 different NATs(sections). (INTERNAL, USER and DEFAULT) For more details related to NAT section please refer to PolicyNAT schema.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePolicyNatRule.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NAT Rule</h4><br>
+                      <span class="help_detail">Get NAT Rule from Tier-1 denoted by Tier-1 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-1 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+    IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+    scope property in the PATCH/PUT PoliycNatRule API, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+    Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyNatRule.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyNatRule.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Nat Rule</h4><br>
+                      <span class="help_detail">If a NAT Rule is not already present on Tier-1 denoted by Tier-1 ID,
+<br>
+under NAT section denoted by &lt;nat-id&gt;, create a new NAT Rule.
+<br>
+If it already exists, update the NAT Rule.
+<br>
+Under tier-1 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+    IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+    scope property, the path returned in the GET response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+    Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPolicyNatRule.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NAT Rule</h4><br>
+                      <span class="help_detail">Update NAT Rule on Tier-1 denoted by Tier-1 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-1 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+Note:
+<br>
+  IPSecVpnSession as Scope: Please note that old IPSecVpnSession policy path deprecated. If user specifiy old IPSecVpnSession path in the
+<br>
+  scope property in the PUT API, the path returned in the GET/PUT response payload will be a new path instead of the deprecated IPSecVpnSession path
+<br>
+  Both old and new IPSecVpnSession path refer to same resource. there is no functional impact.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplacePolicyNatRule.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get NAT Rule Statistics</h4><br>
+                      <span class="help_detail">Get NAT Rule Statistics from Tier-1 denoted by Tier-1 ID, under NAT section
+<br>
+denoted by &lt;nat-id&gt;.
+<br>
+Under tier-1 there will be 3 different NATs(sections).
+<br>
+(INTERNAL, USER and DEFAULT)
+<br>
+For more details related to NAT section please refer to PolicyNAT schema.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPolicyNatRuleStatisticsFromTier1.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetPolicyNatRuleStatisticsFromTier1.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/&lt;nat-id&gt;/nat-rules/&lt;nat-rule-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NAT Rules Statistics</h4><br>
+                      <span class="help_detail">List NAT Rules Statistics from Tier-1 denoted by Tier-1 ID.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPolicyNatRulesStatisticsFromTier1.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/nat/statistics</a>
+                            <br>
+                            
+                            <a href="method_ListPolicyNatRulesStatisticsFromTier1.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/nat/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

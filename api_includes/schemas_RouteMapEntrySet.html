@@ -1,0 +1,115 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RouteMapEntrySet.html">RouteMapEntrySet</a> (<a href="types_RouteMapEntrySet.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "RouteMapEntrySet", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "as_path_prepend": {
+      "description": "AS path prepend to influence route selection.", 
+      "required": false, 
+      "title": "AS path prepend to influence route selection", 
+      "type": "string"
+    }, 
+    "community": {
+      "description": "Set BGP regular or large community for matching routes. A maximum of one value for each community type separated by space. Well-known community name, community value in aa:nn (2byte:2byte) format for regular community and community value in aa:bb:nn (4byte:4byte:4byte) format for large community are supported.", 
+      "required": false, 
+      "title": "Set BGP community", 
+      "type": "string"
+    }, 
+    "local_preference": {
+      "default": 100, 
+      "description": "Local preference indicates the degree of preference for one BGP route over other BGP routes. The path with highest local preference is preferred.", 
+      "maximum": 4294967295, 
+      "title": "Local preference to set for matching BGP routes", 
+      "type": "integer"
+    }, 
+    "med": {
+      "description": "Multi exit descriminator (MED) is a hint to BGP neighbors about the preferred path into an autonomous system (AS) that has multiple entry points. A lower MED value is preferred over a higher value.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Multi exit descriminator", 
+      "type": "int"
+    }, 
+    "prefer_global_v6_next_hop": {
+      "description": "For incoming and import route_maps on receiving both v6 global and v6 link-local address for the route, prefer to use the global address as the next hop. By default, it prefers the link-local next hop.", 
+      "required": false, 
+      "title": "Prefer global v6 next hop over local next hop", 
+      "type": "boolean"
+    }, 
+    "weight": {
+      "description": "Weight is used to select a route when multiple routes are available to the same network. Route with the highest weight is preferred.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Weight used to select certain path", 
+      "type": "int"
+    }
+  }, 
+  "title": "Set criteria for route map entry", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

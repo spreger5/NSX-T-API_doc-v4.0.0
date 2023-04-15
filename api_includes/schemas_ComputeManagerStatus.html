@@ -1,0 +1,143 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ComputeManagerStatus.html">ComputeManagerStatus</a> (<a href="types_ComputeManagerStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "ComputeManagerStatus", 
+  "module_id": "InventoryCmObj", 
+  "properties": {
+    "connection_errors": {
+      "help_detail": "Errors will be cleared after successful connection", 
+      "items": {
+        "$ref": "<A HREF="schemas_ErrorInfo.html">ErrorInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Errors when connecting with compute manager", 
+      "type": "array"
+    }, 
+    "connection_status": {
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "CONNECTING"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status of connection with the compute manager", 
+      "type": "string"
+    }, 
+    "connection_status_details": {
+      "help_detail": "Details, if any, about the current status of the connection with the compute manager", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Details about connection status", 
+      "type": "string"
+    }, 
+    "last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp of the last successful update of Inventory, in epoch milliseconds."
+    }, 
+    "oidc_end_point_id": {
+      "description": "If Compute manager is trusted as authorization server, then this Id will be Id of corresponding oidc end point.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Specifies Id of corresponding OidcEndPoint", 
+      "type": "string"
+    }, 
+    "registration_errors": {
+      "help_detail": "Errors will be cleared after successful registration", 
+      "items": {
+        "$ref": "<A HREF="schemas_ErrorInfo.html">ErrorInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Errors when registering with compute manager", 
+      "type": "array"
+    }, 
+    "registration_status": {
+      "enum": [
+        "REGISTERED", 
+        "UNREGISTERED", 
+        "REGISTERING", 
+        "REGISTERED_WITH_ERRORS"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Registration status of compute manager", 
+      "type": "string"
+    }, 
+    "version": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Version of the compute manager", 
+      "type": "string"
+    }
+  }, 
+  "title": "Runtime status information of the compute manager", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

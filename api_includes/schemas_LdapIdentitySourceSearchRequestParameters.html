@@ -1,0 +1,81 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LdapIdentitySourceSearchRequestParameters.html">LdapIdentitySourceSearchRequestParameters</a> (<a href="types_LdapIdentitySourceSearchRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "To search for a user or group in an LDAP identity source, provide a filter_value. The directory will be searched for users and groups that match the search string.  User searches:  For Active Directory sources, the directory will be searched for users whose commonName (CN) property contains the given string and for users whose samAccountName property contains the given string. For OpenLDAP sources, the directory will be searched for users whose commonName (CN) property contains the given string and for users whose uid property contains the given string.  Group searches:  For both Active Directory and OpenLDAP sources, the directory will be searched for groups whose commonName (CN) property contains the the given string.  The LDAP server may impose a limit on the number of returned entries.", 
+  "id": "LdapIdentitySourceSearchRequestParameters", 
+  "module_id": "LdapIdentitySources", 
+  "properties": {
+    "filter_value": {
+      "description": "A string to use when searching for users and groups in the LDAP identity source.", 
+      "required": true, 
+      "title": "Search filter value", 
+      "type": "string"
+    }
+  }, 
+  "title": "Arguments for searching users and groups", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

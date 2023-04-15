@@ -1,0 +1,159 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeUserProperties.html">NodeUserProperties</a> (<a href="types_NodeUserProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "NodeUserProperties", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "full_name": {
+      "title": "Full name for the user", 
+      "type": "string"
+    }, 
+    "last_password_change": {
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "readonly": true, 
+      "title": "Number of days since password was last changed", 
+      "type": "integer"
+    }, 
+    "old_password": {
+      "sensitive": true, 
+      "title": "Old password for the user (required on PUT if password specified)", 
+      "type": "string"
+    }, 
+    "password": {
+      "sensitive": true, 
+      "title": "Password for the user (optionally specified on PUT, unspecified on GET)", 
+      "type": "string"
+    }, 
+    "password_change_frequency": {
+      "description": "Number of days password is valid before it must be changed. This can be set to 0 to indicate no password change is required or a positive integer up to 9999. By default local user passwords must be changed every 90 days.", 
+      "maximum": 9999, 
+      "minimum": 0, 
+      "title": "Number of days password is valid before it must be changed", 
+      "type": "integer"
+    }, 
+    "password_change_warning": {
+      "desciption": "Number of days before user receives warning message to change the password before it expires. By default users will receive 7 days prior warning message to change the password.", 
+      "maximum": 9999, 
+      "minimum": 0, 
+      "title": "Number of days before user receives warning message of password expiration", 
+      "type": "integer"
+    }, 
+    "password_reset_required": {
+      "title": "Boolean value that states if a password reset is required", 
+      "type": "boolean"
+    }, 
+    "status": {
+      "description": "Status of the user. This value can be ACTIVE indicating authentication attempts will be successful if the correct credentials are specified. The value can also be PASSWORD_EXPIRED indicating authentication attempts will fail because the user's password has expired and must be changed. Or, this value can be NOT_ACTIVATED indicating the user's password has not yet been set and must be set before the user can authenticate.", 
+      "enum": [
+        "ACTIVE", 
+        "PASSWORD_EXPIRED", 
+        "NOT_ACTIVATED"
+      ], 
+      "readonly": true, 
+      "title": "User status", 
+      "type": "string"
+    }, 
+    "userid": {
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "readonly": true, 
+      "title": "Numeric id for the user", 
+      "type": "integer"
+    }, 
+    "username": {
+      "maxLength": 32, 
+      "minLength": 1, 
+      "pattern": "^[a-zA-Z][a-zA-Z0-9@-_.\\-]*$", 
+      "title": "User login name (must be \"root\" if userid is 0)", 
+      "type": "string"
+    }
+  }, 
+  "title": "Node user properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

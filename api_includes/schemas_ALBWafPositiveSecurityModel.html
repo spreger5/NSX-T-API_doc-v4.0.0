@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafPositiveSecurityModel.html">ALBWafPositiveSecurityModel</a> (<a href="types_ALBWafPositiveSecurityModel.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafPositiveSecurityModel object", 
+  "id": "ALBWafPositiveSecurityModel", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "group_paths": {
+      "description": "These groups should be used to separate different levels of concern. The order of the groups matters, one group may mark parts of the request as valid, so that subsequent groups will not check these parts. It is a reference to an object of type WafPolicyPSMGroup. Maximum of 64 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBWafPolicy"
+          ], 
+          "relationshipType": "ALB_WAFPOLICY_ALB_WAFPOLICYPSMGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBWafPolicyPSMGroup"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "WafPositiveSecurityModel", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

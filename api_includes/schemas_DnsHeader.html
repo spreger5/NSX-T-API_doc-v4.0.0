@@ -1,0 +1,101 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DnsHeader.html">DnsHeader</a> (<a href="types_DnsHeader.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "DnsHeader", 
+  "module_id": "Traceflow", 
+  "properties": {
+    "address": {
+      "description": "This is used to define what is being asked or responded.", 
+      "format": "hostname-or-ip", 
+      "required": false, 
+      "title": "Domain name/IP to query/response", 
+      "type": "string"
+    }, 
+    "address_type": {
+      "default": "V4", 
+      "description": "This is used to specify the type of the address. V4 - The address provided is an IPv4 domain name/IP address, the Type in query or response will be A V6 - The address provided is an IPv6 domain name/IP address, the Type in query or response will be AAAA", 
+      "enum": [
+        "V4", 
+        "V6"
+      ], 
+      "required": false, 
+      "title": null, 
+      "type": "string"
+    }, 
+    "message_type": {
+      "default": "QUERY", 
+      "enum": [
+        "QUERY", 
+        "RESPONSE"
+      ], 
+      "required": false, 
+      "title": "Specifies the message type whether it is a query or a response.", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

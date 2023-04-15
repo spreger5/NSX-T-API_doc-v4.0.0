@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceRouterAllocationConfig.html">ServiceRouterAllocationConfig</a> (<a href="types_ServiceRouterAllocationConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "ServiceRouterAllocationConfig", 
+  "module_id": "LogicalRouter", 
+  "properties": {
+    "allocation_pool": {
+      "$ref": "<A HREF="schemas_EdgeClusterMemberAllocationPool.html">EdgeClusterMemberAllocationPool</A>, 
+      "description": "Logical router allocation can be tracked for specific services and services may have their own hard limits and allocation sizes. For example load balancer pool should be specified if load balancer service will be attached to logical router.", 
+      "required": false, 
+      "title": "Edge Cluster Member Allocation Pool for logical router"
+    }, 
+    "edge_cluster_id": {
+      "description": "To reallocate TIER1 logical router on new or existing edge cluster", 
+      "required": true, 
+      "title": "Edge cluster id to re allocate members", 
+      "type": "string"
+    }, 
+    "edge_cluster_member_indices": {
+      "description": "For TIER 1 logical router, for manual placement of service router within the cluster, edge cluster member indices needs to be provided else same will be auto-allocated. You can provide maximum two indices for HA ACTIVE_STANDBY.", 
+      "items": {
+        "type": "integer"
+      }, 
+      "required": false, 
+      "title": "Member indices of the edge node on the cluster", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

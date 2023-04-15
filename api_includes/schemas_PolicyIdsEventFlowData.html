@@ -1,0 +1,200 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyIdsEventFlowData.html">PolicyIdsEventFlowData</a> (<a href="types_PolicyIdsEventFlowData.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "IDS event flow data specific to each IDS event. The data includes source ip, source port, destination ip, destination port, protocol, rule id, profile id, and the action.", 
+  "id": "PolicyIdsEventFlowData", 
+  "module_id": "PolicyIDSMetrics", 
+  "properties": {
+    "action_type": {
+      "description": "The action pertaining to the detected intrusion. Possible values are ALERT, DROP, REJECT, and INVALID. ALERT - If there is a signature match on the packet, it is allowed to pass but a notification is sent to the user notifying an intrusion was detected. DROP - On a signature match, the packet is silently dropped. An alert is sent to the user that an intrusion was detected. REJECT - On a signature match, the packet is dropped and TCP RST or ICMP error messages (for non-TCP pkts) are sent to the endpoints. An alert is sent to the user that an intrusion was detected. INVALID - If the action doesn't belong to any of the above mentioned categories, it is marked as INVALID.", 
+      "enum": [
+        "ALERT", 
+        "DROP", 
+        "REJECT", 
+        "INVALID"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS Event action", 
+      "type": "string"
+    }, 
+    "bytes_toclient": {
+      "description": "Bytes sent to client.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Bytes to client", 
+      "type": "integer"
+    }, 
+    "bytes_toserver": {
+      "description": "Bytes sent to server.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Bytes to server", 
+      "type": "integer"
+    }, 
+    "client_ip": {
+      "description": "IP address of the VM that initiated the communication.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address of the client VM", 
+      "type": "string"
+    }, 
+    "destination_ip": {
+      "description": "IP address of the destination VM on the intrusion flow.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address of the destination VM", 
+      "type": "string"
+    }, 
+    "destination_port": {
+      "description": "Port on the destination VM where the traffic was sent to.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Destination port", 
+      "type": "integer"
+    }, 
+    "gateway": {
+      "description": "Name of the gateway on which this intrusion was detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Gateway where the intrusion was detected at", 
+      "type": "string"
+    }, 
+    "gateway_tags": {
+      "description": "Tags associated with the gateway on which this intrusion was detected.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Tags associated with the gateway", 
+      "type": "array"
+    }, 
+    "host": {
+      "description": "Name of the host on which this intrusion was detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Host where intrusion was seen", 
+      "type": "string"
+    }, 
+    "local_vm_ip": {
+      "description": "IP address of VM on the host where IDS engine is running.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address of the local VM", 
+      "type": "string"
+    }, 
+    "profile_id": {
+      "description": "The IDS profile id that is associated with the IDS rule pertaining to the intrusion event detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS profile id", 
+      "type": "string"
+    }, 
+    "protocol": {
+      "description": "Traffic protocol pertaining to the detected intrusion, could be TCP/UDP etc.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Traffic protocol pertaining to the intrusion", 
+      "type": "string"
+    }, 
+    "rule_id": {
+      "description": "The IDS Rule id pertaining to the detected intrusion.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS Rule id of detected intrusion", 
+      "type": "integer"
+    }, 
+    "source_ip": {
+      "description": "IP address of the source VM on the intrusion flow.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address of the source VM", 
+      "type": "string"
+    }, 
+    "source_port": {
+      "description": "Source port through which traffic was initiated that caused the intrusion to be detected.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Source port", 
+      "type": "integer"
+    }, 
+    "traffic_type": {
+      "description": "The source where the intrusion was detected. Possible values are GATEWAY and HOST.", 
+      "enum": [
+        "GATEWAY", 
+        "HOST"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "IDS event detection source", 
+      "type": "string"
+    }
+  }, 
+  "title": "IDS event flow data", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

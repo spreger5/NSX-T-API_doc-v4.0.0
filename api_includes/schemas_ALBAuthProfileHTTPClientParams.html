@@ -1,0 +1,99 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBAuthProfileHTTPClientParams.html">ALBAuthProfileHTTPClientParams</a> (<a href="types_ALBAuthProfileHTTPClientParams.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer AuthProfileHTTPClientParams object", 
+  "id": "ALBAuthProfileHTTPClientParams", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "cache_expiration_time": {
+      "default": 5, 
+      "description": "The max allowed length of time a clients authentication is cached. Allowed values are 1-30. Unit is SEC. Default value when not specified in API or module is interpreted by ALB Controller as 5.", 
+      "maximum": 30, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Cache expiration time", 
+      "type": "integer"
+    }, 
+    "request_header": {
+      "description": "Insert an HTTP header. This field is used to define the header name. The value of the header is set to the client's HTTP Auth user ID.", 
+      "required": false, 
+      "title": "Request header", 
+      "type": "string"
+    }, 
+    "require_user_groups": {
+      "description": "A user should be a member of these groups. Each group is defined by the DN. For example, CN=testgroup,OU=groups,dc=example,dc=avinetworks,DC=com.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Require user groups", 
+      "type": "array"
+    }
+  }, 
+  "title": "AuthProfileHTTPClientParams", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

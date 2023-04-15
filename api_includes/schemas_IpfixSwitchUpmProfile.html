@@ -1,0 +1,240 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpfixSwitchUpmProfile.html">IpfixSwitchUpmProfile</a> (<a href="types_IpfixSwitchUpmProfile.html">type</a>)
+</h3>
+<pre>{
+  "description": "The configuration for Internet protocol flow information export (IPFIX) and would be enabled on the switching module to collect flow information.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_IpfixUpmProfile.html">IpfixUpmProfile</A>
+  }, 
+  "id": "IpfixSwitchUpmProfile", 
+  "module_id": "UpmIpfix", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "IpfixSwitchUpmProfile"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "active_timeout": {
+      "default": 300, 
+      "description": "The time in seconds after a flow is expired even if more packets matching this Flow are received by the cache.", 
+      "maximum": 3600, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Active Timeout", 
+      "type": "int"
+    }, 
+    "applied_tos": {
+      "$ref": "<A HREF="schemas_AppliedTos.html">AppliedTos</A>, 
+      "description": "Entities where the IPFIX profile will be enabled on. Maximum entity count of all types is 128.", 
+      "required": false, 
+      "title": "Entitys Applied with Profile"
+    }, 
+    "collector_profile": {
+      "description": "Each IPFIX switching profile can have its own collector profile.", 
+      "required": true, 
+      "title": "UUID of IPFIX Collector Profile", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "export_overlay_flow": {
+      "default": true, 
+      "description": "It controls whether sample result includes overlay flow info.", 
+      "required": false, 
+      "title": "Export Overlay Flow", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "idle_timeout": {
+      "default": 300, 
+      "description": "The time in seconds after a flow is expired if no more packets matching this flow are received by the cache.", 
+      "maximum": 3600, 
+      "minimum": 60, 
+      "required": false, 
+      "title": "Idle Timeout", 
+      "type": "int"
+    }, 
+    "max_flows": {
+      "default": 16384, 
+      "description": "The maximum number of flow entries in each exporter flow cache.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max Flows", 
+      "type": "integer"
+    }, 
+    "observation_domain_id": {
+      "description": "An identifier that is unique to the exporting process and used to meter the Flows.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Observation Domain ID", 
+      "type": "integer"
+    }, 
+    "packet_sample_probability": {
+      "default": 0.1, 
+      "description": "The probability in percentage that a packet is sampled. The value should be  in range (0,100] and can only have three decimal places at most. The probability  is equal for every packet.", 
+      "exclusiveMinimum": true, 
+      "maximum": 100, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Packet Sample Probability", 
+      "type": "number"
+    }, 
+    "priority": {
+      "description": "This priority field is used to resolve conflicts in logical ports/switch  which inherit multiple switch IPFIX profiles from NSGroups.  Override rule is : for multiple profiles inherited from NSGroups, the one with highest priority (lowest number) overrides others; the profile directly applied to logical switch overrides profiles inherited from NSGroup; the profile directly applied to logical port overides profiles inherited from logical switch and/or nsgroup;  The IPFIX exporter will send records to collectors of final effective profile only.", 
+      "maximum": 65536, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Profile Priority", 
+      "type": "int"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_IpfixUpmProfileType.html">IpfixUpmProfileType</A>, 
+      "readonly": false, 
+      "required": true
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "Switching IPFIX Profile", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

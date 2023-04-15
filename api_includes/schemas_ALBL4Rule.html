@@ -1,0 +1,106 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBL4Rule.html">ALBL4Rule</a> (<a href="types_ALBL4Rule.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer L4Rule object", 
+  "id": "ALBL4Rule", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "action": {
+      "$ref": "<A HREF="schemas_ALBL4RuleAction.html">ALBL4RuleAction</A>, 
+      "description": "Action to be performed upon successful rule match.", 
+      "required": false, 
+      "title": "Action"
+    }, 
+    "enable": {
+      "default": true, 
+      "description": "Enable or disable the rule. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable", 
+      "type": "boolean"
+    }, 
+    "index": {
+      "description": "Index of the rule.", 
+      "required": true, 
+      "title": "Index", 
+      "type": "integer"
+    }, 
+    "match": {
+      "$ref": "<A HREF="schemas_ALBL4RuleMatchTarget.html">ALBL4RuleMatchTarget</A>, 
+      "description": "Match criteria of the rule.", 
+      "required": false, 
+      "title": "Match"
+    }, 
+    "name": {
+      "description": "Name of the rule.", 
+      "required": true, 
+      "title": "Name", 
+      "type": "string"
+    }
+  }, 
+  "title": "L4Rule", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

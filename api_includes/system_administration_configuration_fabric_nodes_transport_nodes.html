@@ -1,0 +1,1520 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes.html' style='text-decoration: none'> Nodes</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_nodes_transport_nodes.html' style='text-decoration: none'> Transport Nodes</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List Host Transport Nodes</h4><br>
+                      <span class="help_detail">Returns information about all host transport nodes along with underlying host details.
+<br>
+A transport node is a host that contains hostswitches.
+<br>
+A hostswitch can have virtual machines connected to them.
+<br>
+
+<br>
+Because each transport node has hostswitches, transport nodes can also have
+<br>
+virtual tunnel endpoints, which means that they can be part of the overlay.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListHostTransportNodes.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Transport Node</h4><br>
+                      <span class="help_detail">Deletes the specified transport node. Query param force can be used to
+<br>
+force delete the host nodes.
+<br>
+
+<br>
+It also removes the specified host node from system.
+<br>
+If unprepare_host option is set to false, then host will be deleted
+<br>
+without uninstalling the NSX components from the host.
+<br>
+If transport node delete is called with query param force not being set
+<br>
+or set to false and uninstall of NSX components in the host fails,
+<br>
+TransportNodeState object will be retained.
+<br>
+If transport node delete is called with query param force set to true
+<br>
+and uninstall of NSX components in the host fails, TransportNodeState
+<br>
+object will be deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteHostTransportNode.html">DELETE /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Host Transport Node</h4><br>
+                      <span class="help_detail">Returns information about a specified transport node.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetHostTransportNode.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Host Transport Node</h4><br>
+                      <span class="help_detail">Transport nodes are hypervisor hosts that will participate
+<br>
+in an NSX-T overlay. For a hypervisor host, this means that it hosts
+<br>
+VMs that will communicate over NSX-T logical switches.
+<br>
+
+<br>
+This API creates transport node for a host node (hypervisor) in the transport network.
+<br>
+
+<br>
+When you run this command for a host, NSX Manager attempts to install the
+<br>
+NSX kernel modules, which are packaged as VIB, RPM, or DEB files. For the
+<br>
+installation to succeed, you must provide the host login credentials and the
+<br>
+host thumbprint.
+<br>
+
+<br>
+To get the ESXi host thumbprint, SSH to the host and run the
+<br>
+<b>openssl x509 -in /etc/vmware/ssl/rui.crt -fingerprint -sha256 -noout</b>
+<br>
+command.
+<br>
+
+<br>
+To generate host key thumbprint using SHA-256 algorithm please follow the
+<br>
+steps below.
+<br>
+
+<br>
+Log into the host, making sure that the connection is not vulnerable to a
+<br>
+man in the middle attack. Check whether a public key already exists.
+<br>
+Host public key is generally located at '/etc/ssh/ssh_host_rsa_key.pub'.
+<br>
+If the key is not present then generate a new key by running the following
+<br>
+command and follow the instructions.
+<br>
+
+<br>
+<b>ssh-keygen -t rsa</b>
+<br>
+
+<br>
+Now generate a SHA256 hash of the key using the following command. Please
+<br>
+make sure to pass the appropriate file name if the public key is stored with
+<br>
+a different file name other than the default 'id_rsa.pub'.
+<br>
+
+<br>
+<b>awk '{print $2}' id_rsa.pub | base64 -d | sha256sum -b | sed 's/ .*$//' | xxd -r -p | base64</b>
+<br>
+
+<br>
+Additional documentation on creating a transport node can be found
+<br>
+in the NSX-T Installation Guide.
+<br>
+
+<br>
+In order for the transport node to forward packets,
+<br>
+the host_switch_spec property must be specified.
+<br>
+
+<br>
+Host switches (called bridges in OVS on KVM hypervisors) are the
+<br>
+individual switches within the host virtual switch. Virtual machines
+<br>
+are connected to the host switches.
+<br>
+
+<br>
+When creating a transport node, you need to specify if the host switches
+<br>
+are already manually preconfigured on the node, or if NSX should create
+<br>
+and manage the host switches. You specify this choice by the type
+<br>
+of host switches you pass in the host_switch_spec property of the
+<br>
+TransportNode request payload.
+<br>
+
+<br>
+For a KVM host, you can preconfigure the host switch, or you can have
+<br>
+NSX Manager perform the configuration. For an ESXi host NSX Manager always
+<br>
+configures the host switch.
+<br>
+
+<br>
+To preconfigure the host switches on a KVM host, pass an array
+<br>
+of PreconfiguredHostSwitchSpec objects that describes those host
+<br>
+switches. In the current NSX-T release, only one prefonfigured host
+<br>
+switch can be specified.  See the PreconfiguredHostSwitchSpec schema
+<br>
+definition for documentation on the properties that must be provided.
+<br>
+Preconfigured host switches are only supported on KVM hosts, not on
+<br>
+ESXi hosts.
+<br>
+
+<br>
+To allow NSX to manage the host switch configuration on KVM hosts,
+<br>
+ESXi hosts, pass an array of StandardHostSwitchSpec objects in the
+<br>
+host_switch_spec property, and NSX will automatically
+<br>
+create host switches with the properties you provide. In the current
+<br>
+NSX-T release, up to 16 host switches can be automatically managed.
+<br>
+See the StandardHostSwitchSpec schema definition for documentation on
+<br>
+the properties that must be provided.
+<br>
+
+<br>
+The request should provide node_deployement_info.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchHostTransportNode.html">PATCH /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update transport node maintenance mode</h4><br>
+                      <span class="help_detail">Put transport node into maintenance mode or exit from maintenance mode. When HostTransportNode is in maintenance mode no configuration changes are allowed</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePolicyHostTransportNodeMaintenanceMode.html">POST /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resync a Host Transport Node</h4><br>
+                      <span class="help_detail">Resync the TransportNode configuration on a host.
+<br>
+It is similar to updating the TransportNode with existing configuration,
+<br>
+but force synce these configurations to the host (no backend optimizations).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResyncHostTransportNode.html">POST /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;?action=resync_host_config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Apply cluster level Transport Node Profile on overridden host</h4><br>
+                      <span class="help_detail">A host can be overridden to have different configuration than Transport
+<br>
+Node Profile(TNP) on cluster. This action will restore such overridden host
+<br>
+back to cluster level TNP.
+<br>
+
+<br>
+This API can be used in other case. When TNP is applied to a cluster,
+<br>
+if any validation fails (e.g. VMs running on host) then existing transport
+<br>
+node (TN) is not updated. In that case after the issue is resolved manually
+<br>
+(e.g. VMs powered off), you can call this API to update TN as per cluster
+<br>
+level TNP.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestoreParentClusterConfigurationOnHostTransportNode.html">PUT /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;?action=restore_cluster_config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Host Transport Node</h4><br>
+                      <span class="help_detail">Transport nodes are hypervisor hosts that will participate
+<br>
+in an NSX-T overlay. For a hypervisor host, this means that it hosts
+<br>
+VMs that will communicate over NSX-T logical switches.
+<br>
+
+<br>
+This API creates transport node for a host node (hypervisor) in the transport network.
+<br>
+
+<br>
+When you run this command for a host, NSX Manager attempts to install the
+<br>
+NSX kernel modules, which are packaged as VIB, RPM, or DEB files. For the
+<br>
+installation to succeed, you must provide the host login credentials and the
+<br>
+host thumbprint.
+<br>
+
+<br>
+To get the ESXi host thumbprint, SSH to the host and run the
+<br>
+<b>openssl x509 -in /etc/vmware/ssl/rui.crt -fingerprint -sha256 -noout</b>
+<br>
+command.
+<br>
+
+<br>
+To generate host key thumbprint using SHA-256 algorithm please follow the
+<br>
+steps below.
+<br>
+
+<br>
+Log into the host, making sure that the connection is not vulnerable to a
+<br>
+man in the middle attack. Check whether a public key already exists.
+<br>
+Host public key is generally located at '/etc/ssh/ssh_host_rsa_key.pub'.
+<br>
+If the key is not present then generate a new key by running the following
+<br>
+command and follow the instructions.
+<br>
+
+<br>
+<b>ssh-keygen -t rsa</b>
+<br>
+
+<br>
+Now generate a SHA256 hash of the key using the following command. Please
+<br>
+make sure to pass the appropriate file name if the public key is stored with
+<br>
+a different file name other than the default 'id_rsa.pub'.
+<br>
+
+<br>
+<b>awk '{print $2}' id_rsa.pub | base64 -d | sha256sum -b | sed 's/ .*$//' | xxd -r -p | base64</b>
+<br>
+
+<br>
+Additional documentation on creating a transport node can be found
+<br>
+in the NSX-T Installation Guide.
+<br>
+
+<br>
+In order for the transport node to forward packets,
+<br>
+the host_switch_spec property must be specified.
+<br>
+
+<br>
+Host switches (called bridges in OVS on KVM hypervisors) are the
+<br>
+individual switches within the host virtual switch. Virtual machines
+<br>
+are connected to the host switches.
+<br>
+
+<br>
+When creating a transport node, you need to specify if the host switches
+<br>
+are already manually preconfigured on the node, or if NSX should create
+<br>
+and manage the host switches. You specify this choice by the type
+<br>
+of host switches you pass in the host_switch_spec property of the
+<br>
+TransportNode request payload.
+<br>
+
+<br>
+For a KVM host, you can preconfigure the host switch, or you can have
+<br>
+NSX Manager perform the configuration. For an ESXi host NSX Manager always
+<br>
+configures the host switch.
+<br>
+
+<br>
+To preconfigure the host switches on a KVM host, pass an array
+<br>
+of PreconfiguredHostSwitchSpec objects that describes those host
+<br>
+switches. In the current NSX-T release, only one prefonfigured host
+<br>
+switch can be specified.  See the PreconfiguredHostSwitchSpec schema
+<br>
+definition for documentation on the properties that must be provided.
+<br>
+Preconfigured host switches are only supported on KVM hosts, not on
+<br>
+ESXi hosts.
+<br>
+
+<br>
+To allow NSX to manage the host switch configuration on KVM hosts,
+<br>
+ESXi hosts, pass an array of StandardHostSwitchSpec objects in the
+<br>
+host_switch_spec property, and NSX will automatically
+<br>
+create host switches with the properties you provide. In the current
+<br>
+NSX-T release, up to 16 host switches can be automatically managed.
+<br>
+See the StandardHostSwitchSpec schema definition for documentation on
+<br>
+the properties that must be provided.
+<br>
+
+<br>
+The request should provide node_deployement_info.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateHostTransportNode.html">PUT /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Fetch Discovered VIF State on given TransportNode</h4><br>
+                      <span class="help_detail">For the given TransportNode, fetch all the VIF info from VC and
+<br>
+return the corresponding state. Only host switch configured for
+<br>
+security will be considered.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVdsVifsOnTransportNode.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;/discovered-vifs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the module details of a host transport node
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFabricNodeModulesOfHostTransportNode.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;/modules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Host Transport Node's State</h4><br>
+                      <span class="help_detail">Returns information about the current state of the transport node
+<br>
+configuration and information about the associated hostswitch.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetHostTransportNodeState.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List transport nodes by realized state</h4><br>
+                      <span class="help_detail">Returns a list of transport node states that have realized state as provided
+<br>
+as query parameter
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListHostTransportNodesByState.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Clean up all nvds upgrade related configurations</h4><br>
+                      <span class="help_detail">This API needs to be invoked before another precheck and upgrade is
+<br>
+requested.
+<br>
+This will clean up precheck configuration, vds topology from last
+<br>
+request.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_NvdsUpgradeCleanup.html">POST /api/v1/nvds-urt?action=cleanup</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set the migrate status key of ExtraConfigProfile of all Transport Nodes to IGNORE</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_IgnoreMigrateStatus.html">POST /api/v1/nvds-urt?action=ignore_migrate_status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve latest precheck ID of the N-VDS to VDS migration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetNvdsUpgradePrecheckId.html">GET /api/v1/nvds-urt/precheck</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Start precheck for N-VDS to VDS migration</h4><br>
+                      <span class="help_detail">Precheck is peformed at a global level across all NVDSes present in the
+<br>
+system. It is expected to check the status once the precheck API is
+<br>
+invoked via GetNvdsUpgradeReadinessCheckSummary API. If NVDS configuration
+<br>
+like HostSwitchProfiles differs across TransportNodes, precheck will fail
+<br>
+and status will be FAILED and error will be reported via the
+<br>
+status API. Once the reported errors are fixed, precheck API is expected
+<br>
+to be invoked again to rerun precheck. Once NVDS configuration is
+<br>
+consistent across all TransportNodes, precheck will pass and a topology
+<br>
+will be generated and status will be PENDING_TOPOLOGY. Generated toplogy
+<br>
+can be retrieved via GetRecommendedVdsTopology API. User can apply the
+<br>
+recommended topology via SetTargetVdsTopology API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNvdsUpgradePrecheck.html">POST /api/v1/nvds-urt/precheck</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve latest precheck ID of the N-VDS to VDS migration for the cluster</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetNvdsUpgradePrecheckIdByCluster.html">GET /api/v1/nvds-urt/precheck-by-cluster/&lt;cluster_id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Start precheck for N-VDS to VDS migration by cluster</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNvdsUpgradePrecheckByCluster.html">POST /api/v1/nvds-urt/precheck-by-cluster/&lt;cluster_id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Start precheck for N-VDS to VDS migration by clusters</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNvdsUpgradePrecheckByClusters.html">POST /api/v1/nvds-urt/precheck-by-clusters</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get summary of N-VDS to VDS migration</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetNvdsUpgradeReadinessCheckSummaryByCluster.html">GET /api/v1/nvds-urt/status-summary-by-cluster/&lt;precheck-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get summary of N-VDS to VDS migration</h4><br>
+                      <span class="help_detail">Provides overall status for Precheck as well as actual NVDS to CVDS
+<br>
+upgrade status per host.
+<br>
+Precheck statuses are as follows
+<br>
+1. IN_PROGRESS: Precheck is in progress
+<br>
+2. FAILED: Precheck is failed, error can be found in precheck_issue field
+<br>
+3. PENDING_TOPOLOGY: Precheck is successful, recommended topology is generated
+<br>
+4. APPLYING_TOPOLOGY: SetTargetToplogy is in progress
+<br>
+5. APPLY_TOPOLOGY_FAILED: SetTargetTopology is failed
+<br>
+6. REDAY: SetTargetTopology is successful and TransportNodes provided as
+<br>
+          part of topology are ready for upgrade from NVDS to CVDS
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetNvdsUpgradeReadinessCheckSummary.html">GET /api/v1/nvds-urt/status-summary/&lt;precheck-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Unset VDS configuration and remove it from vCenter</h4><br>
+                      <span class="help_detail">This will revert corresponding VDS to PENDING_TOPOLOGY state. User can
+<br>
+revert the entire topology all together or can revert partially depending
+<br>
+on which TrasportNodes user does not want to upgrade to VDS.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UnsetTargetVdsTopology.html">POST /api/v1/nvds-urt/topology?action=revert</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set VDS configuration and create it in vCenter</h4><br>
+                      <span class="help_detail">Upon successful preheck status goes to PENDING_TOPOLOGY and global
+<br>
+recommended topology is generated which can be retrieved via
+<br>
+GetRecommendedVdsTopology API. User can apply the entire recommeneded
+<br>
+topology all together or can apply partial depending on which
+<br>
+TrasportNodes user wants to be upgraded from NVDS to CVDS.
+<br>
+User can change system generated vds_name field, all other fields cannot
+<br>
+be changed when applying topology.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SetTargetVdsTopology.html">POST /api/v1/nvds-urt/topology?action=apply</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Recommmended topology</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRecommendedVdsTopologyByCluster.html">GET /api/v1/nvds-urt/topology-by-cluster/&lt;precheck-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Set VDS configuration and create it in vCenter</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SetTargetVdsTopologyByCluster.html">POST /api/v1/nvds-urt/topology-by-cluster/&lt;precheck-id&gt;?action=apply</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Recommmended topology</h4><br>
+                      <span class="help_detail">This returns global recommended topology generated when precheck is
+<br>
+successful.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetRecommendedVdsTopology.html">GET /api/v1/nvds-urt/topology/&lt;precheck-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Transport Nodes</h4><br>
+                      <span class="help_detail">Returns information about all transport nodes along with underlying host or
+<br>
+edge details. A transport node is a host or edge that contains hostswitches.
+<br>
+A hostswitch can have virtual machines connected to them.
+<br>
+
+<br>
+Because each transport node has hostswitches, transport nodes can also have
+<br>
+virtual tunnel endpoints, which means that they can be part of the overlay.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTransportNodesWithDeploymentInfo.html">GET /api/v1/transport-nodes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a Transport Node</h4><br>
+                      <span class="help_detail">Transport nodes are hypervisor hosts and NSX Edges that will participate
+<br>
+in an NSX-T overlay. For a hypervisor host, this means that it hosts
+<br>
+VMs that will communicate over NSX-T logical switches. For NSX Edges,
+<br>
+this means that it will have logical router uplinks and downlinks.
+<br>
+
+<br>
+This API creates transport node for a host node (hypervisor) or edge node
+<br>
+(router) in the transport network.
+<br>
+
+<br>
+When you run this command for a host, NSX Manager attempts to install the
+<br>
+NSX kernel modules, which are packaged as VIB, RPM, or DEB files. For the
+<br>
+installation to succeed, you must provide the host login credentials and the
+<br>
+host thumbprint.
+<br>
+
+<br>
+To get the ESXi host thumbprint, SSH to the host and run the
+<br>
+<b>openssl x509 -in /etc/vmware/ssl/rui.crt -fingerprint -sha256 -noout</b>
+<br>
+command.
+<br>
+
+<br>
+To generate host key thumbprint using SHA-256 algorithm please follow the
+<br>
+steps below.
+<br>
+
+<br>
+Log into the host, making sure that the connection is not vulnerable to a
+<br>
+man in the middle attack. Check whether a public key already exists.
+<br>
+Host public key is generally located at '/etc/ssh/ssh_host_rsa_key.pub'.
+<br>
+If the key is not present then generate a new key by running the following
+<br>
+command and follow the instructions.
+<br>
+
+<br>
+<b>ssh-keygen -t rsa</b>
+<br>
+
+<br>
+Now generate a SHA256 hash of the key using the following command. Please
+<br>
+make sure to pass the appropriate file name if the public key is stored with
+<br>
+a different file name other than the default 'id_rsa.pub'.
+<br>
+
+<br>
+<b>awk '{print $2}' id_rsa.pub | base64 -d | sha256sum -b | sed 's/ .*$//' | xxd -r -p | base64</b>
+<br>
+This api is deprecated as part of FN+TN unification. Please use Transport Node API
+<br>
+to install NSX components on a node.
+<br>
+
+<br>
+Additional documentation on creating a transport node can be found
+<br>
+in the NSX-T Installation Guide.
+<br>
+
+<br>
+In order for the transport node to forward packets,
+<br>
+the host_switch_spec property must be specified.
+<br>
+
+<br>
+Host switches (called bridges in OVS on KVM hypervisors) are the
+<br>
+individual switches within the host virtual switch. Virtual machines
+<br>
+are connected to the host switches.
+<br>
+
+<br>
+When creating a transport node, you need to specify if the host switches
+<br>
+are already manually preconfigured on the node, or if NSX should create
+<br>
+and manage the host switches. You specify this choice by the type
+<br>
+of host switches you pass in the host_switch_spec property of the
+<br>
+TransportNode request payload.
+<br>
+
+<br>
+For a KVM host, you can preconfigure the host switch, or you can have
+<br>
+NSX Manager perform the configuration. For an ESXi host or NSX Edge
+<br>
+node, NSX Manager always configures the host switch.
+<br>
+
+<br>
+To preconfigure the host switches on a KVM host, pass an array
+<br>
+of PreconfiguredHostSwitchSpec objects that describes those host
+<br>
+switches. In the current NSX-T release, only one prefonfigured host
+<br>
+switch can be specified.  See the PreconfiguredHostSwitchSpec schema
+<br>
+definition for documentation on the properties that must be provided.
+<br>
+Preconfigured host switches are only supported on KVM hosts, not on
+<br>
+ESXi hosts or NSX Edge nodes.
+<br>
+
+<br>
+To allow NSX to manage the host switch configuration on KVM hosts,
+<br>
+ESXi hosts, or NSX Edge nodes, pass an array of StandardHostSwitchSpec
+<br>
+objects in the host_switch_spec property, and NSX will automatically
+<br>
+create host switches with the properties you provide. In the current
+<br>
+NSX-T release, up to 16 host switches can be automatically managed.
+<br>
+See the StandardHostSwitchSpec schema definition for documentation on
+<br>
+the properties that must be provided.
+<br>
+
+<br>
+Note: Previous versions of NSX-T also used a property named
+<br>
+transport_zone_endpoints at TransportNode level. This property is
+<br>
+deprecated which creates some combinations of new client along with
+<br>
+old client payloads. Examples [1] & [2] show old/existing client
+<br>
+request and response by populating transport_zone_endpoints property
+<br>
+at TransportNode level. Example [3] shows TransportNode creation
+<br>
+request/response by populating transport_zone_endpoints property
+<br>
+at StandardHostSwitch level and other new properties.
+<br>
+
+<br>
+The request should either provide node_deployement_info or node_id.
+<br>
+
+<br>
+If the host node (hypervisor) or edge node (router) is already added in
+<br>
+system then it can be converted to transport node by providing node_id in
+<br>
+request.
+<br>
+
+<br>
+If host node (hypervisor) or edge node (router) is not already present in
+<br>
+system then information should be provided under node_deployment_info.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTransportNodeWithDeploymentInfo.html">POST /api/v1/transport-nodes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Clear edge transport node stale entries</h4><br>
+                      <span class="help_detail">Edge transport node maintains its entry in many internal tables.
+<br>
+In some cases a few of these entries might not get cleaned up during edge
+<br>
+transport node deletion.
+<br>
+This api cleans up any stale entries that may exist in the internal tables
+<br>
+that store the Edge Transport Node data.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CleanupEdgeTransportNodeStaleEntries.html">POST /api/v1/transport-nodes?action=clean_stale_entries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Redeploys a new node that replaces the specified edge node.</h4><br>
+                      <span class="help_detail">Redeploys an edge node at NSX Manager that replaces the edge node with
+<br>
+identifier &lt;node-id&gt;. If NSX Manager can access the specified edge node,
+<br>
+then the node is put into maintenance mode and then the associated VM is
+<br>
+deleted. This is a means to reset all configuration on the edge node.
+<br>
+The communication channel between NSX Manager and edge is established after
+<br>
+this operation.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RedeployEdgeTransportNode.html">POST /api/v1/transport-nodes/&lt;node-id&gt;?action=redeploy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the module details of a transport node
+</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFabricNodeModulesOfTransportNode.html">GET /api/v1/transport-nodes/&lt;node-id&gt;/modules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke DELETE request on target transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokeDeleteTransportNodeCentralAPI.html">DELETE /api/v1/transport-nodes/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke GET request on target transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokeGetTransportNodeCentralAPI.html">GET /api/v1/transport-nodes/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke POST request on target transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokePostTransportNodeCentralAPI.html">POST /api/v1/transport-nodes/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke PUT request on target transport node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokePutTransportNodeCentralAPI.html">PUT /api/v1/transport-nodes/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Transport Node</h4><br>
+                      <span class="help_detail">Deletes the specified transport node. Query param force can be used to
+<br>
+force delete the host nodes. Force deletion of edge and public cloud
+<br>
+gateway nodes is not supported.
+<br>
+If transport node delete is called with query param force not being set
+<br>
+or set to false and uninstall of NSX components in the host fails,
+<br>
+TransportNodeState object will be retained.
+<br>
+If transport node delete is called with query param force set to true
+<br>
+and uninstall of NSX components in the host fails, TransportNodeState
+<br>
+object will be deleted.
+<br>
+
+<br>
+It also removes the specified node (host or edge) from system.
+<br>
+If unprepare_host option is set to false, then host will be deleted
+<br>
+without uninstalling the NSX components from the host.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTransportNodeWithDeploymentInfo.html">DELETE /api/v1/transport-nodes/&lt;transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Transport Node</h4><br>
+                      <span class="help_detail">Returns information about a specified transport node. This api is now deprecated. Please use new api - /infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTransportNodeWithDeploymentInfo.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Apply cluster level Transport Node Profile on overridden host</h4><br>
+                      <span class="help_detail">A host can be overridden to have different configuration than Transport
+<br>
+Node Profile(TNP) on cluster. This action will restore such overridden host
+<br>
+back to cluster level TNP.
+<br>
+
+<br>
+This API can be used in other case. When TNP is applied to a cluster,
+<br>
+if any validation fails (e.g. VMs running on host) then existing transport
+<br>
+node (TN) is not updated. In that case after the issue is resolved manually
+<br>
+(e.g. VMs powered off), you can call this API to update TN as per cluster
+<br>
+level TNP.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestoreParentClusterConfiguration.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;?action=restore_cluster_config</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Enable flow cache for an edge transport node</h4><br>
+                      <span class="help_detail">Enable flow cache for edge transport node.
+<br>
+Caution: This involves restart of the edge
+<br>
+dataplane and hence may lead to network disruption.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_EnableFlowCache.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;?action=enable_flow_cache</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Refresh the node configuration for the Edge node.</h4><br>
+                      <span class="help_detail">The API is applicable for Edge transport nodes. If you update the edge
+<br>
+configuration and find a discrepancy in Edge configuration at NSX Manager
+<br>
+in compare with realized, then use this API to refresh configuration at NSX Manager.
+<br>
+It refreshes the Edge configuration from sources external to NSX Manager like
+<br>
+vSphere Server or the Edge node CLI. After this action, Edge configuration at NSX Manager
+<br>
+is updated and the API GET api/v1/transport-nodes will show refreshed data.
+<br>
+From 3.2 release onwards, refresh API updates the MP intent by default.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RefreshTransportNode.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;?action=refresh_node_configuration&amp;resource_type=EdgeNode</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart the inventory sync for the node if it is paused currently.</h4><br>
+                      <span class="help_detail">Restart the inventory sync for the node if it is currently internally paused.
+<br>
+After this action the next inventory sync coming from the node is processed.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartTransportNodeInventorySync.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;?action=restart_inventory_sync</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Disable flow cache for an edge transport node</h4><br>
+                      <span class="help_detail">Disable flow cache for edge transport node.
+<br>
+Caution: This involves restart of the edge
+<br>
+dataplane and hence may lead to network disruption.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DisableFlowCache.html">POST /api/v1/transport-nodes/&lt;transport-node-id&gt;?action=disable_flow_cache</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a Transport Node</h4><br>
+                      <span class="help_detail">Modifies the transport node information. The host_switch_name field
+<br>
+must match the host_switch_name value specified in the transport zone
+<br>
+(API: transport-zones). You must create the associated uplink profile
+<br>
+(API: host-switch-profiles) before you can specify an uplink_name here.
+<br>
+If the host is an ESX and has only one physical NIC being used by a vSphere
+<br>
+standard switch, TransportNodeUpdateParameters should be used to migrate
+<br>
+the management interface and the physical NIC into a logical switch that
+<br>
+is in a transport zone this transport node will join or has already joined.
+<br>
+If the migration is already done, TransportNodeUpdateParameters can also be
+<br>
+used to migrate the management interface and the physical NIC back to a
+<br>
+vSphere standard switch.
+<br>
+In other cases, the TransportNodeUpdateParameters should NOT be used.
+<br>
+When updating transport node you should follow pattern where you should
+<br>
+fetch the existing transport node and then only modify the required
+<br>
+properties keeping other properties as is.
+<br>
+
+<br>
+It also modifies attributes of node (host or edge).
+<br>
+
+<br>
+Note: Previous versions of NSX-T also used a property named
+<br>
+transport_zone_endpoints at TransportNode level. This property is
+<br>
+deprecated which creates some combinations of new client along with
+<br>
+old client payloads. Examples [1] shows old/existing client
+<br>
+request and response by populating transport_zone_endpoints property
+<br>
+at TransportNode level. Example [2] shows TransportNode updating
+<br>
+TransportNode from exmaple [1] request/response by adding a
+<br>
+new StandardHostSwitch by populating transport_zone_endpoints at
+<br>
+StandardHostSwitch level. TransportNode level transport_zone_endpoints
+<br>
+will ONLY have TransportZoneEndpoints that were originally specified
+<br>
+here during create/update operation and does not include
+<br>
+TransportZoneEndpoints that were directly specified at
+<br>
+StandardHostSwitch level.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTransportNodeWithDeploymentInfo.html">PUT /api/v1/transport-nodes/&lt;transport-node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of capabilities of transport node</h4><br>
+                      <span class="help_detail">Returns information about capabilities of transport host node. Edge nodes do not have capabilities.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTransportNodeCapabilities.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/capabilities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a Transport Node's State</h4><br>
+                      <span class="help_detail">Returns information about the current state of the transport node
+<br>
+configuration and information about the associated hostswitch.
+<br>
+This api is now deprecated. Please use new api -
+<br>
+/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-id&gt;/host-transport-nodes/&lt;host-transport-node-id&gt;/state
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTransportNodeStateWithDeploymentInfo.html">GET /api/v1/transport-nodes/&lt;transport-node-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resync a Transport Node</h4><br>
+                      <span class="help_detail">Resync the TransportNode configuration on a host.
+<br>
+It is similar to updating the TransportNode with existing configuration,
+<br>
+but force synce these configurations to the host (no backend optimizations).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ResyncTransportNode.html">POST /api/v1/transport-nodes/&lt;transportnode-id&gt;?action=resync_host_config</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update transport node maintenance mode</h4><br>
+                      <span class="help_detail">Put transport node into maintenance mode or exit from maintenance mode.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTransportNodeMaintenanceMode.html">POST /api/v1/transport-nodes/&lt;transportnode-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List transport nodes by realized state</h4><br>
+                      <span class="help_detail">Returns a list of transport node states that have realized state as provided
+<br>
+as query parameter. This api will be deprecated in future. For Host, please use
+<br>
+new api - /infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcementpoint-
+<br>
+id&gt;/host-transport-nodes/state
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTransportNodesByStateWithDeploymentInfo.html">GET /api/v1/transport-nodes/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

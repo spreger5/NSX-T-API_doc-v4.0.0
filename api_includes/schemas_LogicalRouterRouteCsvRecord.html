@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalRouterRouteCsvRecord.html">LogicalRouterRouteCsvRecord</a> (<a href="types_LogicalRouterRouteCsvRecord.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_CsvRecord.html">CsvRecord</A>
+  }, 
+  "id": "LogicalRouterRouteCsvRecord", 
+  "module_id": "AggSvcLogicalRouter", 
+  "properties": {
+    "admin_distance": {
+      "required": false, 
+      "title": "The admin distance of the next hop", 
+      "type": "integer"
+    }, 
+    "logical_router_port_id": {
+      "required": false, 
+      "title": "The id of the logical router port which is used as the next hop", 
+      "type": "string"
+    }, 
+    "lr_component_id": {
+      "required": false, 
+      "title": "Logical router component(Service Router/Distributed Router) id", 
+      "type": "string"
+    }, 
+    "lr_component_type": {
+      "required": false, 
+      "title": "Logical router component(Service Router/Distributed Router) type", 
+      "type": "string"
+    }, 
+    "network": {
+      "$ref": "<A HREF="schemas_IPCIDRBlock.html">IPCIDRBlock</A>, 
+      "required": true, 
+      "title": "CIDR network address"
+    }, 
+    "next_hop": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": false, 
+      "title": "The IP of the next hop"
+    }, 
+    "route_type": {
+      "required": true, 
+      "title": "Route type (USER, CONNECTED, NSX_INTERNAL,..)", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

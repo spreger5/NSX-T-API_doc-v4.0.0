@@ -1,0 +1,910 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services.html' style='text-decoration: none'> Logical Routing And Services</a> >
+        
+        
+            <a href='management_plane_api_networking_logical_routing_and_services_routing_configuration.html' style='text-decoration: none'> Routing Configuration</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Read All IPV6 DADProfiles</h4><br>
+                      <span class="help_detail">Returns all IPv6 DADProfiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDADProfiles.html">GET /api/v1/ipv6/dad-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new DADProfile</h4><br>
+                      <span class="help_detail">Adds a new DADProfile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDADProfile.html">POST /api/v1/ipv6/dad-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete DAD Profile</h4><br>
+                      <span class="help_detail">Delete DADProfile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDADProfile.html">DELETE /api/v1/ipv6/dad-profiles/&lt;dad-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read specified IPV6 DADProfile</h4><br>
+                      <span class="help_detail">Returns information about specified IPv6 DADProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDADProfile.html">GET /api/v1/ipv6/dad-profiles/&lt;dad-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update DADProfile</h4><br>
+                      <span class="help_detail">Update DADProfile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDADProfile.html">PUT /api/v1/ipv6/dad-profiles/&lt;dad-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read All IPV6 NDRA Profiles</h4><br>
+                      <span class="help_detail">Returns all IPv6 NDRA Profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNDRAProfiles.html">GET /api/v1/ipv6/nd-ra-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new NDRA Profile</h4><br>
+                      <span class="help_detail">Adds a new NDRAProfile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateNDRAProfile.html">POST /api/v1/ipv6/nd-ra-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete NDRA Profile</h4><br>
+                      <span class="help_detail">Delete NDRAProfile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteNDRAProfile.html">DELETE /api/v1/ipv6/nd-ra-profiles/&lt;nd-ra-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read specified IPV6 NDRA Profile</h4><br>
+                      <span class="help_detail">Returns information about specified IPv6 NDRA Profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNDRAProfile.html">GET /api/v1/ipv6/nd-ra-profiles/&lt;nd-ra-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update NDRA Profile</h4><br>
+                      <span class="help_detail">Update NDRAProfile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateNDRAProfile.html">PUT /api/v1/ipv6/nd-ra-profiles/&lt;nd-ra-profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the debug information for the logical router</h4><br>
+                      <span class="help_detail">API to download below information as text which will be used
+<br>
+for debugging and troubleshooting.
+<br>
+1) Logical router sub-components and ports.
+<br>
+2) Routing configuration as sent to central control plane.
+<br>
+3) TIER1 advertised network information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDebugInfo.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/debug-info?format=text</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the Routing Configuration</h4><br>
+                      <span class="help_detail">Returns the routing configuration for a specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRoutingConfig.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the Routing Configuration</h4><br>
+                      <span class="help_detail">Modifies the routing configuration for a specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRoutingConfig.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the Advertisement Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Returns information about the routes to be advertised by the specified
+<br>
+TIER1 logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAdvertisementConfig.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/advertisement</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the Advertisement Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Modifies the route advertisement configuration on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAdvertisementConfig.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/advertisement</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the Advertisement Rules on a Logical Router</h4><br>
+                      <span class="help_detail">Returns the advertisement rule list for the specified
+<br>
+TIER1 logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAdvertiseRuleList.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/advertisement/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the Advertisement Rules on a Logical Router</h4><br>
+                      <span class="help_detail">Modifies the advertisement rules on the specified logical
+<br>
+router. The PUT request must include all the rules with the networks parameter. Modifiable
+<br>
+parameters are networks, display_name, and description. Set the rules list to empty to delete/clear all rules.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAdvertiseRuleList.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/advertisement/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the BGP Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Returns information about the BGP configuration on a specified logical
+<br>
+router. Information includes whether or not the BGP configuration is
+<br>
+enabled, the AS number, and whether or not graceful
+<br>
+restart is enabled.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpConfig.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the BGP Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Modifies the BGP configuration on a specified TIER0 logical router.
+<br>
+Modifiable parameters include enabled, graceful_restart, as_number.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateBgpConfig.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated list of BGP community lists on a logical router</h4><br>
+                      <span class="help_detail">Paginated list of BGP Community Lists on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListBGPCommunityLists.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/community-lists</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new BGP community list on a logical router</h4><br>
+                      <span class="help_detail">Add a new BGP Community List on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateBGPCommunityList.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/community-lists</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific BGP community list from a logical router</h4><br>
+                      <span class="help_detail">Delete a specific BGP community list from a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteBGPCommunityList.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/community-lists/&lt;community-list-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a specific BGP community list from a logical router</h4><br>
+                      <span class="help_detail">Read a specific BGP community list from a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBGPCommunityList.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/community-lists/&lt;community-list-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific BGP community list from a logical router</h4><br>
+                      <span class="help_detail">Update a specific BGP community list from a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateBGPCommunityList.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/community-lists/&lt;community-list-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific BGP community list from a logical router</h4><br>
+                      <span class="help_detail">Update a specific BGP community list from a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateBGPCommunityListOld.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/communty-lists/&lt;community-list-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated list of BGP Neighbors on a Logical Router</h4><br>
+                      <span class="help_detail">Paginated list of BGP Neighbors on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListBgpNeighbors.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a new BGP Neighbor on a Logical Router</h4><br>
+                      <span class="help_detail">Add a new BGP Neighbor on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddBgpNeighbor.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific BGP Neighbor on a Logical Router</h4><br>
+                      <span class="help_detail">Delete a specific BGP Neighbor on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteBgpNeighbor.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a specific BGP Neighbor with password on a Logical Router</h4><br>
+                      <span class="help_detail">Read a specific BGP Neighbor details with password on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpNeighborWithPassword.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/&lt;id&gt;?action=show-sensitive-data</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a specific BGP Neighbor on a Logical Router</h4><br>
+                      <span class="help_detail">Read a specific BGP Neighbor on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadBgpNeighbor.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Unset/Delete password property on specific BGP Neighbor on Logical Router</h4><br>
+                      <span class="help_detail">Unset/Delete the password property on the specific BGP Neighbor.
+<br>
+No other property of the BgpNeighbor can be updated using this API
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UnSetPasswordOnBgpNeighbor.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific BGP Neighbor on a Logical Router</h4><br>
+                      <span class="help_detail">Update a specific BGP Neighbor on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateBgpNeighbor.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/bgp/neighbors/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated List of IPPrefixLists</h4><br>
+                      <span class="help_detail">Paginated List of IPPrefixLists</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPPrefixLists.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/ip-prefix-lists</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add IPPrefixList on a Logical Router</h4><br>
+                      <span class="help_detail">Adds a new IPPrefixList on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddIPPrefixList.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/ip-prefix-lists</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific IPPrefixList on a Logical Router</h4><br>
+                      <span class="help_detail">Deletes a specific IPPrefixList on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPPrefixList.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/ip-prefix-lists/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific IPPrefixList on a Logical Router</h4><br>
+                      <span class="help_detail">Read a specific IPPrefixList on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPPrefixList.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/ip-prefix-lists/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific IPPrefixList on a Logical Router</h4><br>
+                      <span class="help_detail">Update a specific IPPrefixList on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIPPrefixList.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/ip-prefix-lists/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the Redistribution Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Returns information about configured route redistribution for the specified
+<br>
+logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedistributionConfig.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/redistribution</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update the Redistribution Configuration on a Logical Router</h4><br>
+                      <span class="help_detail">Modifies existing route redistribution rules for the specified TIER0 logical
+<br>
+router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRedistributionConfig.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/redistribution</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read All the Redistribution Rules on a Logical Router</h4><br>
+                      <span class="help_detail">Returns all the route redistribution rules for the specified
+<br>
+logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedistributionRuleList.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/redistribution/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update All the Redistribution Rules on a Logical Router</h4><br>
+                      <span class="help_detail">Modifies all route redistribution rules for the specified TIER0 logical
+<br>
+router. Set the rules list to empty to delete/clear all rules.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRedistributionRuleList.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/redistribution/rules</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated List of RouteMaps</h4><br>
+                      <span class="help_detail">Paginated List of RouteMaps</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRouteMaps.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/route-maps</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add RouteMap on a Logical Router</h4><br>
+                      <span class="help_detail">Adds a new RouteMap on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddRouteMap.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/route-maps</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific RouteMap on a Logical Router</h4><br>
+                      <span class="help_detail">Deletes a specific RouteMap on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRouteMap.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/route-maps/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific RouteMap on a Logical Router</h4><br>
+                      <span class="help_detail">Read a specific RouteMap on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRouteMap.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/route-maps/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific RouteMap on a Logical Router</h4><br>
+                      <span class="help_detail">Update a specific RouteMap on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateRouteMap.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/route-maps/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated List of Static Routes</h4><br>
+                      <span class="help_detail">Returns information about configured static routes, including the
+<br>
+network address and next hops for each static route.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListStaticRoutes.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add Static Routes on a Logical Router</h4><br>
+                      <span class="help_detail">Adds a new static route on a Logical Router
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddStaticRoute.html">POST /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific Static Route on a Logical Router</h4><br>
+                      <span class="help_detail">Deletes a specific static route on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteStaticRoute.html">DELETE /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a specific Static Route on a Logical Router</h4><br>
+                      <span class="help_detail">Read a specific static routes on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadStaticRoute.html">GET /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific Static Route Rule on a Logical Router</h4><br>
+                      <span class="help_detail">Update a specific static route on the specified logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateStaticRoute.html">PUT /api/v1/logical-routers/&lt;logical-router-id&gt;/routing/static-routes/&lt;id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,139 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RemoteTransportNodeStatusParametersWithDataSource.html">RemoteTransportNodeStatusParametersWithDataSource</a> (<a href="types_RemoteTransportNodeStatusParametersWithDataSource.html">type</a>)
+</h3>
+<pre>{
+  "description": "Query parameters that may be used to select which transport nodes status to return in a query. The tunnel_status and bfd_diagnostic_code parameters are ANDed together if both are provided.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListWithDataSourceParameters.html">ListWithDataSourceParameters</A>
+  }, 
+  "id": "RemoteTransportNodeStatusParametersWithDataSource", 
+  "module_id": "Heatmap", 
+  "properties": {
+    "bfd_diagnostic_code": {
+      "description": "The BFD diagnostic code of Tunnel as defined in RFC 5880. If specified, only the status for transport nodes connected via tunnels having the specified BFD diagnostic code are returned.", 
+      "enum": [
+        "0", 
+        "NO_DIAGNOSTIC", 
+        "1", 
+        "CONTROL_DETECTION_TIME_EXPIRED", 
+        "2", 
+        "ECHO_FUNCTION_FAILED", 
+        "3", 
+        "NEIGHBOR_SIGNALED_SESSION_DOWN", 
+        "4", 
+        "FORWARDING_PLANE_RESET", 
+        "5", 
+        "PATH_DOWN", 
+        "6", 
+        "CONCATENATED_PATH_DOWN", 
+        "7", 
+        "ADMINISTRATIVELY_DOWN", 
+        "8", 
+        "REVERSE_CONCATENATED_PATH_DOWN"
+      ], 
+      "title": "BFD diagnostic code of Tunnel", 
+      "type": "string"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "source": {
+      "$ref": "<A HREF="schemas_DataSourceType.html">DataSourceType</A>, 
+      "required": false, 
+      "title": "The data source, either realtime or cached. If not provided, cached data is returned."
+    }, 
+    "tunnel_status": {
+      "description": "If specified, only the status for transport nodes connected via tunnels having the specified tunnel status are returned.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Tunnel Status", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

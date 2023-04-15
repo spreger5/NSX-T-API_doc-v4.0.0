@@ -1,0 +1,217 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DiscoveredNode.html">DiscoveredNode</a> (<a href="types_DiscoveredNode.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_DiscoveredResource.html">DiscoveredResource</A>
+  }, 
+  "id": "DiscoveredNode", 
+  "module_id": "InventoryCmObj", 
+  "properties": {
+    "_last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "certificate": {
+      "required": false, 
+      "title": "Certificate of the discovered node", 
+      "type": "string"
+    }, 
+    "cm_local_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Local Id of the discovered node in the Compute Manager", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "external_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "External id of the discovered node, ex. a mo-ref from VC", 
+      "type": "string"
+    }, 
+    "hardware_id": {
+      "description": "Hardware Id is generated using system hardware info. It is used to retrieve fabric node of the esx.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Hardware Id of the discovered node", 
+      "type": "string"
+    }, 
+    "ip_addresses": {
+      "items": {
+        "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "IP Addresses of the the discovered node.", 
+      "type": "array"
+    }, 
+    "node_type": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Discovered Node type like Host", 
+      "type": "string"
+    }, 
+    "origin_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Id of the compute manager from where this node was discovered", 
+      "type": "string"
+    }, 
+    "origin_properties": {
+      "items": {
+        "$ref": "<A HREF="schemas_KeyValuePair.html">KeyValuePair</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Key-Value map of additional specific properties of discovered\nnode in the Compute Manager\n", 
+      "type": "array"
+    }, 
+    "os_type": {
+      "readonly": true, 
+      "required": false, 
+      "title": "OS type of the discovered node", 
+      "type": "string"
+    }, 
+    "os_version": {
+      "readonly": true, 
+      "required": false, 
+      "title": "OS version of the discovered node", 
+      "type": "string"
+    }, 
+    "parent_compute_collection": {
+      "readonly": true, 
+      "required": false, 
+      "title": "External id of the compute collection to which this node belongs", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "required": true, 
+      "type": "string"
+    }, 
+    "scope": {
+      "description": "Specifies list of scope of discovered resource. e.g. if VHC path is associated with principal identity, who owns the discovered resource, then scope id will be VHC path and scope type will be VHC.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DiscoveredResourceScope.html">DiscoveredResourceScope</A>
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "List of scopes for discovered resource", 
+      "type": "array"
+    }, 
+    "stateless": {
+      "description": "The stateless property describes whether host persists its state across reboot or not. If state persists, value is set as false otherwise true.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Specifies whether host is stateless", 
+      "type": "boolean"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

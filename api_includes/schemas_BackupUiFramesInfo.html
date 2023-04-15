@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BackupUiFramesInfo.html">BackupUiFramesInfo</a> (<a href="types_BackupUiFramesInfo.html">type</a>)
+</h3>
+<pre>{
+  "id": "BackupUiFramesInfo", 
+  "properties": {
+    "active_gm": {
+      "enum": [
+        "ACTIVE", 
+        "STANDBY", 
+        "NONE", 
+        "INVALID"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Does site have active GM", 
+      "type": "string"
+    }, 
+    "api_endpoint": {
+      "enum": [
+        "global-manager", 
+        "nsxapi", 
+        "ica"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "prefix to be used for api call", 
+      "type": "string"
+    }, 
+    "frame_type": {
+      "enum": [
+        "GLOBAL_MANAGER", 
+        "LOCAL_MANAGER", 
+        "LOCAL_LOCAL_MANAGER", 
+        "NSX_INTELLIGENCE"
+      ], 
+      "help_detail": "This attribute is used to indicate the service on current\nsite or other site for which backup is handled.\nLOCAL_LOCAL_MANAGER corresponds to local LM of the site.\nLOCAL_MANAGER cprresponds to LM of other site.\n", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Type of service, for which backup is handled", 
+      "type": "string"
+    }, 
+    "site_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Id of the site", 
+      "type": "string"
+    }, 
+    "site_version": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Version of the site", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,126 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MgmtListenAddr.html">MgmtListenAddr</a> (<a href="types_MgmtListenAddr.html">type</a>)
+</h3>
+<pre>{
+  "id": "MgmtListenAddr", 
+  "properties": {
+    "certificate": {
+      "description": "Service endpoint certificate.", 
+      "required": false, 
+      "title": "certificate", 
+      "type": "string"
+    }, 
+    "certificate_sha256_thumbprint": {
+      "description": "SHA-256 thumbprint of certificate.", 
+      "required": false, 
+      "title": "SHA-256 Thumbprint", 
+      "type": "string"
+    }, 
+    "entities_hosted": {
+      "description": "List of hosted entities accessible through the service endpoint", 
+      "items": {
+        "$ref": "<A HREF="schemas_HostedEntityInfo.html">HostedEntityInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Entities hosted", 
+      "type": "array"
+    }, 
+    "fqdn": {
+      "description": "Fully Qualified Domain Name of service endpoint.", 
+      "required": false, 
+      "title": "FQDN", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "IP address of the service endpoint.", 
+      "required": false, 
+      "title": "IP Address"
+    }, 
+    "name": {
+      "description": "Name of the NSX service.", 
+      "required": false, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "port": {
+      "description": "Port number of the service endpoint.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Port", 
+      "type": "integer"
+    }, 
+    "service_endpoint_uuid": {
+      "description": "Unique identifier of the service endpoint", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service endpoint UUID", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

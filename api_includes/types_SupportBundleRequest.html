@@ -1,0 +1,307 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      SupportBundleRequest (<a href="schemas_SupportBundleRequest.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title"></span>
+    <p>
+    <span class="help_detail"></span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>container_nodes</td>
+            
+            <td>List of container clusters and their nodes requiring support bundle collection</td>
+            
+            <td>array of <a href="types_SupportBundleContainerNode.html">SupportBundleContainerNode</a><br>(Abstract type: pass one of the following concrete types)<br><a href="types_AntreaSupportBundleContainerNode.html">AntreaSupportBundleContainerNode</a></td>
+            
+            <td>Minimum items: 1</td>
+          </tr>
+          <tr>
+            <td>content_filters</td>
+            
+            <td>Bundle should include content of specified type<br><br><p>List of content filters that specify additional content or action when collecting support bundle. </p> <ul><li>Filter <code>ALL</code> includes core dumps and audit logs in support bundle</li> <li>Filter <code>REMOVE_CORE_FILES</code> can optionally be in list with <code>ALL</code>, to remove core dump files after collected in support bundle</li></ul> <p>By default no core dumps and audit logs are included in support bundle with filter <code>DEFAULT</code>.</p> <p>Note, <code>REMOVE_CORE_FILES</code> is limited to NSX appliance nodes only.</p></td>
+            
+            <td>array of <a href="types_ContentFilterValue.html">ContentFilterValue</a></td>
+            
+            <td>Minimum items: 1<br>Default: "['DEFAULT']"</td>
+          </tr>
+          <tr>
+            <td>dynamic_content_filters</td>
+            
+            <td>List of content filters that decide the additional content that go into the support bundle<br><br>List of dynamic content filters that specify additional content to include in the support bundle. The list of available filters available depends on your NSX-T deployment and can be determined by invoking the GET /api/v1/adminstration/support-bundles/dynamic-content-filters NSX API. For example, if NSX Intelligence is deployed, filters for collecting specific information about services are available.</td>
+            
+            <td>array of <a href="types_DynamicContentFilterValue.html">DynamicContentFilterValue</a></td>
+            
+            <td>Default: "['ALL']"</td>
+          </tr>
+          <tr>
+            <td>log_age_limit</td>
+            
+            <td>Include log files with modified times not past the age limit in days</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1</td>
+          </tr>
+          <tr>
+            <td>nodes</td>
+            
+            <td>List of cluster/fabric node UUIDs processed in specified order</td>
+            
+            <td>array of string</td>
+            
+            <td>Minimum items: 1</td>
+          </tr>
+          <tr>
+            <td>remote_file_server</td>
+            
+            <td>Remote file server to copy bundles to, bundle in response body if not specified</td>
+            
+            <td><a href="types_SupportBundleRemoteFileServer.html">SupportBundleRemoteFileServer</a></td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,229 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CloudVirtualMachinesListRequestParameters.html">CloudVirtualMachinesListRequestParameters</a> (<a href="types_CloudVirtualMachinesListRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "A set of optional filter parameters to list cloud virtual machines", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "CloudVirtualMachinesListRequestParameters", 
+  "module_id": "CloudVirtualMachineInformation", 
+  "properties": {
+    "account_id": {
+      "description": "Optional identifier for account based on which virtual machines are to be filtered", 
+      "required": false, 
+      "title": "Account ID", 
+      "type": "string"
+    }, 
+    "agent_status": {
+      "description": "UP - NSX Agent is up and running DOWN - NSX Agent is down NO_AGENT - No NSX Agent installed on instance UNKNOWN - NSX Agent status is unknown UPDATE_AVAILABLE - NSX Tools can be upgraded to a newer version that's available NEEDS_UPDATE - NSX Tools running on the instance needs to be updated for proper functioning", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "NO_AGENT", 
+        "UNKNOWN", 
+        "UPDATE_AVAILABLE", 
+        "NEEDS_UPDATE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Agent Status", 
+      "type": "string"
+    }, 
+    "cloud_security_group_id": {
+      "description": "Optional identifier to limit results of VMs associated with the provided cloud security group. For AWS, provide the group id. For Azure, provide the resourceGuid of the Azure security group.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Security Group ID", 
+      "type": "string"
+    }, 
+    "cloud_type": {
+      "description": "Optional identifier for cloud provider based on which Virtual Machines are to be filtered", 
+      "enum": [
+        "AWS", 
+        "AZURE"
+      ], 
+      "required": false, 
+      "title": "Cloud Type", 
+      "type": "string"
+    }, 
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "instance_id": {
+      "description": "Optional identifier for virtual machine based on which the list can be filtered", 
+      "required": false, 
+      "title": "Instance ID", 
+      "type": "string"
+    }, 
+    "is_gateway": {
+      "description": "Optional identifier based on which only gateway Virtual Machines can be filtered", 
+      "required": false, 
+      "title": "Is the VM a gateway node?", 
+      "type": "boolean"
+    }, 
+    "logical_switch_id": {
+      "description": "Optional identifier for logical switch based on which Aws Virtual Machines are to be filtered", 
+      "required": false, 
+      "title": "Logical Switch ID", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "public_ip": {
+      "description": "Optional identifier for public IP based on which Virtual Machines are to be filtered", 
+      "required": false, 
+      "title": "Public IP address of the virtual machine", 
+      "type": "string"
+    }, 
+    "quarantine_state": {
+      "description": "Identifier for quarantine state based on which Virtual Machines are to be filtered. QUARANTINED - This state implies instance is moved to quarantine security group because some threat has been detected. NOT_QUARANTINED - This state implies no quarantine action has been taken. UNKNOWN - This state implies either quarantine policy is disabled or quarantine information is not available. OVERRIDDEN - This state implies instance is associated with vm_override_sg which overrides any action based on threat detection.", 
+      "enum": [
+        "QUARANTINED", 
+        "NOT_QUARANTINED", 
+        "UNKNOWN", 
+        "OVERRIDDEN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Quarantine State", 
+      "type": "string"
+    }, 
+    "region_id": {
+      "description": "Optional identifier for AWS or Azure region based on which Virtual Machines are to be filtered", 
+      "required": false, 
+      "title": "Region ID", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "Optional identifier for listing virtual machines of a particular cloud provider. Possible values are in the form of VirtualMachine prefixed by cloud name. For example, AwsVirtualMachine or AzureVirtualMachine.", 
+      "enum": [
+        "AwsVirtualMachine", 
+        "AzureVirtualMachine"
+      ], 
+      "required": false, 
+      "title": "Resource Type", 
+      "type": "string"
+    }, 
+    "segment_id": {
+      "description": "Optional identifier for segment based on which Virtual Machines are to be filtered.", 
+      "required": false, 
+      "title": "Segment ID", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "status_filter": {
+      "description": "POWERED_OFF - Powered off instances. MANAGED - Instances that are managed by NSX or tagged. UNMANAGED - Instances that are not managed by NSX or untagged. ERRORED - Instances with no NSX Tools connectivity, NSX Tools is down, No NSX Policy configured for Native cloud security enforced instances or Error on NSX Policy rule realization. WHITELISTED - Instances which have been marked allowed by NSX [DEPRECATED - replaced with USERMANAGED]. USERMANAGED - Instances which have been marked allowed by NSX. QUARANTINED - Instances that have been quarantined because some threat has been detected. NEEDS_UPDATE - NSX Tools running on instance is out of date and needs to be updated. HORIZON_VDI - Instances on Microsoft Azure that are part of the Horizon Cloud Services (HCS).", 
+      "enum": [
+        "POWERED_OFF", 
+        "MANAGED", 
+        "UNMANAGED", 
+        "ERRORED", 
+        "WHITELISTED", 
+        "USERMANAGED", 
+        "QUARANTINED", 
+        "NEEDS_UPDATE", 
+        "HORIZON_VDI"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Filter by Virtual machine status", 
+      "type": "string"
+    }, 
+    "vnet_id": {
+      "description": "Optional identifier for Azure virtual network based on which Azure Virtual Machines are to be filtered. It consists of resourceGuid of Azure Vnet.", 
+      "required": false, 
+      "title": "Azure virtual network ID", 
+      "type": "string"
+    }, 
+    "vpc_id": {
+      "description": "Optional identifier for AWS VPC based on which Virtual Machines are to be filtered", 
+      "required": false, 
+      "title": "AWS VPC ID", 
+      "type": "string"
+    }
+  }, 
+  "title": "Cloud Virtual Machines List Request Parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

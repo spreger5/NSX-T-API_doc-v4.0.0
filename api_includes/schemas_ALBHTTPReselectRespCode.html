@@ -1,0 +1,102 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHTTPReselectRespCode.html">ALBHTTPReselectRespCode</a> (<a href="types_ALBHTTPReselectRespCode.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HTTPReselectRespCode object", 
+  "id": "ALBHTTPReselectRespCode", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "codes": {
+      "description": "HTTP response code to be matched. Allowed values are 400-599.", 
+      "items": {
+        "type": "integer"
+      }, 
+      "required": false, 
+      "title": "Codes", 
+      "type": "array"
+    }, 
+    "ranges": {
+      "description": "HTTP response code ranges to match.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHTTPStatusRange.html">ALBHTTPStatusRange</A>
+      }, 
+      "required": false, 
+      "title": "Ranges", 
+      "type": "array"
+    }, 
+    "resp_code_block": {
+      "description": "Block of HTTP response codes to match for server reselect. Enum options - HTTP_RSP_4XX, HTTP_RSP_5XX.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHttpReselectRespCodeBlock.html">ALBHttpReselectRespCodeBlock</A>
+      }, 
+      "required": false, 
+      "title": "Resp code block", 
+      "type": "array"
+    }
+  }, 
+  "title": "HTTPReselectRespCode", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

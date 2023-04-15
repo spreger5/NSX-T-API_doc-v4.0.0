@@ -1,0 +1,81 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Tier1RouteAdvertisentTypes.html">Tier1RouteAdvertisentTypes</a> (<a href="types_Tier1RouteAdvertisentTypes.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Control routes advertised by Tier-1 instance.   TIER1_STATIC_ROUTES: Advertise all STATIC routes.   TIER1_CONNECTED: Advertise all subnets configured on connected   Interfaces and Segments.   TIER1_NAT: Advertise all NAT IP addresses.   TIER1_LB_VIP: Advertise all Load-balancer VIPs.   TIER1_LB_SNAT: Advertise all Loadbalancer SNAT IP addresses.   TIER1_DNS_FORWARDER_IP: Advertise DNS forwarder source and listener IPs   TIER1_IPSEC_LOCAL_ENDPOINT: Redistribute IPSec VPN local-endpoint subnets.", 
+  "enum": [
+    "TIER1_STATIC_ROUTES", 
+    "TIER1_CONNECTED", 
+    "TIER1_NAT", 
+    "TIER1_LB_VIP", 
+    "TIER1_LB_SNAT", 
+    "TIER1_DNS_FORWARDER_IP", 
+    "TIER1_IPSEC_LOCAL_ENDPOINT"
+  ], 
+  "id": "Tier1RouteAdvertisentTypes", 
+  "module_id": "PolicyConnectivity", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

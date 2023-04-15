@@ -1,0 +1,289 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_service_insertion.html' style='text-decoration: none'> Service Insertion</a> >
+        
+        
+            <a href='policy_security_service_insertion_redirection_policies.html' style='text-decoration: none'> Redirection Policies</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List redirection policies for a domain</h4><br>
+                      <span class="help_detail">List redirection policies for a domain</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionPolicies.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete redirection policy</h4><br>
+                      <span class="help_detail">Delete redirection policy.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRedirectionPolicy.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read redirection policy</h4><br>
+                      <span class="help_detail">Read redirection policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedirectionPolicy.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update redirection policy</h4><br>
+                      <span class="help_detail">Create or update the redirection policy.
+<br>
+Performance Note: If you want to edit several rules in a redirection policy
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchRedirectionPolicy.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update redirection policy</h4><br>
+                      <span class="help_detail">Create or update the redirection policy.
+<br>
+Performance Note: If you want to edit several rules in a redirection policy
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateRedirectionPolicy.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List rules</h4><br>
+                      <span class="help_detail">List rules</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionRules.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete RedirectionRule</h4><br>
+                      <span class="help_detail">Delete RedirectionRule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteRedirectionRule.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read rule</h4><br>
+                      <span class="help_detail">Read rule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRedirectionRule.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update redirection rule</h4><br>
+                      <span class="help_detail">Create a rule with the rule-id is not already present, otherwise update the rule.
+<br>
+Performance Note: If you want to edit several rules in a redirection
+<br>
+policy, prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;red-policy-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchRedirectionRule.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update redirection rule</h4><br>
+                      <span class="help_detail">Create a rule with the rule-id is not already present, otherwise update the rule.
+<br>
+Performance Note: If you want to edit several rules in a redirection
+<br>
+policy,prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;red-policy-id&gt;
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateRedirectionRule.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/redirection-policies/&lt;redirection-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List redirection policies</h4><br>
+                      <span class="help_detail">List all redirection policies across all domains ordered by precedence.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRedirectionPoliciesAcrossAllDomains.html">GET /policy/api/v1/infra/domains/redirection-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

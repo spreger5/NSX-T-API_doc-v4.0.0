@@ -1,0 +1,536 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      ALBDnsServiceApplicationProfile (<a href="schemas_ALBDnsServiceApplicationProfile.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">DnsServiceApplicationProfile</span>
+    <p>
+    <span class="help_detail">Advanced load balancer DnsServiceApplicationProfile object</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>aaaa_empty_response</td>
+            
+            <td>Aaaa empty response<br><br>Respond to AAAA queries with empty response when there are
+<br>
+only IPV4 records.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>admin_email</td>
+            
+            <td>Admin email<br><br>Email address of the administrator responsible for this
+<br>
+zone.
+<br>
+This field is used in SOA records (rname) pertaining to all
+<br>
+domain names specified as authoritative domain names.
+<br>
+If not configured, the default value 'hostmaster' is used
+<br>
+in SOA responses.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as hostmaster.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Default: "hostmaster"</td>
+          </tr>
+          <tr>
+            <td>dns_over_tcp_enabled</td>
+            
+            <td>Dns over tcp enabled<br><br>Enable DNS query/response over TCP.
+<br>
+This enables analytics for pass-through queries as well.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>dns_zones</td>
+            
+            <td>Dns zones<br><br>DNS zones hosted on this Virtual Service.
+<br>
+Maximum of 100 items allowed.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBDnsZone.html">ALBDnsZone</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>domain_names</td>
+            
+            <td>Domain names<br><br>Subdomain names serviced by this Virtual Service.
+<br>
+These are configured as Ends-With semantics.
+<br>
+Maximum of 100 items allowed.
+<br>
+</td>
+            
+            <td>array of string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>ecs_stripping_enabled</td>
+            
+            <td>Ecs stripping enabled<br><br>Enable stripping of EDNS client subnet (ecs) option towards
+<br>
+client if DNS service inserts ecs option in the DNS query
+<br>
+towards upstream servers.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>edns</td>
+            
+            <td>Edns<br><br>Enable DNS service to be aware of EDNS (Extension mechanism
+<br>
+for DNS).
+<br>
+EDNS extensions are parsed and shown in logs.
+<br>
+For GSLB services, the EDNS client subnet option can be
+<br>
+used to influence Load Balancing.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>edns_client_subnet_prefix_len</td>
+            
+            <td>Edns client subnet prefix len<br><br>Specifies the IP address prefix length to use in the EDNS
+<br>
+client subnet (ECS) option.
+<br>
+When the incoming request does not have any ECS option and
+<br>
+the prefix length is specified, an ECS option is inserted in
+<br>
+the request passed to upstream server.
+<br>
+If the incoming request already has an ECS option, the
+<br>
+prefix length (and correspondingly the address) in the ECS
+<br>
+option is updated, with the minimum of the prefix length
+<br>
+present in the incoming and the configured prefix length,
+<br>
+before passing the request to upstream server.
+<br>
+Allowed values are 1-32.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 32</td>
+          </tr>
+          <tr>
+            <td>error_response</td>
+            
+            <td>Error response<br><br>Drop or respond to client when the DNS service encounters
+<br>
+an error processing a client query.
+<br>
+By default, such a request is dropped without any response,
+<br>
+or passed through to a passthrough pool, if configured.
+<br>
+When set to respond, an appropriate response is sent to
+<br>
+client, e.g.
+<br>
+NXDOMAIN response for non-existent records, empty NOERROR
+<br>
+response for unsupported queries, etc.
+<br>
+Enum options - DNS_ERROR_RESPONSE_ERROR,
+<br>
+DNS_ERROR_RESPONSE_NONE.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as DNS_ERROR_RESPONSE_NONE.
+<br>
+</td>
+            
+            <td><a href="types_ALBDnsErrorResponseType.html">ALBDnsErrorResponseType</a></td>
+            
+            <td>Default: "DNS_ERROR_RESPONSE_NONE"</td>
+          </tr>
+          <tr>
+            <td>name_server</td>
+            
+            <td>Name server<br><br>The <domain-name>  of the name server that was the original
+<br>
+or primary source of data for this zone.
+<br>
+This field is used in SOA records (mname) pertaining to all
+<br>
+domain names specified as authoritative domain names.
+<br>
+If not configured, domain name is used as name server in
+<br>
+SOA response.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>negative_caching_ttl</td>
+            
+            <td>Negative caching ttl<br><br>Specifies the TTL value (in seconds) for SOA (Start of
+<br>
+Authority) (corresponding to a authoritative domain owned by
+<br>
+this DNS Virtual Service) record's minimum TTL served by the
+<br>
+DNS Virtual Service.
+<br>
+Allowed values are 0-86400.
+<br>
+Unit is SEC.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 30.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 86400<br>Default: "30"</td>
+          </tr>
+          <tr>
+            <td>num_dns_ip</td>
+            
+            <td>Num dns ip<br><br>Specifies the number of IP addresses returned by the DNS
+<br>
+Service.
+<br>
+Enter 0 to return all IP addresses.
+<br>
+Allowed values are 1-20.
+<br>
+Special values are 0- 'Return all IP addresses'.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 20<br>Default: "1"</td>
+          </tr>
+          <tr>
+            <td>ttl</td>
+            
+            <td>Ttl<br><br>Specifies the TTL value (in seconds) for records served by
+<br>
+DNS Service.
+<br>
+Allowed values are 0-86400.
+<br>
+Unit is SEC.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 30.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 86400<br>Default: "30"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

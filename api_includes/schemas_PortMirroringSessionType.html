@@ -1,0 +1,82 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PortMirroringSessionType.html">PortMirroringSessionType</a> (<a href="types_PortMirroringSessionType.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "PortMirroringSession is the configuration instance of port mirroring, you can create different types of PortMirroringSession with different mirror source and mirror destination. Each port mirror session type has its own mirror source and mirror destination pair. LocalPortMirrorSession include LogicalPortMirrorSession and UplinkPortMirrorSession. You can create multiple mirror sessions of same parent type by one API call. LogicalPortMirrorSession   - source[LogicalPortMirrorSource] destination[LogicalPortMirrorDestination] UplinkPortMirrorSession   - source[PnicMirrorSource] destination[LogicalPortMirrorDestination] RspanSrcMirrorSession   - source[LogicalPortMirrorSource] destination[PnicMirrorDestination] RspanDstMirrorSession   - source[VlanMirrorSource] destination[LogicalPortMirrorDestination] LogicalLocalPortMirrorSession   - source[LogicalPortMirrorSource] destination[LogicalPortMirrorDestination] L3PortMirrorSession   - source[LogicalPortMirrorSource or LogicalSwitchMirrorSource] destination[IPMirrorDestination]", 
+  "enum": [
+    "LogicalPortMirrorSession", 
+    "UplinkPortMirrorSession", 
+    "RspanSrcMirrorSession", 
+    "RspanDstMirrorSession", 
+    "LocalPortMirrorSession", 
+    "LogicalLocalPortMirrorSession", 
+    "L3PortMirrorSession"
+  ], 
+  "id": "PortMirroringSessionType", 
+  "module_id": "PortMirroring", 
+  "title": "Resource types of mirror session", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

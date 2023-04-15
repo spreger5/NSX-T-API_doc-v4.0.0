@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_EdgeTransportNodeDatapathMemoryUsage.html">EdgeTransportNodeDatapathMemoryUsage</a> (<a href="types_EdgeTransportNodeDatapathMemoryUsage.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Detailed view of the datapath memory usage. Details out the heap and per memory pool point in time usage.", 
+  "id": "EdgeTransportNodeDatapathMemoryUsage", 
+  "module_id": "ApplianceStats", 
+  "properties": {
+    "datapath_heap_usage": {
+      "description": "Percentage of heap memory in use.", 
+      "readonly": true, 
+      "title": "Percentage of heap memory in use", 
+      "type": "number"
+    }, 
+    "datapath_mem_pools_usage": {
+      "items": {
+        "$ref": "<A HREF="schemas_EdgeTransportNodeDatapathMemoryPoolUsage.html">EdgeTransportNodeDatapathMemoryPoolUsage</A>, 
+        "description": "Per memory pool percentage in use.", 
+        "readonly": true, 
+        "title": "Per memory pool percentage in use"
+      }, 
+      "type": "array"
+    }, 
+    "highest_datapath_mem_pool_usage": {
+      "description": "Highest percentage usage value among datapath memory pools.", 
+      "readonly": true, 
+      "title": "Highest percentage usage value among datapath memory pools", 
+      "type": "number"
+    }, 
+    "highest_datapath_mem_pool_usage_names": {
+      "items": {
+        "description": "List of datapath memory pool(s) with highest usage.", 
+        "readonly": true, 
+        "title": "Datapath memory pool(s) with highest usage", 
+        "type": "string"
+      }, 
+      "type": "array"
+    }
+  }, 
+  "title": "Detailed view of the datapath memory usage. Details out the heap and per memory pool usage", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

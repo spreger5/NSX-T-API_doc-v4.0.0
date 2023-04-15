@@ -1,0 +1,107 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHTTPSecurityAction.html">ALBHTTPSecurityAction</a> (<a href="types_ALBHTTPSecurityAction.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HTTPSecurityAction object", 
+  "id": "ALBHTTPSecurityAction", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "action": {
+      "$ref": "<A HREF="schemas_ALBHTTPSecurityActionType.html">ALBHTTPSecurityActionType</A>, 
+      "description": "Type of the security action to perform. Enum options - HTTP_SECURITY_ACTION_CLOSE_CONN, HTTP_SECURITY_ACTION_SEND_RESPONSE, HTTP_SECURITY_ACTION_ALLOW, HTTP_SECURITY_ACTION_REDIRECT_TO_HTTPS, HTTP_SECURITY_ACTION_RATE_LIMIT, HTTP_SECURITY_ACTION_REQUEST_CHECK_ICAP. Allowed in Basic(Allowed values- HTTP_SECURITY_ACTION_CLOSE_CONN,HTTP_SECURITY_ACTION_SEND_RESPONSE,HTTP_SECURITY_ACTION_REDIRECT_TO_HTTPS) edition, Essentials(Allowed values- HTTP_SECURITY_ACTION_CLOSE_CONN,HTTP_SECURITY_ACTION_SEND_RESPONSE,HTTP_SECURITY_ACTION_REDIRECT_TO_HTTPS) edition, Enterprise edition.", 
+      "required": true, 
+      "title": "Action"
+    }, 
+    "file": {
+      "$ref": "<A HREF="schemas_ALBHTTPLocalFile.html">ALBHTTPLocalFile</A>, 
+      "description": "File to be used for generating HTTP local response.", 
+      "required": false, 
+      "title": "File"
+    }, 
+    "https_port": {
+      "description": "Secure SSL/TLS port to redirect the HTTP request to. Allowed values are 1-65535.", 
+      "maximum": 65535, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Https port", 
+      "type": "integer"
+    }, 
+    "rate_profile": {
+      "$ref": "<A HREF="schemas_ALBHTTPSecurityActionRateProfile.html">ALBHTTPSecurityActionRateProfile</A>, 
+      "description": "Rate limiting configuration for this action. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Rate profile"
+    }, 
+    "status_code": {
+      "$ref": "<A HREF="schemas_ALBHTTPLocalResponseStatusCode.html">ALBHTTPLocalResponseStatusCode</A>, 
+      "description": "HTTP status code to use for local response. Enum options - HTTP_LOCAL_RESPONSE_STATUS_CODE_200, HTTP_LOCAL_RESPONSE_STATUS_CODE_204, HTTP_LOCAL_RESPONSE_STATUS_CODE_403, HTTP_LOCAL_RESPONSE_STATUS_CODE_404, HTTP_LOCAL_RESPONSE_STATUS_CODE_429, HTTP_LOCAL_RESPONSE_STATUS_CODE_501.", 
+      "required": false, 
+      "title": "Status code"
+    }
+  }, 
+  "title": "HTTPSecurityAction", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

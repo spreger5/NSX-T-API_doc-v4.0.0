@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbPoolMemberStatus.html">LbPoolMemberStatus</a> (<a href="types_LbPoolMemberStatus.html">type</a>)
+</h3>
+<pre>{
+  "id": "LbPoolMemberStatus", 
+  "module_id": "AggSvcLb", 
+  "properties": {
+    "failure_cause": {
+      "description": "If multiple active monitors are configured, the failure_cause contains failure cause for each monitors. Like \"Monitor_1:failure_cause_1. Monitor_2:failure_cause_2.\"", 
+      "title": "The healthcheck failure cause when status is DOWN", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "required": true, 
+      "title": "Pool member IP address"
+    }, 
+    "last_check_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "If multiple active monitors are configured, the property value is the latest last_check_time among all the monitors.", 
+      "titile": "Timestamp when the monitor status was last checked"
+    }, 
+    "last_state_change_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "If multiple active monitors are configured, the property value is the latest last_state_change_time among all the monitors.", 
+      "titile": "Timestamp when the monitor status was last changed"
+    }, 
+    "port": {
+      "$ref": "<A HREF="schemas_PortElement.html">PortElement</A>, 
+      "description": "The port is configured in pool member. For virtual server port range case, pool member port must be null.", 
+      "title": "Pool member port"
+    }, 
+    "status": {
+      "description": "UP means that pool member is enabled and monitors have marked the pool member as UP. If the pool member has no monitor configured, it would be treated as UP. DOWN means that pool member is enabled and monitors have marked the pool member as DOWN. DISABLED means that admin state of pool member is set to DISABLED. GRACEFUL_DISABLED means that admin state of pool member is set to GRACEFUL_DISABLED. UNUSED means that the pool member is not used when the IP list size of member group exceeds the maximum setting. The remaining IP addresses would not be used as available backend servers, hence mark the status as UNUSED. UNKNOWN means that the related pool is not associated to any enabled virtual servers, or no status reported from transport-nodes, the associated load balancer service may be working(or not working).", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "DISABLED", 
+        "GRACEFUL_DISABLED", 
+        "UNUSED", 
+        "UNKNOWN"
+      ], 
+      "required": true, 
+      "title": "Pool member status", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

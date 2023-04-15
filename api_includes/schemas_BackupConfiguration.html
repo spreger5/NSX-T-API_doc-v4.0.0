@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BackupConfiguration.html">BackupConfiguration</a> (<a href="types_BackupConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "BackupConfiguration", 
+  "module_id": "BackupConfiguration", 
+  "properties": {
+    "after_inventory_update_interval": {
+      "maximum": 86400, 
+      "minimum": 300, 
+      "required": false, 
+      "title": "A number of seconds after a last backup, that needs to pass, before a topology change will trigger a generation of a new cluster/node backups. If parameter is not provided, then changes in a topology will not trigger a generation of cluster/node backups.", 
+      "type": "integer"
+    }, 
+    "backup_enabled": {
+      "default": false, 
+      "title": "true if automated backup is enabled", 
+      "type": "boolean"
+    }, 
+    "backup_schedule": {
+      "$ref": "<A HREF="schemas_BackupSchedule.html">BackupSchedule</A>, 
+      "title": "Set when backups should be taken - on a weekly schedule or at regular intervals."
+    }, 
+    "inventory_summary_interval": {
+      "default": 240, 
+      "maximum": 3600, 
+      "minimum": 30, 
+      "title": "The minimum number of seconds between each upload of the inventory summary to backup server.", 
+      "type": "integer"
+    }, 
+    "passphrase": {
+      "description": "Passphrase used to encrypt backup files. The passphrase specified must be at least 8 characters in length and must contain at least one lowercase, one uppercase, one numeric character and one special character (any other non-space character).", 
+      "pattern": "^$|^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z\\d\\s]).{8,}$", 
+      "sensitive": true, 
+      "title": "Passphrase used to encrypt backup files.", 
+      "type": "string", 
+      "validation_msg_key": "com.vmware.nsx.validation.constraints.BackupRestore.weak_passprase.message"
+    }, 
+    "remote_file_server": {
+      "$ref": "<A HREF="schemas_RemoteFileServer.html">RemoteFileServer</A>, 
+      "required": false, 
+      "title": "The server to which backups will be sent."
+    }
+  }, 
+  "title": "Configuration for taking manual/automated backup", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

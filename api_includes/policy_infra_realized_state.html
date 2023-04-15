@@ -1,0 +1,449 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_infra.html' style='text-decoration: none'> Infra</a> >
+        
+        
+            <a href='policy_infra_realized_state.html' style='text-decoration: none'> Realized State</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List All alarms in the system</h4><br>
+                      <span class="help_detail">Paginated list of all alarms.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAlarms.html">GET /policy/api/v1/infra/realized-state/alarms</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Enforcement Points</h4><br>
+                      <span class="help_detail">Paginated list of all enforcement points. Returns the populated enforcement points.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListEnforcementPointRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points</a>
+                              <span class="experimental"> (Experimental)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Enforcement Point</h4><br>
+                      <span class="help_detail">Read a Enforcement Point and the complete tree underneath. Returns the populated enforcement point object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadEnforcementPointRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Firewall Sections</h4><br>
+                      <span class="help_detail">Paginated list of all Firewalls. Returns populated Firewalls.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListFirewallSectionRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/firewalls/firewall-sections</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Firewall</h4><br>
+                      <span class="help_detail">Read a Firewall and the complete tree underneath. Returns the
+<br>
+populated Firewall object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadFirewallSectionRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/firewalls/firewall-sections/&lt;firewall-section-id&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List NS Groups</h4><br>
+                      <span class="help_detail">Paginated list of all NSGroups. Returns populated NSGroups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSGroupRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/groups/nsgroups</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Group</h4><br>
+                      <span class="help_detail">Read a NSGroup and the complete tree underneath. Returns the
+<br>
+populated NSgroup object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSGroupRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/groups/nsgroups/&lt;nsgroup-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Security Groups</h4><br>
+                      <span class="help_detail">Paginated list of all Security Groups. Returns populated Security Groups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSecurityGroupRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/groups/securitygroups</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Group</h4><br>
+                      <span class="help_detail">Read a Security Group and the complete tree underneath. Returns the
+<br>
+populated Security Group object.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadSecurityGroupRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/groups/securitygroups/&lt;securitygroup-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IPSets</h4><br>
+                      <span class="help_detail">Paginated list of all Realized IPSets
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIPSetRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/ip-sets/ip-sets-nsxt</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read IPSet Realized state</h4><br>
+                      <span class="help_detail">Read an IPSet
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIPSetRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/ip-sets/ip-sets-nsxt/&lt;ip-set-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List MACSets</h4><br>
+                      <span class="help_detail">Paginated list of all Realized MACSets
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListMACSetRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/mac-sets/mac-sets-nsxt</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read MACSet Realized state</h4><br>
+                      <span class="help_detail">Read an MACSet
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadMACSetRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/mac-sets/mac-sets-nsxt/&lt;mac-set-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Realized NSServices</h4><br>
+                      <span class="help_detail">Paginated list of all Realized NSService.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListNSServiceRealizedStates.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/services/nsservices</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read NSService</h4><br>
+                      <span class="help_detail">Read a NSService.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadNSServiceRealizedState.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/services/nsservices/&lt;nsservice-name&gt;</a>
+                              <span class="experimental"> (Experimental)</span>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Listing of VIFs on the NSX Manager</h4><br>
+                      <span class="help_detail">This API lists VIFs from the specified NSX Manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVifsOnEnforcementPoint.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/vifs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get list of realized objects associated with intent object</h4><br>
+                      <span class="help_detail">Get list of realized entities associated with intent object,
+<br>
+specified by path in query parameter
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListRealizedEntities.html">GET /policy/api/v1/global-infra/realized-state/realized-entities</a>
+                            <br>
+                            
+                            <a href="method_ListRealizedEntities.html">GET /policy/api/v1/infra/realized-state/realized-entities</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get realized entity uniquely identified by realized path</h4><br>
+                      <span class="help_detail">Get realized entity uniquely identified by realized path,
+<br>
+specified by query parameter
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadRealizedEntity.html">GET /policy/api/v1/infra/realized-state/realized-entity</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Refresh all realized entities associated with the intent-path</h4><br>
+                      <span class="help_detail">Refresh the status and statistics of all realized entities associated
+<br>
+with given intent path synchronously. The vmw-async: True HTTP header
+<br>
+cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RefreshRealizedState.html">POST /policy/api/v1/global-infra/realized-state/realized-entity?action=refresh</a>
+                            <br>
+                            
+                            <a href="method_RefreshRealizedState.html">POST /policy/api/v1/infra/realized-state/realized-entity?action=refresh</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get consolidated status of an intent object</h4><br>
+                      <span class="help_detail">Get Consolidated Status of an intent object (with or without enforcement specific status details).
+<br>
+The request is evaluated as follows:
+<br>
+- &lt;intent_path&gt;: the request is evaluated on all enforcement points for the given intent without
+<br>
+enforcement point specific details.
+<br>
+- &lt;intent_path, include_enforced_status&gt;: the request is evaluated on all enforcement points for
+<br>
+the given intent with enforcement point specific details.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIntentStatus.html">GET /policy/api/v1/infra/realized-state/status</a>
+                            <br>
+                            
+                            <a href="method_ReadIntentStatus.html">GET /policy/api/v1/global-infra/realized-state/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,351 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_inventory.html' style='text-decoration: none'> Inventory</a> >
+        
+        
+            <a href='policy_inventory_virtual_machines.html' style='text-decoration: none'> Virtual Machines</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Return the List of Virtual Machines</h4><br>
+                      <span class="help_detail">Returns information about all virtual machines.
+<br>
+If you have not added NSX tags on the VM or removed
+<br>
+all the NSX tags that were earlier added to the VM,
+<br>
+then tags property is not returned in the API response.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualMachines.html">GET /api/v1/fabric/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=add_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RemoveVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=remove_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform action on specified virtual machine e.g. update tags</h4><br>
+                      <span class="help_detail">Perform action on a specific virtual machine. External id of the virtual machine needs to be
+<br>
+provided in the request body. Some of the actions that can be performed are update tags, add
+<br>
+tags, remove tags.
+<br>
+To add tags to existing list of tag, use action parameter add_tags.
+<br>
+To remove tags from existing list of tag, use action parameter remove_tags.
+<br>
+To replace existing tags with new tags, use action parameter update_tags.
+<br>
+To clear all tags, provide an empty list and action parameter as update_tags.
+<br>
+The vmw-async: True HTTP header cannot be used with this API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateVirtualMachineTags.html">POST /api/v1/fabric/virtual-machines?action=update_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the list of tools and agents installed in VMs.</h4><br>
+                      <span class="help_detail">This API returns the list of tools and agents installed in VMs.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVmToolsInfo.html">GET /api/v1/fabric/virtual-machines/tools-info</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Listing of Virtual machines on the NSX Manager</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machines from the specified NSX Manager.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListVirtualMachinesOnEnforcementPoint.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Apply tags on virtual machine</h4><br>
+                      <span class="help_detail">Allows an admin to apply multiple tags to a virtual machine. This operation
+<br>
+does not store the intent on the policy side. It applies the tag directly
+<br>
+on the specified enforcement point. This operation will replace the existing
+<br>
+tags on the virtual machine with the ones that have been passed. If the
+<br>
+application of tag fails on the enforcement point, then an error is
+<br>
+reported. The admin will have to retry the operation again. Policy
+<br>
+framework does not perform a retry. Failure could occur due to multiple
+<br>
+reasons. For e.g enforcement point is down, Enforcement point could not
+<br>
+apply the tag due to constraints like max tags limit exceeded, etc.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_TagVirtualMachine.html">POST /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines?action=update_tags</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read the details of a virtual machine on the NSX Manager</h4><br>
+                      <span class="help_detail">This API return optional details about a virtual machines (e.g. user login session) from the
+<br>
+specified enforcement point.
+<br>
+In case of NSXT, virtual-machine-id would be the value of the external_id of the virtual machine.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadVirtualMachineDetails.html">GET /policy/api/v1/infra/realized-state/enforcement-points/&lt;enforcement-point-name&gt;/virtual-machines/&lt;virtual-machine-id&gt;/details</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Lists all the system excluded virtual machines.</h4><br>
+                      <span class="help_detail">Lists all the system virtual machines that are auto excluded in
+<br>
+firewall exclude list (example -Partner and Edge VMs etc)
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSystemExcludedVMs.html">GET /policy/api/v1/infra/realized-state/system-excluded-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Lists all the system virtual machines.</h4><br>
+                      <span class="help_detail">Lists all the system virtual machines (example -Partner and Edge VMs etc)
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSystemVMs.html">GET /policy/api/v1/infra/realized-state/system-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual machines which are not part of any group</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machine which are not part of any group. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllUnAssociatedVirtualMachines.html">GET /policy/api/v1/infra/realized-state/unassociated-virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all virtual machines</h4><br>
+                      <span class="help_detail">This API filters objects of type virtual machine. This API also gives some VM
+<br>
+details such as VM name, IDs and the current state of the VMs.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllVirtualMachines.html">GET /policy/api/v1/infra/realized-state/virtual-machines</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

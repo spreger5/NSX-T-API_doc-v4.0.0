@@ -1,0 +1,250 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NodeStatus.html">NodeStatus</a> (<a href="types_NodeStatus.html">type</a>)
+</h3>
+<pre>{
+  "id": "NodeStatus", 
+  "module_id": "FabricNode", 
+  "properties": {
+    "external_id": {
+      "required": false, 
+      "title": "HostNode external id", 
+      "type": "string"
+    }, 
+    "host_node_deployment_status": {
+      "description": "This enum specifies the current nsx install state for host node or current deployment and ready state for edge node. The ready status 'NODE_READY' indicates whether edge node is ready to become a transport node. The status 'EDGE_CONFIG_ERROR' indicates that edge hardware or underlying host is not supported. After all fabric level operations are done for an edge node, this value indicates transport node related configuration issues and state as relevant.", 
+      "enum": [
+        "NOT_PREPARED", 
+        "INSTALL_IN_PROGRESS", 
+        "INSTALL_FAILED", 
+        "INSTALL_SUCCESSFUL", 
+        "INSTALL_SKIPPED", 
+        "UNINSTALL_IN_PROGRESS", 
+        "UNINSTALL_FAILED", 
+        "UNINSTALL_SUCCESSFUL", 
+        "UNINSTALL_SCHEDULED", 
+        "UNINSTALL_SKIPPED", 
+        "UPGRADE_IN_PROGRESS", 
+        "UPGRADE_FAILED", 
+        "PENDING_UPGRADE", 
+        "NOT_AVAILABLE", 
+        "VM_DEPLOYMENT_QUEUED", 
+        "VM_DEPLOYMENT_IN_PROGRESS", 
+        "VM_DEPLOYMENT_FAILED", 
+        "VM_POWER_ON_IN_PROGRESS", 
+        "VM_POWER_ON_FAILED", 
+        "REGISTRATION_PENDING", 
+        "NODE_NOT_READY", 
+        "NODE_READY", 
+        "VM_POWER_OFF_IN_PROGRESS", 
+        "VM_POWER_OFF_FAILED", 
+        "VM_UNDEPLOY_IN_PROGRESS", 
+        "VM_UNDEPLOY_FAILED", 
+        "VM_UNDEPLOY_SUCCESSFUL", 
+        "EDGE_CONFIG_ERROR", 
+        "VM_DEPLOYMENT_RESTARTED", 
+        "REGISTRATION_FAILED", 
+        "HOST_DISCONNECTED", 
+        "POWERED_OFF", 
+        "TRANSPORT_NODE_SYNC_PENDING", 
+        "TRANSPORT_NODE_CONFIGURATION_MISSING", 
+        "EDGE_HARDWARE_NOT_SUPPORTED", 
+        "MULTIPLE_OVERLAY_TZS_NOT_SUPPORTED", 
+        "TN_OVERLAY_TZ_IN_USE_BY_EDGE_CLUSTER", 
+        "TZ_ENDPOINTS_NOT_SPECIFIED", 
+        "NO_PNIC_PREPARED_IN_EDGE", 
+        "APPLIANCE_INTERNAL_ERROR", 
+        "VTEP_DHCP_NOT_SUPPORTED", 
+        "UNSUPPORTED_HOST_SWITCH_PROFILE", 
+        "UPLINK_HOST_SWITCH_PROFILE_NOT_SPECIFIED", 
+        "HOSTSWITCH_PROFILE_NOT_FOUND", 
+        "LLDP_SEND_ENABLED_NOT_SUPPORTED", 
+        "UNSUPPORTED_NAMED_TEAMING_POLICY", 
+        "MULTIPLE_UPLINKS_IN_NAMED_TEAMING_NOT_SUPPORTED_IF_UPLINK_IN_DEFAULT_TEAMING", 
+        "LBSRCID_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "LACP_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "STANDBY_UPLINKS_NOT_SUPPORTED_FOR_EDGE_VM", 
+        "MULTIPLE_ACTIVE_UPLINKS_NOT_SUPPORTED_FOR_EDGE", 
+        "UNSUPPORTED_LACP_LB_ALGO_FOR_NODE", 
+        "EDGE_NODE_VERSION_NOT_SUPPORTED", 
+        "NO_PNIC_SPECIFIED_IN_TN", 
+        "INVALID_PNIC_DEVICE_NAME", 
+        "TRANSPORT_NODE_READY", 
+        "UNSUPPORTED_DEFAULT_TEAMING_POLICY", 
+        "MPA_DISCONNECTED", 
+        "VM_NETWORK_EDIT_PENDING", 
+        "VM_RENAME_PENDING", 
+        "VM_CONFIG_EDIT_PENDING", 
+        "VM_NETWORK_EDIT_FAILED", 
+        "VM_RENAME_FAILED", 
+        "VM_CONFIG_EDIT_FAILED", 
+        "VM_CONFIG_DISCREPANCY", 
+        "VM_NODE_REFRESH_FAILED", 
+        "VM_PLACEMENT_REFRESH_FAILED", 
+        "REGISTRATION_TIMEDOUT", 
+        "LOGICAL_SWITCH_NAMED_TEAMING_HAS_NO_PNIC_BACKING", 
+        "UPLINK_FROM_TEAMING_POLICY_NOT_MAPPED", 
+        "REPLACE_FAILED", 
+        "DELETE_VM_IN_REDEPLOY_FAILED", 
+        "DEPLOY_VM_IN_REDEPLOY_FAILED", 
+        "INSUFFICIENT_RESOURCES_IN_EDGE_NODE_FOR_SERVICE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Install/Uninstall status of deployment.", 
+      "type": "string"
+    }, 
+    "inventory_sync_paused": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Is true if inventory sync is paused else false", 
+      "type": "boolean"
+    }, 
+    "inventory_sync_reenable_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Inventory sync auto re-enable target time, in epoch milis"
+    }, 
+    "last_heartbeat_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp of the last heartbeat status change, in epoch milliseconds."
+    }, 
+    "last_sync_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp of the last successful update of Inventory, in epoch milliseconds."
+    }, 
+    "lcp_connectivity_status": {
+      "default": "UNKNOWN", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "DEGRADED", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates the fabric node's LCP&amp;lt;-&amp;gt;CCP channel connectivity status, UP, DOWN, DEGRADED, UNKNOWN.", 
+      "type": "string"
+    }, 
+    "lcp_connectivity_status_details": {
+      "default": [], 
+      "items": {
+        "$ref": "<A HREF="schemas_ControlConnStatus.html">ControlConnStatus</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Details, if any, about the current LCP&amp;lt;-&amp;gt;CCP channel connectivity status of the fabric node.", 
+      "type": "array"
+    }, 
+    "maintenance_mode": {
+      "enum": [
+        "OFF", 
+        "ENTERING", 
+        "ON", 
+        "EXITING", 
+        "ENABLED", 
+        "DISABLED"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates the fabric node's status of maintenance mode, OFF, ENTERING, ON, EXITING, ENABLED, DISABLED.", 
+      "type": "string"
+    }, 
+    "mpa_connectivity_status": {
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates the fabric node's MP&amp;lt;-&amp;gt;MPA channel connectivity status, UP, DOWN, UNKNOWN.", 
+      "type": "string"
+    }, 
+    "mpa_connectivity_status_details": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Details, if any, about the current MP&amp;lt;-&amp;gt;MPA channel connectivity status of the fabric node.", 
+      "type": "string"
+    }, 
+    "software_version": {
+      "readonly": true, 
+      "title": "Software version of the fabric node.", 
+      "type": "string"
+    }, 
+    "system_status": {
+      "$ref": "<A HREF="schemas_NodeStatusProperties.html">NodeStatusProperties</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Node status properties"
+    }
+  }, 
+  "title": "Runtime status information of the fabric node.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

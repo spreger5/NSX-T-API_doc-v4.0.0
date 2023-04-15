@@ -1,0 +1,343 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MonitoringEvent.html">MonitoringEvent</a> (<a href="types_MonitoringEvent.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "MonitoringEvent", 
+  "module_id": "Monitoring", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "description": "Detailed description of the event.", 
+      "readonly": true, 
+      "title": "Detailed description of Event", 
+      "type": "string"
+    }, 
+    "description_on_clear": {
+      "description": "Description of Event when an Event instance transitions from True to False.", 
+      "readonly": true, 
+      "title": "Description of event when cleared", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "entity_resource_type": {
+      "description": "Resource Type of entity where this event is applicable eg. LogicalSwitch, LogicalPort etc.", 
+      "readonly": true, 
+      "title": "Resource Type of entity where this event is applicable", 
+      "type": "string"
+    }, 
+    "event_false_snmp_oid": {
+      "description": "Optional field containing OID for SNMP trap sent when Event instance is False. This value is null if suppress_snmp_trap or suppress_clear_oid is True.", 
+      "readonly": true, 
+      "title": "OID for SNMP trap sent when Event instance is False", 
+      "type": "string"
+    }, 
+    "event_true_snmp_oid": {
+      "description": "Optional field containing OID for SNMP trap sent when Event instance is True. This value is null if suppress_snmp_trap is True.", 
+      "readonly": true, 
+      "title": "OID for SNMP trap sent when Event instance is True", 
+      "type": "string"
+    }, 
+    "event_type": {
+      "description": "Name of Event, e.g. manager_cpu_usage_high, certificate_expired.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Name of event type", 
+      "type": "string"
+    }, 
+    "event_type_display_name": {
+      "description": "Display name of Event type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Display name of event type", 
+      "type": "string"
+    }, 
+    "feature_display_name": {
+      "description": "Display name of feature defining this Event.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Display name of feature", 
+      "type": "string"
+    }, 
+    "feature_name": {
+      "description": "Feature defining this Event, e.g. manager_health, certificates.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Feature defining this event", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "Unique identifier in the form of feature_name.event_type.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Identifier to identify an event_type uniquely", 
+      "type": "string"
+    }, 
+    "is_disabled": {
+      "default": false, 
+      "description": "Flag to indicate whether sampling for this Event is off or on.", 
+      "title": "Indicate if event sampling is disabled", 
+      "type": "boolean"
+    }, 
+    "is_sensitivity_fixed": {
+      "description": "Indicates if the sensitivity property is configurable via the API.", 
+      "readonly": true, 
+      "title": "Flag to indicate if sensitivity can be configured", 
+      "type": "boolean"
+    }, 
+    "is_threshold_fixed": {
+      "description": "Indicates if the threshold property is configurable via the API.", 
+      "readonly": true, 
+      "title": "Flag to indicate if threshold can be configured", 
+      "type": "boolean"
+    }, 
+    "is_threshold_floating_point": {
+      "description": "Flag to indicate if the threshold for this Event is a floating point number. If this value is true, the threshold_floating_point property is used to indicate the threshold at runtime; otherwise, the threshold property is used.", 
+      "readonly": true, 
+      "title": "Indicates if the threshold for this Event is a floating point value.\n", 
+      "type": "boolean"
+    }, 
+    "kb_article": {
+      "description": "KB article link that contains more information on this event and recommended actions. Users can refer to the specified link if needed.", 
+      "readonly": true, 
+      "title": "Link to knowledge base article", 
+      "type": "string"
+    }, 
+    "max_threshold": {
+      "description": "Maximum allowed threshold value if the threshold is configurable and a maximum value is applicable.", 
+      "readonly": true, 
+      "title": "Maximum allowed integer threshold value", 
+      "type": "integer"
+    }, 
+    "max_threshold_floating_point": {
+      "description": "Maximum allowed floating point threshold value if the threshold_floating_point is configurable and a maximum value is applicable.", 
+      "readonly": true, 
+      "title": "Maximum allowed floating point threshold value", 
+      "type": "number"
+    }, 
+    "min_threshold": {
+      "description": "Minimum allowed threshold value if the threshold is configurable and a minimum value is applicable.", 
+      "readonly": true, 
+      "title": "Minimum allowed integer point threshold value", 
+      "type": "integer"
+    }, 
+    "min_threshold_floating_point": {
+      "description": "Minimum allowed floating point threshold value if the threshold_floating_point is configurable and a minimum value is applicable.", 
+      "readonly": true, 
+      "title": "Minimum allowed floating point threshold value", 
+      "type": "number"
+    }, 
+    "node_types": {
+      "description": "Array identifying the nodes on which this Event is applicable. Can be one or more of the following values - nsx_public_cloud_gateway, nsx_edge, nsx_esx, nsx_kvm, nsx_manager.", 
+      "items": {
+        "$ref": "<A HREF="schemas_MonitoringNodeType.html">MonitoringNodeType</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Array identifying the nodes on which this Event is applicable", 
+      "type": "array", 
+      "uniqueItems": true
+    }, 
+    "recommended_action": {
+      "description": "Recommended action for the alarm condition.", 
+      "readonly": true, 
+      "title": "Recommended action steps", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "sensitivity": {
+      "description": "Percentage of samples to consider and used in combination with threshold when determining whether an Event instance status is True or False. Event evaluation uses sampling to determine Event instance status. A higher sensitivity value specifies that more samples are used to ensure accuracy and ignore infrequent or rare spikes in sampled data.", 
+      "maximum": 100, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Percentage of samples to consider", 
+      "type": "integer"
+    }, 
+    "severity": {
+      "$ref": "<A HREF="schemas_MonitoringSeverity.html">MonitoringSeverity</A>, 
+      "description": "Severity of the Event.Can be one of - CRITICAL, HIGH, MEDIUM, LOW.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Severity of the Event"
+    }, 
+    "summary": {
+      "description": "Summary description of the event.", 
+      "readonly": true, 
+      "title": "Summary description of Event", 
+      "type": "string"
+    }, 
+    "suppress_alarm": {
+      "default": false, 
+      "description": "Flag to suppress Alarm generation. Alarms are not generated for this Event when this is set to True.", 
+      "title": "Flag to suppress Alarm generation", 
+      "type": "boolean"
+    }, 
+    "suppress_snmp_trap": {
+      "default": false, 
+      "description": "Flag to suppress SNMP trap generation. SNMP traps are not sent for this Event when this is set to True.", 
+      "title": "Flag to suppress SNMP trap generation", 
+      "type": "boolean"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "threshold": {
+      "description": "Threshold to determine if a single sample is True. For example, if the configured threshold is 95% and the current CPU sample is 99%, then the current sample is considered True. Note, if is_threshold_floating_point is true, the threshold_floating_point property is used to indicate the threshold value.", 
+      "required": true, 
+      "title": "Threshold to determine if a single sample is True", 
+      "type": "integer"
+    }, 
+    "threshold_floating_point": {
+      "description": "Floating point threshold to determine if a single sample is True. For example, if the configured threshold is 66.6 percent and the sample value is 68.8 percent, the current sample is considered True. Note, if is_threshold_floating_point is false, the threshold property is used to indicate the threshold value.", 
+      "title": "Floating point threshold to determine if a single sample is True", 
+      "type": "number"
+    }, 
+    "threshold_unit_type": {
+      "description": "Identifies the unit type of the threshold value.", 
+      "enum": [
+        "DAYS", 
+        "PERCENT", 
+        "SECONDS"
+      ], 
+      "readonly": true, 
+      "title": "Identifies the unit type of the threshold value", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

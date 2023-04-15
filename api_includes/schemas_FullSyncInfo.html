@@ -1,0 +1,199 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_FullSyncInfo.html">FullSyncInfo</a> (<a href="types_FullSyncInfo.html">type</a>)
+</h3>
+<pre>{
+  "description": "Represents details of the last full sync if full sync is not running, otherwise returns the status of current full sync.", 
+  "id": "FullSyncInfo", 
+  "module_id": "FederationObservability", 
+  "properties": {
+    "data_streaming_from_source_end_time": {
+      "read_only": true, 
+      "title": "End time of streaming full state from source", 
+      "type": "integer"
+    }, 
+    "data_streaming_from_source_progress": {
+      "read_only": true, 
+      "title": "Details about full sync on sender side", 
+      "type": "string"
+    }, 
+    "data_streaming_from_source_start_time": {
+      "read_only": true, 
+      "title": "Start time of streaming full state from source", 
+      "type": "integer"
+    }, 
+    "end_time": {
+      "read_only": true, 
+      "title": "Full sync end time", 
+      "type": "integer"
+    }, 
+    "errors": {
+      "items": {
+        "type": "string"
+      }, 
+      "read_only": true, 
+      "title": "Errors if any", 
+      "type": "array"
+    }, 
+    "fullSyncId": {
+      "read_only": true, 
+      "title": "Full sync id", 
+      "type": "string"
+    }, 
+    "reason": {
+      "read_only": true, 
+      "title": "Description of full sync reason", 
+      "type": "string"
+    }, 
+    "reason_code": {
+      "description": "Full sync can happen for various internal reasons, as well user can request for one. The code provides the classification of possible reasons to start a full sync.", 
+      "enum": [
+        "QUEUE_OVERFLOW_ON_TRANSMITTER", 
+        "QUEUE_OVERFLOW_ON_RECEIVER", 
+        "CONNECTION_RESTORED", 
+        "LM_ONBOARDED", 
+        "GM_SWITCHOVER", 
+        "RESTORED_GM_FROM_BACKUP", 
+        "RESTORED_LM_FROM_BACKUP", 
+        "BROWNFIELD_CONFIG_MIGRATION_FROM_LM_TO_GM", 
+        "GM_REQUESTED_OVERSIZED_PAYLOAD", 
+        "GM_REQUESTED_SITE_ONBOARDING", 
+        "GM_REQUESTED_OTHER", 
+        "LM_REQUSTED_OVERSIZED_PAYLOAD", 
+        "LM_REQUESTED_OTHER", 
+        "USER_REQUSTED", 
+        "OTHER_AR_INTERNAL", 
+        "POST_UPGRADE_GM", 
+        "POST_UPGRADE_LM", 
+        "UNKNOWN"
+      ], 
+      "read_only": true, 
+      "title": "Reason code for full sync", 
+      "type": "string"
+    }, 
+    "receiver_end_time": {
+      "read_only": true, 
+      "title": "End time of completing applying full state on receiver side", 
+      "type": "integer"
+    }, 
+    "receiver_start_time": {
+      "read_only": true, 
+      "title": "Start time of applying full state on receiver side", 
+      "type": "integer"
+    }, 
+    "receiver_state": {
+      "description": "This is optional information, provides useful insights on receiver side once async channel hands over full state data to receiver.", 
+      "read_only": true, 
+      "title": "Internal receiver state", 
+      "type": "string"
+    }, 
+    "receiver_time_to_apply_in_millis": {
+      "read_only": true, 
+      "title": "Time taken by application receiver to apply the full state received", 
+      "type": "integer"
+    }, 
+    "stage": {
+      "description": "This provides the insights into current full sync stage if in progress.", 
+      "enum": [
+        "NOT_STARTED", 
+        "REQUESTED_FULL_STATE_FROM_SOURCE", 
+        "TRANSFERRING_FULL_STATE", 
+        "COMPLETED_TRANSFERRING_FULL_STATE", 
+        "DESTINATION_APPLYING_FULL_STATE", 
+        "COMPLETED_SUCCESSFUL", 
+        "TIMEOUT_ON_SOURCE_RECEIVE_FULL_STATE", 
+        "TIMEOUT_ON_DESTINATION_APPLY", 
+        "COMPLETED_FAILED"
+      ], 
+      "read_only": true, 
+      "title": "Current stage details if full sync in progress", 
+      "type": "string"
+    }, 
+    "start_time": {
+      "read_only": true, 
+      "title": "Full sync start time", 
+      "type": "integer"
+    }, 
+    "status": {
+      "enum": [
+        "NOT_STARTED", 
+        "IN_PROGRESS", 
+        "COMPLETED"
+      ], 
+      "read_only": true, 
+      "title": "Full sync status", 
+      "type": "string"
+    }, 
+    "warnings": {
+      "items": {
+        "type": "string"
+      }, 
+      "read_only": true, 
+      "title": "Errors if any", 
+      "type": "array"
+    }
+  }, 
+  "title": "Full sync details for the flow", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

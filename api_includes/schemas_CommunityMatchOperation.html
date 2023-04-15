@@ -1,0 +1,98 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CommunityMatchOperation.html">CommunityMatchOperation</a> (<a href="types_CommunityMatchOperation.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "CommunityMatchOperation", 
+  "module_id": "Routing", 
+  "properties": {
+    "community_list_id": {
+      "description": "ID of BGP community list. This value is not required when match_operator is MATCH_REGEX otherwise required.", 
+      "title": "Community list id", 
+      "type": "string"
+    }, 
+    "match_operator": {
+      "default": "MATCH_ANY", 
+      "description": "Match operator for communities from provided community list id. MATCH_ANY will match any community MATCH_ALL will match all communities MATCH_EXACT will do exact match on community MATCH_NONE [operator not supported] will not match any community MATCH_REGEX will match normal communities by evaluating regular expression MATCH_LARGE_COMMUNITY_REGEX will match large communities by evaluating regular expression", 
+      "enum": [
+        "MATCH_ANY", 
+        "MATCH_ALL", 
+        "MATCH_EXACT", 
+        "MATCH_NONE", 
+        "MATCH_REGEX", 
+        "MATCH_LARGE_COMMUNITY_REGEX"
+      ], 
+      "title": "Match operator", 
+      "type": "string"
+    }, 
+    "regular_expression": {
+      "description": "Regular expression to match BGP communities. If match_operator is MATCH_REGEX then this value must be specified.", 
+      "title": "Regular expression", 
+      "type": "string"
+    }
+  }, 
+  "title": "Community match operation", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsQueryNameMatch.html">ALBDnsQueryNameMatch</a> (<a href="types_ALBDnsQueryNameMatch.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsQueryNameMatch object", 
+  "id": "ALBDnsQueryNameMatch", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "match_criteria": {
+      "$ref": "<A HREF="schemas_ALBStringOperation.html">ALBStringOperation</A>, 
+      "description": "Criterion to use for string matching the DNS query domain name in the question section. Enum options - BEGINS_WITH, DOES_NOT_BEGIN_WITH, CONTAINS, DOES_NOT_CONTAIN, ENDS_WITH, DOES_NOT_END_WITH, EQUALS, DOES_NOT_EQUAL, REGEX_MATCH, REGEX_DOES_NOT_MATCH. Allowed in Basic(Allowed values- BEGINS_WITH,DOES_NOT_BEGIN_WITH,CONTAINS,DOES_NOT_CONTAIN,ENDS_WITH,DOES_NOT_END_WITH,EQUALS,DOES_NOT_EQUAL) edition, Essentials(Allowed values- BEGINS_WITH,DOES_NOT_BEGIN_WITH,CONTAINS,DOES_NOT_CONTAIN,ENDS_WITH,DOES_NOT_END_WITH,EQUALS,DOES_NOT_EQUAL) edition, Enterprise edition.", 
+      "required": true, 
+      "title": "Match criteria"
+    }, 
+    "query_domain_names": {
+      "description": "Domain name to match against that specified in the question section of the DNS query.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Query domain names", 
+      "type": "array"
+    }, 
+    "string_group_paths": {
+      "description": "path of the string group(s) for matching against DNS query domain name in the question section. It is a reference to an object of type StringGroup.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "String group paths", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBDnsPolicy"
+          ], 
+          "relationshipType": "ALB_DNSPOLICY_ALB_STRINGGROUP_RELATIONSHIP", 
+          "rightType": [
+            "ALBStringGroup"
+          ]
+        }
+      ]
+    }
+  }, 
+  "title": "DnsQueryNameMatch", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

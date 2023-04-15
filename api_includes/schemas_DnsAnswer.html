@@ -1,0 +1,136 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DnsAnswer.html">DnsAnswer</a> (<a href="types_DnsAnswer.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The response for DNS nslookup.", 
+  "id": "DnsAnswer", 
+  "module_id": "DnsForwarder", 
+  "properties": {
+    "answers": {
+      "description": "The answers of the query.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DnsQueryAnswer.html">DnsQueryAnswer</A>
+      }, 
+      "maxItems": 256, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "The answers of the query.", 
+      "type": "array"
+    }, 
+    "authoritative_answers": {
+      "deprecated": true, 
+      "description": "Authotitative answers of the query. This is a deprecated property, please use 'answers' instead.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DnsQueryAnswer.html">DnsQueryAnswer</A>
+      }, 
+      "maxItems": 256, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Authoritative answers", 
+      "type": "array"
+    }, 
+    "dns_server": {
+      "description": "Dns server ip address and port, format is \"ip address#port\".", 
+      "required": true, 
+      "title": "DNS server information", 
+      "type": "string"
+    }, 
+    "edge_node_id": {
+      "description": "ID of the edge node that performed the query.", 
+      "required": true, 
+      "title": "Edge node id", 
+      "type": "string"
+    }, 
+    "non_authoritative_answers": {
+      "deprecated": true, 
+      "description": "Non-authotitative answers of the query. This is a deprecated property, please use 'answers' instead.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DnsQueryAnswer.html">DnsQueryAnswer</A>
+      }, 
+      "maxItems": 256, 
+      "minItems": 1, 
+      "required": false, 
+      "title": "Non authoritative answers", 
+      "type": "array"
+    }, 
+    "raw_answer": {
+      "description": "It can be NXDOMAIN or error message which is not consisted of authoritative_answer or non_authoritative_answer.", 
+      "required": false, 
+      "title": "Raw message returned from the DNS forwarder", 
+      "type": "string"
+    }, 
+    "source_ip": {
+      "$ref": "<A HREF="schemas_IPv4Address.html">IPv4Address</A>, 
+      "description": "The source ip used in this lookup.", 
+      "required": true, 
+      "title": "The source ip used in this lookup"
+    }
+  }, 
+  "title": "Answer of dns nslookup", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

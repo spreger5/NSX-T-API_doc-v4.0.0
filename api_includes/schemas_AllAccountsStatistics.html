@@ -1,0 +1,128 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_AllAccountsStatistics.html">AllAccountsStatistics</a> (<a href="types_AllAccountsStatistics.html">type</a>)
+</h3>
+<pre>{
+  "additional_properties": false, 
+  "description": "Stores statistics of all accounts managed by CSM.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "AllAccountsStatistics", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "accounts_count": {
+      "description": "Count of the all accounts managed by CSM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Accounts Count", 
+      "type": "integer"
+    }, 
+    "accounts_status": {
+      "$ref": "<A HREF="schemas_AllAccountsStateInfo.html">AllAccountsStateInfo</A>, 
+      "description": "Status of all accounts like synchronization in progress count.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status Of All Accounts"
+    }, 
+    "instance_stats": {
+      "$ref": "<A HREF="schemas_InstanceStats.html">InstanceStats</A>, 
+      "description": "Instance statistics accross all accounts managed by CSM.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance Statistics"
+    }, 
+    "resource_type": {
+      "description": "Optional identifier for listing all accounts statistics of a particular cloud provider. Legal values are AwsAccount or AzureAccount.", 
+      "enum": [
+        "AwsAccount", 
+        "AzureAccount"
+      ], 
+      "required": false, 
+      "title": "Resource Type", 
+      "type": "string"
+    }
+  }, 
+  "title": "All Accounts  Statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

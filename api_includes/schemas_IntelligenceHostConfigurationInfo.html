@@ -1,0 +1,323 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IntelligenceHostConfigurationInfo.html">IntelligenceHostConfigurationInfo</a> (<a href="types_IntelligenceHostConfigurationInfo.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "description": "This is deprecated. Please use IntelligenceTransportNodeProfile instead. NSX-Intelligence configuration that can be applied to host nodes.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "IntelligenceHostConfigurationInfo", 
+  "module_id": "NsxIntelligenceHostConfiguration", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "broker_bootstrap_servers": {
+      "description": "List of NSX-Intelligence broker endpoints that host nodes contact initially.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IntelligenceBrokerEndpointInfo.html">IntelligenceBrokerEndpointInfo</A>
+      }, 
+      "required": false, 
+      "title": "List of NSX-Intelligence broker endpoints", 
+      "type": "array"
+    }, 
+    "broker_certificate": {
+      "description": "A broker certificate to verify the identity of brokers.", 
+      "required": false, 
+      "title": "Broker certificate", 
+      "type": "string"
+    }, 
+    "broker_truststore": {
+      "description": "A truststore to establish the trust between NSX and NSX-Intelligence brokers.", 
+      "required": false, 
+      "title": "Broker truststore", 
+      "type": "string"
+    }, 
+    "context_data_collection_interval": {
+      "default": 5, 
+      "description": "Interval in minute of reporting VM guest context data to NSX-Intelligence. Recommend to keep this value the same as flow_data_collection_interval.", 
+      "maximum": 30, 
+      "minimum": 2, 
+      "required": false, 
+      "title": "VM guest context data collection interval", 
+      "type": "integer"
+    }, 
+    "context_process_hashes": {
+      "description": "List of hashes of processes to collect context data. Empty implies all processes.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "List of hashes of processes to collect context data", 
+      "type": "array"
+    }, 
+    "context_process_names": {
+      "description": "List of processes to collect context data. Empty implies all processes.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "List of processes to collect context data", 
+      "type": "array"
+    }, 
+    "context_user_sids": {
+      "description": "List of windows user sid to collect context data. Empty implies all users.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "List of windows user sid to collect context data", 
+      "type": "array"
+    }, 
+    "context_user_uids": {
+      "description": "List of linux user uid to collect context data. Empty implies all users.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "List of linux user uid to collect context data", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "enable_context_data_collection": {
+      "default": true, 
+      "description": "Enable NSX-Intelligence context data collection in host nodes.", 
+      "required": false, 
+      "title": "Enable context data collection", 
+      "type": "boolean"
+    }, 
+    "enable_data_collection": {
+      "default": true, 
+      "deprecated": true, 
+      "description": "Enable NSX-Intelligence data collection in host nodes.  This property has been deprecated. To enable flow data collection, use property enable_flow_data_collection instead. To enable context data collection, use property enable_context_data_collection instead.  When this property is set to false, no data collection is performed even if enable_flow_data_collection or enable_context_data_collection is set to true.  When this property is set to true, property enable_flow_data_collection and enable_context_data_collection control whether to collect flow data and context data separately.", 
+      "required": false, 
+      "title": "Enable data collection", 
+      "type": "boolean"
+    }, 
+    "enable_deep_packet_inspection": {
+      "default": true, 
+      "description": "Enable NSX-Intelligence deep packet inspection in host nodes.", 
+      "required": false, 
+      "title": "Enable deep packet inspection", 
+      "type": "boolean"
+    }, 
+    "enable_external_ip_aggregation": {
+      "default": false, 
+      "description": "When this property is set to true, if the source or destination of network traffic uses an IP address that is not included in property private_ip_prefix, it is reported as ANY (255.255.255.255) to NSX-Intelligence.  When this property is set to false, the original IP addresses of network traffic are reported to NSX-Intelligence, regardless whether they are included in property private_ip_prefix.", 
+      "required": false, 
+      "title": "Enable external IP aggregation", 
+      "type": "boolean"
+    }, 
+    "enable_flow_data_collection": {
+      "default": true, 
+      "description": "Enable NSX-Intelligence flow data collection in host nodes.", 
+      "required": false, 
+      "title": "Enable flow data collection", 
+      "type": "boolean"
+    }, 
+    "flow_data_collection_interval": {
+      "default": 5, 
+      "description": "Interval in minute of reporting network flow data to NSX-Intelligence. Recommend to keep this value the same as context_data_collection_interval.", 
+      "maximum": 30, 
+      "minimum": 2, 
+      "required": false, 
+      "title": "Network flow data collection interval", 
+      "type": "integer"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "max_active_flow_count": {
+      "default": 25000, 
+      "description": "Maximum active network flow to collect in collection interval.", 
+      "maximum": 5000000, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum active network flow", 
+      "type": "integer"
+    }, 
+    "max_active_flow_count_bm": {
+      "default": 12500, 
+      "description": "Maximum active network flow to collect in collection interval for Bare Metal server.", 
+      "maximum": 5000000, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum active network flow for Bare Metal server", 
+      "type": "integer"
+    }, 
+    "max_inactive_flow_count": {
+      "default": 50000, 
+      "description": "Maximum inactive network flow to collect in collection interval.", 
+      "maximum": 5000000, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum inactive network flow", 
+      "type": "integer"
+    }, 
+    "max_inactive_flow_count_bm": {
+      "default": 25000, 
+      "description": "Maximum inactive network flow to collect in collection interval for Bare Metal server.", 
+      "maximum": 5000000, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum inactive network flow for Bare Metal server", 
+      "type": "integer"
+    }, 
+    "private_ip_prefix": {
+      "description": "List of private IP prefix that NSX-Intelligence network flow is collected from.", 
+      "items": {
+        "$ref": "<A HREF="schemas_IntelligenceFlowPrivateIpPrefixInfo.html">IntelligenceFlowPrivateIpPrefixInfo</A>
+      }, 
+      "required": false, 
+      "title": "List of private IP prefix", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "title": "NSX-Intelligence host configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

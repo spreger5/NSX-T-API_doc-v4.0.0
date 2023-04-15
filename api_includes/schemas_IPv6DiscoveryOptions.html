@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPv6DiscoveryOptions.html">IPv6DiscoveryOptions</a> (<a href="types_IPv6DiscoveryOptions.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Contains IPv6 related discovery options.", 
+  "id": "IPv6DiscoveryOptions", 
+  "module_id": "PolicyIpDiscovery", 
+  "properties": {
+    "dhcp_snooping_v6_enabled": {
+      "default": false, 
+      "description": "Enable this method will snoop the DHCPv6 message transaction which a VM makes with a DHCPv6 server. From the transaction, we learn the IPv6 addresses assigned by the DHCPv6 server to this VM along with its lease time.", 
+      "required": false, 
+      "title": "Is DHCP snoping v6 enabled or not", 
+      "type": "boolean"
+    }, 
+    "nd_snooping_config": {
+      "$ref": "<A HREF="schemas_NdSnoopingConfig.html">NdSnoopingConfig</A>, 
+      "description": "Indicates ND snooping options", 
+      "required": false, 
+      "title": "ND snooping configuration"
+    }, 
+    "vmtools_v6_enabled": {
+      "default": false, 
+      "description": "Enable this method will learn the IPv6 addresses which are configured on interfaces of a VM with the help of the VMTools software.", 
+      "required": false, 
+      "type": "boolean"
+    }
+  }, 
+  "title": "IPv6 discovery options", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,668 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+      #content {
+        margin: 2ex 5ex 2ex 5ex;
+        width: 100ex;
+        font-family: verdana, aria, helvetica,sans-serif;
+        font-size: 12px;
+      }
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.help_detail {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+</HEAD>
+
+
+
+
+
+
+
+<BODY>
+    <h3>
+      ALBTCPProxyProfile (<a href="schemas_ALBTCPProxyProfile.html">schema</a>)
+    </h3>
+    <p>
+    <span class="api_object_title">TCPProxyProfile</span>
+    <p>
+    <span class="help_detail">Advanced load balancer TCPProxyProfile object</span>
+    
+    
+    
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>aggressive_congestion_avoidance</td>
+            
+            <td>Aggressive congestion avoidance<br><br>Controls the our congestion window to send, normally it's 1
+<br>
+mss, If this option is turned on, we use 10 msses.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>auto_window_growth</td>
+            
+            <td>Auto window growth<br><br>Controls whether the windows are static or supports
+<br>
+autogrowth.
+<br>
+Maximum that it can grow to is limited to 4MB.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>automatic</td>
+            
+            <td>Automatic<br><br>Dynamically pick the relevant parameters for connections.
+<br>
+Allowed in Basic(Allowed values- true) edition, Enterprise
+<br>
+edition.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>cc_algo</td>
+            
+            <td>Cc algo<br><br>Controls the congestion control algorithm we use.
+<br>
+Enum options - CC_ALGO_NEW_RENO, CC_ALGO_CUBIC,
+<br>
+CC_ALGO_HTCP.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as CC_ALGO_NEW_RENO.
+<br>
+</td>
+            
+            <td><a href="types_ALBCongestionAlgo.html">ALBCongestionAlgo</a></td>
+            
+            <td>Default: "CC_ALGO_NEW_RENO"</td>
+          </tr>
+          <tr>
+            <td>congestion_recovery_scaling_factor</td>
+            
+            <td>Congestion recovery scaling factor<br><br>Congestion window scaling factor after recovery.
+<br>
+Allowed values are 0-8.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 8<br>Default: "2"</td>
+          </tr>
+          <tr>
+            <td>idle_connection_timeout</td>
+            
+            <td>Idle connection timeout<br><br>The duration for keepalive probes or session idle timeout.
+<br>
+Max value is 3600 seconds, min is 5.
+<br>
+Set to 0 to allow infinite idle time.
+<br>
+Allowed values are 5-14400.
+<br>
+Special values are 0 - 'infinite'.
+<br>
+Unit is SEC.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 600.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 14400<br>Default: "600"</td>
+          </tr>
+          <tr>
+            <td>idle_connection_type</td>
+            
+            <td>Idle connection type<br><br>Controls the behavior of idle connections.
+<br>
+Enum options - KEEP_ALIVE, CLOSE_IDLE.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as KEEP_ALIVE.
+<br>
+</td>
+            
+            <td><a href="types_ALBIdleConnectionType.html">ALBIdleConnectionType</a></td>
+            
+            <td>Default: "KEEP_ALIVE"</td>
+          </tr>
+          <tr>
+            <td>ignore_time_wait</td>
+            
+            <td>Ignore time wait<br><br>A new SYN is accepted from the same 4-tuple even if there
+<br>
+is already a connection in TIME_WAIT state.
+<br>
+This is equivalent of setting Time Wait Delay to 0.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>ip_dscp</td>
+            
+            <td>Ip dscp<br><br>Controls the value of the Differentiated Services Code
+<br>
+Point field inserted in the IP header.
+<br>
+This has two options   Set to a specific value, or Pass
+<br>
+Through, which uses the incoming DSCP value.
+<br>
+Allowed values are 0-63.
+<br>
+Special values are MAX - 'Passthrough'.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 63<br>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>keepalive_in_halfclose_state</td>
+            
+            <td>Keepalive in halfclose state<br><br>Controls whether to keep the connection alive with
+<br>
+keepalive messages in the TCP half close state.
+<br>
+The interval for sending keepalive messages is 30s.
+<br>
+If a timeout is already configured in the network profile,
+<br>
+this will not override it.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+          <tr>
+            <td>max_retransmissions</td>
+            
+            <td>Max retransmissions<br><br>The number of attempts at retransmit before closing the
+<br>
+connection.
+<br>
+Allowed values are 3-8.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 8.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 3<br>Maximum: 8<br>Default: "8"</td>
+          </tr>
+          <tr>
+            <td>max_segment_size</td>
+            
+            <td>Max segment size<br><br>Maximum TCP segment size.
+<br>
+Allowed values are 512-9000.
+<br>
+Special values are 0 - 'Use Interface MTU'.
+<br>
+Unit is BYTES.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 9000</td>
+          </tr>
+          <tr>
+            <td>max_syn_retransmissions</td>
+            
+            <td>Max syn retransmissions<br><br>The maximum number of attempts at retransmitting a SYN
+<br>
+packet before giving up.
+<br>
+Allowed values are 3-8.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 8.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 3<br>Maximum: 8<br>Default: "8"</td>
+          </tr>
+          <tr>
+            <td>min_rexmt_timeout</td>
+            
+            <td>Min rexmt timeout<br><br>The minimum wait time (in millisec) to retransmit packet.
+<br>
+Allowed values are 50-5000.
+<br>
+Unit is MILLISECONDS.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 50<br>Maximum: 5000</td>
+          </tr>
+          <tr>
+            <td>nagles_algorithm</td>
+            
+            <td>Nagles algorithm<br><br>Consolidates small data packets to send clients fewer but
+<br>
+larger packets.
+<br>
+Adversely affects real time protocols such as telnet or
+<br>
+SSH.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as false.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>reassembly_queue_size</td>
+            
+            <td>Reassembly queue size<br><br>Maximum number of TCP segments that can be queued for
+<br>
+reassembly.
+<br>
+Configuring this to 0 disables the feature and provides
+<br>
+unlimited queuing.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 0.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Default: "0"</td>
+          </tr>
+          <tr>
+            <td>receive_window</td>
+            
+            <td>Receive window<br><br>Size of the receive window.
+<br>
+Allowed values are 2-65536.
+<br>
+Unit is KB.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 64.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 2<br>Maximum: 65536<br>Default: "64"</td>
+          </tr>
+          <tr>
+            <td>reorder_threshold</td>
+            
+            <td>Reorder threshold<br><br>Controls the number of duplicate acks required to trigger
+<br>
+retransmission.
+<br>
+Setting a higher value reduces retransmission caused by
+<br>
+packet reordering.
+<br>
+A larger value is recommended in public cloud environments
+<br>
+where packet reordering is quite common.
+<br>
+The default value is 8 in public cloud platforms (AWS,
+<br>
+Azure, GCP), and 3 in other environments.
+<br>
+Allowed values are 1-100.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 1<br>Maximum: 100</td>
+          </tr>
+          <tr>
+            <td>slow_start_scaling_factor</td>
+            
+            <td>Slow start scaling factor<br><br>Congestion window scaling factor during slow start.
+<br>
+Allowed values are 0-8.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 1.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 8<br>Default: "1"</td>
+          </tr>
+          <tr>
+            <td>time_wait_delay</td>
+            
+            <td>Time wait delay<br><br>The time (in millisec) to wait before closing a connection
+<br>
+in the TIME_WAIT state.
+<br>
+Allowed values are 500-2000.
+<br>
+Special values are 0 - 'immediate'.
+<br>
+Unit is MILLISECONDS.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as 2000.
+<br>
+</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 2000<br>Default: "2000"</td>
+          </tr>
+          <tr>
+            <td>use_interface_mtu</td>
+            
+            <td>Use interface mtu<br><br>Use the interface MTU to calculate the TCP max segment
+<br>
+size.
+<br>
+Default value when not specified in API or module is
+<br>
+interpreted by ALB Controller as true.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Default: "True"</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <br>
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

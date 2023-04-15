@@ -1,0 +1,94 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyNatRuleStatisticsPerEnforcementPoint.html">PolicyNatRuleStatisticsPerEnforcementPoint</a> (<a href="types_PolicyNatRuleStatisticsPerEnforcementPoint.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Gives the statistics of a NAT rule per enforcement point.", 
+  "id": "PolicyNatRuleStatisticsPerEnforcementPoint", 
+  "module_id": "PolicyNAT", 
+  "properties": {
+    "enforcement_point_path": {
+      "description": "Policy Path referencing the enforcement point from where the statistics are fetched.", 
+      "title": "Enforcement point Path", 
+      "type": "string"
+    }, 
+    "rule_path": {
+      "description": "Path of NAT Rule.", 
+      "title": "Path of NAT Rule", 
+      "type": "string"
+    }, 
+    "rule_statistics": {
+      "description": "Gives NAT rule stats on an enforcement point.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PolicyNatRuleStatistics.html">PolicyNatRuleStatistics</A>
+      }, 
+      "readonly": true, 
+      "title": "Rule statistics per enforcement point", 
+      "type": "array"
+    }
+  }, 
+  "title": "Statistics of NAT Rule per enforcement point", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TagInfo.html">TagInfo</a> (<a href="types_TagInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+  }, 
+  "id": "TagInfo", 
+  "module_id": "PolicyTag", 
+  "properties": {
+    "scope": {
+      "default": "", 
+      "description": "Tag searches may optionally be restricted by scope", 
+      "display": {
+        "order": 1
+      }, 
+      "maxLength": 128, 
+      "readonly": false, 
+      "title": "Tag scope", 
+      "type": "string"
+    }, 
+    "tag": {
+      "default": "", 
+      "description": "Identifier meaningful to user with maximum length of 256 characters", 
+      "display": {
+        "order": 2
+      }, 
+      "readonly": false, 
+      "title": "Tag value", 
+      "type": "string"
+    }, 
+    "tagged_objects_count": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Number of objects with assigned with matching scope and tag values", 
+      "type": "int"
+    }
+  }, 
+  "title": "Information about arbitrary key-value pairs that may be attached to an entity", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

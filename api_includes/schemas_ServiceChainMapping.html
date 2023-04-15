@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ServiceChainMapping.html">ServiceChainMapping</a> (<a href="types_ServiceChainMapping.html">type</a>)
+</h3>
+<pre>{
+  "description": "A ServiceInsertionServiceProfile can be part of multiple ServiceChains. ServiceChainMapping for a particular profile will contain a list of all the ServiceChains it's part of. Each Mapping will also contain some metadata to uniquely identify a profile from other profiles.", 
+  "id": "ServiceChainMapping", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "direction": {
+      "description": "Each ServiceChain has forward_path_service_profiles and reverse_path_service_profiles. This property will indicate which of them being used. FORWARD - forward_path_service_profiles REVERSE - reverse_path_service_profiles", 
+      "enum": [
+        "FORWARD", 
+        "REVERSE"
+      ], 
+      "readonly": true, 
+      "title": "Direction", 
+      "type": "string"
+    }, 
+    "service_chain_id": {
+      "description": "A unique id generated for every ServiceChain. This is not a uuid.", 
+      "readonly": true, 
+      "title": "Service Chain id", 
+      "type": "string"
+    }, 
+    "service_index": {
+      "description": "Service Index represents a numerical position of a ServiceInsertionServiceProfile in a ServiceChain. It will be in reverse order. Service Index can point to either forward_path_service_profiles or reverse_path_service_profiles indicated by direction property. Example - For a ServiceChain A-B-C, A will have index of 3, B will have index of 2 and C will have index of 1.", 
+      "readonly": true, 
+      "title": "Service Index", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Service Chain Mapping", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

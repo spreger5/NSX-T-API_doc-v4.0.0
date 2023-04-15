@@ -1,0 +1,95 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbSnatAutoMap.html">LbSnatAutoMap</a> (<a href="types_LbSnatAutoMap.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbSnatTranslation.html">LbSnatTranslation</A>
+  }, 
+  "id": "LbSnatAutoMap", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbSnatAutoMap"
+  }, 
+  "properties": {
+    "port_overload": {
+      "default": 32, 
+      "deprecated": true, 
+      "description": "Both SNAT automap and SNAT IP list modes support port overloading which allows the same SNAT IP and port to be used for multiple backend connections as long as the tuple (source IP, source port, destination IP, destination port, IP protocol) after SNAT is performed is unique. The valid number is 1, 2, 4, 8, 16, 32. This is a deprecated property. The port overload factor is fixed to 32 in load balancer engine. If it is upgraded from an old version, the value would be changed to 32 automatically.", 
+      "maximum": 32, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "port overloading with same SNAT IP and port", 
+      "type": "integer"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_SnatTranslationType.html">SnatTranslationType</A>, 
+      "required": true
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

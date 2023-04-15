@@ -1,0 +1,710 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_infra.html' style='text-decoration: none'> Infra</a> >
+        
+        
+            <a href='policy_infra_certificates.html' style='text-decoration: none'> Certificates</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns information about all the CA bundles</h4><br>
+                      <span class="help_detail">Returns information about all the bundles of trusted CA certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListCaBundles.html">GET /policy/api/v1/infra/cabundles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deletes CA bundle</h4><br>
+                      <span class="help_detail">Deletes the specified bundle of trusted CA certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteCaBundle.html">DELETE /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns information about a CA bundle</h4><br>
+                      <span class="help_detail">Returns information about the specified bundle of trusted CA
+<br>
+certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetCaBundle.html">GET /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Adds or updates a CA bundle</h4><br>
+                      <span class="help_detail">Adds or updates a new bundle of trusted CA certificates.
+<br>
+The bundle must be a concatenation of one or more
+<br>
+PEM-encoded certificates. The PEM-encoded bundle is replaced
+<br>
+with the one provided in the request.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddOrPatchCaBundle.html">PATCH /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Adds or replaces a CA bundle</h4><br>
+                      <span class="help_detail">Adds or replaces a new bundle of trusted CA certificates.
+<br>
+The multipart-uploaded file must be a concatenation of one or more
+<br>
+PEM-encoded certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddOrReplaceCaBundleUpload.html">POST /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Adds or replaces a CA bundle</h4><br>
+                      <span class="help_detail">Adds or replaces a new bundle of trusted CA certificates.
+<br>
+The bundle must be a concatenation of one or more
+<br>
+PEM-encoded certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddOrReplaceCaBundle.html">PUT /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Downloads a CA bundle</h4><br>
+                      <span class="help_detail">Downloads the specified PEM-encoded bundle of trusted CA certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetCaBundlePemFile.html">GET /policy/api/v1/infra/cabundles/&lt;cabundle-id&gt;/pem-file</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return All the User-Facing Components' Certificates</h4><br>
+                      <span class="help_detail">Returns all certificate information viewable by the user, including each
+<br>
+certificate's id; pem_encoded data; and history of the
+<br>
+certificate (who created or modified it and when). For additional
+<br>
+information, include the ?details=true modifier at the end of the request
+<br>
+URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTlsCertificates.html">GET /policy/api/v1/infra/certificates</a>
+                            <br>
+                            
+                            <a href="method_ListTlsCertificates.html">GET /policy/api/v1/global-infra/certificates</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Certificate for the Given Certificate ID</h4><br>
+                      <span class="help_detail">Removes the specified certificate. The private key associated with the
+<br>
+certificate is also deleted.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTlsCertificate.html">DELETE /policy/api/v1/infra/certificates/&lt;certificate-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Show Certificate Data for the Given Certificate ID</h4><br>
+                      <span class="help_detail">Returns information for the specified certificate ID, including the
+<br>
+certificate's id; pem_encoded data; and history of the
+<br>
+certificate (who created or modified it and when). For additional
+<br>
+information, include the ?details=true modifier at the end of the request
+<br>
+URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsCertificate.html">GET /policy/api/v1/infra/certificates/&lt;certificate-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetTlsCertificate.html">GET /policy/api/v1/global-infra/certificates/&lt;certificate-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a New Certificate</h4><br>
+                      <span class="help_detail">Adds a new private-public certificate and, optionally, a private key that
+<br>
+can be applied to one of the user-facing components (appliance management
+<br>
+or edge). The certificate and the key should be stored in PEM format. If
+<br>
+no private key is provided, the certificate is used as a client
+<br>
+certificate in the trust store.
+<br>
+A private key can be uploaded for a CA certificate only if the "purpose"
+<br>
+parameter is set to "signing-ca".
+<br>
+A certificate chain will not be expanded
+<br>
+into separate certificate instances for reference, but would be pushed to
+<br>
+the enforcement point as a single certificate.  This patch method does
+<br>
+not modify an existing certificate.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTlsCertificate.html">PATCH /policy/api/v1/infra/certificates/&lt;certificate-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a New Certificate</h4><br>
+                      <span class="help_detail">Adds a new private-public certificate and, optionally, a private key that
+<br>
+can be applied to one of the user-facing components (appliance management
+<br>
+or edge). The certificate and the key should be stored in PEM format. If
+<br>
+no private key is provided, the certificate is used as a client
+<br>
+certificate in the trust store.
+<br>
+A private key can be uploaded for a CA certificate only if the "purpose"
+<br>
+parameter is set to "signing-ca".
+<br>
+A certificate chain will not be expanded
+<br>
+into separate certificate instances for reference, but would be pushed to
+<br>
+the enforcement point as a single certificate. This PUT method does
+<br>
+not modify an existing certificate.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddTlsCertificate.html">PUT /policy/api/v1/infra/certificates/&lt;certificate-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return All Added CRLs</h4><br>
+                      <span class="help_detail">Returns information about all CRLs. For additional information, include the
+<br>
+?details=true modifier at the end of the request URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTlsCrls.html">GET /policy/api/v1/infra/crls</a>
+                            <br>
+                            
+                            <a href="method_ListTlsCrls.html">GET /policy/api/v1/global-infra/crls</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a CRL</h4><br>
+                      <span class="help_detail">Deletes an existing CRL.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTlsCrl.html">DELETE /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Show CRL Data for the Given CRL id.</h4><br>
+                      <span class="help_detail">Returns information about the specified CRL. For additional information,
+<br>
+include the ?details=true modifier at the end of the request URI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsCrl.html">GET /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetTlsCrl.html">GET /policy/api/v1/global-infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch a Certificate Revocation List</h4><br>
+                      <span class="help_detail">Create or patch a Certificate Revocation List for the given id. The CRL is used to
+<br>
+verify the client certificate status against the revocation lists published by the CA.
+<br>
+For this reason, the administrator needs to add the CRL in certificate repository as well.
+<br>
+The CRL must contain PEM data for a single CRL.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrPatchTlsCrl.html">PATCH /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new Certificate Revocation List</h4><br>
+                      <span class="help_detail">Adds a new certificate revocation list (CRLs). The CRL is used to verify the client
+<br>
+certificate status against the revocation lists published by the CA. For this reason,
+<br>
+the administrator needs to add the CRL in certificate repository as well.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+An X.509 CRL can contain a single CRL or multiple CRLs depending on the PEM data.
+<br>
+- Single CRL: a single CRL is created with the given id.
+<br>
+- Composite CRL: multiple CRLs are generated. Each of the CRL is created with an id
+<br>
+generated based on the given id. First CRL is created with crl-id, second with crl-id-1,
+<br>
+third with crl-id-2, etc.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateTlsCrl.html">POST /policy/api/v1/infra/crls/&lt;crl-id&gt;?action=import</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload a new or updated Certificate Revocation List</h4><br>
+                      <span class="help_detail">Adds or replaces a certificate revocation list (CRLs). The CRL is used to verify the client
+<br>
+certificate status against the revocation lists published by the CA. For this reason,
+<br>
+the administrator needs to add the CRL in certificate repository as well.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the upload content.
+<br>
+An X.509 CRL can contain a single CRL or multiple CRLs depending on the PEM data.
+<br>
+- Single CRL: a single CRL is created with the given id.
+<br>
+- Composite CRL: multiple CRLs are generated. Each of the CRL is created with an id
+<br>
+generated based on the given id. First CRL is created with crl-id, second with crl-id-1,
+<br>
+third with crl-id-2, etc.
+<br>
+Differently from action=import, this method allows multi-part upload of the CRL(s).
+<br>
+The TlsCrl resource returned in the body of the response will have an empty pem_encoded
+<br>
+field, as it may be large. Use a GET request to retrieve the PEM-encoded CRL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadTlsCrl.html">POST /policy/api/v1/infra/crls/&lt;crl-id&gt;?action=upload</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a Certificate Revocation List</h4><br>
+                      <span class="help_detail">Create or replace a Certificate Revocation List for the given id. The CRL is used to
+<br>
+verify the client certificate status against the revocation lists published by the CA.
+<br>
+For this reason, the administrator needs to add the CRL in certificate repository as well.
+<br>
+The CRL must contain PEM data for a single CRL. Revision is required.
+<br>
+A CRL can be in the PEM X.509 format (crl_type=X509) or JSON OneCRL
+<br>
+(crl_type=OneCRL).
+<br>
+If crl_type is not specified, it is auto-detected based on the presence of
+<br>
+fields pem_encoded or one_crl.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateTlsCrl.html">PUT /policy/api/v1/infra/crls/&lt;crl-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return All the Generated CSRs</h4><br>
+                      <span class="help_detail">Returns information about all of the CSRs that have been created.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTlsCsrs.html">GET /policy/api/v1/infra/csrs</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Generate a new self-signed certificate</h4><br>
+                      <span class="help_detail">Creates a new self-signed certificate. A private key is also created at the
+<br>
+same time. This is convenience call that will generate a CSR and then self-sign it.
+<br>
+For validity of non-CA certificates, if a value greater than 825 days is
+<br>
+provided, it will be set to 825 days. No limit is set for CA certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GenerateSelfSignedTlsCertificate.html">POST /policy/api/v1/infra/csrs?action=self_sign</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a CSR</h4><br>
+                      <span class="help_detail">Removes a specified CSR. If a CSR is not used for verification, you can
+<br>
+delete it. Note that the CSR import and upload POST actions automatically
+<br>
+delete the associated CSR.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTlsCsr.html">DELETE /policy/api/v1/infra/csrs/&lt;csr-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Show CSR Data for the Given CSR ID</h4><br>
+                      <span class="help_detail">Returns information about the specified CSR.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsCsr.html">GET /policy/api/v1/infra/csrs/&lt;csr-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Self-Sign the CSR</h4><br>
+                      <span class="help_detail">Self-signs the previously generated CSR. This action is similar to the
+<br>
+import certificate action, but instead of using a public certificate signed
+<br>
+by a CA, the self_sign POST action uses a certificate that is signed with
+<br>
+NSX's own private key.
+<br>
+For validity of non-CA certificates, if a value greater than 825 days is
+<br>
+provided, it will be set to 825 days. No limit is set for CA certificates.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_SelfSignTlsCertificate.html">POST /policy/api/v1/infra/csrs/&lt;csr-id&gt;?action=self_sign</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Generate a New Certificate Signing Request</h4><br>
+                      <span class="help_detail">Creates a new certificate signing request (CSR). A CSR is encrypted text that
+<br>
+contains information about your organization (organization name, country,
+<br>
+and so on) and your Web server's public key, which is a public certificate
+<br>
+the is generated on the server that can be used to forward this request to a
+<br>
+certificate authority (CA). A private key is also usually created at the
+<br>
+same time as the CSR.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GenerateTlsCsr.html">POST /policy/api/v1/infra/csrs/&lt;csr-id&gt;?action=create</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Import a Certificate Associated with an Approved CSR</h4><br>
+                      <span class="help_detail">Imports a certificate authority (CA)-signed certificate for a CSR. This
+<br>
+action links the certificate to the private key created by the CSR. The
+<br>
+pem_encoded string in the request body is the signed certificate provided by
+<br>
+your CA in response to the CSR that you provide to them. The import POST
+<br>
+action automatically deletes the associated CSR.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ImportSignedTlsCertificate.html">POST /policy/api/v1/infra/csrs/&lt;csr-id&gt;?action=import</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Upload the Certificate PEM File Signed by the CA Associated with a CSR</h4><br>
+                      <span class="help_detail">Uploads the certificate authority (CA)-signed certificate. After you send
+<br>
+the certificate request to the CA of your choice, and the CA sends back the
+<br>
+signed certificate, you can use the upload POST action to upload the signed
+<br>
+certificate. The upload action is similar to the import action, but the
+<br>
+upload action allows you to directly upload the PEM-encoded file (signed
+<br>
+certificate) provided by the CA. Like the import POST action, the upload
+<br>
+POST action automatically deletes the associated CSR.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UploadPemSignedTlsCertificate.html">POST /policy/api/v1/infra/csrs/&lt;csr-id&gt;?action=upload</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get CSR PEM File for the Given CSR ID</h4><br>
+                      <span class="help_detail">Downloads the CSR PEM file for a specified CSR. Clients must include an Accept: text/plain request header.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTlsCsrPem.html">GET /policy/api/v1/infra/csrs/&lt;csr-id&gt;/pem-file</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

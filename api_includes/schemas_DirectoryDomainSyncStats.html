@@ -1,0 +1,162 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_DirectoryDomainSyncStats.html">DirectoryDomainSyncStats</a> (<a href="types_DirectoryDomainSyncStats.html">type</a>)
+</h3>
+<pre>{
+  "id": "DirectoryDomainSyncStats", 
+  "module_id": "DirectoryService", 
+  "properties": {
+    "avg_delta_sync_time": {
+      "description": "All the historical delta sync are counted in calculating the average delta sync time in milliseconds.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Average time spent for all historical delta sync", 
+      "type": "integer"
+    }, 
+    "avg_full_sync_time": {
+      "description": "All the historical full sync are counted in calculating the average full sync time in milliseconds.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Average time spent for all historical full sync", 
+      "type": "integer"
+    }, 
+    "current_state": {
+      "description": "Current running state of the directory domain in synchronization life cycle. It could be one of the following five states. SELECTIVE_FULL_SYNC and SELECTIVE_DELTA_SYNC are sync states for selective sync.", 
+      "enum": [
+        "IDLE", 
+        "FULL_SYNC", 
+        "DELTA_SYNC", 
+        "SELECTIVE_FULL_SYNC", 
+        "SELECTIVE_DELTA_SYNC"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Current state of directory domain sync context", 
+      "type": "string"
+    }, 
+    "current_state_begin_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Since what time the current state has begun. The time is expressed in millisecond epoch time.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Current state elapsed time"
+    }, 
+    "num_delta_sync": {
+      "description": "number of successful historical delta sync initiated either by system or by API request.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Total number of successful delta sync", 
+      "type": "integer"
+    }, 
+    "num_full_sync": {
+      "description": "number of successful historical full sync initiated either by system or by API request.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Total number of successful full sync", 
+      "type": "integer"
+    }, 
+    "prev_sync_end_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Directory domain previous sync ending time expressed in millisecond epoch time.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "Previous sync ended time"
+    }, 
+    "prev_sync_error": {
+      "description": "Directory domain previous sync status error if last status was failure.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Previous sync error", 
+      "type": "string"
+    }, 
+    "prev_sync_status": {
+      "description": "Directory domain previous sync status. It could be one of the following two states.", 
+      "enum": [
+        "SUCCESS", 
+        "FAILURE", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Previous sync status", 
+      "type": "string"
+    }, 
+    "prev_sync_type": {
+      "description": "Directory domain previous sync type. It could be one of the following five states. Right after the directory domain is configured, this field is set to IDLE.", 
+      "enum": [
+        "IDLE", 
+        "FULL_SYNC", 
+        "DELTA_SYNC", 
+        "SELECTIVE_FULL_SYNC", 
+        "SELECTIVE_DELTA_SYNC"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Previous sync type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Directory domain synchronization statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,334 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_security.html' style='text-decoration: none'> Security</a> >
+        
+        
+            <a href='policy_security_north_south_security.html' style='text-decoration: none'> North South Security</a> >
+        
+        
+            <a href='policy_security_north_south_security_gateway_firewall.html' style='text-decoration: none'> Gateway Firewall</a> >
+        
+        
+            <a href='policy_security_north_south_security_gateway_firewall_rules.html' style='text-decoration: none'> Rules</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List gateway policies</h4><br>
+                      <span class="help_detail">List all gateway policies for specified Domain.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGatewayPoliciesForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies</a>
+                            <br>
+                            
+                            <a href="method_ListGatewayPoliciesForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/gateway-policies</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete GatewayPolicy</h4><br>
+                      <span class="help_detail">Delete GatewayPolicy</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGatewayPolicy.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read gateway policy</h4><br>
+                      <span class="help_detail">Read gateway policy for a domain.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGatewayPolicyForDomain.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadGatewayPolicyForDomain.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update gateway policy</h4><br>
+                      <span class="help_detail">Update the gateway policy for a domain. This is a full replace.
+<br>
+All the rules are replaced.
+<br>
+Performance Note: If you want to edit several rules in a gateway policy
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGatewayPolicyForDomain.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Revise the positioning of gateway policy</h4><br>
+                      <span class="help_detail">This is used to set a precedence of a gateway policy w.r.t others.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReviseGatewayPolicy.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;?action=revise</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update gateway policy</h4><br>
+                      <span class="help_detail">Update the gateway policy for a domain. This is a full replace.
+<br>
+All the rules are replaced.
+<br>
+Performance Note: If you want to edit several rules in a gateway policy,
+<br>
+use this API. It will perform better than several individual rule APIs.
+<br>
+Just pass all the rules which you wish to edit as embedded rules to it.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceGatewayPolicyForDomain.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List rules</h4><br>
+                      <span class="help_detail">List rules</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGatewayRules.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules</a>
+                            <br>
+                            
+                            <a href="method_ListGatewayRules.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete rule</h4><br>
+                      <span class="help_detail">Delete rule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGatewayRule.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read rule</h4><br>
+                      <span class="help_detail">Read rule</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadGatewayRule.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadGatewayRule.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update gateway rule</h4><br>
+                      <span class="help_detail">Update the gateway rule.
+<br>
+Create new rule if a rule with the rule-id is not already present.
+<br>
+Performance Note: If you want to edit several rules in a gateway policy,
+<br>
+prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;
+<br>
+
+<br>
+Concurrency Note: Concurrent firewall rule creation is not supported under the same Gateway Policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGatewayRule.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Revise the positioning of gateway rule</h4><br>
+                      <span class="help_detail">This is used to re-order a gateway rule within a gateway policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReviseGatewayRule.html">POST /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;?action=revise</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update gateway rule</h4><br>
+                      <span class="help_detail">Update the gateway rule.
+<br>
+Create new rule if a rule with the rule-id is not already present.
+<br>
+Performance Note: If you want to edit several rules in a gateway policy,
+<br>
+prefer below mentioned API for optimal performance.
+<br>
+Pass all the rules which you wish to edit as embedded rules to it.
+<br>
+Use this API - PATCH (or PUT)
+<br>
+/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;
+<br>
+
+<br>
+Concurrency Note: Concurrent firewall rule creation is not supported under the same Gateway Policy.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceGatewayRule.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/gateway-policies/&lt;gateway-policy-id&gt;/rules/&lt;rule-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

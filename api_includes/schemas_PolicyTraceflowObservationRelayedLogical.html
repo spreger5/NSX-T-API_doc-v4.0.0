@@ -1,0 +1,186 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyTraceflowObservationRelayedLogical.html">PolicyTraceflowObservationRelayedLogical</a> (<a href="types_PolicyTraceflowObservationRelayedLogical.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_TraceflowObservationRelayedLogical.html">TraceflowObservationRelayedLogical</A>
+  }, 
+  "id": "PolicyTraceflowObservationRelayedLogical", 
+  "module_id": "PolicyConnectivity", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "PolicyTraceflowObservationRelayedLogical"
+  }, 
+  "properties": {
+    "component_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the component that issued the observation.", 
+      "type": "string"
+    }, 
+    "component_sub_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentSubType.html">TraceflowComponentSubType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The sub type of the component that issued the observation."
+    }, 
+    "component_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentType.html">TraceflowComponentType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The type of the component that issued the observation."
+    }, 
+    "dst_server_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "This field specified the IP address of the destination which the packet will be relayed.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "The IP address of the destination"
+    }, 
+    "logical_comp_uuid": {
+      "description": "This field specified the logical component that relay service located.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the component which relay service located", 
+      "type": "string"
+    }, 
+    "logical_component_path": {
+      "description": "This field specifies the logical component that relay service located on.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The path of the component on which relay service located", 
+      "type": "string"
+    }, 
+    "message_type": {
+      "default": "REQUEST", 
+      "description": "This field specified the message type of the relay service REQUEST - The relay service will relay a request message to the destination server REPLY - The relay service will relay a reply message to the client", 
+      "enum": [
+        "REQUEST", 
+        "REPLY"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "The type of the relay service", 
+      "type": "string"
+    }, 
+    "relay_server_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "This field specified the IP address of the relay service.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "The IP address of relay service"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_TraceflowObservationType.html">TraceflowObservationType</A>, 
+      "default": "TraceflowObservationReceived", 
+      "required": true
+    }, 
+    "sequence_no": {
+      "description": "the hop count for observations on the transport node that a traceflow packet is injected in will be 0. The hop count is incremented each time a subsequent transport node receives the traceflow packet. The sequence number of 999 indicates that the hop count could not be determined for the containing observation.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "the sequence number is the traceflow observation hop count", 
+      "type": "integer"
+    }, 
+    "site_path": {
+      "description": "This field contains the site path where this observation was generated.", 
+      "readonly": true, 
+      "title": "Policy path of the federated site", 
+      "type": "string"
+    }, 
+    "timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the observation was created by the transport node (milliseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node"
+    }, 
+    "timestamp_micro": {
+      "description": "Timestamp when the observation was created by the transport node (microseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node", 
+      "type": "integer"
+    }, 
+    "transport_node_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "id of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "name of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_type": {
+      "$ref": "<A HREF="schemas_TransportNodeType.html">TransportNodeType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "type of the transport node that observed a traceflow packet"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

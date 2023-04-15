@@ -1,0 +1,327 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_GridConfiguration.html">GridConfiguration</a> (<a href="types_GridConfiguration.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Represents configuration of a Grid or Table widget.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_WidgetConfiguration.html">WidgetConfiguration</A>
+  }, 
+  "id": "GridConfiguration", 
+  "module_id": "NsxDashboard", 
+  "nsx_feature": "NsxDashboardWidgetConfig", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "GridConfiguration"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "columns": {
+      "description": "Array of columns of a Grid widget", 
+      "items": {
+        "$ref": "<A HREF="schemas_ColumnItem.html">ColumnItem</A>
+      }, 
+      "required": true, 
+      "title": "Columns", 
+      "type": "array"
+    }, 
+    "condition": {
+      "description": "If the condition is met then the widget will be displayed to UI. If no condition is provided, then the widget will be displayed unconditionally.", 
+      "maxLength": 1024, 
+      "title": "Expression for evaluating condition", 
+      "type": "string"
+    }, 
+    "datasources": {
+      "description": "The 'datasources' represent the sources from which data will be fetched. Currently, only NSX-API is supported as a 'default' datasource. An example of specifying 'default' datasource along with the urls to fetch data from is given at 'example_request' section of 'CreateWidgetConfiguration' API.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Datasource.html">Datasource</A>
+      }, 
+      "minItems": 0, 
+      "title": "Array of Datasource Instances with their relative urls", 
+      "type": "array"
+    }, 
+    "default_filter_value": {
+      "description": "Default filter values to be passed to datasources. This will be used when the report is requested without filter values.", 
+      "items": {
+        "$ref": "<A HREF="schemas_DefaultFilterValue.html">DefaultFilterValue</A>
+      }, 
+      "title": "Default filter value to be passed to datasources", 
+      "type": "array"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "description": "Title of the widget. If display_name is omitted, the widget will be shown without a title.", 
+      "maxLength": 255, 
+      "title": "Widget Title", 
+      "type": "string"
+    }, 
+    "drilldown_id": {
+      "description": "Id of drilldown widget, if any. Id should be a valid id of an existing widget. A widget is considered as drilldown widget when it is associated with any other widget and provides more detailed information about any data item from the parent widget.", 
+      "maxLength": 255, 
+      "title": "Id of drilldown widget", 
+      "type": "string"
+    }, 
+    "feature_set": {
+      "$ref": "<A HREF="schemas_FeatureSet.html">FeatureSet</A>, 
+      "description": "Features required to view the widget.", 
+      "title": "Features required to view the widget"
+    }, 
+    "filter": {
+      "deprecated": true, 
+      "description": "Id of filter widget for subscription, if any. Id should be a valid id of an existing filter widget. Filter widget should be from the same view. Datasource URLs should have placeholder values equal to filter alias to accept the filter value on filter change. This field is deprecated instead use 'filters' property.", 
+      "title": "Id of filter widget for subscription", 
+      "type": "string"
+    }, 
+    "filter_value_required": {
+      "default": true, 
+      "description": "Flag to indicate that widget will continue to work without filter value. If this flag is set to false then default_filter_value is manadatory.", 
+      "title": "Flag to indicate if filter value is necessary", 
+      "type": "boolean"
+    }, 
+    "filters": {
+      "description": "A List of filter applied to this widget configuration. This will be used to identify the filters applied to this widget.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "A List of filter ids applied to this widget configuration", 
+      "type": "array"
+    }, 
+    "footer": {
+      "$ref": "<A HREF="schemas_Footer.html">Footer</A>
+    }, 
+    "icons": {
+      "description": "Icons to be applied at dashboard for widgets and UI elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_Icon.html">Icon</A>
+      }, 
+      "title": "Icons", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "is_drilldown": {
+      "default": false, 
+      "description": "Set to true if this widget should be used as a drilldown.", 
+      "title": "Set as a drilldown widget", 
+      "type": "boolean"
+    }, 
+    "legend": {
+      "$ref": "<A HREF="schemas_Legend.html">Legend</A>, 
+      "description": "Legend to be displayed. If legend is not needed, do not include it.", 
+      "title": "Legend for the widget"
+    }, 
+    "page_size": {
+      "default": 30, 
+      "description": "Number of records per page. page_size will be effective only when the urls provided in the datasource support paging.", 
+      "title": "Page Size", 
+      "type": "int"
+    }, 
+    "plot_configs": {
+      "description": "List of plotting configuration for a given widget. Widget plotting configurations which are common across all the widgets types should be define here.", 
+      "items": {
+        "$ref": "<A HREF="schemas_WidgetPlotConfiguration.html">WidgetPlotConfiguration</A>
+      }, 
+      "required": false, 
+      "title": "List of plotting configuration for a given widget.", 
+      "type": "array"
+    }, 
+    "resource_type": {
+      "description": "Supported visualization types are LabelValueConfiguration, DonutConfiguration, GridConfiguration, StatsConfiguration, MultiWidgetConfiguration, GraphConfiguration, ContainerConfiguration, CustomWidgetConfiguration, CustomFilterWidgetConfiguration, TimeRangeDropdownFilterWidgetConfiguration, SpacerWidgetConfiguration, LegendWidgetConfiguration and DropdownFilterWidgetConfiguration.", 
+      "enum": [
+        "LabelValueConfiguration", 
+        "DonutConfiguration", 
+        "MultiWidgetConfiguration", 
+        "ContainerConfiguration", 
+        "StatsConfiguration", 
+        "GridConfiguration", 
+        "GraphConfiguration", 
+        "CustomWidgetConfiguration", 
+        "CustomFilterWidgetConfiguration", 
+        "TimeRangeDropdownFilterWidgetConfiguration", 
+        "DropdownFilterWidgetConfiguration", 
+        "SpacerWidgetConfiguration", 
+        "LegendWidgetConfiguration"
+      ], 
+      "maxLength": 255, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Widget visualization type", 
+      "type": "string"
+    }, 
+    "row_list_fields": {
+      "description": "Rows of grid or table are formed from the list of objects returned by a row list field.", 
+      "items": {
+        "$ref": "<A HREF="schemas_RowListField.html">RowListField</A>
+      }, 
+      "minItems": 1, 
+      "required": true, 
+      "title": "List of fields from which rows are formed", 
+      "type": "array"
+    }, 
+    "rowspan": {
+      "description": "Represents the vertical span of the widget / container. 1 Row span is equal to 20px.", 
+      "minimum": 1, 
+      "title": "Vertical span", 
+      "type": "int"
+    }, 
+    "shared": {
+      "deprecated": true, 
+      "description": "Please use the property 'shared' of View instead of this. The widgets of a shared view are visible to other users.", 
+      "title": "Visiblity of widgets to other users", 
+      "type": "boolean"
+    }, 
+    "show_header": {
+      "description": "If the value of this field is set to true then card header will be displayed otherwise only card will be displayed without header.", 
+      "title": "This decides to show the container header or not.", 
+      "type": "boolean"
+    }, 
+    "span": {
+      "description": "Represents the horizontal span of the widget / container.", 
+      "maximum": 12, 
+      "minimum": 1, 
+      "title": "Horizontal span", 
+      "type": "int"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "weight": {
+      "deprecated": true, 
+      "description": "Specify relavite weight in WidgetItem for placement in a view. Please see WidgetItem for details.", 
+      "title": "Weightage or placement of the widget or container", 
+      "type": "int"
+    }
+  }, 
+  "title": "Grid Configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

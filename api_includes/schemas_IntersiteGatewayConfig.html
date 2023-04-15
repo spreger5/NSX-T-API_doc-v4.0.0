@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IntersiteGatewayConfig.html">IntersiteGatewayConfig</a> (<a href="types_IntersiteGatewayConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Intersite gateway configuration.", 
+  "id": "IntersiteGatewayConfig", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "fallback_sites": {
+      "description": "Fallback site to be used as new primary site on current primary site failure. Disaster recovery must be initiated via API/UI. Fallback site configuration is supported only for T0 gateway. T1 gateway will follow T0 gateway's primary site during disaster recovery.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Fallback sites", 
+      "type": "array"
+    }, 
+    "intersite_transit_subnet": {
+      "default": "169.254.32.0/20", 
+      "description": "IPv4 subnet for inter-site transit segment connecting service routers across sites for stretched gateway. For IPv6 link local subnet is auto configured.", 
+      "format": "ip-cidr-block", 
+      "required": false, 
+      "title": "Transit subnet in CIDR format", 
+      "type": "string"
+    }, 
+    "last_admin_active_epoch": {
+      "description": "Epoch(in seconds) is auto updated based on system current timestamp when primary locale service is updated. It is used for resolving conflict during site failover. If system clock not in sync then User can optionally override this. New value must be higher than the current value.", 
+      "maximum": 4294967295, 
+      "required": false, 
+      "title": "Epoch of last time admin changing active LocaleServices", 
+      "type": "integer"
+    }, 
+    "primary_site_path": {
+      "description": "Primary egress site for gateway. T0/T1 gateway in Active/Standby mode supports stateful services on primary site. In this mode primary site must be set if gateway is stretched to more than one site. For T0 gateway in Active/Active primary site is optional field. If set then secondary site prefers routes learned from primary over locally learned routes. This field is not applicable for T1 gateway with no services.", 
+      "required": false, 
+      "title": "Primary egress site for gateway.", 
+      "type": "string"
+    }
+  }, 
+  "title": "Intersite gateway configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

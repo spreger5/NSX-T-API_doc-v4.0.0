@@ -1,0 +1,114 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostSwitchState.html">HostSwitchState</a> (<a href="types_HostSwitchState.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "id": "HostSwitchState", 
+  "module_id": "TransportNode", 
+  "properties": {
+    "endpoints": {
+      "items": {
+        "$ref": "<A HREF="schemas_Endpoint.html">Endpoint</A>
+      }, 
+      "readonly": true, 
+      "title": "List of virtual tunnel endpoints which are configured on this switch", 
+      "type": "array"
+    }, 
+    "host_switch_id": {
+      "readonly": true, 
+      "title": "External ID of the HostSwitch", 
+      "type": "string"
+    }, 
+    "host_switch_name": {
+      "description": "The name must be unique among all host switches specified in a given Transport Node.", 
+      "readonly": true, 
+      "title": "HostSwitch name. This name will be used to reference this HostSwitch.", 
+      "type": "string"
+    }, 
+    "host_switch_type": {
+      "default": "NVDS", 
+      "description": "VDS represents VMware vSphere Distributed Switch from vSphere that is used as HostSwitch through TransportNode or TransportNodeProfile configuration. When VDS is used as a HostSwitch, Hosts have to be added to VDS from vSphere and VDS instance is created on Hosts. To configure NSX on such hosts, you can use this VDS as a HostSwitch from NSX manager. vCenter has the ownership of MTU, LAG, NIOC and LLDP configuration of such VDS backed HostSwitch. Remaining configuration (e.g. UplinkHostswitchProfile) will be managed by NSX. NVDS represents NSX Virtual Switch which is NSX native HostSwitch. All configurations of NVDS will be managed by NSX.", 
+      "enum": [
+        "NVDS", 
+        "VDS"
+      ], 
+      "nsx_feature": "NsxtOnVds", 
+      "required": false, 
+      "title": "Type of HostSwitch", 
+      "type": "string"
+    }, 
+    "transport_zone_ids": {
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "title": "List of Ids of TransportZones this HostSwitch belongs to", 
+      "type": "array"
+    }
+  }, 
+  "title": "Host Switch State", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalRouterPortStatisticsPerNode.html">LogicalRouterPortStatisticsPerNode</a> (<a href="types_LogicalRouterPortStatisticsPerNode.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_AggregatedLogicalRouterPortCounters.html">AggregatedLogicalRouterPortCounters</A>
+  }, 
+  "id": "LogicalRouterPortStatisticsPerNode", 
+  "module_id": "AggSvcLogicalRouterPort", 
+  "properties": {
+    "last_update_timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "Timestamp when the data was last updated; unset if data source has never updated the data."
+    }, 
+    "rx": {
+      "$ref": "<A HREF="schemas_LogicalRouterPortCounters.html">LogicalRouterPortCounters</A>, 
+      "readonly": true, 
+      "required": false
+    }, 
+    "sub_cluster_id": {
+      "description": "The subcluster ID of logical router port. Active-Active service router cluster forms pariwise sub cluster of nodes and syncs states among them.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the Pairwise subcluster in Active-Active service router cluster", 
+      "type": "string"
+    }, 
+    "transport_node_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "The ID of the TransportNode", 
+      "type": "string"
+    }, 
+    "tx": {
+      "$ref": "<A HREF="schemas_LogicalRouterPortCounters.html">LogicalRouterPortCounters</A>, 
+      "readonly": true, 
+      "required": false
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

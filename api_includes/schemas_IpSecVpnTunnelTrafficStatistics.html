@@ -1,0 +1,205 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IpSecVpnTunnelTrafficStatistics.html">IpSecVpnTunnelTrafficStatistics</a> (<a href="types_IpSecVpnTunnelTrafficStatistics.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "IPSec VPN tunnel traffic statistics.", 
+  "id": "IpSecVpnTunnelTrafficStatistics", 
+  "module_id": "PolicyVpnStats", 
+  "properties": {
+    "bytes_in": {
+      "description": "Total number of incoming bytes on inbound Security association.", 
+      "readonly": true, 
+      "title": "Bytes in", 
+      "type": "integer"
+    }, 
+    "bytes_out": {
+      "description": "Total number of outgoing bytes on outbound Security association.", 
+      "readonly": true, 
+      "title": "Bytes out", 
+      "type": "integer"
+    }, 
+    "decryption_failures": {
+      "description": "Total number of packets dropped due to decryption failures.", 
+      "readonly": true, 
+      "title": "Decryption failures", 
+      "type": "integer"
+    }, 
+    "dropped_packets_in": {
+      "description": "Total number of incoming packets dropped on inbound security association.", 
+      "readonly": true, 
+      "title": "Dropped incoming packets", 
+      "type": "integer"
+    }, 
+    "dropped_packets_out": {
+      "description": "Total number of outgoing packets dropped on outbound security association.", 
+      "readonly": true, 
+      "title": "Dropped outgoing packets", 
+      "type": "integer"
+    }, 
+    "encryption_failures": {
+      "description": "Total number of packets dropped because of failure in encryption.", 
+      "readonly": true, 
+      "title": "Encryption failures", 
+      "type": "integer"
+    }, 
+    "integrity_failures": {
+      "description": "Total number of packets dropped due to integrity failures.", 
+      "readonly": true, 
+      "title": "Integrity failures", 
+      "type": "integer"
+    }, 
+    "local_subnet": {
+      "description": "Tunnel local subnet in IPv4 CIDR Block format.", 
+      "readonly": true, 
+      "title": "Local subnet", 
+      "type": "string"
+    }, 
+    "nomatching_policy_errors": {
+      "description": "Number of packets dropped because of no matching policy is available.", 
+      "readonly": true, 
+      "title": "Nomatching Policy errors", 
+      "type": "integer"
+    }, 
+    "packets_in": {
+      "description": "Total number of incoming packets on inbound Security association.", 
+      "readonly": true, 
+      "title": "Packets in", 
+      "type": "integer"
+    }, 
+    "packets_out": {
+      "description": "Total number of outgoing packets on outbound Security association.", 
+      "readonly": true, 
+      "title": "Packets out", 
+      "type": "integer"
+    }, 
+    "packets_received_other_error": {
+      "description": "Total number of incoming packets dropped on inbound Security association.", 
+      "readonly": true, 
+      "title": "Packets received other error", 
+      "type": "integer"
+    }, 
+    "packets_sent_other_error": {
+      "description": "Total number of packets dropped while sending for any reason.", 
+      "readonly": true, 
+      "title": "Packets sent other error", 
+      "type": "integer"
+    }, 
+    "peer_subnet": {
+      "description": "Tunnel peer subnet in IPv4 CIDR Block format.", 
+      "readonly": true, 
+      "title": "Peer subnet", 
+      "type": "string"
+    }, 
+    "policy_id": {
+      "description": "Policy UUID of IPSec Tunnel.", 
+      "readonly": true, 
+      "title": "Policy Identifier", 
+      "type": "string"
+    }, 
+    "replay_errors": {
+      "description": "Total number of packets dropped due to replay check on that Security association.", 
+      "readonly": true, 
+      "title": "Replay errors", 
+      "type": "integer"
+    }, 
+    "sa_mismatch_errors_in": {
+      "description": "Totoal number of security association mismatch errors on incoming packets.", 
+      "readonly": true, 
+      "title": "Security association mismatch errors on incoming packets.", 
+      "type": "integer"
+    }, 
+    "sa_mismatch_errors_out": {
+      "description": "Totoal number of security association mismatch errors on outgoing packets.", 
+      "readonly": true, 
+      "title": "Security association mismatch errors on outgoing packets", 
+      "type": "integer"
+    }, 
+    "seq_number_overflow_error": {
+      "description": "Total number of packets dropped while sending due to overflow in sequence number.", 
+      "readonly": true, 
+      "title": "Sequence number overflow error", 
+      "type": "integer"
+    }, 
+    "tunnel_down_reason": {
+      "description": "Gives the detailed reason about the tunnel when it is down. If tunnel is UP tunnel down reason will be empty.", 
+      "readonly": true, 
+      "title": "Tunnel down reason", 
+      "type": "string"
+    }, 
+    "tunnel_status": {
+      "description": "Specifies the status of tunnel, if it is UP/DOWN.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "readonly": true, 
+      "title": "Tunnel Status", 
+      "type": "string"
+    }
+  }, 
+  "title": "IPSec VPN tunnel traffic statistics", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

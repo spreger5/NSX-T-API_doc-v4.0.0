@@ -1,0 +1,207 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ImportTask.html">ImportTask</a> (<a href="types_ImportTask.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "This object holds the information of the import task.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyTask.html">PolicyTask</A>
+  }, 
+  "id": "ImportTask", 
+  "module_id": "PolicyTask", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "async_response_available": {
+      "display": {
+        "order": 13
+      }, 
+      "readonly": true, 
+      "title": "True if response for asynchronous request is available", 
+      "type": "boolean"
+    }, 
+    "cancelable": {
+      "display": {
+        "order": 8
+      }, 
+      "readonly": true, 
+      "title": "True if this task can be canceled", 
+      "type": "boolean"
+    }, 
+    "description": {
+      "display": {
+        "order": 2
+      }, 
+      "readonly": true, 
+      "title": "Description of the task", 
+      "type": "string"
+    }, 
+    "draft_path": {
+      "description": "Policy path of a draft in which the imported configuration gets stored after completion of import task.", 
+      "readonly": true, 
+      "title": "Policy path of a draft", 
+      "type": "string"
+    }, 
+    "end_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "display": {
+        "order": 6
+      }, 
+      "readonly": true, 
+      "title": "The end time of the task in epoch milliseconds"
+    }, 
+    "failure_msg": {
+      "description": "This property holds the reason of the task failure, if any.", 
+      "readonly": true, 
+      "title": "Reason of the task failure", 
+      "type": "string"
+    }, 
+    "id": {
+      "display": {
+        "order": 1
+      }, 
+      "readonly": true, 
+      "title": "Identifier for this task", 
+      "type": "string"
+    }, 
+    "message": {
+      "display": {
+        "order": 4
+      }, 
+      "readonly": true, 
+      "title": "A message describing the disposition of the task", 
+      "type": "string"
+    }, 
+    "progress": {
+      "display": {
+        "order": 7
+      }, 
+      "maximum": 100, 
+      "minimum": 0, 
+      "readonly": true, 
+      "title": "Task progress if known, from 0 to 100", 
+      "type": "integer"
+    }, 
+    "request_method": {
+      "display": {
+        "order": 12
+      }, 
+      "readonly": true, 
+      "title": "HTTP request method", 
+      "type": "string"
+    }, 
+    "request_uri": {
+      "display": {
+        "order": 11
+      }, 
+      "readonly": true, 
+      "title": "URI of the method invocation that spawned this task", 
+      "type": "string"
+    }, 
+    "start_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "display": {
+        "order": 5
+      }, 
+      "readonly": true, 
+      "title": "The start time of the task in epoch milliseconds"
+    }, 
+    "status": {
+      "$ref": "<A HREF="schemas_TaskStatus.html">TaskStatus</A>, 
+      "display": {
+        "order": 3
+      }, 
+      "readonly": true, 
+      "title": "Current status of the task"
+    }, 
+    "user": {
+      "display": {
+        "order": 10
+      }, 
+      "readonly": true, 
+      "title": "Name of the user who created this task", 
+      "type": "string"
+    }
+  }, 
+  "title": "Import task information", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

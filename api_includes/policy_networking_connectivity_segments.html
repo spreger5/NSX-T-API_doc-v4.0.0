@@ -1,0 +1,3173 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='policy_networking_connectivity.html' style='text-decoration: none'> Connectivity</a> >
+        
+        
+            <a href='policy_networking_connectivity_segments.html' style='text-decoration: none'> Segments</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get Group discovery profile binding map</h4><br>
+                      <span class="help_detail">API will get Group discovery profile binding map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListGroupDiscoveryProfileBindings.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListGroupDiscoveryProfileBindings.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Group discovery profile binding map</h4><br>
+                      <span class="help_detail">API will delete Group discovery profile binding map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteGroupDiscoveryProfileBinding.html">DELETE /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps/&lt;discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Group discovery profile binding map</h4><br>
+                      <span class="help_detail">API will get Group discovery profile binding map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupDiscoveryProfileBinding.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps/&lt;discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetGroupDiscoveryProfileBinding.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps/&lt;discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update Group discovery profile binding map</h4><br>
+                      <span class="help_detail">API will create or update Group discovery profile binding map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchGroupDiscoveryProfileBinding.html">PATCH /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps/&lt;discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Group discovery profile binding map</h4><br>
+                      <span class="help_detail">API will update Group discovery profile binding map</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateGroupDiscoveryProfileBinding.html">PUT /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/discovery-profile-binding-maps/&lt;discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Group Monitoring Profile Binding Map.</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Group Monitoring Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetGroupMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/group-monitoring-profile-binding-maps/&lt;group-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetGroupMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/domains/&lt;domain-id&gt;/groups/&lt;group-id&gt;/group-monitoring-profile-binding-maps/&lt;group-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List IP Discovery Profiles</h4><br>
+                      <span class="help_detail">API will list all IP Discovery Profiles active in current discovery profile id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPDiscoveryProfiles.html">GET /policy/api/v1/global-infra/ip-discovery-profiles</a>
+                            <br>
+                            
+                            <a href="method_GetIPDiscoveryProfiles.html">GET /policy/api/v1/infra/ip-discovery-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete IP Discovery Profile</h4><br>
+                      <span class="help_detail">API will delete IP Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIPDiscoveryProfile.html">DELETE /policy/api/v1/global-infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteIPDiscoveryProfile.html">DELETE /policy/api/v1/infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IP Discovery Profile</h4><br>
+                      <span class="help_detail">API will get IP Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetIPDiscoveryProfile.html">GET /policy/api/v1/global-infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetIPDiscoveryProfile.html">GET /policy/api/v1/infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create IP Discovery Profile</h4><br>
+                      <span class="help_detail">API will create IP Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIPDiscoveryProfile.html">PATCH /policy/api/v1/global-infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateIPDiscoveryProfile.html">PATCH /policy/api/v1/infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update IP Discovery Profile</h4><br>
+                      <span class="help_detail">API will update IP Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIPDiscoveryProfile.html">PUT /policy/api/v1/global-infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateIPDiscoveryProfile.html">PUT /policy/api/v1/infra/ip-discovery-profiles/&lt;ip-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Mac Discovery Profiles</h4><br>
+                      <span class="help_detail">API will list all Mac Discovery Profiles active in current discovery profile id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMacDiscoveryProfiles.html">GET /policy/api/v1/global-infra/mac-discovery-profiles</a>
+                            <br>
+                            
+                            <a href="method_GetMacDiscoveryProfiles.html">GET /policy/api/v1/infra/mac-discovery-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Mac Discovery Profile</h4><br>
+                      <span class="help_detail">API will delete Mac Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteMacDiscoveryProfile.html">DELETE /policy/api/v1/infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteMacDiscoveryProfile.html">DELETE /policy/api/v1/global-infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Mac Discovery Profile</h4><br>
+                      <span class="help_detail">API will get Mac Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetMacDiscoveryProfile.html">GET /policy/api/v1/infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetMacDiscoveryProfile.html">GET /policy/api/v1/global-infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Mac Discovery Profile</h4><br>
+                      <span class="help_detail">API will create Mac Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateMacDiscoveryProfile.html">PATCH /policy/api/v1/infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateMacDiscoveryProfile.html">PATCH /policy/api/v1/global-infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Mac Discovery Profile</h4><br>
+                      <span class="help_detail">API will update Mac Discovery profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateMacDiscoveryProfile.html">PUT /policy/api/v1/infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateMacDiscoveryProfile.html">PUT /policy/api/v1/global-infra/mac-discovery-profiles/&lt;mac-discovery-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List QoS Profiles</h4><br>
+                      <span class="help_detail">API will list all QoS profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListQoSProfiles.html">GET /policy/api/v1/infra/qos-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListQoSProfiles.html">GET /policy/api/v1/global-infra/qos-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete QoS profile</h4><br>
+                      <span class="help_detail">API will delete QoS profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteQoSProfile.html">DELETE /policy/api/v1/infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteQoSProfile.html">DELETE /policy/api/v1/global-infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Details of QoS profile
+</h4><br>
+                      <span class="help_detail">API will return details of QoS profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadQoSProfile.html">GET /policy/api/v1/infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadQoSProfile.html">GET /policy/api/v1/global-infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch QoS profile.</h4><br>
+                      <span class="help_detail">Create a new QoS profile if the QoS profile with
+<br>
+given id does not already exist. If the QoS profile with the
+<br>
+given id already exists, patch with the existing QoS profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchQoSProfile.html">PATCH /policy/api/v1/infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchQoSProfile.html">PATCH /policy/api/v1/global-infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or Replace QoS profile.</h4><br>
+                      <span class="help_detail">Create or Replace QoS profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceQoSProfile.html">PUT /policy/api/v1/infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceQoSProfile.html">PUT /policy/api/v1/global-infra/qos-profiles/&lt;qos-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List segment security profiles</h4><br>
+                      <span class="help_detail">API will list all segment security profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentSecurityProfiles.html">GET /policy/api/v1/global-infra/segment-security-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentSecurityProfiles.html">GET /policy/api/v1/infra/segment-security-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>DELETE segment security profile</h4><br>
+                      <span class="help_detail">API will delete segment security profile with the given id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentSecurityProfile.html">DELETE /policy/api/v1/global-infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteSegmentSecurityProfile.html">DELETE /policy/api/v1/infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>GET Segment security profile id</h4><br>
+                      <span class="help_detail">API will return details of the segment security profile with given id. If the
+<br>
+profile does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentSecurityProfile.html">GET /policy/api/v1/global-infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentSecurityProfile.html">GET /policy/api/v1/infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>PATCH segment security profile id</h4><br>
+                      <span class="help_detail">Create a new segment security profile if the segment security profile with given id does not
+<br>
+exist. Otherwise, PATCH the existing segment security profile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentSecurityProfile.html">PATCH /policy/api/v1/global-infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchSegmentSecurityProfile.html">PATCH /policy/api/v1/infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>PUT segment security profile id</h4><br>
+                      <span class="help_detail">Create or replace a segment security profile
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateSegmentSecurityProfile.html">PUT /policy/api/v1/global-infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrUpdateSegmentSecurityProfile.html">PUT /policy/api/v1/infra/segment-security-profiles/&lt;segment-security-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List all segments under infra</h4><br>
+                      <span class="help_detail">Paginated list of all segments under infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAllInfraSegments.html">GET /policy/api/v1/infra/segments</a>
+                            <br>
+                            
+                            <a href="method_ListAllInfraSegments.html">GET /policy/api/v1/global-infra/segments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Port Discovery Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Port Discovery Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraPortDiscoveryBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraPortDiscoveryBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Infra Port Discovery Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Infra Port Discovery Profile Binding Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraPortDiscoveryBinding.html">DELETE /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteInfraPortDiscoveryBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Port Discovery Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortDiscoveryBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortDiscoveryBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Infra Port Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraPortDiscoveryBinding.html">PATCH /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchInfraPortDiscoveryBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Port Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraPortDiscoveryBinding.html">PUT /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateInfraPortDiscoveryBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Port Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Port Monitoring Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraPortMonitoringBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraPortMonitoringBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Infra Port Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Infra Port Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraPortMonitoringBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortMonitoringBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortMonitoringBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Infra Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraPortMonitoringBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraPortMonitoringBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Infra Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Port Monitoring Profile Binding Map mirror stack status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/ports/&lt;infra-port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Segment Discovery Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Segment Discovery Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentDiscoveryBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentDiscoveryBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment Discovery Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment Discovery Profile Binding Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentDiscoveryBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Segment Discovery Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentDiscoveryBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentDiscoveryBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Infra Segment Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentDiscoveryBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Segment Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraSegmentDiscoveryBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Infra Segment Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Infra Segment Monitoring Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentMonitoringBindings.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentMonitoringBindings.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Infra Segment Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Infra Segment Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentMonitoringBinding.html">DELETE /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBinding.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBinding.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create infra segment monitoring profile binding map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentMonitoringBinding.html">PATCH /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Infra Segment Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraSegmentMonitoringBinding.html">PUT /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Infra Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Infra Segment Monitoring Profile Binding Map mirror stack status.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/segments/&lt;infra-segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete infra segment</h4><br>
+                      <span class="help_detail">Delete infra segment</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegment.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Force delete infra segment</h4><br>
+                      <span class="help_detail">Force delete bypasses validations during segment deletion. This may result in an inconsistent connectivity.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ForceDeleteInfraSegment.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;?force=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read infra segment</h4><br>
+                      <span class="help_detail">Read infra segment
+<br>
+Note:
+<br>
+Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+"l2_extension" object in the PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+Also note that l2vpn path included in the  error messages returned from validation may include the new VPN path
+<br>
+instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, update the segment with specified attributes.
+<br>
+
+<br>
+Force parameter is required when workload connectivity is indirectly impacted
+<br>
+with the current update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentWithForce.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;?force=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, update the segment with specified attributes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegment.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a infra segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, replace the segment with this object.
+<br>
+Note:
+<br>
+Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+"l2_extension" object in the PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+Also note that l2vpn path included in the Alarm, GPRR, error messages returned from validation may include the new VPN path
+<br>
+instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceInfraSegment.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a infra segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, replace the segment with this object.
+<br>
+
+<br>
+Force parameter is required when workload connectivity is indirectly impacted
+<br>
+with the current replacement.
+<br>
+Note:
+<br>
+  Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+  "l2_extension" object in the PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+  instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+  Also note that l2vpn path included in the Alarm, GPRR, error messages returned from validation may include the new VPN path
+<br>
+  instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceInfraSegmentWithForce.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;?force=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get downlink port Address Resolution Protocol Proxies for infra segment in CSV format</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for downlink port on connected to the segment in CSV format
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForInfraSegmentInCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForInfraSegmentInCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get downlink port Address Resolution Protocol Proxies for infra segment</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for downlink port on connected to the segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForInfraSegment.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/arp-proxy</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForInfraSegment.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/arp-proxy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment bridge end point statistics using segment ID and profile path.</h4><br>
+                      <span class="help_detail">Get detailed information on infra segment bridge end point statistics using segment ID and profile path.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InfraSegmentBridgeEndpointStatistics.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/bep-statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment bridge end point status using segment ID and profile path.</h4><br>
+                      <span class="help_detail">Get detailed information on Tier-1 segment bridge end point status using segment ID and profile path.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InfraSegmentBridgeEndpointStatus.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/bep-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment MAC table in CSV</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMacTableInCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/mac-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMacTableInCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment MAC table</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentMacTable.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/mac-table</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentMacTable.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List infra segment ports</h4><br>
+                      <span class="help_detail">List all the ports for an infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentPorts.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentPorts.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an infra segment port</h4><br>
+                      <span class="help_detail">Delete an infra segment port by giving ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentPort.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteInfraSegmentPort.html">DELETE /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port by ID</h4><br>
+                      <span class="help_detail">Get detail information on an infra segment port by giving ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPort.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPort.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch an infra segment port</h4><br>
+                      <span class="help_detail">Create an infra segment port if it does not exist based on the IDs, or update existing port
+<br>
+information by replacing the port object fields which presents in the request body.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentPort.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchInfraSegmentPort.html">PATCH /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update an infra segment port</h4><br>
+                      <span class="help_detail">Create an infra segment port if it does not exist based on the IDs, or update existing port
+<br>
+information by replacing the port object already exists.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceInfraSegmentPort.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceInfraSegmentPort.html">PUT /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port MAC table in CSV</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortMacTableInCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortMacTableInCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC table for infra segment port</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortMacTable.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortMacTable.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port QoS Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Port QoS Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraPortQoSBindings.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraPortQoSBindings.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port QoS Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Port QoS Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraPortQoSBinding.html">DELETE /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteInfraPortQoSBinding.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Port QoS Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraPortQoSBinding.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraPortQoSBinding.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Port QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraPortQoSBinding.html">PATCH /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchInfraPortQoSBinding.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Port QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraPortQoSBinding.html">PUT /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdateInfraPortQoSBinding.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List infra segment port security profile binding maps</h4><br>
+                      <span class="help_detail">API will list all port security profile binding maps.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentPortSecurityProfileBindings.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentPortSecurityProfileBindings.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the infra segment port security profile binding map</h4><br>
+                      <span class="help_detail">API will delete the port security profile binding map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentPortSecurityProfileBinding.html">DELETE /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteInfraSegmentPortSecurityProfileBinding.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port security profile binding map</h4><br>
+                      <span class="help_detail">API will return details of the port security profile binding map. If the
+<br>
+security profile binding map does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortSecurityProfileBinding.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortSecurityProfileBinding.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch infra segment port security profile binding map</h4><br>
+                      <span class="help_detail">Create a new port security profile binding map if the given security profile
+<br>
+binding map does not exist. Otherwise, patch the existing port security
+<br>
+profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentPortSecurityProfileBinding.html">PATCH /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchInfraSegmentPortSecurityProfileBinding.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or replace the infra segment port security profile binding map</h4><br>
+                      <span class="help_detail">API will create or replace the port security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateInfraSegmentPortSecurityProfileBinding.html">PUT /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrUpdateInfraSegmentPortSecurityProfileBinding.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port state</h4><br>
+                      <span class="help_detail">Returns infra segment port state on enforcement point
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortState.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/state</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortState.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Segment QoS Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Segment QoS Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentQoSBindings.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentQoSBindings.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment QoS Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment QoS Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentQoSBinding.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Segment QoS Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentQoSBinding.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentQoSBinding.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create segment QoS profile binding map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentQoSBinding.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Segment QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateInfraSegmentQoSBinding.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List infra segment security profile binding maps</h4><br>
+                      <span class="help_detail">API will list all segment security profile binding maps.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListInfraSegmentSecurityProfileBindings.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListInfraSegmentSecurityProfileBindings.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete infra segment security profile binding map</h4><br>
+                      <span class="help_detail">API will delete segment security profile binding map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSegmentSecurityProfileBinding.html">DELETE /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment security profile binding map</h4><br>
+                      <span class="help_detail">API will return details of the segment security profile binding map. If the
+<br>
+binding map does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentSecurityProfileBinding.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentSecurityProfileBinding.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch infra segment security profile binding map</h4><br>
+                      <span class="help_detail">Create a new segment security profile binding map if the given security
+<br>
+profile binding map does not exist. Otherwise, patch the existing segment
+<br>
+security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSegmentSecurityProfileBinding.html">PATCH /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or replace infra segment security profile binding map</h4><br>
+                      <span class="help_detail">API will create or replace segment security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateInfraSegmentSecurityProfileBinding.html">PUT /policy/api/v1/infra/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment TEP table</h4><br>
+                      <span class="help_detail">Returns TEP table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentTepTable.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/tep-table</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentTepTable.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/tep-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segment TEP table in CSV</h4><br>
+                      <span class="help_detail">Returns TEP table for a segment in CSV
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentTepTableInCsv.html">GET /policy/api/v1/global-infra/segments/&lt;segment-id&gt;/tep-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentTepTableInCsv.html">GET /policy/api/v1/infra/segments/&lt;segment-id&gt;/tep-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port statistics information</h4><br>
+                      <span class="help_detail">Get infra segment port statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortStatistics.html">GET /policy/api/v1/infra/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortStatistics.html">GET /policy/api/v1/global-infra/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment port status information</h4><br>
+                      <span class="help_detail">Get infra segment port status information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentPortStatus.html">GET /policy/api/v1/global-infra/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/status</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentPortStatus.html">GET /policy/api/v1/infra/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment state information</h4><br>
+                      <span class="help_detail">Get infra segment state information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentState.html">GET /policy/api/v1/infra/segments/&lt;segments-id&gt;/state</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentState.html">GET /policy/api/v1/global-infra/segments/&lt;segments-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segment statistics information</h4><br>
+                      <span class="help_detail">Get infra segment statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentStatistics.html">GET /policy/api/v1/global-infra/segments/&lt;segments-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentStatistics.html">GET /policy/api/v1/infra/segments/&lt;segments-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Service Segments</h4><br>
+                      <span class="help_detail">Paginated list of all Service Segments
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListServiceSegments.html">GET /policy/api/v1/infra/segments/service-segments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Service Segment</h4><br>
+                      <span class="help_detail">Delete Service Segment with given ID</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteServiceSegment.html">DELETE /policy/api/v1/infra/segments/service-segments/&lt;service-segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Service Segment</h4><br>
+                      <span class="help_detail">Read a Service Segment with the given id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadServiceSegment.html">GET /policy/api/v1/infra/segments/service-segments/&lt;service-segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a service segment</h4><br>
+                      <span class="help_detail">A service segment with the service-segment-id is created.
+<br>
+Modification of service segment is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchServiceSegment.html">PATCH /policy/api/v1/infra/segments/service-segments/&lt;service-segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create service segment</h4><br>
+                      <span class="help_detail">A service segment with the service-segment-id is created.
+<br>
+Modification of service segment is not supported.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateServiceSegment.html">PUT /policy/api/v1/infra/segments/service-segments/&lt;service-segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get infra segments by configuration state</h4><br>
+                      <span class="help_detail">Returns all infra segments with configuration state on the enforcement
+<br>
+point specified in the request
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSegmentsByState.html">GET /policy/api/v1/infra/segments/state</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSegmentsByState.html">GET /policy/api/v1/global-infra/segments/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List L2 Bridge Endpoint Profiles</h4><br>
+                      <span class="help_detail">List all L2 bridge profiles</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListL2BridgeProfiles.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/edge-bridge-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete L2 Bridge Endpoint Profile</h4><br>
+                      <span class="help_detail">API will delete L2 bridge profile with ID profile-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteL2BridgeProfile.html">DELETE /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/edge-bridge-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get L2 Bridge Endpoint Profile</h4><br>
+                      <span class="help_detail">Read L2 bridge profile with ID profile-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadL2BridgeProfile.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/edge-bridge-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update L2 Bridge Endpoint Profile</h4><br>
+                      <span class="help_detail">API will create or update L2 bridge profile with ID profile-id.
+<br>
+L2 Bridge profile is only allowed under an enforcement-point with path
+<br>
+/infra/sites/default/enforcement-points/default.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchL2BridgeProfile.html">PATCH /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/edge-bridge-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update L2 Bridge Endpoint Profile</h4><br>
+                      <span class="help_detail">API will create or update L2 bridge profile with ID profile-id.
+<br>
+L2 Bridge profile is only allowed under an enforcement-point with path
+<br>
+/infra/sites/default/enforcement-points/default.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateL2BridgeProfile.html">PUT /policy/api/v1/infra/sites/&lt;site-id&gt;/enforcement-points/&lt;enforcement-point-id&gt;/edge-bridge-profiles/&lt;profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List SpoofGuard profiles</h4><br>
+                      <span class="help_detail">API will list all SpoofGuard profiles.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSpoofGuardProfiles.html">GET /policy/api/v1/global-infra/spoofguard-profiles</a>
+                            <br>
+                            
+                            <a href="method_ListSpoofGuardProfiles.html">GET /policy/api/v1/infra/spoofguard-profiles</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete SpoofGuard profile</h4><br>
+                      <span class="help_detail">API will delete SpoofGuard profile with the given id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSpoofGuardProfile.html">DELETE /policy/api/v1/infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteSpoofGuardProfile.html">DELETE /policy/api/v1/global-infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get SpoofGuard profile</h4><br>
+                      <span class="help_detail">API will return details of the SpoofGuard profile with given id. If the
+<br>
+profile does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSpoofGuardProfile.html">GET /policy/api/v1/infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSpoofGuardProfile.html">GET /policy/api/v1/global-infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch SpoofGuard profile</h4><br>
+                      <span class="help_detail">Create a new SpoofGuard profile if the SpoofGuard profile with the given id
+<br>
+does not exist. Otherwise, patch with the existing SpoofGuard profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSpoofGuardProfile.html">PATCH /policy/api/v1/infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchSpoofGuardProfile.html">PATCH /policy/api/v1/global-infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or replace SpoofGuard profile</h4><br>
+                      <span class="help_detail">API will create or replace SpoofGuard profile.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateSpoofGuardProfile.html">PUT /policy/api/v1/infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrUpdateSpoofGuardProfile.html">PUT /policy/api/v1/global-infra/spoofguard-profiles/&lt;spoofguard-profile-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Paginated list of all fixed segments (identified as /policy/api/v1/infra/tier-1s/<tier-1-id>/segments/<segment-id>) under Tier-1 instance.</h4><br>
+                      <span class="help_detail">Paginated list of all fixed segments (identified as /policy/api/v1/infra/tier-1s/<tier-1-id>/segments/<segment-id>) under Tier-1 instance.
+<br>
+This API call does not return flexible segments (identified as /policy/api/v1/infra/segments/<segment-id>) connected to the Tier-1.
+<br>
+To return all segments connected as a downlink to a Tier-1 one possibility is to use the search API with: https://{{nsx-mgr}}/policy/api/v1/search?query=resource_type:Segment%20AND%20connectivity_path:“/infra/tier-1s/<tier-1>
+<br>
+Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+"l2_extension" object in the PUT/PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+Also note that l2vpn path included in the error messages returned from validation may include the new VPN path
+<br>
+instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegments.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments</a>
+                            <br>
+                            
+                            <a href="method_ListSegments.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete segment</h4><br>
+                      <span class="help_detail">Delete segment</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegment.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Force delete segment</h4><br>
+                      <span class="help_detail">Force delete bypasses validations during segment deletion. This may result in an inconsistent connectivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ForceDeleteSegment.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;?force=true</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read segment</h4><br>
+                      <span class="help_detail">Read segment
+<br>
+Note:
+<br>
+  Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+  "l2_extension" object in the PUT/PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+  instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+  Also note that l2vpn path included in the error messages returned from validation may include the new VPN path
+<br>
+  instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadSegment.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadSegment.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, update the segment with specified attributes.
+<br>
+Note:
+<br>
+ Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+ "l2_extension" object in the PATCH API payload, the path returned in the GET response payload may include the new path
+<br>
+ instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+ Also note that l2vpn path included in the Alarm, GPRR, error messages returned from validation may include the new VPN path
+<br>
+ instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegment.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a segment</h4><br>
+                      <span class="help_detail">If segment with the segment-id is not already present, create a new segment.
+<br>
+If it already exists, replace the segment with this object.
+<br>
+Note:
+<br>
+  Extended Segment: Please note that old vpn path deprecated. If user specify old l2vpn path in the
+<br>
+  "l2_extension" object in the PUT API payload, the path returned in the PUT/GET response payload may include the new path
+<br>
+  instead of the deprecated l2vpn path. Both old and new l2vpn path refer to same resource. there is no functional impact.
+<br>
+  Also note that l2vpn path included in the Alarm, GPRR, error messages returned from validation may include the new VPN path
+<br>
+  instead of the deprecated l2vpn path. Both new path and old vpn path refer to same resource.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceSegment.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get downlink port Address Resolution Protocol Proxies for tier-1 segment</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for downlink port on connected to the segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForTier1Segment.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/arp-proxy</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForTier1Segment.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/arp-proxy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get downlink port Address Resolution Protocol Proxies for tier-1 segment in CSV</h4><br>
+                      <span class="help_detail">Returns ARP proxy table for downlink port on connected to the segment in CSV
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForTier1SegmentInCsv.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetDownlinkPortArpProxiesForTier1SegmentInCsv.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/arp-proxy?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment bridge end point statistics using segment ID and profile path.</h4><br>
+                      <span class="help_detail">Get detailed information on Tier-1 segment bridge end point statistics using segment ID and profile path.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_Tier1SegmentBridgeEndpointStatistics.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/bep-statistics</a>
+                            <br>
+                            
+                            <a href="method_Tier1SegmentBridgeEndpointStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/bep-statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment bridge end point status using segment ID and profile path.</h4><br>
+                      <span class="help_detail">Get detailed information on Tier-1 segment bridge end point status using segment ID and profile path.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_Tier1SegmentBridgeEndpointStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/bep-status</a>
+                            <br>
+                            
+                            <a href="method_Tier1SegmentBridgeEndpointStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/bep-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment MAC table</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentMacTable.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/mac-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentMacTable.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment MAC table in CSV</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentMacTableInCsv.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/mac-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentMacTableInCsv.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Tier-1 segment ports</h4><br>
+                      <span class="help_detail">List all the ports for a Tier-1 segment.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTier1SegmentPorts.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports</a>
+                            <br>
+                            
+                            <a href="method_ListTier1SegmentPorts.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a Tier-1 segment port</h4><br>
+                      <span class="help_detail">Delete a Tier-1 segment port by giving ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTier1SegmentPort.html">DELETE /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteTier1SegmentPort.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Tier-1 segment port by ID</h4><br>
+                      <span class="help_detail">Get detail information on a Tier-1 segment port by giving ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentPort.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentPort.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch a Tier-1 segment port</h4><br>
+                      <span class="help_detail">Create a Tier-1 segment port if it does not exist based on the IDs, or update existing port
+<br>
+information by replacing the port object fields which presents in the request body.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTier1SegmentPort.html">PATCH /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchTier1SegmentPort.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a Tier-1 segment port</h4><br>
+                      <span class="help_detail">Create a Tier-1 segment port if it does not exist based on the IDs, or update existing port
+<br>
+information by replacing the port object already exists.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceTier1SegmentPort.html">PUT /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrReplaceTier1SegmentPort.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segment port MAC table in CSV</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentPortMacTableInCsv.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentPortMacTableInCsv.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get MAC table for tier-1 segment port</h4><br>
+                      <span class="help_detail">Returns MAC table for a segment port
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentPortMacTable.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentPortMacTable.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/mac-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port Discovery Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Port Discovery Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortDiscoveryBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListPortDiscoveryBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port Discovery Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Port Discovery Profile Binding Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortDiscoveryBinding.html">DELETE /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeletePortDiscoveryBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Port Discovery Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortDiscoveryBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPortDiscoveryBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Port Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortDiscoveryBinding.html">PATCH /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchPortDiscoveryBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Port Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Port Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePortDiscoveryBinding.html">PUT /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdatePortDiscoveryBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-discovery-profile-binding-maps/&lt;port-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Port Monitoring Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortMonitoringBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListPortMonitoringBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Port Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortMonitoringBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortMonitoringBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPortMonitoringBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortMonitoringBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Port Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePortMonitoringBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Port Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Port Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetPortMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-monitoring-profile-binding-maps/&lt;port-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Port QoS Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Port QoS Profile Binding Maps in current port id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortQoSBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListPortQoSBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Port QoS Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Port QoS Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortQoSBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeletePortQoSBinding.html">DELETE /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Port QoS Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortQoSBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPortQoSBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Port QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortQoSBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchPortQoSBinding.html">PATCH /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Port QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Port QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdatePortQoSBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_UpdatePortQoSBinding.html">PUT /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-qos-profile-binding-maps/&lt;port-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List port security profile binding maps</h4><br>
+                      <span class="help_detail">API will list all port security profile binding maps.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListPortSecurityProfileBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListPortSecurityProfileBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete the port security profile binding map</h4><br>
+                      <span class="help_detail">API will delete the port security profile binding map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeletePortSecurityProfileBinding.html">DELETE /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeletePortSecurityProfileBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get port security profile binding map</h4><br>
+                      <span class="help_detail">API will return details of the port security profile binding map. If the
+<br>
+security profile binding map does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetPortSecurityProfileBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetPortSecurityProfileBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch port security profile binding map</h4><br>
+                      <span class="help_detail">Create a new port security profile binding map if the given security profile
+<br>
+binding map does not exist. Otherwise, patch the existing port security
+<br>
+profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchPortSecurityProfileBinding.html">PATCH /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_PatchPortSecurityProfileBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or replace the port security profile binding map</h4><br>
+                      <span class="help_detail">API will create or replace the port security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdatePortSecurityProfileBinding.html">PUT /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_CreateOrUpdatePortSecurityProfileBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/port-security-profile-binding-maps/&lt;port-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1  segment port state</h4><br>
+                      <span class="help_detail">Returns tier-1 segment port state on enforcement point
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentPortState.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/state</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentPortState.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/ports/&lt;port-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Segment Discovery Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Segment Discovery Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentDiscoveryBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentDiscoveryBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment Discovery Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment Discovery Profile Binding Profile</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentDiscoveryBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Segment Discovery Profile Binding Map
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentDiscoveryBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentDiscoveryBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create Segment Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentDiscoveryBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Segment Discovery Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Segment Discovery Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSegmentDiscoveryBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-discovery-profile-binding-maps/&lt;segment-discovery-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Segment Monitoring Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Segment Monitoring Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentMonitoringBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentMonitoringBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment Monitoring Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment Monitoring Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentMonitoringBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentMonitoringBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentMonitoringBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create segment monitoring profile binding map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentMonitoringBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Segment Monitoring Profile Binding Map.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSegmentMonitoringBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get mirror stack status for Segment Monitoring Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get mirror stack status by Segment Monitoring Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentMonitoringBindingMirrorStackStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-monitoring-profile-binding-maps/&lt;segment-monitoring-profile-binding-map-id&gt;/mirror-stack-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Segment QoS Profile Binding Maps</h4><br>
+                      <span class="help_detail">API will list all Segment QoS Profile Binding Maps in current segment id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentQoSBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentQoSBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Segment QoS Profile Binding Profile</h4><br>
+                      <span class="help_detail">API will delete Segment QoS Profile Binding Profile.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentQoSBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will get Segment QoS Profile Binding Map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentQoSBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentQoSBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will create segment QoS profile binding map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentQoSBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update Segment QoS Profile Binding Map</h4><br>
+                      <span class="help_detail">API will update Segment QoS Profile Binding Map. For objects with no binding maps, default profile is applied.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateSegmentQoSBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-qos-profile-binding-maps/&lt;segment-qos-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List segment security profile binding maps</h4><br>
+                      <span class="help_detail">API will list all segment security profile binding maps.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSegmentSecurityProfileBindings.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps</a>
+                            <br>
+                            
+                            <a href="method_ListSegmentSecurityProfileBindings.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete segment security profile binding map</h4><br>
+                      <span class="help_detail">API will delete segment security profile binding map.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteSegmentSecurityProfileBinding.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment security profile binding map</h4><br>
+                      <span class="help_detail">API will return details of the segment security profile binding map. If the
+<br>
+binding map does not exist, it will return 404.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentSecurityProfileBinding.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentSecurityProfileBinding.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Patch segment security profile binding map</h4><br>
+                      <span class="help_detail">Create a new segment security profile binding map if the given security
+<br>
+profile binding map does not exist. Otherwise, patch the existing segment
+<br>
+security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchSegmentSecurityProfileBinding.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or replace segment security profile binding map</h4><br>
+                      <span class="help_detail">API will create or replace segment security profile binding map.
+<br>
+For objects with no binding maps, default profile is applied.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateSegmentSecurityProfileBinding.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/segment-security-profile-binding-maps/&lt;segment-security-profile-binding-map-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete static ARP config</h4><br>
+                      <span class="help_detail">Delete static ARP config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteStaticARPConfig.html">DELETE /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/static-arp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read static ARP config</h4><br>
+                      <span class="help_detail">Read static ARP config</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadStaticARPConfig.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/static-arp</a>
+                            <br>
+                            
+                            <a href="method_ReadStaticARPConfig.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/static-arp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a static ARP config</h4><br>
+                      <span class="help_detail">Create static ARP config with Tier-1 and segment IDs provided if it doesn't exist,
+<br>
+update with provided config if it's already created.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchStaticARPConfig.html">PATCH /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/static-arp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a static ARP config</h4><br>
+                      <span class="help_detail">Create static ARP config with Tier-1 and segment IDs provided if it doesn't exist,
+<br>
+update with provided config if it's already created.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrReplaceStaticARPConfig.html">PUT /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/static-arp</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segment TEP table in CSV</h4><br>
+                      <span class="help_detail">Returns TEP table for a segment in CSV
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentTepTableInCsv.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/tep-table?format=csv</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentTepTableInCsv.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/tep-table?format=csv</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segment TEP table</h4><br>
+                      <span class="help_detail">Returns TEP table for a segment
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentTepTable.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/tep-table</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentTepTable.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segment-id&gt;/tep-table</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segment port statistics information</h4><br>
+                      <span class="help_detail">Get tier-1 segment port statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentPortStatistics.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentPortStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment port status information</h4><br>
+                      <span class="help_detail">Get tier1 segment port status information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentPortStatus.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/status</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentPortStatus.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/ports/&lt;port-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment state information</h4><br>
+                      <span class="help_detail">Get tier1 segment state information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentState.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/state</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentState.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get segment statistics information</h4><br>
+                      <span class="help_detail">Get tier1 segment statistics information.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSegmentStatistics.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/statistics</a>
+                            <br>
+                            
+                            <a href="method_GetSegmentStatistics.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/&lt;segments-id&gt;/statistics</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get tier-1 segments by configuration state</h4><br>
+                      <span class="help_detail">Returns all tier-1 segments with configuration state on the enforcement
+<br>
+point specified in the request
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetTier1SegmentsByState.html">GET /policy/api/v1/global-infra/tier-1s/&lt;tier-1-id&gt;/segments/state</a>
+                            <br>
+                            
+                            <a href="method_GetTier1SegmentsByState.html">GET /policy/api/v1/infra/tier-1s/&lt;tier-1-id&gt;/segments/state</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

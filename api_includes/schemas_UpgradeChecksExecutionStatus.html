@@ -1,0 +1,119 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UpgradeChecksExecutionStatus.html">UpgradeChecksExecutionStatus</a> (<a href="types_UpgradeChecksExecutionStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Execution status of pre/post-upgrade checks", 
+  "id": "UpgradeChecksExecutionStatus", 
+  "module_id": "Upgrade", 
+  "properties": {
+    "details": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Details about current execution of pre/post-upgrade checks", 
+      "type": "string"
+    }, 
+    "end_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "required": false, 
+      "title": "Time (in milliseconds since epoch) when the execution of\npre/post-upgrade checks completed\n"
+    }, 
+    "failure_count": {
+      "description": "Total count of generated failures or warnings in last execution of pre/post-upgrade checks", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Failure count", 
+      "type": "int"
+    }, 
+    "node_with_issues_count": {
+      "deprecated": true, 
+      "description": "Number of nodes which generated failures or warnings in last execution of pre/post-upgrade checks. This field has been deprecated. Please use failure_count instead.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Number of nodes with failures/warnings", 
+      "type": "int"
+    }, 
+    "start_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "required": false, 
+      "title": "Time (in milliseconds since epoch) when the execution of\npre/post-upgrade checks started\n"
+    }, 
+    "status": {
+      "enum": [
+        "NOT_STARTED", 
+        "IN_PROGRESS", 
+        "ABORTING", 
+        "ABORTED", 
+        "COMPLETED"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Status of execution of pre/post-upgrade checks", 
+      "type": "string"
+    }
+  }, 
+  "title": "Execution status of pre/post-upgrade checks", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

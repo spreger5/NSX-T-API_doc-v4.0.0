@@ -1,0 +1,125 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RAConfig.html">RAConfig</a> (<a href="types_RAConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "RAConfig", 
+  "module_id": "Routing", 
+  "properties": {
+    "hop_limit": {
+      "default": 64, 
+      "description": "The maximum number of hops through which packets can pass before being discarded.", 
+      "maximum": 255, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Hop limit", 
+      "type": "integer"
+    }, 
+    "prefix_lifetime": {
+      "default": 2592000, 
+      "description": "The time interval in seconds, in which the prefix is advertised as valid.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Lifetime of prefix", 
+      "type": "integer"
+    }, 
+    "prefix_preferred_time": {
+      "default": 604800, 
+      "description": "The time interval in seconds, in which the prefix is advertised as preferred.", 
+      "maximum": 4294967295, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Prefix preferred time", 
+      "type": "integer"
+    }, 
+    "ra_interval": {
+      "default": 600, 
+      "description": "Interval between 2 Router advertisement in seconds.", 
+      "maximum": 1800, 
+      "minimum": 4, 
+      "required": false, 
+      "title": "RA interval", 
+      "type": "integer"
+    }, 
+    "router_lifetime": {
+      "default": 1800, 
+      "description": "Router lifetime value in seconds. A value of 0 indicates the router is not a default router for the receiving end. Any other value in this field specifies the lifetime, in seconds, associated with this router as a default router.", 
+      "maximum": 65520, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Lifetime of router", 
+      "type": "integer"
+    }, 
+    "router_preference": {
+      "$ref": "<A HREF="schemas_NDRAPreference.html">NDRAPreference</A>, 
+      "default": "MEDIUM", 
+      "description": "NDRA Router preference value with MEDIUM as default. If the router_lifetime is 0, the preference must be set to MEDIUM.", 
+      "required": false, 
+      "title": "Router preference"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

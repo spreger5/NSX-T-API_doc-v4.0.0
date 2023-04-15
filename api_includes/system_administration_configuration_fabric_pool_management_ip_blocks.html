@@ -1,0 +1,321 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_fabric.html' style='text-decoration: none'> Fabric</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_pool_management.html' style='text-decoration: none'> Pool Management</a> >
+        
+        
+            <a href='system_administration_configuration_fabric_pool_management_ip_blocks.html' style='text-decoration: none'> IP Blocks</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns list of configured IP address blocks.</h4><br>
+                      <span class="help_detail">Returns information about configured IP address blocks. Information includes
+<br>
+the id, display name, description & CIDR of IP address blocks
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpBlocks.html">GET /api/v1/pools/ip-blocks</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a new IP address block.</h4><br>
+                      <span class="help_detail">Creates a new IPv4 address block using the specified cidr. cidr is a required
+<br>
+parameter. display_name & description are optional parameters
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpBlock.html">POST /api/v1/pools/ip-blocks</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete an IP Address Block</h4><br>
+                      <span class="help_detail">Deletes the IP address block with specified id if it exists. IP
+<br>
+block cannot be deleted if there are allocated subnets from the block.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpBlock.html">DELETE /api/v1/pools/ip-blocks/&lt;block-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get IP address block information.</h4><br>
+                      <span class="help_detail">Returns information about the IP address block with specified id.
+<br>
+Information includes id, display_name, description & cidr.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIpBlock.html">GET /api/v1/pools/ip-blocks/&lt;block-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update an IP Address Block</h4><br>
+                      <span class="help_detail">Modifies the IP address block with specifed id. display_name, description
+<br>
+and cidr are parameters that can be modified. If a new cidr is specified,
+<br>
+it should contain all existing subnets in the IP block. Returns a conflict error
+<br>
+if the IP address block cidr can not be modified due to the presence of
+<br>
+subnets that it contains. Eg: If the IP block contains a subnet 192.168.0.1/24
+<br>
+and we try to change the IP block cidr to 10.1.0.1/16, it results in a conflict.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateIpBlock.html">PUT /api/v1/pools/ip-blocks/&lt;block-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List subnets within an IP block</h4><br>
+                      <span class="help_detail">Returns information about all subnets present within an IP address
+<br>
+block. Information includes subnet's id, display_name, description, cidr and
+<br>
+allocation ranges.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListIpBlockSubnets.html">GET /api/v1/pools/ip-subnets</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create subnet of specified size within an IP block</h4><br>
+                      <span class="help_detail">Carves out a subnet of requested size from the specified IP block. The "size"
+<br>
+parameter  and the "block_id " are the requireds field while invoking this API.
+<br>
+If the IP block has sufficient resources/space to allocate a subnet of specified size,
+<br>
+the response will contain all the details of the newly created subnet including the
+<br>
+display_name, description, cidr & allocation_ranges. Returns a conflict error
+<br>
+if the IP block does not have enough resources/space to allocate a subnet of
+<br>
+the requested size.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateIpBlockSubnet.html">POST /api/v1/pools/ip-subnets</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete subnet within an IP block</h4><br>
+                      <span class="help_detail">Deletes a subnet with specified id within a given IP address block.
+<br>
+Deletion is allowed only when there are no allocated IP addresses
+<br>
+from that subnet.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteIpBlockSubnet.html">DELETE /api/v1/pools/ip-subnets/&lt;subnet-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the subnet within an IP block</h4><br>
+                      <span class="help_detail">Returns information about the subnet with specified id within a given
+<br>
+IP address block. Information includes display_name, description, cidr and
+<br>
+allocation_ranges.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadIpBlockSubnet.html">GET /api/v1/pools/ip-subnets/&lt;subnet-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Allocate or Release an IP Address from a Ip Subnet</h4><br>
+                      <span class="help_detail">Allocates or releases an IP address from the specified IP subnet. To allocate
+<br>
+an address, include ?action=ALLOCATE in the request and a "{}"
+<br>
+in the request body. When the request is successful, the response is
+<br>
+"allocation_id": "&lt;ip-address&gt;", where &lt;ip-address&gt; is an IP address from
+<br>
+the specified pool. To release an IP address (return it back to the pool),
+<br>
+include ?action=RELEASE in the request and "allocation_id":&lt;ip-address&gt; in
+<br>
+the request body, where &lt;ip-address&gt; is the address to be released. When the
+<br>
+request is successful, the response is NULL.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AllocateOrReleaseFromIpBlockSubnet.html">POST /api/v1/pools/ip-subnets/&lt;subnet-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

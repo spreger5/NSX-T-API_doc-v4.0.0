@@ -1,0 +1,404 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IPSecVpnSession.html">IPSecVpnSession</a> (<a href="types_IPSecVpnSession.html">type</a>)
+</h3>
+<pre>{
+  "abstract": true, 
+  "additionalProperties": false, 
+  "description": "VPN session defines connection between local and peer endpoint. Until VPN session is defined configuration is not realized.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_PolicyConfigResource.html">PolicyConfigResource</A>
+  }, 
+  "id": "IPSecVpnSession", 
+  "module_id": "PolicyVpnIPSecVpn", 
+  "polymorphic-type-descriptor": {
+    "mode": "enabled"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "authentication_mode": {
+      "default": "PSK", 
+      "description": "Peer authentication mode. PSK - In this mode a secret key shared between local and peer sites is to be used for authentication. The secret key can be a string with a maximum length of 128 characters. CERTIFICATE - In this mode a certificate defined at the global level is to be used for authentication.", 
+      "enum": [
+        "PSK", 
+        "CERTIFICATE"
+      ], 
+      "title": "Authentication Mode", 
+      "type": "string"
+    }, 
+    "children": {
+      "description": "subtree for this type within policy tree containing nested elements.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ChildPolicyConfigResource.html">ChildPolicyConfigResource</A>
+      }, 
+      "required": false, 
+      "title": "subtree for this type within policy tree", 
+      "type": "array"
+    }, 
+    "compliance_suite": {
+      "description": "Compliance suite.", 
+      "enum": [
+        "CNSA", 
+        "SUITE_B_GCM_128", 
+        "SUITE_B_GCM_256", 
+        "PRIME", 
+        "FOUNDATION", 
+        "FIPS", 
+        "NONE"
+      ], 
+      "title": "Compliance suite", 
+      "type": "string"
+    }, 
+    "connection_initiation_mode": {
+      "default": "INITIATOR", 
+      "description": "Connection initiation mode used by local endpoint to establish ike connection with peer site. INITIATOR - In this mode local endpoint initiates tunnel setup and will also respond to incoming tunnel setup requests from peer gateway. RESPOND_ONLY - In this mode, local endpoint shall only respond to incoming tunnel setup requests. It shall not initiate the tunnel setup. ON_DEMAND - In this mode local endpoint will initiate tunnel creation once first packet matching the policy rule is received and will also respond to incoming initiation request.", 
+      "enum": [
+        "INITIATOR", 
+        "RESPOND_ONLY", 
+        "ON_DEMAND"
+      ], 
+      "title": "Connection initiation mode", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "dpd_profile_path": {
+      "description": "Policy path referencing Dead Peer Detection (DPD) profile. Default is set to system default profile.", 
+      "title": "Dead peer detection (DPD) profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "PolicyBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_DPD_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnDpdProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "RouteBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_DPD_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnDpdProfile"
+          ]
+        }
+      ]
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Enable/Disable IPSec VPN session.", 
+      "title": "Enable/Disable IPSec VPN session", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ike_profile_path": {
+      "description": "Policy path referencing IKE profile to be used. Default is set according to system default profile.", 
+      "title": "Internet key exchange (IKE) profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "PolicyBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_IKE_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnIkeProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "RouteBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_IKE_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnIkeProfile"
+          ]
+        }
+      ]
+    }, 
+    "local_endpoint_path": {
+      "description": "Policy path referencing Local endpoint. This property is mandatory on LM. It is required on GM only in case of site_overrides property not provided.", 
+      "required": false, 
+      "title": "Local endpoint path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "PolicyBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_LOCAL_ENDPOINT_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnLocalEndpoint"
+          ]
+        }, 
+        {
+          "leftType": [
+            "RouteBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_LOCAL_ENDPOINT_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnLocalEndpoint"
+          ]
+        }
+      ]
+    }, 
+    "marked_for_delete": {
+      "default": false, 
+      "description": "Intent objects are not directly deleted from the system when a delete is invoked on them. They are marked for deletion and only when all the realized entities for that intent object gets deleted, the intent object is deleted. Objects that are marked for deletion are not returned in GET call. One can use the search API to get these objects.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether the intent object is marked for deletion", 
+      "type": "boolean"
+    }, 
+    "overridden": {
+      "default": false, 
+      "description": "Global intent objects cannot be modified by the user. However, certain global intent objects can be overridden locally by use of this property. In such cases, the overridden local values take precedence over the globally defined values for the properties.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Indicates whether this object is the overridden intent object", 
+      "type": "boolean"
+    }, 
+    "parent_path": {
+      "description": "Path of its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of its parent", 
+      "type": "string"
+    }, 
+    "path": {
+      "description": "Absolute path of this object", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Absolute path of this object", 
+      "type": "string"
+    }, 
+    "peer_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Public IPV4 or IPV6 address of the remote device terminating the VPN connection. This property is mandatory on LM. It is required on GM only in case of site_overrides property not provided. Please note that configuring peer_address as IPv6 address is not supported in the deprecated IPSecVpnSession Patch/PUT APIs.", 
+      "required": false, 
+      "title": "IPV4 or IPV6 address of peer endpoint on remote site"
+    }, 
+    "peer_id": {
+      "description": "Peer ID to uniquely identify the peer site. The peer ID is the public IP address of the remote device terminating the VPN tunnel. When NAT is configured for the peer, enter the private IP address of the peer. This property is mandatory on LM. It is required on GM only in case of site_overrides property not provided.", 
+      "required": false, 
+      "title": "Peer id", 
+      "type": "string"
+    }, 
+    "psk": {
+      "description": "IPSec Pre-shared key. Maximum length of this field is 128 characters.", 
+      "sensitive": true, 
+      "title": "Pre-shared key", 
+      "type": "string"
+    }, 
+    "realization_id": {
+      "description": "This is a UUID generated by the system for realizing the entity object. In most cases this should be same as 'unique_id' of the entity. However, in some cases this can be different because of entities have migrated thier unique identifier to NSX Policy intent objects later in the timeline and did not use unique_id for realization. Realization id is helpful for users to debug data path to correlate the configuration with corresponding intent.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system for realizing intent", 
+      "type": "string"
+    }, 
+    "relative_path": {
+      "description": "Path relative from its parent", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Relative path of this object", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_IPSecVpnSessionResourceType.html">IPSecVpnSessionResourceType</A>, 
+      "required": true
+    }, 
+    "site_overrides": {
+      "description": "A collection of site specific attributes specificed only on GM", 
+      "items": {
+        "$ref": "<A HREF="schemas_SiteOverride.html">SiteOverride</A>
+      }, 
+      "maxItems": 128, 
+      "required": false, 
+      "title": "SiteOverride list", 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "tcp_mss_clamping": {
+      "$ref": "<A HREF="schemas_TcpMaximumSegmentSizeClamping.html">TcpMaximumSegmentSizeClamping</A>, 
+      "description": "TCP Maximum Segment Size Clamping Direction and Value.", 
+      "title": "TCP MSS Clamping"
+    }, 
+    "tunnel_profile_path": {
+      "description": "Policy path referencing Tunnel profile to be used. Default is set to system default profile.", 
+      "title": "IPSec tunnel profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "PolicyBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_TUNNEL_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnTunnelProfile"
+          ]
+        }, 
+        {
+          "leftType": [
+            "RouteBasedIPSecVpnSession"
+          ], 
+          "relationshipType": "IPSEC_VPN_SESSION_TUNNEL_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "IPSecVpnTunnelProfile"
+          ]
+        }
+      ]
+    }, 
+    "unique_id": {
+      "description": "This is a UUID generated by the GM/LM to uniquely identify entites in a federated environment. For entities that are stretched across multiple sites, the same ID will be used on all the stretched sites.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "A unique identifier assigned by the system", 
+      "type": "string"
+    }
+  }, 
+  "title": "IPSec VPN session", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

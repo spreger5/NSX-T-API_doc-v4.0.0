@@ -1,0 +1,343 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_services.html' style='text-decoration: none'> Services</a> >
+        
+        
+            <a href='management_plane_api_networking_services_dns.html' style='text-decoration: none'> DNS</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DNS forwarders</h4><br>
+                      <span class="help_detail">Get a paginated list of DNS forwarders.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDnsForwaders.html">GET /api/v1/dns/forwarders</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DNS forwader</h4><br>
+                      <span class="help_detail">Create a DNS forwader upon a logical router. There is only
+<br>
+one DNS forwarder can be created upon a given logical router.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDnsForwader.html">POST /api/v1/dns/forwarders</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a specific DNS forwarder</h4><br>
+                      <span class="help_detail">Delete a specific DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDnsForwarder.html">DELETE /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Retrieve a DNS forwarder</h4><br>
+                      <span class="help_detail">Retrieve a DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDnsForwader.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Clear the current cache of the DNS forwarder.</h4><br>
+                      <span class="help_detail">Clear the current cache of the DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ClearDnsForwarderCache.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=clear_cache</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Enable the DNS forwarder.</h4><br>
+                      <span class="help_detail">Enable the DNS forwarder if the forwarder is currently disabled. If the
+<br>
+DNS forwarder is already enabled, the forwarder will not be re-enabled.
+<br>
+
+<br>
+Please note, once a DNS forwarder is disabled then enabled, the previous
+<br>
+DNS forwarder statistics counters will be reset.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_EnableDnsForwarder.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=enable</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Disable the DNS forwarder.</h4><br>
+                      <span class="help_detail">Disable the DNS forwarder if the forwarder is currently enbled. If the DNS
+<br>
+forwarder is already disabled, the forwarder will not be re-disabled.
+<br>
+
+<br>
+Please note, once a DNS forwarder is disabled then enabled, the previous
+<br>
+DNS forwarder statistics counters will be reset.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DisableDnsForwarder.html">POST /api/v1/dns/forwarders/&lt;forwarder-id&gt;?action=disable</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a specific DNS forwarder</h4><br>
+                      <span class="help_detail">Update a specific DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDnsForwarder.html">PUT /api/v1/dns/forwarders/&lt;forwarder-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the recent failed DNS queries</h4><br>
+                      <span class="help_detail">Return the given count of recent failed DNS queries from DNS forwarder.
+<br>
+Since the DNS forwarder is running in Acitve/Standby HA mode on transport
+<br>
+nodes, the given count of queries will be returned from each nodes. Hence
+<br>
+the total queries returned could be doubled.
+<br>
+If no count is specified, 100 recent failed queries are returned. If the
+<br>
+recent failures is less than the given count, all the failures will be
+<br>
+returned. The maximum count is 1,000.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetFailedDnsQueries.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/failed-queries</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Resolve a given address via the DNS forwarder</h4><br>
+                      <span class="help_detail">Query the nameserver for an ip-address or a FQDN of the given an address optionally using
+<br>
+an specified DNS server. If the address is a fqdn, nslookup will resolve ip-address with it.
+<br>
+If the address is an ip-address, do a reverse lookup and answer fqdn(s).
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_LookupAddress.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/nslookup</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a DNS forwarder</h4><br>
+                      <span class="help_detail">Return the realized state information of a DNS forwarder.
+<br>
+After a DNS forwarder was created or updated, you can invoke this API to
+<br>
+check the realization state of the forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderState.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get statistics of given dns forwarder</h4><br>
+                      <span class="help_detail">Returns the statistics of the given dns forwarder specified by forwarder id.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderStatistics.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get current status of the given DNS forwarder</h4><br>
+                      <span class="help_detail">Returns the current status of the given DNS forwarder.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDnsForwarderStatus.html">GET /api/v1/dns/forwarders/&lt;forwarder-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

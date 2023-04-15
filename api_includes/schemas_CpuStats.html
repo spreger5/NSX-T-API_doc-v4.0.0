@@ -1,0 +1,138 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CpuStats.html">CpuStats</a> (<a href="types_CpuStats.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "CpuStats", 
+  "properties": {
+    "core": {
+      "description": "CPU id", 
+      "readonly": true, 
+      "title": "core id", 
+      "type": "string"
+    }, 
+    "cpu_type": {
+      "default": "controlpath_core", 
+      "description": "cpu type, one of datapath_core, controlpath_core and service_core", 
+      "enum": [
+        "datapath_core", 
+        "controlpath_core", 
+        "service_core"
+      ], 
+      "readonly": true, 
+      "title": "cpu type", 
+      "type": "string"
+    }, 
+    "crypto": {
+      "description": "CPU crypto usage(pps)", 
+      "readonly": true, 
+      "title": "CPU crypto usage", 
+      "type": "string"
+    }, 
+    "intercore": {
+      "description": "CPU intercore usage(pps)", 
+      "readonly": true, 
+      "title": "CPU intercore usage", 
+      "type": "string"
+    }, 
+    "kni": {
+      "description": "CPU kni usage(pps)", 
+      "readonly": true, 
+      "title": "CPU kni usage", 
+      "type": "string"
+    }, 
+    "packet_processing_usage": {
+      "description": "Datapath CPU packet processing usage(%)", 
+      "readonly": true, 
+      "title": "Datapath CPU packet processing usage", 
+      "type": "string"
+    }, 
+    "rx": {
+      "description": "CPU rx usage(pps)", 
+      "readonly": true, 
+      "title": "CPU rx usage", 
+      "type": "string"
+    }, 
+    "slowpath": {
+      "description": "CPU slowpath usage(pps)", 
+      "readonly": true, 
+      "title": "CPU slowpath usage", 
+      "type": "string"
+    }, 
+    "tx": {
+      "description": "CPU tx usage(pps)", 
+      "readonly": true, 
+      "title": "CPU tx usage", 
+      "type": "string"
+    }, 
+    "usage": {
+      "description": "CPU usage(%)", 
+      "readonly": true, 
+      "title": "CPU usage", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BridgeProfileConfig.html">BridgeProfileConfig</a> (<a href="types_BridgeProfileConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "configuration parameters for Bridge Profile", 
+  "id": "BridgeProfileConfig", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "bridge_profile_path": {
+      "description": "Same bridge profile can be configured on different segments. Each bridge profile on a segment must unique.", 
+      "required": true, 
+      "title": "Policy path to L2 Bridge profile", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Segment"
+          ], 
+          "relationshipType": "SEGMENT_BRIDGE_PROFILE_RELATIONSHIP", 
+          "rightType": [
+            "L2BridgeEndpointProfile"
+          ]
+        }
+      ]
+    }, 
+    "uplink_teaming_policy_name": {
+      "description": "The name of the switching uplink teaming policy for the bridge endpoint. This name corresponds to one fot he switching uplink teaming policy names listed in teh transport zone. When this property is not specified, the teaming policy is assigned by MP.", 
+      "title": "Uplink Teaming Policy Name", 
+      "type": "string"
+    }, 
+    "vlan_ids": {
+      "description": "VLAN specification for bridge endpoint. Either VLAN ID or VLAN ranges can be specified. Not both.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "VLAN IDs", 
+      "type": "array"
+    }, 
+    "vlan_transport_zone_path": {
+      "description": "VLAN transport zone should belong to the enforcment-point as the transport zone specified in the segment.", 
+      "required": true, 
+      "title": "Policy path to VLAN Transport Zone", 
+      "type": "string"
+    }
+  }, 
+  "title": "Bridge Profile Configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

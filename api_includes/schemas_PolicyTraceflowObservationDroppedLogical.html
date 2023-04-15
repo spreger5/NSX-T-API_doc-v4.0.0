@@ -1,0 +1,360 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PolicyTraceflowObservationDroppedLogical.html">PolicyTraceflowObservationDroppedLogical</a> (<a href="types_PolicyTraceflowObservationDroppedLogical.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_TraceflowObservationDroppedLogical.html">TraceflowObservationDroppedLogical</A>
+  }, 
+  "id": "PolicyTraceflowObservationDroppedLogical", 
+  "module_id": "PolicyConnectivity", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "PolicyTraceflowObservationDroppedLogical"
+  }, 
+  "properties": {
+    "acl_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a L3 firewall rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the L3 firewall rule that was applied to drop the traceflow packet", 
+      "type": "integer"
+    }, 
+    "acl_rule_path": {
+      "description": "The path of the ACL rule that was applied to forward the traceflow packet", 
+      "readonly": true, 
+      "title": "Access Control List Rule Path", 
+      "type": "string"
+    }, 
+    "arp_fail_reason": {
+      "description": "This field specifies the ARP fails reason ARP_TIMEOUT - ARP failure due to query control plane timeout ARP_CPFAIL - ARP failure due post ARP query message to control plane failure ARP_FROMCP - ARP failure due to deleting ARP entry from control plane ARP_PORTDESTROY - ARP failure due to port destruction ARP_TABLEDESTROY - ARP failure due to ARP table destruction ARP_NETDESTROY - ARP failure due to overlay network destruction", 
+      "enum": [
+        "ARP_UNKNOWN", 
+        "ARP_TIMEOUT", 
+        "ARP_CPFAIL", 
+        "ARP_FROMCP", 
+        "ARP_PORTDESTROY", 
+        "ARP_TABLEDESTROY", 
+        "ARP_NETDESTROY"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "The detailed drop reason of ARP traceflow packet", 
+      "type": "string"
+    }, 
+    "component_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the component that dropped the traceflow packet.", 
+      "type": "string"
+    }, 
+    "component_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the component that issued the observation.", 
+      "type": "string"
+    }, 
+    "component_path": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The path of the component that dropped the traceflow packet", 
+      "type": "string"
+    }, 
+    "component_sub_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentSubType.html">TraceflowComponentSubType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The sub type of the component that issued the observation."
+    }, 
+    "component_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentType.html">TraceflowComponentType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The type of the component that issued the observation."
+    }, 
+    "interface_path": {
+      "Description": "The path of the interface at which traceflow packet was dropped (e.g.,\nTier0 Interface, Tier1 Interface, Service Interface, and Virtual Tunnel Interface).\n", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of interface", 
+      "type": "string"
+    }, 
+    "ipsec_fail_reason": {
+      "description": "This field specifies the IPSec VPN fails reason IPSEC_SA_NOT_FOUND   - IPSec SA required for processing the packet does not exist IPSEC_UDP_ENC_STATE_MISMATCH   - ESP packet is UDP encapsulated but IPsec SA does not expect UDP encapsulation IPSEC_SEQ_ROLLOVER   - IPSec SA sequence number has exceeded the maximum value IPSEC_FRAG_NEEDED   - Received packet has DF bit set in IP header but requires fragmentation due to ESP encapsulation IPSEC_TUN_IFACE_DOWN   - IPSec tunnel interface is down IPSEC_POLICY_NOMATCH   - Received packet does not match IPSec policy IPSEC_POLICY_BLOCK   - IPSec packet processing failed IPSEC_POLICY_ERROR   - IPSec packet processing failed IPSEC_REPLAY_SEQ_NUM_REPEAT   - IPSec packet is dropped due to replay IPSEC_REPLAY_RECV_DELAY   - IPSec packet is dropped due to replay IPSEC_REPLAY_PROC_DELAY   - IPSec packet is dropped due to replay IPSEC_ZERO_SEQ_NUM_RECVD   - ESP packet is received with sequence number as zero IPSEC_ENQUEUE_FAIL   - Packet processing failed during crypto operation IPSEC_AUTH_DGST_MISMATCH   - Packet integrity check failed due to digest mismatch IPSEC_AUTH_DGST_SIZE_MISMATCH   - Packet integrity check failed due to invalid digest length IPSEC_AUTH_UNSUPPORTED_ALGO   - Packet integrity check failed due to unsupported hash algorithm IPSEC_CRYPTO_FAIL   - Packet processing failed during crypto operation IPSEC_CRYPTO_PROC_INCOMPLETE   - Packet processing failed during crypto operation IPSEC_CRYPTO_SESSION_INV   - Packet processing failed during crypto operation IPSEC_CRYPTO_ARGS_INV   - Packet processing failed during crypto operation IPSEC_CRYPTO_PROC_ERROR   - Packet processing failed during crypto operation IPSEC_CRYPTO_NO_BUF_SPACE   - Packet processing failed during crypto operation IPSEC_CRYPTO_UNSUPPORTED_CIPHER   - Packet processing failed during crypto operation IPSEC_MALFORMED   - Received ESP packet is malformed IPSEC_MALFORMED_INV_PADDING   - Received ESP packet is malformed IPSEC_PADDING_REMOVAL_FAILED   - Received ESP packet is malformed IPSEC_INNER_MALFORMED   - IP packet after ESP decryption is malformed IPSEC_INNER_MALFORMED_IP   - IP packet after ESP decryption is malformed IPSEC_INNER_MALFORMED_UDP   - IP packet after ESP decryption is malformed IPSEC_INNER_MALFORMED_TCP   - IP packet after ESP decryption is malformed IPSEC_UNKNOWN   - IPSec VPN failure reason is unknown", 
+      "enum": [
+        "IPSEC_SA_NOT_FOUND", 
+        "IPSEC_UDP_ENC_STATE_MISMATCH", 
+        "IPSEC_SEQ_ROLLOVER", 
+        "IPSEC_FRAG_NEEDED", 
+        "IPSEC_TUN_IFACE_DOWN", 
+        "IPSEC_POLICY_NOMATCH", 
+        "IPSEC_POLICY_BLOCK", 
+        "IPSEC_POLICY_ERROR", 
+        "IPSEC_REPLAY_SEQ_NUM_REPEAT", 
+        "IPSEC_REPLAY_RECV_DELAY", 
+        "IPSEC_REPLAY_PROC_DELAY", 
+        "IPSEC_ZERO_SEQ_NUM_RECVD", 
+        "IPSEC_ENQUEUE_FAIL", 
+        "IPSEC_AUTH_DGST_MISMATCH", 
+        "IPSEC_AUTH_DGST_SIZE_MISMATCH", 
+        "IPSEC_AUTH_UNSUPPORTED_ALGO", 
+        "IPSEC_CRYPTO_FAIL", 
+        "IPSEC_CRYPTO_PROC_INCOMPLETE", 
+        "IPSEC_CRYPTO_SESSION_INV", 
+        "IPSEC_CRYPTO_ARGS_INV", 
+        "IPSEC_CRYPTO_PROC_ERROR", 
+        "IPSEC_CRYPTO_NO_BUF_SPACE", 
+        "IPSEC_CRYPTO_UNSUPPORTED_CIPHER", 
+        "IPSEC_MALFORMED", 
+        "IPSEC_MALFORMED_INV_PADDING", 
+        "IPSEC_PADDING_REMOVAL_FAILED", 
+        "IPSEC_INNER_MALFORMED", 
+        "IPSEC_INNER_MALFORMED_IP", 
+        "IPSEC_INNER_MALFORMED_UDP", 
+        "IPSEC_INNER_MALFORMED_TCP", 
+        "IPSEC_UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "The detailed drop reason of IPSec VPN traceflow packet", 
+      "type": "string"
+    }, 
+    "jumpto_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a jump-to rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the jump-to rule that was applied to the traceflow packet", 
+      "type": "integer"
+    }, 
+    "jumpto_rule_path": {
+      "description": "The path of the jump-to rule that was applied to the traceflow packet", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Jump-to Rule Path", 
+      "type": "string"
+    }, 
+    "l2_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a l2 rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the l2 rule that was applied to the traceflow packet", 
+      "type": "integer"
+    }, 
+    "l2_rule_path": {
+      "description": "The path of the l2 rule that was applied to the traceflow packet", 
+      "readonly": true, 
+      "required": false, 
+      "title": "L2 Rule Path", 
+      "type": "string"
+    }, 
+    "lport_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the logical port at which the traceflow packet was dropped", 
+      "type": "string"
+    }, 
+    "lport_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the logical port at which the traceflow packet was dropped", 
+      "type": "string"
+    }, 
+    "nat_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a NAT rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the NAT rule that was applied to drop the traceflow packet", 
+      "type": "integer"
+    }, 
+    "nat_rule_path": {
+      "description": "The path of the NAT rule that was applied to forward the traceflow packet", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Network Address Translation Rule Path", 
+      "type": "string"
+    }, 
+    "reason": {
+      "description": "This field specifies the drop reason of traceflow packet. ARP_FAIL - ARP request fails for some reasons, please refer arp_fail_reason for detail BFD - BFD packet is dropped because traversed by non-operative interface or encountering internal error (e.g., memory insufficient) BROADCAST - Packet is dropped during traversing the interface (e.g., Edge uplink, Edge centralized service port) which disallow ethernet broadcast DHCP - DHCP packet is malformed DLB - The packet is disallowed by distributed load balancing FW_RULE - The packet matches a drop or reject rule of DFW or Edge firewall GENEVE - GENEVE packet is malformed GRE - GRE packet is malformed or traverses a non-operative interface IFACE - Packet traverses a non-operative interface IP - Packet is dropped because of IP related causes (e.g., ICMPv4/ICMPv6 packet is malformed, or DF flag is set but fragment must be performed for the packet) or corresponding interface is not found or inoperative IP_REASS - Packet is dropped during IP reassembly IPSEC - IPsec protocol related packet is dropped IPSEC_VTI - IPsec required SA is not found or traversing inoperative interface cause packet dropped L2VPN - VLAN id of GRE packet is invalid L4PORT - Layer 4 packet (e.g., BFD, DHCP) is dropped LB - Packet is dropped by load balancing rule LROUTER - Packet is dropped by logical router LSERVICE - Packet is malformed or traverses inoperative logical service interface LSWITCH - Packet is dropped by logical switch MANAGEMENT - Packet is dropped by Edge datapath MANAGEMENT service port MD_PROXY - Packet is dropped by metadata proxy NAT - Packet is dropped by NAT rule RTEP_TUNNEL - Unused drop reason ND_NS_FAIL - Neighbor Discovery packet fails NEIGH - ARP or Neighbor Discovery packet fails NO_EIP_FOUND - Destination IP is not an elastic IP NO_EIP_ASSOCIATION - Elastic IP is not associated with active edge VDR ENI NO_ENI_FOR_IP - There is no ENI found for the destination IP NO_ENI_FOR_LIF - Cannot find an ENI associated with uplink LIF NO_ROUTE - Cannot find route for destination IP NO_ROUTE_TABLE_FOUND - Cannot find associated route table NO_UNDERLAY_ROUTE_FOUND - Cannot find AWS route to destination NOT_VDR_DOWNLINK - Packet is not forwarded to VMC unmanaged VDR downlink NO_VDR_FOUND - VMC unmanaged VDR associated with Edge uplink is not found NO_VDR_ON_HOST - Cannot find VMC unmanaged VDR list on this host NOT_VDR_UPLINK - Packet is not forwarded to VDR uplink SERVICE_INSERT - Packet from guest VM to service VM or from service VM to guest VM is dropped by firewall rule SPOOFGUARD - Packet is blocked by SpoofGuard policy TTL_ZERO - The IPv4 time to live field or the IPv6 hop limit field of packet is zero TUNNEL - Overlay tunnel management packet (VNI value of GENEVE header is 0, e.g., BFD) is dropped VLAN - VLAN id of packet is disallowed by the given port VXLAN - VXLAN packet is malformed or cannot find tunnel port for it VXSTT - Unused drop reason VMC_NO_RESPONSE - Failed to query VMC observations as no response from VMC app WRONG_UPLINK - Packet is not routed to the expected Edge uplink by VMC unmanaged VDR FW_STATE - Packet is dropped by stateful firewall NO_MAC - Drop by vswitch as no destination MAC hit MAC Table.", 
+      "enum": [
+        "ARP_FAIL", 
+        "BFD", 
+        "BROADCAST", 
+        "DHCP", 
+        "DLB", 
+        "FW_RULE", 
+        "GENEVE", 
+        "GRE", 
+        "IFACE", 
+        "IP", 
+        "IP_REASS", 
+        "IPSEC", 
+        "IPSEC_VTI", 
+        "L2VPN", 
+        "L4PORT", 
+        "LB", 
+        "LROUTER", 
+        "LSERVICE", 
+        "LSWITCH", 
+        "MANAGEMENT", 
+        "MD_PROXY", 
+        "NAT", 
+        "RTEP_TUNNEL", 
+        "ND_NS_FAIL", 
+        "NEIGH", 
+        "NO_EIP_FOUND", 
+        "NO_EIP_ASSOCIATION", 
+        "NO_ENI_FOR_IP", 
+        "NO_ENI_FOR_LIF", 
+        "NO_ROUTE", 
+        "NO_ROUTE_TABLE_FOUND", 
+        "NO_UNDERLAY_ROUTE_FOUND", 
+        "NOT_VDR_DOWNLINK", 
+        "NO_VDR_FOUND", 
+        "NO_VDR_ON_HOST", 
+        "NOT_VDR_UPLINK", 
+        "SERVICE_INSERT", 
+        "SPOOFGUARD", 
+        "TTL_ZERO", 
+        "TUNNEL", 
+        "VLAN", 
+        "VXLAN", 
+        "VXSTT", 
+        "VMC_NO_RESPONSE", 
+        "WRONG_UPLINK", 
+        "FW_STATE", 
+        "NO_MAC", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "The reason traceflow packet was dropped", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_TraceflowObservationType.html">TraceflowObservationType</A>, 
+      "default": "TraceflowObservationReceived", 
+      "required": true
+    }, 
+    "segment_port_path": {
+      "Description": "The path of the segment port at which traceflow packet\nwas dropped.\n", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Path of segment port", 
+      "type": "string"
+    }, 
+    "sequence_no": {
+      "description": "the hop count for observations on the transport node that a traceflow packet is injected in will be 0. The hop count is incremented each time a subsequent transport node receives the traceflow packet. The sequence number of 999 indicates that the hop count could not be determined for the containing observation.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "the sequence number is the traceflow observation hop count", 
+      "type": "integer"
+    }, 
+    "service_path_index": {
+      "description": "The index of service path that is a chain of services represents the point where the traceflow packet was dropped.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The index of service path", 
+      "type": "integer"
+    }, 
+    "site_path": {
+      "description": "This field contains the site path where this observation was generated.", 
+      "readonly": true, 
+      "title": "Policy path of the federated site", 
+      "type": "string"
+    }, 
+    "timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the observation was created by the transport node (milliseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node"
+    }, 
+    "timestamp_micro": {
+      "description": "Timestamp when the observation was created by the transport node (microseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node", 
+      "type": "integer"
+    }, 
+    "transport_node_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "id of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "name of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_type": {
+      "$ref": "<A HREF="schemas_TransportNodeType.html">TransportNodeType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "type of the transport node that observed a traceflow packet"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

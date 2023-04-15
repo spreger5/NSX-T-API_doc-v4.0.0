@@ -1,0 +1,91 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdentityGroupInfo.html">IdentityGroupInfo</a> (<a href="types_IdentityGroupInfo.html">type</a>)
+</h3>
+<pre>{
+  "id": "IdentityGroupInfo", 
+  "module_id": "PolicyIdentity", 
+  "properties": {
+    "distinguished_name": {
+      "description": "Each LDAP object is uniquely identified by its distinguished name (DN). A DN is a sequence of relative distinguished names (RDN) connected by commas. e.g. CN=Larry Cole,CN=admin,DC=corp,DC=acme,DC=com. A valid fully qualified distinguished name should be provided to include specific groups else the create / update realization of the Group containing an invalid/ partial DN will fail. This value is valid only if it matches to exactly 1 LDAP object on the LDAP server.", 
+      "required": true, 
+      "title": "LDAP distinguished name", 
+      "type": "string"
+    }, 
+    "domain_base_distinguished_name": {
+      "description": "This is the base distinguished name for the domain where this particular group resides. (e.g. dc=example,dc=com) Each active directory domain has a domain naming context (NC), which contains domain-specific data. The root of this naming context is represented by a domain's distinguished name (DN) and is typically referred to as the NC head.", 
+      "required": true, 
+      "title": "Identity (Directory) domain base distinguished name", 
+      "type": "string"
+    }, 
+    "sid": {
+      "description": "A security identifier (SID) is a unique value of variable length used to identify a trustee. A SID consists of the following components: The revision level of the SID structure; A 48-bit identifier authority value that identifies the authority that issued the SID; A variable number of subauthority or relative identifier (RID) values that uniquely identify the trustee relative to the authority that issued the SID. This field is only populated for Microsoft Active Directory identity store.", 
+      "required": false, 
+      "title": "Identity (Directory) Group SID (security identifier)", 
+      "type": "string"
+    }
+  }, 
+  "title": "Identity (Directory) group", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

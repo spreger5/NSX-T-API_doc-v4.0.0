@@ -1,0 +1,250 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LiveTraceStatus.html">LiveTraceStatus</a> (<a href="types_LiveTraceStatus.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "LiveTraceStatus", 
+  "module_id": "LiveTrace", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "actions": {
+      "$ref": "<A HREF="schemas_LiveTraceActionConfig.html">LiveTraceActionConfig</A>, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Action to the filtered packet"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "filter": {
+      "$ref": "<A HREF="schemas_LiveTraceFilterData.html">LiveTraceFilterData</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Packet filter for flows of interest"
+    }, 
+    "filter_invalid_info": {
+      "description": "The detail of invalid filter(s) in a Livetrace session. This field is only applicable for filters of PlainFilterData type.", 
+      "items": {
+        "$ref": "<A HREF="schemas_LiveTraceFilterInvalidInfo.html">LiveTraceFilterInvalidInfo</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Detail on invalid filter(s) in a Livetrace session.", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "invalidation_reason": {
+      "description": "The reason of invalidating a Livetrace session. PORT_DISCONNECT - Source or destination logical port of the session is disconnected. DP_DESTROY - Dataplane is destroyed. UNKNOWN - The invalidation reason cannot be determined. PCAP_IO_FAILURE - Exception occurred when writing captured packets to file. In general, this issue could be caused by insufficient disk partition space of /tmp on ESXi or Edge.", 
+      "enum": [
+        "PORT_DISCONNECT", 
+        "DP_DESTROY", 
+        "UNKNOWN", 
+        "PCAP_IO_FAILURE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Livetrace invalidation reason", 
+      "type": "string"
+    }, 
+    "ipsec_vpn_config": {
+      "$ref": "<A HREF="schemas_LiveTraceIpsecVpnConfig.html">LiveTraceIpsecVpnConfig</A>, 
+      "description": "IPSec VPN configuration for starting livetrace on IPSec tunnel interface", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IPSec VPN configuration for starting livetrace on IPSec tunnel interface"
+    }, 
+    "operation_state": {
+      "description": "The operation state of Livetrace. IN_PROGRESS - collecting the session results. FINISHED - session results collection completes. PARTIAL_FINISHED - session results may be incomplete. CANCELED - session is cancelled by exception. INVALIDATED - session is invalidated by configuration changes such as VM migration. TIMEOUT - session is not completed on time.", 
+      "enum": [
+        "IN_PROGRESS", 
+        "FINISHED", 
+        "PARTIAL_FINISHED", 
+        "CANCELED", 
+        "INVALIDATED", 
+        "TIMEOUT"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Operation state", 
+      "type": "string"
+    }, 
+    "request_status": {
+      "description": "The status of a Livetrace request. SUCCESS_DELIVERED - The request is delivered successfully. LCP_FAILURE - LCP agent fails to realize the request. INVALID_FILTER - Filter is invalid. DATAPATH_FAILURE - Dataplane fails to realize the request. TIMEOUT - The response to the request is not received within timeout. CONNECTION_ERROR - There is connection error between host components. UNKNOWN - The status of request cannot be determined.", 
+      "enum": [
+        "SUCCESS_DELIVERED", 
+        "LCP_FAILURE", 
+        "INVALID_FILTER", 
+        "DATAPATH_FAILURE", 
+        "CONNECTION_ERROR", 
+        "TIMEOUT", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": true, 
+      "title": "Livetrace request status", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "source_lport": {
+      "readonly": true, 
+      "required": true, 
+      "title": "The source logical port", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "timeout": {
+      "maximum": 300, 
+      "minimum": 5, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Timeout in seconds for livetrace session", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

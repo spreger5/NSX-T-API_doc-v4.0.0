@@ -1,0 +1,315 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TraceflowObservationForwardedLogical.html">TraceflowObservationForwardedLogical</a> (<a href="types_TraceflowObservationForwardedLogical.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_TraceflowObservation.html">TraceflowObservation</A>
+  }, 
+  "id": "TraceflowObservationForwardedLogical", 
+  "module_id": "Traceflow", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "TraceflowObservationForwardedLogical"
+  }, 
+  "properties": {
+    "acl_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a L3 firewall rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the L3 firewall rule that was applied to forward the traceflow packet", 
+      "type": "integer"
+    }, 
+    "component_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the component that forwarded the traceflow packet.", 
+      "type": "string"
+    }, 
+    "component_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the component that issued the observation.", 
+      "type": "string"
+    }, 
+    "component_sub_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentSubType.html">TraceflowComponentSubType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The sub type of the component that issued the observation."
+    }, 
+    "component_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentType.html">TraceflowComponentType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The type of the component that issued the observation."
+    }, 
+    "dst_component_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the destination component to which the traceflow packet was forwarded.", 
+      "type": "string"
+    }, 
+    "dst_component_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the destination component to which the traceflow packet was forwarded.", 
+      "type": "string"
+    }, 
+    "dst_component_type": {
+      "$ref": "<A HREF="schemas_TraceflowComponentType.html">TraceflowComponentType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The type of the destination component to which the traceflow packet was forwarded."
+    }, 
+    "ipsec_vpn": {
+      "$ref": "<A HREF="schemas_TraceflowObservationIpsecVpn.html">TraceflowObservationIpsecVpn</A>, 
+      "description": "This field is specified when the traceflow packet was forwarded through IPSec VPN.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "IPSec VPN on which the traceflow packet was forwarded"
+    }, 
+    "jumpto_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a jump-to rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the jump-to rule that was applied to the traceflow packet", 
+      "type": "integer"
+    }, 
+    "l2_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a l2 rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the l2 rule that was applied to the traceflow packet", 
+      "type": "integer"
+    }, 
+    "lport_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The id of the logical port through which the traceflow packet was forwarded.", 
+      "type": "string"
+    }, 
+    "lport_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The name of the logical port through which the traceflow packet was forwarded.", 
+      "type": "string"
+    }, 
+    "nat_rule_id": {
+      "description": "This field is specified when the traceflow packet matched a NAT rule.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "The ID of the NAT rule that was applied to forward the traceflow packet", 
+      "type": "integer"
+    }, 
+    "next_hop": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "This field is specified when the traceflow packet was routed by logical router.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Next hop IP address of matched routing entry"
+    }, 
+    "resend_type": {
+      "description": "ARP_UNKNOWN_FROM_CP - Unknown ARP query result emitted by control plane ND_NS_UNKNOWN_FROM_CP - Unknown neighbor solicitation query result emitted by control plane UNKNOWN - Unknown resend type", 
+      "enum": [
+        "UNKNOWN", 
+        "ARP_UNKNOWN_FROM_CP", 
+        "ND_NS_UNKNWON_FROM_CP"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "The type of packet resending", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_TraceflowObservationType.html">TraceflowObservationType</A>, 
+      "default": "TraceflowObservationReceived", 
+      "required": true
+    }, 
+    "route_prefix": {
+      "$ref": "<A HREF="schemas_IPCIDRBlock.html">IPCIDRBlock</A>, 
+      "description": "This field is specified when the traceflow packet was routed by logical router.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Prefix of matched routing entry"
+    }, 
+    "sequence_no": {
+      "description": "the hop count for observations on the transport node that a traceflow packet is injected in will be 0. The hop count is incremented each time a subsequent transport node receives the traceflow packet. The sequence number of 999 indicates that the hop count could not be determined for the containing observation.", 
+      "readonly": true, 
+      "required": true, 
+      "title": "the sequence number is the traceflow observation hop count", 
+      "type": "integer"
+    }, 
+    "service_index": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The index of the service insertion component", 
+      "type": "integer"
+    }, 
+    "service_path_index": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The path index of the service insertion component", 
+      "type": "integer"
+    }, 
+    "service_ttl": {
+      "readonly": true, 
+      "required": false, 
+      "title": "The ttl of the service insertion component", 
+      "type": "integer"
+    }, 
+    "site_path": {
+      "description": "This field contains the site path where this observation was generated.", 
+      "readonly": true, 
+      "title": "Policy path of the federated site", 
+      "type": "string"
+    }, 
+    "spoofguard_ip": {
+      "$ref": "<A HREF="schemas_IPCIDRBlock.html">IPCIDRBlock</A>, 
+      "description": "This field specified the prefix IP address a traceflow packet matched in the whitelist in spoofguard.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Prefix IP address matched in the whitelist in spoofguard"
+    }, 
+    "spoofguard_mac": {
+      "$ref": "<A HREF="schemas_MACAddress.html">MACAddress</A>, 
+      "description": "The source MAC address of form: \"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$\". For example: 00:00:00:00:00:00.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "MAC address matched in the whitelist in spoofguard"
+    }, 
+    "spoofguard_vlan_id": {
+      "$ref": "<A HREF="schemas_VlanID.html">VlanID</A>, 
+      "description": "This field specified the VLAN id a traceflow packet matched in the whitelist in spoofguard.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VLAN id matched in the whitelist in spoofguard"
+    }, 
+    "svc_nh_mac": {
+      "description": "MAC address of nexthop for service insertion(SI) in service VM(SVM) where the traceflow packet was received.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "MAC address of nexthop", 
+      "type": "string"
+    }, 
+    "timestamp": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Timestamp when the observation was created by the transport node (milliseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node"
+    }, 
+    "timestamp_micro": {
+      "description": "Timestamp when the observation was created by the transport node (microseconds epoch)", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Timestamp when the observation was created by the transport node", 
+      "type": "integer"
+    }, 
+    "translated_dst_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The translated destination IP address of VNP/NAT"
+    }, 
+    "translated_src_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The translated source IP address of VPN/NAT"
+    }, 
+    "transport_node_id": {
+      "readonly": true, 
+      "required": false, 
+      "title": "id of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "name of the transport node that observed a traceflow packet", 
+      "type": "string"
+    }, 
+    "transport_node_type": {
+      "$ref": "<A HREF="schemas_TransportNodeType.html">TransportNodeType</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "type of the transport node that observed a traceflow packet"
+    }, 
+    "vlan": {
+      "$ref": "<A HREF="schemas_VlanID.html">VlanID</A>, 
+      "description": "This field is specified when the traceflow packet was forwarded by a VLAN logical network.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VLAN for the logical network on which the traceflow packet was forwarded"
+    }, 
+    "vni": {
+      "description": "This field is specified when the traceflow packet was forwarded by an overlay logical network.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "VNI for the logical network on which the traceflow packet was forwarded.", 
+      "type": "int"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

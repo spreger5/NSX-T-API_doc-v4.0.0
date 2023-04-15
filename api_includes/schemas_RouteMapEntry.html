@@ -1,0 +1,120 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RouteMapEntry.html">RouteMapEntry</a> (<a href="types_RouteMapEntry.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "RouteMapEntry", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "action": {
+      "description": "Action for the route map entry", 
+      "enum": [
+        "PERMIT", 
+        "DENY"
+      ], 
+      "required": true, 
+      "title": "Action for the route map entry", 
+      "type": "string"
+    }, 
+    "community_list_matches": {
+      "description": "Community list match criteria for route map. Properties community_list_matches and prefix_list_matches are mutually exclusive and cannot be used in the same route map entry.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CommunityMatchCriteria.html">CommunityMatchCriteria</A>
+      }, 
+      "required": false, 
+      "title": "Community list match criteria", 
+      "type": "array"
+    }, 
+    "prefix_list_matches": {
+      "description": "Prefix list match criteria for route map. Properties community_list_matches and prefix_list_matches are mutually exclusive and cannot be used in the same route map entry.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 500, 
+      "required": false, 
+      "title": "Prefix list match criteria", 
+      "type": "array", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "Tier0RouteMap"
+          ], 
+          "relationshipType": "ROUTEMAP_PREFIX_LIST_RELATIONSHIP", 
+          "rightType": [
+            "PrefixList"
+          ]
+        }
+      ]
+    }, 
+    "set": {
+      "$ref": "<A HREF="schemas_RouteMapEntrySet.html">RouteMapEntrySet</A>, 
+      "description": "Set criteria for route map entry", 
+      "required": false, 
+      "title": "Set criteria for route map entry"
+    }
+  }, 
+  "title": "Route map entry", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

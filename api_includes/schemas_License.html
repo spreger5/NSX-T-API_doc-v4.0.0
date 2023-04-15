@@ -1,0 +1,162 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_License.html">License</a> (<a href="types_License.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "license properties", 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "License", 
+  "module_id": "License", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "capacity_type": {
+      "description": "License metrics specifying the capacity type of license key. Types are: - VM - CPU - USER(Concurrent User) - CORE - HOST", 
+      "enum": [
+        "VM", 
+        "CPU", 
+        "USER", 
+        "CORE", 
+        "HOST"
+      ], 
+      "readonly": true, 
+      "title": "license metric", 
+      "type": "string"
+    }, 
+    "description": {
+      "readonly": true, 
+      "title": "license edition", 
+      "type": "string"
+    }, 
+    "expiry": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "readonly": true, 
+      "title": "date that license expires"
+    }, 
+    "features": {
+      "readonly": true, 
+      "title": "semicolon delimited feature list", 
+      "type": "string"
+    }, 
+    "is_eval": {
+      "readonly": true, 
+      "title": "true for evalution license", 
+      "type": "boolean"
+    }, 
+    "is_expired": {
+      "readonly": true, 
+      "title": "whether the license has expired", 
+      "type": "boolean"
+    }, 
+    "is_mh": {
+      "readonly": true, 
+      "title": "multi-hypervisor support", 
+      "type": "boolean"
+    }, 
+    "license_key": {
+      "pattern": "^[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}$", 
+      "required": true, 
+      "sensitive": true, 
+      "title": "license key", 
+      "type": "string", 
+      "validation_msg_key": "com.vmware.nsx.validation.constraints.License.license_key.message"
+    }, 
+    "product_name": {
+      "readonly": true, 
+      "title": "product name", 
+      "type": "string"
+    }, 
+    "product_version": {
+      "readonly": true, 
+      "title": "product version", 
+      "type": "string"
+    }, 
+    "quantity": {
+      "readonly": true, 
+      "title": "license capacity; 0 for unlimited", 
+      "type": "integer"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

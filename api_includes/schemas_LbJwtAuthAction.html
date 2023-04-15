@@ -1,0 +1,117 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbJwtAuthAction.html">LbJwtAuthAction</a> (<a href="types_LbJwtAuthAction.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "This action is used to control access to backend server resources using JSON Web Token(JWT) authentication. The JWT authentication is done before any HTTP manipulation if the HTTP request matches the given condition in LbRule. Any verification failed, the HTTP process will be terminated, and HTTP response with 401 status code and WWW-Authentication header will be returned to client.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbRuleAction.html">LbRuleAction</A>
+  }, 
+  "id": "LbJwtAuthAction", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbJwtAuthAction"
+  }, 
+  "properties": {
+    "key": {
+      "$ref": "<A HREF="schemas_LbJwtKey.html">LbJwtKey</A>, 
+      "descrption": "Keys are used for verifying the signature of JWT token. In current\nversion, only symmetric (HMAC SHA256) key and asymmetric (RS256) key\nare supported. It is optional, in case no key specified, the jwt\nsignature won't be verified.\n", 
+      "required": false, 
+      "title": "LbJwtKey used for verifying the signature of JWT token"
+    }, 
+    "pass_jwt_to_pool": {
+      "default": false, 
+      "description": "Specify whether to pass the JWT to backend server or remove it. By default, it is false which means will not pass the JWT to backend servers.", 
+      "required": false, 
+      "title": "Whether to pass the JWT to backend server or remove it", 
+      "type": "boolean"
+    }, 
+    "realm": {
+      "description": "A description of the protected area. If no realm is specified, clients often display a formatted hostname instead. The configured realm is returned when client request is rejected with 401 http status. In the response, it will be \"WWW-Authentication: Bearer realm=&amp;lt;realm&amp;gt;\".", 
+      "required": false, 
+      "title": "JWT realm", 
+      "type": "string"
+    }, 
+    "tokens": {
+      "description": "JWT is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Load balancer will search for every specified tokens one by one for the jwt message until found. This parameter is optional. In case not found or this field is not configured, load balancer searches the Bearer header by default in the http request \"Authorization: Bearer &amp;lt;token&amp;gt;\".", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "JWT tokens", 
+      "type": "array"
+    }, 
+    "type": {
+      "$ref": "<A HREF="schemas_LbRuleActionType.html">LbRuleActionType</A>, 
+      "description": "The property identifies the load balancer rule action type.", 
+      "required": true, 
+      "title": "Type of load balancer rule action"
+    }
+  }, 
+  "title": "Action to control access using JWT authentication", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

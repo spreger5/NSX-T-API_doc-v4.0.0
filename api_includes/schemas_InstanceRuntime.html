@@ -1,0 +1,269 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_InstanceRuntime.html">InstanceRuntime</a> (<a href="types_InstanceRuntime.html">type</a>)
+</h3>
+<pre>{
+  "description": "A Service Runtime is the runtime entity associated with ever Service-VM deployed.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "InstanceRuntime", 
+  "module_id": "ServiceInsertionCommonTypes", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "compute_collection_id": {
+      "description": "Resource Pool or cluster Id.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Compute Collection Id", 
+      "type": "string"
+    }, 
+    "deployment_status": {
+      "description": "Service-Instance Runtime deployment status of the Service-VM. It shows the latest status during the process of deployment, redeploy, upgrade, and un-deployment of VM.", 
+      "enum": [
+        "DEPLOYMENT_IN_PROGRESS", 
+        "DEPLOYMENT_FAILED", 
+        "DEPLOYMENT_SUCCESSFUL", 
+        "UPGRADE_IN_PROGRESS", 
+        "UPGRADE_FAILED", 
+        "UNDEPLOYMENT_IN_PROGRESS", 
+        "UNDEPLOYMENT_FAILED", 
+        "UNDEPLOYMENT_SUCCESSFUL", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance Runtime deployment status", 
+      "type": "string"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "error_message": {
+      "description": "Error message for the Service Instance Runtime if any.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Error Message", 
+      "type": "string"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "maintenance_mode": {
+      "description": "The maintenance mode indicates whether the corresponding service VM is in maintenance mode. The service VM will not be used to service new requests if it is in maintenance mode.", 
+      "enum": [
+        "OFF", 
+        "ENTERING", 
+        "ON", 
+        "EXITING"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance Runtime maintenance mode", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "runtime_health_status_by_partner": {
+      "description": "Service-Instance runtime health status set by partner to indicate whether the service is running properly or not.", 
+      "enum": [
+        "HEALTHY", 
+        "STOPPED", 
+        "NOT_RESPONDING"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance runtime health status set by partner", 
+      "type": "string"
+    }, 
+    "runtime_status": {
+      "description": "Service-Instance Runtime status of the deployed Service-VM.", 
+      "enum": [
+        "IN_SERVICE", 
+        "OUT_OF_SERVICE", 
+        "NEEDS_ATTENTION", 
+        "NOT_AVAILABLE"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Instance Runtime Status", 
+      "type": "string"
+    }, 
+    "service_instance_id": {
+      "description": "Id of an instantiation of a registered service.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service instance id", 
+      "type": "string"
+    }, 
+    "service_vm_id": {
+      "description": "Service-VM/SVM id of deployed virtual-machine.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Service VM id", 
+      "type": "string"
+    }, 
+    "storage_id": {
+      "description": "Moref of the datastore in VC.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Storage Id", 
+      "type": "string"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "unhealthy_reason": {
+      "description": "Reason provided by partner for the service being unhealthy. This could be due to various reasons such as connectivity lost as an example.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Reason for service status when unhealthy", 
+      "type": "string"
+    }, 
+    "vm_nic_info": {
+      "$ref": "<A HREF="schemas_VmNicInfo.html">VmNicInfo</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "VM NIC info"
+    }
+  }, 
+  "title": "Runtime of a Service-Instance.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

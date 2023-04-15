@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalRouterConfig.html">LogicalRouterConfig</a> (<a href="types_LogicalRouterConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Logical router configuration parameters.", 
+  "id": "LogicalRouterConfig", 
+  "module_id": "LogicalRouter", 
+  "properties": {
+    "external_transit_networks": {
+      "description": "CIDR block defining addresses for Tier0 to Tier1 links. If the value for this field is not provided, then it will be considered as default IPv4 CIDR \"100.64.0.0/16\"", 
+      "items": {
+        "$ref": "<A HREF="schemas_IPCIDRBlock.html">IPCIDRBlock</A>
+      }, 
+      "required": false, 
+      "title": "CIDR block defining Tier0 to Tier1 links", 
+      "type": "array"
+    }, 
+    "ha_vip_configs": {
+      "description": "This configuration can be defined only for Active-Standby LogicalRouter to provide | redundancy. For mulitple uplink ports, multiple HaVipConfigs must be defined | and each config will pair exactly two uplink ports. The VIP will move and will | always be owned by the Active node. Note - when HaVipConfig[s] are defined, | configuring dynamic-routing is disallowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_HaVipConfig.html">HaVipConfig</A>
+      }, 
+      "required": false, 
+      "title": "Array of HA VIP Config.", 
+      "type": "array"
+    }, 
+    "internal_transit_network": {
+      "$ref": "<A HREF="schemas_IPv4CIDRBlock.html">IPv4CIDRBlock</A>, 
+      "description": "CIDR block defining service router to distributed router links. If the value for this field is not provided, then it will be considered as default IPv4 CIDR- \"169.254.0.0/28\" for logical router with ACTIVE_STANDBY HA mode \"169.254.0.0/24\" for logical router with ACTIVE_ACTIVE HA mode", 
+      "required": false, 
+      "title": "CIDR block defining SR to DR links"
+    }, 
+    "transport_zone_id": {
+      "description": "Transport zone of the logical router. If specified then all downlink switches should belong to this transport zone and an error will be thrown if transport zone of the downlink switch doesn't match with this transport zone. All internal and external transit switches will be created in this transport zone.", 
+      "required": false, 
+      "title": "Transport Zone Identifier", 
+      "type": "string"
+    }
+  }, 
+  "title": "Logical router config", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

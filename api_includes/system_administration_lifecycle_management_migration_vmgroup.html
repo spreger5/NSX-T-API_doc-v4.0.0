@@ -1,0 +1,171 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_lifecycle_management.html' style='text-decoration: none'> Lifecycle Management</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_migration.html' style='text-decoration: none'> Migration</a> >
+        
+        
+            <a href='system_administration_lifecycle_management_migration_vmgroup.html' style='text-decoration: none'> Vmgroup</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Perform steps required before migrating a VM group.</h4><br>
+                      <span class="help_detail">For each VM group, the following three high level steps are performed in sequence.
+<br>
+1. Call pre VM group migrate API.
+<br>
+2. Migrate (by vmotion,in place, etc.,) VMs in the VM group. This step will be done by user independent of MC.
+<br>
+3. Call post VM group migrate API with the same VM group id used in the pre VM group migrate API.
+<br>
+This API specifically deals with pre VM group migrate API. When pre VM group migrate API is invoked for a VM group
+<br>
+id, MC performs following actions.
+<br>
+ - Checks segmentation realization state.
+<br>
+ - Creates segment ports.
+<br>
+ - Creates temporary security groups.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PreVmGroupMigrate.html">POST /api/v1/migration/vmgroup?action=pre_migrate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Perform steps required after migrating a VM group.</h4><br>
+                      <span class="help_detail">For each VM group, the following three high level steps are performed in sequence.
+<br>
+1. Call pre VM group migrate API.
+<br>
+2. Migrate (by vmotion,in place, etc.,) VMs in the VM group. This step will be done by user independent of MC.
+<br>
+3. Call post VM group migrate API with the same VM group id used in the pre VM group migrate API.
+<br>
+This API specifically deals with post VM group migrate API. When post VM group migrate API is invoked for a VM group
+<br>
+id, MC performs following actions.
+<br>
+ - Add security tags on the VMs migrated. For the VMs mentioned in the failed VM instance uuids, this operation is
+<br>
+   skipped.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PostVmGroupMigrate.html">POST /api/v1/migration/vmgroup?action=post_migrate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

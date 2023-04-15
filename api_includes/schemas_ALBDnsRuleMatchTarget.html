@@ -1,0 +1,105 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBDnsRuleMatchTarget.html">ALBDnsRuleMatchTarget</a> (<a href="types_ALBDnsRuleMatchTarget.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer DnsRuleMatchTarget object", 
+  "id": "ALBDnsRuleMatchTarget", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "client_ip_address": {
+      "$ref": "<A HREF="schemas_ALBDnsClientIpMatch.html">ALBDnsClientIpMatch</A>, 
+      "description": "IP addresses to match against client IP or the EDNS client subnet IP.", 
+      "required": false, 
+      "title": "Client ip address"
+    }, 
+    "geo_location": {
+      "$ref": "<A HREF="schemas_ALBDnsGeoLocationMatch.html">ALBDnsGeoLocationMatch</A>, 
+      "description": "Geographical location attribute to match against that of the client IP.", 
+      "required": false, 
+      "title": "Geo location"
+    }, 
+    "protocol": {
+      "$ref": "<A HREF="schemas_ALBDnsTransportProtocolMatch.html">ALBDnsTransportProtocolMatch</A>, 
+      "description": "DNS transport protocol match.", 
+      "required": false, 
+      "title": "Protocol"
+    }, 
+    "query_name": {
+      "$ref": "<A HREF="schemas_ALBDnsQueryNameMatch.html">ALBDnsQueryNameMatch</A>, 
+      "description": "Domain names to match against query name.", 
+      "required": false, 
+      "title": "Query name"
+    }, 
+    "query_type": {
+      "$ref": "<A HREF="schemas_ALBDnsQueryTypeMatch.html">ALBDnsQueryTypeMatch</A>, 
+      "description": "DNS query types to match against request query type.", 
+      "required": false, 
+      "title": "Query type"
+    }
+  }, 
+  "title": "DnsRuleMatchTarget", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

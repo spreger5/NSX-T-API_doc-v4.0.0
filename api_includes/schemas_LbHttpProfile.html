@@ -1,0 +1,254 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbHttpProfile.html">LbHttpProfile</a> (<a href="types_LbHttpProfile.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "The object is deprecated as NSX-T Load Balancer is deprecated.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_LbAppProfile.html">LbAppProfile</A>
+  }, 
+  "id": "LbHttpProfile", 
+  "module_id": "LoadBalancer", 
+  "polymorphic-type-descriptor": {
+    "type-identifier": "LbHttpProfile"
+  }, 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "http_redirect_to": {
+      "description": "If a website is temporarily down or has moved, incoming requests for that virtual server can be temporarily redirected to a URL", 
+      "required": false, 
+      "title": "http redirect static URL", 
+      "type": "string"
+    }, 
+    "http_redirect_to_https": {
+      "default": false, 
+      "description": "Certain secure applications may want to force communication over SSL, but instead of rejecting non-SSL connections, they may choose to redirect the client automatically to use SSL.", 
+      "required": false, 
+      "title": "flag to indicate whether enable HTTP-HTTPS redirect", 
+      "type": "boolean"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "idle_timeout": {
+      "default": 15, 
+      "description": "It is used to specify the HTTP application idle timeout, it means that how long the load balancer will keep the connection idle to wait for the client to send the next keep-alive request. It is not a TCP socket setting.", 
+      "maximum": 5400, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "HTTP application idle timeout in seconds", 
+      "type": "integer"
+    }, 
+    "ntlm": {
+      "deprecated": true, 
+      "description": "NTLM is an authentication protocol that can be used over HTTP. If the flag is set to true, LB will use NTLM challenge/response methodology. This property is deprecated. Please use the property server_keep_alive in order to keep the backend server connection alive for the client connection. When create a new profile, if both ntlm and server_keep_alive are set as different values, ERROR will be reported. When update an existing profile, if either ntlm or server_keep_alive value is changed, both of them are updated with the changed value.", 
+      "required": false, 
+      "title": "NTLM support flag", 
+      "type": "boolean"
+    }, 
+    "request_body_size": {
+      "description": "If it is not specified, it means that request body size is unlimited.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum size of the buffer used to store HTTP request body", 
+      "type": "integer"
+    }, 
+    "request_header_size": {
+      "default": 1024, 
+      "description": "A request with header equal to or below this size is guaranteed to be processed. A request with header larger than request_header_size will be processed up to 32K bytes on best effort basis.", 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum size of the buffer used to store HTTP request headers", 
+      "type": "integer"
+    }, 
+    "resource_type": {
+      "$ref": "<A HREF="schemas_ApplicationProfileType.html">ApplicationProfileType</A>, 
+      "required": true
+    }, 
+    "response_buffering": {
+      "default": false, 
+      "description": "When buffering is disabled, the response is passed to a client synchronously, immediately as it is received. When buffering is enabled, LB receives a response from the backend server as soon as possible, saving it into the buffers.", 
+      "required": false, 
+      "title": "Enable or disable buffering of responses", 
+      "type": "boolean"
+    }, 
+    "response_header_size": {
+      "default": 4096, 
+      "description": "A response with header larger than response_header_size will be dropped.", 
+      "maximum": 65536, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum size of the buffer used to store HTTP response headers", 
+      "type": "integer"
+    }, 
+    "response_timeout": {
+      "default": 60, 
+      "description": "If server doesn't send any packet within this time, the connection is closed.", 
+      "maximum": 2147483647, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Maximum server idle time in seconds", 
+      "type": "integer"
+    }, 
+    "server_keep_alive": {
+      "description": "If server_keep_alive is true, it means the backend connection will keep alive for the client connection. Every client connection is tied 1:1 with the corresponding server-side connection. If server_keep_alive is false, it means the backend connection won't keep alive for the client connection. The default value is false. If server_keep_alive is not specified for API input, its value in API output will be the same with the property ntlm.", 
+      "required": false, 
+      "title": "Server keep-alive flag", 
+      "type": "boolean"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }, 
+    "x_forwarded_for": {
+      "$ref": "<A HREF="schemas_XForwardedForType.html">XForwardedForType</A>, 
+      "description": "When X-Forwareded-For is configured, X-Forwarded-Proto and X-Forwarded-Port information is added automatically. The two additional header information can be also modified or deleted in load balancer rules.", 
+      "required": false, 
+      "title": "insert or replace x_forwarded_for"
+    }
+  }, 
+  "search_dsl_name": [
+    "lb http profile (manager)"
+  ], 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

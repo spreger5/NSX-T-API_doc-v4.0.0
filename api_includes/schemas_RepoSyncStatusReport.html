@@ -1,0 +1,102 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RepoSyncStatusReport.html">RepoSyncStatusReport</a> (<a href="types_RepoSyncStatusReport.html">type</a>)
+</h3>
+<pre>{
+  "id": "RepoSyncStatusReport", 
+  "module_id": "ClusterNodeVMDeployment", 
+  "properties": {
+    "failure_code": {
+      "description": "In case of repo sync related failure, the code for the error will be stored here.", 
+      "required": false, 
+      "title": "Error code for failure", 
+      "type": "integer"
+    }, 
+    "failure_message": {
+      "description": "In case if repo sync fails due to some issue, an error message will be stored here.", 
+      "required": false, 
+      "title": "Error message for failure", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "Status of the repo sync operation on the single nsx-manager", 
+      "enum": [
+        "NOT_STARTED", 
+        "IN_PROGRESS", 
+        "FAILED", 
+        "SUCCESS"
+      ], 
+      "required": true, 
+      "title": "Repository Synchronization Status", 
+      "type": "string"
+    }, 
+    "status_message": {
+      "description": "Describes the steps which repo sync operation is performing currently.", 
+      "required": false, 
+      "title": "Status message", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ApplianceLatencyDataItem.html">ApplianceLatencyDataItem</a> (<a href="types_ApplianceLatencyDataItem.html">type</a>)
+</h3>
+<pre>{
+  "description": "Describes appliance latency data in detail.", 
+  "id": "ApplianceLatencyDataItem", 
+  "module_id": "ShaApplianceMonitor", 
+  "properties": {
+    "destination_node_id": {
+      "description": "Display the appliance node id.", 
+      "title": "Node id", 
+      "type": "string"
+    }, 
+    "destination_node_ip": {
+      "description": "Display the appliance node ip.", 
+      "title": "Node name", 
+      "type": "string"
+    }, 
+    "destination_node_name": {
+      "description": "Display the appliance node name.", 
+      "title": "Node name", 
+      "type": "string"
+    }, 
+    "packet_loss_percent": {
+      "description": "Display the percentage of lost packet.", 
+      "title": "Display the percentage of lost packet", 
+      "type": "string"
+    }, 
+    "packet_received": {
+      "description": "Display the received packets.", 
+      "title": "Display the received packets", 
+      "type": "integer"
+    }, 
+    "packet_transmitted": {
+      "description": "Display the transmitted packets in Ping", 
+      "title": "Display the transmitted packets", 
+      "type": "integer"
+    }, 
+    "rtt_avg": {
+      "description": "Display the average Round Trip Time in milliseconds.", 
+      "title": "Display the average rtt of latency value", 
+      "type": "number"
+    }, 
+    "rtt_max": {
+      "description": "Display the max Round Trip Time in milliseconds.", 
+      "title": "Display the max rtt of latency value", 
+      "type": "number"
+    }, 
+    "rtt_mdev": {
+      "description": "Display the mean Round Trip Time in milliseconds.", 
+      "title": "Display the mean rtt of latency value", 
+      "type": "number"
+    }, 
+    "rtt_min": {
+      "description": "Display the min Round Trip Time in milliseconds.", 
+      "title": "Display the min rtt of latency value", 
+      "type": "number"
+    }, 
+    "source_node_ip": {
+      "description": "Display the appliance node ip.", 
+      "title": "Node name", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "Display the connection status between source node and destination node.", 
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Display the connection status", 
+      "type": "string"
+    }, 
+    "total_time": {
+      "description": "Display the total time of sending and receiving packets in milliseconds.", 
+      "title": "Display the total time in milliseconds", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Appliance Latency data", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

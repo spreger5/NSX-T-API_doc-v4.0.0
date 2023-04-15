@@ -1,0 +1,82 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LbRuleMatchType.html">LbRuleMatchType</a> (<a href="types_LbRuleMatchType.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "description": "LbRuleMatchType is used to determine how a specified string value is used to match a specified LbRuleCondition field. STARTS_WITH: If the LbRuleCondition field starts with specified string, the condition matches. The fields with this match type are specified as strings, not regular expressions. ENDS_WITH: If the LbRuleCondition field ends with specified string, the condition matches. The fields with this match type are specified as strings, not regular expressions. EQUALS: If the LbRuleCondition field is same as the specified string, the condition matches. The fields with this match type are specified as strings, not regular expressions. CONTAINS: If the LbRuleCondition field contains the specified string, the condition matches. The fields with this match type are specified as strings, not regular expressions. REGEX: If the LbRuleCondition field matches specified regular expression, the condition matches. The regular expressions in load balancer rules use the features common to both Java regular expressions and Perl Compatible Regular Expressions (PCREs) with some restrictions. Reference http://www.pcre.org for PCRE and the NSX-T Administrator's Guide for the restrictions. If named capturing groups are used in the regular expression, when a match succeeds, the substrings of the subject string that match named capturing groups are stored (captured) in variables with specific names which can be used in the fields of LbRuleAction which support variables. Named capturing group are defined in the format (?&amp;lt;name&amp;gt;subpattern), such as (?&amp;lt;year&amp;gt;\\d{4}). For example, in the regular expression: \"/news/(?&amp;lt;year&amp;gt;\\d+)/(?&amp;lt;month&amp;gt;\\d+)/(?&amp;lt;article&amp;gt;.*)\", for subject string \"/news/2017/06/xyz.html\", the substring \"2017\" is captured in variable year, \"06\" is captured in variable month, and \"xyz.html\" is captured in variable article. These variables can be used in LbRuleAction fields which support variables in form of $name, such as $year, $month, $article. Please note, when regular expressions are used in JSON(JavaScript Object Notation) string, every backslash character (\\) needs to be escaped by one additional backslash character.", 
+  "enum": [
+    "STARTS_WITH", 
+    "ENDS_WITH", 
+    "EQUALS", 
+    "CONTAINS", 
+    "REGEX"
+  ], 
+  "id": "LbRuleMatchType", 
+  "module_id": "LoadBalancer", 
+  "title": "Match type for LbRule conditions", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

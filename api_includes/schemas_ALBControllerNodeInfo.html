@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBControllerNodeInfo.html">ALBControllerNodeInfo</a> (<a href="types_ALBControllerNodeInfo.html">type</a>)
+</h3>
+<pre>{
+  "description": "Advanced Load Balancer controller node information like node IP and node name.", 
+  "id": "ALBControllerNodeInfo", 
+  "module_id": "PolicyALBControllerDeployment", 
+  "properties": {
+    "is_dhcp": {
+      "description": "Advanced Load Balancer controller node IP configuration is static or DHCP.", 
+      "readonly": true, 
+      "title": "Is DHCP based IP assignment", 
+      "type": "boolean"
+    }, 
+    "node_ip": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "description": "Advanced Load Balancer controller node IP.", 
+      "readonly": true, 
+      "title": "Advanced Load Balancer controller node IP"
+    }, 
+    "node_name": {
+      "description": "Advanced Load Balancer controller node name.", 
+      "readonly": true, 
+      "title": "Advanced Load Balancer controller node name", 
+      "type": "string"
+    }, 
+    "node_role": {
+      "description": "Advanced Load Balancer controller node role in cluster.", 
+      "readonly": true, 
+      "title": "Advanced Load Balancer controller node role", 
+      "type": "string"
+    }, 
+    "node_start_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "description": "Advanced Load Balancer controller node start time in its local timezone.", 
+      "readonly": true, 
+      "title": "Advanced Load Balancer controller node start time"
+    }, 
+    "node_state": {
+      "description": "Advanced Load Balancer controller node current state in the cluster.", 
+      "readonly": true, 
+      "title": "Advanced Load Balancer controller node state", 
+      "type": "string"
+    }, 
+    "vm_id": {
+      "description": "ID of the VM maintained internally. Note: This is automatically generated and cannot be modified.", 
+      "readonly": true, 
+      "title": "ID of VM used to recognize it", 
+      "type": "string"
+    }
+  }, 
+  "title": "Information for Advanced Load Balancer controller nodes", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

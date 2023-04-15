@@ -1,0 +1,112 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafRuleGroup.html">ALBWafRuleGroup</a> (<a href="types_ALBWafRuleGroup.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafRuleGroup object", 
+  "id": "ALBWafRuleGroup", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "enable": {
+      "default": true, 
+      "description": "Enable or disable WAF Rule Group. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Enable", 
+      "type": "boolean"
+    }, 
+    "exclude_list": {
+      "description": "Exclude list for the WAF rule group. The fields in the exclude list entry are logically and'ed to deduce the exclusion criteria. If there are multiple excludelist entries, it will be 'logical or' of them. Maximum of 64 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafExcludeListEntry.html">ALBWafExcludeListEntry</A>
+      }, 
+      "required": false, 
+      "title": "Exclude list", 
+      "type": "array"
+    }, 
+    "index": {
+      "description": "Number of index.", 
+      "required": true, 
+      "title": "Index", 
+      "type": "integer"
+    }, 
+    "name": {
+      "description": "Name of the object.", 
+      "required": true, 
+      "title": "Name", 
+      "type": "string"
+    }, 
+    "rules": {
+      "description": "Rules as per Modsec language. Maximum of 1024 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBWafRule.html">ALBWafRule</A>
+      }, 
+      "required": false, 
+      "title": "Rules", 
+      "type": "array"
+    }
+  }, 
+  "title": "WafRuleGroup", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBHealthMonitorSIP.html">ALBHealthMonitorSIP</a> (<a href="types_ALBHealthMonitorSIP.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer HealthMonitorSIP object", 
+  "id": "ALBHealthMonitorSIP", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "sip_monitor_transport": {
+      "$ref": "<A HREF="schemas_ALBSipMonTransport.html">ALBSipMonTransport</A>, 
+      "default": "SIP_UDP_PROTO", 
+      "description": "Specify the transport protocol TCP or UDP, to be used for SIP health monitor. The default transport is UDP. Enum options - SIP_UDP_PROTO, SIP_TCP_PROTO. Default value when not specified in API or module is interpreted by ALB Controller as SIP_UDP_PROTO.", 
+      "required": false, 
+      "title": "Sip monitor transport"
+    }, 
+    "sip_request_code": {
+      "$ref": "<A HREF="schemas_ALBSipRequestCode.html">ALBSipRequestCode</A>, 
+      "default": "SIP_OPTIONS", 
+      "description": "Specify the SIP request to be sent to the server. By default, SIP OPTIONS request will be sent. Enum options - SIP_OPTIONS. Default value when not specified in API or module is interpreted by ALB Controller as SIP_OPTIONS.", 
+      "required": false, 
+      "title": "Sip request code"
+    }, 
+    "sip_response": {
+      "default": "SIP/2.0", 
+      "description": "Match for a keyword in the first 2KB of the server header and body response. By default, it matches for SIP/2.0. Default value when not specified in API or module is interpreted by ALB Controller as SIP/2.0.", 
+      "required": false, 
+      "title": "Sip response", 
+      "type": "string"
+    }
+  }, 
+  "title": "HealthMonitorSIP", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

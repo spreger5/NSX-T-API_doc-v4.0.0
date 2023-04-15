@@ -1,0 +1,214 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_SwitchingToVmcModeParameters.html">SwitchingToVmcModeParameters</a> (<a href="types_SwitchingToVmcModeParameters.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": {}, 
+  "description": "Possible values of a mode in a \"/config/nsx_appliance_mode\" file", 
+  "extends": {
+    "$ref": "<A HREF="schemas_NodeMode.html">NodeMode</A>
+  }, 
+  "id": "SwitchingToVmcModeParameters", 
+  "module_id": "ApplianceModes", 
+  "properties": {
+    "auth_code": {
+      "$ref": "<A HREF="schemas_Oauth2Credentials.html">Oauth2Credentials</A>, 
+      "description": "Client's credentials.", 
+      "title": "Auth Code"
+    }, 
+    "base_url": {
+      "description": "Protocol and domain name (or IP address) of a CSP server, like \"https://console-stg.cloud.vmware.com\".", 
+      "title": "CSP base URL", 
+      "type": "string"
+    }, 
+    "basic_auth_whitelist_ips": {
+      "description": "List of whitelist IPs for basic auth", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "Whitelist IPs", 
+      "type": "array"
+    }, 
+    "csp_access_token_uri": {
+      "description": "This CSP end-point exchanges one of the following grants - authorization_code, refresh_token, client_credentials or client_delegate for an access token.", 
+      "title": "CSP endpoint that exchanges a grant for an access token", 
+      "type": "string"
+    }, 
+    "csp_client_credential": {
+      "$ref": "<A HREF="schemas_Oauth2Credentials.html">Oauth2Credentials</A>, 
+      "description": "Client's credentials on CSP server", 
+      "title": "CSP Client Credential"
+    }, 
+    "csp_client_incoming_credentials": {
+      "description": "List of incoming client IDs", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "CSP client incoming credentials", 
+      "type": "array"
+    }, 
+    "csp_logout_uri": {
+      "description": "This CSP end-point returns the identity provider's logout url. In order to logout, an explicit redirect to this url is needed.", 
+      "title": "CSP endpoint that returns the identity provider's logout url", 
+      "type": "string"
+    }, 
+    "csp_org_uri": {
+      "description": "Relative path on CSP server to the Org location. Can be \"/csp/gateway/am/api/orgs/\".", 
+      "title": "Relative path to CSP Org", 
+      "type": "string"
+    }, 
+    "csp_public_key_uri": {
+      "description": "CSP endpoint that returns a list of public keys in jwks format. These keys are used in an application to validate that the access-token is valid.", 
+      "title": "CSP endpoint to get the list of public keys in JWKS format", 
+      "type": "string"
+    }, 
+    "csp_time_drift": {
+      "description": "CSP time drift in milliseconds", 
+      "title": "CSP time drift", 
+      "type": "integer"
+    }, 
+    "csp_user_authorization_uri": {
+      "description": "This endpoint is used with browser redirection only. It discovers the user's Identity Provider (IdP) and sends the user to the IdP login page. It is the starting point of the OAuth 2.0 flow to authenticate end users from an application.", 
+      "title": "CSP Discovery login entry point for OAuth 2.0 authorization", 
+      "type": "string"
+    }, 
+    "csp_user_info_uri": {
+      "description": "This endpoint returns the content of the given access token if the token is valid. It also includes the group_ids and group_names if the client is registered with group_id, group_names scopes. It's usually /am/api/userinfo.", 
+      "title": "CSP user info endpoint", 
+      "type": "string"
+    }, 
+    "default_org_id": {
+      "description": "Org ID of a Client - commonly UUID.", 
+      "title": "Org ID of a Client", 
+      "type": "string"
+    }, 
+    "ea_org": {
+      "$ref": "<A HREF="schemas_OrgInfo.html">OrgInfo</A>, 
+      "description": "Org ID and role of \"Site Reliability Engineer\"", 
+      "title": "Org Info for \"Site Reliability Engineer\""
+    }, 
+    "gss_org": {
+      "$ref": "<A HREF="schemas_OrgInfo.html">OrgInfo</A>, 
+      "description": "Org ID and role of \"Global Support Services\"", 
+      "title": "Org Info for \"Global Support Services\""
+    }, 
+    "mode_change_only": {
+      "description": "When this parameter is set to true, only a change of the node mode happens without any update to the auth properties. When this param is not set to true i.e. set to false or not provided, mode change and update to the auth properties will both happen.", 
+      "title": "Only change node  mode", 
+      "type": "boolean"
+    }, 
+    "mode_id": {
+      "description": "Possible enum values in a \"/config/nsx_appliance_mode\" file", 
+      "enum": [
+        "ON_PREM", 
+        "SERVICE", 
+        "VMC", 
+        "VMC_LOCAL"
+      ], 
+      "required": true, 
+      "title": "Nsx node mode", 
+      "type": "string"
+    }, 
+    "proxy_host": {
+      "$ref": "<A HREF="schemas_HostnameOrIPAddress.html">HostnameOrIPAddress</A>, 
+      "title": "IP/host of PoP (Point-of-Presence) HTTP proxy server"
+    }, 
+    "proxy_port": {
+      "maximum": 65535, 
+      "minimum": 1, 
+      "title": "Port of PoP (Point-of-Presence) Http proxy server", 
+      "type": "integer"
+    }, 
+    "public_client_info": {
+      "$ref": "<A HREF="schemas_PublicClientInfo.html">PublicClientInfo</A>, 
+      "description": "OAuth2 info for public clients", 
+      "title": "OAuth2 info for public clients"
+    }, 
+    "resource_type": {
+      "default": "SwitchingToVmcModeParameters", 
+      "enum": [
+        "SwitchingToVmcModeParameters"
+      ], 
+      "title": "Node Mode type", 
+      "type": "string"
+    }, 
+    "sddc_id": {
+      "description": "SDDC id", 
+      "title": "SDDC id", 
+      "type": "string"
+    }, 
+    "service_definition_id": {
+      "description": "Service definition id", 
+      "title": "Service definition id", 
+      "type": "string"
+    }, 
+    "sre_org": {
+      "$ref": "<A HREF="schemas_OrgInfo.html">OrgInfo</A>, 
+      "description": "Org ID and role of \"Enterprise Admin\"", 
+      "title": "Org Info for \"Enterprise Admin\""
+    }
+  }, 
+  "title": "Parameters required to switch to VMC nsx node mode", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,170 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HttpServiceProperties.html">HttpServiceProperties</a> (<a href="types_HttpServiceProperties.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "HttpServiceProperties", 
+  "properties": {
+    "basic_authentication_enabled": {
+      "default": true, 
+      "deprecated": true, 
+      "description": "Identifies whether basic authentication is enabled or disabled in API calls.", 
+      "title": "Enable or disable basic authentication", 
+      "type": "boolean"
+    }, 
+    "certificate": {
+      "$ref": "<A HREF="schemas_Certificate.html">Certificate</A>, 
+      "deprecated": true, 
+      "readonly": true, 
+      "required": true
+    }, 
+    "cipher_suites": {
+      "deprecated": true, 
+      "items": {
+        "$ref": "<A HREF="schemas_CipherSuite.html">CipherSuite</A>
+      }, 
+      "minItems": 1, 
+      "title": "Cipher suites used to secure contents of connection", 
+      "type": "array"
+    }, 
+    "client_api_concurrency_limit": {
+      "default": 40, 
+      "deprecated": true, 
+      "description": "The maximum number of concurrent API requests that will be serviced for a given authenticated client.  If the number of API requests being processed exceeds this limit, new API requests will be refused and a 503 Service Unavailable response will be returned to the client. To disable API concurrency limiting, set this value to 0.", 
+      "minimum": 0, 
+      "title": "Client API rate limit in calls", 
+      "type": "integer"
+    }, 
+    "client_api_rate_limit": {
+      "default": 100, 
+      "deprecated": true, 
+      "description": "The maximum number of API requests that will be serviced per second for a given authenticated client.  If more API requests are received than can be serviced, a 429 Too Many Requests HTTP response will be returned. To disable API rate limiting, set this value to 0.", 
+      "minimum": 0, 
+      "title": "Client API rate limit in calls per second", 
+      "type": "integer"
+    }, 
+    "connection_timeout": {
+      "deprecated": true, 
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "title": "NSX connection timeout, set to 0 to configure no timeout", 
+      "type": "integer"
+    }, 
+    "cookie_based_authentication_enabled": {
+      "default": true, 
+      "deprecated": true, 
+      "description": "Identifies whether cookie-based authentication is enabled or disabled in API calls. When cookie-based authentication is disabled, new sessions cannot be created via /api/session/create.", 
+      "title": "Enable or disable cookie-based authentication", 
+      "type": "boolean"
+    }, 
+    "global_api_concurrency_limit": {
+      "default": 100, 
+      "deprecated": true, 
+      "description": "The maximum number of concurrent API requests that will be serviced. If the number of API requests being processed exceeds this limit, new API requests will be refused and a 503 Service Unavailable response will be returned to the client.  To disable API concurrency limiting, set this value to 0.", 
+      "minimum": 0, 
+      "title": "Global API rate limit in calls", 
+      "type": "integer"
+    }, 
+    "logging_level": {
+      "default": "INFO", 
+      "enum": [
+        "OFF", 
+        "FATAL", 
+        "ERROR", 
+        "WARN", 
+        "INFO", 
+        "DEBUG", 
+        "TRACE"
+      ], 
+      "required": false, 
+      "title": "Service logging level", 
+      "type": "string"
+    }, 
+    "protocol_versions": {
+      "deprecated": true, 
+      "items": {
+        "$ref": "<A HREF="schemas_ProtocolVersion.html">ProtocolVersion</A>
+      }, 
+      "minItems": 1, 
+      "title": "TLS protocol versions", 
+      "type": "array"
+    }, 
+    "redirect_host": {
+      "$ref": "<A HREF="schemas_HostnameOrIPv4AddressOrEmptyString.html">HostnameOrIPv4AddressOrEmptyString</A>, 
+      "default": "", 
+      "deprecated": true, 
+      "title": "Host name or IP address to use for redirect location headers, or empty string to derive from current request"
+    }, 
+    "session_timeout": {
+      "deprecated": true, 
+      "maximum": 2147483647, 
+      "minimum": 0, 
+      "title": "NSX session inactivity timeout, set to 0 to configure no timeout", 
+      "type": "integer"
+    }
+  }, 
+  "title": "HTTP Service properties", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

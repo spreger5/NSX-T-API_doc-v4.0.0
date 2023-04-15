@@ -1,0 +1,143 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LacpGroupConfigInfo.html">LacpGroupConfigInfo</a> (<a href="types_LacpGroupConfigInfo.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "LacpGroupConfigInfo", 
+  "module_id": "InventoryCmInvComm", 
+  "properties": {
+    "key": {
+      "description": "The key represents the identifier for the group that is unique across VC.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "The generated key as the identifier for the group", 
+      "type": "string"
+    }, 
+    "load_balance_algorithm": {
+      "description": "Load balance algorithm used in LACP group. The possible values are dictated by the values available in VC. Please refer VMwareDvsLacpLoadBalanceAlgorithm documentation for a full list of values. A few examples are srcDestIp where source and destination IP are considered, srcIp where only source IP is considered.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "Load balance policy", 
+      "type": "string"
+    }, 
+    "mode": {
+      "description": "The mode of LACP can be ACTIVE or PASSIVE. If the mode is ACTIVE, LACP is enabled unconditionally. If the mode is PASSIVE, LACP is enabled only if LACP device is detected.", 
+      "enum": [
+        "ACTIVE", 
+        "PASSIVE"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "The mode of Link Aggregation Control Protocol (LACP)", 
+      "type": "string"
+    }, 
+    "name": {
+      "description": "The display name of the LACP group.", 
+      "readonly": false, 
+      "required": false, 
+      "title": "The display name", 
+      "type": "string"
+    }, 
+    "timeout_type": {
+      "default": "SLOW", 
+      "description": "To set the lag mode as fast for LACP. By default, it will be slow.", 
+      "enum": [
+        "FAST", 
+        "SLOW"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "LACP timeout mode", 
+      "type": "string"
+    }, 
+    "uplink_names": {
+      "description": "Names for the uplink ports in the group.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Uplink names", 
+      "type": "array"
+    }, 
+    "uplink_num": {
+      "readonly": false, 
+      "required": false, 
+      "title": "The number of uplink ports", 
+      "type": "integer"
+    }, 
+    "uplink_port_keys": {
+      "description": "Keys for the uplink ports in the group. Each uplink port is assigned a key that is unique across VC.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Keys for the uplink ports", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

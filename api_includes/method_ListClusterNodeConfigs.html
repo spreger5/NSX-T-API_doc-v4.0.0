@@ -1,0 +1,698 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                System Administration >
+            
+            
+                <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers.html' style='text-decoration: none'> NSX Managers</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers_clusters.html' style='text-decoration: none'> Clusters</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers_clusters_cluster_configuration.html' style='text-decoration: none'> Cluster Configuration</a>
+            
+        </P>
+    
+        <div id="ListClusterNodeConfigs">
+          <h2>
+            List Cluster Node Configurations
+          </h2>
+          <span class="help_detail">Returns information about all NSX cluster nodes.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/cluster/nodes
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value">ListRequestParameters<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ListClusterNodeConfigs', 'ListRequestParameters.ListClusterNodeConfigs.Query_Parameters')">+</span></div>
+  </div>
+    <div id="ListRequestParameters.ListClusterNodeConfigs.Query_Parameters" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ListRequestParameters.html">
+        <span>ListRequestParameters</span>
+      </a> (<a href="schemas_ListRequestParameters.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>included_fields</td>
+            
+            <td>Comma separated list of fields that should be included in query result<br><br>Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>page_size</td>
+            
+            <td>Maximum number of results to return in this page (server may return fewer)</td>
+            
+            <td>integer</td>
+            
+            <td>Minimum: 0<br>Maximum: 1000<br>Default: "1000"</td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td></td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/cluster/nodes</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ClusterNodeConfigListResult<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ListClusterNodeConfigs', 'ClusterNodeConfigListResult.ListClusterNodeConfigs.Response_Body')">+</span></div>
+  </div>
+    <div id="ClusterNodeConfigListResult.ListClusterNodeConfigs.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ClusterNodeConfigListResult.html">
+        <span>ClusterNodeConfigListResult</span>
+      </a> (<a href="schemas_ClusterNodeConfigListResult.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>cursor</td>
+            
+            <td>Opaque cursor to be used for getting next page of records (supplied by current result page)</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>result_count</td>
+            
+            <td>Count of results found (across all pages), set only on first page</td>
+            
+            <td>integer</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>results</td>
+            
+            <td>Cluster node configuration results</td>
+            
+            <td>array of <a href="types_ClusterNodeConfig.html">ClusterNodeConfig</a></td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>sort_ascending</td>
+            
+            <td>If true, results are sorted in ascending order</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>sort_by</td>
+            
+            <td>Field by which records are sorted</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "result_count": 3,
+  "results": [
+    {
+      "resource_type": "ClusterNodeConfig",
+      "id": "4206C988-8227-CEE9-D9AF-1C581AD84A03",
+      "display_name": "4206C988-8227-CEE9-D9AF-1C581AD84A03",
+      "manager_role": {
+        "type": "ManagementClusterRoleConfig",
+        "mgmt_cluster_listen_addr": {
+          "port": 9090,
+          "certificate_sha256_thumbprint": "64b99fac51f5b8996b158fc8c18af8d9379f6faa9b127a933446c701df809d24",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.48"
+        },
+        "mpa_msg_client_info": {
+          "account_name": "cvn-mp-mpa-5d1212b4-6e1e-47d4-b9e7-2e38e018b8f2"
+        },
+        "api_listen_addr": {
+          "port": 443,
+          "certificate_sha256_thumbprint": "e4c359bfb8f7ca827173effe52a726cf1df0209b7035a98a773a827a5b3365bd",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.48"
+        },
+        "mgmt_plane_listen_addr": {
+          "port": 5671,
+          "certificate_sha256_thumbprint": "7eda54d0dcee4463573f40b1869552f0e248dd47b9d6b47b727459b0ab0c40ba",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.48"
+        },
+        "appliance_connection_info" : {
+          "ip_address" : "192.168.110.48",
+          "port" : 1234,
+          "certificate" : "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "certificate_sha256_thumbprint" : "b53e8e59ea8832d3afdc75a9baa68e73c29c199258c390474afe4fb11f821eeb",
+          "service_endpoint_uuid" : "4ed8b446-260a-44ad-9cb7-76b07350ac43",
+          "entities_hosted" : [ {
+            "entity_type" : "MP",
+            "entity_uuid" : "b46041ce-4c34-4639-891a-24b68c33c8db"
+          } ]
+        },
+      },
+      "appliance_mgmt_listen_addr": "192.168.110.48",
+      "external_id": "4206C988-8227-CEE9-D9AF-1C581AD84A03",
+      "_create_time": 1445540755333,
+      "_last_modified_user": "node-mgmt",
+      "_system_owned": false,
+      "_last_modified_time": 1445540868201,
+      "_create_user": "admin",
+      "_revision": 5
+    },
+    {
+      "resource_type": "ClusterNodeConfig",
+      "id": "4206A8C8-36D0-F37E-54F0-76D206541B9C",
+      "display_name": "4206A8C8-36D0-F37E-54F0-76D206541B9C",
+      "manager_role": {
+        "type": "ManagementClusterRoleConfig",
+        "mgmt_cluster_listen_addr": {
+          "port": 9090,
+          "certificate_sha256_thumbprint": "f082b28c306c045f8663f9cf759fc047410e465c3403c05682f4fb2cafb961f8",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.49"
+        },
+        "mpa_msg_client_info": {
+          "account_name": "cvn-mp-mpa-318813d1-e23f-4906-b5e3-ebb30f6f93ea"
+        },
+        "api_listen_addr": {
+          "port": 443,
+          "certificate_sha256_thumbprint": "8fda7907ed769628887ccc55d4fc9391febad9ce8556ca78dc7abe0025e5571a",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.49"
+        },
+        "mgmt_plane_listen_addr": {
+          "port": 5671,
+          "certificate_sha256_thumbprint": "e93e093fe7e25d11eb4b5b0799d90e1285f7d87f333b2bcac3a32b65cd9ae6c8",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.49"
+        }
+        "appliance_connection_info" : {
+          "ip_address" : "192.168.110.49",
+          "port" : 1234,
+          "certificate" : "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "certificate_sha256_thumbprint" : "b53e8e59ea8832d3afdc75a9baa68e73c29c199258c390474afe4fb11f821eec",
+          "service_endpoint_uuid" : "4ed8b446-260a-44ad-9cb7-76b07350ac44",
+          "entities_hosted" : [ {
+            "entity_type" : "MP",
+            "entity_uuid" : "b46041ce-4c34-4639-891a-24b68c33c8dc"
+          } ]
+        },
+      },
+      "appliance_mgmt_listen_addr": "192.168.110.49",
+      "external_id": "4206A8C8-36D0-F37E-54F0-76D206541B9C",
+      "_create_time": 1445473397114,
+      "_last_modified_user": "node-mgmt",
+      "_system_owned": false,
+      "_last_modified_time": 1445473423066,
+      "_create_user": "system",
+      "_revision": 1
+    },
+    {
+      "resource_type": "ClusterNodeConfig",
+      "id": "4206D639-8620-96DB-2A5A-F3DFEB4C03C0",
+      "display_name": "4206D639-8620-96DB-2A5A-F3DFEB4C03C0",
+      "manager_role": {
+        "type": "ManagementClusterRoleConfig",
+        "mgmt_cluster_listen_addr": {
+          "port": 9090,
+          "certificate_sha256_thumbprint": "923314e232c29ba15aef12c8e9df44a5ddfb206479d66ac13f9a47f78b7fcc02",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.50"
+        },
+        "mpa_msg_client_info": {
+          "account_name": "cvn-mp-mpa-7deeae7c-b52c-49ce-b9da-4b05e46ba0d7"
+        },
+        "api_listen_addr": {
+          "port": 443,
+          "certificate_sha256_thumbprint": "a5778682201f1256f385372fd803ceef1913b54617d442d311d17559bd13620e",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.50"
+        },
+        "mgmt_plane_listen_addr": {
+          "port": 5671,
+          "certificate_sha256_thumbprint": "f99a8263bae620ca0f4bd0e97398ddeb0456412d491a6f5c204fa01cd81febf6",
+          "certificate": "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "ip_address": "192.168.110.50"
+        }
+        "appliance_connection_info" : {
+          "ip_address" : "192.168.110.50",
+          "port" : 1234,
+          "certificate" : "-----BEGIN CERTIFICATE-----<certificate>-----END CERTIFICATE-----",
+          "certificate_sha256_thumbprint" : "b53e8e59ea8832d3afdc75a9baa68e73c29c199258c390474afe4fb11f821eed",
+          "service_endpoint_uuid" : "4ed8b446-260a-44ad-9cb7-76b07350ac45",
+          "entities_hosted" : [ {
+            "entity_type" : "MP",
+            "entity_uuid" : "b46041ce-4c34-4639-891a-24b68c33c8dd"
+          } ]
+        },
+      },
+      "appliance_mgmt_listen_addr": "192.168.110.50",
+      "external_id": "4206D639-8620-96DB-2A5A-F3DFEB4C03C0",
+      "_create_time": 1445540972020,
+      "_last_modified_user": "node-mgmt",
+      "_system_owned": false,
+      "_last_modified_time": 1445541093369,
+      "_create_user": "admin",
+      "_revision": 3
+    }
+  ]
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">cluster_management</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

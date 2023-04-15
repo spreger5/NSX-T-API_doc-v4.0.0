@@ -1,0 +1,157 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBLdapDirectorySettings.html">ALBLdapDirectorySettings</a> (<a href="types_ALBLdapDirectorySettings.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer LdapDirectorySettings object", 
+  "id": "ALBLdapDirectorySettings", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "admin_bind_dn": {
+      "description": "LDAP Admin User DN. Administrator credentials are required to search for users under user search DN or groups under group search DN.", 
+      "required": false, 
+      "title": "Admin bind dn", 
+      "type": "string"
+    }, 
+    "group_filter": {
+      "default": "(objectClass=*)", 
+      "description": "Group filter is used to identify groups during search. Default value when not specified in API or module is interpreted by ALB Controller as (objectClass=(STAR)).", 
+      "required": false, 
+      "title": "Group filter", 
+      "type": "string"
+    }, 
+    "group_member_attribute": {
+      "default": "member", 
+      "description": "LDAP group attribute that identifies each of the group members. Default value when not specified in API or module is interpreted by ALB Controller as member.", 
+      "required": false, 
+      "title": "Group member attribute", 
+      "type": "string"
+    }, 
+    "group_member_is_full_dn": {
+      "default": true, 
+      "description": "Group member entries contain full DNs instead of just user id attribute values. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Group member is full dn", 
+      "type": "boolean"
+    }, 
+    "group_search_dn": {
+      "description": "LDAP group search DN is the root of search for a given group in the LDAP directory. Only matching groups present in this LDAP directory sub-tree will be checked for user membership.", 
+      "required": false, 
+      "title": "Group search dn", 
+      "type": "string"
+    }, 
+    "group_search_scope": {
+      "$ref": "<A HREF="schemas_ALBAuthLdapSearchScope.html">ALBAuthLdapSearchScope</A>, 
+      "default": "AUTH_LDAP_SCOPE_SUBTREE", 
+      "description": "LDAP group search scope defines how deep to search for the group starting from the group search DN. Enum options - AUTH_LDAP_SCOPE_BASE, AUTH_LDAP_SCOPE_ONE, AUTH_LDAP_SCOPE_SUBTREE. Default value when not specified in API or module is interpreted by ALB Controller as AUTH_LDAP_SCOPE_SUBTREE.", 
+      "required": false, 
+      "title": "Group search scope"
+    }, 
+    "ignore_referrals": {
+      "default": false, 
+      "description": "During user or group search, ignore searching referrals. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Ignore referrals", 
+      "type": "boolean"
+    }, 
+    "password": {
+      "description": "LDAP Admin User Password.", 
+      "required": false, 
+      "sensitive": true, 
+      "title": "Password", 
+      "type": "string"
+    }, 
+    "user_attributes": {
+      "description": "LDAP user attributes to fetch on a successful user bind.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "User attributes", 
+      "type": "array"
+    }, 
+    "user_id_attribute": {
+      "description": "LDAP user id attribute is the login attribute that uniquely identifies a single user record.", 
+      "required": false, 
+      "title": "User id attribute", 
+      "type": "string"
+    }, 
+    "user_search_dn": {
+      "description": "LDAP user search DN is the root of search for a given user in the LDAP directory. Only user records present in this LDAP directory sub-tree will be validated.", 
+      "required": false, 
+      "title": "User search dn", 
+      "type": "string"
+    }, 
+    "user_search_scope": {
+      "$ref": "<A HREF="schemas_ALBAuthLdapSearchScope.html">ALBAuthLdapSearchScope</A>, 
+      "default": "AUTH_LDAP_SCOPE_ONE", 
+      "description": "LDAP user search scope defines how deep to search for the user starting from user search DN. Enum options - AUTH_LDAP_SCOPE_BASE, AUTH_LDAP_SCOPE_ONE, AUTH_LDAP_SCOPE_SUBTREE. Default value when not specified in API or module is interpreted by ALB Controller as AUTH_LDAP_SCOPE_ONE.", 
+      "required": false, 
+      "title": "User search scope"
+    }
+  }, 
+  "title": "LdapDirectorySettings", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,138 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_TransportNodeStatus.html">TransportNodeStatus</a> (<a href="types_TransportNodeStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "TransportNodeStatus", 
+  "module_id": "Heatmap", 
+  "properties": {
+    "agent_status": {
+      "$ref": "<A HREF="schemas_AgentStatusCount.html">AgentStatusCount</A>, 
+      "title": "NSX agents status"
+    }, 
+    "control_connection_status": {
+      "$ref": "<A HREF="schemas_StatusCount.html">StatusCount</A>, 
+      "title": "Control connection status"
+    }, 
+    "evpn_tunnel_status": {
+      "$ref": "<A HREF="schemas_TunnelStatusCount.html">TunnelStatusCount</A>, 
+      "title": "EVPN Tunnel Status"
+    }, 
+    "mgmt_connection_status": {
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "title": "Management connection status", 
+      "type": "string"
+    }, 
+    "node_display_name": {
+      "description": "Transport node display name", 
+      "title": "Display name", 
+      "type": "string"
+    }, 
+    "node_path": {
+      "title": "Transport node path", 
+      "type": "string"
+    }, 
+    "node_status": {
+      "$ref": "<A HREF="schemas_NodeStatus.html">NodeStatus</A>, 
+      "title": "Node status"
+    }, 
+    "node_uuid": {
+      "title": "Transport node uuid", 
+      "type": "string"
+    }, 
+    "pnic_status": {
+      "$ref": "<A HREF="schemas_StatusCount.html">StatusCount</A>, 
+      "title": "pNIC status"
+    }, 
+    "status": {
+      "description": "Roll-up status of pNIC, management connection, control connection, tunnel status, agent status", 
+      "enum": [
+        "UP", 
+        "DOWN", 
+        "DEGRADED", 
+        "UNKNOWN"
+      ], 
+      "title": "Roll-up status of connections", 
+      "type": "string"
+    }, 
+    "threat_status": {
+      "$ref": "<A HREF="schemas_ThreatStatus.html">ThreatStatus</A>, 
+      "title": "Threat status"
+    }, 
+    "tunnel_status": {
+      "$ref": "<A HREF="schemas_TunnelStatusCount.html">TunnelStatusCount</A>, 
+      "title": "Tunnel Status"
+    }, 
+    "vm_uuid": {
+      "description": "Edge node virtual machine unique identifier. This is reported only for Edge Virtual Machine Type deployed on NSX configured host nodes.", 
+      "title": "Edge VM UUID", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

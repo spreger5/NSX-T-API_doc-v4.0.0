@@ -1,0 +1,138 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CsmStatus.html">CsmStatus</a> (<a href="types_CsmStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "extends": {
+    "$ref": "<A HREF="schemas_Resource.html">Resource</A>
+  }, 
+  "id": "CsmStatus", 
+  "module_id": "CloudServiceManager", 
+  "properties": {
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "display_name": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Name of the Csm instance", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "Identifier of the Csm appliance", 
+      "readonly": true, 
+      "required": true, 
+      "title": "UUID of the Csm appliance", 
+      "type": "string"
+    }, 
+    "ip_address": {
+      "readonly": true, 
+      "required": false, 
+      "title": "IP address of Csm instance", 
+      "type": "string"
+    }, 
+    "managed_by_vmware": {
+      "description": "This property is used only if CSM is running in service mode", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Mode of running of Csm instance", 
+      "type": "boolean"
+    }, 
+    "supported_clouds": {
+      "description": "This property provides the list of names of supported clouds by CSM.", 
+      "items": {
+        "$ref": "<A HREF="schemas_CloudTypeInfo.html">CloudTypeInfo</A>
+      }, 
+      "readonly": true, 
+      "required": true, 
+      "title": "Indication of clouds supported by CSM", 
+      "type": "array"
+    }, 
+    "version": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Version of Csm", 
+      "type": "string"
+    }
+  }, 
+  "title": "Information about status of cloud service manager", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

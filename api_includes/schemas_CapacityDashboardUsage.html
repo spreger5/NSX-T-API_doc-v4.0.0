@@ -1,0 +1,126 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_CapacityDashboardUsage.html">CapacityDashboardUsage</a> (<a href="types_CapacityDashboardUsage.html">type</a>)
+</h3>
+<pre>{
+  "id": "CapacityDashboardUsage", 
+  "module_id": "CapacityDashboard", 
+  "properties": {
+    "current_usage_count": {
+      "description": "Indicate the current usage count of object type.", 
+      "required": true, 
+      "title": "Current usage count of object type", 
+      "type": "integer"
+    }, 
+    "current_usage_percentage": {
+      "description": "Current usage percentage for object type", 
+      "required": true, 
+      "title": "Current usage percentage", 
+      "type": "number"
+    }, 
+    "display_name": {
+      "description": "Display name for NSX object type.", 
+      "required": true, 
+      "title": "User friendly name for object type", 
+      "type": "string"
+    }, 
+    "max_supported_count": {
+      "description": "This is the maximum supported count for object type in consideration.", 
+      "required": true, 
+      "title": "Maximum supported count for object type", 
+      "type": "integer"
+    }, 
+    "max_threshold_percentage": {
+      "description": "This indicates the maximum threshold percentage for object type.", 
+      "required": true, 
+      "title": "Max threshold percentage for object type", 
+      "type": "number"
+    }, 
+    "min_threshold_percentage": {
+      "description": "This indicates the minimum threshold percentage for object type.", 
+      "required": true, 
+      "title": "Min threshold percentage for object type", 
+      "type": "number"
+    }, 
+    "severity": {
+      "description": "Severity calculated from percentage usage", 
+      "enum": [
+        "INFO", 
+        "WARNING", 
+        "CRITICAL", 
+        "ERROR"
+      ], 
+      "required": true, 
+      "title": "Severity calculated from percentage usage", 
+      "type": "string"
+    }, 
+    "usage_type": {
+      "description": "Indicate the object type for which usage is calculated.", 
+      "required": true, 
+      "title": "Object type for which usage is fetched", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

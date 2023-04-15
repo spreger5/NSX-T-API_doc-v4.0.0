@@ -1,0 +1,116 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_NamedTeamingPolicy.html">NamedTeamingPolicy</a> (<a href="types_NamedTeamingPolicy.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_TeamingPolicy.html">TeamingPolicy</A>
+  }, 
+  "id": "NamedTeamingPolicy", 
+  "module_id": "UplinkHostSwitchProfile", 
+  "properties": {
+    "active_list": {
+      "items": {
+        "$ref": "<A HREF="schemas_Uplink.html">Uplink</A>
+      }, 
+      "required": true, 
+      "title": "List of Uplinks used in active list", 
+      "type": "array"
+    }, 
+    "name": {
+      "description": "An uplink teaming policy of a given name defined in UplinkHostSwitchProfile. The names of all NamedTeamingPolicies in an UplinkHostSwitchProfile must be different, but a name can be shared by different UplinkHostSwitchProfiles. Different TransportNodes can use different NamedTeamingPolicies having the same name in different UplinkHostSwitchProfiles to realize an uplink teaming policy on a logical switch. An uplink teaming policy on a logical switch can be any policy defined by a user; it does not have to be a single type of FAILOVER or LOADBALANCE. It can be a combination of types, for instance, a user can define a policy with name \"MyHybridTeamingPolicy\" as \"FAILOVER on all ESX TransportNodes and LOADBALANCE on all KVM TransportNodes\". The name is the key of the teaming policy and can not be changed once assigned.", 
+      "required": true, 
+      "title": "The name of the uplink teaming policy", 
+      "type": "string"
+    }, 
+    "policy": {
+      "enum": [
+        "FAILOVER_ORDER", 
+        "LOADBALANCE_SRCID", 
+        "LOADBALANCE_SRC_MAC"
+      ], 
+      "required": true, 
+      "title": "Teaming policy", 
+      "type": "string"
+    }, 
+    "rolling_order": {
+      "default": false, 
+      "required": false, 
+      "title": "Flag for preemptive mode", 
+      "type": "boolean"
+    }, 
+    "standby_list": {
+      "items": {
+        "$ref": "<A HREF="schemas_Uplink.html">Uplink</A>
+      }, 
+      "required": false, 
+      "title": "List of Uplinks used in standby list", 
+      "type": "array"
+    }
+  }, 
+  "title": "Uplink Teaming Policy with a name that can be referenced by logical switches", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

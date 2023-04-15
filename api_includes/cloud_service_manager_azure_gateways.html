@@ -1,0 +1,235 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Cloud Service Manager >
+        
+        
+            <a href='cloud_service_manager_azure_gateways.html' style='text-decoration: none'> Azure Gateways</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Returns configuration information for all Azure gateways</h4><br>
+                      <span class="help_detail">Returns a list of Azure gateways with information about each gateway like
+<br>
+subnet configuration and corresponding virtual network. Optional query
+<br>
+parameters can be utilized to filter the list.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAzureGateways.html">GET /api/v1/csm/azure/gateways</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Undeploys gateway for the specified virtual network</h4><br>
+                      <span class="help_detail">All the required configuration to undeploy Azure gateway will be absorbed
+<br>
+as a part of request body in this API and gateway undeployment will be
+<br>
+triggered. Undeployment progress can be known from GetAzureGatewayStatus
+<br>
+API. Upon successful undeployment of a gateway, the deployment_step will be
+<br>
+UNDEPLOYMENT_SUCCESSFUL and gateway_status will be NOT_AVAILABLE. If any
+<br>
+error is encountered during undeployment, corresponding error_code and
+<br>
+error_message will be populated in gateway_instances_status
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UndeployAzureGateway.html">POST /api/v1/csm/azure/gateways?action=undeploy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Deploys gateway for the specified virtual network</h4><br>
+                      <span class="help_detail">All the required configuration to deploy Azure gateways will be absorbed
+<br>
+as a part of request body in this API and gateway deployment will be
+<br>
+triggered. Deployment progress can be known from GetAzureGatewayStatus API.
+<br>
+Upon successful deployment of a gateway, the deployment_step will be
+<br>
+DEPLOYMENT_SUCCESSFUL gateway_status will be UP and op_status of the VNET
+<br>
+will be NSX_MANAGED_BY_GATEWAY. If any error is encountered during
+<br>
+deployment, corresponding error_code and error_message will be populated
+<br>
+in gateway_instances_status. To manage a compute VNET using transit VNET,
+<br>
+user needs to undeploy gateway and onboard the compute VNET
+<br>
+using /csm/azure/vnets/&lt;vnet-id&gt;?action=onboard API.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeployAzureGateway.html">POST /api/v1/csm/azure/gateways?action=deploy</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns configuration of the Azure gateway</h4><br>
+                      <span class="help_detail">Returns configuration for primary gateway and secondary gateway for the
+<br>
+virtual network, if deployed gateways exist for the specified virtual
+<br>
+network.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAzureGatewayConfig.html">GET /api/v1/csm/azure/gateways/&lt;vnet-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Updates Azure gateway configuration</h4><br>
+                      <span class="help_detail">Updates configuration for primary gateway and secondary gateway for the
+<br>
+virutal network, if deployed gateways exist for the specified virtual network.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAzureGatewayConfig.html">PUT /api/v1/csm/azure/gateways/&lt;vnet-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Return the status of Azure gateway</h4><br>
+                      <span class="help_detail">Returns status information for primary gateway and secondary gateway
+<br>
+for the virtual network, if deployed gateways exist for the specified
+<br>
+virtual network ID.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetAzureGatewayStatus.html">GET /api/v1/csm/azure/gateways/&lt;vnet-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

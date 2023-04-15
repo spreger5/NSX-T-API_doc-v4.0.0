@@ -1,0 +1,160 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_PortAttachment.html">PortAttachment</a> (<a href="types_PortAttachment.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Detail information about port attachment", 
+  "id": "PortAttachment", 
+  "module_id": "PolicyConnectivity", 
+  "properties": {
+    "allocate_addresses": {
+      "description": "Indicate how IP will be allocated for the port", 
+      "enum": [
+        "IP_POOL", 
+        "MAC_POOL", 
+        "BOTH", 
+        "NONE", 
+        "DHCP"
+      ], 
+      "required": false, 
+      "title": "Allocate addresses", 
+      "type": "string"
+    }, 
+    "app_id": {
+      "description": "ID used to identify/look up a child attachment behind a parent attachment", 
+      "required": false, 
+      "title": "App Id", 
+      "type": "string"
+    }, 
+    "bms_interface_config": {
+      "$ref": "<A HREF="schemas_AttachedInterfaceEntry.html">AttachedInterfaceEntry</A>, 
+      "description": "Indicate application interface configuration for Bare Metal Server.", 
+      "required": false, 
+      "title": "Application interface configuration for Bare metal server"
+    }, 
+    "context_id": {
+      "description": "If type is CHILD and the parent port is on the same segment as the child port, then this field should be VIF ID of the parent port. If type is CHILD and the parent port is on a different segment, then this field should be policy path of the parent port. If type is INDEPENDENT/STATIC, then this field should be transport node ID.", 
+      "required": false, 
+      "title": "Context ID based on the type", 
+      "type": "string"
+    }, 
+    "context_type": {
+      "description": "Set to PARENT when type field is CHILD. Read only field.", 
+      "enum": [
+        "PARENT"
+      ], 
+      "readonly": true, 
+      "title": "Context Type", 
+      "type": "string"
+    }, 
+    "evpn_vlans": {
+      "description": "List of Evpn tenant VLAN IDs the Parent logical-port serves in Evpn Route-Server mode. Only effective when attachment type is PARENT and the logical-port is attached to vRouter VM.", 
+      "items": {
+        "type": "string"
+      }, 
+      "maxItems": 1000, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Evpn tenant VLAN IDs the Parent logical-port serves.", 
+      "type": "array"
+    }, 
+    "hyperbus_mode": {
+      "default": "DISABLE", 
+      "description": "Flag to indicate if hyperbus configuration is required.", 
+      "enum": [
+        "ENABLE", 
+        "DISABLE"
+      ], 
+      "title": "Hyperbus mode", 
+      "type": "string"
+    }, 
+    "id": {
+      "description": "VIF UUID on NSX Manager. If the attachement type is PARENT, this property is required.", 
+      "required": false, 
+      "title": "Port attachment ID", 
+      "type": "string"
+    }, 
+    "traffic_tag": {
+      "$ref": "<A HREF="schemas_VlanID.html">VlanID</A>, 
+      "description": "Not valid when type field is INDEPENDENT, mainly used to identify traffic from different ports in container use case.", 
+      "required": false, 
+      "title": "VLAN ID"
+    }, 
+    "type": {
+      "description": "Type of port attachment. STATIC is added to replace INDEPENDENT. INDEPENDENT type and PARENT type are deprecated.", 
+      "enum": [
+        "PARENT", 
+        "CHILD", 
+        "INDEPENDENT", 
+        "STATIC"
+      ], 
+      "required": false, 
+      "title": "Attachement type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Attachment information on the port", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

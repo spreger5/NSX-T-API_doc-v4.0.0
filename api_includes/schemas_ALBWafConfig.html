@@ -1,0 +1,235 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBWafConfig.html">ALBWafConfig</a> (<a href="types_ALBWafConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer WafConfig object", 
+  "id": "ALBWafConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "allowed_http_versions": {
+      "description": "WAF allowed HTTP Versions. Enum options - ZERO_NINE, ONE_ZERO, ONE_ONE, TWO_ZERO. Maximum of 8 items allowed.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHTTPVersion.html">ALBHTTPVersion</A>
+      }, 
+      "required": false, 
+      "title": "Allowed http versions", 
+      "type": "array"
+    }, 
+    "allowed_methods": {
+      "description": "WAF allowed HTTP methods. Enum options - HTTP_METHOD_GET, HTTP_METHOD_HEAD, HTTP_METHOD_PUT, HTTP_METHOD_DELETE, HTTP_METHOD_POST, HTTP_METHOD_OPTIONS, HTTP_METHOD_TRACE, HTTP_METHOD_CONNECT, HTTP_METHOD_PATCH, HTTP_METHOD_PROPFIND, HTTP_METHOD_PROPPATCH, HTTP_METHOD_MKCOL, HTTP_METHOD_COPY, HTTP_METHOD_MOVE, HTTP_METHOD_LOCK, HTTP_METHOD_UNLOCK.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ALBHTTPMethod.html">ALBHTTPMethod</A>
+      }, 
+      "required": false, 
+      "title": "Allowed methods", 
+      "type": "array"
+    }, 
+    "allowed_request_content_types": {
+      "description": "WAF allowed Content Types. Maximum of 64 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Allowed request content types", 
+      "type": "array"
+    }, 
+    "argument_separator": {
+      "default": "&amp;", 
+      "description": "Argument seperator. Default value when not specified in API or module is interpreted by ALB Controller as &amp;.", 
+      "required": false, 
+      "title": "Argument separator", 
+      "type": "string"
+    }, 
+    "client_request_max_body_size": {
+      "default": 32, 
+      "description": "Maximum size for the client request body scanned by WAF. Allowed values are 1-32768. Unit is KB. Default value when not specified in API or module is interpreted by ALB Controller as 32.", 
+      "maximum": 32768, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Client request max body size", 
+      "type": "integer"
+    }, 
+    "cookie_format_version": {
+      "default": 0, 
+      "description": "0  For Netscape Cookies. 1  For version 1 cookies. Allowed values are 0-1. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 1, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Cookie format version", 
+      "type": "integer"
+    }, 
+    "ignore_incomplete_request_body_error": {
+      "default": true, 
+      "description": "Ignore request body parsing errors due to partial scanning. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Ignore incomplete request body error", 
+      "type": "boolean"
+    }, 
+    "max_execution_time": {
+      "default": 50, 
+      "description": "The maximum period of time WAF processing is allowed to take for a single request. A value of 0 (zero) means no limit and should not be chosen in production deployments. It is only used for exceptional situations where crashes of se_dp processes are acceptable. The behavior of the system if this time is exceeded depends on two other configuration settings, the WAF policy mode and the WAF failure mode. In WAF policy mode 'Detection', the request is allowed and flagged for both failure mode 'Closed' and 'Open'. In enforcement node, 'Closed' means the request is rejected, 'Open' means the request is allowed and flagged. Irrespective of these settings, no subsequent WAF rules of this or other phases will be executed once the maximum execution time has been exceeded. Allowed values are 0-5000. Unit is MILLISECONDS. Default value when not specified in API or module is interpreted by ALB Controller as 50.", 
+      "maximum": 5000, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Max execution time", 
+      "type": "integer"
+    }, 
+    "regex_match_limit": {
+      "default": 30000, 
+      "description": "Limit CPU utilization for each regular expression match when processing rules. Default value when not specified in API or module is interpreted by ALB Controller as 30000.", 
+      "required": false, 
+      "title": "Regex match limit", 
+      "type": "integer"
+    }, 
+    "regex_recursion_limit": {
+      "default": 10000, 
+      "description": "Limit depth of recursion for each regular expression match when processing rules. Default value when not specified in API or module is interpreted by ALB Controller as 10000.", 
+      "required": false, 
+      "title": "Regex recursion limit", 
+      "type": "integer"
+    }, 
+    "request_body_default_action": {
+      "default": "phase:2,deny,status:403,log,auditlog", 
+      "description": "WAF default action for Request Body Phase. Default value when not specified in API or module is interpreted by ALB Controller as phase:2,deny,status:403,log,auditlog.", 
+      "required": false, 
+      "title": "Request body default action", 
+      "type": "string"
+    }, 
+    "request_hdr_default_action": {
+      "default": "phase:1,deny,status:403,log,auditlog", 
+      "description": "WAF default action for Request Header Phase. Default value when not specified in API or module is interpreted by ALB Controller as phase:1,deny,status:403,log,auditlog.", 
+      "required": false, 
+      "title": "Request hdr default action", 
+      "type": "string"
+    }, 
+    "response_body_default_action": {
+      "default": "phase:4,deny,status:403,log,auditlog", 
+      "description": "WAF default action for Response Body Phase. Default value when not specified in API or module is interpreted by ALB Controller as phase:4,deny,status:403,log,auditlog.", 
+      "required": false, 
+      "title": "Response body default action", 
+      "type": "string"
+    }, 
+    "response_hdr_default_action": {
+      "default": "phase:3,deny,status:403,log,auditlog", 
+      "description": "WAF default action for Response Header Phase. Default value when not specified in API or module is interpreted by ALB Controller as phase:3,deny,status:403,log,auditlog.", 
+      "required": false, 
+      "title": "Response hdr default action", 
+      "type": "string"
+    }, 
+    "restricted_extensions": {
+      "description": "WAF Restricted File Extensions. Maximum of 256 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Restricted extensions", 
+      "type": "array"
+    }, 
+    "restricted_headers": {
+      "description": "WAF Restricted HTTP Headers. Maximum of 64 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Restricted headers", 
+      "type": "array"
+    }, 
+    "server_response_max_body_size": {
+      "default": 128, 
+      "description": "Maximum size for response body scanned by WAF. Allowed values are 1-32768. Unit is KB. Default value when not specified in API or module is interpreted by ALB Controller as 128.", 
+      "maximum": 32768, 
+      "minimum": 1, 
+      "required": false, 
+      "title": "Server response max body size", 
+      "type": "integer"
+    }, 
+    "static_extensions": {
+      "description": "WAF Static File Extensions. GET and HEAD requests with no query args and one of these extensions are allowed and not checked by the ruleset. Maximum of 64 items allowed.", 
+      "items": {
+        "type": "string"
+      }, 
+      "required": false, 
+      "title": "Static extensions", 
+      "type": "array"
+    }, 
+    "status_code_for_rejected_requests": {
+      "$ref": "<A HREF="schemas_ALBHTTPResponseCodes.html">ALBHTTPResponseCodes</A>, 
+      "default": "HTTP_RESPONSE_CODE_403", 
+      "description": "HTTP status code used by WAF Positive Security Model when rejecting a request. Enum options - HTTP_RESPONSE_CODE_0, HTTP_RESPONSE_CODE_100, HTTP_RESPONSE_CODE_101, HTTP_RESPONSE_CODE_200, HTTP_RESPONSE_CODE_201, HTTP_RESPONSE_CODE_202, HTTP_RESPONSE_CODE_203, HTTP_RESPONSE_CODE_204, HTTP_RESPONSE_CODE_205, HTTP_RESPONSE_CODE_206, HTTP_RESPONSE_CODE_300, HTTP_RESPONSE_CODE_301, HTTP_RESPONSE_CODE_302, HTTP_RESPONSE_CODE_303, HTTP_RESPONSE_CODE_304, HTTP_RESPONSE_CODE_305, HTTP_RESPONSE_CODE_307, HTTP_RESPONSE_CODE_400, HTTP_RESPONSE_CODE_401, HTTP_RESPONSE_CODE_402... Default value when not specified in API or module is interpreted by ALB Controller as HTTP_RESPONSE_CODE_403.", 
+      "required": false, 
+      "title": "Status code for rejected requests"
+    }, 
+    "xml_xxe_protection": {
+      "default": true, 
+      "description": "Block or flag XML requests referring to External Entities. Default value when not specified in API or module is interpreted by ALB Controller as true.", 
+      "required": false, 
+      "title": "Xml xxe protection", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "WafConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

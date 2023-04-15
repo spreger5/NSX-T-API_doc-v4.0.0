@@ -1,0 +1,121 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_UcUpgradeStatus.html">UcUpgradeStatus</a> (<a href="types_UcUpgradeStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Upgrade status of upgrade-coordinator", 
+  "id": "UcUpgradeStatus", 
+  "module_id": "Upgrade", 
+  "properties": {
+    "errors": {
+      "description": "List of failure messages.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "List of failure messages", 
+      "type": "array"
+    }, 
+    "progress_messages": {
+      "description": "List of progress messages.", 
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Progress messages", 
+      "type": "array"
+    }, 
+    "progress_percentage": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Upgrade Coordinator Upgrade Progress Percentage", 
+      "type": "int"
+    }, 
+    "state": {
+      "description": "Current state of UC upgrade", 
+      "enum": [
+        "NOT_STARTED", 
+        "IN_PROGRESS", 
+        "SUCCESS", 
+        "FAILED"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "State of UC upgrade", 
+      "type": "string"
+    }, 
+    "status": {
+      "description": "Status of UC upgrade.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Status of UC upgrade", 
+      "type": "string"
+    }
+  }, 
+  "title": "UC Upgrade status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

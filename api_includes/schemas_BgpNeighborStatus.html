@@ -1,0 +1,256 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_BgpNeighborStatus.html">BgpNeighborStatus</a> (<a href="types_BgpNeighborStatus.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "id": "BgpNeighborStatus", 
+  "module_id": "AggSvcLogicalRouter", 
+  "properties": {
+    "address_families": {
+      "description": "Address families of BGP neighbor", 
+      "items": {
+        "$ref": "<A HREF="schemas_BgpAddressFamily.html">BgpAddressFamily</A>
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Address families of BGP neighbor", 
+      "type": "array"
+    }, 
+    "announced_capabilities": {
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "BGP capabilities sent to BGP neighbor.", 
+      "type": "array"
+    }, 
+    "connection_drop_count": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of connection drop", 
+      "type": "integer"
+    }, 
+    "connection_state": {
+      "enum": [
+        "INVALID", 
+        "IDLE", 
+        "CONNECT", 
+        "ACTIVE", 
+        "OPEN_SENT", 
+        "OPEN_CONFIRM", 
+        "ESTABLISHED", 
+        "UNKNOWN"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Current state of the BGP session.", 
+      "type": "string"
+    }, 
+    "established_connection_count": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of connections established", 
+      "type": "integer"
+    }, 
+    "graceful_restart": {
+      "deprecated": true, 
+      "description": "Current state of graceful restart where graceful_restart = true indicates graceful restart is enabled and graceful_restart = false indicates graceful restart is disabled. This is deprecated field, use graceful_restart_mode instead.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Graceful restart flag", 
+      "type": "boolean"
+    }, 
+    "graceful_restart_mode": {
+      "description": "Current state of graceful restart of BGP neighbor. Possible values are - 1. GR_AND_HELPER - Graceful restart with Helper 2. HELPER_ONLY - Helper only 3. DISABLE - Disabled", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Graceful restart mode", 
+      "type": "string"
+    }, 
+    "hold_time": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Time in ms to wait for HELLO from BGP peer. If a HELLO packet is not seen from BGP Peer withing hold_time then BGP neighbor will be marked as down.", 
+      "type": "integer"
+    }, 
+    "keep_alive_interval": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Time in ms to wait for HELLO packet from BGP peer", 
+      "type": "integer"
+    }, 
+    "local_port": {
+      "maximum": 65535, 
+      "minimum": 1, 
+      "readonly": true, 
+      "required": false, 
+      "title": "TCP port number of Local BGP connection", 
+      "type": "integer"
+    }, 
+    "lr_component_id": {
+      "readonly": true, 
+      "required": true, 
+      "title": "Logical router component(Service Router/Distributed Router) id", 
+      "type": "string"
+    }, 
+    "messages_received": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of messages received from the neighbor", 
+      "type": "integer"
+    }, 
+    "messages_sent": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of messages sent to the neighbor", 
+      "type": "integer"
+    }, 
+    "negotiated_capability": {
+      "items": {
+        "type": "string"
+      }, 
+      "readonly": true, 
+      "required": false, 
+      "title": "BGP capabilities negotiated with BGP neighbor.", 
+      "type": "array"
+    }, 
+    "neighbor_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The IP of the BGP neighbor"
+    }, 
+    "neighbor_router_id": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Router ID of the BGP neighbor."
+    }, 
+    "remote_as_number": {
+      "readonly": true, 
+      "required": false, 
+      "title": "AS number of the BGP neighbor", 
+      "type": "string"
+    }, 
+    "remote_port": {
+      "maximum": 65535, 
+      "minimum": 1, 
+      "readonly": true, 
+      "required": false, 
+      "title": "TCP port number of remote BGP Connection", 
+      "type": "integer"
+    }, 
+    "remote_site": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "description": "Remote site details.", 
+      "readonly": true, 
+      "title": "Remote site"
+    }, 
+    "source_address": {
+      "$ref": "<A HREF="schemas_IPAddress.html">IPAddress</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "The Ip address of logical port"
+    }, 
+    "time_since_established": {
+      "readonly": true, 
+      "required": false, 
+      "title": "Time(in seconds) since connection was established.", 
+      "type": "integer"
+    }, 
+    "total_in_prefix_count": {
+      "description": "Sum of in prefixes counts across all address families.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of in prefixes", 
+      "type": "integer"
+    }, 
+    "total_out_prefix_count": {
+      "description": "Sum of out prefixes counts across all address families.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "Count of out prefixes", 
+      "type": "integer"
+    }, 
+    "transport_node": {
+      "$ref": "<A HREF="schemas_ResourceReference.html">ResourceReference</A>, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Transport node id and name"
+    }, 
+    "type": {
+      "description": "BGP neighbor type", 
+      "enum": [
+        "INTER_SR", 
+        "USER"
+      ], 
+      "readonly": true, 
+      "title": "BGP neighbor type", 
+      "type": "string"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

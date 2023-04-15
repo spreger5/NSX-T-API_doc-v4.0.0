@@ -1,0 +1,90 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_Action.html">Action</a> (<a href="types_Action.html">type</a>)
+</h3>
+<pre>{
+  "abstract": true, 
+  "additionalProperties": false, 
+  "description": "Reaction Action is the action to take when the stipulated criteria specified in the event exist over the source. Some example actions include: - Notify Admin (or VMC's SRE) via email. - Populate a specific label with the IPSec VPN Session. - Remove the IPSec VPN Session from a specific label.", 
+  "id": "Action", 
+  "module_id": "PolicyReaction", 
+  "polymorphic-type-descriptor": {
+    "mode": "enabled", 
+    "property-name": "resource_type"
+  }, 
+  "properties": {
+    "resource_type": {
+      "description": "Reaction Action resource type.", 
+      "enum": [
+        "PatchResources", 
+        "SetFields"
+      ], 
+      "required": true, 
+      "title": "Resource Type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Reaction Action", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

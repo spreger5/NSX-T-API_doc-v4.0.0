@@ -1,0 +1,241 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_LogicalPort.html">LogicalPort</a> (<a href="types_LogicalPort.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "deprecated": true, 
+  "extends": {
+    "$ref": "<A HREF="schemas_ManagedResource.html">ManagedResource</A>
+  }, 
+  "id": "LogicalPort", 
+  "module_id": "LogicalPort", 
+  "properties": {
+    "_create_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of resource creation", 
+      "readonly": true
+    }, 
+    "_create_user": {
+      "description": "ID of the user who created this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_last_modified_time": {
+      "$ref": "<A HREF="schemas_EpochMsTimestamp.html">EpochMsTimestamp</A>, 
+      "can_sort": true, 
+      "description": "Timestamp of last modification", 
+      "readonly": true
+    }, 
+    "_last_modified_user": {
+      "description": "ID of the user who last modified this resource", 
+      "readonly": true, 
+      "type": "string"
+    }, 
+    "_links": {
+      "description": "The server will populate this field when returing the resource. Ignored on PUT and POST.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ResourceLink.html">ResourceLink</A>
+      }, 
+      "readonly": true, 
+      "title": "References related to this resource", 
+      "type": "array"
+    }, 
+    "_protection": {
+      "description": "Protection status is one of the following: PROTECTED - the client who retrieved the entity is not allowed             to modify it. NOT_PROTECTED - the client who retrieved the entity is allowed                 to modify it REQUIRE_OVERRIDE - the client who retrieved the entity is a super                    user and can modify it, but only when providing                    the request header X-Allow-Overwrite=true. UNKNOWN - the _protection field could not be determined for this           entity.", 
+      "readonly": true, 
+      "title": "Indicates protection status of this resource", 
+      "type": "string"
+    }, 
+    "_revision": {
+      "description": "The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.", 
+      "title": "Generation of this resource config", 
+      "type": "int"
+    }, 
+    "_schema": {
+      "readonly": true, 
+      "title": "Schema for this resource", 
+      "type": "string"
+    }, 
+    "_self": {
+      "$ref": "<A HREF="schemas_SelfResourceLink.html">SelfResourceLink</A>, 
+      "readonly": true, 
+      "title": "Link to this resource"
+    }, 
+    "_system_owned": {
+      "description": "Indicates system owned resource", 
+      "readonly": true, 
+      "type": "boolean"
+    }, 
+    "address_bindings": {
+      "description": "Each address binding must contain both an IPElement and MAC address. VLAN ID is optional. This binding configuration can be used by features such as spoof-guard and overrides any discovered bindings. Any non unique entries are deduplicated to generate a unique set of address bindings and then stored. For IP addresses, a subnet address cannot have host bits set. A maximum of 128 unique address bindings is allowed per port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PacketAddressClassifier.html">PacketAddressClassifier</A>
+      }, 
+      "maxItems": 512, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Address bindings for logical port", 
+      "type": "array"
+    }, 
+    "admin_state": {
+      "enum": [
+        "UP", 
+        "DOWN"
+      ], 
+      "required": true, 
+      "title": "Represents Desired state of the logical port", 
+      "type": "string"
+    }, 
+    "attachment": {
+      "$ref": "<A HREF="schemas_LogicalPortAttachment.html">LogicalPortAttachment</A>, 
+      "required": false, 
+      "title": "Logical port attachment"
+    }, 
+    "description": {
+      "can_sort": true, 
+      "maxLength": 1024, 
+      "title": "Description of this resource", 
+      "type": "string"
+    }, 
+    "display_name": {
+      "can_sort": true, 
+      "description": "Defaults to ID if not set", 
+      "maxLength": 255, 
+      "title": "Identifier to use when displaying entity in logs or GUI", 
+      "type": "string"
+    }, 
+    "extra_configs": {
+      "description": "This property could be used for vendor specific configuration in key value string pairs. Logical port setting will override logical switch setting if the same key was set on both logical switch and logical port.", 
+      "items": {
+        "$ref": "<A HREF="schemas_ExtraConfig.html">ExtraConfig</A>
+      }, 
+      "required": false, 
+      "title": "Extra configs on logical port", 
+      "type": "array"
+    }, 
+    "id": {
+      "can_sort": true, 
+      "title": "Unique identifier of this resource", 
+      "type": "string"
+    }, 
+    "ignore_address_bindings": {
+      "description": "IP Discovery module uses various mechanisms to discover address bindings being used on each port. If a user would like to ignore any specific discovered address bindings or prevent the discovery of a particular set of discovered bindings, then those address bindings can be provided here. Currently IP range in CIDR format is not supported.", 
+      "items": {
+        "$ref": "<A HREF="schemas_PacketAddressClassifier.html">PacketAddressClassifier</A>
+      }, 
+      "maxItems": 16, 
+      "minItems": 0, 
+      "required": false, 
+      "title": "Address bindings to be ignored by IP Discovery module", 
+      "type": "array"
+    }, 
+    "init_state": {
+      "$ref": "<A HREF="schemas_LogicalPortInitState.html">LogicalPortInitState</A>, 
+      "description": "Set initial state when a new logical port is created. 'UNBLOCKED_VLAN' means new port will be unblocked on traffic in creation, also VLAN will be set with corresponding logical switch setting. This port setting can only be configured at port creation (POST), and cannot be modified. 'RESTORE_VIF' fetches and restores VIF attachment from ESX host.", 
+      "required": false, 
+      "title": "Initial state of this logical ports"
+    }, 
+    "internal_id": {
+      "description": "The internal_id of the logical port may or may not be identical to it's managed resource ID. If a VirtualMachine connected to logical port migrates from one site to another, then on the destination site, it will be connected to different logical port managed resource. However, the internal_id field will be persisted across vmotion.", 
+      "required": false, 
+      "title": "ID of the logical port in Global Manager", 
+      "type": "string"
+    }, 
+    "logical_switch_id": {
+      "required": true, 
+      "title": "Id of the Logical switch that this port belongs to.", 
+      "type": "string"
+    }, 
+    "origin_id": {
+      "description": "ID populated by NSX when NSX on DVPG is used to indicate the source distributed virtual port and the corresponding distributed virtual switch. This ID is populated only for logical ports that belong to a logical switch of type DVPG.", 
+      "readonly": true, 
+      "required": false, 
+      "title": "ID of the distributed virtual port and the distributed virtual switch in the source vCenter", 
+      "type": "string"
+    }, 
+    "resource_type": {
+      "description": "The type of this resource.", 
+      "readonly": false, 
+      "type": "string"
+    }, 
+    "switching_profile_ids": {
+      "items": {
+        "$ref": "<A HREF="schemas_SwitchingProfileTypeIdEntry.html">SwitchingProfileTypeIdEntry</A>
+      }, 
+      "required": false, 
+      "type": "array"
+    }, 
+    "tags": {
+      "items": {
+        "$ref": "<A HREF="schemas_Tag.html">Tag</A>
+      }, 
+      "maxItems": 30, 
+      "title": "Opaque identifiers meaningful to the API user", 
+      "type": "array"
+    }
+  }, 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

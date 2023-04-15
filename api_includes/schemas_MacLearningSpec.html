@@ -1,0 +1,127 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_MacLearningSpec.html">MacLearningSpec</a> (<a href="types_MacLearningSpec.html">type</a>)
+        <span class="deprecated">(Deprecated)</span>
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "deprecated": true, 
+  "id": "MacLearningSpec", 
+  "module_id": "MacManagementSwitchingProfile", 
+  "properties": {
+    "aging_time": {
+      "default": 600, 
+      "readonly": true, 
+      "required": false, 
+      "title": "Aging time in sec for learned MAC address", 
+      "type": "int"
+    }, 
+    "enabled": {
+      "readonly": false, 
+      "required": true, 
+      "title": "Allowing source MAC address learning", 
+      "type": "boolean"
+    }, 
+    "limit": {
+      "default": 4096, 
+      "description": "This property specifies the limit on the maximum number of MAC addresses that can be learned on a port. It is consumed by vswitch kernel module on the hypervisor while learning MACs per port for VMs that are local to the host.", 
+      "maximum": 4096, 
+      "minimum": 0, 
+      "readonly": false, 
+      "required": false, 
+      "title": "The maximum number of MAC addresses that can be learned on this port", 
+      "type": "int"
+    }, 
+    "limit_policy": {
+      "default": "ALLOW", 
+      "enum": [
+        "ALLOW", 
+        "DROP"
+      ], 
+      "readonly": false, 
+      "required": false, 
+      "title": "The policy after MAC Limit is exceeded", 
+      "type": "string"
+    }, 
+    "remote_overlay_mac_limit": {
+      "default": 2048, 
+      "description": "This property specifies the limit on the maximum number of MACs learned for a remote Virtual Machine's MAC to vtep binding per overlay logical switch.", 
+      "maximum": 8192, 
+      "minimum": 2048, 
+      "readonly": false, 
+      "required": false, 
+      "title": "The maximum number of MAC addresses learned on an overlay Logical Switch", 
+      "type": "int"
+    }, 
+    "unicast_flooding_allowed": {
+      "default": true, 
+      "readonly": false, 
+      "required": false, 
+      "title": "Allowing flooding for unlearned MAC for ingress traffic", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "MAC learning configuration", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

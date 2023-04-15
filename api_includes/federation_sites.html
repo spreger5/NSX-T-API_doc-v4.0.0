@@ -1,0 +1,233 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Federation >
+        
+        
+            <a href='federation_sites.html' style='text-decoration: none'> Sites</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get site offboarding status.</h4><br>
+                      <span class="help_detail">Get site offboarding status.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSiteOffboardingStatus.html">GET /policy/api/v1/infra/site/offboarding-status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Sites</h4><br>
+                      <span class="help_detail">List Sites under Infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListSites.html">GET /policy/api/v1/global-infra/sites</a>
+                            <br>
+                            
+                            <a href="method_ListSites.html">GET /policy/api/v1/infra/sites</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a site</h4><br>
+                      <span class="help_detail">Delete a site under Infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteInfraSite.html">DELETE /policy/api/v1/infra/sites/&lt;site-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read a site</h4><br>
+                      <span class="help_detail">Read a site under Infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadSite.html">GET /policy/api/v1/infra/sites/&lt;site-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadSite.html">GET /policy/api/v1/global-infra/sites/&lt;site-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or patch Site</h4><br>
+                      <span class="help_detail">Create or patch Site under Infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchInfraSite.html">PATCH /policy/api/v1/infra/sites/&lt;site-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or fully replace a Site under infra</h4><br>
+                      <span class="help_detail">Create or fully replace a Site under Infra.
+<br>
+Revision is optional for creation and required for update.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateOrUpdateInfraSite.html">PUT /policy/api/v1/infra/sites/&lt;site-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Returns the certificate of the listener</h4><br>
+                      <span class="help_detail">Connects to the given IP and port, and, if an SSL listener is present, returns
+<br>
+the certificate of the listener.
+<br>
+Intent of this API is "Do you trust this certificate?".
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetInfraSiteListenerCertificate.html">GET /policy/api/v1/global-infra/sites/listener_certificate</a>
+                            <br>
+                            
+                            <a href="method_GetInfraSiteListenerCertificate.html">GET /policy/api/v1/infra/sites/listener_certificate</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get span for an entity with specified path</h4><br>
+                      <span class="help_detail">Get span for an entity with specified path.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetSpan.html">GET /policy/api/v1/infra/span</a>
+                            <br>
+                            
+                            <a href="method_GetSpan.html">GET /policy/api/v1/global-infra/span</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

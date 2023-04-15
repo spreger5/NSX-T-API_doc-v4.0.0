@@ -1,0 +1,363 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Policy >
+        
+        
+            <a href='policy_monitoring.html' style='text-decoration: none'> Monitoring</a> >
+        
+        
+            <a href='policy_monitoring_traceflow.html' style='text-decoration: none'> Traceflow</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>List AntreaTraceflowConfig for infra</h4><br>
+                      <span class="help_detail">Paginated list of all AntreaTraceflowConfig for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAntreaTraceflowConfig.html">GET /policy/api/v1/infra/antrea/traceflows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete Antrea traceflow config</h4><br>
+                      <span class="help_detail">Delete Antrea traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteAntreaTraceflowConfig.html">DELETE /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow config</h4><br>
+                      <span class="help_detail">Read Antrea traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAntreaTraceflowConfig.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an Antrea traceflow config</h4><br>
+                      <span class="help_detail">If an Antrea traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchAntreaTraceflowConfig.html">PATCH /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart Antrea traceflow with same set of parameters used during create traceflow</h4><br>
+                      <span class="help_detail">This will retrace even if current traceflow has observations. Current
+<br>
+observations will be lost. Traceflow configuration will be cleaned up
+<br>
+by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartAntreaTraceflow.html">POST /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an Antrea traceflow config</h4><br>
+                      <span class="help_detail">If an Antrea traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateAntreaTraceflowConfig.html">PUT /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow observations</h4><br>
+                      <span class="help_detail">Read Antrea traceflow observations for id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListAntreaTraceflowObservations.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;/observations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Antrea traceflow status</h4><br>
+                      <span class="help_detail">Read Antrea traceflow status with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadAntreaTraceflowStatus.html">GET /policy/api/v1/infra/antrea/traceflows/&lt;traceflow-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List TraceflowConfig for infra</h4><br>
+                      <span class="help_detail">Paginated list of all TraceflowConfig for infra.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTraceflowConfig.html">GET /policy/api/v1/global-infra/traceflows</a>
+                            <br>
+                            
+                            <a href="method_ListTraceflowConfig.html">GET /policy/api/v1/infra/traceflows</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete traceflow config</h4><br>
+                      <span class="help_detail">Delete traceflow config with id traceflow-id</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteTraceflowConfig.html">DELETE /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_DeleteTraceflowConfig.html">DELETE /policy/api/v1/global-infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow config</h4><br>
+                      <span class="help_detail">Read traceflow config with id traceflow-id. This configuration
+<br>
+will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTraceflowConfig.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                            
+                            <a href="method_ReadTraceflowConfig.html">GET /policy/api/v1/global-infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a traceflow config</h4><br>
+                      <span class="help_detail">If a traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config. If it already exists,
+<br>
+update the traceflow config. This is a full replace. This configuration
+<br>
+will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_PatchTraceflowConfig.html">PATCH /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Restart traceflow with same set of parameters used during create/update traceflow</h4><br>
+                      <span class="help_detail">This will retrace even if current traceflow has observations. Current
+<br>
+observations will be lost. Traceflow configuration will be cleaned up
+<br>
+by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_RestartTraceflow.html">POST /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create or update a traceflow config</h4><br>
+                      <span class="help_detail">If a traceflow config with the traceflow-id is not
+<br>
+already present, create a new traceflow config. If it already exists,
+<br>
+update the traceflow config. This is a full replace. This
+<br>
+configuration will be cleaned up by the system after two hours of inactivity.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateTraceflowConfig.html">PUT /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow observations</h4><br>
+                      <span class="help_detail">Read traceflow observations for id traceflow-id. Traceflow configuration will be cleaned up by the system after two hours of inactivity. Enforcement point path is not required for Federation setup.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListTraceflowObservations.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;/observations</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read traceflow status</h4><br>
+                      <span class="help_detail">Read traceflow status with id traceflow-id.
+<br>
+Traceflow configuration will be cleaned up by the system after
+<br>
+two hours of inactivity.
+<br>
+Enforcement point path is not required for Federation setup.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadTraceflowStatus.html">GET /policy/api/v1/infra/traceflows/&lt;traceflow-id&gt;/status</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

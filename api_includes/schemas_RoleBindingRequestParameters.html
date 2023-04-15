@@ -1,0 +1,148 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RoleBindingRequestParameters.html">RoleBindingRequestParameters</a> (<a href="types_RoleBindingRequestParameters.html">type</a>)
+</h3>
+<pre>{
+  "description": "Pagination and Filtering parameters to get only a subset of users/groups.", 
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "RoleBindingRequestParameters", 
+  "module_id": "AAA", 
+  "properties": {
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "identity_source_id": {
+      "description": "If provided, only return role bindings for the given identity source. Currently only supported for LDAP and OIDC identity source types.", 
+      "required": false, 
+      "title": "Identity source ID", 
+      "type": "string"
+    }, 
+    "identity_source_type": {
+      "enum": [
+        "VIDM", 
+        "LDAP", 
+        "OIDC"
+      ], 
+      "required": false, 
+      "title": "Identity source type", 
+      "type": "string"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "name": {
+      "required": false, 
+      "title": "User/Group name", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "path": {
+      "required": false, 
+      "title": "Exact path of the context", 
+      "type": "string"
+    }, 
+    "role": {
+      "required": false, 
+      "title": "Role ID", 
+      "type": "string"
+    }, 
+    "root_path": {
+      "required": false, 
+      "title": "Prefix path of the context", 
+      "type": "string"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "type": {
+      "enum": [
+        "remote_user", 
+        "remote_group", 
+        "local_user", 
+        "principal_identity"
+      ], 
+      "required": false, 
+      "title": "Type", 
+      "type": "string"
+    }
+  }, 
+  "title": "Parameters to filter list of role bindings.", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

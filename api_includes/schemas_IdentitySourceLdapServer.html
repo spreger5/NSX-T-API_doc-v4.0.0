@@ -1,0 +1,111 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_IdentitySourceLdapServer.html">IdentitySourceLdapServer</a> (<a href="types_IdentitySourceLdapServer.html">type</a>)
+</h3>
+<pre>{
+  "description": "Information about a single LDAP server.", 
+  "id": "IdentitySourceLdapServer", 
+  "module_id": "LdapIdentitySources", 
+  "properties": {
+    "bind_identity": {
+      "description": "A username used to authenticate to the directory when admnistering roles in NSX. This user should have privileges to search the LDAP directory for groups and users. This user is also used in some cases (OpenLDAP) to look up an NSX user's distinguished name based on their NSX login name. If omitted, NSX will authenticate to the LDAP server using an LDAP anonymous bind operation. For Active Directory, provide a userPrincipalName (e.g. administrator@airius.com) or the full distinguished nane. For OpenLDAP, provide the distinguished name of the user (e.g. uid=admin, cn=airius, dc=com).", 
+      "title": "Username or DN for LDAP authentication", 
+      "type": "string"
+    }, 
+    "certificates": {
+      "description": "If using LDAPS or STARTTLS, provide the X.509 certificate of the LDAP server in PEM format. This property is not required when connecting without TLS encryption and is ignored in that case.", 
+      "items": {
+        "type": "string"
+      }, 
+      "title": "TLS certificate(s) for LDAP server(s)", 
+      "type": "array"
+    }, 
+    "enabled": {
+      "default": true, 
+      "description": "Allows the LDAP server to be enabled or disabled. When disabled, this LDAP server will not be used to authenticate users.", 
+      "title": "If true, this LDAP server is enabled", 
+      "type": "boolean"
+    }, 
+    "password": {
+      "description": "A password used when authenticating to the directory.", 
+      "sensitive": true, 
+      "title": "Username for LDAP authentication", 
+      "type": "string"
+    }, 
+    "url": {
+      "description": "The URL for the LDAP server. Supported URL schemes are LDAP and LDAPS. Either a hostname or an IP address may be given, and the port number is optional and defaults to 389 for the LDAP scheme and 636 for the LDAPS scheme.", 
+      "required": true, 
+      "title": "The URL for the LDAP server", 
+      "type": "string"
+    }, 
+    "use_starttls": {
+      "default": false, 
+      "description": "If set to true, Use the StartTLS extended operation to upgrade the connection to TLS before sending any sensitive information. The LDAP server must support the StartTLS extended operation in order for this protocol to operate correctly. This option is ignored if the URL scheme is LDAPS.", 
+      "title": "Enable/disable StartTLS", 
+      "type": "boolean"
+    }
+  }, 
+  "title": "An LDAP server", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBClientLogStreamingConfig.html">ALBClientLogStreamingConfig</a> (<a href="types_ALBClientLogStreamingConfig.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer ClientLogStreamingConfig object", 
+  "id": "ALBClientLogStreamingConfig", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "external_server": {
+      "description": "IP address or hostnames (FQDNs) of destination servers. If an FQDN is provided, this should be resolvable on Avi Service Engines. Multiple servers are supported by furnishing a comma-separated list of IP addresses or host names, for example, 11.11.11.11,23.12.12.4. Optionally, a separate port can be specified for each external server in the list, for example, 11.11.11.11 234,12.12.12.12 343.", 
+      "required": true, 
+      "title": "External server", 
+      "type": "string"
+    }, 
+    "external_server_port": {
+      "default": 514, 
+      "description": "The service port to use for the external servers. If multiple external servers have been specified, the single port number specified here will apply to all those servers for which an explicit port number has not been specified in the external server list. Default value when not specified in API or module is interpreted by ALB Controller as 514.", 
+      "required": false, 
+      "title": "External server port", 
+      "type": "integer"
+    }, 
+    "format_config": {
+      "$ref": "<A HREF="schemas_ALBClientLogStreamingFormat.html">ALBClientLogStreamingFormat</A>, 
+      "description": "Configuration to specify the format of streamed logs. By default, each log is encoded in JSON format.", 
+      "required": false, 
+      "title": "Format config"
+    }, 
+    "log_types_to_send": {
+      "$ref": "<A HREF="schemas_ALBLogsType.html">ALBLogsType</A>, 
+      "default": "LOGS_ALL", 
+      "description": "Type of logs to stream to the external server. Default is LOGS_ALL, i.e., send all logs. Enum options - LOGS_SIGNIFICANT_ONLY, LOGS_UDF_ONLY, LOGS_UDF_SIGNIFICANT, LOGS_ALL. Default value when not specified in API or module is interpreted by ALB Controller as LOGS_ALL.", 
+      "required": false, 
+      "title": "Log types to send"
+    }, 
+    "max_logs_per_second": {
+      "default": 100, 
+      "description": "Maximum number of logs per second streamed to the remote server. By default, 100 logs per second are streamed. Set this to zero(0) to not enforce any limit. Default value when not specified in API or module is interpreted by ALB Controller as 100.", 
+      "required": false, 
+      "title": "Max logs per second", 
+      "type": "integer"
+    }, 
+    "protocol": {
+      "$ref": "<A HREF="schemas_ALBClientLogStreamingProtocol.html">ALBClientLogStreamingProtocol</A>, 
+      "default": "LOG_STREAMING_PROTOCOL_UDP", 
+      "description": "Protocol to use for streaming logs. Enum options - LOG_STREAMING_PROTOCOL_UDP, LOG_STREAMING_PROTOCOL_SYSLOG_OVER_UDP, LOG_STREAMING_PROTOCOL_TCP, LOG_STREAMING_PROTOCOL_SYSLOG_OVER_TCP, LOG_STREAMING_PROTOCOL_RAW_OVER_UDP, LOG_STREAMING_PROTOCOL_TLS, LOG_STREAMING_PROTOCOL_SYSLOG_OVER_TLS. Default value when not specified in API or module is interpreted by ALB Controller as LOG_STREAMING_PROTOCOL_UDP.", 
+      "required": false, 
+      "title": "Protocol"
+    }, 
+    "syslog_config": {
+      "$ref": "<A HREF="schemas_ALBStreamingSyslogConfig.html">ALBStreamingSyslogConfig</A>, 
+      "description": "Syslog configuration if a Syslog-based protocol is specified for streaming.", 
+      "required": false, 
+      "title": "Syslog config"
+    }
+  }, 
+  "title": "ClientLogStreamingConfig", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

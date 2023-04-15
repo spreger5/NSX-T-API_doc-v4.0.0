@@ -1,0 +1,103 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_RedistributionProtocols.html">RedistributionProtocols</a> (<a href="types_RedistributionProtocols.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Types of route to redistribute over routing protocols. STATIC type is deprecated, use T0_STATIC instead. T0_STATIC type should be used to redistribute user added static routes. NSX_CONNECTED type is deprecated, use T0_CONNECTED instead. For backward compatibility when NSX_CONNECTED is selected, we will redistribute downlink port subnets for TIER0 LR. T0_CONNECTED type should be used to redistribute all port subnets including uplink, downlink, CSP and loopback for TIER0 LR. NSX_STATIC type is deprecated, use T1_STATIC instead. For backward compatibility when NSX_STATIC is selected, we will redistribute static, CSP and downlink port subnets advertised by TIER1 LR. T1_STATIC type should be used to redistribute static subnets advertised by TIER1 LR. T0_UPLINK type should be used to redistribute uplink port subnets on TIER0 LR. T0_DOWNLINK type should be used to redistribute downlink port subnets on TIER0 LR. T0_ROUTER_LINK type should be used to redistribute router link port subnets on TIER0 LR T0_CSP type should be used to redistribute centralised service port subnets on TIER0 LR. T0_LOOPBACK type should be used to redistribute loopback port subnets on TIER0 LR. T0_DNS_FORWARDER_IP type should be used to redistribute DNS forwarder subnets on TIER0 LR. T0_IPSEC_LOCAL_IP type should be used to redistribute IPSec subnets on TIER0 LR. TIER0_NAT type is deprecated, use T0_NAT instead. T0_NAT type should be used to redistribute NAT IPs owned by TIER0 logical router. TIER1_NAT type is deprecated, use T1_NAT instead. T1_NAT type should be used to redistribute NAT IP subnets advertised by TIER1 LR. TIER1_LB_VIP type is deprecated,use T1_LB_VIP instead. T1_LB_VIP type should be used to redistribute LB VIP IP subnets advertised by TIER1 LR. TIER1_LB_SNAT type is deprecated, use T1_NAT instead. T1_LB_SNAT type should be used to redistribute LB SNAT IP subnets advertised by TIER1 LR. T1_DNS_FORWARDER_IP type should be used to redistribute DNS forwarder subnets advertised by TIER1 LR. T1_CONNECTED type should be used to redistribute downlink and CSP port subnets advertised by TIER1 LR. T1_DOWNLINK type should be used to redistribute downlink port subnets advertised by TIER1 LR. T1_CSP type should be used to redistribute centralised service port subnets advertised by TIER1 LR. BGP type should be used to redistribute routes learned via BGP. T1_IPSEC_LOCAL_IP type should be used to redistribute IPSec VPN local endpoint subnets advertised by TIER1 LR. T0_EVPN_TEP_IP type should be used to redistribute EVPN local endpoint subnets on Tier0 LR.", 
+  "enum": [
+    "STATIC", 
+    "T0_STATIC", 
+    "NSX_CONNECTED", 
+    "T0_CONNECTED", 
+    "NSX_STATIC", 
+    "T1_STATIC", 
+    "T0_UPLINK", 
+    "T0_DOWNLINK", 
+    "T0_ROUTER_LINK", 
+    "T0_CSP", 
+    "T0_LOOPBACK", 
+    "T0_DNS_FORWARDER_IP", 
+    "T0_IPSEC_LOCAL_IP", 
+    "TIER0_NAT", 
+    "T0_NAT", 
+    "TIER1_NAT", 
+    "T1_NAT", 
+    "TIER1_LB_VIP", 
+    "T1_LB_VIP", 
+    "TIER1_LB_SNAT", 
+    "T1_LB_SNAT", 
+    "T1_DNS_FORWARDER_IP", 
+    "T1_CONNECTED", 
+    "T1_DOWNLINK", 
+    "T1_CSP", 
+    "BGP", 
+    "T1_IPSEC_LOCAL_IP", 
+    "T0_EVPN_TEP_IP"
+  ], 
+  "id": "RedistributionProtocols", 
+  "module_id": "Routing", 
+  "title": "Redistribution Protocols", 
+  "type": "string"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

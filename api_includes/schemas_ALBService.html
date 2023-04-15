@@ -1,0 +1,140 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_ALBService.html">ALBService</a> (<a href="types_ALBService.html">type</a>)
+</h3>
+<pre>{
+  "additionalProperties": false, 
+  "description": "Advanced load balancer Service object", 
+  "id": "ALBService", 
+  "module_id": "PolicyAdvancedLoadBalancer", 
+  "properties": {
+    "enable_http2": {
+      "default": false, 
+      "description": "Enable HTTP2 on this port. Allowed in Basic(Allowed values- false) edition, Essentials(Allowed values- false) edition, Enterprise edition. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable http2", 
+      "type": "boolean"
+    }, 
+    "enable_ssl": {
+      "default": false, 
+      "description": "Enable SSL termination and offload for traffic from clients. Default value when not specified in API or module is interpreted by ALB Controller as false.", 
+      "required": false, 
+      "title": "Enable ssl", 
+      "type": "boolean"
+    }, 
+    "override_application_profile_path": {
+      "description": "Enable application layer specific features for the this specific service. It is a reference to an object of type ApplicationProfile. Allowed in Basic edition, Essentials edition, Enterprise edition.", 
+      "required": false, 
+      "title": "Override application profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_APPLICATIONPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBApplicationProfile"
+          ]
+        }
+      ]
+    }, 
+    "override_network_profile_path": {
+      "description": "Override the network profile for this specific service port. It is a reference to an object of type NetworkProfile.", 
+      "required": false, 
+      "title": "Override network profile path", 
+      "type": "string", 
+      "x-vmw-cross-reference": [
+        {
+          "leftType": [
+            "ALBVirtualService"
+          ], 
+          "relationshipType": "ALB_VIRTUALSERVICE_ALB_NETWORKPROFILE_RELATIONSHIP", 
+          "rightType": [
+            "ALBNetworkProfile"
+          ]
+        }
+      ]
+    }, 
+    "port": {
+      "description": "The Virtual Service's port number. Allowed values are 0-65535.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": true, 
+      "title": "Port", 
+      "type": "integer"
+    }, 
+    "port_range_end": {
+      "default": 0, 
+      "description": "The end of the Virtual Service's port number range. Allowed values are 1-65535. Special values are 0- 'single port'. Default value when not specified in API or module is interpreted by ALB Controller as 0.", 
+      "maximum": 65535, 
+      "minimum": 0, 
+      "required": false, 
+      "title": "Port range end", 
+      "type": "integer"
+    }
+  }, 
+  "title": "Service", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

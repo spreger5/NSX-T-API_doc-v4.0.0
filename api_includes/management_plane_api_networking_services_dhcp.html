@@ -1,0 +1,774 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            Management Plane API >
+        
+        
+            <a href='management_plane_api_networking.html' style='text-decoration: none'> Networking</a> >
+        
+        
+            <a href='management_plane_api_networking_services.html' style='text-decoration: none'> Services</a> >
+        
+        
+            <a href='management_plane_api_networking_services_dhcp.html' style='text-decoration: none'> DHCP</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DHCP server profiles</h4><br>
+                      <span class="help_detail">Get a paginated list of DHCP server profiles.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpProfiles.html">GET /api/v1/dhcp/server-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP server profile</h4><br>
+                      <span class="help_detail">Create a DHCP server profile. If no edge member is specified, edge members
+<br>
+to run the dhcp servers will be auto-allocated from the edge cluster.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpProfile.html">POST /api/v1/dhcp/server-profiles</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server profile</h4><br>
+                      <span class="help_detail">Delete a DHCP server profile specified by the profile id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpProfile.html">DELETE /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server profile</h4><br>
+                      <span class="help_detail">Return the DHCP profile specified by the profile id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpProfile.html">GET /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server profile</h4><br>
+                      <span class="help_detail">If both the edge_cluster_member_indexes in the DhcpProfile are changed in
+<br>
+a same PUT API, e.g. change from [a,b] to [x,y], the current DHCP server
+<br>
+leases will be lost, which could cause the network crash due to ip conflicts.
+<br>
+Hence the suggestion is to change only one member index in one single update,
+<br>
+e.g. from [a, b] to [a,y].
+<br>
+
+<br>
+Please note, the edge_cluster_id in DhcpProfile can NOT be changed by this
+<br>
+PUT operation because all existing DHCP leases will lost. If losing leases
+<br>
+is not a problem, a dedicated re-allocation API is suggested to modify the
+<br>
+edge-cluster-id, i.e. "POST /api/v1/dhcp/dhcp-profiles/&lt;profileiid&gt;?action=reallocate".
+<br>
+
+<br>
+Meanwhile, if the edge_cluster_member_indexes was specified currently but
+<br>
+now is changed to none (not specified) via a PUT operation, the edge nodes
+<br>
+will not be auto-selected from edge cluster. Instead, the previously-allocated
+<br>
+edge nodes will continue to be used by the DHCP server. This is because
+<br>
+changing both edge nodes of a DHCP server will lose all existing leases.
+<br>
+In case re-allocation is required and leases lost is not a problem (or can
+<br>
+be recovered), please invoke the reallocate API mentioned above with new
+<br>
+DhcpProfile to accomplish the intent.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpProfile.html">PUT /api/v1/dhcp/server-profiles/&lt;profile-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Reallocate edge cluster and members of given DHCP profile.</h4><br>
+                      <span class="help_detail">As changing edge-cluster-id of a DhcpProfile by a PUT is disallowed,
+<br>
+this re-allocate API is used to modify the edge-cluster-id and members
+<br>
+of a given DhcpProfile.
+<br>
+
+<br>
+Only the edge-cluster-id and the edge-cluster-member-indexes fields will
+<br>
+be picked up by this re-allication API. The othere fields in the payload
+<br>
+will be ignored.
+<br>
+
+<br>
+If the edge-cluster-id in the payload DhcpProfile is different from the
+<br>
+current edge-cluster-id of the profile, the referencing DHCP server(s) will
+<br>
+be re-allocated to the new edge cluster. If the edge-cluster-id is not
+<br>
+changed, the referencing DHCP server(s) will be re-allocated to the
+<br>
+given edge members in the edge cluster. In this case, this REST API will
+<br>
+act same as that of updating a DhcpProfile.
+<br>
+
+<br>
+If the edge cluster member indexes are provided, they should exist in the
+<br>
+given edge cluster. If the indexes are not specified in the DhcpProfile,
+<br>
+edge members will be auto-allocated from the given edge cluster.
+<br>
+
+<br>
+Please note that re-allocating edge-cluster will cause lose of all exisitng
+<br>
+DHCP lease information. This API is used only when loosing DHCP leases is
+<br>
+not a real problem, e.g. cross-site migration or failover and all client
+<br>
+hosts will be reboot and get new IP addresses.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReallocateDhcpProfileEdgeCluster.html">POST /api/v1/dhcp/server-profiles/&lt;server-profile-id&gt;?action=reallocate</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of DHCP servers</h4><br>
+                      <span class="help_detail">List logical DHCP servers with pagination support.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpServers.html">GET /api/v1/dhcp/servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a DHCP server</h4><br>
+                      <span class="help_detail">Create a logical DHCP server with v4 and/or v6 servers.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpServer.html">POST /api/v1/dhcp/servers</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server</h4><br>
+                      <span class="help_detail">Delete a logical DHCP server specified by server id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpServer.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server with v4 and/or v6 servers</h4><br>
+                      <span class="help_detail">Retrieve a logical DHCP server specified by server id.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpServer.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server with v4 and/or v6 servers</h4><br>
+                      <span class="help_detail">Update a logical DHCP server with new configurations.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpServer.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP server's IP pools</h4><br>
+                      <span class="help_detail">List the ip pools of a logical DHCP server with pagination support.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpIpPools.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an ip pool for a DHCP server</h4><br>
+                      <span class="help_detail">Create an ip pool for a local DHCP server</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpIpPool.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP server's IP pool</h4><br>
+                      <span class="help_detail">Delete a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpIpPool.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server's IP pool with the specified pool ID</h4><br>
+                      <span class="help_detail">Return a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpIpPool.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server's IP pool</h4><br>
+                      <span class="help_detail">Update a specific ip pool of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpIpPool.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp ip pool</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp ip pool.
+<br>
+After a dhcp ip pool is created or updated, you can invoke this API to get
+<br>
+the realization information of the ip pool.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpIpPoolState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ip-pools/&lt;pool-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP IPv6 server's IP pools</h4><br>
+                      <span class="help_detail">List the ip pools of a logical DHCP IPv6 server with pagination support.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpV6IpPools.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create an ip pool for a DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Create an ip pool for a local DHCP IPv6 server</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpV6IpPool.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a DHCP IPv6 server's IP pool</h4><br>
+                      <span class="help_detail">Delete a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpV6IpPool.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP IPv6 server's IP pool with the specified pool ID</h4><br>
+                      <span class="help_detail">Return a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpV6IpPool.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP IPv6 server's IP pool</h4><br>
+                      <span class="help_detail">Update a specific ip pool of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpV6IpPool.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-ip-pools/&lt;pool-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP IPv6 server's static bindings</h4><br>
+                      <span class="help_detail">Return a paginated list of a static bindings of a given logical DHCP IPv6 server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpV6StaticBindings.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a static binding for a DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Create a static binding for a logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpV6StaticBinding.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a static binding for DHCP IPv6 server</h4><br>
+                      <span class="help_detail">Delete a specific static binding of a given logical DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpV6StaticBinding.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP IPv6 server's static binding with the specified binding ID</h4><br>
+                      <span class="help_detail">Return a specific static binding of a given logical DHCP IPv6 server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpV6StaticBinding.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP IPv6 server's static binding</h4><br>
+                      <span class="help_detail">Update a specific static binding of a given local DHCP IPv6 server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpV6StaticBinding.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/ipv6-static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a single DHCP lease entry specified by ip and mac.</h4><br>
+                      <span class="help_detail">Delete a single DHCP lease entry specified by ip and mac.
+<br>
+
+<br>
+The DHCP server matches the DHCP lease with the given ip address and
+<br>
+the mac address. The matched lease entry will be deleted. If no lease
+<br>
+matches, the request is ignored.
+<br>
+
+<br>
+The DHCP lease to be deleted will be removed by the system from both active
+<br>
+and standby node. The system will report error if the DHCP lease could not
+<br>
+be removed from both nodes. If the DHCP lease could not be removed on either
+<br>
+node, please check the DHCP server status. Once the DHCP server status is
+<br>
+UP, please invoke the deletion API again to ensure the lease gets deleted
+<br>
+from both nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteADhcpLease.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/leases</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get specific leases of a given dhcp server</h4><br>
+                      <span class="help_detail">Get specific leases of a given dhcp server. As a dhcp server could manage
+<br>
+millions of leases, the API has to limit the number of the returned
+<br>
+leases via two mutually-excluded request parameters, i.e. "pool_id" and
+<br>
+"address". Either a "pool_id" or an "address" can be provided, but not both
+<br>
+in a same call.
+<br>
+
+<br>
+If a "pool_id" is specified, the leases of the specific pool are returned.
+<br>
+If an "address" is specified, only the lease(s) represented y this address
+<br>
+is(are) returned. The "address" can be a single IP, an ip-range, or a mac
+<br>
+address.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpLeaseInfo.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/leases</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp server</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp server.
+<br>
+After a dhcp server is created or updated, you can invoke this API to get
+<br>
+the realization information of the server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpServerState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a paginated list of a DHCP server's static bindings</h4><br>
+                      <span class="help_detail">Return a paginated list of a static bindings of a given logical DHCP server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListDhcpStaticBindings.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Create a static binding for a DHCP server</h4><br>
+                      <span class="help_detail">Create a static binding for a logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_CreateDhcpStaticBinding.html">POST /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Delete a static binding</h4><br>
+                      <span class="help_detail">Delete a specific static binding of a given logical DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteDhcpStaticBinding.html">DELETE /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get a DHCP server's static binding with the specified binding ID</h4><br>
+                      <span class="help_detail">Return a specific static binding of a given logical DHCP server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadDhcpStaticBinding.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Update a DHCP server's static binding</h4><br>
+                      <span class="help_detail">Update a specific static binding of a given local DHCP server.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_UpdateDhcpStaticBinding.html">PUT /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get the realized state of a dhcp static binding</h4><br>
+                      <span class="help_detail">Return realized state information of a dhcp static binding.
+<br>
+After a dhcp static binding is created or updated, you can invoke this API to get
+<br>
+the realization information of the static binding.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStaticBindingState.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/static-bindings/&lt;binding-id&gt;/state</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DHCP statistics with given dhcp server id</h4><br>
+                      <span class="help_detail">Returns the statistics of the given dhcp server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStatistics.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/statistics</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get DHCP service status with given dhcp server id</h4><br>
+                      <span class="help_detail">Returns the service status of the given dhcp server.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetDhcpStatus.html">GET /api/v1/dhcp/servers/&lt;server-id&gt;/status</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

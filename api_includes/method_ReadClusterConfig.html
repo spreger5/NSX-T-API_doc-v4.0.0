@@ -1,0 +1,594 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                System Administration >
+            
+            
+                <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers.html' style='text-decoration: none'> NSX Managers</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers_clusters.html' style='text-decoration: none'> Clusters</a> >
+            
+            
+                <a href='system_administration_configuration_nsx_managers_clusters_cluster_configuration.html' style='text-decoration: none'> Cluster Configuration</a>
+            
+        </P>
+    
+        <div id="ReadClusterConfig">
+          <h2>
+            Read Cluster Configuration
+          </h2>
+          <span class="help_detail">Returns information about the NSX cluster configuration. An NSX cluster has
+<br>
+two functions or purposes, commonly referred to as "roles." These two roles
+<br>
+are control and management. Each NSX installation has a single cluster.
+<br>
+Separate NSX clusters do not share data. In other words, a given data-plane
+<br>
+node is attached to only one cluster, not to multiple clusters.
+<br>
+</span>
+              <span class="help_detail"></span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /api/v1/cluster
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;nsx-mgr&gt;/api/v1/cluster</span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ClusterConfig<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ReadClusterConfig', 'ClusterConfig.ReadClusterConfig.Response_Body')">+</span></div>
+  </div>
+    <div id="ClusterConfig.ReadClusterConfig.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ClusterConfig.html">
+        <span>ClusterConfig</span>
+      </a> (<a href="schemas_ClusterConfig.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>cluster_id</td>
+            
+            <td>Unique identifier of this cluster</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span><br>Readonly</td>
+          </tr>
+          <tr>
+            <td>control_cluster_changes_allowed</td>
+            
+            <td>True if control cluster nodes may be added or removed</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>mgmt_cluster_changes_allowed</td>
+            
+            <td>True if management cluster nodes may be added or removed</td>
+            
+            <td>boolean</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>nodes</td>
+            
+            <td>Configuration of each node in cluster</td>
+            
+            <td>array of <a href="types_ClusterNodeInfo.html">ClusterNodeInfo</a></td>
+            
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "cluster_id": "7c871014-bc27-4d7a-919a-45e762176f2b",
+  "nodes": [
+    {
+      "certificates": [
+        {
+          "entity_type": "HTTPS",
+          "certificate_sha256_thumbprint": "509bb72fdf46f3de24c99116d284f4222265197aae6b0a5a05512ea3c212b063",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIICvTCCAaWgAwIBAgIEWxKYNDANBgkqhkiG9w0BAQsFADAOMQwwCgYDVQQDEwNh\ncGkwIBcNMTgxMDIzMTc1MTM4WhgPMjExODA5MjkxNzUxMzhaMA4xDDAKBgNVBAMT\nA2FwaTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJzoGfLgN7JjUGdD\n9/TiM1cHjlS7A1D6nRXFRFIxSD5TWNChPcYnsnkr3toMFfz79Lt6ye95cnN/kRLI\nC1bri9EZczmMaMIRMa+orUbQo38tiVGsheEuMfBOY+WyMW9TSNj6SWzSTQph0U70\nzt1HhT+yRWDxX9PYdMqk+xrT1EBYUM9vrrhnK2jJEe4SAwDOwYUKEtyETw20KDy6\nFn4eEZ5+SHEKzGk5v7bTeAAvQq5oR0CEYaGs6zYEiPPoYKf5I1Gk97kHbdmgKC1m\nGdvzI4AbG8soMz73JcaqOG+ND+NHznWkN2fvDuuWGgpPIz2IpvsS1gryuTVDZo9M\nELus2CsCAwEAAaMhMB8wHQYDVR0OBBYEFL4jv41Ul9CtDvWoSPYYvECkfjFkMA0G\nCSqGSIb3DQEBCwUAA4IBAQALAGXIEkG7uBpbB+gRZS4PmtE7hlN8dKByJyoWqlxx\n7JkbNnDN0Z8bYDo+WpTPWP2XyCvtBe+m8PV7Hf/oM6/EjOsXD6kOUf41uq3bmpyX\nbpy+5yLN79cMU07yD+yH9/TSoLDnYZ+uZ22mAeSGNkUpv0VYLDX3kYzcbDFp0iU4\ncCn68NgnD+pra1vLi0aNlSjNV5gLIgSz4VFRoFOgucgUm7/0p/0O5vOwQkqpaRtS\nGMpYB0DEZ9lnWvTLfGuwa1uNjg5JuShSqnOhD32K6lrLzmF3W3b9ew9JRO0mBZlu\nD1L/yiIlVhrLelYykMivlkpbMNl4hglAwbIOcKNIqB8c\n-----END CERTIFICATE-----\n"
+        },
+        {
+          "entity_type": "CONTROLLER",
+          "certificate_sha256_thumbprint": "a8394d08e29dce3cfb2bf9689130c9cca89d1bdd0f5568342f7497e8b35d0025",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIICvTCCAaWgAwIBAgIEXhWCCjANBgkqhkiG9w0BAQsFADAOMQwwCgYDVQQDEwNj\nY3AwIBcNMTgxMDIzMTc1MTQ0WhgPMjExODA5MjkxNzUxNDRaMA4xDDAKBgNVBAMT\nA2NjcDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANBBRVzGWjoslrXa\nbwBNpZbRvfi/qMBc+XiLxgSp2Jtn+J+yoBvmObdvrxNKcwyRi9aXQDEV7TyszpU6\nQs8oC8vnMCCeUN2Le5mOHY2HSs2xuDd6Gxv9I+DyEb1+j9qxIvEqiLzdfN1u3i2e\nx8SWPv8UrCD85lQLihTzH0eln57BPtqTJ/OL33jVp2S0Q6/uxmwiRfvn0DrcDw02\ntuL/qK7+zMJh861s73XY3+BtSNY75iZe/FjYcmphhLO4GestmudYEM7uYfXJ+74F\nQqTJ3RSqsHWCvXFK6+G39e27uiU+wfiUEiiBu4pJKaAyx565oiVEKPEiY9w4p+1R\nREGyWv8CAwEAAaMhMB8wHQYDVR0OBBYEFOz1lsjROruNyaAxcUN0lcyZ47FiMA0G\nCSqGSIb3DQEBCwUAA4IBAQB6XWvSv1P3VRZ0QDJGCpQ2tNLWshrmftHeLQKSBBCm\nZ+LJbDYHoiHWhJ6vyYYe24gIDwUGumZ1MqujYpGIW9wfJx1PE6Vn8cVftgcAUdfa\nPqwgXof2Yx30QHxElBMa67o98Xu2DPWKDq4IlJGKps+KbdlVpVQEYV7/xZ0Kyk8r\nY77jOY3bs6Mk2mnZ5rKJ/npg+eKg4AJPkTX0hj0A0dIH8JItr1TQgpSkwV8WyZpr\nJbTuwfEBpYqn3ka0eIXx4xvzWZBrY4Kb1DVEvtNOeyvZN4+DGDnUaoExWiyaSu4i\nwtX3bR0ZM0ssqhrCSIxXWIHIDL7t50mbW7SV1+y5irRm\n-----END CERTIFICATE-----\n"
+        },
+        {
+          "entity_type": "CLUSTER_BOOT_MANAGER",
+          "certificate_sha256_thumbprint": "9aba23768e4dd5301dcba98181b3f22c8ac7bb1d39b80ec44636430f1f6a4b2d",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIIC1TCCAb2gAwIBAgIEMGoU8TANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDEw9j\nbHVzdGVyLW1hbmFnZXIwIBcNMTgxMDIzMTc1MTI5WhgPMjExODA5MjkxNzUxMjla\nMBoxGDAWBgNVBAMTD2NsdXN0ZXItbWFuYWdlcjCCASIwDQYJKoZIhvcNAQEBBQAD\nggEPADCCAQoCggEBAMDqNOyPD7c8VE7v0o0gBOg/2v5LB0lX3M+5uJeLF1hyaru0\n9c/HesjkEUz17lUEhhb177RHAeXIOIzeaxbSB0SvXv8F0cE8Y4CM7nhcWWd4t4rt\nx76xWb3C6R/JhyygDWRsiCUK/V/60LTcMToJ9Axsp4XuKXpu2WEPBlYMQIYxk3iC\n0bx2AvTJhDGLHwsRfhbN6hoZJGtyjMxHuQJuYUTuRRQQ7cGlQBTdidTod7Cp6SYn\ne48DSPtRFWiL0pZce1H0ZOlE2u76xi/uhFZuIP/gw7eyPS3Yd9ztEajy/RPGTLyn\nRhyrjr5Ev4Z9KgWfN9rTUw+jWxjfdBRik3dgrXsCAwEAAaMhMB8wHQYDVR0OBBYE\nFJhUp/WIyaZ5pm38YgQaQZHdmjCnMA0GCSqGSIb3DQEBCwUAA4IBAQAR8a3w+8om\nbkSs0/YG+p4EzLyS+Hz0UQjtNd4kkQ+iOZbVXAKQuixbHx2IOkwmI+QiC+2VSjba\nQr9KD/Lal0Bo0QmPdma/g/LzNgMx1jUwMhebP5LUNXrYRb1xqPxNRD8abxrf6Nez\nf/17T8rssMVY9gFcDtTRXEaoZyAHyFyVByLY0nUpvUdKSfBJM9YGb+g0C6lZpqEC\n2220qIRAklDKsLxHV62uEiydizxN0tTMaD2Af+sg4TbaKf9VGdwtXxk7EPNNiK3f\n8Z3s217H/5kCHXDRdmo6EwzIica1K/bzu+yVItPgFIpnCltYII8Ehrkq5FaVgNo7\nNP0EOvzlpH26\n-----END CERTIFICATE-----\n"
+        },
+        {
+          "entity_type": "DATASTORE",
+          "certificate_sha256_thumbprint": "5eec1f2c2f02bbcca31429b7a91c45faece1933ef6fb9d0ee8b20e589d0728ae",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIICwTCCAamgAwIBAgIEJb8g7DANBgkqhkiG9w0BAQsFADAQMQ4wDAYDVQQDEwVj\nb3JmdTAgFw0xODEwMjMxNzUyMDVaGA8yMTE4MDkyOTE3NTIwNVowEDEOMAwGA1UE\nAxMFY29yZnUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC/MVvwFkXj\nSU5ShAmkZ3nbDIN7OvokdkvZSQoCiPaDFsYJNpRr2xEU3huSehJMPnqYN9Wbjf+Z\n3mQv9XuPaDcHtfEAjYlGh3+6yeZuvIcE5lKcvMB2LHFjZMBnXf5DT/wdMYtOOhda\nW9hKqIrLyDJZQuYW0acaUNU7dyYxBIFeHGXv1Nwls87dbahElyxbac7y0iMzV+lE\n1aF/xd218ozhooLYuT0n37KJuvN3wPdLrhA94g2zHWD17kL2ZOXuO+qiOFsHd0x7\nvebUmUgsmiBCrKjNADsnXqBwGfPtW8tUtuwkos1s4A9mI0k018H4UZqzbjJzfeSe\nT0J0Z/FKzEo3AgMBAAGjITAfMB0GA1UdDgQWBBRlf1gi/d7E0Xm62//2TO4JDWHT\nTjANBgkqhkiG9w0BAQsFAAOCAQEAFh+omRTX1yMUHcteGnPpxfiZSXnFaeAx+NzI\n8urQkOe/8B36OAU+quL0aEr2FVCizOS5sEjdSR0SXZ5VlcRyy+bPiaNGexvtRqzL\nV2sxCIZOCkfIweAEWFCqLWo0I3yj1ccqlHWw1vRSs2B2u7l8Bh0HKQqyCZ8neFS5\nuxSMxrpK0OEjoovqf2+reofRyDS3jX6IkkLdXj0tpZ/YODHy//O39jX/ntngTDKT\n29C0d6YdZzivAsLsl0o7AH+uRub4c5w5WPMTe1z5jRyvEq2kASnH+x6aHGL6NbiQ\nvYO6qoQ3CC4vc3JfRyCeL28sOgsFj3Izi4fTFoioL5m9jgF1/g==\n-----END CERTIFICATE-----\n"
+        },
+        {
+          "entity_type": "MANAGER",
+          "certificate_sha256_thumbprint": "71515a155ce5679175eb176f22a99afc9a4f768d919555bd03254d3c7f09e19e",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIICuzCCAaOgAwIBAgIEGhc3iDANBgkqhkiG9w0BAQsFADANMQswCQYDVQQDEwJt\ncDAgFw0xODEwMjMxNzUxNTdaGA8yMTE4MDkyOTE3NTE1N1owDTELMAkGA1UEAxMC\nbXAwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCayNg+xV6aO51s9UC3\nsPB3TNKhuNSPyZVN5uqH+dGdLGL5c2ZWtyjZbbliUP5AvHBlr2d6bGiVK5ySPGR/\n40navQaSvXTTvSaTyND/jg7hPQ5jR+Y/rZJRhvigi8EfQsYYvjaquO7GryfSiU4I\nPASkELzTFIj0F9t3+Ty3zPqokWqUa6bOCebut7IjV5xj2nTyg0jWouKP9wQNIhHI\nWijDEwQaRVXr61Fo7w8ZrMWMXi8LjQbRRBTywYZ2UDprhncGjb8mHqzsEl9MTSat\n2jEuWzS01YL/vKs04yJcANYNndZyiFHRkrfTy6VBLDKPzGIOregC7YjB0R6YduyY\nUjbDAgMBAAGjITAfMB0GA1UdDgQWBBQArCaW3t4t37jU10r9elEywMX7tTANBgkq\nhkiG9w0BAQsFAAOCAQEASKDXDjaNBu+SaKPurfdzdxP5F5KU5dlK9wDZy6DE/kx0\nhMFDXJPiFcs0tYbo2zKccRHJQ26qF3O0RtzD5h+yTc1GjNSdhuqql7BK7mOtNpaZ\nvK46+pUVJxjZz/ShTHHHMN7YWd/n7JPkb/uILhHOT0/GMGKSfvYycvYdSY+qrghi\nECmajbqN1nZyLmtx1rQvjCybUeDxPiOIZ1UFtfkNJ7s0rc3CsihUecuSW/UmDVCk\nXl8C+R3Pql8u6STvv5ofZ0DQCvknTlqhAvyQe33yevMpzH6AwAMLCMtE1Mmso9SX\nF151OMImswdz5aWSKsPc0ehnpHDrqXe26fSdT8jymA==\n-----END CERTIFICATE-----\n"
+        },
+        {
+          "entity_type": "POLICY",
+          "certificate_sha256_thumbprint": "69e50eeeb95f14e8d27f873a37e6329674f7521310781e6461a41596d7cc5c1b",
+          "certificate": "-----BEGIN CERTIFICATE-----\nMIICwzCCAaugAwIBAgIEQxB9PTANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDEwZw\nb2xpY3kwIBcNMTgxMDIzMTc1MTQ5WhgPMjExODA5MjkxNzUxNDlaMBExDzANBgNV\nBAMTBnBvbGljeTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMswAi2E\nP/2q/LI7yNaG9ao6XeKyTPbC+mzlAqAr6jra1pXyXpjJJSR6jCGvKg3dTnCFCNdp\nnKoVm+69Stp/ZuQn++CN2ekW9EVgiMRnyRvV3jCQE81B6/HWv3DWKvmeZqVwKlLj\nRvdtONpkZhD40BQBKrckCMF68nCjFTxHwP6FYeKoy5Om8gM4OcoHhwsKDehxZ662\n7WyZUwU7X7jkTJwGyB8AhpkLeUCVYgNoui3xiYE8HEUwNvOpFlzEoA531v6xmyG/\njbJvypCJVT7i7Lj7bZXMfFv5vQ2gdJK40Cl3iEJS9LLAI9TiKhP3WrBdLQjcxuWI\n9TvJFVOOvAzx/ScCAwEAAaMhMB8wHQYDVR0OBBYEFPIrdP1e/h9RG9HJAzEe+oFN\nR2jvMA0GCSqGSIb3DQEBCwUAA4IBAQCXszjV1L3ZJUCImpCia5H0xMKZhrb8U0aF\nAz4iWRpE10G8AxNi7lmY/dPc3ey2X8+7hAxoqC3TaRApTyQwCXwaJtdWHwyAqzyZ\ngzAhPEkUoEsZEySsJ0lmnL8VQNTRZKsTpycfz50crj4KsJJwwp1dYdhNqLWCHxaD\nbk4gkiR52JEdAz3dqOQCQcc+Cfrx2XNpqAbH1vhZMoxzWbA5vrimhuLc08V+zQfu\nLwmfuGK7fla82sNu52geXXWkjtVd5TxoTLWUj5yq0LaW3L1JJgsfJR1uf8FY9tBs\nlbk/xR9y0DUZbcyj8IfPJiXcNuzXtMGBe3Lz1Gw5NODRIjcG+S9D\n-----END CERTIFICATE-----\n"
+        }
+      ],
+      "entities": [
+        {
+          "entity_type": "HTTPS",
+          "port": 443,
+          "ip_address": "10.161.181.150"
+        },
+        {
+          "entity_type": "CONTROLLER",
+          "port": 0,
+          "ip_address": "10.161.181.150"
+        },
+        {
+          "entity_type": "CLUSTER_BOOT_MANAGER",
+          "port": 0,
+          "ip_address": "10.161.181.150"
+        },
+        {
+          "entity_type": "DATASTORE",
+          "port": 9000,
+          "ip_address": "10.161.181.150"
+        },
+        {
+          "entity_type": "MANAGER",
+          "port": 0,
+          "ip_address": "10.161.181.150"
+        },
+        {
+          "entity_type": "POLICY",
+          "port": 0,
+          "ip_address": "10.161.181.150"
+        }
+      ],
+      "msg_clients": [
+        {
+          "entity_type": "CONTROLLER",
+          "clients": [
+            {
+              "account_name": "cvn-ccp-mpa-05ee9070-1b1a-4479-a944-f6aad0115b39",
+              "client_type": "MPA"
+            },
+            {
+              "account_name": "cvn-ccp-5b1e2888-d8a8-49cf-880f-cfbaf7228599",
+              "client_type": "HOST"
+            }
+          ]
+        },
+        {
+          "entity_type": "MANAGER",
+          "clients": [
+            {
+              "account_name": "cvn-mp-mpa-eabac123-44a5-439b-9a68-1051e721771a",
+              "client_type": "MPA"
+            }
+          ]
+        }
+      ],
+      "node_uuid": "ad200842-02bd-fe4b-2810-885404ab32a7",
+      "display_name": "ad200842-02bd-fe4b-2810-885404ab32a7",
+      "fqdn": "nsx-a01.vmware.com"
+      "status": "JOINED"
+    }
+  ],
+  "mgmt_cluster_changes_allowed": true,
+  "control_cluster_changes_allowed": true,
+  "_revision": 0
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">cluster_management</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>

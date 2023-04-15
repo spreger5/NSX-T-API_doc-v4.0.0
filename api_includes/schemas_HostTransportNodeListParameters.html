@@ -1,0 +1,130 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostTransportNodeListParameters.html">HostTransportNodeListParameters</a> (<a href="types_HostTransportNodeListParameters.html">type</a>)
+</h3>
+<pre>{
+  "extends": {
+    "$ref": "<A HREF="schemas_ListRequestParameters.html">ListRequestParameters</A>
+  }, 
+  "id": "HostTransportNodeListParameters", 
+  "module_id": "PolicyHostTransportNode", 
+  "properties": {
+    "cursor": {
+      "readonly": false, 
+      "title": "Opaque cursor to be used for getting next page of records (supplied by current result page)", 
+      "type": "string"
+    }, 
+    "discovered_node_id": {
+      "description": "This property can be used by itself or along with 'transport_zone_path'. This applies only to vCenter Managed hosts. For Unmanaged hosts use node_ip instead. These hosts are discovered by Nsx manager after adding a vCenter as Compute Manager. Refer to fabric discovered-nodes api to get discoverednode_id. eg. 6ab2278f-951d-471b-8d0f-510c825945f1:host-14", 
+      "required": false, 
+      "title": "discovered node id", 
+      "type": "string"
+    }, 
+    "in_maintenance_mode": {
+      "description": "If the flag is true, transport node with 'ENABLED' or 'FORCE_ENABLED' desired state will be returned, otherwise transport nodes in 'DISABLED' will be returned.", 
+      "required": false, 
+      "title": "maintenance mode flag", 
+      "type": "boolean"
+    }, 
+    "included_fields": {
+      "description": "Note - this parameter currently only works when used with the search APIs /policy/api/v1/search/query and /policy/api/v1/search/dsl. It is ignored for other list APIs.", 
+      "title": "Comma separated list of fields that should be included in query result", 
+      "type": "string"
+    }, 
+    "node_ip": {
+      "description": "This property can only be used alone. It can not be combined with other filtering properties.", 
+      "required": false, 
+      "title": "Transport node IP address", 
+      "type": "string"
+    }, 
+    "node_types": {
+      "description": "Specify types from [HostNode, EdgeNode, PublicCloudGatewayNode]. If a list of node types is given, all transport nodes of given types will be returned.", 
+      "required": false, 
+      "title": "a list of node types separated by comma or a single type", 
+      "type": "string"
+    }, 
+    "page_size": {
+      "default": 1000, 
+      "maximum": 1000, 
+      "minimum": 0, 
+      "title": "Maximum number of results to return in this page (server may return fewer)", 
+      "type": "integer"
+    }, 
+    "sort_ascending": {
+      "type": "boolean"
+    }, 
+    "sort_by": {
+      "title": "Field by which records are sorted", 
+      "type": "string"
+    }, 
+    "transport_zone_path": {
+      "description": "This property can be used along with 'node_id'. Valid Policy Tz path should be given, eg. /infra/sites/default/enforcement-points/default/transport-zones/web-tz1", 
+      "required": false, 
+      "title": "Transport zone path", 
+      "type": "string"
+    }
+  }, 
+  "title": "Host Transport Node list parameters", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

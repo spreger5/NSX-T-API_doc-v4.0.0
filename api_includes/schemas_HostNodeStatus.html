@@ -1,0 +1,123 @@
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+<HTML>
+<HEAD>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+         font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1, h2 {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+
+      h4 {
+        font-weight: bold;
+      }
+</STYLE>
+</HEAD>
+
+
+
+<BODY>
+<h3>
+      <a name="schemas_HostNodeStatus.html">HostNodeStatus</a> (<a href="types_HostNodeStatus.html">type</a>)
+</h3>
+<pre>{
+  "id": "HostNodeStatus", 
+  "module_id": "ComputeCollectionDeployment", 
+  "properties": {
+    "config_status": {
+      "description": "Gives details of state of desired configuration. This property is available only if Tranport Node exists for the host. Following are the supported values pending  - Transport Node configuration status is pending in_progress - Transport Node configuration status is in progress success - Transport Node configuration status is successful failed - Transport Node configuration status is failed partial_success - Transport Node configuration status is partial success orphaned - Transport Node configuration status is orphaned unknown - Transport Node configuration status is unknown error - Error occured during Transport Node configuration", 
+      "enum": [
+        "pending", 
+        "in_progress", 
+        "success", 
+        "failed", 
+        "partial_success", 
+        "orphaned", 
+        "unknown", 
+        "error"
+      ], 
+      "readonly": true, 
+      "required": false, 
+      "title": "Configuration status of host node", 
+      "type": "string"
+    }, 
+    "deployment_status": {
+      "description": "This specifies the current nsx install status for host node. Following are the supported values INSTALL_IN_PROGRESS - NSX installation is in progress on the host INSTALL_FAILED - NSX installation failed on the host INSTALL_SUCCESSFUL - NSX installation successful on the host UNINSTALL_IN_PROGRESS - NSX uninstallation in progress on the host UNINSTALL_FAILED - NSX uninstallation failed on the host UNINSTALL_SUCCESSFUL - NSX uninstallation successful on the host UNINSTALL_SCHEDULED - NSX uninstallation is scheduled on the host UPGRADE_IN_PROGRESS - NSX upgrade is in progress on the host UPGRADE_FAILED - NSX upgrade failed on the host DEPLOYMENT_QUEUED - Deployment is queued on the DEPLOYMENT_IN_PROGRESS - Deployment is in progress DEPLOYMENT_FAILED - Deployment is failed DEPLOYMENT_SUCCESSFUL - Deployment is successful UNDEPLOYMENT_QUEUED - Undeployment is queued UNDEPLOYMENT_IN_PROGRESS - Undeployment is in progress UNDEPLOYMENT_FAILED - Undeployment failed UNDEPLOYMENT_SUCCESSFUL - Undeployment is successful UPGRADE_QUEUED - Upgrade is queued HOST_DISCONNECTED - Host is disconnected POWERED_OFF - Host is powered off", 
+      "enum": [
+        "INSTALL_IN_PROGRESS", 
+        "INSTALL_FAILED", 
+        "INSTALL_SUCCESSFUL", 
+        "UNINSTALL_IN_PROGRESS", 
+        "UNINSTALL_FAILED", 
+        "UNINSTALL_SUCCESSFUL", 
+        "UNINSTALL_SCHEDULED", 
+        "UPGRADE_IN_PROGRESS", 
+        "UPGRADE_FAILED", 
+        "DEPLOYMENT_QUEUED", 
+        "DEPLOYMENT_IN_PROGRESS", 
+        "DEPLOYMENT_FAILED", 
+        "DEPLOYMENT_SUCCESSFUL", 
+        "UNDEPLOYMENT_QUEUED", 
+        "UNDEPLOYMENT_IN_PROGRESS", 
+        "UNDEPLOYMENT_FAILED", 
+        "UNDEPLOYMENT_SUCCESSFUL", 
+        "UPGRADE_QUEUED", 
+        "HOST_DISCONNECTED", 
+        "POWERED_OFF"
+      ], 
+      "readonly": true, 
+      "title": "Deployment progress status of host node", 
+      "type": "string"
+    }, 
+    "node_id": {
+      "readonly": true, 
+      "title": "Unique Id of the host node", 
+      "type": "string"
+    }
+  }, 
+  "title": "Host Node Status", 
+  "type": "object"
+}
+</pre>
+
+<!--
+## ***************************************************************************
+## Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential.
+## ***************************************************************************
+-->
+</BODY>
+</HTML>

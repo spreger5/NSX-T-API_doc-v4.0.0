@@ -1,0 +1,301 @@
+
+
+
+
+<HTML>
+<STYLE>
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        margin-top: 1ex;
+      }
+      h2 {
+        margin-top: 2ex;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+</STYLE>
+<BODY>
+
+    
+    <H3>
+    
+        
+            System Administration >
+        
+        
+            <a href='system_administration_configuration.html' style='text-decoration: none'> Configuration</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_managers.html' style='text-decoration: none'> NSX Managers</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_managers_clusters.html' style='text-decoration: none'> Clusters</a> >
+        
+        
+            <a href='system_administration_configuration_nsx_managers_clusters_cluster_configuration.html' style='text-decoration: none'> Cluster Configuration</a>
+        
+    </H3>
+
+    <div>
+      <div>
+          <H4>Associated URIs:</H4>
+          <table border="1" width="100%>
+            <tbody>
+              <tr class="header">
+                <th width="50%">API Description</th>
+                <th width="50%">API Path</th>
+              </tr>
+                    <tr>
+                      <td><h4>Read Cluster Configuration</h4><br>
+                      <span class="help_detail">Returns information about the NSX cluster configuration. An NSX cluster has
+<br>
+two functions or purposes, commonly referred to as "roles." These two roles
+<br>
+are control and management. Each NSX installation has a single cluster.
+<br>
+Separate NSX clusters do not share data. In other words, a given data-plane
+<br>
+node is attached to only one cluster, not to multiple clusters.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadClusterConfig.html">GET /api/v1/cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Join this node to a NSX Cluster</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_JoinCluster.html">POST /api/v1/cluster?action=join_cluster</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read cluster node configuration</h4><br>
+                      <span class="help_detail">Returns information about the specified NSX cluster node.</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetClusterNodeConfig.html">GET /api/v1/cluster/&lt;node-id&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Detach a node from the Cluster</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DetachClusterNode.html">POST /api/v1/cluster/&lt;node-id&gt;?action=remove_node</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke DELETE request on target cluster node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokeDeleteClusterCentralAPI.html">DELETE /api/v1/cluster/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke GET request on target cluster node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokeGetClusterCentralAPI.html">GET /api/v1/cluster/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke POST request on target cluster node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokePostClusterCentralAPI.html">POST /api/v1/cluster/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Invoke PUT request on target cluster node</h4><br>
+                      <span class="help_detail"></span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_InvokePutClusterCentralAPI.html">PUT /api/v1/cluster/&lt;target-node-id&gt;/&lt;target-uri&gt;</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Get backup frames for UI</h4><br>
+                      <span class="help_detail">Returns list of backup frames and some metadata to be used by UI.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_GetBackupUiFramesInfo.html">GET /api/v1/cluster/backups/ui_frames</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>List Cluster Node Configurations</h4><br>
+                      <span class="help_detail">Returns information about all NSX cluster nodes.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ListClusterNodeConfigs.html">GET /api/v1/cluster/nodes</a>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Add a controller to the cluster</h4><br>
+                      <span class="help_detail">Add a new controller to the NSX cluster.
+<br>
+The controller comes with the new node.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_AddClusterNode.html">POST /api/v1/cluster/nodes</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Remove a controller from the cluster</h4><br>
+                      <span class="help_detail">Removes the specified controller from the NSX cluster. Before you can
+<br>
+remove a controller from the cluster, you must shut down the controller
+<br>
+service with the "stop service controller" command.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_DeleteClusterNodeConfig.html">DELETE /api/v1/cluster/nodes/&lt;node-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td><h4>Read Cluster Node Configuration</h4><br>
+                      <span class="help_detail">Returns information about the specified NSX cluster node.
+<br>
+</span>
+                      </td>
+                        
+                        <td>
+                            
+                            <a href="method_ReadClusterNodeConfig.html">GET /api/v1/cluster/nodes/&lt;node-id&gt;</a>
+                              <span class="deprecated"> (Deprecated)</span>
+                            <br>
+                        </td>
+                    </td>
+                    </tr>
+          </ul>
+      </div>
+    </div>
+</BODY>
+</HTML>

@@ -1,0 +1,726 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<HTML>
+    <HEAD>
+    <STYLE type="text/css">
+      html {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body {
+        background-color:#ffffff;
+        color:#353833;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:14px;
+      }
+
+      h1, h2, h3, h4 {
+        font-family:'open sans', Arial, Helvetica, sans-serif;
+      }
+
+      h1 {
+        font-size:2.5em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size:2em;
+        font-weight: 300;
+      }
+
+      h3 {
+        font-size:1.5em;
+        font-weight: 300;
+      }
+      h4 {
+        font-weight: bold;
+      }
+      p {
+        padding: 0;
+        border: 0;
+        margin: 0;
+        padding-bottom: 1ex;
+      }
+      table {
+        border-collapse: collapse;
+        border: 1px solid #cccccc;
+      }
+
+      table td {
+          border: 1px solid #cccccc;
+          padding: 7px 5px 7px 5px;
+          vertical-align: top;
+          font-family:Arial, Helvetica, sans-serif;
+          font-size:12px;
+      }
+
+      table th {
+        color:#FFFFFF;
+        background:#4a7db1;
+        border: 1px solid #cccccc;
+        padding: 5px;
+        vertical-align: top;
+        text-align: left;
+        font-weight:bold;
+      }
+
+
+      span.schema_toggle, span.inline_table_toggle {
+        border:1px solid #999999;
+        margin-left:5px;
+        color:#666666;
+        cursor:pointer;
+        padding:0px 2px;
+      }
+      span.expanded_schema {
+        border:1px solid #CCCCCC;
+        margin:4px 0px 0px 75px;
+        display: block;
+      }
+      span.doc_category {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        display:block;
+      }
+      span.example_request {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.example_response {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+        font-family: monospace;
+        white-space: pre;
+      }
+      span.rbac_feature {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.required_permissions {
+        display:block;
+        margin:1ex 2ex 2ex 1ex;
+      }
+      span.help_detail {
+        display:block;
+        margin:5ex 5ex 5ex 5ex;
+        background:#F8F8F8;
+      }
+      ul {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+      ol {
+        counter-reset: section;                /* Creates a new instance of the section counter with each ol element */
+        list-style-type: none;                 /* Nested couter creates outlined list in API table of contents */
+      }
+      ol li::before {
+        counter-increment: section;            /* Increments only this instance of the section counter */
+        content: counters(section,".") " ";    /* Adds the value of all instances of the section counter separated by a ".". */
+      }
+      .subsection_title {
+        text-decoration: underline;
+      }
+      .subsection {
+        margin: 5px 0px 0px 3em;
+        width: 90%;
+        background-color: #e8e8e8;
+      }
+      .subsection_text {
+        padding: 3px;
+        width: 100%;
+        background-color: #f8f8f8;
+      }
+      .inline_table_div {
+        clear: both;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: #ffffff;
+      }
+      .inline_table {
+        margin-bottom: 0px
+      }
+      .error_table {
+        margin: 7px 0 7px 5em;
+        width: 90%;
+      }
+      tr.header {
+        background-color: #cccccc;
+      }
+      .row {
+        clear: both;
+        width: 100%;
+      }
+      .label {
+        padding: 3px;
+        float: left;
+        width: 25%;
+      }
+      .value {
+        padding: 3px;
+        float: right;
+        width: 72%;
+        background-color: #f8f8f8;
+      }
+      .api_object_title {
+        font-weight: bold;
+      }
+      .experimental {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .deprecated {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .removed {
+        padding-left: 5px;
+        font-weight: normal;
+        font-size: 12px;
+        color: red;
+      }
+      .code {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+      }
+      .code_block {
+        font-weight: normal;
+        font-size: 12px;
+        font-family: Lucida-Console, Monaco, monospace;
+        padding: 5px;
+        padding-left: 15px;
+      }
+    </STYLE>
+    <script type="text/javascript">
+      function toggleSchemaExpansion(oToggleSpan) {
+          var oExpandedPre    = oToggleSpan.nextSibling;
+
+          var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+
+          oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+          oExpandedPre.style.display = bHide ? "none" : "";
+      }
+      function toggleInlineTable(oToggleSpan, sRootDivId, sTableId) {
+          var oTableDiv;
+          if (sTableId) {
+              var oRootDiv = document;
+              if (typeof sRootDivId != "undefined" && sRootDivId != "") {
+                  oRootDiv = document.getElementById(sRootDivId);
+              }
+              var aTableDivs = oRootDiv.getElementsByTagName("div");
+              for (var i = 0; i < aTableDivs.length; i++) {
+                  if (aTableDivs[i].id == sTableId) {
+                      oTableDiv = aTableDivs[i];
+                      break;
+                  }
+              }
+          }
+
+          if (oTableDiv) {
+              var bHide = oToggleSpan.innerHTML == "+" ? false : true;
+              oToggleSpan.innerHTML      = bHide ? "+"    : "-";
+              oTableDiv.style.display = bHide ? "none" : "inline-block";
+          }
+      }
+      function toggleAllInlineTablesInner(oLink, bHide) {
+          var aTableDivs = document.getElementsByTagName("div");
+          for (var i = 0; i < aTableDivs.length; i++) {
+              var oTableDiv = aTableDivs[i];
+              if (oTableDiv.className == "inline_table_div") {
+                  oTableDiv.style.display = bHide ? "none" : "inline-block";
+              }
+          }
+
+          var aSpans = document.getElementsByTagName("span");
+          for (var i = 0; i < aSpans.length; i++) {
+              var oSpan = aSpans[i];
+              if (oSpan.className == "inline_table_toggle") {
+                  oSpan.innerHTML = bHide ? "+" : "-";
+              }
+              if (oSpan.className == "expanded_schema") {
+                  toggleSchemaExpansion(oSpan.previousSibling);
+              }
+          }
+          oLink.innerHTML = bHide ? "+" : "-";
+      }
+      function toggleAllInlineTables(oLink) {
+          var bHide = oLink.innerHTML.indexOf("-") > -1;
+          oLink.innerHTML = bHide ? "collapsing..." : "expanding...";
+          setTimeout(toggleAllInlineTablesInner, 0, oLink, bHide);
+      }
+    </script>
+    </HEAD>
+    <BODY>
+    
+        
+        <P>
+        
+            
+                Policy >
+            
+            
+                <a href='policy_networking.html' style='text-decoration: none'> Networking</a> >
+            
+            
+                <a href='policy_networking_network_services.html' style='text-decoration: none'> Network Services</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing.html' style='text-decoration: none'> Advanced Load Balancing</a> >
+            
+            
+                <a href='policy_networking_network_services_advanced_load_balancing_alb_protocol_parsers.html' style='text-decoration: none'> Alb Protocol Parsers</a>
+            
+        </P>
+    
+        <div id="ReadALBProtocolParser">
+          <h2>
+            Read ALBProtocolParser
+              <span class="deprecated">(Deprecated)</span>
+          </h2>
+          <span class="help_detail">Read a ALBProtocolParser.
+<br>
+This is a deprecated API. It is recommennded to use NSX Advanced Load Balancer (Avi) Controller UI or API directly instead of NSX-T ALB Policy UI and API.
+<br>
+</span>
+              <span class="help_detail">This API is only available when using VMware NSX.</span>
+          <h3>Request:</h3>
+          <div class="subsection">
+            <div class="row">
+              <div class="label">Method:</div>
+              <div class="value">GET</div>
+            </div>
+            <div class="row">
+              <div class="label">URI Path(s):</div>
+              
+              <div class="value">
+                  
+                  /policy/api/v1/infra/alb-protocol-parsers/&lt;alb-protocolparser-id&gt;
+                  <br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">Request Headers:</div>
+                <div class="value"><i>n/a</i></div>
+            </div>
+            
+            
+  
+  <div class="row">
+    <div class="label">Query Parameters:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+              
+  
+  <div class="row">
+    <div class="label">Request Body:</div>
+    <div class="value"><i>n/a</i></div>
+  </div>
+
+            <div style="clear:both"></div>
+           </div>
+           <br>
+            <h4>Example Request:</h4>
+            <span class="example_request">GET https://&lt;policy-mgr&gt;/policy/api/v1/infra/alb-protocol-parsers/<protocolparser-id></span>
+
+          <h3>Successful Response:</h3>
+          
+            <div class="subsection">
+              <div class="row">
+                <div class="label">Response Code:</div>
+                <div class="value">200 OK</div>
+              </div>
+              <div class="row">
+                <div class="label">Response Headers:</div>
+                  
+                  <div class="value">Content-type: application/json</div>
+                </div>
+                
+                  
+  
+  <div class="row">
+    <div class="label">Response Body:</div>
+    <div class="value">ALBProtocolParser<span class="inline_table_toggle" onclick="toggleInlineTable(this, 'ReadALBProtocolParser', 'ALBProtocolParser.ReadALBProtocolParser.Response_Body')">+</span></div>
+  </div>
+    <div id="ALBProtocolParser.ReadALBProtocolParser.Response_Body" style="display:none" class="inline_table_div">
+      <h4>
+      <a href="types_ALBProtocolParser.html">
+        <span>ALBProtocolParser</span>
+      </a> (<a href="schemas_ALBProtocolParser.html">schema</a>)
+      </h4>
+      
+    
+    <table border="1">
+      <tbody>
+        <tr class="header">
+          <th>Name</th>
+          <th width="60%">Description</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+          <tr>
+            <td>_create_time</td>
+            
+            <td>Timestamp of resource creation</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_create_user</td>
+            
+            <td>ID of the user who created this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_last_modified_time</td>
+            
+            <td>Timestamp of last modification</td>
+            
+            <td><a href="types_EpochMsTimestamp.html">EpochMsTimestamp</a></td>
+            
+            <td>Readonly<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>_last_modified_user</td>
+            
+            <td>ID of the user who last modified this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_links</td>
+            
+            <td>References related to this resource<br><br>The server will populate this field when returing the resource. Ignored on PUT and POST.</td>
+            
+            <td>array of <a href="types_ResourceLink.html">ResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_protection</td>
+            
+            <td>Indicates protection status of this resource<br><br>Protection status is one of the following:
+<br>
+PROTECTED - the client who retrieved the entity is not allowed
+<br>
+            to modify it.
+<br>
+NOT_PROTECTED - the client who retrieved the entity is allowed
+<br>
+                to modify it
+<br>
+REQUIRE_OVERRIDE - the client who retrieved the entity is a super
+<br>
+                   user and can modify it, but only when providing
+<br>
+                   the request header X-Allow-Overwrite=true.
+<br>
+UNKNOWN - the _protection field could not be determined for this
+<br>
+          entity.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_revision</td>
+            
+            <td>Generation of this resource config<br><br>The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected.</td>
+            
+            <td>int</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>_schema</td>
+            
+            <td>Schema for this resource</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_self</td>
+            
+            <td>Link to this resource</td>
+            
+            <td><a href="types_SelfResourceLink.html">SelfResourceLink</a></td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>_system_owned</td>
+            
+            <td>Indicates system owned resource</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>children</td>
+            
+            <td>subtree for this type within policy tree<br><br>subtree for this type within policy tree containing nested elements.
+<br>
+</td>
+            
+            <td>array of <a href="types_ChildPolicyConfigResource.html">ChildPolicyConfigResource</a><br>Children are not allowed for this type</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            
+            <td>Description of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 1024<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>display_name</td>
+            
+            <td>Identifier to use when displaying entity in logs or GUI<br><br>Defaults to ID if not set</td>
+            
+            <td>string</td>
+            
+            <td>Maximum length: 255<br>Sortable</td>
+          </tr>
+          <tr>
+            <td>id</td>
+            
+            <td>Unique identifier of this resource</td>
+            
+            <td>string</td>
+            
+            <td>Sortable</td>
+          </tr>
+          <tr>
+            <td>marked_for_delete</td>
+            
+            <td>Indicates whether the intent object is marked for deletion<br><br>Intent objects are not directly deleted from the system when a delete
+<br>
+is invoked on them. They are marked for deletion and only when all the
+<br>
+realized entities for that intent object gets deleted, the intent object
+<br>
+is deleted. Objects that are marked for deletion are not returned in
+<br>
+GET call. One can use the search API to get these objects.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>markers</td>
+            
+            <td>Markers<br><br>List of labels to be used for granular RBAC.
+<br>
+Allowed in Basic edition, Essentials edition, Enterprise
+<br>
+edition.
+<br>
+</td>
+            
+            <td>array of <a href="types_ALBRoleFilterMatchLabel.html">ALBRoleFilterMatchLabel</a></td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>overridden</td>
+            
+            <td>Indicates whether this object is the overridden intent object<br><br>Global intent objects cannot be modified by the user.
+<br>
+However, certain global intent objects can be overridden locally by use
+<br>
+of this property. In such cases, the overridden local values take
+<br>
+precedence over the globally defined values for the properties.
+<br>
+</td>
+            
+            <td>boolean</td>
+            
+            <td>Readonly<br>Default: "False"</td>
+          </tr>
+          <tr>
+            <td>parent_path</td>
+            
+            <td>Path of its parent<br><br>Path of its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>parser_code</td>
+            
+            <td>Parser code<br><br>Command script provided inline.</td>
+            
+            <td>string</td>
+            
+            <td><span style="color: rgb(153, 0, 0);">Required</span></td>
+          </tr>
+          <tr>
+            <td>path</td>
+            
+            <td>Absolute path of this object<br><br>Absolute path of this object</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>realization_id</td>
+            
+            <td>A unique identifier assigned by the system for realizing intent<br><br>This is a UUID generated by the system for realizing the entity object.
+<br>
+In most cases this should be same as 'unique_id' of the entity. However,
+<br>
+in some cases this can be different because of entities have migrated thier
+<br>
+unique identifier to NSX Policy intent objects later in the timeline and did
+<br>
+not use unique_id for realization. Realization id is helpful for users to
+<br>
+debug data path to correlate the configuration with corresponding intent.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>relative_path</td>
+            
+            <td>Relative path of this object<br><br>Path relative from its parent</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+          <tr>
+            <td>resource_type</td>
+            
+            <td>Must be set to the value <b>ALBProtocolParser</b></td>
+            
+            <td>string</td>
+            
+            <td></td>
+          </tr>
+          <tr>
+            <td>tags</td>
+            
+            <td>Opaque identifiers meaningful to the API user</td>
+            
+            <td>array of <a href="types_Tag.html">Tag</a></td>
+            
+            <td>Maximum items: 30</td>
+          </tr>
+          <tr>
+            <td>unique_id</td>
+            
+            <td>A unique identifier assigned by the system<br><br>This is a UUID generated by the GM/LM to uniquely identify
+<br>
+entites in a federated environment. For entities that are
+<br>
+stretched across multiple sites, the same ID will be used
+<br>
+on all the stretched sites.
+<br>
+</td>
+            
+            <td>string</td>
+            
+            <td>Readonly</td>
+          </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+              <div style="clear:both"></div>
+            </div>
+            <br>
+
+            <h4>Example Response:</h4>
+            <span class="example_response">{
+  "_create_time": 1598509286031,
+  "_create_user": "admin",
+  "_last_modified_time": 1598509286035,
+  "_last_modified_user": "admin",
+  "_protection": "NOT_PROTECTED",
+  "_revision": 0,
+  "_system_owned": false,
+  "display_name": "test-protocolParser",
+  "id": "test-protocolParser",
+  "marked_for_delete": false,
+  "overridden": false,
+  "parent_path": "/infra",
+  "parser_code": "#!/usr/bin/lua5.1\n\npackage.loaded.bitstring : nil\nlocal bitstring : require \"bitstring\"\n\nlocal parse_dhcp : {}\nlocal attribute_list : {}\nlocal dhcp_params : {}\nlocal ip_str : \"\"\nlocal dhcp_msg : \"\"\n\nlocal function _num_to_ipv4address(msg, start_pos)\n   ip_str : \"\"\n   local ip_len : 4\n   while (ip_len >0) do\n      temp : bitstring.unpack(\"8:int\", msg, start_pos)\n      if (ip_len ~: 4) then\n         ip_str : ip_str..\".\"\n      end\n\n      ip_str : ip_str..temp\n      start_pos : start_pos + 1\n      ip_len : ip_len - 1\n   end\n\n   return ip_str\nend\n\nlocal function _num_to_mac_address(msg, start_pos)\n   mac_str : \"\"\n   local mac_len : 6\n   while (mac_len > 0) do\n      temp : bitstring.unpack(\"8:int\", msg, start_pos)\n      temp : string.format(\"%2.2X\", temp)\n      if (mac_len ~: 6) then\n         mac_str : mac_str .. \":\"\n      end\n\n      mac_str : mac_str .. temp\n      start_pos : start_pos + 1\n      mac_len : mac_len - 1\n   end\n\n   return mac_str\nend\n\nlocal function _get_key_value(dhcp_msg, option, attr_len, start_pos,end_pos)\n   if option :: 53 then\n      temp : bitstring.unpack(\"8:int\", dhcp_msg, start_pos, end_pos)\n   elseif option :: 50 then\n      temp : _num_to_ipv4address(dhcp_msg, start_pos)\n   else\n      if (#dhcp_msg < end_pos) then\n         temp : bitstring.unpack(\"rest:bin\", dhcp_msg,\n                                 start_pos, #dhcp_msg)\n      else\n         temp : bitstring.unpack((attr_len) .. \":bin, rest:bin\", dhcp_msg,\n            start_pos, end_pos)\n      end\n   end\n   return temp\nend\n\n\nfunction parse_dhcp_pkt(payload)\n   dhcp_params : {}\n   dhcp_msg : \"\"\n   local pos : 1\n   local result : {}\n   local data : bitstring.hexstream(payload)\n   dhcp_msg : bitstring.fromhexstream(data)\n\n    -- parse radius message\n   dhcp_params.msg_type, dhcp_params.hw_type, dhcp_params.hw_address_len, dhcp_params.hops, dhcp_params.txn_id, dhcp_params.elapsed_sec, dhcp_params.bootp_flags, dhcp_params.ciaddr, dhcp_params.yiaddr, dhcp_params.siaddr, dhcp_params.giaddr, dhcp_params.ch_mac, dhcp_params.client_hw_addr_padding,dhcp_params.sname, dhcp_params.boot_file, dhcp_params.dhcp_cookie : bitstring.unpack(\"8:int, 8:int, 8:int, 8:int, 32:int:big, 16:int:big, 2:bin, 4:bin, 4:bin, 4:bin, 4:bin, 6:bin, 10:bin, 64:bin, 128:bin, 4:bin\", dhcp_msg)\n\n\n   if(bitstring.hexstream(dhcp_params.dhcp_cookie) ~: \"63825363\") then\n      return false, \"DHCP parser (the magic cookie was invalid)\"\n   end\n\n\n   -- parse dhcp message\n   attribute_list : {}\n   local len : #dhcp_msg - 240\n   local start_pos : 241\n   local end_pos : 242\n   local dictionary:{}\n\n   while(len > 0) do\n      if (len :: 1) then\n         option: bitstring.unpack(\"8:int\", dhcp_msg, start_pos)\n         -- Check for termination condition\n         if (option :: 0xFF) then\n            break,\n         end\n         break\n      else\n         option: bitstring.unpack(\"8:int\", dhcp_msg, start_pos, end_pos)\n      end\n\n      -- Check for termination condition\n      if (option :: 0xFF) then\n         break,\n      end\n\n      -- Option is of 1 Byte\n      start_pos : start_pos + 1\n      end_pos : end_pos + 1\n\n      attr_length : bitstring.unpack(\"8:int\", dhcp_msg, start_pos)\n      start_pos : start_pos + 1\n      end_pos  : start_pos + attr_length\n\n      value : _get_key_value(dhcp_msg, option, attr_length, start_pos, end_pos)\n\n      start_pos : end_pos\n      len : len - attr_length - 2\n      dictionary[tostring(option)] : value\n      table.insert(attribute_list, {option : option, length : attr_length, value : value})\n   end\n\n   return dhcp_params, dictionary\nend\n\nfunction parse_dhcp.getDHCPParamsAndOptions(payload)\n   dhcp_params, attribute_list :  parse_dhcp_pkt(payload)\n   return dhcp_params, attribute_list\nend\n\nfunction parse_dhcp.getOption61(dictionary)\n   local option_val : dictionary['61']\n   local eth_int : bitstring.unpack(\"8:int\", option_val, 1)\n   local mac : _num_to_mac_address(option_val, 2)\n   return eth_int, mac\nend\nreturn parse_dhcp",
+  "path": "/infra/alb-protocol-parsers/test-protocolParser",
+  "relative_path": "test-protocolParser",
+  "resource_type": "ALBProtocolParser",
+  "unique_id": "0efb9ead-5567-4215-8ca3-aa24a54f6df7"
+}</span>
+
+            <h3>Required Permissions:</h3>
+            <span class="required_permissions">read</span>
+
+            <h3>Feature:</h3>
+            <span class="rbac_feature">policy_lb</span>
+
+            <h3>Additional Errors:</h3>
+            <ul>
+                <li><a href="errors_404.html">404 Not Found</a></li>
+                <li><a href="errors_301.html">301 Moved Permanently</a></li>
+                <li><a href="errors_307.html">307 Temporary Redirect</a></li>
+                <li><a href="errors_400.html">400 Bad Request</a></li>
+                <li><a href="errors_403.html">403 Forbidden</a></li>
+                <li><a href="errors_409.html">409 Conflict</a></li>
+                <li><a href="errors_412.html">412 Precondition Failed</a></li>
+                <li><a href="errors_500.html">500 Internal Server Error</a></li>
+                <li><a href="errors_503.html">503 Service Unavailable</a></li>
+            </ul>
+
+
+        </div>
+    </BODY>
+</HTML>
